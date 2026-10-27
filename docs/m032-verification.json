@@ -1,0 +1,49 @@
+{
+  "tests_run": 17,
+  "failures": 0,
+  "errors": 0,
+  "skips": [
+    {
+      "test": "test_real_symlink_requires_existing_privilege (test_windows_fixture.WindowsNativeFixtureTests.test_real_symlink_requires_existing_privilege)",
+      "reason": "CreateSymbolicLinkW WinError 1314; no privilege change/retry"
+    }
+  ],
+  "outside_sentinel_unchanged": true,
+  "non_admin": true,
+  "filesystem": "NTFS",
+  "platform": 26200,
+  "production_can_apply": false,
+  "existing_target_replacement": "blocked; no protective-handle release retry",
+  "power_loss_tested": false,
+  "base_commit": "26b71aedd7be57b86d9acf7881fb231dc906ae5c",
+  "date": "2026-10-27",
+  "first_run": {
+    "tests_run": 7,
+    "pass": 6,
+    "failure": "rename buffer missing explicit UTF-16 NUL; retained local evidence"
+  },
+  "native_pass": 16,
+  "native_skip": 1,
+  "contract_winerror": 5,
+  "game_read_or_executed": false,
+  "gui_used": false,
+  "real_transaction_recovery_tested": false,
+  "production_replacement_enabled": false,
+  "default_suite": {
+    "total": 175,
+    "pass": 159,
+    "skip": 16,
+    "fail": 0,
+    "native_explicit_cases_not_rerun": 13,
+    "other_skips": [
+      "two licensed-input integrations",
+      "existing real Windows symlink case"
+    ]
+  },
+  "packaging_budget": {
+    "used_bytes": 149211771,
+    "limit_bytes": 1000000000,
+    "new_build": false,
+    "new_downloads": false
+  }
+}

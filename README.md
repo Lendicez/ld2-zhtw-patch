@@ -32,7 +32,7 @@ GitHub Windows runner 不等於 Windows 11 GUI 遊玩驗收。
 
 ## Read-only install preview
 
-The m026 core discovers Steam candidates from injected roots and bounded VDF files, then plans an EXE-only change without writing. Run `python -B tools/dry_run_demo.py` for an entirely synthetic example. See [DRY-RUN.md](docs/DRY-RUN.md) for evidence requirements and refusal reasons. No live registry/filesystem adapter or installer is implemented; AppID remains unverified and real release approval remains false.
+The m026 core discovers Steam candidates from injected roots and bounded VDF files, then plans an EXE-only change without writing. Run `python -B tools/dry_run_demo.py` for an entirely synthetic example. See [DRY-RUN.md](docs/DRY-RUN.md) for evidence requirements and refusal reasons. Lazy read-only Windows ports and the official Steam AppID are now implemented/verified in m031, but local installation detection remains untested. No production installer is implemented and real release approval remains false.
 
 ## Synthetic transaction experiments
 
@@ -41,3 +41,10 @@ The stacked m027 change adds a single-file install/uninstall and recovery algori
 ## Rebuild the reviewed resource patch offline
 
 `tools/build_patch.py` now accepts an explicitly supplied original EXE and writes new build artifacts outside its directory. It verifies the original version, catalog recipe and exact historical m020 output; it never installs or runs the EXE. See [BUILD.md](docs/BUILD.md) for the command, actual local evidence and the still-unverified gameplay scope. Do not upload the generated EXE.
+
+## Native Windows fixture evidence
+
+The m032 backend primitives were tested on fresh synthetic NTFS files, including
+cross-process locks, file IDs and verified staging. Safe replacement of an existing
+locked target remains unresolved, so installation and native recovery stay disabled.
+See [the actual results and limits](docs/WINDOWS-NATIVE-FIXTURE.md).
