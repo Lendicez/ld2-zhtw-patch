@@ -13,8 +13,14 @@
 !/docs/HANDOFF.md
 !/docs/INSTALLER-SPEC.md
 !/docs/MIGRATION-INVENTORY.md
+!/docs/PACKAGING.md
 !/docs/TRANSACTIONS.md
 !/docs/VALIDATION-GAPS.md
+!/packaging/as-invoker.manifest
+!/packaging/dependency-sources.json
+!/packaging/generator.spec
+!/packaging/m030-verification.json
+!/packaging/requirements-win-py314.lock
 !/patches/glossary.zh-TW.json
 !/patches/m020-build-verification.json
 !/patches/m020-recipe.json
@@ -27,6 +33,7 @@
 !/src/ld2patch/catalog.py
 !/src/ld2patch/contracts.py
 !/src/ld2patch/discovery.py
+!/src/ld2patch/generator.py
 !/src/ld2patch/menu.py
 !/src/ld2patch/patch_engine.py
 !/src/ld2patch/pe_resources.py
@@ -37,6 +44,7 @@
 !/tests/pe_fixture.py
 !/tests/test_core.py
 !/tests/test_discovery_planner.py
+!/tests/test_generator.py
 !/tests/test_patch_engine.py
 !/tests/test_transaction.py
 !/tests/test_transaction_recovery.py
@@ -45,3 +53,5 @@
 !/tools/build_patch.py
 !/tools/check.py
 !/tools/dry_run_demo.py
+!/tools/generator_entry.py
+!/tools/package_generator.py

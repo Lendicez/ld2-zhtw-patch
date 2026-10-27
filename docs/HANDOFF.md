@@ -42,3 +42,14 @@ methods pass; full checks without licensed input report 127 tests, 124 passed an
 Actions or production write path is included. Existing original assets, catalogs,
 recipes and expected m020 output hashes are unchanged. Review this fix before
 continuing packaging or designing a native Windows transaction adapter.
+
+## m030 continuation
+
+A Windows x64 asInvoker offline generator is packaged and tested locally. See
+`PACKAGING.md` for the pinned PyPI wheel provenance, commands, 1 GB budget and
+limits. The onefile tool produced an exact m020 result from the read-only original;
+it did not install or execute the game. Binaries and wheels remain local. Full
+checks: 135 tests, 132 pass/3 skip, plus a separate successful packaged licensed
+integration. Next steps must keep privileged installation separate from onefile
+extraction, preserve production apply=false and address remaining runtime text,
+GUI/save/load and real Windows transaction gates. No merge/release/Actions.
