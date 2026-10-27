@@ -109,3 +109,57 @@ cross-process exclusivity or race resistance against an adversarial external
 writer. It does not implement native handle-based reparse protection. Linux CI,
 live Steam discovery, game GUI/save/load, packaging and real rollback remain
 unverified. No blocked native program was compiled, loaded or run.
+
+## m029 recovery crash-window and journal validation fix
+
+This fix is stacked on PR #3 head
+`d85eaedb0fbdd3facc15f71d3e0faf3050ea0982`. Both reported defects were reproduced
+against that unchanged source using only synthetic temporary files:
+
+- A crash at `created:restore.bin` left the target patched, a valid backup and
+  preimage, and an orphan restore file with no persisted identity. Subsequent
+  recovery returned `restore_stage_ownership_unknown` indefinitely.
+- JSON `phase: []` and `phase: {}` raised uncaught `TypeError` during set
+  membership; number/null phases already produced a structured refusal.
+
+New journals use schema 2 and a validated `restore_attempt` counter. Before
+exclusive creation, recovery persists `restore_preparing` with its derived path.
+There are at most three slots: `restore.bin`, `restore-1.bin`, `restore-2.bin`.
+An existing file without recorded identity is retained without reading, adopting,
+overwriting or deleting it. Recovery may use the next exclusive slot, populated
+only from the verified preimage after original-backup verification. It does not
+advance after a permission denial, unsafe/reparse path or known-identity conflict.
+The old files remain under the retained work directory. Slot exhaustion returns
+`recovery_required` / `restore_stage_retry_budget` without further writes; a later
+call does not reset the budget. This is bounded recovery, not guaranteed recovery
+from arbitrarily many interruptions. No automatic orphan cleanup is provided.
+
+Schema 1 journals are accepted only with their exact original field set and
+validated in memory as slot zero. A recovery write upgrades them to schema 2.
+Recovery validates exact fields and JSON types, phase/action, scope, derived
+paths, allowed hashes/sizes, metadata structure, identity/change-token bounds,
+and required metadata for the phase before process lookup or any filesystem
+mutation. Malformed values produce structured `recovery_required`. Schema
+validation is not journal authentication or protection against a malicious writer
+who can forge all evidence.
+
+Ten new test methods cover the creation crash, untrusted orphan bytes (including
+an assertion that they are never read), legacy journals, crashes before creation
+and after alternate-slot replacement, exhaustion of all three slots, malformed
+phase/root/schema/metadata values, and unsafe or denied orphan paths. Malformed
+JSON-value cases assert unchanged files, identities, timestamps, directory
+entries and write-hook calls. Existing transaction tests remain unchanged; the
+synthetic adapter recognizes all three restore names for its fault hooks.
+
+Validation on the local Windows executor: targeted suite **10 passed**; full
+`python -B tools/check.py`: **127 tests, 124 passed, 3 skipped**. Licensed input
+was not supplied: both licensed-input tests and real Windows symlink creation
+were explicitly skipped. The unchanged patch engine emits an existing Python
+3.14 invalid-escape SyntaxWarning; it did not fail tests and is outside this fix.
+No original game, live Steam path or save was accessed, and no EXE was run.
+
+The temporary adapter uses real temporary-file operations with simulated fault
+hooks. These tests do not establish production Windows atomicity, power-loss
+durability, native handle-based reparse safety, cross-process exclusion, UAC/ACL
+or security-product behavior. Production `can_apply` remains false and no live
+writer or installer was added.

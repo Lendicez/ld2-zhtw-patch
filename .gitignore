@@ -39,6 +39,7 @@
 !/tests/test_discovery_planner.py
 !/tests/test_patch_engine.py
 !/tests/test_transaction.py
+!/tests/test_transaction_recovery.py
 !/tests/transaction_fixture.py
 !/tools/audit_upload.py
 !/tools/build_patch.py
