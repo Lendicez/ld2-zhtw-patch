@@ -12,5 +12,13 @@
   "transfer_item": "給予／收取物品",
   "class": "職業",
   "confirm": "確定",
-  "cancel": "取消"
+  "cancel": "取消",
+  "attack": "攻擊",
+  "defence": "防禦",
+  "skill": "技能",
+  "formation_turn": "轉向",
+  "flee": "逃跑",
+  "call_teammate": "呼喊隊友",
+  "target": "目標",
+  "magic": "魔法"
 }

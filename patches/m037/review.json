@@ -1,0 +1,560 @@
+{
+  "milestone": "m037",
+  "scope": "combat standard resources; offline only",
+  "new_locations": 32,
+  "new_distinct_translations": 24,
+  "new_distinct_source_translation_pairs": 24,
+  "total_locations": 271,
+  "new_fonts": 5,
+  "total_fonts": 20,
+  "identity_review_not_counted": [
+    {
+      "kind": "dialog_control",
+      "resource": 122,
+      "language": 1041,
+      "item_index": 3,
+      "control_id": 4294967295,
+      "text": "特殊技能：",
+      "counted_as_translation": false
+    }
+  ],
+  "changes": [
+    {
+      "kind": "dialog_title",
+      "resource": 120,
+      "language": 1041,
+      "source_key": "m037:dialog_title:120:title",
+      "source_anchor": "攻撃対象を選択",
+      "translation": "選擇攻擊目標",
+      "native_cp950_bytes": 12,
+      "utf16_units": 6,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 120,
+      "language": 1041,
+      "item_index": 0,
+      "control_id": 1,
+      "source_key": "m037:dialog_control:120:0",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 120,
+      "language": 1041,
+      "item_index": 1,
+      "control_id": 2,
+      "source_key": "m037:dialog_control:120:1",
+      "source_anchor": "取り消し",
+      "translation": "取消",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 120,
+      "language": 1041,
+      "item_index": 3,
+      "control_id": 4294967295,
+      "source_key": "m037:dialog_control:120:3",
+      "source_anchor": "対象：",
+      "translation": "目標：",
+      "native_cp950_bytes": 6,
+      "utf16_units": 3,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 121,
+      "language": 1041,
+      "source_key": "m037:dialog_title:121:title",
+      "source_anchor": "防御対象を選択",
+      "translation": "選擇防禦目標",
+      "native_cp950_bytes": 12,
+      "utf16_units": 6,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 121,
+      "language": 1041,
+      "item_index": 0,
+      "control_id": 1,
+      "source_key": "m037:dialog_control:121:0",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 121,
+      "language": 1041,
+      "item_index": 1,
+      "control_id": 2,
+      "source_key": "m037:dialog_control:121:1",
+      "source_anchor": "取り消し",
+      "translation": "取消",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 121,
+      "language": 1041,
+      "item_index": 3,
+      "control_id": 4294967295,
+      "source_key": "m037:dialog_control:121:3",
+      "source_anchor": "対象：",
+      "translation": "目標：",
+      "native_cp950_bytes": 6,
+      "utf16_units": 3,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 122,
+      "language": 1041,
+      "source_key": "m037:dialog_title:122:title",
+      "source_anchor": "特殊技能を使用",
+      "translation": "使用特殊技能",
+      "native_cp950_bytes": 12,
+      "utf16_units": 6,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 122,
+      "language": 1041,
+      "item_index": 0,
+      "control_id": 1,
+      "source_key": "m037:dialog_control:122:0",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 122,
+      "language": 1041,
+      "item_index": 1,
+      "control_id": 2,
+      "source_key": "m037:dialog_control:122:1",
+      "source_anchor": "取り消し",
+      "translation": "取消",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 122,
+      "language": 1041,
+      "item_index": 5,
+      "control_id": 4294967295,
+      "source_key": "m037:dialog_control:122:5",
+      "source_anchor": "対象：",
+      "translation": "目標：",
+      "native_cp950_bytes": 6,
+      "utf16_units": 3,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 123,
+      "language": 1041,
+      "source_key": "m037:dialog_title:123:title",
+      "source_anchor": "フォーメーションの回転",
+      "translation": "陣形轉向",
+      "native_cp950_bytes": 8,
+      "utf16_units": 4,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 123,
+      "language": 1041,
+      "item_index": 0,
+      "control_id": 1,
+      "source_key": "m037:dialog_control:123:0",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 123,
+      "language": 1041,
+      "item_index": 1,
+      "control_id": 2,
+      "source_key": "m037:dialog_control:123:1",
+      "source_anchor": "取り消し",
+      "translation": "取消",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 123,
+      "language": 1041,
+      "item_index": 3,
+      "control_id": 4294967295,
+      "source_key": "m037:dialog_control:123:3",
+      "source_anchor": "回転方向：",
+      "translation": "轉向方向：",
+      "native_cp950_bytes": 10,
+      "utf16_units": 5,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 518,
+      "language": 1041,
+      "source_key": "m037:dialog_title:518:title",
+      "source_anchor": "逃げますか？",
+      "translation": "要逃跑嗎？",
+      "native_cp950_bytes": 10,
+      "utf16_units": 5,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 518,
+      "language": 1041,
+      "item_index": 0,
+      "control_id": 1,
+      "source_key": "m037:dialog_control:518:0",
+      "source_anchor": "はい",
+      "translation": "是",
+      "native_cp950_bytes": 2,
+      "utf16_units": 1,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 518,
+      "language": 1041,
+      "item_index": 1,
+      "control_id": 2,
+      "source_key": "m037:dialog_control:518:1",
+      "source_anchor": "いいえ",
+      "translation": "否",
+      "native_cp950_bytes": 2,
+      "utf16_units": 1,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "language": 1041,
+      "locator": [
+        4,
+        0
+      ],
+      "command_id": 32866,
+      "source_key": "m037:menu:129:4.0",
+      "source_anchor": "攻撃(&A)",
+      "translation": "攻擊(&A)",
+      "native_cp950_bytes": 8,
+      "utf16_units": 6,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "language": 1041,
+      "locator": [
+        4,
+        4
+      ],
+      "command_id": 32873,
+      "source_key": "m037:menu:129:4.4",
+      "source_anchor": "回転(&T)",
+      "translation": "轉向(&T)",
+      "native_cp950_bytes": 8,
+      "utf16_units": 6,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "language": 1041,
+      "locator": [
+        4,
+        5
+      ],
+      "command_id": 32869,
+      "source_key": "m037:menu:129:4.5",
+      "source_anchor": "防御(&D)",
+      "translation": "防禦(&D)",
+      "native_cp950_bytes": 8,
+      "utf16_units": 6,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "language": 1041,
+      "locator": [
+        4,
+        6
+      ],
+      "command_id": 32870,
+      "source_key": "m037:menu:129:4.6",
+      "source_anchor": "逃げる(&R)",
+      "translation": "逃跑(&R)",
+      "native_cp950_bytes": 8,
+      "utf16_units": 6,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "language": 1041,
+      "locator": [
+        4,
+        8
+      ],
+      "command_id": 32871,
+      "source_key": "m037:menu:129:4.8",
+      "source_anchor": "声をかける(&S)",
+      "translation": "呼喊(&S)",
+      "native_cp950_bytes": 8,
+      "utf16_units": 6,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2055,
+      "language": 1041,
+      "index": 2,
+      "string_id": 32866,
+      "source_key": "m037:string:2055:32866",
+      "source_anchor": "攻撃する\n攻撃",
+      "translation": "進行攻擊\n攻擊",
+      "native_cp950_bytes": 13,
+      "utf16_units": 7,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2055,
+      "language": 1041,
+      "index": 3,
+      "string_id": 32867,
+      "source_key": "m037:string:2055:32867",
+      "source_anchor": "魔法を唱える\n魔法",
+      "translation": "施放魔法\n魔法",
+      "native_cp950_bytes": 13,
+      "utf16_units": 7,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2055,
+      "language": 1041,
+      "index": 4,
+      "string_id": 32868,
+      "source_key": "m037:string:2055:32868",
+      "source_anchor": "アイテムを使用する\nｱｲﾃﾑ",
+      "translation": "使用道具\n道具",
+      "native_cp950_bytes": 13,
+      "utf16_units": 7,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2055,
+      "language": 1041,
+      "index": 5,
+      "string_id": 32869,
+      "source_key": "m037:string:2055:32869",
+      "source_anchor": "防御する\n防御",
+      "translation": "進行防禦\n防禦",
+      "native_cp950_bytes": 13,
+      "utf16_units": 7,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2055,
+      "language": 1041,
+      "index": 6,
+      "string_id": 32870,
+      "source_key": "m037:string:2055:32870",
+      "source_anchor": "逃げる\n逃げる",
+      "translation": "逃跑\n逃跑",
+      "native_cp950_bytes": 9,
+      "utf16_units": 5,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2055,
+      "language": 1041,
+      "index": 7,
+      "string_id": 32871,
+      "source_key": "m037:string:2055:32871",
+      "source_anchor": "仲間に声をかける\n声をかける",
+      "translation": "呼喊隊友\n呼喊",
+      "native_cp950_bytes": 13,
+      "utf16_units": 7,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2055,
+      "language": 1041,
+      "index": 8,
+      "string_id": 32872,
+      "source_key": "m037:string:2055:32872",
+      "source_anchor": "技能を使用します\n技能",
+      "translation": "使用技能\n技能",
+      "native_cp950_bytes": 13,
+      "utf16_units": 7,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2055,
+      "language": 1041,
+      "index": 9,
+      "string_id": 32873,
+      "source_key": "m037:string:2055:32873",
+      "source_anchor": "フォーメイションを回転します\n回転",
+      "translation": "轉動陣形\n轉向",
+      "native_cp950_bytes": 13,
+      "utf16_units": 7,
+      "status": "static_pass_runtime_unseen"
+    }
+  ],
+  "routes": [
+    {
+      "command_id": 32866,
+      "dialog_resource": 120,
+      "dispatch_index": 46,
+      "class_name": "CSelectAttackDlg",
+      "branch_file_offset": "0x88412",
+      "dispatch_call_file_offset": "0x88432",
+      "factory_file_offset": "0xa7810",
+      "constructor_file_offset": "0xa77b0",
+      "evidence": "Capstone-decoded command branch and call; checked table/class/factory resource binding",
+      "runtime_reachable_tested": false
+    },
+    {
+      "command_id": 32869,
+      "dialog_resource": 121,
+      "dispatch_index": 47,
+      "class_name": "CSelectDefenceDlg",
+      "branch_file_offset": "0x8844c",
+      "dispatch_call_file_offset": "0x8846c",
+      "factory_file_offset": "0xa7f00",
+      "constructor_file_offset": "0xa7ea0",
+      "evidence": "Capstone-decoded command branch and call; checked table/class/factory resource binding",
+      "runtime_reachable_tested": false
+    },
+    {
+      "command_id": 32870,
+      "dialog_resource": 518,
+      "dispatch_index": 48,
+      "class_name": "CRunawayDlg",
+      "branch_file_offset": "0x88542",
+      "dispatch_call_file_offset": "0x88562",
+      "factory_file_offset": "0x98ad0",
+      "constructor_file_offset": "0x989d0",
+      "evidence": "Capstone-decoded command branch and call; checked table/class/factory resource binding",
+      "runtime_reachable_tested": false
+    },
+    {
+      "command_id": 32872,
+      "dialog_resource": 122,
+      "dispatch_index": 50,
+      "class_name": "CSelectSkillDlg",
+      "branch_file_offset": "0x8857c",
+      "dispatch_call_file_offset": "0x8859c",
+      "factory_file_offset": "0xa85f0",
+      "constructor_file_offset": "0xa8390",
+      "evidence": "Capstone-decoded command branch and call; checked table/class/factory resource binding",
+      "runtime_reachable_tested": false
+    },
+    {
+      "command_id": 32873,
+      "dialog_resource": 123,
+      "dispatch_index": 51,
+      "class_name": "CTurnFormationDlg",
+      "branch_file_offset": "0x885b6",
+      "dispatch_call_file_offset": "0x885d6",
+      "factory_file_offset": "0xc6b10",
+      "constructor_file_offset": "0xc6910",
+      "evidence": "Capstone-decoded command branch and call; checked table/class/factory resource binding",
+      "runtime_reachable_tested": false
+    }
+  ],
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "expected_output_sha256": "1fada3e7081de0797101bd61388cee20f2f2b38d796d9ef3fd892dac82e179d4",
+  "output_bytes": 7102464,
+  "resources_changed_vs_m020": [
+    [
+      4,
+      129,
+      1041
+    ],
+    [
+      5,
+      120,
+      1041
+    ],
+    [
+      5,
+      121,
+      1041
+    ],
+    [
+      5,
+      122,
+      1041
+    ],
+    [
+      5,
+      123,
+      1041
+    ],
+    [
+      5,
+      518,
+      1041
+    ],
+    [
+      6,
+      2055,
+      1041
+    ]
+  ],
+  "native_cp950_roundtrips": 32,
+  "gdi_memory_only_layout_checks": 45,
+  "new_mnemonic_conflicts": 0,
+  "actual_printf_parameters_in_new_rows": 0,
+  "newline_rows": 8,
+  "runtime_seen": false,
+  "code_data_unchanged": true,
+  "coverage_percentage": null,
+  "limits": [
+    "Conditional command routes statically confirmed, not runtime reachability",
+    "RT_STRING command hints preserve newline roles; actual status bar/tooltip display untested",
+    "Dynamic list contents, names and game logic unchanged",
+    "Memory DC layout estimates are not GUI/DPI acceptance; menu/caption widths remain runtime-dependent"
+  ]
+}

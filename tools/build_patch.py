@@ -10,17 +10,20 @@ from ld2patch.patch_engine import build_to_paths,strict_json
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--profile',choices=['m020','m037'],default='m020')
     parser.add_argument('--input',type=Path,required=True)
     parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--metadata-out',type=Path,required=True)
     args=parser.parse_args()
     try:
-        recipe=strict_json((ROOT/'patches/m020-recipe.json').read_bytes())
-        # The recipe's path is validated in build_patch; no arbitrary catalog CLI.
-        if recipe['catalog']!='ui-m020.zh-TW.json':raise ValueError('Unrecognized bundled catalog')
+        folder=ROOT/'patches' if args.profile=='m020' else ROOT/'patches/m037'
+        recipe_name='m020-recipe.json' if args.profile=='m020' else 'recipe.json'
+        catalog_name='ui-m020.zh-TW.json' if args.profile=='m020' else 'catalog.json'
+        recipe=strict_json((folder/recipe_name).read_bytes())
+        if recipe['catalog']!=catalog_name:raise ValueError('Unrecognized bundled catalog')
         metadata=build_to_paths(args.input,args.out,args.metadata_out,
-                                (ROOT/'patches/ui-m020.zh-TW.json').read_bytes(),
-                                strict_json((ROOT/'patches/versions.json').read_bytes()),recipe)
+                                (folder/catalog_name).read_bytes(),
+                                strict_json((folder/'versions.json').read_bytes()),recipe)
     except (ValueError,OSError,KeyError) as exc:
         print(json.dumps({'status':'refused_or_failed','reason':str(exc),'installed':False}),file=sys.stderr)
         return 1

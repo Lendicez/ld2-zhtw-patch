@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 import stat
 
-from .catalog import build_bytes, validate_catalog
+from .catalog import build_bytes, validate_catalog, output_hash
 from .pe_resources import PE, MAX_FILE, align, checksum, need, sha, u16, u32, zfield
 from .planner import _versions
 
@@ -97,20 +97,45 @@ class PatchBuild:
     metadata: dict
 
 
+def build_versions(config, schema):
+    # Schema 2 is an offline profile. Planner/installer still accept schema 1 only.
+    if type(config.get('schema_version')) is not int or config['schema_version']!=schema:
+        raise ValueError('Recipe/version schema mismatch')
+    if schema==1:return _versions(config)
+    if set(config)!={'schema_version','steam_app_id','steam_app_id_status','versions'}:
+        raise ValueError('Offline version fields')
+    values=config.get('versions')
+    if not isinstance(values,list) or len(values)!=1:raise ValueError('One offline version required')
+    entry=values[0]
+    fields={'id','filename','file_version','product_version','source_sha256','source_size',
+            'expected_output_sha256','expected_output_size','catalog','release_approved'}
+    if not isinstance(entry,dict) or set(entry)!=fields or entry['release_approved'] is not False:
+        raise ValueError('Offline version fields/release')
+    # Reuse existing strict hash/size/version checks without changing planner schema.
+    checked=dict(entry)
+    checked['historical_m020_sha256']=checked.pop('expected_output_sha256')
+    checked['historical_m020_size']=checked.pop('expected_output_size')
+    _versions({'schema_version':1,'versions':[checked]})
+    return values
+
+
 def build_patch(source: bytes, catalog_bytes: bytes, versions: dict, recipe: dict) -> PatchBuild:
     if not isinstance(source,bytes) or not 256<=len(source)<=MAX_FILE:raise ValueError('Source bytes/size')
     fields={'schema_version','id','engine','version_id','catalog','catalog_sha256','text_locations','font_locations'}
-    if not isinstance(recipe,dict) or set(recipe)!=fields or type(recipe['schema_version']) is not int or recipe['schema_version']!=1 or recipe['engine']!='resource_append_v1':
+    if not isinstance(recipe,dict) or set(recipe)!=fields or type(recipe['schema_version']) is not int or recipe['schema_version'] not in (1,2) or recipe['engine']!='resource_append_v1':
         raise ValueError('Unsupported recipe')
     if not isinstance(recipe['id'],str) or not re.fullmatch('[a-z0-9-]{1,64}',recipe['id']):raise ValueError('Recipe ID')
     if not isinstance(recipe['catalog'],str) or not re.fullmatch(r'[A-Za-z0-9_.-]+\.json',recipe['catalog']):raise ValueError('Recipe catalog name')
     if not isinstance(versions,dict):raise ValueError('Versions object required')
-    version=next((v for v in _versions(versions) if v['id']==recipe['version_id']),None)
+    version=next((v for v in build_versions(versions,recipe['schema_version']) if v['id']==recipe['version_id']),None)
     if version is None or version.get('catalog')!=recipe['catalog']:raise ValueError('Recipe/version mismatch')
     if sha(source)!=version['source_sha256'] or len(source)!=version['source_size']:raise ValueError('Unsupported original hash/size')
     if sha(catalog_bytes)!=recipe['catalog_sha256']:raise ValueError('Catalog recipe hash mismatch')
     cat=strict_json(catalog_bytes);validate_catalog(cat)
-    if (cat['source_sha256']!=version['source_sha256'] or cat['historical_m020_sha256']!=version['historical_m020_sha256']
+    if cat['schema_version']!=recipe['schema_version']:raise ValueError('Recipe/catalog schema mismatch')
+    output_key='historical_m020_sha256' if recipe['schema_version']==1 else 'expected_output_sha256'
+    size_key='historical_m020_size' if recipe['schema_version']==1 else 'expected_output_size'
+    if (cat['source_sha256']!=version['source_sha256'] or output_hash(cat)!=version[output_key]
             or type(recipe['text_locations']) is not int or recipe['text_locations']!=len(cat['entries'])
             or type(recipe['font_locations']) is not int or recipe['font_locations']!=len(cat['dialog_fonts'])):
         raise ValueError('Catalog/version/count mismatch')
@@ -118,7 +143,7 @@ def build_patch(source: bytes, catalog_bytes: bytes, versions: dict, recipe: dic
     if file_version!=version['file_version'] or product_version!=version.get('product_version'):raise ValueError('PE version mismatch')
     try:output=build_bytes(source,cat)
     except (KeyError,IndexError) as exc:raise ValueError('Catalog resource/locator mismatch') from exc
-    if sha(output)!=version['historical_m020_sha256'] or len(output)!=version['historical_m020_size']:raise ValueError('Reviewed output mismatch')
+    if sha(output)!=version[output_key] or len(output)!=version[size_key]:raise ValueError('Reviewed output mismatch')
     proof=verify_resource_only(source,output,resource_paths(cat))
     metadata={'metadata_schema':1,'recipe_id':recipe['id'],'engine':recipe['engine'],'version_id':version['id'],
               'source_sha256':sha(source),'source_bytes':len(source),'output_sha256':sha(output),'output_bytes':len(output),
