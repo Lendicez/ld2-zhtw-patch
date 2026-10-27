@@ -202,3 +202,19 @@ unobserved. Tests: 304 total, 225 pass / 79 skip general, 238 pass / 66 skip lic
 Source/output hashes are pinned, two builds match, all original 1029 files match.
 No game, GUI, installation, security changes, new dependencies or remote writes.
 Combined m040+m041 publication manifest is local; no original assets are included.
+
+
+## m042 static UI disposition (local only)
+
+Based on PR #15 a74c1f542bfb6631f631a53325446a86396118e7. Read M042-STATIC-UI.md,
+TRANSLATION-STATUS.md and research/ui/m042-disposition.json. All remaining 210
+candidates are classified: 134 translated, 33 identical, 8 setting identifiers,
+35 deferred. With m041's 9 deferred, 44 of the original 381 candidates remain.
+552 translated locations, 377 exact output strings; no whole-game coverage claim.
+Resource 180 is a character/filter UI, not proven player creation. Internal RT_STRING
+setting names are preserved. No unknown HF/DAT data or dynamic setter is patched.
+m042 output SHA256: 9fea1172e92167d435a8ec26baf085ab45a2a56468690bf7bfec1f8ba29dc367.
+314 tests: general 232 passed/82 skipped; licensed 248 passed/66 skipped. Two final
+builds match. No GUI/game, installation, security changes, new dependencies or
+remote writes. m040 geometry remains independent; production can_apply=false.
+The pending publication manifest is complete and local. Do not upload game assets.

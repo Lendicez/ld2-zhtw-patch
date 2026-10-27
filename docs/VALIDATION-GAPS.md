@@ -160,3 +160,16 @@ are estimates, not actual GUI/DPI acceptance. The quest deadline ANSI path is
 unmodified. Stack spacing is not proven buffer capacity; the setter wrapper has
 an unreviewed control-site branch. Dialogs 168/173 remain unconfirmed/unchanged.
 No game, native harness, security/locale change, install or network publication.
+
+
+## m042 remaining boundaries
+
+The 381-entry UI candidate list is fully classified, not fully translated: 44
+entries still need context/binding/dynamic-source evidence. The versioned m042
+profile has 552 translated locations, none observed in game at this output hash.
+Static constructor bindings do not prove gameplay reachability or final captions.
+Offscreen fixed-control and intrinsic text measurements are reported separately.
+External DAT/BMH/TIL inventories are not evidence of a complete external script
+store. EXE CP932 records, dynamic formatted text, file loaders, capacities and DBCS
+paint paths need source-to-display tracing. Read M042-STATIC-UI.md for a bounded
+five-scenario combined acceptance plan; no new installer architecture is required.

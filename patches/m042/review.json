@@ -1,0 +1,3182 @@
+{
+  "milestone": "m042",
+  "base_profile": "m041",
+  "base_commit": "a74c1f542bfb6631f631a53325446a86396118e7",
+  "reviewed_candidates": 210,
+  "new_locations": 134,
+  "new_distinct_translations": 108,
+  "identity_positions": 33,
+  "preserved_setting_identifiers": 8,
+  "deferred_positions": 35,
+  "prior_facility_deferred": 9,
+  "total_locations": 552,
+  "total_distinct_translations": 377,
+  "changes": [
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        2,
+        0
+      ],
+      "command_id": 32831,
+      "language": 1041,
+      "source_key": "m042:menu:129:2.0",
+      "source_anchor": "宿屋(&I)",
+      "translation": "旅館(&I)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        2,
+        1
+      ],
+      "command_id": 32832,
+      "language": 1041,
+      "source_key": "m042:menu:129:2.1",
+      "source_anchor": "武器屋(&W)",
+      "translation": "武器店(&W)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        2,
+        2
+      ],
+      "command_id": 32833,
+      "language": 1041,
+      "source_key": "m042:menu:129:2.2",
+      "source_anchor": "道具屋(&I)",
+      "translation": "道具店(&I)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        2,
+        5
+      ],
+      "command_id": 32837,
+      "language": 1041,
+      "source_key": "m042:menu:129:2.5",
+      "source_anchor": "情報屋(&G)",
+      "translation": "情報所(&G)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        2,
+        7
+      ],
+      "command_id": 32838,
+      "language": 1041,
+      "source_key": "m042:menu:129:2.7",
+      "source_anchor": "家(&H)",
+      "translation": "住家(&H)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        2,
+        9
+      ],
+      "command_id": 32839,
+      "language": 1041,
+      "source_key": "m042:menu:129:2.9",
+      "source_anchor": "ダンジョンへ移動(&D)",
+      "translation": "前往迷宮(&D)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        2,
+        10
+      ],
+      "command_id": 32840,
+      "language": 1041,
+      "source_key": "m042:menu:129:2.10",
+      "source_anchor": "他の町へ移動(&E)",
+      "translation": "前往其他城鎮(&E)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        3,
+        0
+      ],
+      "command_id": 32851,
+      "language": 1041,
+      "source_key": "m042:menu:129:3.0",
+      "source_anchor": "北へ移動(&N)",
+      "translation": "往北移動(&N)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        3,
+        1
+      ],
+      "command_id": 32852,
+      "language": 1041,
+      "source_key": "m042:menu:129:3.1",
+      "source_anchor": "東に移動(&E)",
+      "translation": "往東移動(&E)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        3,
+        2
+      ],
+      "command_id": 32853,
+      "language": 1041,
+      "source_key": "m042:menu:129:3.2",
+      "source_anchor": "西に移動(&W)",
+      "translation": "往西移動(&W)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        3,
+        3
+      ],
+      "command_id": 32854,
+      "language": 1041,
+      "source_key": "m042:menu:129:3.3",
+      "source_anchor": "南へ移動(&S)",
+      "translation": "往南移動(&S)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        3,
+        5
+      ],
+      "command_id": 32855,
+      "language": 1041,
+      "source_key": "m042:menu:129:3.5",
+      "source_anchor": "調べる(&S)",
+      "translation": "調查(&S)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        3,
+        6
+      ],
+      "command_id": 32856,
+      "language": 1041,
+      "source_key": "m042:menu:129:3.6",
+      "source_anchor": "止まる(&W)",
+      "translation": "等待(&W)",
+      "group": "active_primary_menu_role",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 100,
+      "item_index": 5,
+      "control_id": 1064,
+      "language": 1041,
+      "source_key": "m042:dialog:100:5",
+      "source_anchor": "MMX (R) Technology 使用しない",
+      "translation": "未使用 MMX (R) Technology",
+      "group": "other_dialog_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 132,
+      "item_index": 0,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:132:0",
+      "source_anchor": "はい",
+      "translation": "是",
+      "group": "other_dialog_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 132,
+      "item_index": 1,
+      "control_id": 2,
+      "language": 1041,
+      "source_key": "m042:dialog:132:1",
+      "source_anchor": "いいえ",
+      "translation": "否",
+      "group": "other_dialog_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 154,
+      "item_index": 11,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:154:11",
+      "source_anchor": "所有手形",
+      "translation": "持有通行證",
+      "group": "other_dialog_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 168,
+      "language": 1041,
+      "source_key": "m042:dialog:168:title",
+      "source_anchor": "ダンジョンへ移動",
+      "translation": "前往迷宮",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 168,
+      "item_index": 2,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:168:2",
+      "source_anchor": "移動するダンジョン：",
+      "translation": "目的迷宮：",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 168,
+      "item_index": 3,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:168:3",
+      "source_anchor": "現在の町",
+      "translation": "目前城鎮",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 168,
+      "item_index": 5,
+      "control_id": 2,
+      "language": 1041,
+      "source_key": "m042:dialog:168:5",
+      "source_anchor": "取り消し",
+      "translation": "取消",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 173,
+      "item_index": 0,
+      "control_id": 1055,
+      "language": 1041,
+      "source_key": "m042:dialog:173:0",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 173,
+      "item_index": 1,
+      "control_id": 2,
+      "language": 1041,
+      "source_key": "m042:dialog:173:1",
+      "source_anchor": "取り消し",
+      "translation": "取消",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 175,
+      "language": 1041,
+      "source_key": "m042:dialog:175:title",
+      "source_anchor": "文字入力",
+      "translation": "輸入文字",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 175,
+      "item_index": 0,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:175:0",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 175,
+      "item_index": 1,
+      "control_id": 1033,
+      "language": 1041,
+      "source_key": "m042:dialog:175:1",
+      "source_anchor": "初期化",
+      "translation": "重設",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 175,
+      "item_index": 3,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:175:3",
+      "source_anchor": "入力：",
+      "translation": "輸入：",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 176,
+      "language": 1041,
+      "source_key": "m042:dialog:176:title",
+      "source_anchor": "話す",
+      "translation": "交談",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 176,
+      "item_index": 0,
+      "control_id": 1073,
+      "language": 1041,
+      "source_key": "m042:dialog:176:0",
+      "source_anchor": "話す",
+      "translation": "交談",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 176,
+      "item_index": 3,
+      "control_id": 1012,
+      "language": 1041,
+      "source_key": "m042:dialog:176:3",
+      "source_anchor": "詳細",
+      "translation": "詳情",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 179,
+      "language": 1041,
+      "source_key": "m042:dialog:179:title",
+      "source_anchor": "世界の創造",
+      "translation": "創造世界",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 1,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:179:1",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 2,
+      "control_id": 2,
+      "language": 1041,
+      "source_key": "m042:dialog:179:2",
+      "source_anchor": "取り消し",
+      "translation": "取消",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 7,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:179:7",
+      "source_anchor": "悪",
+      "translation": "惡",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 12,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:179:12",
+      "source_anchor": "勢力バランス",
+      "translation": "勢力平衡",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 180,
+      "language": 1041,
+      "source_key": "m042:dialog:180:title",
+      "source_anchor": "キャラクターのタイプを入力してください",
+      "translation": "角色篩選條件",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 0,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:180:0",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 1,
+      "control_id": 1064,
+      "language": 1041,
+      "source_key": "m042:dialog:180:1",
+      "source_anchor": "次",
+      "translation": "下一個",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 2,
+      "control_id": 1012,
+      "language": 1041,
+      "source_key": "m042:dialog:180:2",
+      "source_anchor": "戻る",
+      "translation": "上一個",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 3,
+      "control_id": 1052,
+      "language": 1041,
+      "source_key": "m042:dialog:180:3",
+      "source_anchor": "10代",
+      "translation": "10~19",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 4,
+      "control_id": 1053,
+      "language": 1041,
+      "source_key": "m042:dialog:180:4",
+      "source_anchor": "20代",
+      "translation": "20~29",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 5,
+      "control_id": 1054,
+      "language": 1041,
+      "source_key": "m042:dialog:180:5",
+      "source_anchor": "30代以上",
+      "translation": "30歲起",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 8,
+      "control_id": 1058,
+      "language": 1041,
+      "source_key": "m042:dialog:180:8",
+      "source_anchor": "戦士系",
+      "translation": "戰士系",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 9,
+      "control_id": 1059,
+      "language": 1041,
+      "source_key": "m042:dialog:180:9",
+      "source_anchor": "魔法使い系",
+      "translation": "法師系",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 14,
+      "control_id": 1074,
+      "language": 1041,
+      "source_key": "m042:dialog:180:14",
+      "source_anchor": "関係",
+      "translation": "關係",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 15,
+      "control_id": 1070,
+      "language": 1041,
+      "source_key": "m042:dialog:180:15",
+      "source_anchor": "国別",
+      "translation": "國別",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 18,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:180:18",
+      "source_anchor": "年齢",
+      "translation": "年齡",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 21,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:180:21",
+      "source_anchor": "国籍",
+      "translation": "國籍",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 22,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:180:22",
+      "source_anchor": "並び替え",
+      "translation": "排序",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 185,
+      "item_index": 0,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:185:0",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "group": "other_dialog_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 185,
+      "item_index": 3,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:185:3",
+      "source_anchor": "内容：",
+      "translation": "內容：",
+      "group": "other_dialog_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 185,
+      "item_index": 4,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:185:4",
+      "source_anchor": "対象：",
+      "translation": "目標：",
+      "group": "other_dialog_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 186,
+      "language": 1041,
+      "source_key": "m042:dialog:186:title",
+      "source_anchor": "話しかける     ",
+      "translation": "交談     ",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 186,
+      "item_index": 0,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:186:0",
+      "source_anchor": "話す",
+      "translation": "交談",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 186,
+      "item_index": 2,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:186:2",
+      "source_anchor": "冒険者：",
+      "translation": "冒險者：",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 186,
+      "item_index": 3,
+      "control_id": 1012,
+      "language": 1041,
+      "source_key": "m042:dialog:186:3",
+      "source_anchor": "詳細",
+      "translation": "詳情",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 187,
+      "language": 1041,
+      "source_key": "m042:dialog:187:title",
+      "source_anchor": "仲間に誘う     ",
+      "translation": "邀為隊友     ",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 187,
+      "item_index": 0,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:187:0",
+      "source_anchor": "誘う",
+      "translation": "邀請",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 187,
+      "item_index": 2,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:187:2",
+      "source_anchor": "冒険者：",
+      "translation": "冒險者：",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 187,
+      "item_index": 3,
+      "control_id": 1012,
+      "language": 1041,
+      "source_key": "m042:dialog:187:3",
+      "source_anchor": "詳細",
+      "translation": "詳情",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 188,
+      "language": 1041,
+      "source_key": "m042:dialog:188:title",
+      "source_anchor": "盗む  ",
+      "translation": "偷竊  ",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 188,
+      "item_index": 0,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:188:0",
+      "source_anchor": "盗む",
+      "translation": "偷竊",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 188,
+      "item_index": 2,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:188:2",
+      "source_anchor": "冒険者：",
+      "translation": "冒險者：",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 188,
+      "item_index": 3,
+      "control_id": 1012,
+      "language": 1041,
+      "source_key": "m042:dialog:188:3",
+      "source_anchor": "詳細",
+      "translation": "詳情",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 188,
+      "item_index": 5,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:188:5",
+      "source_anchor": "所持品：",
+      "translation": "持有物：",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 188,
+      "item_index": 6,
+      "control_id": 1004,
+      "language": 1041,
+      "source_key": "m042:dialog:188:6",
+      "source_anchor": "説明",
+      "translation": "說明",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 189,
+      "language": 1041,
+      "source_key": "m042:dialog:189:title",
+      "source_anchor": "襲いかかる     ",
+      "translation": "襲擊     ",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 189,
+      "item_index": 0,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:189:0",
+      "source_anchor": "襲う",
+      "translation": "襲擊",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 189,
+      "item_index": 2,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:189:2",
+      "source_anchor": "冒険者：",
+      "translation": "冒險者：",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 189,
+      "item_index": 3,
+      "control_id": 1012,
+      "language": 1041,
+      "source_key": "m042:dialog:189:3",
+      "source_anchor": "詳細",
+      "translation": "詳情",
+      "group": "conversation_interaction_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 191,
+      "language": 1041,
+      "source_key": "m042:dialog:191:title",
+      "source_anchor": "誕生日を入力してください",
+      "translation": "請輸入生日",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 191,
+      "item_index": 0,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:191:0",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 191,
+      "item_index": 1,
+      "control_id": 2,
+      "language": 1041,
+      "source_key": "m042:dialog:191:1",
+      "source_anchor": "初期化",
+      "translation": "重設",
+      "group": "creation_dialog_resource_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 225,
+      "language": 1041,
+      "source_key": "m042:dialog:225:title",
+      "source_anchor": "アイテムの整理",
+      "translation": "整理道具",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 225,
+      "item_index": 1,
+      "control_id": 1033,
+      "language": 1041,
+      "source_key": "m042:dialog:225:1",
+      "source_anchor": "捨てる",
+      "translation": "丟棄",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 225,
+      "item_index": 4,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:225:4",
+      "source_anchor": "アイテム：",
+      "translation": "道具：",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 225,
+      "item_index": 5,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:225:5",
+      "source_anchor": "対象：",
+      "translation": "目標：",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 225,
+      "item_index": 6,
+      "control_id": 1012,
+      "language": 1041,
+      "source_key": "m042:dialog:225:6",
+      "source_anchor": "説明",
+      "translation": "說明",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 225,
+      "item_index": 7,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:225:7",
+      "source_anchor": "終了",
+      "translation": "結束",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 438,
+      "item_index": 4,
+      "control_id": 1059,
+      "language": 1041,
+      "source_key": "m042:dialog:438:4",
+      "source_anchor": "渡す >>",
+      "translation": "給予 >>",
+      "group": "other_dialog_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 438,
+      "item_index": 5,
+      "control_id": 1060,
+      "language": 1041,
+      "source_key": "m042:dialog:438:5",
+      "source_anchor": "お金 >>",
+      "translation": "金錢 >>",
+      "group": "other_dialog_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 453,
+      "language": 1041,
+      "source_key": "m042:dialog:453:title",
+      "source_anchor": "数字を三桁入力して下さい",
+      "translation": "請輸入三位數字",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 453,
+      "item_index": 1,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:453:1",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 454,
+      "language": 1041,
+      "source_key": "m042:dialog:454:title",
+      "source_anchor": "購入する枚数を入力して下さい",
+      "translation": "請輸入購買張數",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 454,
+      "item_index": 0,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:454:0",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 454,
+      "item_index": 1,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:454:1",
+      "source_anchor": "所持金",
+      "translation": "持有金錢",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 454,
+      "item_index": 2,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:454:2",
+      "source_anchor": "代金",
+      "translation": "價款",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 454,
+      "item_index": 12,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:454:12",
+      "source_anchor": "枚数：",
+      "translation": "張數：",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 457,
+      "language": 1041,
+      "source_key": "m042:dialog:457:title",
+      "source_anchor": "データ   ",
+      "translation": "資料   ",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 458,
+      "language": 1041,
+      "source_key": "m042:dialog:458:title",
+      "source_anchor": "いくら渡しますか",
+      "translation": "要給予多少金錢？",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 458,
+      "item_index": 0,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "m042:dialog:458:0",
+      "source_anchor": "渡す",
+      "translation": "給予",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 458,
+      "item_index": 1,
+      "control_id": 2,
+      "language": 1041,
+      "source_key": "m042:dialog:458:1",
+      "source_anchor": "取り消し",
+      "translation": "取消",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 458,
+      "item_index": 2,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:458:2",
+      "source_anchor": "所持金",
+      "translation": "持有金錢",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 458,
+      "item_index": 5,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "m042:dialog:458:5",
+      "source_anchor": "渡す金額：",
+      "translation": "給予金額：",
+      "group": "other_game_dialog_roles",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 520,
+      "item_index": 4,
+      "control_id": 1059,
+      "language": 1041,
+      "source_key": "m042:dialog:520:4",
+      "source_anchor": "渡す >>",
+      "translation": "給予 >>",
+      "group": "other_dialog_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 520,
+      "item_index": 5,
+      "control_id": 1060,
+      "language": 1041,
+      "source_key": "m042:dialog:520:5",
+      "source_anchor": "<< 貰う",
+      "translation": "<< 收取",
+      "group": "other_dialog_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 9,
+      "index": 4,
+      "string_id": 132,
+      "language": 1041,
+      "source_key": "m042:string:132",
+      "source_anchor": "ビジュアルウインドウ",
+      "translation": "場景視窗",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 9,
+      "index": 6,
+      "string_id": 134,
+      "language": 1041,
+      "source_key": "m042:string:134",
+      "source_anchor": "マップ",
+      "translation": "地圖",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 9,
+      "index": 7,
+      "string_id": 135,
+      "language": 1041,
+      "source_key": "m042:string:135",
+      "source_anchor": "インフォメーション",
+      "translation": "資訊",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 9,
+      "index": 8,
+      "string_id": 136,
+      "language": 1041,
+      "source_key": "m042:string:136",
+      "source_anchor": "ステータス",
+      "translation": "狀態",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 0,
+      "string_id": 32768,
+      "language": 1041,
+      "source_key": "m042:string:32768",
+      "source_anchor": "グローバルメモリを確保できませんでした。\n有効なスワップファイルのサイズの設定を\nもっと大きな値にしてください。",
+      "translation": "無法配置全域記憶體。\n請將使用中的分頁檔大小\n設定為更大的數值。",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 3,
+      "string_id": 32771,
+      "language": 1041,
+      "source_key": "m042:string:32771",
+      "source_anchor": "正常に書き込めません\n容量不足かドライブの不良の可能性があります",
+      "translation": "無法正常寫入\n可能是空間不足或磁碟故障",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 4,
+      "string_id": 32772,
+      "language": 1041,
+      "source_key": "m042:string:32772",
+      "source_anchor": "古いセーブデータは使用できません",
+      "translation": "無法使用舊版存檔",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 5,
+      "string_id": 32773,
+      "language": 1041,
+      "source_key": "m042:string:32773",
+      "source_anchor": "正常に読み込めません\nドライブの不良の可能性があります",
+      "translation": "無法正常讀取\n可能是磁碟故障",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2050,
+      "index": 0,
+      "string_id": 32784,
+      "language": 1041,
+      "source_key": "m042:string:32784",
+      "source_anchor": "MMX (R) Technology 使用",
+      "translation": "使用 MMX (R) Technology",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2052,
+      "index": 15,
+      "string_id": 32831,
+      "language": 1041,
+      "source_key": "m042:string:32831",
+      "source_anchor": "宿屋へいく\n宿屋",
+      "translation": "前往旅館\n旅館",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2053,
+      "index": 0,
+      "string_id": 32832,
+      "language": 1041,
+      "source_key": "m042:string:32832",
+      "source_anchor": "武器屋へ行く\n武器屋",
+      "translation": "前往武器店\n武器店",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2053,
+      "index": 1,
+      "string_id": 32833,
+      "language": 1041,
+      "source_key": "m042:string:32833",
+      "source_anchor": "道具屋へ行く\n道具屋",
+      "translation": "前往道具店\n道具店",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2053,
+      "index": 2,
+      "string_id": 32834,
+      "language": 1041,
+      "source_key": "m042:string:32834",
+      "source_anchor": "寺院へ行く\n寺院",
+      "translation": "前往寺院\n寺院",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2053,
+      "index": 5,
+      "string_id": 32837,
+      "language": 1041,
+      "source_key": "m042:string:32837",
+      "source_anchor": "情報屋へ行く\n情報屋",
+      "translation": "前往情報所\n情報所",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2053,
+      "index": 6,
+      "string_id": 32838,
+      "language": 1041,
+      "source_key": "m042:string:32838",
+      "source_anchor": "家へ行く\n家",
+      "translation": "返回住家\n住家",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2053,
+      "index": 7,
+      "string_id": 32839,
+      "language": 1041,
+      "source_key": "m042:string:32839",
+      "source_anchor": "ダンジョンへ行く\nﾀﾞﾝｼﾞｮﾝ",
+      "translation": "前往迷宮\n迷宮",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2053,
+      "index": 8,
+      "string_id": 32840,
+      "language": 1041,
+      "source_key": "m042:string:32840",
+      "source_anchor": "他の町へ行く\n他の町",
+      "translation": "前往其他城鎮\n其他城鎮",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2054,
+      "index": 3,
+      "string_id": 32851,
+      "language": 1041,
+      "source_key": "m042:string:32851",
+      "source_anchor": "北へ移動\n北",
+      "translation": "往北移動\n北",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2054,
+      "index": 4,
+      "string_id": 32852,
+      "language": 1041,
+      "source_key": "m042:string:32852",
+      "source_anchor": "東に移動\n東",
+      "translation": "往東移動\n東",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2054,
+      "index": 5,
+      "string_id": 32853,
+      "language": 1041,
+      "source_key": "m042:string:32853",
+      "source_anchor": "西に移動\n西",
+      "translation": "往西移動\n西",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2054,
+      "index": 6,
+      "string_id": 32854,
+      "language": 1041,
+      "source_key": "m042:string:32854",
+      "source_anchor": "南へ移動\n南",
+      "translation": "往南移動\n南",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2054,
+      "index": 7,
+      "string_id": 32855,
+      "language": 1041,
+      "source_key": "m042:string:32855",
+      "source_anchor": "調べる\n調べる",
+      "translation": "調查\n調查",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2054,
+      "index": 8,
+      "string_id": 32856,
+      "language": 1041,
+      "source_key": "m042:string:32856",
+      "source_anchor": "時間を進める\n止まる",
+      "translation": "推進時間\n等待",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2069,
+      "index": 12,
+      "string_id": 33100,
+      "language": 1041,
+      "source_key": "m042:string:33100",
+      "source_anchor": "宿屋",
+      "translation": "旅館",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2069,
+      "index": 13,
+      "string_id": 33101,
+      "language": 1041,
+      "source_key": "m042:string:33101",
+      "source_anchor": "武器屋",
+      "translation": "武器店",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2069,
+      "index": 14,
+      "string_id": 33102,
+      "language": 1041,
+      "source_key": "m042:string:33102",
+      "source_anchor": "道具屋",
+      "translation": "道具店",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 1,
+      "string_id": 33105,
+      "language": 1041,
+      "source_key": "m042:string:33105",
+      "source_anchor": "装備",
+      "translation": "裝備",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 2,
+      "string_id": 33106,
+      "language": 1041,
+      "source_key": "m042:string:33106",
+      "source_anchor": "情報屋",
+      "translation": "情報所",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 3,
+      "string_id": 33107,
+      "language": 1041,
+      "source_key": "m042:string:33107",
+      "source_anchor": "家",
+      "translation": "住家",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 5,
+      "string_id": 33109,
+      "language": 1041,
+      "source_key": "m042:string:33109",
+      "source_anchor": "ダンジョンへの移動",
+      "translation": "前往迷宮",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 8,
+      "string_id": 33112,
+      "language": 1041,
+      "source_key": "m042:string:33112",
+      "source_anchor": "冒険者に近づく",
+      "translation": "接近冒險者",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 10,
+      "string_id": 33114,
+      "language": 1041,
+      "source_key": "m042:string:33114",
+      "source_anchor": "アイテムの受け渡し",
+      "translation": "道具交接",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 11,
+      "string_id": 33115,
+      "language": 1041,
+      "source_key": "m042:string:33115",
+      "source_anchor": "宿屋",
+      "translation": "旅館",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 12,
+      "string_id": 33116,
+      "language": 1041,
+      "source_key": "m042:string:33116",
+      "source_anchor": "仲間に声をかける",
+      "translation": "呼喊隊友",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 13,
+      "string_id": 33117,
+      "language": 1041,
+      "source_key": "m042:string:33117",
+      "source_anchor": "王立武具販売所",
+      "translation": "皇家武具店",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2501,
+      "index": 0,
+      "string_id": 40000,
+      "language": 1041,
+      "source_key": "m042:string:40000",
+      "source_anchor": "お金が足りません",
+      "translation": "金錢不足",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2501,
+      "index": 2,
+      "string_id": 40002,
+      "language": 1041,
+      "source_key": "m042:string:40002",
+      "source_anchor": "これ以上、仲間にできません。",
+      "translation": "無法再增加隊友。",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "string",
+      "resource": 2501,
+      "index": 3,
+      "string_id": 40003,
+      "language": 1041,
+      "source_key": "m042:string:40003",
+      "source_anchor": "これ以上、所持できません。",
+      "translation": "無法再攜帶更多物品。",
+      "group": "game_rt_string_context_needed",
+      "status": "static_pass_runtime_unseen"
+    }
+  ],
+  "identity_review_not_counted": [
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        2,
+        3
+      ],
+      "command_id": 32834,
+      "language": 1041,
+      "text": "寺院(&T)",
+      "source_utf16_sha256": "6f0637dc2e49746e77683f745dc460ec951e2fd99f7897216974b6121e7e2a67",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        2,
+        4
+      ],
+      "command_id": 32835,
+      "language": 1041,
+      "text": "訓練所(&T)",
+      "source_utf16_sha256": "24da3b8850fbc10b0cb35d21b5a12720d7ad080e2dd2da8a07c4298e7b7e15c6",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        4,
+        1
+      ],
+      "command_id": 32867,
+      "language": 1041,
+      "text": "魔法(&M)",
+      "source_utf16_sha256": "58dcb55300cb64e67a9294894f2b2a78c850ac38f6514af9d0f712b1839ec1f5",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        4,
+        2
+      ],
+      "command_id": 32868,
+      "language": 1041,
+      "text": "道具(&I)",
+      "source_utf16_sha256": "11bac8e25c4420c42a84cf38f18d62e7450633bba88a6017513f29c54979f4f9",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "menu",
+      "resource": 129,
+      "locator": [
+        4,
+        3
+      ],
+      "command_id": 32872,
+      "language": 1041,
+      "text": "技能(&K)",
+      "source_utf16_sha256": "ab3fc2d367ca4190b8ed570aa23edd764626aee1b6c092ed051497570ced2db0",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 168,
+      "item_index": 0,
+      "control_id": 1,
+      "language": 1041,
+      "text": "移動",
+      "source_utf16_sha256": "2e1aca439f0d8d55249738032ed6d0e4da8b5874d10ef66c981f56a6165ca533",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 169,
+      "item_index": 4,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "報酬",
+      "source_utf16_sha256": "a04798f0fad33acc2dc6c0a7e81d68a99d403aa475e9fb469cec1cb20a6003a8",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 169,
+      "item_index": 5,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "期限",
+      "source_utf16_sha256": "46f9c67c4e315c38af15491e2dba26051f1262c513430040e864bd25870991e2",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 173,
+      "language": 1041,
+      "text": "休息",
+      "source_utf16_sha256": "06738444bf5077d5b438b97e7cbe3c8c1527475b8f089b44ce169a8bca6e2a11",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 173,
+      "item_index": 2,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "休息時間：",
+      "source_utf16_sha256": "75a9c52cd558e4e5347b018b9ea684e1d931775fc4809caa3a17c166264a6f7b",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 176,
+      "item_index": 2,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "項目：",
+      "source_utf16_sha256": "0e38bc086a9b4ea1327e314abffe1f532dd187f3adaa09bf712bd48966c26c15",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 177,
+      "item_index": 3,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "使用魔法：",
+      "source_utf16_sha256": "253ca73c9dddb583711d9ba2db5f14e4290bece929d43d49c17f4d6e79c99da7",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 0,
+      "control_id": 1039,
+      "language": 1041,
+      "text": "創造",
+      "source_utf16_sha256": "26c083b6ecf8661a56d9d21e4d7ebcefba1fff9f871c84e075b1239838e73035",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 6,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "善",
+      "source_utf16_sha256": "b75b50be5b039ae791be94506b4462488ad88647d94a951af0a7f22855ad25f4",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 8,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "武器",
+      "source_utf16_sha256": "e88ce58cd47e324cda7e9208b390b0fe7e2bb864f6dfd2d85a8ee50e35a3979e",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 9,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "魔法",
+      "source_utf16_sha256": "d9943d246332911d116a438ecaeaad0e9fbbfa017f0fdc9a6efd71662fd1f039",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 10,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "▽",
+      "source_utf16_sha256": "009c6ba4e64fac06f77999e261b69cc1d6b6e708ad9703dc716041baf4ffd9e9",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 11,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "▽",
+      "source_utf16_sha256": "009c6ba4e64fac06f77999e261b69cc1d6b6e708ad9703dc716041baf4ffd9e9",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 13,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "秩序",
+      "source_utf16_sha256": "1f3b9a02d0f09472e79288182c0ce2f83ad207d9fd3ff66cc915583e75cb98c1",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 14,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "混沌",
+      "source_utf16_sha256": "7b22a37358875c10ac73595e021765360602a6cc488002ead7b270ffbec4dbfb",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 179,
+      "item_index": 15,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "▽",
+      "source_utf16_sha256": "009c6ba4e64fac06f77999e261b69cc1d6b6e708ad9703dc716041baf4ffd9e9",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 6,
+      "control_id": 1056,
+      "language": 1041,
+      "text": "男",
+      "source_utf16_sha256": "733027d2753a259e4536efb5e59dc2ac0a2d2d121f951135f4fef8c1c29484af",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 7,
+      "control_id": 1057,
+      "language": 1041,
+      "text": "女",
+      "source_utf16_sha256": "b3cebf754775c1003b3b99c79581ccb7e809367dead85ea3d543a35cc4b893ac",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 19,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "種類",
+      "source_utf16_sha256": "4bf3e8deebf80fadf52e371e40b190f43f27b95f4770dd8b4b089661fcd6e3f3",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 20,
+      "control_id": 65535,
+      "language": 1041,
+      "text": "性別",
+      "source_utf16_sha256": "19e9a7da09e4025c92c2cbbd284fbd397e2258440ae8d64577fd1991c9bb51d8",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 225,
+      "item_index": 0,
+      "control_id": 1049,
+      "language": 1041,
+      "text": "使用",
+      "source_utf16_sha256": "1d75f0c20e07db728982ddf6911b85d16f51ea58f5f7c6a990ab092b79f9c654",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 456,
+      "language": 1041,
+      "text": "年表  ",
+      "source_utf16_sha256": "726310014dfa88f2b579012ec2127634a2d95bb955925ef67192f897984b3b40",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 2,
+      "string_id": 32770,
+      "language": 1041,
+      "text": "警告",
+      "source_utf16_sha256": "26be4f8e9236e1434a702fa1fc99c3f47a1df02bd9c60a06a8c166a28d0f0bc2",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2053,
+      "index": 3,
+      "string_id": 32835,
+      "language": 1041,
+      "text": "訓練所\n訓練所",
+      "source_utf16_sha256": "bf82d83e9571845ba96e2288eca1deb63af979482e33a1bcba2235949ab35a28",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2069,
+      "index": 15,
+      "string_id": 33103,
+      "language": 1041,
+      "text": "寺院",
+      "source_utf16_sha256": "66e0700b2ebefea445c9a8608c663f7c6e69d95e1486f6bb92d83e6a13c2fce4",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 0,
+      "string_id": 33104,
+      "language": 1041,
+      "text": "訓練所",
+      "source_utf16_sha256": "a3352f0fa3af41158c3d9275862cbe13ce481c45e321a2441fd860721d6e6e99",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 4,
+      "string_id": 33108,
+      "language": 1041,
+      "text": "移動",
+      "source_utf16_sha256": "2e1aca439f0d8d55249738032ed6d0e4da8b5874d10ef66c981f56a6165ca533",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 14,
+      "string_id": 33118,
+      "language": 1041,
+      "text": "行商",
+      "source_utf16_sha256": "0f942a26537b7446257f8ec97684809f798b5556c3681e992301363b098b2ceb",
+      "reason": "Valid Traditional Chinese or semantic symbol; unchanged.",
+      "counted_as_translation": false
+    }
+  ],
+  "preserved_identifiers": [
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 7,
+      "string_id": 32775,
+      "language": 1041,
+      "source_utf16_sha256": "cd86bce6a43801b6dc980648f8531afee06ad2fc937f47256228f19043b3b44d",
+      "reason": "Profile setting identifier, not translated; preserve exact bytes.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 9,
+      "string_id": 32777,
+      "language": 1041,
+      "source_utf16_sha256": "8415b1fd2ad2af37c9a933fdcc8745a7571ff7f6e02dc47c5c63e76705a759b9",
+      "reason": "Profile setting identifier, not translated; preserve exact bytes.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 10,
+      "string_id": 32778,
+      "language": 1041,
+      "source_utf16_sha256": "b53dd76dbe3d61e610301ab0fd5eb455abb90c7ebd2756672935f0c40fcf71d7",
+      "reason": "Profile setting identifier, not translated; preserve exact bytes.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 11,
+      "string_id": 32779,
+      "language": 1041,
+      "source_utf16_sha256": "21eac4ff614a64c8788a2078e1aac9b01e7617bd569a4644a7b2fc4d597b6719",
+      "reason": "Profile setting identifier, not translated; preserve exact bytes.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 12,
+      "string_id": 32780,
+      "language": 1041,
+      "source_utf16_sha256": "c295e22e95e817b947dd3b8ad4765dc074e10fadec7f354769fba5cf228b9282",
+      "reason": "Profile setting identifier, not translated; preserve exact bytes.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 13,
+      "string_id": 32781,
+      "language": 1041,
+      "source_utf16_sha256": "5b67b319302b1d8a615d871d9d57fa94b2854cca139b39f6b7ece52674915766",
+      "reason": "Profile setting identifier, not translated; preserve exact bytes.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 14,
+      "string_id": 32782,
+      "language": 1041,
+      "source_utf16_sha256": "dedfb10e4a300115cd5467c8d9ffeb92082a753e470ff7a62b2dca0b90a3bd56",
+      "reason": "Profile setting identifier, not translated; preserve exact bytes.",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 15,
+      "string_id": 32783,
+      "language": 1041,
+      "source_utf16_sha256": "9d9fe562625605122dcc1f1dc25ae6c017015390b3724cab2bbd99b2c6c945b2",
+      "reason": "Profile setting identifier, not translated; preserve exact bytes.",
+      "counted_as_translation": false
+    }
+  ],
+  "deferred": [
+    {
+      "kind": "dialog_control",
+      "resource": 171,
+      "item_index": 0,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "dialog:171:0",
+      "source_utf16_sha256": "e49556ebde4351a8dc22a1da1299b0f82e023ca2ffcb258c54cccd6142ccb5b2",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 171,
+      "item_index": 2,
+      "control_id": 1041,
+      "language": 1041,
+      "source_key": "dialog:171:2",
+      "source_utf16_sha256": "6ac0ffb562e031219a5266c5ff0507258adc1bd605ba298e9c6faba26fa9a5bd",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 171,
+      "item_index": 4,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "dialog:171:4",
+      "source_utf16_sha256": "d349ab9dc479dfe2413fbbd4c8d84b531d90a41b09ea10e9fca4aa565dca0fb2",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 171,
+      "item_index": 5,
+      "control_id": 1042,
+      "language": 1041,
+      "source_key": "dialog:171:5",
+      "source_utf16_sha256": "229f32825e7b4360fa700d86d06c1d1ecf13f5275b5d7e2e589dc869a12f369c",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 171,
+      "item_index": 6,
+      "control_id": 1013,
+      "language": 1041,
+      "source_key": "dialog:171:6",
+      "source_utf16_sha256": "0df65cdd29736a2359f07fd68937b66e27e52c54fd83d112788a7c69bbf27275",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 171,
+      "item_index": 7,
+      "control_id": 1019,
+      "language": 1041,
+      "source_key": "dialog:171:7",
+      "source_utf16_sha256": "6e8e464d3f49f5fdf3235f5e5fa0107f263f9ae45bdb75a20dfbe6504b35ef10",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 171,
+      "item_index": 8,
+      "control_id": 2,
+      "language": 1041,
+      "source_key": "dialog:171:8",
+      "source_utf16_sha256": "04902817d0210f55a2cf0fd4f84ea499d1ef3f756d2c568bf1c66b2e57f71229",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 10,
+      "control_id": 1060,
+      "language": 1041,
+      "source_key": "dialog:180:10",
+      "source_utf16_sha256": "985e1ee3dd8b384d5f78a65897391133399c8e26f46142bf27d6d800f84dfe88",
+      "reason": "Country/proper-name terminology is not established; preserve four options together."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 11,
+      "control_id": 1061,
+      "language": 1041,
+      "source_key": "dialog:180:11",
+      "source_utf16_sha256": "fdfb744635ecfe824d3318e59c36a3153a0483d8b6e03765994160e70e497b56",
+      "reason": "Country/proper-name terminology is not established; preserve four options together."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 12,
+      "control_id": 1062,
+      "language": 1041,
+      "source_key": "dialog:180:12",
+      "source_utf16_sha256": "3fd3a10bd091fb098859c58a8bb0fc834b42d6fde96cfde902db5641547d2ec4",
+      "reason": "Country/proper-name terminology is not established; preserve four options together."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 180,
+      "item_index": 13,
+      "control_id": 1063,
+      "language": 1041,
+      "source_key": "dialog:180:13",
+      "source_utf16_sha256": "6442a1613871877a941f49ada95e855636c38530e48bc812b1fb7239571feb0f",
+      "reason": "Country/proper-name terminology is not established; preserve four options together."
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 181,
+      "language": 1041,
+      "source_key": "dialog:181:title",
+      "source_utf16_sha256": "233094a9fa588dbee50f114ca659fb81e6f73d0bb773e1835e9173c0e32369fa",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 181,
+      "item_index": 1,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "dialog:181:1",
+      "source_utf16_sha256": "01a23b6458cf6796e8df6dc686ba1f4bbeb7ef4aba7875aaf1c01c9e925a32cd",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 181,
+      "item_index": 2,
+      "control_id": 2,
+      "language": 1041,
+      "source_key": "dialog:181:2",
+      "source_utf16_sha256": "04902817d0210f55a2cf0fd4f84ea499d1ef3f756d2c568bf1c66b2e57f71229",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 450,
+      "language": 1041,
+      "source_key": "dialog:450:title",
+      "source_utf16_sha256": "d4f64aea457a0555d6dd86fdee48ce49b5fcc9239ec00fa0891009ec614e6079",
+      "reason": "Monster selector has a template constructor, but player/debug reachability and region names are unverified."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 450,
+      "item_index": 1,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "dialog:450:1",
+      "source_utf16_sha256": "583b2185ce71b374e06a9ef40fae2114cb5a3401f45ec2747a38fbff97c32f09",
+      "reason": "Monster selector has a template constructor, but player/debug reachability and region names are unverified."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 450,
+      "item_index": 2,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "dialog:450:2",
+      "source_utf16_sha256": "4bf3e8deebf80fadf52e371e40b190f43f27b95f4770dd8b4b089661fcd6e3f3",
+      "reason": "Monster selector has a template constructor, but player/debug reachability and region names are unverified."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 450,
+      "item_index": 3,
+      "control_id": 1,
+      "language": 1041,
+      "source_key": "dialog:450:3",
+      "source_utf16_sha256": "01a23b6458cf6796e8df6dc686ba1f4bbeb7ef4aba7875aaf1c01c9e925a32cd",
+      "reason": "Monster selector has a template constructor, but player/debug reachability and region names are unverified."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 450,
+      "item_index": 4,
+      "control_id": 1058,
+      "language": 1041,
+      "source_key": "dialog:450:4",
+      "source_utf16_sha256": "236675ee455be884eb87b77ec2ba804007f509b52d927c53ba05cb256e0f078a",
+      "reason": "Monster selector has a template constructor, but player/debug reachability and region names are unverified."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 450,
+      "item_index": 5,
+      "control_id": 1059,
+      "language": 1041,
+      "source_key": "dialog:450:5",
+      "source_utf16_sha256": "696d0b7e88fe37537b71fcc2b05a2ee3c46ed172a1d516b3cf599ef956292e4a",
+      "reason": "Monster selector has a template constructor, but player/debug reachability and region names are unverified."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 450,
+      "item_index": 6,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "dialog:450:6",
+      "source_utf16_sha256": "1d5dd459fb842e9635af96f932ccb6773d012c2a728e48902213315747bf814d",
+      "reason": "Monster selector has a template constructor, but player/debug reachability and region names are unverified."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 450,
+      "item_index": 7,
+      "control_id": 1061,
+      "language": 1041,
+      "source_key": "dialog:450:7",
+      "source_utf16_sha256": "b405fa4ce2c4b726251653dea0c4878cdd465399b71c4e9861d54b09957379be",
+      "reason": "Monster selector has a template constructor, but player/debug reachability and region names are unverified."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 450,
+      "item_index": 8,
+      "control_id": 1062,
+      "language": 1041,
+      "source_key": "dialog:450:8",
+      "source_utf16_sha256": "f55025ec514be3979139cc3f96c8e2bf73adcda7d4a74e2a3fc797b97c3b0b7e",
+      "reason": "Monster selector has a template constructor, but player/debug reachability and region names are unverified."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 450,
+      "item_index": 9,
+      "control_id": 1063,
+      "language": 1041,
+      "source_key": "dialog:450:9",
+      "source_utf16_sha256": "e93dc950000aec2851e2b6110e87a30ed4d23e9a770987d8c02ab74d073850b5",
+      "reason": "Monster selector has a template constructor, but player/debug reachability and region names are unverified."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 450,
+      "item_index": 10,
+      "control_id": 1060,
+      "language": 1041,
+      "source_key": "dialog:450:10",
+      "source_utf16_sha256": "2d0a9769b7dbfd970ecb60ced9b5984e3aa0b4cdc8a5e50a18fba7288612038f",
+      "reason": "Monster selector has a template constructor, but player/debug reachability and region names are unverified."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 450,
+      "item_index": 11,
+      "control_id": 2,
+      "language": 1041,
+      "source_key": "dialog:450:11",
+      "source_utf16_sha256": "6a2de3bed4619332c7090f0c1d084a609c4b3b6582e88c256d44fed675e607ca",
+      "reason": "Monster selector has a template constructor, but player/debug reachability and region names are unverified."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 454,
+      "item_index": 7,
+      "control_id": 1060,
+      "language": 1041,
+      "source_key": "dialog:454:7",
+      "source_utf16_sha256": "e09251ec5d4b26cf63424fdb88c1e2a90a2904d1acc9c754f6d3c0447b34d9a6",
+      "reason": "Literal ticket-number/quantity examples may be dynamically replaced; actual formatting source not validated."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 454,
+      "item_index": 9,
+      "control_id": 1059,
+      "language": 1041,
+      "source_key": "dialog:454:9",
+      "source_utf16_sha256": "1a249f883b54b93ae8180fcb17970b225f6de8f32370688c85ba4ccd5dfa98b6",
+      "reason": "Literal ticket-number/quantity examples may be dynamically replaced; actual formatting source not validated."
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 30721,
+      "language": 1041,
+      "source_key": "dialog:30721:title",
+      "source_utf16_sha256": "e8f43825f33e0245ccb0b32909be801b0ae026b1b0d78821b53ba3257d0c2f1e",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 30721,
+      "item_index": 0,
+      "control_id": 65535,
+      "language": 1041,
+      "source_key": "dialog:30721:0",
+      "source_utf16_sha256": "151c5f9a3dce32d49d5a5aa3ffda94915ca3d4197c4e757a98bd0c3f9af5dff1",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 30721,
+      "item_index": 3,
+      "control_id": 2,
+      "language": 1041,
+      "source_key": "dialog:30721:3",
+      "source_utf16_sha256": "f1868f48741c58b44f059b1b306418485e6acfd3d178e836b6c24529fc61b952",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 30721,
+      "item_index": 4,
+      "control_id": 57670,
+      "language": 1041,
+      "source_key": "dialog:30721:4",
+      "source_utf16_sha256": "03aecb261f7594571ba2b7112a624f0b390d679f7425e1cf6e14637bdb6356e6",
+      "reason": "No reviewed creation/use binding in this batch; not declared unused or unreachable."
+    },
+    {
+      "kind": "string",
+      "resource": 68,
+      "index": 1,
+      "string_id": 1073,
+      "language": 1041,
+      "source_key": "string:1073",
+      "source_utf16_sha256": "6ac0ffb562e031219a5266c5ff0507258adc1bd605ba298e9c6faba26fa9a5bd",
+      "reason": "No complete display consumer association established; preserve pending trace."
+    },
+    {
+      "kind": "string",
+      "resource": 2049,
+      "index": 1,
+      "string_id": 32769,
+      "language": 1041,
+      "source_key": "string:32769",
+      "source_utf16_sha256": "44373453bd1c98c24ce41b7bb75273dfe0714cb811aea252210183d529b0e893",
+      "reason": "No complete display consumer association established; preserve pending trace."
+    },
+    {
+      "kind": "string",
+      "resource": 2070,
+      "index": 9,
+      "string_id": 33113,
+      "language": 1041,
+      "source_key": "string:33113",
+      "source_utf16_sha256": "d9729a072ec711099ee53db2306ac9e17856e7e506afc89dced2d42f45cdf10f",
+      "reason": "No complete display consumer association established; preserve pending trace."
+    }
+  ],
+  "binding_evidence": {
+    "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+    "descriptor_bindings": [
+      {
+        "dialog_resource": 132,
+        "dispatch_index": 18,
+        "kind": 6,
+        "descriptor_file_offset": "0x647798",
+        "class_record_file_offset": "0x173634",
+        "class_name": "CYesnoDlg",
+        "factory_file_offset": "0xde540",
+        "factory_call_file_offset": "0xde580",
+        "constructor_file_offset": "0xde510"
+      },
+      {
+        "dialog_resource": 154,
+        "dispatch_index": 22,
+        "kind": 5,
+        "descriptor_file_offset": "0x6477c8",
+        "class_record_file_offset": "0x1715c4",
+        "class_name": "CTravelDlg",
+        "factory_file_offset": "0xc7620",
+        "factory_call_file_offset": "0xc7660",
+        "constructor_file_offset": "0xc6d10"
+      },
+      {
+        "dialog_resource": 168,
+        "dispatch_index": 24,
+        "kind": 6,
+        "descriptor_file_offset": "0x6477e0",
+        "class_record_file_offset": "0x13874c",
+        "class_name": "CDungeonDlg",
+        "factory_file_offset": "0x655d0",
+        "factory_call_file_offset": "0x65610",
+        "constructor_file_offset": "0x65400"
+      },
+      {
+        "dialog_resource": 169,
+        "dispatch_index": 26,
+        "kind": 5,
+        "descriptor_file_offset": "0x6477f8",
+        "class_record_file_offset": "0x15c88c",
+        "class_name": "CMissionDlg",
+        "factory_file_offset": "0x92010",
+        "factory_call_file_offset": "0x92050",
+        "constructor_file_offset": "0x91ef0"
+      },
+      {
+        "dialog_resource": 173,
+        "dispatch_index": 31,
+        "kind": 6,
+        "descriptor_file_offset": "0x647834",
+        "class_record_file_offset": "0x163ce4",
+        "class_name": "CRestDlg",
+        "factory_file_offset": "0x98680",
+        "factory_call_file_offset": "0x986c0",
+        "constructor_file_offset": "0x98590"
+      },
+      {
+        "dialog_resource": 180,
+        "dispatch_index": 37,
+        "kind": 6,
+        "descriptor_file_offset": "0x64787c",
+        "class_record_file_offset": "0x12fc68",
+        "class_name": "CCharTypeDlg",
+        "factory_file_offset": "0x56d40",
+        "factory_call_file_offset": "0x56d80",
+        "constructor_file_offset": "0x56990"
+      }
+    ],
+    "page_bindings": [
+      {
+        "class_name": "CContactAttackPage",
+        "class_record_file_offset": "0x12ffec",
+        "factory_file_offset": "0x57670",
+        "factory_call_file_offset": "0x576b0",
+        "constructor_file_offset": "0x575a0",
+        "dialog_resource": 189,
+        "resource_push_file_offset": "0x575ca",
+        "base_call_file_offset": "0x575cf",
+        "base_function": "0x31860"
+      },
+      {
+        "class_name": "CContactJoinPage",
+        "class_record_file_offset": "0x13042c",
+        "factory_file_offset": "0x580c0",
+        "factory_call_file_offset": "0x58100",
+        "constructor_file_offset": "0x57ff0",
+        "dialog_resource": 187,
+        "resource_push_file_offset": "0x5801a",
+        "base_call_file_offset": "0x5801f",
+        "base_function": "0x31860"
+      },
+      {
+        "class_name": "CContactStealPage",
+        "class_record_file_offset": "0x13067c",
+        "factory_file_offset": "0x589f0",
+        "factory_call_file_offset": "0x58a30",
+        "constructor_file_offset": "0x58910",
+        "dialog_resource": 188,
+        "resource_push_file_offset": "0x5893a",
+        "base_call_file_offset": "0x5893f",
+        "base_function": "0x31860"
+      },
+      {
+        "class_name": "CContactTalkPage",
+        "class_record_file_offset": "0x1308e4",
+        "factory_file_offset": "0x59290",
+        "factory_call_file_offset": "0x592d0",
+        "constructor_file_offset": "0x591b0",
+        "dialog_resource": 186,
+        "resource_push_file_offset": "0x591da",
+        "base_call_file_offset": "0x591df",
+        "base_function": "0x31860"
+      },
+      {
+        "class_name": "CDataPage",
+        "class_record_file_offset": "0x131050",
+        "factory_file_offset": "0x5f800",
+        "factory_call_file_offset": "0x5f840",
+        "constructor_file_offset": "0x5f7b0",
+        "dialog_resource": 457,
+        "resource_push_file_offset": "0x5f7b3",
+        "base_call_file_offset": "0x5f7ba",
+        "base_function": "0x31860"
+      },
+      {
+        "class_name": "CGivePage",
+        "class_record_file_offset": "0x13a79c",
+        "factory_file_offset": "0x700d0",
+        "factory_call_file_offset": "0x70110",
+        "constructor_file_offset": "0x6ff70",
+        "dialog_resource": 438,
+        "resource_push_file_offset": "0x6ff73",
+        "base_call_file_offset": "0x6ff7a",
+        "base_function": "0x31860"
+      },
+      {
+        "class_name": "CHistoryPage",
+        "class_record_file_offset": "0x13ace8",
+        "factory_file_offset": "0x71d90",
+        "factory_call_file_offset": "0x71dd0",
+        "constructor_file_offset": "0x71d40",
+        "dialog_resource": 456,
+        "resource_push_file_offset": "0x71d43",
+        "base_call_file_offset": "0x71d4a",
+        "base_function": "0x31860"
+      },
+      {
+        "class_name": "CMagicPage",
+        "class_record_file_offset": "0x1591cc",
+        "factory_file_offset": "0x819b0",
+        "factory_call_file_offset": "0x819f0",
+        "constructor_file_offset": "0x81960",
+        "dialog_resource": 177,
+        "resource_push_file_offset": "0x81963",
+        "base_call_file_offset": "0x8196a",
+        "base_function": "0x31860"
+      },
+      {
+        "class_name": "CPatyTalkPage",
+        "class_record_file_offset": "0x1634f8",
+        "factory_file_offset": "0x96520",
+        "factory_call_file_offset": "0x96560",
+        "constructor_file_offset": "0x964c0",
+        "dialog_resource": 176,
+        "resource_push_file_offset": "0x964c3",
+        "base_call_file_offset": "0x964ca",
+        "base_function": "0x31860"
+      },
+      {
+        "class_name": "CShoutPage",
+        "class_record_file_offset": "0x169210",
+        "factory_file_offset": "0xb6f70",
+        "factory_call_file_offset": "0xb6fb0",
+        "constructor_file_offset": "0xb6f20",
+        "dialog_resource": 185,
+        "resource_push_file_offset": "0xb6f23",
+        "base_call_file_offset": "0xb6f2a",
+        "base_function": "0x31860"
+      }
+    ],
+    "direct_dialog_bindings": [
+      {
+        "dialog_resource": 175,
+        "resource_push_file_offset": "0xa9810",
+        "base_call_file_offset": "0xa981d",
+        "base_function": "0xeaeb6",
+        "evidence": "Direct resource ID passed to known dialog/page template constructor; caller reachability untested."
+      },
+      {
+        "dialog_resource": 179,
+        "resource_push_file_offset": "0x3bb9e",
+        "base_call_file_offset": "0x3bba3",
+        "base_function": "0xeaeb6",
+        "evidence": "Direct resource ID passed to known dialog/page template constructor; caller reachability untested."
+      },
+      {
+        "dialog_resource": 191,
+        "resource_push_file_offset": "0x37946",
+        "base_call_file_offset": "0x3794d",
+        "base_function": "0xeaeb6",
+        "evidence": "Direct resource ID passed to known dialog/page template constructor; caller reachability untested."
+      },
+      {
+        "dialog_resource": 225,
+        "resource_push_file_offset": "0xcb016",
+        "base_call_file_offset": "0xcb01d",
+        "base_function": "0xeaeb6",
+        "evidence": "Direct resource ID passed to known dialog/page template constructor; caller reachability untested."
+      },
+      {
+        "dialog_resource": 453,
+        "resource_push_file_offset": "0x81506",
+        "base_call_file_offset": "0x8150d",
+        "base_function": "0xeaeb6",
+        "evidence": "Direct resource ID passed to known dialog/page template constructor; caller reachability untested."
+      },
+      {
+        "dialog_resource": 454,
+        "resource_push_file_offset": "0x8083f",
+        "base_call_file_offset": "0x80844",
+        "base_function": "0xeaeb6",
+        "evidence": "Direct resource ID passed to known dialog/page template constructor; caller reachability untested."
+      },
+      {
+        "dialog_resource": 458,
+        "resource_push_file_offset": "0x6f8de",
+        "base_call_file_offset": "0x6f8e3",
+        "base_function": "0xeaeb6",
+        "evidence": "Direct resource ID passed to known dialog/page template constructor; caller reachability untested."
+      },
+      {
+        "dialog_resource": 520,
+        "resource_push_file_offset": "0x60a5b",
+        "base_call_file_offset": "0x60a60",
+        "base_function": "0x31860",
+        "evidence": "Direct resource ID passed to known dialog/page template constructor; caller reachability untested."
+      }
+    ],
+    "string_loads": [
+      {
+        "string_id": 32768,
+        "push_file_offset": "0x5e12",
+        "load_call_file_offset": "0x5e1c",
+        "loader": "0x5860"
+      },
+      {
+        "string_id": 32771,
+        "push_file_offset": "0x64b5",
+        "load_call_file_offset": "0x64bf",
+        "loader": "0x5860"
+      },
+      {
+        "string_id": 32772,
+        "push_file_offset": "0x83b39",
+        "load_call_file_offset": "0x83b42",
+        "loader": "0x5860"
+      },
+      {
+        "string_id": 32773,
+        "push_file_offset": "0x65e5",
+        "load_call_file_offset": "0x65ef",
+        "loader": "0x5860"
+      },
+      {
+        "string_id": 32784,
+        "push_file_offset": "0x7e7cf",
+        "load_call_file_offset": "0x7e7d9",
+        "loader": "0x5860"
+      },
+      {
+        "string_id": 40000,
+        "push_file_offset": "0x6a52",
+        "load_call_file_offset": "0x6a5c",
+        "loader": "0x5860"
+      },
+      {
+        "string_id": 40002,
+        "push_file_offset": "0x6c02",
+        "load_call_file_offset": "0x6c0c",
+        "loader": "0x5860"
+      },
+      {
+        "string_id": 40003,
+        "push_file_offset": "0x6b22",
+        "load_call_file_offset": "0x6b2c",
+        "loader": "0x5860"
+      }
+    ],
+    "caption_stores": [
+      {
+        "string_id": 33100,
+        "store_file_offset": "0x89708",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33101,
+        "store_file_offset": "0x897bf",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33102,
+        "store_file_offset": "0x89876",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33103,
+        "store_file_offset": "0x8992d",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33104,
+        "store_file_offset": "0x899e4",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33105,
+        "store_file_offset": "0x876bd",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33106,
+        "store_file_offset": "0x89a9b",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33107,
+        "store_file_offset": "0x89b52",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33108,
+        "store_file_offset": "0x89c1f",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33109,
+        "store_file_offset": "0x8955a",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33110,
+        "store_file_offset": "0x8772d",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33110,
+        "store_file_offset": "0x88486",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33111,
+        "store_file_offset": "0x877a7",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33111,
+        "store_file_offset": "0x884c8",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33112,
+        "store_file_offset": "0x87903",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33114,
+        "store_file_offset": "0x8784e",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33115,
+        "store_file_offset": "0x896e5",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33116,
+        "store_file_offset": "0x8850a",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33117,
+        "store_file_offset": "0xc370a",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      },
+      {
+        "string_id": 33118,
+        "store_file_offset": "0x95e0b",
+        "field_offset": "0xe0",
+        "shared_loader_call": "0x31ad8",
+        "reachability": "unobserved"
+      }
+    ],
+    "limits": [
+      "Static resource identity and bounded instructions are verified; execution reachability, final caption and dynamic overwrites are not."
+    ],
+    "display_string_descriptor_bindings": [
+      {
+        "string_id": 132,
+        "dispatch_index": 3,
+        "kind": 1,
+        "descriptor_file_offset": "0x6476e4"
+      },
+      {
+        "string_id": 135,
+        "dispatch_index": 4,
+        "kind": 1,
+        "descriptor_file_offset": "0x6476f0"
+      },
+      {
+        "string_id": 134,
+        "dispatch_index": 5,
+        "kind": 1,
+        "descriptor_file_offset": "0x6476fc"
+      },
+      {
+        "string_id": 136,
+        "dispatch_index": 12,
+        "kind": 1,
+        "descriptor_file_offset": "0x647750"
+      }
+    ],
+    "mmx_static_and_dynamic": {
+      "dialog_resource": 100,
+      "control_id": 1064,
+      "string_id": 32784,
+      "setter_call_file_offset": "0x7e7ea",
+      "setter": "0xea69f"
+    },
+    "preserved_setting_keys": {
+      "string_ids": [
+        32775,
+        32777,
+        32778,
+        32779,
+        32780,
+        32781,
+        32782,
+        32783
+      ],
+      "example_string_id": 32777,
+      "loader_call": "0x8b587",
+      "consumer_call": "0x8b596",
+      "consumer": "0xf2e8f",
+      "reason": "Profile setting names; preserve verbatim, not visible captions."
+    },
+    "constructor_rule": {
+      "function": "0xeaeb6",
+      "template_id_store": "0xeaee6",
+      "return_bytes": 8
+    },
+    "resource_string_rule": {
+      "function": "0x5860",
+      "resource_type": 6,
+      "find_resource_call": "0x587c",
+      "wide_to_multibyte_call": "0x58b9",
+      "capacity": "Runtime conversion requests required length; whole-engine capacity not proven."
+    }
+  },
+  "resources_changed_vs_m041": [
+    [
+      4,
+      129,
+      1041
+    ],
+    [
+      5,
+      100,
+      1041
+    ],
+    [
+      5,
+      132,
+      1041
+    ],
+    [
+      5,
+      154,
+      1041
+    ],
+    [
+      5,
+      168,
+      1041
+    ],
+    [
+      5,
+      173,
+      1041
+    ],
+    [
+      5,
+      175,
+      1041
+    ],
+    [
+      5,
+      176,
+      1041
+    ],
+    [
+      5,
+      179,
+      1041
+    ],
+    [
+      5,
+      180,
+      1041
+    ],
+    [
+      5,
+      185,
+      1041
+    ],
+    [
+      5,
+      186,
+      1041
+    ],
+    [
+      5,
+      187,
+      1041
+    ],
+    [
+      5,
+      188,
+      1041
+    ],
+    [
+      5,
+      189,
+      1041
+    ],
+    [
+      5,
+      191,
+      1041
+    ],
+    [
+      5,
+      225,
+      1041
+    ],
+    [
+      5,
+      438,
+      1041
+    ],
+    [
+      5,
+      453,
+      1041
+    ],
+    [
+      5,
+      454,
+      1041
+    ],
+    [
+      5,
+      457,
+      1041
+    ],
+    [
+      5,
+      458,
+      1041
+    ],
+    [
+      5,
+      520,
+      1041
+    ],
+    [
+      6,
+      9,
+      1041
+    ],
+    [
+      6,
+      2049,
+      1041
+    ],
+    [
+      6,
+      2050,
+      1041
+    ],
+    [
+      6,
+      2052,
+      1041
+    ],
+    [
+      6,
+      2053,
+      1041
+    ],
+    [
+      6,
+      2054,
+      1041
+    ],
+    [
+      6,
+      2069,
+      1041
+    ],
+    [
+      6,
+      2070,
+      1041
+    ],
+    [
+      6,
+      2501,
+      1041
+    ]
+  ],
+  "new_fonts": 20,
+  "total_fonts": 71,
+  "native_cp950_roundtrips": 134,
+  "negative_contract_cases": 1072,
+  "offscreen_fixed_measurements": 340,
+  "offscreen_intrinsic_measurements": 336,
+  "layout_flags": 0,
+  "menu_accelerators": [
+    {
+      "resource": 129,
+      "existing_conflicts": [
+        {
+          "parent": [
+            1
+          ],
+          "key": "M",
+          "count": 2
+        },
+        {
+          "parent": [
+            1
+          ],
+          "key": "I",
+          "count": 2
+        },
+        {
+          "parent": [
+            1
+          ],
+          "key": "R",
+          "count": 3
+        },
+        {
+          "parent": [
+            2
+          ],
+          "key": "I",
+          "count": 2
+        },
+        {
+          "parent": [
+            2
+          ],
+          "key": "T",
+          "count": 2
+        },
+        {
+          "parent": [
+            3
+          ],
+          "key": "W",
+          "count": 2
+        },
+        {
+          "parent": [
+            3
+          ],
+          "key": "S",
+          "count": 2
+        },
+        {
+          "parent": [
+            6
+          ],
+          "key": "S",
+          "count": 2
+        },
+        {
+          "parent": [
+            6
+          ],
+          "key": "T",
+          "count": 2
+        }
+      ],
+      "new_conflicts": 0
+    }
+  ],
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "expected_output_sha256": "9fea1172e92167d435a8ec26baf085ab45a2a56468690bf7bfec1f8ba29dc367",
+  "output_bytes": 7118848,
+  "m040_layout_included": false,
+  "production_can_apply": false,
+  "runtime_seen": false,
+  "coverage_percentage": null
+}

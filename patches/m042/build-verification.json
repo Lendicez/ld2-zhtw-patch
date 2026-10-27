@@ -1,0 +1,232 @@
+{
+  "milestone": "m042",
+  "base_commit": "a74c1f542bfb6631f631a53325446a86396118e7",
+  "base_profile": "m041",
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "output_sha256": "9fea1172e92167d435a8ec26baf085ab45a2a56468690bf7bfec1f8ba29dc367",
+  "output_bytes": 7118848,
+  "two_builds_exe_metadata_identical": true,
+  "new_positions": 134,
+  "new_distinct_translations": 108,
+  "total_positions": 552,
+  "total_distinct_translations": 377,
+  "reviewed_candidates": 210,
+  "identity_preserved": 33,
+  "setting_identifiers_preserved": 8,
+  "deferred": 35,
+  "prior_facility_deferred": 9,
+  "remaining_reviewed_ui_candidates": 44,
+  "native_cp950_roundtrips": 134,
+  "negative_contract_cases": 1072,
+  "offscreen_fixed_measurements": 340,
+  "offscreen_intrinsic_measurements": 336,
+  "offscreen_missing_glyphs": 0,
+  "offscreen_fit_failures": 0,
+  "new_accelerator_conflicts": 0,
+  "suites": {
+    "sealed-full-default": {
+      "total": 314,
+      "passed": 232,
+      "skipped": 82,
+      "failed": 0
+    },
+    "sealed-full-licensed": {
+      "total": 314,
+      "passed": 248,
+      "skipped": 66,
+      "failed": 0
+    }
+  },
+  "non_resource_sections": [
+    {
+      "name": ".text",
+      "bytes": 1196032,
+      "sha256": "0c64261748ccf8c836211fa5454f1f6892ada0f5d71b98422b2e3e900b234c3d",
+      "unchanged": true
+    },
+    {
+      "name": ".rdata",
+      "bytes": 458752,
+      "sha256": "a7047964cd12523472814c115a557a95525ffb618aa76d7bd205a6effe930690",
+      "unchanged": true
+    },
+    {
+      "name": ".data",
+      "bytes": 5226496,
+      "sha256": "9c7723e804a85f5b6d829a6d633439a461e945774e83d47f3d2879e4320e79db",
+      "unchanged": true
+    }
+  ],
+  "allowed_changed_resources": [
+    [
+      4,
+      129,
+      1041
+    ],
+    [
+      5,
+      100,
+      1041
+    ],
+    [
+      5,
+      132,
+      1041
+    ],
+    [
+      5,
+      154,
+      1041
+    ],
+    [
+      5,
+      168,
+      1041
+    ],
+    [
+      5,
+      173,
+      1041
+    ],
+    [
+      5,
+      175,
+      1041
+    ],
+    [
+      5,
+      176,
+      1041
+    ],
+    [
+      5,
+      179,
+      1041
+    ],
+    [
+      5,
+      180,
+      1041
+    ],
+    [
+      5,
+      185,
+      1041
+    ],
+    [
+      5,
+      186,
+      1041
+    ],
+    [
+      5,
+      187,
+      1041
+    ],
+    [
+      5,
+      188,
+      1041
+    ],
+    [
+      5,
+      189,
+      1041
+    ],
+    [
+      5,
+      191,
+      1041
+    ],
+    [
+      5,
+      225,
+      1041
+    ],
+    [
+      5,
+      438,
+      1041
+    ],
+    [
+      5,
+      453,
+      1041
+    ],
+    [
+      5,
+      454,
+      1041
+    ],
+    [
+      5,
+      457,
+      1041
+    ],
+    [
+      5,
+      458,
+      1041
+    ],
+    [
+      5,
+      520,
+      1041
+    ],
+    [
+      6,
+      9,
+      1041
+    ],
+    [
+      6,
+      2049,
+      1041
+    ],
+    [
+      6,
+      2050,
+      1041
+    ],
+    [
+      6,
+      2052,
+      1041
+    ],
+    [
+      6,
+      2053,
+      1041
+    ],
+    [
+      6,
+      2054,
+      1041
+    ],
+    [
+      6,
+      2069,
+      1041
+    ],
+    [
+      6,
+      2070,
+      1041
+    ],
+    [
+      6,
+      2501,
+      1041
+    ]
+  ],
+  "dialog_geometry_ids_styles_preserved": true,
+  "original_manifest_files_unchanged": 1029,
+  "prior_profiles_unchanged": true,
+  "m040_layout_included": false,
+  "production_can_apply": false,
+  "game_executed": false,
+  "gui_opened": false,
+  "remote_writes": 0,
+  "coverage_percentage": null,
+  "upload_size_rule": "Exact m042 path+499730 bytes+SHA256+catalog schema only; all other scans unchanged."
+}

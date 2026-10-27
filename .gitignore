@@ -20,6 +20,7 @@
 !/docs/M039-DEADLINE-TEXT.md
 !/docs/M040-DEADLINE-LAYOUT.md
 !/docs/M041-FACILITY-UI.md
+!/docs/M042-STATIC-UI.md
 !/docs/MIGRATION-INVENTORY.md
 !/docs/NEXT-ACCEPTANCE.md
 !/docs/PACKAGING.md
@@ -60,6 +61,11 @@
 !/patches/m041/recipe.json
 !/patches/m041/review.json
 !/patches/m041/versions.json
+!/patches/m042/build-verification.json
+!/patches/m042/catalog.json
+!/patches/m042/recipe.json
+!/patches/m042/review.json
+!/patches/m042/versions.json
 !/patches/steam-product.json
 !/patches/ui-m020.zh-TW.json
 !/patches/versions.json
@@ -67,6 +73,7 @@
 !/research/layout/remaining-ui-summary.json
 !/research/native/README.md
 !/research/native/dialog116_audited.c
+!/research/ui/m042-disposition.json
 !/schemas/catalog.schema.json
 !/src/ld2patch/__init__.py
 !/src/ld2patch/catalog.py
@@ -90,6 +97,7 @@
 !/src/ld2patch/trial_store.py
 !/src/ld2patch/trial_ui.py
 !/src/ld2patch/ui.py
+!/src/ld2patch/upload_limits.py
 !/src/ld2patch/windows_capture.py
 !/src/ld2patch/windows_crash_fixture.py
 !/src/ld2patch/windows_fixture.py
@@ -107,9 +115,11 @@
 !/tests/test_profile_m037.py
 !/tests/test_profile_m038.py
 !/tests/test_profile_m041.py
+!/tests/test_profile_m042.py
 !/tests/test_transaction.py
 !/tests/test_transaction_recovery.py
 !/tests/test_trial.py
+!/tests/test_upload_limits.py
 !/tests/test_windows_capture.py
 !/tests/test_windows_controller.py
 !/tests/test_windows_crash.py

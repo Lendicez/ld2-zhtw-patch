@@ -38,5 +38,15 @@
   "inn_stay": "住宿",
   "deposit_money": "存入",
   "withdraw_money": "提領",
-  "house_extend": "擴建"
+  "house_extend": "擴建",
+  "inn": "旅館",
+  "weapon_shop": "武器店",
+  "item_shop": "道具店",
+  "information_bureau": "情報所",
+  "home": "住家",
+  "talk": "交談",
+  "wait_time": "等待",
+  "character_filter": "角色篩選條件",
+  "reset_fields": "重設",
+  "discard_item": "丟棄"
 }
