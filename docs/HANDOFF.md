@@ -111,3 +111,27 @@ Receipt SHA-256 must survive independently; never auto-trust disk journals.
 Source work can proceed to confirmation/recovery UI integration, but production
 apply and GUI installation remain disabled. No game/GUI or Steam installation
 is authorized by these offline results. Read NEXT-ACCEPTANCE.md.
+
+## m036 continuation
+
+Base PR #10: 3747c2053b1b4aca5ffee34bedbc866845869fb4.
+Read CANDIDATE-ACCEPTANCE.md and TRANSLATION-STATUS.md first. The headless
+controller, Tk interface source and asInvoker single EXE now use the m035
+disposable-copy API. A build-bound parent path and native identity restrict the
+candidate to new random workspaces; no runtime parent override or production
+apply switch exists. The local scope policy and all binaries remain unpublished.
+
+The independent receipt digest is automatically protected with CurrentUser DPAPI
+in a sibling recovery-store before any rename. Fresh processes verify the protected
+anchor, envelope and native identities; they never reconstruct trust from journals.
+Keep the complete workspace and the same Windows profile. This does not defend
+against a malicious process already controlling that account or guarantee power-loss
+recovery. Production installation remains disabled.
+
+Final checks: 254 total, 186 passed and 68 explicit skips. The dedicated 18-test
+trial suite includes 14 headless cases and 4 native store cases, all passing; the
+headless cases overlap the general suite. Final onedir/onefile CLI checks passed,
+and final onefile installed/restored a fresh real-EXE copy in separate processes.
+No game, GUI, registry detection, elevation, new dependency or security change.
+See packaging/m036-verification.json. Next: one short visual acceptance window
+and a bounded translation batch, not further general installer expansion.

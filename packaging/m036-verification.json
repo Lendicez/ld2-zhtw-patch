@@ -1,0 +1,119 @@
+{
+  "milestone": "m036",
+  "base_commit": "3747c2053b1b4aca5ffee34bedbc866845869fb4",
+  "default_tests": {
+    "total": 254,
+    "passed": 186,
+    "skipped": 68,
+    "failed": 0
+  },
+  "trial_tests": {
+    "total": 18,
+    "headless": 14,
+    "native_store": 4,
+    "skipped": 0,
+    "failed": 0
+  },
+  "candidate_e2e": {
+    "preview_no_writes": true,
+    "unconfirmed_install_refused_no_writes": true,
+    "new_copy_installed": true,
+    "fresh_process_restore_with_automatic_protected_anchor": true,
+    "repeat_restore_already_original": true,
+    "original_source_unchanged": true,
+    "restored_copy_identity_and_metadata_match": true,
+    "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+    "patched_sha256": "a15bf7313636a7c19a065b388345f93b46bbce8eb6bf3c9b910a7dc192c3da81"
+  },
+  "packages": [
+    {
+      "milestone": "m036",
+      "mode": "onedir",
+      "exe_bytes": 2436494,
+      "exe_sha256": "d8d82e3968aab10ba9f8212f624fd8dadae5a435597cc9ef3b04bd3939134dd4",
+      "asInvoker": true,
+      "signed": false,
+      "bundled_data_exact": true,
+      "tk_files_present": true,
+      "gui_launched": false,
+      "registry_called": false,
+      "checks": [
+        [
+          "help",
+          0
+        ],
+        [
+          "version",
+          0
+        ],
+        [
+          "unknown_trial_source",
+          1
+        ],
+        [
+          "outside_workspace",
+          1
+        ]
+      ],
+      "policy_parent_unchanged": true,
+      "total_packaging_bytes": 255909973
+    },
+    {
+      "milestone": "m036",
+      "mode": "onefile",
+      "exe_bytes": 12937425,
+      "exe_sha256": "85287a1336316423563b70477e67592fcc0f64e4ad23088164eebe2c8dd4b513",
+      "asInvoker": true,
+      "signed": false,
+      "bundled_data_exact": true,
+      "tk_files_present": true,
+      "gui_launched": false,
+      "registry_called": false,
+      "checks": [
+        [
+          "help",
+          0
+        ],
+        [
+          "version",
+          0
+        ],
+        [
+          "unknown_trial_source",
+          1
+        ],
+        [
+          "outside_workspace",
+          1
+        ]
+      ],
+      "policy_parent_unchanged": true,
+      "total_packaging_bytes": 285778424
+    }
+  ],
+  "packaging_bytes": 285779024,
+  "budget": 1000000000,
+  "scope": "build-bound new disposable workspaces; runtime parent override absent",
+  "gui_visually_tested": false,
+  "game_executed": false,
+  "native_registry_queried": false,
+  "production_can_apply": false,
+  "new_dependencies": false,
+  "security_settings_changed": false,
+  "recovery": "Current-user DPAPI envelope in sibling recovery-store; no plaintext/hash fallback",
+  "coverage": {
+    "text_locations": 239,
+    "font_locations": 15,
+    "kinds": {
+      "menu": 93,
+      "dialog_title": 12,
+      "dialog_control": 79,
+      "string": 55
+    },
+    "unique_translations": 178,
+    "current_version_seen": 0,
+    "prior_limited_observation": 39,
+    "static_only": 200,
+    "full_game_coverage_known": false
+  }
+}

@@ -91,3 +91,23 @@ Unverified: actual registry views, native process structures/calls on this host,
 native read adapter behavior on real installation paths, Tk appearance/focus/DPI,
 file-dialog interaction and game runtime. Public AppID proof and mocked ports do
 not close these gaps. See `WINDOWS-BACKEND-PLAN.md` for the next bounded step.
+
+## m036 bounded disposable-copy interface
+
+The local candidate wraps the read-only controller with trial_controller.py and
+trial_ui.py. Source selection and preparation remain read-only until explicit
+confirmation. Multi-candidate selection, cancel/back, version/process rechecks,
+double-submit suppression, failure/recovery and already-restored state have
+headless coverage. UI worker tasks return to the Tk main thread; controls and
+closing are disabled while an operation runs.
+
+The production install button is still disabled. The separate trial action only
+creates a new workspace under the build-bound parent. Steam detection is disabled
+in this candidate UI because the historical host registry query was not approved
+for retry; injected detection logic remains tested. No live discovery ran.
+
+Recovery selection accepts only an existing tool-created workspace under that
+parent and validates the external DPAPI anchor before presenting confirmation.
+No hash entry, JSON editing, credential prompt or trust-from-journal fallback.
+Keep the whole workspace and Windows profile. GUI visuals, focus, DPI and actual
+user interaction are still untested; see CANDIDATE-ACCEPTANCE.md.
