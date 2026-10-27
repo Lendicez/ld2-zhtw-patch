@@ -3,6 +3,7 @@ import argparse
 import importlib.metadata
 import json
 import os
+import re
 from pathlib import Path
 import struct
 import subprocess
@@ -20,6 +21,7 @@ def usage(root):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--pack-root', type=Path, required=True, help='Dedicated existing environment/cache/build/dist/temp root')
+    parser.add_argument('--build-tag', default='', help='New version subdirectory, e.g. m031')
     parser.add_argument('--mode', choices=['onedir', 'onefile'], required=True)
     args = parser.parse_args()
     root = args.pack_root
@@ -39,7 +41,9 @@ def main():
             raise ValueError('Installed package differs from lock: ' + item['name'])
     if usage(root) + 350_000_000 >= BUDGET:
         raise ValueError('Insufficient remaining 1 GB build budget; stop for review')
-    work, dist = root / 'build' / args.mode, root / 'dist' / args.mode
+    if args.build_tag and not re.fullmatch('[a-z0-9-]{1,32}', args.build_tag):
+        raise ValueError('Invalid build tag')
+    work, dist = root / 'build' / args.build_tag / args.mode, root / 'dist' / args.build_tag / args.mode
     if work.exists() or dist.exists():
         raise ValueError('Fresh work/dist paths required; existing builds are preserved')
     env = dict(os.environ)
@@ -48,7 +52,7 @@ def main():
                PYTHONDONTWRITEBYTECODE='1', PYTHONIOENCODING='utf-8')
     command = [sys.executable, '-I', '-B', '-m', 'PyInstaller', '--noconfirm',
                '--distpath', str(dist), '--workpath', str(work), str(ROOT / 'packaging/generator.spec')]
-    log = root / 'evidence' / (args.mode + '-build.log')
+    log = root / 'evidence' / ((args.build_tag + '-' if args.build_tag else '') + args.mode + '-build.log')
     with log.open('xb') as output:
         process = subprocess.Popen(command, env=env, stdout=output, stderr=subprocess.STDOUT)
         peak = usage(root)

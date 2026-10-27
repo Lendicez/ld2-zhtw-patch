@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "steam_app_id": null,
-  "steam_app_id_status": "blocked_local_appmanifest_not_verified",
+  "steam_app_id": "335420",
+  "steam_app_id_status": "public_store_verified_local_installation_unverified",
   "versions": [
     {
       "id": "ld95-1.0.3.16",

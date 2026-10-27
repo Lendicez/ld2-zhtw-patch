@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "steam_app_id": "335420",
+  "store_title": "ルナティックドーン 前途への道標",
+  "store_purchase_name": "Lunatic Dawn : Passage of the Book",
+  "checked_date_utc": "2026-10-27",
+  "source": "https://store.steampowered.com/app/335420/?l=english",
+  "basis": "Official store URL identifies app 335420; page title and purchase heading identify the product. Developer shown as ARTDINK.",
+  "local_installation_verified": false,
+  "scope": "Public product identity only; each local candidate still requires matching appmanifest and known EXE hash/version."
+}

@@ -201,9 +201,10 @@ class PlannerTests(unittest.TestCase):
         self.config['versions'][0]['release_approved']=False
         p=self.plan();self.assertEqual(p.issues[0].code,'release_not_approved');self.assertEqual(len(p.proposed_changes),1)
 
-    def test_real_configuration_remains_unset_appid(self):
+    def test_public_appid_does_not_claim_local_installation(self):
         config=json.loads((ROOT/'patches/versions.json').read_text(encoding='utf-8'))
-        p=plan_install(self.discovery,config,self.fs,self.clear);self.assertEqual(p.issues[0].code,'appid_required');self.assertFalse(p.can_apply)
+        self.assertEqual(config['steam_app_id'],'335420');self.assertFalse(config['versions'][0]['release_approved'])
+        p=plan_install(self.discovery,config,self.fs,self.clear);self.assertEqual(p.issues[0].code,'discovery_appid_mismatch');self.assertFalse(p.can_apply)
 
     def test_bad_version_and_ambiguous_hash(self):
         for mutation in [{'id':'../escape'},{'filename':'other.exe'},{'source_size':True},{'historical_m020_sha256':self.config['versions'][0]['source_sha256']}]:

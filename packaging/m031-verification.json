@@ -1,0 +1,87 @@
+{
+  "milestone": "m031",
+  "base_commit": "55574932229bea359ffd0c3f48b0dafb83c9aa80",
+  "public_app_id": "335420",
+  "public_product_verified": true,
+  "local_installation_verified": false,
+  "tests": {
+    "run": 158,
+    "passed": 155,
+    "skipped": 3,
+    "new_methods": 23
+  },
+  "native_registry_process_detection_executed": false,
+  "gui_executed": false,
+  "licensed_input_used": false,
+  "game_executed": false,
+  "production_can_apply": false,
+  "packaged_results": [
+    {
+      "milestone": "m031",
+      "mode": "onedir",
+      "exe_bytes": 2326899,
+      "exe_sha256": "7bd7a7309d0ae05070d2ce3f7b68509c96ae4a31dfc31caa330fd2e4c8604c99",
+      "asInvoker": true,
+      "signed": false,
+      "bundled_json_exact": true,
+      "tk_files_present": true,
+      "gui_launched": false,
+      "native_detection_called": false,
+      "smoke_checks": [
+        [
+          "help",
+          0
+        ],
+        [
+          "version",
+          0
+        ],
+        [
+          "unknown_input",
+          1
+        ],
+        [
+          "existing_output",
+          1
+        ]
+      ],
+      "total_packaging_bytes": 119824728
+    },
+    {
+      "milestone": "m031",
+      "mode": "onefile",
+      "exe_bytes": 12762948,
+      "exe_sha256": "55dbb8ceba50388c3431c7cb073d50708791159f0eb01abc560d298dde5296a3",
+      "asInvoker": true,
+      "signed": false,
+      "bundled_json_exact": true,
+      "tk_files_present": true,
+      "gui_launched": false,
+      "native_detection_called": false,
+      "smoke_checks": [
+        [
+          "help",
+          0
+        ],
+        [
+          "version",
+          0
+        ],
+        [
+          "unknown_input",
+          1
+        ],
+        [
+          "existing_output",
+          1
+        ]
+      ],
+      "total_packaging_bytes": 149211200
+    }
+  ],
+  "total_packaging_bytes_including_m030": 149211771,
+  "budget_bytes": 1000000000,
+  "new_dependency_installs": false,
+  "binary_publication": false,
+  "limits": "Injected Windows port tests and headless controller only; GUI and live adapters are unverified."
+}
