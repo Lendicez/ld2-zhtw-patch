@@ -1,0 +1,10 @@
+{
+  "catalog": "ui-m020.zh-TW.json",
+  "catalog_sha256": "86619a3d3dd3db00660100daf899c9278f1af02777e6aa14df8e709fdd89764f",
+  "engine": "resource_append_v1",
+  "font_locations": 15,
+  "id": "m020-ui-resource-v1",
+  "schema_version": 1,
+  "text_locations": 239,
+  "version_id": "ld95-1.0.3.16"
+}

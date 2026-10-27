@@ -28,3 +28,7 @@ Linux CI 尚未實跑。Windows 本機 Python 測試不等於 Windows CI 或遊�
 ## Implemented m027 synthetic transaction core
 
 `ld2patch.transaction` provides read-only uninstall previews plus explicitly synthetic install/uninstall/recovery operations. It permits one EXE target, verifies immutable original backups, stages before replacement, compares file evidence again and retains journals on uncertain recovery. The only write adapter is a test fixture mapping virtual paths into its owned TemporaryDirectory. Production transaction/Windows adapters, multi-file recovery, upgrades, UI and packaging remain unimplemented. See `TRANSACTIONS.md`.
+
+## m028 offline patch engine
+
+`ld2patch.patch_engine` binds immutable input bytes, PE fixed-file versions, the catalog digest and recipe counts to the allowlisted m020 output. It proves original code/data and non-allowlisted bytes unchanged before an explicit new-artifact writer can publish to a build directory. `patches/m020-recipe.json` and `m020-build-verification.json` carry no game assets. The writer is not the installer transaction backend; production apply remains disabled. PE and catalog parsing now reject bounded malformed/overlapping input and unsafe locators. See `BUILD.md`.

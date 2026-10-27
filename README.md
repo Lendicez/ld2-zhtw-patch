@@ -37,3 +37,7 @@ The m026 core discovers Steam candidates from injected roots and bounded VDF fil
 ## Synthetic transaction experiments
 
 The stacked m027 change adds a single-file install/uninstall and recovery algorithm behind synthetic filesystem ports. Tests use private temporary files only; production apply remains disabled. See [TRANSACTIONS.md](docs/TRANSACTIONS.md) for the failure model and unverified Windows guarantees.
+
+## Rebuild the reviewed resource patch offline
+
+`tools/build_patch.py` now accepts an explicitly supplied original EXE and writes new build artifacts outside its directory. It verifies the original version, catalog recipe and exact historical m020 output; it never installs or runs the EXE. See [BUILD.md](docs/BUILD.md) for the command, actual local evidence and the still-unverified gameplay scope. Do not upload the generated EXE.

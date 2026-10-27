@@ -1,0 +1,188 @@
+{
+  "catalog_sha256": "86619a3d3dd3db00660100daf899c9278f1af02777e6aa14df8e709fdd89764f",
+  "coverage_established": false,
+  "engine": "resource_append_v1",
+  "file_version": "1.0.3.16",
+  "font_locations": 15,
+  "metadata_schema": 1,
+  "output_bytes": 7102464,
+  "output_sha256": "a15bf7313636a7c19a065b388345f93b46bbce8eb6bf3c9b910a7dc192c3da81",
+  "product_version": "1.0.3.0",
+  "production_can_apply": false,
+  "proof": {
+    "allowed_header_fields": [
+      "SizeOfInitializedData",
+      "SizeOfImage",
+      "CheckSum",
+      "ResourceDirectorySize",
+      "ResourceVirtualSize",
+      "ResourceRawSize"
+    ],
+    "appended_resource_and_zero_padding_only": true,
+    "changed_resource_paths": [
+      [
+        4,
+        128,
+        1041
+      ],
+      [
+        4,
+        129,
+        1041
+      ],
+      [
+        5,
+        100,
+        1041
+      ],
+      [
+        5,
+        116,
+        1041
+      ],
+      [
+        5,
+        151,
+        1041
+      ],
+      [
+        5,
+        152,
+        1041
+      ],
+      [
+        5,
+        153,
+        1041
+      ],
+      [
+        5,
+        167,
+        1041
+      ],
+      [
+        5,
+        169,
+        1041
+      ],
+      [
+        5,
+        174,
+        1041
+      ],
+      [
+        5,
+        177,
+        1041
+      ],
+      [
+        5,
+        178,
+        1041
+      ],
+      [
+        5,
+        182,
+        1041
+      ],
+      [
+        5,
+        184,
+        1041
+      ],
+      [
+        5,
+        451,
+        1041
+      ],
+      [
+        5,
+        452,
+        1041
+      ],
+      [
+        5,
+        465,
+        1041
+      ],
+      [
+        6,
+        2050,
+        1041
+      ],
+      [
+        6,
+        2051,
+        1041
+      ],
+      [
+        6,
+        2052,
+        1041
+      ],
+      [
+        6,
+        2056,
+        1041
+      ],
+      [
+        6,
+        2057,
+        1041
+      ],
+      [
+        6,
+        2070,
+        1041
+      ],
+      [
+        6,
+        3601,
+        1041
+      ],
+      [
+        6,
+        3604,
+        1041
+      ],
+      [
+        6,
+        3605,
+        1041
+      ],
+      [
+        6,
+        3713,
+        1041
+      ]
+    ],
+    "non_resource_sections": [
+      {
+        "bytes": 1196032,
+        "name": ".text",
+        "sha256": "0c64261748ccf8c836211fa5454f1f6892ada0f5d71b98422b2e3e900b234c3d",
+        "unchanged": true
+      },
+      {
+        "bytes": 458752,
+        "name": ".rdata",
+        "sha256": "a7047964cd12523472814c115a557a95525ffb618aa76d7bd205a6effe930690",
+        "unchanged": true
+      },
+      {
+        "bytes": 5226496,
+        "name": ".data",
+        "sha256": "9c7723e804a85f5b6d829a6d633439a461e945774e83d47f3d2879e4320e79db",
+        "unchanged": true
+      }
+    ],
+    "original_prefix_verified_outside_allowlist": true,
+    "resource_count": 316
+  },
+  "recipe_id": "m020-ui-resource-v1",
+  "runtime_tested": false,
+  "source_bytes": 7090176,
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "text_locations": 239,
+  "version_id": "ld95-1.0.3.16"
+}
