@@ -161,3 +161,14 @@ Next content boundary: UTF-16 deadline formatting and evidence for one control
 setter. Do not globally switch API width or assume buffer/HWND/ABI safety.
 The complete candidate manifest/classification is local. Obtain batch approval
 for new source anchors and static evidence before any remote publication.
+
+## m039 offline deadline research
+
+Read M039-DEADLINE-TEXT.md. The pure formatter and synthetic control-boundary
+preview have no native runtime integration and always refuse application.
+The original numeric field is signed int32 at the formatting boundary; business
+range/sentinels and live Unicode HWND remain unknown. A three-digit value already
+exceeds the estimated existing label width. Do not globally switch A/W APIs or
+reuse an unverified game buffer. Profiles/output and packaging remain unchanged.
+Full tests: 290, with 215 pass/75 skip general; 224 pass/66 skip licensed.
+This local snapshot depends on m038; it is not a separate installable patch.
