@@ -123,3 +123,19 @@ transaction controller (external receipt digest required). See DISPOSABLE-COPY.m
 Still open: power-loss durability, two-rename gap, hostile same-user tampering,
 SACL/unusual metadata, production UI integration, elevated installation, runtime
 and full-game translation coverage. No Actions/cloud game integration was run.
+
+## m036 candidate boundary
+
+Resolved offline: explicit confirmation/cancel/back/reentrant submission states,
+fresh-copy install, protected independent recovery anchor, fresh-process restore,
+already-restored state, asInvoker onefile CLI end-to-end and source integrity.
+Native access denial is latched in the controller; that case was injected in a
+test, not an actual security block. Missing/corrupt store never enables recovery.
+
+Still unverified: actual Tk rendering, DPI/focus/dialogs and interactive transitions;
+current-version gameplay, saves/reload and all 239 translated resource locations;
+live Steam registry discovery; production target installation/UAC, malicious
+same-account tampering, power loss/reboot and whole-engine Unicode/stability.
+The executable-only disposable case cannot be launched as a complete game.
+Do not count skipped native/licensed tests as passes or old limited observations
+as current candidate gameplay. See CANDIDATE-ACCEPTANCE.md for bounded next steps.

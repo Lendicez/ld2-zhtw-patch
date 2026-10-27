@@ -8,6 +8,9 @@ if mode not in ('onedir', 'onefile'):
     raise ValueError('Unsupported bundle mode')
 datas = [(str(root / 'patches' / name), 'ld2patch/data') for name in
          ('m020-recipe.json', 'ui-m020.zh-TW.json', 'versions.json', 'steam-product.json')]
+trial_policy = os.environ.get('LD2_TRIAL_POLICY')
+if trial_policy:
+    datas.append((trial_policy, 'ld2patch/data'))
 a = Analysis([str(root / 'tools/generator_entry.py')], pathex=[str(root / 'src')],
              binaries=[], datas=datas, hiddenimports=[], hookspath=[], hooksconfig={},
              runtime_hooks=[], excludes=['unittest'], noarchive=False, optimize=0)

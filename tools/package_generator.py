@@ -23,6 +23,7 @@ def main():
     parser.add_argument('--pack-root', type=Path, required=True, help='Dedicated existing environment/cache/build/dist/temp root')
     parser.add_argument('--build-tag', default='', help='New version subdirectory, e.g. m031')
     parser.add_argument('--mode', choices=['onedir', 'onefile'], required=True)
+    parser.add_argument('--trial-policy', type=Path, help='Local build-only bound test policy; never upload')
     args = parser.parse_args()
     root = args.pack_root
     if not root.is_absolute() or '..' in root.parts or root.is_symlink():
@@ -50,6 +51,17 @@ def main():
     env.update(TEMP=str(root / 'temp'), TMP=str(root / 'temp'),
                PYINSTALLER_CONFIG_DIR=str(root / 'cache'), LD2_BUNDLE_MODE=args.mode,
                PYTHONDONTWRITEBYTECODE='1', PYTHONIOENCODING='utf-8')
+    if args.trial_policy:
+        sys.path.insert(0, str(ROOT / 'src'))
+        from ld2patch.trial_store import validate_policy, policy_for_new_parent
+        from ld2patch.patch_engine import strict_json
+        policy_path = args.trial_policy.resolve(strict=True)
+        if policy_path.name != 'trial-policy.json' or policy_path.stat().st_size > 16384:
+            raise ValueError('Bound local trial-policy.json required')
+        policy = validate_policy(strict_json(policy_path.read_bytes(), 16384))
+        if policy_for_new_parent(Path(policy['parent'])) != policy:
+            raise ValueError('Trial root identity differs')
+        env['LD2_TRIAL_POLICY'] = str(policy_path)
     command = [sys.executable, '-I', '-B', '-m', 'PyInstaller', '--noconfirm',
                '--distpath', str(dist), '--workpath', str(work), str(ROOT / 'packaging/generator.spec')]
     log = root / 'evidence' / ((args.build_tag + '-' if args.build_tag else '') + args.mode + '-build.log')

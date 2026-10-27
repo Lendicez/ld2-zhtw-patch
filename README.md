@@ -64,3 +64,15 @@ The reviewed real EXE was rebuilt, installed into a new disposable copy, and
 restored in another process with matching original hash/identity/metadata.
 No game execution occurred; production installation remains disabled.
 Read [the bounded protocol and evidence](docs/DISPOSABLE-COPY.md).
+
+## m036 集中驗收候選版
+
+單一 EXE 已接上繁中確認介面、僅限新建可丟棄副本的安裝流程，以及
+由目前 Windows 使用者 DPAPI 保護的獨立復原憑據。確認前不寫入，
+不需抄 hash 或編輯 JSON；憑據缺失、損壞或身分不符時拒絕復原。
+正式 can_apply 仍為 false，既有遊戲目錄安裝停用。
+
+最終 onefile 已完成 CLI 新副本安裝、跨程序還原與原版完整性核對；
+GUI 視覺、遊戲操作和主機 Steam 偵測仍未驗收，沒有執行遊戲。
+請讀 [候選版與一次驗收清單](docs/CANDIDATE-ACCEPTANCE.md) 和
+[翻譯現況](docs/TRANSLATION-STATUS.md)。下一輪優先回到文字內容。

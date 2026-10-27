@@ -106,3 +106,31 @@ files now include public Steam product identity. The existing interpreter's Tk
 runtime is bundled without new dependencies. Use `--build-tag m031` to preserve
 m030 artifacts. See `DESKTOP.md` and `m031-verification.json` for actual CLI-only
 checks and the shared cumulative 1 GB budget. This is still not an installer.
+
+## m036 local acceptance package
+
+The existing pinned environment produces both modes with --build-tag m036-final
+and --trial-policy pointing to a local trial-policy.json. That policy binds a
+pre-created owned parent identity and is not a public artifact. The build command
+validates it; the runtime has no option to replace it with a game installation.
+No dependencies changed. The manifest remains asInvoker with uiAccess=false.
+
+Final onefile: 12,937,425 bytes; SHA-256
+85287a1336316423563b70477e67592fcc0f64e4ad23088164eebe2c8dd4b513.
+The package is unsigned. It is local only, not a release. The full accumulated
+packaging root remains under the 1,000,000,000-byte budget; actual values and
+bundle/data/CLI evidence are in m036-verification.json.
+
+Console-only examples (the tool itself is run; generated game EXEs are never run):
+
+    ld2-patch-generator.exe --help
+    ld2-patch-generator.exe --version
+    ld2-patch-generator.exe --trial preview --source <owned-source>/Ld95.exe
+    ld2-patch-generator.exe --trial install --source <owned-source>/Ld95.exe --confirm
+    ld2-patch-generator.exe --trial inspect --workspace <tool-created-workspace>
+    ld2-patch-generator.exe --trial restore --workspace <tool-created-workspace> --confirm
+
+No arguments or --gui selects the bounded Traditional Chinese trial interface
+when the local policy is bundled. Its visual behavior has not yet been tested.
+Do not elevate this onefile package. Missing recovery evidence is a refusal,
+not a reason to edit JSON or supply a digest manually.
