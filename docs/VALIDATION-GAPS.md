@@ -79,3 +79,20 @@ Full default suite: **175 tests, 159 pass, 16 explicit skips** (13 native
 fixture cases opt out; two licensed-input integrations and one existing symlink
 case skip). The separate explicit native run is 17 tests, 16 pass, 1 skip; its
 four policy tests overlap the default suite. No real-game integration was run.
+
+## m033 capture transaction evidence
+
+The m032 replacement failure is explained by its documented open-destination
+conflict, not evidence of an application-control policy block. A different
+fixture-only sequence retains DELETE-capable exclusive handles, captures the
+original inode, then promotes with replace=False; 24 explicit methods pass
+(20 native cases plus 4 schema cases). Journal-guided restoration after handles
+close, rollback-gap interruptions, competing names and tamper refusal are tested.
+This protocol has a missing-name interval and is not an atomic replacement. Real
+process kill/power loss, independent production restart trust, metadata preservation
+and live process detection remain unverified. Production apply remains false.
+See `WINDOWS-CAPTURE-EXPERIMENT.md`.
+
+Full default suite: 199 tests, 163 pass, 36 explicit skips (33 opt-in native
+cases, two licensed-input integrations and the existing symlink skip). The
+separate 24-method capture run has no skips; its four schema tests overlap.
