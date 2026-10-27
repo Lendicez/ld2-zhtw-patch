@@ -62,3 +62,20 @@ Onedir/onefile CLI help/version and synthetic refusals passed without invoking
 native detection. No licensed original was read in this milestone. The stat-based
 read adapter cannot be used as a TOCTOU-safe writer. User-writable fixture backend
 work is the next gate; privileged helper/trust/UAC support remains blocked.
+
+## m032 actual native fixture evidence
+
+The explicit native runner on Windows build 26200/NTFS ran 17 methods: 16 pass,
+1 skip (real symlink privilege WinError 1314; no retry). File IDs, same/cross-process
+sharing exclusion, exclusive backups, flush/readback, same-volume new-name rename,
+real hardlink refusal and content-tamper checks have actual OS evidence. A first
+wrapper-buffer defect was caught, corrected and retained in the local failure
+manifest. Protected existing-target replacement returned WinError 5; no unlocked
+retry was made. Native apply/recovery/uninstall therefore remain gated. These
+results do not prove transaction rollback, hostile-directory safety, power-loss
+durability or installation. See `WINDOWS-NATIVE-FIXTURE.md`.
+
+Full default suite: **175 tests, 159 pass, 16 explicit skips** (13 native
+fixture cases opt out; two licensed-input integrations and one existing symlink
+case skip). The separate explicit native run is 17 tests, 16 pass, 1 skip; its
+four policy tests overlap the default suite. No real-game integration was run.

@@ -66,3 +66,15 @@ ports/headless tests and packaged CLI synthetic checks were used. Full suite:
 step is actual Windows handle/replace probes on owned synthetic fixtures as
 specified in `WINDOWS-BACKEND-PLAN.md`; keep production apply disabled and protected
 path/UAC support blocked. No original input, game, new dependencies or Actions.
+
+## m032 continuation
+
+Stacked on PR #6 head `26b71aedd7be57b86d9acf7881fb231dc906ae5c`. Native fixture
+primitives are in `windows_fixture.py`; the explicit runner preserves fresh local
+synthetic evidence without game access. Read `WINDOWS-NATIVE-FIXTURE.md` before
+using them. The protected-target rename experiment returned WinError 5 and was
+not retried without its protective handle. Existing-target compare-and-replace
+semantics are the next design gate, not permission to weaken locking, elevate,
+change security settings or retry historically blocked programs. Production apply
+and GUI installation remain disabled. Do not mistake passing native primitives
+for a completed native transaction/rollback backend.

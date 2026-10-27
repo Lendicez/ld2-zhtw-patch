@@ -19,6 +19,8 @@
     "docs/TRANSACTIONS.md",
     "docs/VALIDATION-GAPS.md",
     "docs/WINDOWS-BACKEND-PLAN.md",
+    "docs/WINDOWS-NATIVE-FIXTURE.md",
+    "docs/m032-verification.json",
     "packaging/as-invoker.manifest",
     "packaging/dependency-sources.json",
     "packaging/generator.spec",
@@ -48,6 +50,7 @@
     "src/ld2patch/steam_vdf.py",
     "src/ld2patch/transaction.py",
     "src/ld2patch/ui.py",
+    "src/ld2patch/windows_fixture.py",
     "src/ld2patch/windows_readonly.py",
     "tests/fake_steam.py",
     "tests/pe_fixture.py",
@@ -58,13 +61,15 @@
     "tests/test_transaction.py",
     "tests/test_transaction_recovery.py",
     "tests/test_windows_controller.py",
+    "tests/test_windows_fixture.py",
     "tests/transaction_fixture.py",
     "tools/audit_upload.py",
     "tools/build_patch.py",
     "tools/check.py",
     "tools/dry_run_demo.py",
     "tools/generator_entry.py",
-    "tools/package_generator.py"
+    "tools/package_generator.py",
+    "tools/run_windows_fixture.py"
   ],
   "excluded_roots": [
     ".git",

@@ -85,3 +85,12 @@ Deliver a reproducible fixture command, native API evidence and exact remaining
 gates. A successful fixture milestone is not authorization to run against the
 user's Steam installation. GUI inspection and game/save/load acceptance remain
 separate, concentrated sessions, not recurring desktop interruptions.
+
+## m032 outcome
+
+The bounded native fixture milestone has been executed; see
+[WINDOWS-NATIVE-FIXTURE.md](WINDOWS-NATIVE-FIXTURE.md). Identity, locking and staging
+primitives passed, but protected existing-target replacement was refused with
+WinError 5. The protective handle was not dropped for a retry. Integration with
+the m029 transaction is still gated on an independently justified replacement
+protocol. Do not repeat the same locked replacement probe expecting installation.
