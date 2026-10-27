@@ -27,3 +27,7 @@ Read-only discovery and dry-run planning are implemented with synthetic ports; s
 ## m027 continuation
 
 This stacked milestone is based on PR #1 head `d1c6704f96013371c7334f8c2a0a5978b5409d08`; its PR targets `feature/steam-discovery-dry-run`, not main. `transaction.py` and temporary fixtures exercise single-file backup/stage/replace/rollback/uninstall. Run the existing check command without licensed input: 95 tests, 93 passed, 2 explicit skips on Windows. Do not treat the synthetic flag as a production capability or point the test adapter at a live installation. Next review should focus on journal durability and native Windows evidence/locking contracts before any real installer implementation. No merge, release, Actions, GUI or security change is included.
+
+## m028 continuation
+
+This stacked milestone depends on PR #2 head `7c443a04ed26831eed950dfeb835ac56fe6b6f8e`. Offline CLI rebuild of the explicitly authorized local original reproduced m020 exactly twice; input stayed unchanged. Two real-input tests pass locally but must be skipped in an executor without licensed input. The asset-free recipe and build verification are committed; original/full patched EXEs remain private local artifacts. Next minimal packaging experiment is an unelevated offline builder, with bundled JSON resource paths and a content audit. Project Python currently lacks PyInstaller/Nuitka; installation needs separate approval. Do not turn a one-file Python bundle into a privileged installer. Real installer evidence/adapters and GUI acceptance remain separate gates.
