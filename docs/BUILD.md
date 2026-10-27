@@ -128,3 +128,16 @@ to remove security warnings; a block must be respected.
 
 Sources: [PyInstaller operating model](https://pyinstaller.org/en/stable/operating-mode.html),
 [official installation guide](https://pyinstaller.org/en/stable/installation.html).
+
+## Versioned m037 profile
+
+Add --profile m037 to the existing offline build command to select patches/m037.
+It requires a schema-2 catalog/recipe/version set with matching source, catalog
+and expected output hashes. Cross-schema mixtures, changed translations rebound
+only to a recipe, unsupported sources and wrong output sizes are rejected.
+No flag bypasses output verification. Omitting --profile still selects m020.
+
+The original m020 files and exact output remain regression-locked. Production
+installation remains disabled, and the m036 packaged candidate still contains
+m020. New m037 outputs are private local build artifacts, never install/run them
+as part of the build. See M037-COMBAT-UI.md for commands and validation details.

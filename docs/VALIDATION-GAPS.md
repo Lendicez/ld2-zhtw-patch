@@ -139,3 +139,16 @@ same-account tampering, power loss/reboot and whole-engine Unicode/stability.
 The executable-only disposable case cannot be launched as a complete game.
 Do not count skipped native/licensed tests as passes or old limited observations
 as current candidate gameplay. See CANDIDATE-ACCEPTANCE.md for bounded next steps.
+
+## m037 content increment
+
+Thirty-two new combat UI locations are statically validated, not game-seen.
+Five command-to-dialog routes were checked against the fixed-version message
+map, jump table, descriptor table and class/factory bindings. Dynamic reachability,
+list population and replacement of captions are still untested. Eight status/
+tooltip strings preserve their newline roles; actual display is unverified.
+
+CP950 roundtrips and 45 memory-DC control measurements passed. Actual menu/
+caption font, clipping, focus, DPI and gameplay/save behavior require later
+concentrated acceptance. No whole-engine Unicode or coverage claim. The new
+schema is offline-only and cannot enable production install. See TRANSLATION-STATUS.md.

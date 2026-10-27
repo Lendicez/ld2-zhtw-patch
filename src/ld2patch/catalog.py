@@ -2,17 +2,24 @@
 from .pe_resources import PE,Builder,sha,parse_dialog,encode_dialog,string_block,encode_string_block
 from . import menu
 from .contracts import validate,verify_source,contract
+def output_hash(cat):
+    return cat['historical_m020_sha256' if cat['schema_version']==1 else 'expected_output_sha256']
+
+
 def validate_catalog(cat):
     import re
     def number(value,maximum):
         if type(value) is not int or not 0<=value<=maximum:raise ValueError('Catalog integer range/type')
     def hash_value(value):
         if not isinstance(value,str) or not re.fullmatch('[0-9a-f]{64}',value):raise ValueError('Catalog hash')
-    if not isinstance(cat,dict) or set(cat)!={'schema_version','source_sha256','historical_m020_sha256','encoding_scope','coverage_established','entries','dialog_fonts'}:
+    if not isinstance(cat,dict):raise ValueError('Catalog object')
+    version=cat.get('schema_version')
+    expected_key='historical_m020_sha256' if version==1 else 'expected_output_sha256'
+    if set(cat)!={'schema_version','source_sha256',expected_key,'encoding_scope','coverage_established','entries','dialog_fonts'}:
         raise ValueError('Catalog fields')
-    if type(cat['schema_version']) is not int or cat['schema_version']!=1 or cat['coverage_established'] is not False:
+    if type(cat['schema_version']) is not int or cat['schema_version'] not in (1,2) or cat['coverage_established'] is not False:
         raise ValueError('Catalog version/coverage')
-    hash_value(cat['source_sha256']);hash_value(cat['historical_m020_sha256'])
+    hash_value(cat['source_sha256']);hash_value(output_hash(cat))
     if not isinstance(cat['entries'],list) or not 1<=len(cat['entries'])<=10000 or not isinstance(cat['dialog_fonts'],list) or len(cat['dialog_fonts'])>512:
         raise ValueError('Catalog entry/font budget')
     seen=set();targets=set()
@@ -90,5 +97,6 @@ def build_bytes(source,cat):
         key=tuple(r['path'])
         if key in objects:builder.resource(r['path'],{4:menu.encode,5:encode_dialog,6:encode_string_block}[key[0]](objects[key]))
     result=builder.finish()
-    if sha(result)!=cat['historical_m020_sha256']:raise ValueError('Output differs from reviewed m020')
+    if sha(result)!=output_hash(cat):
+        raise ValueError('Output differs from reviewed m020' if cat['schema_version']==1 else 'Output differs from reviewed profile')
     return result

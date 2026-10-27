@@ -135,3 +135,18 @@ and final onefile installed/restored a fresh real-EXE copy in separate processes
 No game, GUI, registry detection, elevation, new dependency or security change.
 See packaging/m036-verification.json. Next: one short visual acceptance window
 and a bounded translation batch, not further general installer expansion.
+
+## m037 continuation
+
+Base PR #11 b91bdc1150f11855cfe1d56e5ec9c93fe2c85ac2.
+Read M037-COMBAT-UI.md. The new patches/m037 offline profile adds 32 text
+locations and 5 dialog fonts, preserving all m020 rows and files. Schema 2 uses
+explicit expected-output fields; every source/catalog/version/output check stays
+mandatory. It is not accepted by the production planner and does not update the
+m036 package or disposable installer. Default generation remains m020.
+
+Full checks: 266 tests, 196 passed/70 skipped without licensed input; 200 passed/
+66 skipped with it. Separate new CLI outputs and metadata match exactly. Original
+input unchanged; code/data proof and native CP950 checks passed. No game/GUI.
+Next content priority: confirmed static fields in quest detail 292, movement 168
+and rest 173, keeping dynamic names/placeholders and unknown contexts untouched.

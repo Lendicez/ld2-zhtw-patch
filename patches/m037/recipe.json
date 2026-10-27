@@ -1,0 +1,10 @@
+{
+  "schema_version": 2,
+  "id": "m037-combat-ui-v1",
+  "engine": "resource_append_v1",
+  "version_id": "ld95-1.0.3.16-m037",
+  "catalog": "catalog.json",
+  "catalog_sha256": "92c116027de8795866ffb91bc39ce3e73d9d3ba7bb1e5bcbf16f1a521b8b47f3",
+  "text_locations": 271,
+  "font_locations": 20
+}

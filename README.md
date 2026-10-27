@@ -76,3 +76,12 @@ Read [the bounded protocol and evidence](docs/DISPOSABLE-COPY.md).
 GUI 視覺、遊戲操作和主機 Steam 偵測仍未驗收，沒有執行遊戲。
 請讀 [候選版與一次驗收清單](docs/CANDIDATE-ACCEPTANCE.md) 和
 [翻譯現況](docs/TRANSLATION-STATUS.md)。下一輪優先回到文字內容。
+
+## m037 戰鬥 UI 文字增量
+
+新增 32 個未翻譯資源位置、24 組不同譯文，涵蓋目標選擇、特殊技能、
+陣形轉向、逃跑確認及戰鬥選單／提示。m037 合計 271 個文字位置，
+不是全遊戲覆蓋率。使用獨立 profile 與嚴格輸出雜湊，m020 保留不變。
+用 tools/build_patch.py --profile m037 明確選擇；預設工具和 m036 候選
+仍使用 m020。兩次離線重建與原檔完整性已驗證，遊戲與 GUI 尚未實測。
+詳見 [本批內容與證據](docs/M037-COMBAT-UI.md)。
