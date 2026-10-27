@@ -39,3 +39,14 @@ These are fault-injection tests, not OS crash/power-loss tests. Actual productio
 filesystem atomicity/durability, Windows security/UAC, native handles, concurrent
 writers and real-game installation/recovery remain unverified. No licensed-input
 test was rerun in this milestone. Production apply remains disabled.
+
+## m030 packaging evidence
+
+The asInvoker onedir and onefile tools passed actual background non-admin
+help/version and synthetic refusal checks. The onefile tool's licensed output
+is byte-identical to verified m020 and its original input hash is unchanged.
+This proves offline generation on this host, not game execution or installation.
+Full suite: 135 tests, 132 pass, 3 explicit skips; packaged licensed integration
+is recorded separately. Unsigned acceptance elsewhere, native handle-based
+concurrency safety, GUI/save/load, privileged installation/rollback, licensing
+and release signing remain unverified. Production apply is still disabled.

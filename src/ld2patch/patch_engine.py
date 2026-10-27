@@ -103,7 +103,7 @@ def build_patch(source: bytes, catalog_bytes: bytes, versions: dict, recipe: dic
     if not isinstance(recipe,dict) or set(recipe)!=fields or type(recipe['schema_version']) is not int or recipe['schema_version']!=1 or recipe['engine']!='resource_append_v1':
         raise ValueError('Unsupported recipe')
     if not isinstance(recipe['id'],str) or not re.fullmatch('[a-z0-9-]{1,64}',recipe['id']):raise ValueError('Recipe ID')
-    if not isinstance(recipe['catalog'],str) or not re.fullmatch('[A-Za-z0-9_.-]+\.json',recipe['catalog']):raise ValueError('Recipe catalog name')
+    if not isinstance(recipe['catalog'],str) or not re.fullmatch(r'[A-Za-z0-9_.-]+\.json',recipe['catalog']):raise ValueError('Recipe catalog name')
     if not isinstance(versions,dict):raise ValueError('Versions object required')
     version=next((v for v in _versions(versions) if v['id']==recipe['version_id']),None)
     if version is None or version.get('catalog')!=recipe['catalog']:raise ValueError('Recipe/version mismatch')
@@ -167,6 +167,7 @@ def build_to_paths(input_path, output_path, metadata_path, catalog_bytes, versio
     with source_path.open('rb') as handle:
         before=os.fstat(handle.fileno())
         if not stat.S_ISREG(before.st_mode) or before.st_size>MAX_FILE:raise ValueError('Source size/type')
+        if before.st_nlink!=1:raise ValueError('Hardlinked source refused')
         source=handle.read(MAX_FILE+1)
         built=build_patch(source,catalog_bytes,versions,recipe)
         handle.seek(0);same=handle.read(MAX_FILE+1);after=os.fstat(handle.fileno())
