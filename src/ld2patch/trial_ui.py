@@ -1,6 +1,7 @@
 """Optional candidate Tk view; importing does not create a window or query host."""
 import threading
 from .trial_entry import make_trial_controller,policy
+from .profiles import PROFILE_IDS,DEFAULT_TRIAL_PROFILE
 
 
 def launch():
@@ -12,6 +13,8 @@ def launch():
     ttk.Label(frame,text='檢查來源 → 確認新副本 → 安裝與還原',font=('',16)).pack(anchor='w')
     ttk.Label(frame,text='只操作本次指定測試範圍；不修改正式遊戲，不啟動遊戲。').pack(anchor='w',pady=5)
     row=ttk.Frame(frame);row.pack(fill='x',pady=8)
+    profile_box=ttk.Combobox(frame,state='readonly',values=PROFILE_IDS)
+    profile_box.set(DEFAULT_TRIAL_PROFILE);profile_box.pack(fill='x')
     candidates=ttk.Combobox(frame,state='readonly');candidates.pack(fill='x')
     details=tk.Text(frame,wrap='word',state='disabled',height=23)
     details.pack(fill='both',expand=True,pady=10)
@@ -32,6 +35,11 @@ def launch():
         if old not in paths:candidates.set(paths[0] if len(paths)==1 else '')
         lines=[status[v['stage']],v['notice'],v['recovery_notice'],'',
                '允許建立副本的根目錄：'+policy()['parent']]
+        active=v['result'].get('profile',v['profile']) if v['result'] else v['profile']
+        lines+=['候選 profile：'+active['id']+' / '+active['recipe_id'],
+                '翻譯位置：'+str(active['text_locations'])+'；字型位置：'+str(active['font_locations']),
+                '預期輸出 SHA-256：'+active['expected_output_sha256'],
+                'm039 動態文字與 m040 版面候選均未啟用。']
         if v['preview']:
             p=v['preview'];lines+=['來源：'+p['install_dir'],'版本：'+str(p['file_version']),
                                   '來源 SHA-256：'+p['source_sha256']]
@@ -54,12 +62,18 @@ def launch():
         trial_button.configure(state='normal' if v['trial_enabled'] else 'disabled')
         confirm_button.configure(state='normal' if v['confirm_enabled'] and not running['value'] else 'disabled')
         candidates.configure(state='readonly' if usable else 'disabled')
+        profile_box.configure(state='readonly' if usable and not v['confirm_enabled'] else 'disabled')
 
     def guarded(action):
         if running['value']:return
         try:action()
         except Exception as e:messagebox.showerror('操作未完成',str(e),parent=w)
         render()
+    def select_profile():
+        nonlocal c
+        if c.view()['busy'] or c.view()['confirm_enabled']:return
+        c=make_trial_controller(profile_box.get())
+    profile_box.bind('<<ComboboxSelected>>',lambda e:guarded(select_profile))
     def manual():
         folder=filedialog.askdirectory(title='選取原版 Ld95.exe 所在資料夾',parent=w)
         if folder:c.manual(folder)

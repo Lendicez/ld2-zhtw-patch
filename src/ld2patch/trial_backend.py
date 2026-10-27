@@ -8,6 +8,7 @@ from .windows_readonly import process_state
 from .trial_store import TrialSpace,validate_policy,new_leaf
 from .patch_engine import strict_json
 from .generator import resource_root
+from .profiles import profile_info,copy_recipe,profile_for_version,load_bundle
 
 
 class TrialFailure(RuntimeError):
@@ -18,8 +19,12 @@ class TrialFailure(RuntimeError):
 
 class TrialBackend:
     can_apply=False
-    def __init__(self,policy,*,protector=None):
+    def __init__(self,policy,*,protector=None,profile='m020'):
         self.policy=validate_policy(policy);self.protector=protector
+        self.profile=profile
+        self.recipe=copy_recipe(profile)
+    def profile_info(self):
+        return profile_info(self.profile)
     def plan(self,source):
         source=Path(source);parent=Path(self.policy['parent'])
         if not source.is_absolute() or source.name!='Ld95.exe':
@@ -30,7 +35,7 @@ class TrialBackend:
         return {'source':str(source),'leaf':leaf,'workspace':str(parent/leaf),
                 'target':str(parent/leaf/'case-01/Ld95.exe'),
                 'recovery_store':str(parent/leaf/'recovery-store'),
-                'production_can_apply':False}
+                'profile':self.profile_info(),'production_can_apply':False}
 
     def install(self,plan):
         expected=self.plan(plan['source'])
@@ -39,24 +44,24 @@ class TrialBackend:
         if (set(plan)!=set(expected) or plan['production_can_apply'] is not False
             or plan['workspace']!=str(parent/plan['leaf'])
             or plan['target']!=str(parent/plan['leaf']/'case-01/Ld95.exe')
-            or plan['recovery_store']!=str(parent/plan['leaf']/'recovery-store')):
+            or plan['recovery_store']!=str(parent/plan['leaf']/'recovery-store')
+            or plan['profile']!=self.profile_info()):
             raise FixtureRefusal('candidate plan altered')
         saved=False
         try:
             source,_=read_source_only(Path(plan['source']))
-            data=resource_root()
-            built=build_reviewed(source,(data/'ui-m020.zh-TW.json').read_bytes(),
-                strict_json((data/'versions.json').read_bytes()),strict_json((data/'m020-recipe.json').read_bytes()))
+            catalog,versions,recipe=load_bundle(self.profile,resource_root())
+            built=build_reviewed(source,catalog,versions,recipe,self.recipe)
             with TrialSpace(self.policy,plan['leaf'],create=True,protector=self.protector) as space:
-                with DisposableCase(space.root,'case-01',create=True) as case:
+                with DisposableCase(space.root,'case-01',create=True,recipe=self.recipe) as case:
                     receipt=case.prepare(source,built.output)
-                    space.save(receipt,token(case.root_handle.identity()));saved=True
+                    space.save(receipt,token(case.root_handle.identity()),self.recipe.version);saved=True
                     tx=DisposableTransaction(case,source,built.output,
                         lambda:observed_guard(case.path('target.bin'),process_state()))
                     result=tx.install()
                     return {'status':'installed_trial','workspace':str(space.root),
                             'target':plan['target'],'recovery_store':str(space.vault),
-                            'snapshot':tx.snapshot(),'result':result,'production_can_apply':False}
+                            'snapshot':tx.snapshot(),'result':result,'profile':self.profile_info(),'production_can_apply':False}
         except Exception as e:
             raise TrialFailure(str(e),plan['workspace'],saved,
                                isinstance(e,PermissionError) or getattr(e,'code',None)==5) from e
@@ -69,7 +74,8 @@ class TrialBackend:
 
     def open_case(self,space):
         body=space.load()  # No plaintext/card/hash fallback.
-        case=DisposableCase(space.root,'case-01',receipt_sha=body['receipt_sha256'])
+        case=DisposableCase(space.root,'case-01',receipt_sha=body['receipt_sha256'],
+                            recipe=copy_recipe(profile_for_version(body['version'])))
         if token(case.root_handle.identity())!=body['case_root']:
             case.stack.close();raise FixtureRefusal('authenticated case identity differs')
         return case
@@ -84,7 +90,8 @@ class TrialBackend:
                 status=('already_original' if target and target['identity']==case.receipt['prepared']['original']
                         and target['sha256']==case.recipe.source_hash else 'recovery_available')
                 return {'status':status,'workspace':str(space.root),'snapshot':snapshot,
-                        'recovery_store':str(space.vault),'production_can_apply':False}
+                        'recovery_store':str(space.vault),'profile':profile_info(profile_for_version(case.recipe.version)),
+                        'production_can_apply':False}
 
     def restore(self,workspace):
         with TrialSpace(self.policy,self._leaf(workspace),protector=self.protector) as space:
@@ -95,5 +102,6 @@ class TrialBackend:
                 before=tx.snapshot();result=tx.restore()
                 return {'status':'restored_trial' if result['status']=='rolled_back' else result['status'],
                         'workspace':str(space.root),'before':before,'after':tx.snapshot(),
+                        'profile':profile_info(profile_for_version(case.recipe.version)),
                         'production_can_apply':False}
 

@@ -1,4 +1,4 @@
-# Only source modules plus four reviewed UTF-8 JSON files are bundled.
+# Only source modules, runtime and reviewed profile JSON files are bundled.
 import os
 from pathlib import Path
 
@@ -8,6 +8,9 @@ if mode not in ('onedir', 'onefile'):
     raise ValueError('Unsupported bundle mode')
 datas = [(str(root / 'patches' / name), 'ld2patch/data') for name in
          ('m020-recipe.json', 'ui-m020.zh-TW.json', 'versions.json', 'steam-product.json')]
+for profile in ('m037', 'm038', 'm041', 'm042'):
+    datas.extend((str(root / 'patches' / profile / name), 'ld2patch/data/' + profile)
+                 for name in ('recipe.json', 'catalog.json', 'versions.json'))
 trial_policy = os.environ.get('LD2_TRIAL_POLICY')
 if trial_policy:
     datas.append((trial_policy, 'ld2patch/data'))

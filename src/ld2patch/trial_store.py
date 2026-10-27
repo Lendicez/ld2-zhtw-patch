@@ -9,6 +9,7 @@ from .disposable import CopyAPI, basic
 from .windows_fixture import ATTR, READ, WRITE, DELETE, SHARE_READ, SHARE_WRITE, CREATE_NEW, validate_parent, FixtureRefusal, NativeFailure
 from .windows_capture import token, encode, digest
 from .patch_engine import strict_json
+from .profiles import profile_for_version
 
 MAX_CARD=65536
 PURPOSE='ld2-disposable-candidate-v1'
@@ -103,13 +104,14 @@ class TrialSpace:
     def __enter__(self):return self
     def __exit__(self,*args):self.stack.close()
 
-    def _body(self,receipt,case_id):
+    def _body(self,receipt,case_id,version):
         return {'schema':1,'purpose':PURPOSE,'workspace':token(self.root_handle.identity()),
                 'vault':token(self.vault_handle.identity()),'leaf':self.root.name,
-                'receipt_sha256':receipt,'case_root':case_id,'version':'ld95-1.0.3.16'}
+                'receipt_sha256':receipt,'case_root':case_id,'version':version}
 
-    def save(self,receipt,case_id):
-        body=self._body(receipt,case_id);blob=self.protector.seal(body)
+    def save(self,receipt,case_id,version='ld95-1.0.3.16'):
+        profile_for_version(version)
+        body=self._body(receipt,case_id,version);blob=self.protector.seal(body)
         # This independent store is created and verified BEFORE any EXE rename.
         with self.api.open_handle(self.vault/'anchor.bin',READ|WRITE|DELETE,0,CREATE_NEW) as h:
             h.write_new(blob)
@@ -122,13 +124,14 @@ class TrialSpace:
             basic(h);body=self.protector.open(h.read())
         fields={'schema','purpose','workspace','vault','leaf','receipt_sha256','case_root','version'}
         if (not isinstance(body,dict) or set(body)!=fields or type(body['schema']) is not int
-            or body['schema']!=1 or body['purpose']!=PURPOSE or body['version']!='ld95-1.0.3.16'
+            or body['schema']!=1 or body['purpose']!=PURPOSE or not isinstance(body['version'],str)
             or body['leaf']!=self.root.name or not identity(body['case_root'])
             or not isinstance(body['receipt_sha256'],str)
             or not re.fullmatch('[0-9a-f]{64}',body['receipt_sha256'])
             or body['workspace']!=token(self.root_handle.identity())
             or body['vault']!=token(self.vault_handle.identity())):
             raise FixtureRefusal('protected recovery binding mismatch')
+        profile_for_version(body['version'])
         return body
 
 

@@ -96,6 +96,7 @@ class TrialController:
             return {**view,'title':'LD2 繁中副本驗收候選版','stage':self.stage,
                 'notice':NOTICE,'recovery_notice':RECOVERY_NOTICE,'issue':self.issue or view['issue'],
                 'workspace':self.workspace,'trial_plan':preview,'result':self.result,
+                'profile':self.backend.profile_info(),
                 'stopped':self.stopped or view['stopped'],'install_enabled':False,
                 'trial_enabled':self.stage=='ready' and not self.stopped and not view['stopped'],
                 'confirm_enabled':self.stage in ('confirm_install','confirm_restore'),

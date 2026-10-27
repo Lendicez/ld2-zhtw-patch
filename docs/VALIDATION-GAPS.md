@@ -173,3 +173,13 @@ External DAT/BMH/TIL inventories are not evidence of a complete external script
 store. EXE CP932 records, dynamic formatted text, file loaders, capacities and DBCS
 paint paths need source-to-display tracing. Read M042-STATIC-UI.md for a bounded
 five-scenario combined acceptance plan; no new installer architecture is required.
+
+
+## m043 source-only checkpoint
+
+New multi-profile source passed headless and licensed build regression. Packaging preflight was blocked at tool approval before any new policy/root/build existed. New native DPAPI profile tests, packaged profile contents/manifest, executable smoke, real m042 disposable install and cross-process restore, GUI and game remain unverified. Historical m036 success is not m043 evidence. No security changes or retry occurred.
+
+
+## m043 packaged verification update
+
+The earlier tool-preflight blocker and local index mismatch are resolved. The pinned m042 profile is verified inside the packaged candidate and through a real new disposable EXE install/restore cycle. All 13 background CLI checks passed; native recovery suite passed 20/20. This does not verify GUI layout, game execution/save/load, full-game-directory isolation, other hosts or production installation. Native suite overlaps general tests and is not additive. No m039/m040 dynamic/layout integration was enabled. Detailed evidence is in packaging/m043-verification.json; local-only originals, binaries and recovery cards remain excluded.

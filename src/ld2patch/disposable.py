@@ -55,10 +55,10 @@ class CopyRecipe:
 REVIEWED = CopyRecipe('ld95-1.0.3.16', SOURCE_HASH, 7090176, OUTPUT_HASH, 7102464)
 
 
-def build_reviewed(source, catalog, versions, recipe):
-    REVIEWED.check(source)
+def build_reviewed(source, catalog, versions, recipe, reviewed=REVIEWED):
+    reviewed.check(source)
     built = build_patch(source, catalog, versions, recipe)
-    REVIEWED.check(built.output, True)
+    reviewed.check(built.output, True)
     return built
 
 
