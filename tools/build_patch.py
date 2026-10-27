@@ -10,13 +10,13 @@ from ld2patch.patch_engine import build_to_paths,strict_json
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--profile',choices=['m020','m037'],default='m020')
+    parser.add_argument('--profile',choices=['m020','m037','m038'],default='m020')
     parser.add_argument('--input',type=Path,required=True)
     parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--metadata-out',type=Path,required=True)
     args=parser.parse_args()
     try:
-        folder=ROOT/'patches' if args.profile=='m020' else ROOT/'patches/m037'
+        folder=ROOT/'patches' if args.profile=='m020' else ROOT/'patches'/args.profile
         recipe_name='m020-recipe.json' if args.profile=='m020' else 'recipe.json'
         catalog_name='ui-m020.zh-TW.json' if args.profile=='m020' else 'catalog.json'
         recipe=strict_json((folder/recipe_name).read_bytes())

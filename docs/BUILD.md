@@ -141,3 +141,9 @@ The original m020 files and exact output remain regression-locked. Production
 installation remains disabled, and the m036 packaged candidate still contains
 m020. New m037 outputs are private local build artifacts, never install/run them
 as part of the build. See M037-COMBAT-UI.md for commands and validation details.
+
+## m038 offline profile
+Use --profile m038 to select patches/m038. Source/catalog/output hashes, size
+and recipe/version identities remain mandatory; mixed profiles are rejected.
+Default remains m020, m037 unchanged. Build output is never installed/executed.
+See M038-TRAVEL-PARTY-QUEST.md for reproduction and validation.

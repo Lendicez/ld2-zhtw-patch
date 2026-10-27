@@ -150,3 +150,14 @@ Full checks: 266 tests, 196 passed/70 skipped without licensed input; 200 passed
 input unchanged; code/data proof and native CP950 checks passed. No game/GUI.
 Next content priority: confirmed static fields in quest detail 292, movement 168
 and rest 173, keeping dynamic names/placeholders and unknown contexts untouched.
+
+## m038 local continuation
+Base PR #12 c96d16a706c98855876c6ad6c028839cd22771ed.
+Read M038-TRAVEL-PARTY-QUEST.md and TRANSLATION-STATUS.md.
+24 new locations / 22 distinct translations; 295 total locations. General tests:
+274 total, 200 passed, 74 skipped; licensed run: 208 passed, 66 skipped.
+Two offline builds match. Prior profiles unchanged; no game/GUI or remote write.
+Next content boundary: UTF-16 deadline formatting and evidence for one control
+setter. Do not globally switch API width or assume buffer/HWND/ABI safety.
+The complete candidate manifest/classification is local. Obtain batch approval
+for new source anchors and static evidence before any remote publication.

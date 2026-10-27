@@ -1,0 +1,505 @@
+{
+  "milestone": "m038",
+  "scope": "four standard dialogs, offline only",
+  "new_locations": 24,
+  "new_distinct_translations": 22,
+  "total_locations": 295,
+  "total_distinct_translations": 216,
+  "new_fonts": 4,
+  "total_fonts": 24,
+  "changes": [
+    {
+      "kind": "dialog_control",
+      "resource": 154,
+      "language": 1041,
+      "item_index": 1,
+      "control_id": 1,
+      "source_key": "m038:dialog_control:154:1",
+      "source_anchor": "入る",
+      "translation": "進入",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 154,
+      "language": 1041,
+      "item_index": 3,
+      "control_id": 4294967295,
+      "source_key": "m038:dialog_control:154:3",
+      "source_anchor": "移動先：",
+      "translation": "目的地：",
+      "native_cp950_bytes": 8,
+      "utf16_units": 4,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 154,
+      "language": 1041,
+      "item_index": 4,
+      "control_id": 4294967295,
+      "source_key": "m038:dialog_control:154:4",
+      "source_anchor": "現在地",
+      "translation": "目前位置",
+      "native_cp950_bytes": 8,
+      "utf16_units": 4,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 154,
+      "language": 1041,
+      "item_index": 6,
+      "control_id": 4294967295,
+      "source_key": "m038:dialog_control:154:6",
+      "source_anchor": "所持金",
+      "translation": "持有金錢",
+      "native_cp950_bytes": 8,
+      "utf16_units": 4,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 154,
+      "language": 1041,
+      "item_index": 9,
+      "control_id": 4294967295,
+      "source_key": "m038:dialog_control:154:9",
+      "source_anchor": "日数",
+      "translation": "天數",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 154,
+      "language": 1041,
+      "item_index": 16,
+      "control_id": 1012,
+      "source_key": "m038:dialog_control:154:16",
+      "source_anchor": "情報",
+      "translation": "資訊",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 170,
+      "language": 1041,
+      "source_key": "m038:dialog_title:170:title",
+      "source_anchor": "別れる",
+      "translation": "離隊",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 170,
+      "language": 1041,
+      "item_index": 0,
+      "control_id": 4294967295,
+      "source_key": "m038:dialog_control:170:0",
+      "source_anchor": "仲間：",
+      "translation": "隊友：",
+      "native_cp950_bytes": 6,
+      "utf16_units": 3,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 170,
+      "language": 1041,
+      "item_index": 2,
+      "control_id": 1,
+      "source_key": "m038:dialog_control:170:2",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 170,
+      "language": 1041,
+      "item_index": 3,
+      "control_id": 2,
+      "source_key": "m038:dialog_control:170:3",
+      "source_anchor": "取り消し",
+      "translation": "取消",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 172,
+      "language": 1041,
+      "source_key": "m038:dialog_title:172:title",
+      "source_anchor": "アイテム分配",
+      "translation": "分配道具",
+      "native_cp950_bytes": 8,
+      "utf16_units": 4,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 172,
+      "language": 1041,
+      "item_index": 0,
+      "control_id": 4294967295,
+      "source_key": "m038:dialog_control:172:0",
+      "source_anchor": "分配アイテム：",
+      "translation": "分配道具：",
+      "native_cp950_bytes": 10,
+      "utf16_units": 5,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 172,
+      "language": 1041,
+      "item_index": 2,
+      "control_id": 1,
+      "source_key": "m038:dialog_control:172:2",
+      "source_anchor": "決定",
+      "translation": "確定",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 172,
+      "language": 1041,
+      "item_index": 3,
+      "control_id": 2,
+      "source_key": "m038:dialog_control:172:3",
+      "source_anchor": "取り消し",
+      "translation": "取消",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 172,
+      "language": 1041,
+      "item_index": 4,
+      "control_id": 1012,
+      "source_key": "m038:dialog_control:172:4",
+      "source_anchor": "参加しない",
+      "translation": "不參與",
+      "native_cp950_bytes": 6,
+      "utf16_units": 3,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_title",
+      "resource": 292,
+      "language": 1041,
+      "source_key": "m038:dialog_title:292:title",
+      "source_anchor": "依頼の詳細",
+      "translation": "委託詳情",
+      "native_cp950_bytes": 8,
+      "utf16_units": 4,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 292,
+      "language": 1041,
+      "item_index": 0,
+      "control_id": 1,
+      "source_key": "m038:dialog_control:292:0",
+      "source_anchor": "閉じる",
+      "translation": "關閉",
+      "native_cp950_bytes": 4,
+      "utf16_units": 2,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 292,
+      "language": 1041,
+      "item_index": 1,
+      "control_id": 1012,
+      "source_key": "m038:dialog_control:292:1",
+      "source_anchor": "意見を聞く",
+      "translation": "詢問意見",
+      "native_cp950_bytes": 8,
+      "utf16_units": 4,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 292,
+      "language": 1041,
+      "item_index": 2,
+      "control_id": 1056,
+      "source_key": "m038:dialog_control:292:2",
+      "source_anchor": "引き受ける",
+      "translation": "接受委託",
+      "native_cp950_bytes": 8,
+      "utf16_units": 4,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 292,
+      "language": 1041,
+      "item_index": 4,
+      "control_id": 4294967295,
+      "source_key": "m038:dialog_control:292:4",
+      "source_anchor": "詳細：",
+      "translation": "詳情：",
+      "native_cp950_bytes": 6,
+      "utf16_units": 3,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 292,
+      "language": 1041,
+      "item_index": 9,
+      "control_id": 4294967295,
+      "source_key": "m038:dialog_control:292:9",
+      "source_anchor": "依頼人：",
+      "translation": "委託人：",
+      "native_cp950_bytes": 8,
+      "utf16_units": 4,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 292,
+      "language": 1041,
+      "item_index": 10,
+      "control_id": 4294967295,
+      "source_key": "m038:dialog_control:292:10",
+      "source_anchor": "依頼：",
+      "translation": "委託：",
+      "native_cp950_bytes": 6,
+      "utf16_units": 3,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 292,
+      "language": 1041,
+      "item_index": 11,
+      "control_id": 4294967295,
+      "source_key": "m038:dialog_control:292:11",
+      "source_anchor": "状況：",
+      "translation": "狀態：",
+      "native_cp950_bytes": 6,
+      "utf16_units": 3,
+      "status": "static_pass_runtime_unseen"
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 292,
+      "language": 1041,
+      "item_index": 12,
+      "control_id": 4294967295,
+      "source_key": "m038:dialog_control:292:12",
+      "source_anchor": "引受人：",
+      "translation": "承接人：",
+      "native_cp950_bytes": 8,
+      "utf16_units": 4,
+      "status": "static_pass_runtime_unseen"
+    }
+  ],
+  "identity_review_not_counted": [
+    {
+      "kind": "dialog_title",
+      "resource": 154,
+      "language": 1041,
+      "text": "移動",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 154,
+      "language": 1041,
+      "item_index": 0,
+      "control_id": 112,
+      "text": "移動",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 154,
+      "language": 1041,
+      "item_index": 8,
+      "control_id": 4294967295,
+      "text": "費用",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 292,
+      "language": 1041,
+      "item_index": 5,
+      "control_id": 4294967295,
+      "text": "報酬：",
+      "counted_as_translation": false
+    },
+    {
+      "kind": "dialog_control",
+      "resource": 292,
+      "language": 1041,
+      "item_index": 6,
+      "control_id": 4294967295,
+      "text": "期限：",
+      "counted_as_translation": false
+    }
+  ],
+  "routes": [
+    {
+      "dialog_resource": 170,
+      "dispatch_index": 27,
+      "class_name": "CRemoveDlg",
+      "factory_file_offset": "0x97840",
+      "factory_call_file_offset": "0x97880",
+      "constructor_file_offset": "0x977a0",
+      "command_id": 32818,
+      "command_table_file_offset": "0x87a8c",
+      "command_first": 32811,
+      "branch_file_offset": "0x87884",
+      "dispatch_call_file_offset": "0x87899",
+      "evidence": "Decoded command branch, descriptor and class/factory binding",
+      "runtime_reachable_tested": false
+    },
+    {
+      "dialog_resource": 172,
+      "dispatch_index": 30,
+      "class_name": "CDivideDlg",
+      "factory_file_offset": "0x61120",
+      "factory_call_file_offset": "0x61160",
+      "constructor_file_offset": "0x61000",
+      "command_id": 32822,
+      "command_table_file_offset": "0x87a8c",
+      "command_first": 32811,
+      "branch_file_offset": "0x87993",
+      "dispatch_call_file_offset": "0x879a8",
+      "evidence": "Decoded command branch, descriptor and class/factory binding",
+      "runtime_reachable_tested": false
+    },
+    {
+      "dialog_resource": 154,
+      "dispatch_index": 22,
+      "class_name": "CTravelDlg",
+      "factory_file_offset": "0xc7620",
+      "factory_call_file_offset": "0xc7660",
+      "constructor_file_offset": "0xc6d10",
+      "command_id": 32840,
+      "command_table_file_offset": "0x89c5c",
+      "command_first": 32831,
+      "branch_file_offset": "0x89b93",
+      "dispatch_call_file_offset": "0x89c3d",
+      "evidence": "Decoded command branch, descriptor and class/factory binding",
+      "runtime_reachable_tested": false
+    },
+    {
+      "dialog_resource": 292,
+      "dispatch_index": 39,
+      "class_name": "CScenarioDetailsDlg",
+      "factory_file_offset": "0x64200",
+      "factory_call_file_offset": "0x64240",
+      "constructor_file_offset": "0x641d0",
+      "parent_dialog": 169,
+      "parent_control_id": 1,
+      "parent_message_map_file_offset": "0x15ca50",
+      "parent_handler_file_offset": "0x92000",
+      "parent_vtable_file_offset": "0x15c8ac",
+      "virtual_slot": 336,
+      "detail_handler_file_offset": "0x920c0",
+      "dispatch_call_file_offset": "0x92138",
+      "populate_call_file_offset": "0x92177",
+      "populate_function_file_offset": "0x64270",
+      "evidence": "Mission details button -> virtual handler -> descriptor 39 -> population method",
+      "runtime_reachable_tested": false
+    }
+  ],
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "expected_output_sha256": "8730f5731730afcf8a20e245958744d2b227dde4fa260d861eae296001ef65b2",
+  "output_bytes": 7106560,
+  "resources_changed_vs_m037": [
+    [
+      5,
+      154,
+      1041
+    ],
+    [
+      5,
+      170,
+      1041
+    ],
+    [
+      5,
+      172,
+      1041
+    ],
+    [
+      5,
+      292,
+      1041
+    ]
+  ],
+  "native_cp950_roundtrips": 24,
+  "gdi_memory_only_layout_checks": 63,
+  "new_mnemonic_conflicts": 0,
+  "actual_printf_parameters_in_new_rows": 0,
+  "runtime_seen": false,
+  "code_data_unchanged": true,
+  "coverage_percentage": null,
+  "excluded": [
+    {
+      "resource": 168,
+      "reason": "No validated dispatch/constructor path this milestone; not claimed unused"
+    },
+    {
+      "resource": 173,
+      "reason": "No validated dispatch/constructor path; Spin1 is internal, not translated"
+    },
+    {
+      "resource": 154,
+      "item_indices": [
+        5,
+        7,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "reason": "Dynamic place/amount fields, currency marker or unconfirmed pass terminology; unchanged"
+    },
+    {
+      "resource": 292,
+      "control_ids": [
+        1048,
+        1049,
+        1050,
+        1051,
+        1052,
+        1053,
+        1054
+      ],
+      "reason": "Dynamic data and ANSI messages unchanged"
+    }
+  ],
+  "limits": [
+    "Static routes establish associations, not runtime reachability or lack of later caption replacement.",
+    "Dialog 154 runtime title uses RT_STRING33108; existing title retained.",
+    "Memory-DC layout estimates do not prove game font/DPI/clipping.",
+    "No HF, code, game state, saves, system encoding, or installation changes."
+  ]
+}

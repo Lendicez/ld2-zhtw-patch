@@ -16,6 +16,7 @@
 !/docs/HANDOFF.md
 !/docs/INSTALLER-SPEC.md
 !/docs/M037-COMBAT-UI.md
+!/docs/M038-TRAVEL-PARTY-QUEST.md
 !/docs/MIGRATION-INVENTORY.md
 !/docs/NEXT-ACCEPTANCE.md
 !/docs/PACKAGING.md
@@ -45,6 +46,12 @@
 !/patches/m037/recipe.json
 !/patches/m037/review.json
 !/patches/m037/versions.json
+!/patches/m038/build-verification.json
+!/patches/m038/catalog.json
+!/patches/m038/dynamic-boundary.json
+!/patches/m038/recipe.json
+!/patches/m038/review.json
+!/patches/m038/versions.json
 !/patches/steam-product.json
 !/patches/ui-m020.zh-TW.json
 !/patches/versions.json
@@ -84,6 +91,7 @@
 !/tests/test_generator.py
 !/tests/test_patch_engine.py
 !/tests/test_profile_m037.py
+!/tests/test_profile_m038.py
 !/tests/test_transaction.py
 !/tests/test_transaction_recovery.py
 !/tests/test_trial.py

@@ -1,0 +1,28 @@
+{
+  "status": "static_analysis_only_unmodified",
+  "dialog_resource": 292,
+  "control_id": 1050,
+  "source_format_anchor": "%d日",
+  "source_bytes_sha256": "a8f46cce10b6781635078e05455e165b2c02dfb3cd3975e7ecba4426d033f740",
+  "format_file_offset": "0x138684",
+  "populate_function_file_offset": "0x64270",
+  "format_push_file_offset": "0x64528",
+  "format_call_file_offset": "0x6452e",
+  "format_api": "wsprintfA",
+  "format_import_slot": "0x5255ac",
+  "setter_call_file_offset": "0x64553",
+  "setter_wrapper_file_offset": "0xea69f",
+  "setter_api": "SetDlgItemTextA",
+  "setter_import_slot": "0x52541c",
+  "int_parameter": "32-bit stack argument, passed via ECX loaded from a local; signed %d",
+  "observed_output_stack_offset": "0xbc at balanced stack; formatting LEA is +0xc0 after one push",
+  "neighboring_formatted_buffer_offset": "0x7c; 64-byte separation observed, capacity not proved",
+  "conversion": "No explicit CP932-to-Unicode conversion in the inspected formatting/setter segment; ANSI API uses effective ACP.",
+  "alternate_path": "Wrapper has an OLE/control-site virtual branch when this+0x4c is nonzero; not analyzed.",
+  "next_cut": "Offline UTF-16 deadline formatter with signed int32 contract; later a single control-specific Unicode setter with independently verified HWND/ABI/lifetime.",
+  "prerequisites": [
+    "Verify complete local buffer ownership/limits before any expanded ANSI string",
+    "Verify control HWND/Unicode state and wrapper alternate branch before a Unicode adapter",
+    "Prove call convention, failure fallback and dynamic overwrite behavior; no in-game approval/test in this milestone"
+  ]
+}

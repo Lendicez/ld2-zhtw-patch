@@ -20,5 +20,12 @@
   "flee": "逃跑",
   "call_teammate": "呼喊隊友",
   "target": "目標",
-  "magic": "魔法"
+  "magic": "魔法",
+  "teammate": "隊友",
+  "leave_party": "離隊",
+  "accept_quest": "接受委託",
+  "quest_details": "委託詳情",
+  "quest_client": "委託人",
+  "quest_taker": "承接人",
+  "destination": "目的地"
 }

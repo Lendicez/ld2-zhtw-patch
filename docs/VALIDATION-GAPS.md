@@ -152,3 +152,11 @@ CP950 roundtrips and 45 memory-DC control measurements passed. Actual menu/
 caption font, clipping, focus, DPI and gameplay/save behavior require later
 concentrated acceptance. No whole-engine Unicode or coverage claim. The new
 schema is offline-only and cannot enable production install. See TRANSLATION-STATUS.md.
+
+## m038 limits
+24 new locations have offline checks only; four static associations do not prove
+runtime reachability or absence of later text replacement. 63 memory-DC checks
+are estimates, not actual GUI/DPI acceptance. The quest deadline ANSI path is
+unmodified. Stack spacing is not proven buffer capacity; the setter wrapper has
+an unreviewed control-site branch. Dialogs 168/173 remain unconfirmed/unchanged.
+No game, native harness, security/locale change, install or network publication.
