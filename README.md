@@ -48,3 +48,8 @@ The m032 backend primitives were tested on fresh synthetic NTFS files, including
 cross-process locks, file IDs and verified staging. Safe replacement of an existing
 locked target remains unresolved, so installation and native recovery stay disabled.
 See [the actual results and limits](docs/WINDOWS-NATIVE-FIXTURE.md).
+
+The m033 [capture experiment](docs/WINDOWS-CAPTURE-EXPERIMENT.md) demonstrates
+actual synthetic commit/rollback without unlocking the original inode or
+overwriting a competing name. It has a temporary missing-name interval and remains
+fixture-only; it does not enable installation.

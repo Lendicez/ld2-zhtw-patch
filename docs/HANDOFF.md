@@ -78,3 +78,14 @@ semantics are the next design gate, not permission to weaken locking, elevate,
 change security settings or retry historically blocked programs. Production apply
 and GUI installation remain disabled. Do not mistake passing native primitives
 for a completed native transaction/rollback backend.
+
+## m033 continuation
+
+Stacked on PR #7 head `53bb8f2d1593c3f1469258764ca87a2df5af105b`. Read
+`WINDOWS-CAPTURE-EXPERIMENT.md` for the documented m032 self-lock conflict and
+the successful fixture-only capture/promote/restore protocol. Do not retry the
+old locked replacement or reinterpret WinError 5 as SAC evidence. Native results
+are stronger than mocks but still include a missing-name gap and injected process
+evidence. Production apply/install remains disabled. The next gate is reviewing
+that availability tradeoff and designing trusted persistent recovery/metadata
+handling, not deployment into a real Steam installation.

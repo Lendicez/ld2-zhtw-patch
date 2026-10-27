@@ -1,0 +1,38 @@
+{
+  "milestone": "m033",
+  "date": "2026-10-27",
+  "base_commit": "53bb8f2d1593c3f1469258764ca87a2df5af105b",
+  "diagnosis": "m032 ordinary rename targeted an existing open file; documented self-imposed conflict, not policy-block evidence",
+  "explicit_suite": {
+    "total": 24,
+    "native_pass": 20,
+    "schema_pass": 4,
+    "skip": 0,
+    "fail": 0
+  },
+  "default_suite": {
+    "total": 199,
+    "pass": 163,
+    "skip": 36,
+    "native_cases_opted_out": 33,
+    "other_skip": 3
+  },
+  "minimal_capture_probe": true,
+  "outside_and_save_sentinels_unchanged": true,
+  "non_admin": true,
+  "windows_build": 26200,
+  "filesystem": "NTFS",
+  "original_identity_retained": true,
+  "atomic_visibility": false,
+  "power_loss_tested": false,
+  "os_process_termination_tested": false,
+  "live_process_detection_tested": false,
+  "production_can_apply": false,
+  "gui_install_enabled": false,
+  "game_access": false,
+  "registry_access": false,
+  "new_binary": false,
+  "security_changes": false,
+  "packaging_bytes": 149211771,
+  "packaging_budget": 1000000000
+}

@@ -94,3 +94,14 @@ primitives passed, but protected existing-target replacement was refused with
 WinError 5. The protective handle was not dropped for a retry. Integration with
 the m029 transaction is still gated on an independently justified replacement
 protocol. Do not repeat the same locked replacement probe expecting installation.
+
+## m033 revised candidate
+
+A supported handle sequence has now passed actual fixture tests: capture the
+original by its own DELETE-capable share-zero handle, then promote the stage with
+replace=False. It retains original identity and refuses competing names. See
+[WINDOWS-CAPTURE-EXPERIMENT.md](WINDOWS-CAPTURE-EXPERIMENT.md). This is a multi-step
+transaction with a missing-name interval; it cannot honestly implement an atomic
+compare-and-swap port. Production recovery trust, metadata policy and acceptance
+of that interval require review before integration. No security relaxation is
+required by the tested protocol; production apply remains disabled.
