@@ -1,0 +1,10 @@
+{
+  "schema_version": 2,
+  "id": "m042-static-ui-v1",
+  "engine": "resource_append_v1",
+  "version_id": "ld95-1.0.3.16-m042",
+  "catalog": "catalog.json",
+  "catalog_sha256": "b9b4d7d5bcc334d0588fd75db180cedf3eab8266fa54bf951e9eb21fed0d234b",
+  "text_locations": 552,
+  "font_locations": 71
+}

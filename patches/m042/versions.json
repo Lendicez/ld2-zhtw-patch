@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "steam_app_id": "335420",
+  "steam_app_id_status": "public_store_verified_local_installation_unverified",
+  "versions": [
+    {
+      "id": "ld95-1.0.3.16-m042",
+      "filename": "Ld95.exe",
+      "file_version": "1.0.3.16",
+      "product_version": "1.0.3.0",
+      "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+      "source_size": 7090176,
+      "expected_output_sha256": "9fea1172e92167d435a8ec26baf085ab45a2a56468690bf7bfec1f8ba29dc367",
+      "expected_output_size": 7118848,
+      "catalog": "catalog.json",
+      "release_approved": false
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 from pathlib import Path
 import hashlib,json,re,sys,subprocess
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'src'))
+from ld2patch.upload_limits import within_reviewed_text_size
 allowed=set(json.loads((ROOT/'UPLOAD_ALLOWLIST.json').read_text(encoding='utf-8'))['files'])
 patterns={
  'private_key':re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),
@@ -21,7 +23,7 @@ for p in ROOT.rglob('*'):
  actual.add(rel)
  if rel not in allowed:findings.append({'path':rel,'rule':'not_allowlisted'});continue
  data=p.read_bytes()
- if len(data)>400000 or b'\0' in data or data[:2]==b'MZ':findings.append({'path':rel,'rule':'size_or_binary'})
+ if not within_reviewed_text_size(rel,data) or b'\0' in data or data[:2]==b'MZ':findings.append({'path':rel,'rule':'size_or_binary'})
  try:text=data.decode('utf-8')
  except UnicodeError:findings.append({'path':rel,'rule':'not_utf8'});continue
  # Scanner's regex declarations are audited source, not discovered credentials.
