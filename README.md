@@ -29,3 +29,7 @@ GitHub Windows runner 不等於 Windows 11 GUI 遊玩驗收。
 
 完整接續說明見 [HANDOFF](docs/HANDOFF.md)、[安裝器規格](docs/INSTALLER-SPEC.md)、
 [架構](docs/ARCHITECTURE.md)、[驗證缺口](docs/VALIDATION-GAPS.md)。
+
+## Read-only install preview
+
+The m026 core discovers Steam candidates from injected roots and bounded VDF files, then plans an EXE-only change without writing. Run `python -B tools/dry_run_demo.py` for an entirely synthetic example. See [DRY-RUN.md](docs/DRY-RUN.md) for evidence requirements and refusal reasons. No live registry/filesystem adapter or installer is implemented; AppID remains unverified and real release approval remains false.

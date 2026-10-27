@@ -8,6 +8,7 @@
 !/UPLOAD_ALLOWLIST.json
 !/docs/ARCHITECTURE.md
 !/docs/CI-PLAN.md
+!/docs/DRY-RUN.md
 !/docs/HANDOFF.md
 !/docs/INSTALLER-SPEC.md
 !/docs/MIGRATION-INVENTORY.md
@@ -21,9 +22,14 @@
 !/src/ld2patch/__init__.py
 !/src/ld2patch/catalog.py
 !/src/ld2patch/contracts.py
+!/src/ld2patch/discovery.py
 !/src/ld2patch/menu.py
 !/src/ld2patch/pe_resources.py
+!/src/ld2patch/planner.py
 !/src/ld2patch/steam_vdf.py
+!/tests/fake_steam.py
 !/tests/test_core.py
+!/tests/test_discovery_planner.py
 !/tools/audit_upload.py
 !/tools/check.py
+!/tools/dry_run_demo.py
