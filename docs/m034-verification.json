@@ -1,0 +1,57 @@
+{
+  "milestone": "m034",
+  "date": "2026-10-27",
+  "base_commit": "9131c28548f520f25b6283c372617565bfc2d55b",
+  "default_suite": {
+    "total": 218,
+    "pass": 166,
+    "skip": 52,
+    "native_opt_out": 49,
+    "other_skip": 3
+  },
+  "worker_suite": {
+    "total": 19,
+    "native_pass": 16,
+    "pure_pass": 3,
+    "skip": 0,
+    "fail": 0
+  },
+  "capture_regression": {
+    "total": 24,
+    "native_pass": 20,
+    "pure_pass": 4,
+    "skip": 0,
+    "fail": 0
+  },
+  "workers": 43,
+  "verified_terminations": 14,
+  "distinct_termination_checkpoints": 11,
+  "all_workers_exited": true,
+  "non_admin": true,
+  "windows_build": 26200,
+  "filesystem": "NTFS",
+  "outside_and_save_sentinels_unchanged": true,
+  "original_metadata_verified": [
+    "file_id",
+    "volume",
+    "attributes",
+    "creation_time",
+    "last_write_time"
+  ],
+  "access_time_equality_claimed": false,
+  "acl_modified": false,
+  "power_loss_tested": false,
+  "controller_death_tested": false,
+  "fresh_worker_disk_recovery_tested": true,
+  "atomic_filename_replacement": false,
+  "production_can_apply": false,
+  "gui_install_enabled": false,
+  "game_access": false,
+  "registry_access": false,
+  "gui_used": false,
+  "security_changes": false,
+  "packaging_bytes": 149211771,
+  "packaging_budget": 1000000000,
+  "new_binary": false,
+  "new_dependencies": false
+}

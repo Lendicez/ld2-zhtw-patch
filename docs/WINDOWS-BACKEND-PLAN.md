@@ -105,3 +105,12 @@ transaction with a missing-name interval; it cannot honestly implement an atomic
 compare-and-swap port. Production recovery trust, metadata policy and acceptance
 of that interval require review before integration. No security relaxation is
 required by the tested protocol; production apply remains disabled.
+
+## m034 actual worker-death recovery
+
+Fresh-worker disk-journal restoration after verified termination now passes on
+owned NTFS fixtures. Basic original metadata is checked and the reserved original
+is retained. See `WINDOWS-WORKER-RECOVERY.md`. The missing-name interval remains;
+controller-loss trust, new-file metadata policy, bounded real-EXE I/O and production
+integration remain gates before disposable-original-copy acceptance. No UAC, ACL
+or security setting adjustment is part of the tested path.

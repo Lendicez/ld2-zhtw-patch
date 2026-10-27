@@ -89,3 +89,15 @@ are stronger than mocks but still include a missing-name gap and injected proces
 evidence. Production apply/install remains disabled. The next gate is reviewing
 that availability tradeoff and designing trusted persistent recovery/metadata
 handling, not deployment into a real Steam installation.
+
+## m034 continuation
+
+Stacked on PR #8 head `9131c28548f520f25b6283c372617565bfc2d55b`. Actual owned-worker
+termination and new-interpreter journal recovery are verified, using retained
+process handles and PID/creation/image/command/nonce checks. Read
+`WINDOWS-WORKER-RECOVERY.md`: 19 worker tests and 24 capture regression tests pass.
+No original/game/registry/GUI access occurred. The independent registration digest
+is retained by the live controller; do not claim reboot recovery or production
+installation. Next integration must replace only fixed synthetic assumptions under
+known version/hash constraints, settle metadata/recovery trust, and obtain an
+explicit disposable-original-copy test scope as described in `NEXT-ACCEPTANCE.md`.
