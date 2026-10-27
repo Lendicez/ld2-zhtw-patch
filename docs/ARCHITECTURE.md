@@ -24,3 +24,7 @@ Linux CI 尚未實跑。Windows 本機 Python 測試不等於 Windows CI 或遊�
 ## Implemented m026 read-only boundary
 
 `ld2patch.discovery` now consumes injected Steam root values and a read-only metadata/bytes port. `ld2patch.planner` consumes complete discovery plus explicit process evidence and the version allowlist. It returns preview/refusal data only, with `can_apply=false`. `tests/fake_steam.py` supplies invented in-memory files and identities. No production Windows adapter, transaction, UAC or installer entry point exists. See `DRY-RUN.md`; the earlier numbered list remains the larger roadmap.
+
+## Implemented m027 synthetic transaction core
+
+`ld2patch.transaction` provides read-only uninstall previews plus explicitly synthetic install/uninstall/recovery operations. It permits one EXE target, verifies immutable original backups, stages before replacement, compares file evidence again and retains journals on uncertain recovery. The only write adapter is a test fixture mapping virtual paths into its owned TemporaryDirectory. Production transaction/Windows adapters, multi-file recovery, upgrades, UI and packaging remain unimplemented. See `TRANSACTIONS.md`.
