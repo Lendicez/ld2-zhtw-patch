@@ -1,0 +1,16 @@
+{
+  "file": "檔案",
+  "save_action": "儲存",
+  "load_action": "讀取",
+  "save_data": "存檔",
+  "record": "記錄",
+  "party": "隊伍",
+  "formation": "陣形",
+  "quest": "委託",
+  "dungeon": "迷宮",
+  "item": "道具",
+  "transfer_item": "給予／收取物品",
+  "class": "職業",
+  "confirm": "確定",
+  "cancel": "取消"
+}

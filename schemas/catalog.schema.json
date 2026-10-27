@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LD2 target-only translation catalog",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source_sha256",
+    "historical_m020_sha256",
+    "encoding_scope",
+    "coverage_established",
+    "entries",
+    "dialog_fonts"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "historical_m020_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "encoding_scope": {
+      "type": "string"
+    },
+    "coverage_established": {
+      "const": false
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_key",
+          "kind",
+          "resource",
+          "language",
+          "source_utf16_sha256",
+          "translation",
+          "source_contract",
+          "contract",
+          "status",
+          "current_version_game_seen",
+          "prior_observation_scope"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "resource": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "language": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "command_id": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "item_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "control_id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "string_id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "source_key": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "menu",
+              "dialog_title",
+              "dialog_control",
+              "string"
+            ]
+          },
+          "locator": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "source_utf16_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "translation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_contract": {
+            "type": "object"
+          },
+          "contract": {
+            "type": "object"
+          },
+          "status": {
+            "type": "string"
+          },
+          "current_version_game_seen": {
+            "const": false
+          },
+          "prior_observation_scope": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "dialog_fonts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "resource",
+          "language",
+          "font",
+          "source_font_utf16_sha256"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "resource": {
+            "type": "integer"
+          },
+          "language": {
+            "type": "integer"
+          },
+          "font": {
+            "type": "string"
+          },
+          "source_font_utf16_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}
