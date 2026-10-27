@@ -1,0 +1,519 @@
+{
+  "milestone": "m040",
+  "base_commit": "f606b290dd93bffb8b1cdaf3beb7ead413e5faa9",
+  "scope": "One dialog geometry candidate; no dynamic setter integration",
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "intermediate_m038_sha256": "8730f5731730afcf8a20e245958744d2b227dde4fa260d861eae296001ef65b2",
+  "candidate_sha256": "2afdc14391cf6e700f31c593e738d59cf66a6cc13f3b56b1fdbf9448e72313e1",
+  "candidate_bytes": 7110656,
+  "resource_path": [
+    5,
+    292,
+    1041
+  ],
+  "dialog_rect_before": [
+    0,
+    0,
+    149,
+    148
+  ],
+  "dialog_rect_after": [
+    0,
+    0,
+    149,
+    158
+  ],
+  "font": {
+    "family": "MingLiU",
+    "point_size": 14,
+    "changed": false
+  },
+  "edits": [
+    {
+      "item_index": 0,
+      "control_id": 1,
+      "old_rect": [
+        102,
+        131,
+        43,
+        14
+      ],
+      "new_rect": [
+        102,
+        141,
+        43,
+        14
+      ]
+    },
+    {
+      "item_index": 1,
+      "control_id": 1012,
+      "old_rect": [
+        5,
+        131,
+        43,
+        14
+      ],
+      "new_rect": [
+        5,
+        141,
+        43,
+        14
+      ]
+    },
+    {
+      "item_index": 2,
+      "control_id": 1056,
+      "old_rect": [
+        53,
+        131,
+        43,
+        14
+      ],
+      "new_rect": [
+        53,
+        141,
+        43,
+        14
+      ]
+    },
+    {
+      "item_index": 8,
+      "control_id": 1050,
+      "old_rect": [
+        30,
+        117,
+        20,
+        8
+      ],
+      "new_rect": [
+        30,
+        117,
+        115,
+        8
+      ]
+    },
+    {
+      "item_index": 10,
+      "control_id": 65535,
+      "old_rect": [
+        63,
+        117,
+        25,
+        8
+      ],
+      "new_rect": [
+        5,
+        127,
+        25,
+        8
+      ]
+    },
+    {
+      "item_index": 16,
+      "control_id": 1054,
+      "old_rect": [
+        87,
+        117,
+        56,
+        8
+      ],
+      "new_rect": [
+        30,
+        127,
+        113,
+        8
+      ]
+    }
+  ],
+  "extreme_measurements": [
+    {
+      "dpi": 96,
+      "days": -2147483648,
+      "text": "-2147483648 天",
+      "text_px": [
+        140,
+        19
+      ],
+      "old_width_px": 50.0,
+      "new_control_px": [
+        287,
+        19
+      ],
+      "width_margin_px": 147,
+      "drawtext_calcrect": [
+        140,
+        19
+      ],
+      "fits": true,
+      "missing_glyphs": []
+    },
+    {
+      "dpi": 120,
+      "days": -2147483648,
+      "text": "-2147483648 天",
+      "text_px": [
+        168,
+        23
+      ],
+      "old_width_px": 60.0,
+      "new_control_px": [
+        345,
+        23
+      ],
+      "width_margin_px": 177,
+      "drawtext_calcrect": [
+        168,
+        23
+      ],
+      "fits": true,
+      "missing_glyphs": []
+    },
+    {
+      "dpi": 144,
+      "days": -2147483648,
+      "text": "-2147483648 天",
+      "text_px": [
+        196,
+        28
+      ],
+      "old_width_px": 70.0,
+      "new_control_px": [
+        402,
+        28
+      ],
+      "width_margin_px": 206,
+      "drawtext_calcrect": [
+        196,
+        28
+      ],
+      "fits": true,
+      "missing_glyphs": []
+    },
+    {
+      "dpi": 192,
+      "days": -2147483648,
+      "text": "-2147483648 天",
+      "text_px": [
+        266,
+        37
+      ],
+      "old_width_px": 95.0,
+      "new_control_px": [
+        546,
+        37
+      ],
+      "width_margin_px": 280,
+      "drawtext_calcrect": [
+        266,
+        37
+      ],
+      "fits": true,
+      "missing_glyphs": []
+    }
+  ],
+  "numeric_samples": 44,
+  "numeric_failures": 0,
+  "static_label_samples": 40,
+  "static_label_failures": 0,
+  "no_new_overlap_at_changed_controls": true,
+  "source_to_m038_proof": {
+    "allowed_header_fields": [
+      "SizeOfInitializedData",
+      "SizeOfImage",
+      "CheckSum",
+      "ResourceDirectorySize",
+      "ResourceVirtualSize",
+      "ResourceRawSize"
+    ],
+    "appended_resource_and_zero_padding_only": true,
+    "changed_resource_paths": [
+      [
+        4,
+        128,
+        1041
+      ],
+      [
+        4,
+        129,
+        1041
+      ],
+      [
+        5,
+        100,
+        1041
+      ],
+      [
+        5,
+        116,
+        1041
+      ],
+      [
+        5,
+        120,
+        1041
+      ],
+      [
+        5,
+        121,
+        1041
+      ],
+      [
+        5,
+        122,
+        1041
+      ],
+      [
+        5,
+        123,
+        1041
+      ],
+      [
+        5,
+        151,
+        1041
+      ],
+      [
+        5,
+        152,
+        1041
+      ],
+      [
+        5,
+        153,
+        1041
+      ],
+      [
+        5,
+        154,
+        1041
+      ],
+      [
+        5,
+        167,
+        1041
+      ],
+      [
+        5,
+        169,
+        1041
+      ],
+      [
+        5,
+        170,
+        1041
+      ],
+      [
+        5,
+        172,
+        1041
+      ],
+      [
+        5,
+        174,
+        1041
+      ],
+      [
+        5,
+        177,
+        1041
+      ],
+      [
+        5,
+        178,
+        1041
+      ],
+      [
+        5,
+        182,
+        1041
+      ],
+      [
+        5,
+        184,
+        1041
+      ],
+      [
+        5,
+        292,
+        1041
+      ],
+      [
+        5,
+        451,
+        1041
+      ],
+      [
+        5,
+        452,
+        1041
+      ],
+      [
+        5,
+        465,
+        1041
+      ],
+      [
+        5,
+        518,
+        1041
+      ],
+      [
+        6,
+        2050,
+        1041
+      ],
+      [
+        6,
+        2051,
+        1041
+      ],
+      [
+        6,
+        2052,
+        1041
+      ],
+      [
+        6,
+        2055,
+        1041
+      ],
+      [
+        6,
+        2056,
+        1041
+      ],
+      [
+        6,
+        2057,
+        1041
+      ],
+      [
+        6,
+        2070,
+        1041
+      ],
+      [
+        6,
+        3601,
+        1041
+      ],
+      [
+        6,
+        3604,
+        1041
+      ],
+      [
+        6,
+        3605,
+        1041
+      ],
+      [
+        6,
+        3713,
+        1041
+      ]
+    ],
+    "non_resource_sections": [
+      {
+        "bytes": 1196032,
+        "name": ".text",
+        "sha256": "0c64261748ccf8c836211fa5454f1f6892ada0f5d71b98422b2e3e900b234c3d",
+        "unchanged": true
+      },
+      {
+        "bytes": 458752,
+        "name": ".rdata",
+        "sha256": "a7047964cd12523472814c115a557a95525ffb618aa76d7bd205a6effe930690",
+        "unchanged": true
+      },
+      {
+        "bytes": 5226496,
+        "name": ".data",
+        "sha256": "9c7723e804a85f5b6d829a6d633439a461e945774e83d47f3d2879e4320e79db",
+        "unchanged": true
+      }
+    ],
+    "original_prefix_verified_outside_allowlist": true,
+    "resource_count": 316
+  },
+  "m038_to_layout_proof": {
+    "allowed_header_fields": [
+      "SizeOfInitializedData",
+      "SizeOfImage",
+      "CheckSum",
+      "ResourceDirectorySize",
+      "ResourceVirtualSize",
+      "ResourceRawSize"
+    ],
+    "appended_resource_and_zero_padding_only": true,
+    "changed_resource_paths": [
+      [
+        5,
+        292,
+        1041
+      ]
+    ],
+    "non_resource_sections": [
+      {
+        "bytes": 1196032,
+        "name": ".text",
+        "sha256": "0c64261748ccf8c836211fa5454f1f6892ada0f5d71b98422b2e3e900b234c3d",
+        "unchanged": true
+      },
+      {
+        "bytes": 458752,
+        "name": ".rdata",
+        "sha256": "a7047964cd12523472814c115a557a95525ffb618aa76d7bd205a6effe930690",
+        "unchanged": true
+      },
+      {
+        "bytes": 5226496,
+        "name": ".data",
+        "sha256": "9c7723e804a85f5b6d829a6d633439a461e945774e83d47f3d2879e4320e79db",
+        "unchanged": true
+      }
+    ],
+    "original_prefix_verified_outside_allowlist": true,
+    "resource_count": 316
+  },
+  "suites": {
+    "full-default": {
+      "total": 296,
+      "passed": 220,
+      "skipped": 76,
+      "failed": 0
+    },
+    "full-licensed": {
+      "total": 296,
+      "passed": 230,
+      "skipped": 66,
+      "failed": 0
+    }
+  },
+  "cli_negative_tests": [
+    {
+      "case": "existing_output",
+      "refused": true,
+      "existing_files_unchanged": true
+    },
+    {
+      "case": "modified_source",
+      "refused": true,
+      "existing_files_unchanged": true
+    }
+  ],
+  "original_manifest_files_unchanged": 1029,
+  "profiles_m020_m037_m038_unchanged": true,
+  "translations_added": 0,
+  "production_can_apply": false,
+  "game_executed": false,
+  "gui_opened": false,
+  "native_adapter_implemented": false,
+  "runtime_tested": false,
+  "limitations": [
+    "Actual live control font, DPI and runtime geometry may differ from template",
+    "ANSI/Unicode control state, MFC control-site branch and reentrancy remain unobserved",
+    "Alternate preformatted deadline text has unknown length; this candidate does not truncate or rewrite it"
+  ]
+}

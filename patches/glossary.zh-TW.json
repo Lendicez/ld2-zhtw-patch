@@ -27,5 +27,16 @@
   "quest_details": "委託詳情",
   "quest_client": "委託人",
   "quest_taker": "承接人",
-  "destination": "目的地"
+  "destination": "目的地",
+  "buy": "購買",
+  "sell": "出售",
+  "money_on_hand": "持有金錢",
+  "revive": "復活",
+  "donate": "捐款",
+  "travel_pass": "通行證",
+  "dark_guild": "黑暗公會",
+  "inn_stay": "住宿",
+  "deposit_money": "存入",
+  "withdraw_money": "提領",
+  "house_extend": "擴建"
 }

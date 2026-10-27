@@ -1,0 +1,152 @@
+{
+  "inventory_positions": 1784,
+  "translated_positions": 295,
+  "distinct_translations": 216,
+  "categories": {
+    "translated_static_only_current_build": 295,
+    "reviewed_identical_valid_zh_tw": 15,
+    "extracted_ui_untranslated_context_review_needed": 381,
+    "alternate_menu_active_use_unconfirmed": 12,
+    "preserve_brand_version_copyright": 4,
+    "placeholder_numeric_or_short_ascii_review_context": 109,
+    "placeholder_or_dynamic_replacement_unconfirmed": 4,
+    "debug_ui_active_use_unconfirmed": 9,
+    "preserve_path_or_internal_identifier": 849,
+    "framework_message_active_use_unconfirmed": 106
+  },
+  "untranslated_ui_context_candidates": 381,
+  "candidate_counts_by_kind": {
+    "menu": 18,
+    "dialog_control": 259,
+    "dialog_title": 49,
+    "string": 55
+  },
+  "groups": {
+    "active_primary_menu_role": {
+      "positions": 18,
+      "distinct_source_texts": 18,
+      "resource_ids": [
+        129
+      ],
+      "runtime_use_verified": false
+    },
+    "other_dialog_context_needed": {
+      "positions": 25,
+      "distinct_source_texts": 24,
+      "resource_ids": [
+        100,
+        132,
+        154,
+        169,
+        171,
+        177,
+        185,
+        438,
+        520,
+        30721
+      ],
+      "runtime_use_verified": false
+    },
+    "facility_dialog_resource_roles": {
+      "positions": 171,
+      "distinct_source_texts": 109,
+      "resource_ids": [
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        190,
+        461,
+        462,
+        463,
+        464
+      ],
+      "runtime_use_verified": false
+    },
+    "other_game_dialog_roles": {
+      "positions": 44,
+      "distinct_source_texts": 38,
+      "resource_ids": [
+        168,
+        173,
+        225,
+        450,
+        453,
+        454,
+        456,
+        457,
+        458
+      ],
+      "runtime_use_verified": false
+    },
+    "conversation_interaction_dialog_roles": {
+      "positions": 26,
+      "distinct_source_texts": 17,
+      "resource_ids": [
+        175,
+        176,
+        186,
+        187,
+        188,
+        189
+      ],
+      "runtime_use_verified": false
+    },
+    "creation_dialog_resource_roles": {
+      "positions": 42,
+      "distinct_source_texts": 36,
+      "resource_ids": [
+        179,
+        180,
+        181,
+        191
+      ],
+      "runtime_use_verified": false
+    },
+    "game_rt_string_context_needed": {
+      "positions": 55,
+      "distinct_source_texts": 54,
+      "resource_ids": [
+        9,
+        68,
+        2049,
+        2050,
+        2052,
+        2053,
+        2054,
+        2069,
+        2070,
+        2501
+      ],
+      "runtime_use_verified": false
+    }
+  },
+  "ready_for_blind_translation": 0,
+  "coverage_percentage": null,
+  "excluded_from_inventory": [
+    "dynamic CP932 message data and wsprintf outputs",
+    "HF/record/dialogue data with unknown field boundaries",
+    "text stored inside save headers",
+    "image text (out of scope)"
+  ]
+}

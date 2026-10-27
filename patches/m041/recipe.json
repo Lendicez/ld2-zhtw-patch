@@ -1,0 +1,10 @@
+{
+  "schema_version": 2,
+  "id": "m041-facility-pages-v1",
+  "engine": "resource_append_v1",
+  "version_id": "ld95-1.0.3.16-m041",
+  "catalog": "catalog.json",
+  "catalog_sha256": "362d7d54879773f39e24b50c7d189388b8c00e58eb2dee0bc705ffe4e8a2dec6",
+  "text_locations": 418,
+  "font_locations": 51
+}
