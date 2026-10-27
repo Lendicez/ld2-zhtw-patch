@@ -33,3 +33,7 @@ GitHub Windows runner 不等於 Windows 11 GUI 遊玩驗收。
 ## Read-only install preview
 
 The m026 core discovers Steam candidates from injected roots and bounded VDF files, then plans an EXE-only change without writing. Run `python -B tools/dry_run_demo.py` for an entirely synthetic example. See [DRY-RUN.md](docs/DRY-RUN.md) for evidence requirements and refusal reasons. No live registry/filesystem adapter or installer is implemented; AppID remains unverified and real release approval remains false.
+
+## Synthetic transaction experiments
+
+The stacked m027 change adds a single-file install/uninstall and recovery algorithm behind synthetic filesystem ports. Tests use private temporary files only; production apply remains disabled. See [TRANSACTIONS.md](docs/TRANSACTIONS.md) for the failure model and unverified Windows guarantees.

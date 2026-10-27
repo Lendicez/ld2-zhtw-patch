@@ -3,7 +3,7 @@ from dataclasses import asdict, dataclass, field
 import hashlib
 import re
 
-from .discovery import Discovery, EvidenceError, Issue, ReadOnlyFS, checked_app_id, checked_metadata, child, path_key, read_stable, windows_path
+from .discovery import Candidate, Discovery, EvidenceError, Issue, ReadOnlyFS, checked_app_id, checked_metadata, child, path_key, read_stable, windows_path
 
 
 @dataclass(frozen=True)
@@ -15,6 +15,7 @@ class ProcessEvidence:
 
 @dataclass
 class Plan:
+    action: str = 'install'
     status: str = 'blocked'
     mode: str = 'dry-run'
     can_apply: bool = False
@@ -41,7 +42,7 @@ class Plan:
 
 
 def _versions(config: dict) -> list[dict]:
-    if config.get('schema_version') != 1:
+    if type(config.get('schema_version')) is not int or config['schema_version'] != 1:
         raise EvidenceError('unsupported_version_schema')
     versions = config.get('versions')
     if not isinstance(versions, list) or not versions:
@@ -62,7 +63,9 @@ def _versions(config: dict) -> list[dict]:
         for key in ('source_size', 'historical_m020_size'):
             if type(v.get(key)) is not int or not 0 < v[key] <= 32 * 1024 * 1024:
                 raise EvidenceError('invalid_version_size')
-        if not isinstance(v.get('file_version'), str) or not re.fullmatch(r'\d+\.\d+\.\d+\.\d+', v['file_version']):
+        if not isinstance(v.get('file_version'), str) or not re.fullmatch(r'[0-9]{1,5}\.[0-9]{1,5}\.[0-9]{1,5}\.[0-9]{1,5}', v['file_version']):
+            raise EvidenceError('invalid_file_version')
+        if any(int(x)>65535 for x in v['file_version'].split('.')):
             raise EvidenceError('invalid_file_version')
         if type(v.get('release_approved')) is not bool:
             raise EvidenceError('release_status_unknown')
@@ -81,7 +84,11 @@ def plan_install(discovery: Discovery, config: dict, fs: ReadOnlyFS, processes: 
             raise EvidenceError('discovery_incomplete')
         if discovery.app_id != plan.app_id:
             raise EvidenceError('discovery_appid_mismatch')
+        if (not isinstance(discovery.issues, list) or any(not isinstance(x, Issue) or x.code not in ('file_missing', 'install_directory_missing') for x in discovery.issues)):
+            raise EvidenceError('discovery_inconsistent')
         candidates = discovery.candidates
+        if not isinstance(candidates, list) or any(not isinstance(x, Candidate) for x in candidates):
+            raise EvidenceError('invalid_candidates')
         if not candidates:
             raise EvidenceError('no_candidates')
         unique = {}
