@@ -27,3 +27,15 @@ Local synthetic transaction tests cover original-preserving backups, partial wri
 ## m028 actual resource-build verification
 
 The known original was read locally under explicit authorization. Two standalone offline outputs and metadata were identical to historical m020; the original pre/post hash and complete `.text`/`.rdata`/`.data` bytes were unchanged. Only 27 approved resource payloads and enumerated PE header/data-entry fields differ. This carries 239 text locations and 15 font settings, not whole-game coverage. No game was executed or installed. Full checks: 117 tests; without licensed input 114 pass/3 skip, with authorized input 116 pass/1 skip (Windows real symlink creation). Cloud/Actions, runtime layout, dynamic text, save/load and production installer recovery remain unverified. See `BUILD.md` and the asset-free build metadata.
+
+## m029 recovery regression evidence
+
+The early restore-file creation crash and list/dict phase TypeError were reproduced
+on PR #3, then fixed with bounded exclusive restore slots and pre-mutation schema
+validation. Targeted regressions: 10 pass. Full synthetic checks: 127 tests,
+124 pass/3 skip (two licensed-input tests, Windows real symlink creation). Unknown
+orphans remain untouched; three exhausted slots deliberately require diagnosis.
+These are fault-injection tests, not OS crash/power-loss tests. Actual production
+filesystem atomicity/durability, Windows security/UAC, native handles, concurrent
+writers and real-game installation/recovery remain unverified. No licensed-input
+test was rerun in this milestone. Production apply remains disabled.

@@ -31,3 +31,14 @@ This stacked milestone is based on PR #1 head `d1c6704f96013371c7334f8c2a0a5978b
 ## m028 continuation
 
 This stacked milestone depends on PR #2 head `7c443a04ed26831eed950dfeb835ac56fe6b6f8e`. Offline CLI rebuild of the explicitly authorized local original reproduced m020 exactly twice; input stayed unchanged. Two real-input tests pass locally but must be skipped in an executor without licensed input. The asset-free recipe and build verification are committed; original/full patched EXEs remain private local artifacts. Next minimal packaging experiment is an unelevated offline builder, with bundled JSON resource paths and a content audit. Project Python currently lacks PyInstaller/Nuitka; installation needs separate approval. Do not turn a one-file Python bundle into a privileged installer. Real installer evidence/adapters and GUI acceptance remain separate gates.
+
+## m029 continuation
+
+The recovery fix is stacked on PR #3 head `d85eaedb0fbdd3facc15f71d3e0faf3050ea0982`.
+See `TRANSACTIONS.md` for the two confirmed reproductions, bounded orphan-preserving
+recovery, schema 1 compatibility and complete journal validation. Ten new regression
+methods pass; full checks without licensed input report 127 tests, 124 passed and
+3 explicit skips. No game input or execution, installation, packaging dependency,
+Actions or production write path is included. Existing original assets, catalogs,
+recipes and expected m020 output hashes are unchanged. Review this fix before
+continuing packaging or designing a native Windows transaction adapter.

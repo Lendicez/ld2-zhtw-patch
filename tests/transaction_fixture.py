@@ -113,7 +113,7 @@ class TempFS:
         self.hook('created:'+label)
 
     def replace_if_unchanged(self, stage, target, stage_meta, target_meta):
-        label='restore' if stage.endswith('restore.bin') else 'apply'
+        label='restore' if stage.rsplit('\\', 1)[-1] in {'restore.bin', 'restore-1.bin', 'restore-2.bin'} else 'apply'
         self.hook('before_replace:'+label)
         if self.metadata(stage)!=stage_meta or self.metadata(target)!=target_meta:
             raise EvidenceError('compare_and_replace_conflict')
