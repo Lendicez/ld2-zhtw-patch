@@ -101,3 +101,13 @@ is retained by the live controller; do not claim reboot recovery or production
 installation. Next integration must replace only fixed synthetic assumptions under
 known version/hash constraints, settle metadata/recovery trust, and obtain an
 explicit disposable-original-copy test scope as described in `NEXT-ACCEPTANCE.md`.
+
+## m035 continuation
+
+Base PR #9 ff4fb134da8ef438b6a9e674c05ad88b7e8c2a08.
+Real 1.0.3.16 disposable-copy install/restore passed; see DISPOSABLE-COPY.md
+and m035-verification.json. Original input was read-only, EXE outputs stay local.
+Receipt SHA-256 must survive independently; never auto-trust disk journals.
+Source work can proceed to confirmation/recovery UI integration, but production
+apply and GUI installation remain disabled. No game/GUI or Steam installation
+is authorized by these offline results. Read NEXT-ACCEPTANCE.md.

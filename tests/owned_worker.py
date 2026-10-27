@@ -48,10 +48,11 @@ def validate_identity(initial,current,expected_pid,expected_image,command,expect
 
 
 class OwnedWorker:
-    def __init__(self,parent,registration,mode,pause=None):
+    def __init__(self,parent,registration,mode,pause=None,*,kind='capture'):
         global BLOCKED
         if BLOCKED:raise WorkerUnavailable(BLOCKED)
-        self.script=Path(__file__).resolve().parents[1]/'tools/capture_worker.py'
+        if kind not in ('capture','disposable'):raise FixtureRefusal('unknown fixed worker kind')
+        self.script=Path(__file__).resolve().parents[1]/('tools/capture_worker.py' if kind=='capture' else 'tools/disposable_worker.py')
         self.script_hash=hashlib.sha256(self.script.read_bytes()).hexdigest()
         self.nonce=registration['nonce'];self.pause=pause
         self.args=[sys.executable,'-I','-B',str(self.script),'--parent',str(parent),

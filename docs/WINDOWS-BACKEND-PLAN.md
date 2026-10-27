@@ -114,3 +114,10 @@ is retained. See `WINDOWS-WORKER-RECOVERY.md`. The missing-name interval remains
 controller-loss trust, new-file metadata policy, bounded real-EXE I/O and production
 integration remain gates before disposable-original-copy acceptance. No UAC, ACL
 or security setting adjustment is part of the tested path.
+
+## m035 bounded integration result
+
+disposable.py reuses the no-overwrite capture protocol with a 16 MiB cap, 1 MiB
+native I/O, reviewed PE builder and caller-anchored durable receipt. The real-copy
+roundtrip passed without admin, game launch or security changes. This separate
+acceptance adapter is not wired to production apply. Read DISPOSABLE-COPY.md.

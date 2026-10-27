@@ -57,3 +57,10 @@ fixture-only; it does not enable installation.
 The m034 [worker recovery tests](docs/WINDOWS-WORKER-RECOVERY.md) terminate only
 newly owned, identity-verified fixture workers and recover in fresh interpreters.
 Production installation remains disabled; see the [remaining acceptance steps](docs/NEXT-ACCEPTANCE.md).
+
+## m035 offline disposable-copy acceptance
+
+The reviewed real EXE was rebuilt, installed into a new disposable copy, and
+restored in another process with matching original hash/identity/metadata.
+No game execution occurred; production installation remains disabled.
+Read [the bounded protocol and evidence](docs/DISPOSABLE-COPY.md).
