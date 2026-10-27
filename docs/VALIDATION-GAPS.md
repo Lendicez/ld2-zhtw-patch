@@ -114,3 +114,12 @@ Full default suite: **218 tests, 166 pass, 52 explicit skips** (49 opt-in
 native cases, two licensed integrations and the existing symlink case). The
 separate worker/capture suites are 19/19 and 24/24; their 7 pure methods overlap
 the default suite. Skips are not counted as successful integrations.
+
+## m035 update
+
+Closed for the local disposable EXE: synthetic-only/64 KiB restriction, reviewed
+PE builder integration, copy metadata roundtrip, and restart without a live
+transaction controller (external receipt digest required). See DISPOSABLE-COPY.md.
+Still open: power-loss durability, two-rename gap, hostile same-user tampering,
+SACL/unusual metadata, production UI integration, elevated installation, runtime
+and full-game translation coverage. No Actions/cloud game integration was run.

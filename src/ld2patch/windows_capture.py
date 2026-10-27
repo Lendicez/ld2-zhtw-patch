@@ -38,7 +38,7 @@ def _object_pairs(pairs):
     return result
 
 
-def parse_prepared(data,root_token,expected_token):
+def parse_prepared(data,root_token,expected_token,source_hash=None,output_hash=None):
     try: value=json.loads(data,object_pairs_hook=_object_pairs)
     except (ValueError,UnicodeError) as e: raise FixtureRefusal('invalid prepared journal') from e
     if not isinstance(value,dict) or set(value)!={'schema','root','original','backup','stage','source_sha256','output_sha256'}:
@@ -55,7 +55,7 @@ def parse_prepared(data,root_token,expected_token):
         raise FixtureRefusal('journal root/original identity mismatch')
     if any(value[key]['volume']!=root_token['volume'] for key in ('original','backup','stage')):
         raise FixtureRefusal('journal volume mismatch')
-    if value['source_sha256']!=digest(ORIGINAL) or value['output_sha256']!=digest(PATCHED):
+    if value['source_sha256']!=(source_hash or digest(ORIGINAL)) or value['output_sha256']!=(output_hash or digest(PATCHED)):
         raise FixtureRefusal('journal recipe mismatch')
     if len({value[key]['file_id'] for key in ('original','backup','stage')})!=3:
         raise FixtureRefusal('journal aliases file identities')
@@ -64,6 +64,8 @@ def parse_prepared(data,root_token,expected_token):
 
 class CaptureExperiment:
     can_apply=False
+    source_bytes=ORIGINAL
+    patch_bytes=PATCHED
     def __init__(self,fixture,expected_original,process_guard,hook=None):
         if not isinstance(fixture,NativeFixture) or not NAMES<=fixture.names:
             raise FixtureRefusal('fresh synthetic fixture required')
@@ -90,15 +92,15 @@ class CaptureExperiment:
         h=stack.enter_context(self.f.api.open_handle(self.f.path(name),READ|WRITE|DELETE,0,CREATE_NEW))
         h.write_new(data);return h
     def rollback_held(self,original,patched,backup,evidence):
-        self.guard();self.verify(original,evidence['original'],ORIGINAL)
-        self.verify(backup,evidence['backup'],ORIGINAL)
-        if patched is not None: self.verify(patched,evidence['stage'],PATCHED)
+        self.guard();self.verify(original,evidence['original'],self.source_bytes)
+        self.verify(backup,evidence['backup'],self.source_bytes)
+        if patched is not None: self.verify(patched,evidence['stage'],self.patch_bytes)
         self.event('rollback-intent')
         if patched is not None:
             # Preserve the known patched inode, never delete/overwrite another file.
             patched.rename(self.f.path('revoked.bin'))
             self.hook('restore-gap')
-        self.guard();self.verify(original,evidence['original'],ORIGINAL)
+        self.guard();self.verify(original,evidence['original'],self.source_bytes)
         original.rename(self.f.path('target.bin'))
         self.hook('restored')
         self.event('rolled-back')
@@ -108,32 +110,32 @@ class CaptureExperiment:
         self.guard(); captured=False; promoted=False
         with ExitStack() as stack:
             original=stack.enter_context(self.f.open('target.bin',access=READ|DELETE))
-            self.verify(original,self.expected,ORIGINAL)
+            self.verify(original,self.expected,self.source_bytes)
             self.hook('original-held')
             owner=self.create_held(stack,'txn-owner.json',encode({'schema':1,'original':self.expected}))
-            backup=self.create_held(stack,'backup.bin',ORIGINAL)
+            backup=self.create_held(stack,'backup.bin',self.source_bytes)
             self.hook('backup-created')
-            staged=self.create_held(stack,'stage.bin',PATCHED)
+            staged=self.create_held(stack,'stage.bin',self.patch_bytes)
             evidence={'schema':1,'root':token(self.f.root_handle.identity()),'original':self.expected,
                 'backup':token(backup.identity()),'stage':token(staged.identity()),
-                'source_sha256':digest(ORIGINAL),'output_sha256':digest(PATCHED)}
+                'source_sha256':digest(self.source_bytes),'output_sha256':digest(self.patch_bytes)}
             self.f.create('txn-prepared.json',encode(evidence))
             try:
                 self.hook('prepared')
-                self.guard();self.verify(original,evidence['original'],ORIGINAL)
-                self.verify(backup,evidence['backup'],ORIGINAL);self.verify(staged,evidence['stage'],PATCHED)
+                self.guard();self.verify(original,evidence['original'],self.source_bytes)
+                self.verify(backup,evidence['backup'],self.source_bytes);self.verify(staged,evidence['stage'],self.patch_bytes)
                 self.event('capture-intent')
                 self.hook('capture-intent')
                 original.rename(self.f.path('captured.bin'));captured=True
                 self.hook('captured')
-                self.guard();self.verify(original,evidence['original'],ORIGINAL)
-                self.verify(staged,evidence['stage'],PATCHED)
+                self.guard();self.verify(original,evidence['original'],self.source_bytes)
+                self.verify(staged,evidence['stage'],self.patch_bytes)
                 self.event('promote-intent')
                 self.hook('promote-intent')
                 staged.rename(self.f.path('target.bin'));promoted=True
                 self.hook('promoted')
-                self.verify(staged,evidence['stage'],PATCHED)
-                self.verify(backup,evidence['backup'],ORIGINAL)
+                self.verify(staged,evidence['stage'],self.patch_bytes)
+                self.verify(backup,evidence['backup'],self.source_bytes)
                 self.event('committed')
                 self.hook('committed')
                 return {'status':'committed_fixture','atomic_visibility':False,'can_apply':False,
@@ -158,18 +160,18 @@ class CaptureExperiment:
         a production restart loader or trust in arbitrary on-disk instructions.
         """
         self.guard()
-        evidence=parse_prepared(self.f.read('txn-prepared.json'),token(self.f.root_handle.identity()),self.expected)
+        evidence=parse_prepared(self.f.read('txn-prepared.json'),token(self.f.root_handle.identity()),self.expected,digest(self.source_bytes),digest(self.patch_bytes))
         with ExitStack() as stack:
             backup=stack.enter_context(self.f.open('backup.bin'))
-            self.verify(backup,evidence['backup'],ORIGINAL)
+            self.verify(backup,evidence['backup'],self.source_bytes)
             target=self._optional(stack,'target.bin')
             captured=self._optional(stack,'captured.bin')
             if target is not None and token(target.identity())==evidence['original']:
-                self.verify(target,evidence['original'],ORIGINAL)
+                self.verify(target,evidence['original'],self.source_bytes)
                 if captured is not None: raise FixtureRefusal('unexpected captured original')
                 return {'status':'already_original'}
             if captured is None: raise FixtureRefusal('captured original missing')
-            self.verify(captured,evidence['original'],ORIGINAL)
+            self.verify(captured,evidence['original'],self.source_bytes)
             if target is not None:
-                self.verify(target,evidence['stage'],PATCHED)
+                self.verify(target,evidence['stage'],self.patch_bytes)
             return self.rollback_held(captured,target,backup,evidence)
