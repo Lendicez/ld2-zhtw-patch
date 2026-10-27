@@ -53,3 +53,7 @@ The m033 [capture experiment](docs/WINDOWS-CAPTURE-EXPERIMENT.md) demonstrates
 actual synthetic commit/rollback without unlocking the original inode or
 overwriting a competing name. It has a temporary missing-name interval and remains
 fixture-only; it does not enable installation.
+
+The m034 [worker recovery tests](docs/WINDOWS-WORKER-RECOVERY.md) terminate only
+newly owned, identity-verified fixture workers and recover in fresh interpreters.
+Production installation remains disabled; see the [remaining acceptance steps](docs/NEXT-ACCEPTANCE.md).

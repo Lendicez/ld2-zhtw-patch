@@ -97,17 +97,22 @@ class CaptureExperiment:
         if patched is not None:
             # Preserve the known patched inode, never delete/overwrite another file.
             patched.rename(self.f.path('revoked.bin'))
+            self.hook('restore-gap')
         self.guard();self.verify(original,evidence['original'],ORIGINAL)
         original.rename(self.f.path('target.bin'))
+        self.hook('restored')
         self.event('rolled-back')
+        self.hook('restore-committed')
         return {'status':'rolled_back','source_identity':token(original.identity())}
     def install(self):
         self.guard(); captured=False; promoted=False
         with ExitStack() as stack:
             original=stack.enter_context(self.f.open('target.bin',access=READ|DELETE))
             self.verify(original,self.expected,ORIGINAL)
+            self.hook('original-held')
             owner=self.create_held(stack,'txn-owner.json',encode({'schema':1,'original':self.expected}))
             backup=self.create_held(stack,'backup.bin',ORIGINAL)
+            self.hook('backup-created')
             staged=self.create_held(stack,'stage.bin',PATCHED)
             evidence={'schema':1,'root':token(self.f.root_handle.identity()),'original':self.expected,
                 'backup':token(backup.identity()),'stage':token(staged.identity()),
@@ -118,16 +123,19 @@ class CaptureExperiment:
                 self.guard();self.verify(original,evidence['original'],ORIGINAL)
                 self.verify(backup,evidence['backup'],ORIGINAL);self.verify(staged,evidence['stage'],PATCHED)
                 self.event('capture-intent')
+                self.hook('capture-intent')
                 original.rename(self.f.path('captured.bin'));captured=True
                 self.hook('captured')
                 self.guard();self.verify(original,evidence['original'],ORIGINAL)
                 self.verify(staged,evidence['stage'],PATCHED)
                 self.event('promote-intent')
+                self.hook('promote-intent')
                 staged.rename(self.f.path('target.bin'));promoted=True
                 self.hook('promoted')
                 self.verify(staged,evidence['stage'],PATCHED)
                 self.verify(backup,evidence['backup'],ORIGINAL)
                 self.event('committed')
+                self.hook('committed')
                 return {'status':'committed_fixture','atomic_visibility':False,'can_apply':False,
                         'original':evidence['original'],'patched':evidence['stage']}
             except InjectedFault:

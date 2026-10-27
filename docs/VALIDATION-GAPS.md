@@ -96,3 +96,21 @@ See `WINDOWS-CAPTURE-EXPERIMENT.md`.
 Full default suite: 199 tests, 163 pass, 36 explicit skips (33 opt-in native
 cases, two licensed-input integrations and the existing symlink skip). The
 separate 24-method capture run has no skips; its four schema tests overlap.
+
+## m034 actual process-termination evidence
+
+The explicit worker suite passes 19 methods (16 native cases, 3 pure identity/schema
+cases). Fourteen identity-verified TerminateProcess calls against newly owned
+workers cover 11 commit/restore checkpoints and 3 refusal cases. All 43 workers
+recorded exits. Fresh workers read persisted journals, and repeated restoration
+is idempotent. Original IDs/basic attributes/creation/write times and sentinels
+remain unchanged. The control process still retains an independent registration
+digest; controller-loss/reboot trust and power-loss durability are not proved.
+The m033 native regression suite also passes all 24 methods. Production apply
+remains disabled; fixed invented bytes/64 KiB are not yet a real-copy installer.
+See `WINDOWS-WORKER-RECOVERY.md` and `NEXT-ACCEPTANCE.md`.
+
+Full default suite: **218 tests, 166 pass, 52 explicit skips** (49 opt-in
+native cases, two licensed integrations and the existing symlink case). The
+separate worker/capture suites are 19/19 and 24/24; their 7 pure methods overlap
+the default suite. Skips are not counted as successful integrations.
