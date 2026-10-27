@@ -15,3 +15,7 @@
 
 最終集中驗收：先原版副本 save/load，再資源 Patch 安裝/退出/取消/儲存/重啟讀回，最後解除安裝與 hash 還原。
 每次只在已核准範圍操作；不中斷使用者日常桌面。新增版本可另訂短批次，不能沿用舊已耗額度假稱新批准。
+
+## m026 evidence and remaining gaps
+
+New tests cover injected Steam roots, modern/legacy VDF, multiple candidates, incomplete discovery, missing manifests, Unicode/space paths, path attacks, bounded reads, permission failures, changing files, unknown hashes/versions/process state, backup conflicts and idempotent previews. These are synthetic unit tests only. No actual Steam AppID or installation is verified. No live Windows registry/file-identity/reparse/process adapter, TOCTOU-safe transaction, real backup/rollback, installer UX, packaging or GUI/save/load acceptance is demonstrated. Historical licensed-input integration is explicitly skipped in this milestone. Windows native encoding checks are not Windows CI or game validation. The dormant native source is neither compiled nor executed.

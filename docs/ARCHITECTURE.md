@@ -20,3 +20,7 @@
 雲端只執行無資產單元測試、合成 fixture、lint/編譯/原生轉碼。不要把整個既有 laboratory 複製到雲端。
 Python 與未來原生實作必須共享 catalog/schema 和合成測試向量；跨實作輸出需在本機 licensed input 上比對。
 Linux CI 尚未實跑。Windows 本機 Python 測試不等於 Windows CI 或遊戲通過。
+
+## Implemented m026 read-only boundary
+
+`ld2patch.discovery` now consumes injected Steam root values and a read-only metadata/bytes port. `ld2patch.planner` consumes complete discovery plus explicit process evidence and the version allowlist. It returns preview/refusal data only, with `can_apply=false`. `tests/fake_steam.py` supplies invented in-memory files and identities. No production Windows adapter, transaction, UAC or installer entry point exists. See `DRY-RUN.md`; the earlier numbered list remains the larger roadmap.
