@@ -1,0 +1,10 @@
+{
+  "schema_version": 2,
+  "id": "m038-travel-party-quest-v1",
+  "engine": "resource_append_v1",
+  "version_id": "ld95-1.0.3.16-m038",
+  "catalog": "catalog.json",
+  "catalog_sha256": "a0f4476129c0bbd6b4366ef57b42682a28a88b80293c89b885310a14c0d63e64",
+  "text_locations": 295,
+  "font_locations": 24
+}

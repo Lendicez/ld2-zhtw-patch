@@ -1,0 +1,73 @@
+{
+  "milestone": "m038",
+  "base_commit": "c96d16a706c98855876c6ad6c028839cd22771ed",
+  "suites": {
+    "full-default": {
+      "total": 274,
+      "passed": 200,
+      "skipped": 74,
+      "failed": 0
+    },
+    "full-licensed": {
+      "total": 274,
+      "passed": 208,
+      "skipped": 66,
+      "failed": 0
+    }
+  },
+  "new_locations": 24,
+  "new_distinct_translations": 22,
+  "total_locations": 295,
+  "total_distinct_translations": 216,
+  "new_fonts": 4,
+  "total_fonts": 24,
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "source_unchanged": true,
+  "output_sha256": "8730f5731730afcf8a20e245958744d2b227dde4fa260d861eae296001ef65b2",
+  "output_bytes": 7106560,
+  "two_cli_builds_exe_and_metadata_identical": true,
+  "m020_and_m037_profile_files_unchanged": true,
+  "m020_and_m037_rebuilt_exact": true,
+  "non_resource_sections_unchanged": [
+    ".text",
+    ".rdata",
+    ".data"
+  ],
+  "original_prefix_verified_outside_allowlist": true,
+  "resources_changed_vs_m037": [
+    [
+      5,
+      154,
+      1041
+    ],
+    [
+      5,
+      170,
+      1041
+    ],
+    [
+      5,
+      172,
+      1041
+    ],
+    [
+      5,
+      292,
+      1041
+    ]
+  ],
+  "native_cp950_roundtrips": 24,
+  "layout_memory_dc_measurements": 63,
+  "missing_glyphs": 0,
+  "new_accelerator_conflicts": 0,
+  "new_rows_with_printf_parameters": 0,
+  "game_executed": false,
+  "gui_opened": false,
+  "new_dependencies": false,
+  "security_changed": false,
+  "production_can_apply": false,
+  "packaging_rebuilt": false,
+  "network_publication_performed": false,
+  "runtime_seen": false,
+  "coverage_percentage": null
+}
