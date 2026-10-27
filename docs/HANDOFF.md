@@ -218,3 +218,13 @@ m042 output SHA256: 9fea1172e92167d435a8ec26baf085ab45a2a56468690bf7bfec1f8ba29d
 builds match. No GUI/game, installation, security changes, new dependencies or
 remote writes. m040 geometry remains independent; production can_apply=false.
 The pending publication manifest is complete and local. Do not upload game assets.
+
+
+## m043 local source checkpoint
+
+Candidate source defaults to m042 (552 locations) and preserves all prior pinned profiles. The protected recovery anchor now binds the exact profile. General regression: 241 pass / 85 skip; licensed-input regression: 258 pass / 68 skip, each 326 total and zero failures. Native DPAPI profile tests and packaging remain unexecuted after a tool approval rejection before setup. No m043 EXE exists; do not use the older m036 artifact as current. See M043-CANDIDATE-PROFILES.md and M043-ACCEPTANCE.md. No remote writes; production can_apply=false.
+
+
+## m043 packaged candidate completion (supersedes source-only checkpoint)
+
+The local m043 onefile now passed 13 background CLI invocations, including exact m042 installation, independent-process DPAPI restore and idempotent restore. The default trial profile is m042 (552 locations); m020/m037/m038/m041 remain selectable. Protected recovery identifies the stored profile even when a different profile is selected at restart. Native store suite: 20/20 pass (6 native, 14 headless). PE manifest is asInvoker/uiAccess=false; unsigned. See M043-CANDIDATE-PROFILES.md, M043-ACCEPTANCE.md and packaging/m043-verification.json. GUI and game have not run; full-game copies have not been prepared. Production can_apply=false. No remote writes.

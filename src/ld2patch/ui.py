@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 
 
-def make_controller():
+def make_controller(profile='m020'):
     from .controller import Controller
     from .generator import elevated, resource_root
     from .patch_engine import build_to_paths, strict_json
@@ -11,13 +11,11 @@ def make_controller():
     if elevated():
         raise ValueError('請以一般權限啟動，勿使用系統管理員身分。')
     root = resource_root()
-    config = strict_json((root / 'versions.json').read_bytes())
+    from .profiles import load_bundle, preview_versions
+    catalog, versions, recipe = load_bundle(profile, root)
     def generate(source, output, metadata):
-        recipe = strict_json((root / 'm020-recipe.json').read_bytes())
-        if recipe.get('catalog') != 'ui-m020.zh-TW.json':
-            raise ValueError('Unrecognized bundled catalog')
-        return build_to_paths(source, output, metadata, (root / 'ui-m020.zh-TW.json').read_bytes(), config, recipe)
-    return Controller(config, WindowsReadOnlyFS(), query_registry, process_state, generate)
+        return build_to_paths(source, output, metadata, catalog, versions, recipe)
+    return Controller(preview_versions(profile, versions), WindowsReadOnlyFS(), query_registry, process_state, generate)
 
 
 def launch():

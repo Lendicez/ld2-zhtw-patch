@@ -6,6 +6,7 @@ from .patch_engine import strict_json
 from .trial_store import validate_policy
 from .trial_backend import TrialBackend
 from .trial_controller import TrialController
+from .profiles import PROFILE_IDS,DEFAULT_TRIAL_PROFILE
 
 
 def policy():
@@ -13,9 +14,9 @@ def policy():
     return validate_policy(strict_json((resource_root()/'trial-policy.json').read_bytes(),16384))
 
 
-def make_trial_controller():
+def make_trial_controller(profile=DEFAULT_TRIAL_PROFILE):
     from .ui import make_controller
-    return TrialController(make_controller(),TrialBackend(policy()))
+    return TrialController(make_controller(profile),TrialBackend(policy(),profile=profile))
 
 
 def main(argv):
@@ -24,10 +25,14 @@ def main(argv):
     p.add_argument('--source',type=Path)
     p.add_argument('--workspace',type=Path)
     p.add_argument('--confirm',action='store_true')
+    p.add_argument('--profile',choices=PROFILE_IDS,default=DEFAULT_TRIAL_PROFILE,
+                   help='Installation profile; restore identifies its profile from the protected anchor')
+    p.add_argument('--cancel',action='store_true',help='Cancel a prepared confirmation without writing')
     a=p.parse_args(argv)
     try:
         if elevated():raise ValueError('請以一般權限啟動。')
-        c=make_trial_controller()
+        if a.cancel and (a.confirm or a.operation!='preview'):p.error('--cancel requires preview and no --confirm')
+        c=make_trial_controller(a.profile)
         if a.operation in ('preview','install'):
             if not a.source or a.workspace:p.error('source required, workspace not accepted')
             if a.source.name!='Ld95.exe':raise ValueError('explicit Ld95.exe required')
@@ -35,7 +40,7 @@ def main(argv):
             if a.operation=='install':
                 if not a.confirm:raise ValueError('explicit --confirm required')
                 result=c.confirm()
-            else:result=c.view()
+            else:result=c.cancel() if a.cancel else c.view()
         else:
             if not a.workspace or a.source:p.error('workspace required, source not accepted')
             if a.operation=='inspect':

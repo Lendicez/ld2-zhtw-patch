@@ -8,7 +8,7 @@ import sys
 
 from .patch_engine import build_to_paths, strict_json
 
-VERSION = '0.3.0-m036'
+VERSION = '0.4.0-m043'
 
 
 def elevated():

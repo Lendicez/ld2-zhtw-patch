@@ -141,3 +141,8 @@
 !/tools/run_windows_capture.py
 !/tools/run_windows_crash.py
 !/tools/run_windows_fixture.py
+!/src/ld2patch/profiles.py
+!/tests/test_candidate_profiles.py
+!/docs/M043-ACCEPTANCE.md
+!/docs/M043-CANDIDATE-PROFILES.md
+!/packaging/m043-verification.json

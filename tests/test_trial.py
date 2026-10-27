@@ -163,6 +163,21 @@ class NativeRecoveryStore(unittest.TestCase):
         with TrialSpace(self.policy,self.leaf) as s,self.assertRaises((NativeFailure,FixtureRefusal,ValueError)):
             s.load()
 
+    def test_profile_version_is_protected_and_reopened(self):
+        from ld2patch.profiles import copy_recipe
+        version=copy_recipe('m042').version
+        with TrialSpace(self.policy,self.leaf,create=True) as s:
+            body=s.save('b'*64,{'volume':1,'file_id':'c'*32},version)
+        with TrialSpace(self.policy,self.leaf) as s:
+            self.assertEqual(s.load(),body)
+            self.assertEqual(s.load()['version'],version)
+
+    def test_unknown_profile_rejected_before_anchor_write(self):
+        with TrialSpace(self.policy,self.leaf,create=True) as s:
+            with self.assertRaises(ValueError):
+                s.save('b'*64,{'volume':1,'file_id':'c'*32},'unknown')
+            self.assertEqual(list(s.vault.iterdir()),[])
+
     def test_missing_anchor_no_reconstruction(self):
         with TrialSpace(self.policy,self.leaf,create=True) as s:
             with self.assertRaises(NativeFailure):s.load()
