@@ -50,3 +50,15 @@ Full suite: 135 tests, 132 pass, 3 explicit skips; packaged licensed integration
 is recorded separately. Unsigned acceptance elsewhere, native handle-based
 concurrency safety, GUI/save/load, privileged installation/rollback, licensing
 and release signing remain unverified. Production apply is still disabled.
+
+## m031 preview and Windows port gaps
+
+Public Steam AppID 335420 is evidenced by the official store, not local registry
+or appmanifest reads. Twenty-three new injected-port/headless tests pass; full
+suite 158/155/3. Native registry views, Tool Help structures/calls, process image
+queries and real installation filesystem evidence remain untested. Tk code/data
+were packaged, but no window, visual layout, focus, DPI or file dialog was tested.
+Onedir/onefile CLI help/version and synthetic refusals passed without invoking
+native detection. No licensed original was read in this milestone. The stat-based
+read adapter cannot be used as a TOCTOU-safe writer. User-writable fixture backend
+work is the next gate; privileged helper/trust/UAC support remains blocked.

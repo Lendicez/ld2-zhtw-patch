@@ -53,3 +53,16 @@ checks: 135 tests, 132 pass/3 skip, plus a separate successful packaged licensed
 integration. Next steps must keep privileged installation separate from onefile
 extraction, preserve production apply=false and address remaining runtime text,
 GUI/save/load and real Windows transaction gates. No merge/release/Actions.
+
+## m031 continuation
+
+Official Steam product AppID 335420 is verified; local installation is not. Lazy
+Windows read-only registry/files/process ports, a headless preview controller and
+a Traditional Chinese Tk entry are implemented. Imports/window construction do
+not trigger detection. Native host detection and GUI were not run; only injected
+ports/headless tests and packaged CLI synthetic checks were used. Full suite:
+158 tests, 155 pass/3 skip. Existing Tk and packaging venv were reused. See
+`DESKTOP.md`, `steam-product.json` and `m031-verification.json`. The next bounded
+step is actual Windows handle/replace probes on owned synthetic fixtures as
+specified in `WINDOWS-BACKEND-PLAN.md`; keep production apply disabled and protected
+path/UAC support blocked. No original input, game, new dependencies or Actions.

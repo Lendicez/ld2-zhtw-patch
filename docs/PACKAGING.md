@@ -97,3 +97,12 @@ not all game text. GUI/save/load, installer transactions, Windows production
 rollback/UAC, signature and redistribution/license review remain separate gates.
 The generator EXE itself is not claimed bit-reproducible across builds; the m020
 game output is constrained to its exact expected hash and bytes.
+
+## m031 incremental package
+
+The new source supports `--gui` or no-argument Tk launch, but those paths were
+not executed in m031. `--help`/`--version` stay console-only. Four reviewed JSON
+files now include public Steam product identity. The existing interpreter's Tk
+runtime is bundled without new dependencies. Use `--build-tag m031` to preserve
+m030 artifacts. See `DESKTOP.md` and `m031-verification.json` for actual CLI-only
+checks and the shared cumulative 1 GB budget. This is still not an installer.
