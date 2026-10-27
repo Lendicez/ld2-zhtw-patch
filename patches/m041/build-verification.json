@@ -1,0 +1,222 @@
+{
+  "milestone": "m041",
+  "base_profile": "m038",
+  "remote_ancestor": "f606b290dd93bffb8b1cdaf3beb7ead413e5faa9",
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "output_sha256": "bedee9b18527f1f3a3a264ac175fa968ce24bf41beb6070a82988eeaf6cd5177",
+  "output_bytes": 7114752,
+  "two_builds_exe_and_metadata_byte_identical": true,
+  "reviewed_positions": 171,
+  "new_positions": 123,
+  "new_exact_distinct_output_strings": 77,
+  "new_distinct_without_trailing_padding": 71,
+  "identity_preserved": 39,
+  "deferred": 9,
+  "total_translated_positions": 418,
+  "total_exact_distinct_translations": 284,
+  "resource_dialogs_changed": 27,
+  "shared_page_class_routes": 28,
+  "source_payload_changes_vs_m038": [
+    [
+      5,
+      137,
+      1041
+    ],
+    [
+      5,
+      138,
+      1041
+    ],
+    [
+      5,
+      139,
+      1041
+    ],
+    [
+      5,
+      140,
+      1041
+    ],
+    [
+      5,
+      141,
+      1041
+    ],
+    [
+      5,
+      142,
+      1041
+    ],
+    [
+      5,
+      143,
+      1041
+    ],
+    [
+      5,
+      144,
+      1041
+    ],
+    [
+      5,
+      145,
+      1041
+    ],
+    [
+      5,
+      146,
+      1041
+    ],
+    [
+      5,
+      147,
+      1041
+    ],
+    [
+      5,
+      148,
+      1041
+    ],
+    [
+      5,
+      149,
+      1041
+    ],
+    [
+      5,
+      155,
+      1041
+    ],
+    [
+      5,
+      156,
+      1041
+    ],
+    [
+      5,
+      157,
+      1041
+    ],
+    [
+      5,
+      158,
+      1041
+    ],
+    [
+      5,
+      159,
+      1041
+    ],
+    [
+      5,
+      160,
+      1041
+    ],
+    [
+      5,
+      161,
+      1041
+    ],
+    [
+      5,
+      162,
+      1041
+    ],
+    [
+      5,
+      163,
+      1041
+    ],
+    [
+      5,
+      164,
+      1041
+    ],
+    [
+      5,
+      165,
+      1041
+    ],
+    [
+      5,
+      190,
+      1041
+    ],
+    [
+      5,
+      461,
+      1041
+    ],
+    [
+      5,
+      463,
+      1041
+    ]
+  ],
+  "native_cp950_roundtrips": 123,
+  "negative_translation_contract_cases": 984,
+  "new_unit_tests": 8,
+  "suites": {
+    "full-default": {
+      "total": 304,
+      "passed": 225,
+      "skipped": 79,
+      "failed": 0
+    },
+    "full-licensed": {
+      "total": 304,
+      "passed": 238,
+      "skipped": 66,
+      "failed": 0
+    }
+  },
+  "offscreen": {
+    "controls": 135,
+    "simulated_dpis": [
+      96,
+      120,
+      144,
+      192
+    ],
+    "original_point_sizes": [
+      12,
+      14
+    ],
+    "measurements": 540,
+    "fit_failures": 0,
+    "missing_glyphs": 0,
+    "actual_game_font_or_tab_width_verified": false
+  },
+  "code_data_sections_unchanged": [
+    {
+      "name": ".text",
+      "bytes": 1196032,
+      "sha256": "0c64261748ccf8c836211fa5454f1f6892ada0f5d71b98422b2e3e900b234c3d",
+      "unchanged": true
+    },
+    {
+      "name": ".rdata",
+      "bytes": 458752,
+      "sha256": "a7047964cd12523472814c115a557a95525ffb618aa76d7bd205a6effe930690",
+      "unchanged": true
+    },
+    {
+      "name": ".data",
+      "bytes": 5226496,
+      "sha256": "9c7723e804a85f5b6d829a6d633439a461e945774e83d47f3d2879e4320e79db",
+      "unchanged": true
+    }
+  ],
+  "original_prefix_unchanged_outside_resource_headers": true,
+  "original_manifest_files_unchanged": 1029,
+  "m020_m037_m038_profiles_preserved": true,
+  "m040_candidate_preserved": true,
+  "m040_geometry_included": false,
+  "production_can_apply": false,
+  "coverage_percentage": null,
+  "game_executed": false,
+  "gui_opened": false,
+  "runtime_tested": false,
+  "installer_packaged": false,
+  "remote_writes": 0
+}

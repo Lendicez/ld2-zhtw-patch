@@ -172,3 +172,33 @@ exceeds the estimated existing label width. Do not globally switch A/W APIs or
 reuse an unverified game buffer. Profiles/output and packaging remain unchanged.
 Full tests: 290, with 215 pass/75 skip general; 224 pass/66 skip licensed.
 This local snapshot depends on m038; it is not a separate installable patch.
+
+
+## m040 bounded deadline layout (local, not published)
+
+Read M040-DEADLINE-LAYOUT.md. One dialog 292 geometry candidate widens the deadline
+to 115 DLU and moves the adjacent row/buttons; no text, font, code, ABI, hook or
+installer profile changes. Hash-locked rebuild is reproducible. Offscreen GDI
+passes 44 numeric and 40 existing-label measurements; actual game remains unseen.
+Full suites: 296 total, 220 pass / 76 skip general, 230 pass / 66 skip licensed.
+The single numeric setter callsite is known, but live Unicode/control-site and
+native lifetime/ABI are not proven. Stop integration until a bounded observation.
+One complete playable candidate requires 193818896 bytes plus saves/headroom.
+Folder separation is not security isolation for the elevated original game.
+The inventory has 381 untranslated UI context candidates, not a coverage rate.
+All earlier profiles and production can_apply=false remain unchanged.
+
+
+## m041 complete facility-category disposition (local only)
+
+Read M041-FACILITY-UI.md and TRANSLATION-STATUS.md. Profile m041 extends m038,
+not the separate m040 geometry candidate. Of 171 facility candidates, 123 changed
+(77 exact strings / 71 without trailing padding), 39 identity-preserved, 9 deferred.
+27 resource pages are bound to 28 class/factory/constructor chains; DarkInfo uses
+142, not the unproven 462. Resource 464 also remains untouched.
+418 translated locations total; 219 ordinary UI context candidates remain.
+540 offscreen measurements pass; page-tab width and dynamic overwrites remain
+unobserved. Tests: 304 total, 225 pass / 79 skip general, 238 pass / 66 skip licensed.
+Source/output hashes are pinned, two builds match, all original 1029 files match.
+No game, GUI, installation, security changes, new dependencies or remote writes.
+Combined m040+m041 publication manifest is local; no original assets are included.
