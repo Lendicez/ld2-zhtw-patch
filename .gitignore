@@ -126,3 +126,12 @@
 !/research/m061/compile-m061b/compile-command.json
 !/research/m061/compile-m061b/once-result.json
 !/research/m061/compile-m061b/stdout.txt
+!/research/m062/DESIGN-M062.zh-TW.md
+!/research/m062/catalog_v3.py
+!/research/m062/male_join_static.py
+!/research/m062/male_join_static.summary.json
+!/research/m062/sidecar_plan.py
+!/research/m062/test_m062.py
+!/research/m062/native-v3/catalog_core_v3.h
+!/research/m062/native-v3/catalog_v3_host_test.c
+!/tests/test_m062_research.py
