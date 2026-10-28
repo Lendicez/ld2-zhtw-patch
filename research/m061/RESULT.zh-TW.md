@@ -105,11 +105,26 @@ Stage B 第一次失敗（C1083 `cstdio`）：可攜式 MSVC 無 vcvars，腳本
 - 顯示：漢字已經改善，但假名仍然是 `?`。catalog 命中的效果還沒觀察到。
 - 未完成的項目：G 收尾、module_probe（錯誤 5）、商店・強化，以及 catalog 命中的實機畫面。
 
+## m061b 設計與靜態測試（Linux，2026-10-29 04:00 台北）：完成，尚未上 Win11
+
+- 設計：helper v2（`native-u/list_insert_u.cpp`，入口 `@LD2_ListInsertU@24`）加上 `.ld2c` 政策字 `LD2_ListMode`。
+  - 預設模式 2：catalog 未命中且目標是清單框時，若該控制項的程序等於類別程序（沒被子類化），就用 `SetWindowLongW` 重新設定同一個程序，把它切成 Unicode 視窗，再送 W。
+  - 切不成功就和 run1 相同。
+  - 模式 0：只在全命中時走 W，未命中整串回 m045 路徑（保底）。
+  - 詳見 `M061B-DESIGN.zh-TW.md`。
+- 新匯入：USER32 `IsWindowUnicode`、`GetWindowLongW`、`GetClassLongW`、`SetWindowLongW`。`GetDlgItem` 沿用 IAT 0x525498。
+- 測試：`test_m061b.py` 12／12 通過（實驗室含授權 EXE 部分）；既有 `test_m061.py` 與 `test_merge_lab.py` 也照常通過。
+  - i386 mock：22 個案例、1116 個斷言，0 失敗。
+  - clang 預演物件：profile u 稽核通過（**預演物件不可鎖定或合併**）。
+  - 記憶體內合併與啟用：8 個清單點都指向 v2 入口，未寫檔。
+- 需要新的 Win11 編譯：`HANDOFF-COMPILE-M061B`（只編譯＋mock，不開遊戲）。
+
 ## 下一步
 
-1. 使用者補跑 `-Finalize`，確認原安裝沒有變動。不需要重開遊戲。
-2. Linux（m061b）：讓清單能保留日文假名。先只做設計和靜態稽核：在 helper 送出前把該清單控制項改成 Unicode 視窗（`SetWindowLongW(GWL_WNDPROC)` 換成同一個系統 proc），或改用其他方式。要評估三點：會不會影響 MFC 和遊戲讀回（`LB_GETTEXT`），需要新增哪些匯入，以及失敗時能不能退回原路徑。
-3. 下一次 Win11 觀察時去武器店或防具店，或找賣藥水、油燈的店，確認 catalog 命中時清單和說明視窗名稱是繁中。
-4. 擴充 catalog（道具店的消耗品和冒險者名）屬於翻譯資料工作，另案進行。
+1. 使用者補跑 `-Finalize`，確認原安裝沒有變動。不需要重開遊戲；不擋 Linux 工作。
+2. 使用者執行 `HANDOFF-COMPILE-M061B`，交回 `list_insert_u.obj`、`.asm`、`compile-command.json`、`once-result.json` 與 `stdout.txt`。
+3. Linux：`audit_list_obj.py --profile u` 稽核並鎖定 hash，再合成模式 2（另備模式 0）的啟用版 delta 與 loader handoff。
+4. 下一次 Win11 觀察：道具店或委託清單的假名是否正常，並去武器店或防具店確認 catalog 命中時是繁中。
+5. 擴充 catalog（道具店的消耗品和冒險者名）屬於翻譯資料工作，另案進行。
 
 `production_can_apply=false`、`release_approved=false` 不變。
