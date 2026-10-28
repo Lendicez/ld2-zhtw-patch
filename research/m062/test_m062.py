@@ -37,19 +37,20 @@ def synthetic_rows(n_items=300, n_any=200, n_frag=150, seed=62):
 def cases(look, rows, rng, extra=400):
     probes = set()
     for kind, ident, ansi, text in rows[::3]:
-        probes.add((ansi, ident if kind == c3.FULL_ID else c3.ANY_ID, 1))
+        probes.add((ansi, ident if kind == c3.FULL_ID else c3.ANY_ID, 3))
         probes.add((ansi, c3.ANY_ID, 0))
+        probes.add((ansi, c3.ANY_ID, 1))
     pre = [r[2] for r in rows if r[0] == c3.PREFIX]; suf = [r[2] for r in rows if r[0] == c3.SUFFIX]
     for _ in range(extra):
-        probes.add((rng.choice(pre) + rng.choice(suf), c3.ANY_ID, 1))
-        probes.add((kname(rng, 1, 6), rng.choice([c3.ANY_ID, 3, 7]), 1))
-    probes.add((b'\x83', c3.ANY_ID, 1))  # truncated lead byte
+        probes.add((rng.choice(pre) + rng.choice(suf), c3.ANY_ID, rng.choice([2, 3])))
+        probes.add((kname(rng, 1, 6), rng.choice([c3.ANY_ID, 3, 7]), rng.randint(0, 3)))
+    probes.add((b'\x83', c3.ANY_ID, 3))  # truncated lead byte
     out = []
-    for ansi, ident, join in sorted(probes):
+    for ansi, ident, flags in sorted(probes):
         if not 0 < len(ansi) <= 64:
             continue
-        got = look.find(ansi, ident, bool(join))
-        out.append('%s %d %d %s' % (ansi.hex(), ident, join, got.encode('utf-16le').hex() if got else '-'))
+        got = look.find(ansi, ident, bool(flags & 2), bool(flags & 1))
+        out.append('%s %d %d %s' % (ansi.hex(), ident, flags, got.encode('utf-16le').hex() if got else '-'))
     return out
 
 
@@ -104,6 +105,8 @@ class Synthetic(unittest.TestCase):
         self.assertIsNone(L.find(b'\x83D\x83E\x83F'))       # two splits disagree -> original path
         self.assertIsNone(L.find(b'\x83G'))                 # fragments never match whole strings
         self.assertIsNone(L.find(b'\x83G\x83'))             # truncated lead byte
+        self.assertIsNone(L.find(b'\x83B\x83C', allow_any=False, allow_join=False))  # NamePair: items only
+        self.assertEqual(L.find(b'\x83B\x83C', allow_any=False), '前後')  # no any-row: join may run
 
     def test_c_core_agrees_with_python(self):
         gcc = shutil.which('gcc') or shutil.which('cc')

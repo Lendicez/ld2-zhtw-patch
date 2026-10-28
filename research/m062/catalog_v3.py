@@ -226,12 +226,12 @@ class Lookup:
         texts = {t for _, t in hits}
         return texts.pop() if len(texts) == 1 else None
 
-    def exact(self, ansi, ident=ANY_ID):
+    def exact(self, ansi, ident=ANY_ID, allow_any=True):
         every = self.by.get((FULL_ID, ansi), [])
         hits = [h for h in every if ident == ANY_ID or h[0] == ident]
         if hits:
             return self._unique(hits)
-        if every:
+        if every or not allow_any:
             return None  # item key exists under another stored_id: keep original
         hits = self.by.get((FULL_ANY, ansi), [])
         return self._unique(hits) if hits else None
@@ -248,10 +248,11 @@ class Lookup:
                 found.add(p[0][1] + q[0][1])
         return found.pop() if len(found) == 1 else None
 
-    def find(self, ansi, ident=ANY_ID, allow_join=True):
-        hit = self.exact(ansi, ident)
+    def find(self, ansi, ident=ANY_ID, allow_join=True, allow_any=True):
+        """allow_any/allow_join mirror LD2C3_ALLOW_ANY / LD2C3_ALLOW_JOIN."""
+        hit = self.exact(ansi, ident, allow_any)
         if hit is not None:
             return hit
-        if (FULL_ID, ansi) in self.by or (FULL_ANY, ansi) in self.by:
+        if (FULL_ID, ansi) in self.by or (allow_any and (FULL_ANY, ansi) in self.by):
             return None  # exact key exists but ambiguous: never fall to a join
         return self.join(ansi) if allow_join else None
