@@ -40,6 +40,8 @@ def launch():
                 '翻譯位置：'+str(active['text_locations'])+'；字型位置：'+str(active['font_locations']),
                 '預期輸出 SHA-256：'+active['expected_output_sha256'],
                 'm039 動態文字與 m040 版面候選均未啟用。']
+        if active['id']=='m045':
+            lines+=['m045 僅初始 F1 提示經畫面確認、手動檔案選單依使用者回報通過；完整遊戲及存讀檔尚未驗收。']
         if v['preview']:
             p=v['preview'];lines+=['來源：'+p['install_dir'],'版本：'+str(p['file_version']),
                                   '來源 SHA-256：'+p['source_sha256']]
@@ -53,7 +55,7 @@ def launch():
         if v['issue']:lines+=['',issues.get(v['issue'],'檢查結果：'+v['issue'])]
         if v['stopped']:lines+=['存取遭拒，本次操作已停止，不會改路徑或權限重試。']
         lines+=['','限制：兩次改名不是單一步驟的原子替換，未驗證斷電安全。',
-                '介面與遊戲內畫面尚待驗收；此工具不會自動啟動遊戲。']
+                '安裝工具 GUI 尚未目視驗收；遊戲僅具上述有限證據，工具不會自動啟動遊戲。']
         details.configure(state='normal');details.delete('1.0','end')
         details.insert('end','\n'.join(lines));details.configure(state='disabled')
         usable=not v['busy'] and not v['stopped'] and not running['value']

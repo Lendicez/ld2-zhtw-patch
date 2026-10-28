@@ -69,9 +69,15 @@ class StatusPromptProfileTests(unittest.TestCase):
         for field in ('runtime_seen', 'game_executed', 'production_can_apply', 'm039_formatter_enabled', 'm040_layout_included', 'packaged_tool_updated'):
             self.assertFalse(self.review[field])
         self.assertEqual(self.review['trial_default_profile'], 'm042')
-        from ld2patch.profiles import DEFAULT_TRIAL_PROFILE, PROFILE_IDS
-        self.assertEqual(DEFAULT_TRIAL_PROFILE, 'm042')
-        self.assertNotIn('m045', PROFILE_IDS)
+        # The immutable m045 review describes its original offline-only delivery.
+        # m047 now bundles that exact profile, without widening its runtime claim.
+        from ld2patch.profiles import DEFAULT_TRIAL_PROFILE, PROFILE_IDS, profile_info
+        self.assertEqual(DEFAULT_TRIAL_PROFILE, 'm045')
+        self.assertIn('m045', PROFILE_IDS)
+        current=profile_info('m045')
+        self.assertEqual(current['expected_output_sha256'], expected)
+        self.assertFalse(current['production_can_apply'])
+        self.assertFalse(current['runtime_tested'])
         self.assertEqual(len(self.review['offscreen_measurements']), 8)
         self.assertTrue(all(not x['missing_glyphs'] for x in self.review['offscreen_measurements']))
 

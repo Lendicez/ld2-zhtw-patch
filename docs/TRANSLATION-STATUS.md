@@ -31,3 +31,8 @@ RES DAT／BMH／TIL 不能直接等同外部劇本；圖片字仍暫不處理。
 ## m045 local update
 
 Adds 2 distinct standard status/help translations to m042: 554 translated resource positions in total. Both target RT_STRING block 3585; LD95 and 13 empty slots remain exact. This is a bounded correction found through m044 observation, not a claim of complete static UI or whole-game coverage. Story/data/HF parsing and dynamic text remain separate. The two candidates have not been seen in the game; the existing packaged tool still defaults to m042.
+
+
+## m047 candidate integration (no new translations)
+
+554 text locations / 379 distinct translations remain pinned to m045. The candidate now defaults to that profile; old profiles are still selectable. Runtime evidence covers the initial F1 prompt by direct observation and the File menu by user report. These are not whole-game coverage or save/load acceptance. No new text source or original-language anchor was added.

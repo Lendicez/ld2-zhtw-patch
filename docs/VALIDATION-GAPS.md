@@ -188,3 +188,8 @@ The earlier tool-preflight blocker and local index mismatch are resolved. The pi
 ## m045 status prompt scope
 
 Native Windows ACP950 reproduction supports conversion loss for the unchanged idle prompt, not a completed game API trace. Neither candidate has runtime acceptance. Intrinsic offscreen MingLiU metrics do not establish the actual status font/control width. CUA clicks and Alt+F had no visible effect in m044; no measured helper/game integrity or session evidence establishes UIPI. Do not retry GUI, elevate automation or alter security to resolve this by assumption. m045 is build-only; production apply stays disabled and the m043 trial default remains m042.
+
+
+## m047 boundary
+
+The m045 profile is now exercised inside the candidate onefile through the same bounded EXE-copy install/restore path. Tests do not enable production can_apply or prove power-loss safety, arbitrary-directory installation, GUI layout, full-game runtime/save compatibility, or portability of a locally bound recovery root to another host. m046 verified one F1 prompt visually and a manual menu by user report only; automatic input failure is still unexplained. No m046 file or process was controlled in m047. Old recipe/catalog/version hashes and m039/m040 exclusions are unchanged.

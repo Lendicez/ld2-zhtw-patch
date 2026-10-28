@@ -21,12 +21,12 @@ from ld2patch.planner import _versions
 
 
 class CandidateProfiles(unittest.TestCase):
-    def test_five_profiles_exact_counts_and_unique_versions(self):
-        self.assertEqual(DEFAULT_TRIAL_PROFILE,'m042')
+    def test_six_profiles_exact_counts_and_unique_versions(self):
+        self.assertEqual(DEFAULT_TRIAL_PROFILE,'m045')
         self.assertEqual([profile_info(p)['text_locations'] for p in PROFILE_IDS],
-                         [239,271,295,418,552])
+                         [239,271,295,418,552,554])
         self.assertEqual(copy_recipe('m020'),REVIEWED)
-        self.assertEqual(len({copy_recipe(p).version for p in PROFILE_IDS}),5)
+        self.assertEqual(len({copy_recipe(p).version for p in PROFILE_IDS}),6)
         for p in PROFILE_IDS:
             info=profile_info(p)
             self.assertFalse(info['production_can_apply'])
@@ -34,6 +34,16 @@ class CandidateProfiles(unittest.TestCase):
             self.assertFalse(info['deadline_layout_enabled'])
             self.assertEqual(profile_for_version(info['version_id']),p)
             copy_recipe(p).validate()
+
+    def test_m045_limited_observation_does_not_enable_full_runtime_or_install(self):
+        info=profile_info('m045')
+        self.assertFalse(info['runtime_tested'])
+        self.assertFalse(info['production_can_apply'])
+        self.assertEqual(info['runtime_evidence'],{'scope':'partial',
+            'idle_f1_prompt':'direct_visual_pass','manual_file_menu':'user_reported_pass',
+            'full_game':False,'save_load':False})
+        self.assertEqual(copy_recipe('m042').output_size,copy_recipe('m045').output_size)
+        self.assertNotEqual(copy_recipe('m042').output_hash,copy_recipe('m045').output_hash)
 
     def test_unknown_profile_and_version_shapes_are_refused(self):
         for p in (None,[],{},True,'../m042','m039','m040','M042'):
@@ -110,8 +120,8 @@ class CandidateProfiles(unittest.TestCase):
         with patch('ld2patch.ui.make_controller') as base,patch('ld2patch.trial_entry.policy',return_value={}),\
              patch('ld2patch.trial_entry.TrialBackend') as backend:
             make_trial_controller()
-            base.assert_called_once_with('m042')
-            backend.assert_called_once_with({},profile='m042')
+            base.assert_called_once_with('m045')
+            backend.assert_called_once_with({},profile='m045')
             for p in PROFILE_IDS:
                 make_trial_controller(p)
                 self.assertEqual(base.call_args.args,(p,))
@@ -130,11 +140,14 @@ class CandidateProfiles(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('LD2_TEST_EXE'),'Licensed source unavailable; pinned builder integration skipped')
     def test_licensed_m042_build_uses_exact_copy_recipe(self):
         path=Path(os.environ['LD2_TEST_EXE']);source=path.read_bytes()
-        args=load_bundle('m042',ROOT/'patches')
-        result=build_reviewed(source,*args,copy_recipe('m042'))
-        copy_recipe('m042').check(result.output,True)
-        self.assertEqual(result.metadata['text_locations'],552)
-        with self.assertRaises(FixtureRefusal):build_reviewed(source,*args,copy_recipe('m020'))
+        for profile,count in [('m042',552),('m045',554)]:
+            args=load_bundle(profile,ROOT/'patches')
+            result=build_reviewed(source,*args,copy_recipe(profile))
+            copy_recipe(profile).check(result.output,True)
+            self.assertEqual(result.metadata['text_locations'],count)
+            # m042 and m045 have the same byte length but different pinned content.
+            other='m045' if profile=='m042' else 'm042'
+            with self.assertRaises(FixtureRefusal):build_reviewed(source,*args,copy_recipe(other))
         self.assertEqual(path.read_bytes(),source)
 
 
