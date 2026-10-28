@@ -13,9 +13,23 @@ EXTERNS = [
     '_LD2_SendDlgItemMessageW', '_LD2_MultiByteToWideChar',
     '___security_cookie', '@__security_check_cookie@4',
 ]
+# m061b profile 'u': v1 externs + policy word + GetDlgItem + four USER32 *W window APIs.
+ENTRY_U = '@LD2_ListInsertU@24'
+EXTERNS_U = EXTERNS + [
+    '_LD2_ListMode', '_LD2_GetDlgItem', '_LD2_IsWindowUnicode',
+    '_LD2_GetWindowLongW', '_LD2_GetClassLongW', '_LD2_SetWindowLongW',
+]
 
 
-def build() -> bytes:
+def build(profile: str = 'v1') -> bytes:
+    if profile == 'u':
+        return _build(ENTRY_U, EXTERNS_U)
+    if profile != 'v1':
+        raise ValueError(profile)
+    return _build(ENTRY, EXTERNS)
+
+
+def _build(ENTRY, EXTERNS) -> bytes:
     code = bytearray()
     relocs_spec = []
     for name in EXTERNS:

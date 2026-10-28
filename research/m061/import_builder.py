@@ -6,7 +6,12 @@ Generalises m057/m060 `add_textoutw` to a short reviewed API list.
 """
 import re, struct
 
-REVIEWED_APIS = frozenset([('GDI32.dll', 'TextOutW'), ('USER32.dll', 'SendDlgItemMessageW')])
+REVIEWED_APIS = frozenset([
+    ('GDI32.dll', 'TextOutW'), ('USER32.dll', 'SendDlgItemMessageW'),
+    # m061b (list control Unicode flip; see M061B-DESIGN.zh-TW.md section 3)
+    ('USER32.dll', 'IsWindowUnicode'), ('USER32.dll', 'GetWindowLongW'),
+    ('USER32.dll', 'GetClassLongW'), ('USER32.dll', 'SetWindowLongW'),
+])
 
 
 class Refuse(ValueError):

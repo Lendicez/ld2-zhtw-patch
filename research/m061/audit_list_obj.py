@@ -6,6 +6,7 @@ entry `@LD2_ListInsert@24` returns with `ret 16` on every normal CFG path, and
 that ESP and non-volatiles are preserved. Capstone CFG walk; no native execution.
 
 Usage: python3 -I -B audit_list_obj.py path/to/list_insert_w.obj
+       python3 -I -B audit_list_obj.py --profile u path/to/list_insert_u.obj   (m061b)
 Requires: pinned object sha256 via --expect-sha256 once a Windows compile is in.
 Until then the script still audits whatever object is given and prints its hash.
 """
@@ -41,13 +42,39 @@ CALLEE_CLEANUP = {
     '_LD2_OriginalDlgItem': 16,               # fastcall + 4 stack DWORDs, ret 16
 }
 
+# m061b profile 'u' (native-u/list_insert_u.cpp): v1 + 5 USER32 window bindings + 1 data word.
+ENTRY_U = '@LD2_ListInsertU@24'
+EXPECTED_UNDEFINED_U = EXPECTED_UNDEFINED | frozenset([
+    '_LD2_ListMode',
+    '_LD2_GetDlgItem',
+    '_LD2_IsWindowUnicode',
+    '_LD2_GetWindowLongW',
+    '_LD2_GetClassLongW',
+    '_LD2_SetWindowLongW',
+])
+CALLEE_CLEANUP_U = dict(CALLEE_CLEANUP, **{
+    '_LD2_GetDlgItem': 8,                     # stdcall (HWND, int)
+    '_LD2_IsWindowUnicode': 4,                # stdcall (HWND)
+    '_LD2_GetWindowLongW': 8,                 # stdcall (HWND, int)
+    '_LD2_GetClassLongW': 8,                  # stdcall (HWND, int)
+    '_LD2_SetWindowLongW': 12,                # stdcall (HWND, int, LONG)
+})
+# Data-only bindings: may be read, never called.
+DATA_ONLY = frozenset(['_LD2_EntryCount', '_LD2_Entries', '_LD2_ListMode', '___security_cookie'])
+PROFILES = {
+    'v1': (ENTRY, EXPECTED_UNDEFINED, CALLEE_CLEANUP),
+    'u': (ENTRY_U, EXPECTED_UNDEFINED_U, CALLEE_CLEANUP_U),
+}
+
 
 def need(ok, msg):
     if not ok:
         raise SystemExit('AUDIT FAIL: ' + msg)
 
 
-def audit(raw: bytes) -> dict:
+def audit(raw: bytes, profile: str = 'v1') -> dict:
+    need(profile in PROFILES, f'unknown profile {profile!r}')
+    ENTRY, EXPECTED_UNDEFINED, CALLEE_CLEANUP = PROFILES[profile]
     obj = coff_obj.parse(raw)
     undefined = coff_obj.undefined(obj)
     need(undefined == EXPECTED_UNDEFINED, f'undefined={sorted(undefined)} expected={sorted(EXPECTED_UNDEFINED)}')
@@ -166,6 +193,7 @@ def audit(raw: bytes) -> dict:
                 target = rr if rr else srcs.get(op, op)
                 for v in ('eax', 'ecx', 'edx'):
                     srcs.pop(v, None)  # volatile across the call
+                need(target not in DATA_ONLY, f'call through data binding {target} at {address:#x}')
                 if target in CALLEE_CLEANUP:
                     pop = CALLEE_CLEANUP[target]
                 elif target in internal:
@@ -211,6 +239,7 @@ def audit(raw: bytes) -> dict:
     return dict(
         object_sha256=hashlib.sha256(raw).hexdigest(),
         object_bytes=len(raw),
+        profile=profile,
         entry=ENTRY,
         ret_pop=16,
         undefined=sorted(undefined),
@@ -237,12 +266,14 @@ def main():
     ap.add_argument('object', type=Path)
     ap.add_argument('--expect-sha256', default='', help='refuse unless object matches this sha256')
     ap.add_argument('--json-out', type=Path)
+    ap.add_argument('--profile', choices=sorted(PROFILES), default='v1',
+                    help="v1 = m061 list_insert_w.obj; u = m061b list_insert_u.obj")
     args = ap.parse_args()
     raw = args.object.read_bytes()
     if args.expect_sha256:
         got = hashlib.sha256(raw).hexdigest()
         need(got == args.expect_sha256.lower(), f'sha256 {got} != {args.expect_sha256}')
-    report = audit(raw)
+    report = audit(raw, args.profile)
     text = json.dumps(report, ensure_ascii=True, indent=2)
     print(text)
     if args.json_out:
