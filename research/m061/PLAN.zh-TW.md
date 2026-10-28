@@ -100,7 +100,7 @@ Linux 端已就緒：
 
 ## 7. 下一個可自動進行的 Linux 步驟
 
-啟用版合成、靜態驗證與 handoff 已完成（§9）。等 Win11 證據回來後，再依觀察結果決定是否補 catalog 或處理更多清單點。並行可做 m062（versions.json 依 profile 讀取；`release_approved` 仍 false）——本輪未展開。
+啟用版已在 Win11 跑過一次（§9、§10）。m061b 的設計與靜態測試已完成（§11），下一步是 `HANDOFF-COMPILE-M061B`。並行可做 m062（versions.json 依 profile 讀取；`release_approved` 仍 false）——本輪未展開。
 
 ## 8. HANDOFF-LOADER-INERT（2026-10-29 備妥；同日 Win11 執行一次：**通過**）
 
@@ -149,3 +149,20 @@ Linux 端已就緒：
   1. 研究讓單一清單控制項變成 Unicode 的最小作法：在 helper 內 `GetDlgItem`，`!IsWindowUnicode` 時用 `SetWindowLongW(GWL_WNDPROC)` 換成同一個 proc。要確認三件事：這 8 個點沒有在同一控制項做 A 版讀回（`readback_on_same_control=false`），MFC 沒有 subclass 這些控制項，以及需要新增 USER32 匯入。
   2. 也可以只在 catalog 命中時才走 W 路徑，沒命中就一律走原路徑。這樣顯示和 m045 一樣，風險最小，但日文假名仍是亂碼。
   3. 待補：G 收尾、module_probe 錯誤 5 的處理（在提權的 PowerShell 執行，或接受為 n/a），以及 catalog 命中畫面（武器店或防具店）。
+
+## 11. m061b：清單框 Unicode 切換（2026-10-29 Linux 設計＋靜態測試完成；需新的 Win11 編譯）
+
+- 設計全文見 `M061B-DESIGN.zh-TW.md`。採用 §10 第 1 案，並把第 2 案做成同一個 helper 的模式 0：
+  - `.ld2c` 多一個政策字 `LD2_ListMode`，預設 2。
+  - 模式 2：遇到 catalog 未命中，且目標是清單框時，用 `GetDlgItem`→`IsWindowUnicode`→`GetWindowLongW`／`GetClassLongW`（必須相等）→`SetWindowLongW`（同一個 proc）把該控制項切成 Unicode。
+  - 切不成功時就是 run1 行為。
+  - 模式 0：只在全命中時走 W（保底）。
+  - 模式 1：run1 行為。
+- 新增 USER32 匯入 `IsWindowUnicode`、`GetWindowLongW`、`GetClassLongW`、`SetWindowLongW`。`GetDlgItem` 沿用 0x525498，`MultiByteToWideChar` 沿用 0x52537c，合成器都會核對名稱。
+- 原始碼在 `native-u/`，v1 的 `native/` 與已鎖定的 `d5349e58…61e0` 物件不變。稽核用 `audit_list_obj.py --profile u`，profile v1 的行為不變。
+- 靜態測試：`test_m061b.py` 12 項全部通過，內容包括：
+  - i386 mock 實際執行（22 個案例）；
+  - clang 預演物件通過 profile u 稽核；
+  - 記憶體內的惰性合併與啟用。
+- 尚未產生給使用者的遊戲 EXE 或 delta。下一步是 `HANDOFF-COMPILE-M061B`（只編譯＋mock）。交回 MSVC 物件、稽核並鎖定之後，才合成模式 2 和模式 0 的啟用版 delta。
+- `production_can_apply=false`、`release_approved=false` 不變。
