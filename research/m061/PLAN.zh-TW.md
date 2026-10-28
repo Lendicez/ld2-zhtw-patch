@@ -166,3 +166,11 @@ Linux 端已就緒：
   - 記憶體內的惰性合併與啟用。
 - 尚未產生給使用者的遊戲 EXE 或 delta。下一步是 `HANDOFF-COMPILE-M061B`（只編譯＋mock）。交回 MSVC 物件、稽核並鎖定之後，才合成模式 2 和模式 0 的啟用版 delta。
 - `production_can_apply=false`、`release_approved=false` 不變。
+
+## 12. m061b 啟用版（2026-10-29 04:30 台北 Linux 備妥；待 Win11）
+
+- MSVC 物件 `e8144466…4d51` 已稽核並鎖定（`LIST_U_OBJECT_SHA256`）。
+- 模式 2 啟用版 `3a1b75b3…ed31`；保底模式 0 `49b62395…d876`。同一包用 `-Mode0` 切換。
+- 交接：`HANDOFF-LOADER-ENABLED-M061B/USER-STEPS.zh-TW.md`（完整可貼上的 PowerShell 指令）。副本路徑 `<LD2_ROOT>\zhTW_lab\game-acceptance\m061b-loader-enabled`。
+- 判定與 run1 相同；另外記錄假名是否正常。
+

@@ -119,12 +119,46 @@ Stage B 第一次失敗（C1083 `cstdio`）：可攜式 MSVC 無 vcvars，腳本
   - 記憶體內合併與啟用：8 個清單點都指向 v2 入口，未寫檔。
 - 需要新的 Win11 編譯：`HANDOFF-COMPILE-M061B`（只編譯＋mock，不開遊戲）。
 
+## m061b 編譯（Win11，HANDOFF-COMPILE-M061B）與稽核（Linux）：**通過**
+
+| Stage | 結果 | 依據 |
+|---|---|---|
+| A compile-only | 成功：`list_insert_u.obj` 4,038 B | `compile-command.json`：profile u，`/c /W4 /WX /O2 /Oi /Oy- /GS /Gy /Zl /EHs`，linked=false，game_touched=false |
+| B mock link+run | 成功：exit 0，`cases=22 assertions=1116 failed=0 game_or_user32_called=false` | `once-result.json`：SDK 10.0.26100.0，`list_object_sha256` 同 A |
+
+**鎖定物件 sha256：`e8144466755d223a18f5d8f586510f64822c5cc1d793c708f171e964f6064d51`**（`merge_plan.LIST_U_OBJECT_SHA256`）。
+
+`audit_list_obj.py --profile u --expect-sha256 …`（摘要見 `compile-m061b/audit.json`）：
+
+- 未定義符號剛好 13 個（v1 的 7 個＋`_LD2_ListMode`＋5 個 USER32 綁定），沒有 CRT／heap／EH／chkstk。
+- 唯一公開符號 `@LD2_ListInsertU@24`；所有正常路徑 `ret 16`（654 個 CFG 狀態），ESP 與非揮發暫存器保全。
+- 13 個外部呼叫的 callee 清理量都對（GetDlgItem 8、IsWindowUnicode 4、Get*LongW 8、SetWindowLongW 12、SendDlgItemMessageW 20、MultiByteToWideChar 24、OriginalDlgItem 16、cookie 0）。資料綁定沒有被呼叫。
+
+## m061b 啟用版準備（Linux，2026-10-29 04:30 台北）：已備妥，**尚未在 Win11 執行**
+
+用鎖定的 MSVC 物件在記憶體內合成（m045 → 惰性 → 啟用），未寫任何 EXE：
+
+| | 模式 2（預設） | 模式 0（保底） |
+|---|---|---|
+| 惰性 sha256 | `6f9a8903f9a5ffeb68db1b7a0a0115a179c56084dd0beb0078bfcbe1d1fde1aa` | `287472ccd4c966b6f840ea2023b19e2a26cf783c6e7140e7a6935c5309236c99` |
+| **啟用版 sha256** | **`3a1b75b35aca01a8b3e0e475ea8fd7454ebe2367f03165ebab18a7054825ed31`** | `49b623950708612c16b8b2a9f234ce499094104514820c84b7fb5c3d44d0d876` |
+| CheckSum | 0x6F8780 | 0x6F877E |
+
+（模式 1 = run1 行為，僅供對照：`27edd49e…c7f3`。）
+
+- 大小 7,286,784 B，SizeOfImage 0x70C000，7 個段、15 個匯入描述子，EntryPoint 不變；pefile checksum 正確。
+- hook stub 與 run1 相同（`67f30b3e…`，NamePair 0xae3170）；沒有任何分支落進 hook 區段內部。
+- 8 個清單點舊目標 0x4ea671 → 新目標 0xae3850（`@LD2_ListInsertU@24`）。相對惰性版只差 65 bytes。
+- 清單 helper 的間接呼叫只經過 8 個審查過的槽；唯一的 `call eax` 取值自 OriginalDlgItem 槽（0xb0a288 = 0x4ea671）。模式字在 0xb0a28c。
+- 沒有新增 SetWindowLongA、CallWindowProc*、SetWindowsHookEx*、VirtualProtect、LoadLibrary*、GetProcAddress、SetClassLong*。
+- Linux 上用 pwsh 跑交接腳本的 `Assert-Delta`／`Build-Enabled`：兩種模式都重現上表 sha256。
+- 測試：`test_m061b.py` 13／13（新增真實物件稽核）、`test_m061.py` 19／19、`test_merge_lab.py` 6／6。
+- 交接包：`HANDOFF-LOADER-ENABLED-M061B/`（腳本、README、USER-STEPS、兩個 delta 說明檔；delta bin 只在 zip 內）。
+
 ## 下一步
 
-1. 使用者補跑 `-Finalize`，確認原安裝沒有變動。不需要重開遊戲；不擋 Linux 工作。
-2. 使用者執行 `HANDOFF-COMPILE-M061B`，交回 `list_insert_u.obj`、`.asm`、`compile-command.json`、`once-result.json` 與 `stdout.txt`。
-3. Linux：`audit_list_obj.py --profile u` 稽核並鎖定 hash，再合成模式 2（另備模式 0）的啟用版 delta 與 loader handoff。
-4. 下一次 Win11 觀察：道具店或委託清單的假名是否正常，並去武器店或防具店確認 catalog 命中時是繁中。
-5. 擴充 catalog（道具店的消耗品和冒險者名）屬於翻譯資料工作，另案進行。
+1. 使用者執行 `HANDOFF-LOADER-ENABLED-M061B`（模式 2）一次，回傳 `m061b-loader-enabled-evidence.zip`。重點：清單假名是否正常、選取清單是否正常。
+2. 若模式 2 異常：只跑 G，回報；再用 `-Mode0` 另建副本驗收保底版。
+3. Mina 的消耗品／冒險者名譯稿另案審核（catalog 擴充需要放寬 `reviewed_catalog` 的 24 筆限制，不在本包）。
 
 `production_can_apply=false`、`release_approved=false` 不變。
