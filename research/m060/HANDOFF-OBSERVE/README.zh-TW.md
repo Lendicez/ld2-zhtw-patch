@@ -1,5 +1,7 @@
 # m060 可丟棄副本單次觀察：Win11 交接包
 
+> **2026-10-28 更新**：本資料夾的 `WINDOWS-ONCE.ps1` 已改為新版結束碼判定（結束碼 1＋無錯誤／WER 事件＋無新 dump＋有存檔 → 軟警告、繼續；`0xC0000409` 與其他非 0 仍硬停），並支援 `-Run2`。**第二次觀察（只跑 C～F）請改用 `../HANDOFF-OBSERVE-CF/`**；本資料夾保留給 run1 紀錄與未來全新副本（A→G，需另行批准）。
+
 使用者已於 **2026-10-28 批准一次**。這只是觀察，**不是**安裝；`production_can_apply=false`、`release_approved=false` 不變。權威計畫：`..\OBSERVATION-PLAN.zh-TW.md`。逐步清單：[USER-STEPS.zh-TW.md](USER-STEPS.zh-TW.md)。
 
 ## 前提
