@@ -157,3 +157,5 @@
 !/docs/M047-CANDIDATE.md
 !/docs/M047-ACCEPTANCE.md
 !/packaging/m047-verification.json
+!/docs/M062-VERSIONS-GATE.md
+!/tests/test_versions_gate_m062.py
