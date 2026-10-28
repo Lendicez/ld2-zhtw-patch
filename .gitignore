@@ -85,3 +85,7 @@
 !/research/m061/HANDOFF-LOADER-INERT/WINDOWS-LOADER-INERT.ps1
 !/research/m061/HANDOFF-LOADER-INERT/m061-inert.delta.json
 !/research/m061/HANDOFF-LOADER-INERT/observations.template.md
+!/research/m061/loader-inert-run1/hashes-after.json
+!/research/m061/loader-inert-run1/hashes-before.summary.json
+!/research/m061/loader-inert-run1/launch-L.json
+!/research/m061/loader-inert-run1/state.json
