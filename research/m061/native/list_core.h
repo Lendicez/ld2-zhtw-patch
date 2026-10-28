@@ -14,8 +14,15 @@ typedef struct LD2ListRow {
     LD2LWord wide_units;
     LD2LWide wide[257];
 } LD2ListRow;
-/* Strict CP932 decoder: returns UTF-16 units written (no terminator) or 0. */
+/* Strict CP932 decoder: returns UTF-16 units written (no terminator) or 0.
+ * Host builds pass a function pointer. The MSVC entry defines LD2_LIST_DECODE
+ * so the decoder is a direct call (no indirect register call for the audit). */
 typedef int (*LD2Decode932)(const unsigned char* src, int bytes, LD2LWide* dst, int capacity);
+#ifdef LD2_LIST_DECODE
+#define LD2_LIST_DECODE_CALL(s, n, d, c) LD2_LIST_DECODE(s, n, d, c)
+#else
+#define LD2_LIST_DECODE_CALL(s, n, d, c) decode(s, n, d, c)
+#endif
 
 enum { LD2_LB_ADDSTRING = 0x180, LD2_LB_INSERTSTRING = 0x181, LD2_CB_INSERTSTRING = 0x14a,
        LD2_LIST_MAX_BYTES = 256, LD2_LIST_MAX_UNITS = 256 };
@@ -56,7 +63,12 @@ static const LD2ListRow* ld2_list_find(const unsigned char* s, int n, const LD2L
 static int LD2_ListPrepare(unsigned msg, const unsigned char* ansi, const LD2ListRow* rows, LD2LWord count,
                            LD2Decode932 decode, LD2LWide* out) {
     if (msg != LD2_LB_ADDSTRING && msg != LD2_LB_INSERTSTRING && msg != LD2_CB_INSERTSTRING) return 0;
-    if (!decode || !out || (unsigned long)ansi < 0x10000UL) return 0;
+#ifdef LD2_LIST_DECODE
+    (void)decode;
+#else
+    if (!decode) return 0;
+#endif
+    if (!out || (unsigned long)ansi < 0x10000UL) return 0;
     int n = 0, high = 0;
     while (n <= LD2_LIST_MAX_BYTES && ansi[n]) {
         if (ansi[n] >= 0x80) high = 1;
@@ -74,7 +86,7 @@ static int LD2_ListPrepare(unsigned msg, const unsigned char* ansi, const LD2Lis
                 if (units + (int)r->wide_units > LD2_LIST_MAX_UNITS) return 0;
                 for (LD2LWord k = 0; k < r->wide_units; ++k) out[units++] = r->wide[k];
             } else {
-                int got = decode(ansi + start, len, out + units, LD2_LIST_MAX_UNITS - units);
+                int got = LD2_LIST_DECODE_CALL(ansi + start, len, out + units, LD2_LIST_MAX_UNITS - units);
                 if (got <= 0 || units + got > LD2_LIST_MAX_UNITS) return 0;
                 units += got;
             }
