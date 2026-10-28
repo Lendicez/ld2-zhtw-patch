@@ -115,3 +115,14 @@
 !/research/m061/HANDOFF-COMPILE-M061B/native/list_bindings_u.h
 !/research/m061/HANDOFF-COMPILE-M061B/native/list_insert_u.cpp
 !/research/m061/HANDOFF-COMPILE-M061B/native/list_mock_test_u.cpp
+!/research/m061/HANDOFF-LOADER-ENABLED-M061B/README.zh-TW.md
+!/research/m061/HANDOFF-LOADER-ENABLED-M061B/USER-STEPS.zh-TW.md
+!/research/m061/HANDOFF-LOADER-ENABLED-M061B/WINDOWS-LOADER-ENABLED-M061B.ps1
+!/research/m061/HANDOFF-LOADER-ENABLED-M061B/m061b-enabled-mode2.delta.json
+!/research/m061/HANDOFF-LOADER-ENABLED-M061B/m061b-enabled-mode0.delta.json
+!/research/m061/HANDOFF-LOADER-ENABLED-M061B/observations.template.md
+!/research/m061/HANDOFF-LOADER-ENABLED-M061B/enabled_static_verify.summary.json
+!/research/m061/compile-m061b/audit.json
+!/research/m061/compile-m061b/compile-command.json
+!/research/m061/compile-m061b/once-result.json
+!/research/m061/compile-m061b/stdout.txt
