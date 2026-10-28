@@ -50,6 +50,7 @@
     "research/m061/HANDOFF-COMPILE/native/list_insert_w.cpp",
     "research/m061/HANDOFF-COMPILE/native/list_mock_test.cpp",
     "research/m061/PLAN.zh-TW.md",
+    "research/m061/RESULT.zh-TW.md",
     "research/m061/audit_list_obj.py",
     "research/m061/coff_obj.py",
     "research/m061/import_builder.py",
