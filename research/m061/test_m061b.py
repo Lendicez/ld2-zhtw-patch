@@ -202,5 +202,19 @@ class LicensedMergeUTests(unittest.TestCase):
         self.assertLessEqual(seen, allowed)
 
 
+REAL_U_OBJ = HERE.parents[1] / 'runs/m061b/compile-only/list_insert_u.obj'
+
+
+@unittest.skipUnless(REAL_U_OBJ.is_file() and HAVE_CAPSTONE, 'real MSVC list_insert_u.obj (lab) / capstone missing')
+class RealObjectUTests(unittest.TestCase):
+    def test_real_msvc_object_pinned_and_audits(self):
+        r = subprocess.run([sys.executable, '-I', '-B', str(HERE / 'audit_list_obj.py'), '--profile', 'u',
+                            '--expect-sha256', 'e8144466755d223a18f5d8f586510f64822c5cc1d793c708f171e964f6064d51',
+                            str(REAL_U_OBJ)], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertIn('"esp_and_nonvolatile_preserved_on_normal_paths": true', r.stdout)
+        self.assertIn('"entry": "@LD2_ListInsertU@24"', r.stdout)
+
+
 if __name__ == '__main__':
     unittest.main()
