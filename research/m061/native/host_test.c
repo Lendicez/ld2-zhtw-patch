@@ -3,6 +3,10 @@
 #include <iconv.h>
 #include <stdio.h>
 #include <string.h>
+#ifdef HOST_MACRO /* same direct-call decoder path as the MSVC entry */
+static int decode(const unsigned char* s, int n, unsigned short* d, int cap);
+#define LD2_LIST_DECODE(s, n, d, c) decode((s), (n), (d), (c))
+#endif
 #include "list_core.h"
 static int decode(const unsigned char* s, int n, LD2LWide* d, int cap) {
     iconv_t cd = iconv_open("UTF-16LE", "CP932");
@@ -30,7 +34,9 @@ int main(void) {
     /* message / pointer guards */
     CHECK(LD2_ListPrepare(0x184, (const unsigned char*)"\x93\xb9", rows, 4, decode, out) == 0);
     CHECK(LD2_ListPrepare(0x181, (const unsigned char*)(unsigned long)0x1234, rows, 4, decode, out) == 0);
+#ifndef HOST_MACRO
     CHECK(LD2_ListPrepare(0x181, (const unsigned char*)"\x93\xb9", rows, 4, 0, out) == 0);
+#endif
     /* ASCII stays on original path */
     CHECK(LD2_ListPrepare(0x181, (const unsigned char*)"Sword +1\t120", rows, 4, decode, out) == 0);
     CHECK(LD2_ListPrepare(0x181, (const unsigned char*)"", rows, 4, decode, out) == 0);

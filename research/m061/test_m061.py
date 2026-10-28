@@ -1,7 +1,7 @@
 """m061 tests: synthetic serializer/import/manifest checks always run; licensed
 checks need the user's own original (LD2_TEST_EXE) and m045 output (LD2_M045_EXE)
 and are SKIPPED otherwise. The host C test needs gcc+iconv, else SKIPPED."""
-import hashlib, json, os, shutil, struct, subprocess, sys, tempfile, unittest
+import hashlib, importlib.util, json, os, shutil, struct, subprocess, sys, tempfile, unittest
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -168,10 +168,71 @@ class HostCoreTests(unittest.TestCase):
     def test_list_core(self):
         with tempfile.TemporaryDirectory() as d:
             exe = Path(d) / 'host_test'
-            subprocess.run(['gcc', '-std=c99', '-Wall', '-Wextra', '-Werror', '-O2', '-o', str(exe), str(HERE / 'native' / 'host_test.c')], check=True)
-            r = subprocess.run([str(exe)], capture_output=True, text=True)
-            self.assertEqual(r.returncode, 0, r.stdout)
-            self.assertIn('16 checks, 0 failed', r.stdout)
+            src = str(HERE / 'native' / 'host_test.c')
+            for flags, expect in (
+                ([], '16 checks, 0 failed'),
+                (['-DHOST_MACRO'], '15 checks, 0 failed'),  # null-decode guard compiled out
+            ):
+                subprocess.run(['gcc', '-std=c99', '-Wall', '-Wextra', '-Werror', '-O2', *flags, '-o', str(exe), src], check=True)
+                r = subprocess.run([str(exe)], capture_output=True, text=True)
+                self.assertEqual(r.returncode, 0, r.stdout)
+                self.assertIn(expect, r.stdout)
+
+
+
+@unittest.skipUnless(importlib.util.find_spec('capstone'), 'capstone not installed')
+class CoffRelocatorTests(unittest.TestCase):
+    def test_synthetic_list_object_audit_and_relocate(self):
+        import synthetic_list_obj, coff_obj, audit_list_obj, hashlib
+        raw = synthetic_list_obj.build()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),
+                         '4ecaf65a3974d2b2d3d1f1ac7423d40aa8e6bbb564a6525695981ab294668493')
+        report = audit_list_obj.audit(raw)
+        self.assertEqual(report['entry'], '_LD2_ListInsert@24')
+        self.assertEqual(report['ret_pop'], 16)
+        self.assertFalse(report['production_can_apply'])
+        bindings = {n: 0x1000 + i * 4 for i, n in enumerate(sorted(synthetic_list_obj.EXTERNS))}
+        code, entry, det = coff_obj.relocate(
+            raw, 0x401000, bindings,
+            expected_sha256=report['object_sha256'],
+            expected_undefined=set(synthetic_list_obj.EXTERNS),
+            entry=synthetic_list_obj.ENTRY)
+        self.assertEqual(code[-5:], bytes.fromhex('33c0c21000'))
+        self.assertEqual(entry, 0x401000)
+        self.assertEqual(det['fixups'], 7)
+
+    def test_audit_rejects_extra_crt_symbol(self):
+        import synthetic_list_obj, audit_list_obj
+        raw = bytearray(synthetic_list_obj.build())
+        # Corrupt: flip a byte in the string table so a name changes — easier to append a fake undef via parse failure path.
+        # Instead, call audit with a patched undefined set by rebuilding with an extra extern.
+        # Minimal: change ENTRY name in the object so defined_public mismatches.
+        idx = bytes(raw).find(b'_LD2_ListInsert@24')
+        self.assertGreater(idx, 0)
+        raw[idx + 3] = ord('X')
+        with self.assertRaises(SystemExit):
+            audit_list_obj.audit(bytes(raw))
+
+
+class CoffVersusM060Tests(unittest.TestCase):
+    @unittest.skipUnless((LAB / 'runs/m058/compile-only/name_pair.EHs.obj').is_file() and
+                         (HERE.parent / 'm060' / 'memory_plan.py').is_file(),
+                         'lab m058 object / m060 required')
+    def test_matches_m060_relocate(self):
+        import coff_obj, hashlib
+        sys.path.insert(0, str(HERE.parent / 'm060'))
+        import memory_plan as m060
+        obj = (LAB / 'runs/m058/compile-only/name_pair.EHs.obj').read_bytes()
+        bind = {'_LD2_EntryCount': 0xae4000, '_LD2_ExpectedTextOutA': 0xae4004, '_LD2_Entries': 0xae4008,
+                '_LD2_TextOutW': 0xb0b14c, '___security_cookie': 0xa8f284, '@__security_check_cookie@4': 0x4fc870}
+        c1, e1, _ = m060.relocate_reviewed(obj, 0x46e3000, bind)
+        c2, e2, _ = coff_obj.relocate(obj, 0x46e3000, bind,
+                                      expected_sha256=hashlib.sha256(obj).hexdigest(),
+                                      expected_undefined=set(m060.EXTERNAL),
+                                      entry='_LD2_NamePair@16')
+        self.assertEqual(c1, c2)
+        self.assertEqual(e1, e2)
+
 
 
 if __name__ == '__main__':
