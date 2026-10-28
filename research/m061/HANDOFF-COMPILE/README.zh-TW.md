@@ -65,7 +65,7 @@ python3 -I -B research/m061/audit_list_obj.py path/to/list_insert_w.obj --json-o
 
 - 未定義符號恰好 7 個：`_LD2_EntryCount`、`_LD2_Entries`、`_LD2_OriginalDlgItem`、`_LD2_SendDlgItemMessageW`、`_LD2_MultiByteToWideChar`、`___security_cookie`、`@__security_check_cookie@4`
 - 拒絕任何 memcpy／memset／chkstk／EH／CRT 符號與 DEFAULTLIB
-- 公開入口只有 `_LD2_ListInsert@24`，正常路徑 `ret 16`，ESP／非揮發暫存器保全
+- 公開入口只有 `@LD2_ListInsert@24`（fastcall 修飾），正常路徑 `ret 16`，ESP／非揮發暫存器保全
 
 通過後把物件 sha256 寫進 `merge_plan.py` 的 pin，取代目前的 synthetic stand-in。
 

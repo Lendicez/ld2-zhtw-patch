@@ -87,17 +87,17 @@ m045 在 Win11 上的靜態 UI 已正確顯示繁中。但商店、酒館、委�
 
 Linux 端已就緒：
 
-- `audit_list_obj.py`：未定義符號恰好 7 個（5 個 helper 綁定＋2 個 security-cookie）；拒絕 memcpy／memset／chkstk／EH／CRT／DEFAULTLIB；入口 `_LD2_ListInsert@24` 正常路徑 `ret 16`。以 synthetic COFF stand-in 跑過（sha `4ecaf65a…8493`）；**真正的 MSVC 物件 hash 待 Stage A 後鎖定**。
+- `audit_list_obj.py`：未定義符號恰好 7 個（5 個 helper 綁定＋2 個 security-cookie）；拒絕 memcpy／memset／chkstk／EH／CRT／DEFAULTLIB；入口 `@LD2_ListInsert@24`（fastcall 修飾）正常路徑 `ret 16`；內部 `__cdecl` 函式遞迴稽核。**真正的 MSVC 物件已鎖定 `d5349e58…61e0` 並通過稽核**（見 `RESULT.zh-TW.md`）。
 - `coff_obj.py`：通用 i386 COFF 重定位器；對 m058 物件與 m060 `relocate_reviewed` **逐位元組相同**。
-- `merge_plan.py`：可接受第二個 helper（list），與 TextOutW 共用 `.ld2c`；雙 helper 惰性合併另加 `SendDlgItemMessageW` 與尾端 `OriginalDlgItem=0x4ea671` 字。單 helper 輸出 hash 仍與先前一致（原版 `08b9ec9e…41a1`、m045 `40fa133b…143c`）。雙 helper＋synthetic list：m045 `38119770…de2c`。
+- `merge_plan.py`：可接受第二個 helper（list），與 TextOutW 共用 `.ld2c`；雙 helper 惰性合併另加 `SendDlgItemMessageW` 與尾端 `OriginalDlgItem=0x4ea671` 字。單 helper 輸出 hash 仍與先前一致（原版 `08b9ec9e…41a1`、m045 `40fa133b…143c`）。雙 helper＋真實 list 物件：原版 `7468ddbe…dc07`、m045 `6a43dc4e…1cfe`。
 
 ## 6. 仍需 Windows（使用者執行 HANDOFF-COMPILE；其餘尚未授權）
 
-1. 執行 `HANDOFF-COMPILE/WINDOWS-COMPILE.ps1`（Stage A＋B）。不上遊戲。
-2. 把 `list_insert_w.obj`＋`compile-command.json` 交回 Linux → 跑 `audit_list_obj.py` → pin sha256。
+1. ~~執行 `HANDOFF-COMPILE/WINDOWS-COMPILE.ps1`（Stage A＋B）~~ 已完成（2026-10-29，Stage B exit 0）。
+2. ~~交回物件 → 稽核 → pin sha256~~ 已完成：`d5349e58…61e0`。
 3. **之後另案授權**：惰性合併 loader 驗收（可丟棄副本寫出 EXE 一次）。
 4. 再之後：啟用 8 個清單點＋TextOutW hook 的功能版，Win11 觀察商店／酒館／委託。
 
 ## 7. 下一個可自動進行的 Linux 步驟
 
-等 Stage A 物件交回後：跑稽核、把 list object sha256 寫進 `merge_plan` pin、更新 dual-merge 金樣。並行可做 m062（versions.json 依 profile 讀取；`release_approved` 仍 false）——本輪未展開。
+已完成（見 `RESULT.zh-TW.md`）。下一步需另案授權：可丟棄副本惰性 loader 驗收。並行可做 m062（versions.json 依 profile 讀取；`release_approved` 仍 false）——本輪未展開。

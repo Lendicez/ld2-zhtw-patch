@@ -67,14 +67,14 @@
     "loader_verified": false,
     "production_can_apply": false
   },
-  "original_dual_synthetic": {
+  "original_dual": {
     "profile": "original",
     "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
     "object_sha256": "5819838a30cddaea51b4914d87ab3971d603de06cd4f6b1e1c94684fa5ac8c92",
     "catalog_json_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
     "catalog_rows": 264,
     "catalog_bytes": 156300,
-    "code_sha256": "c7e508cf02bc840ace06e577b2c068bd6368b40c347e587656bea62e059227e7",
+    "code_sha256": "83d28ddeb63619eb221ebf97516dcc3ef276464a279cd408466ea795d77484d8",
     "entry_va": "0xadc170",
     "bindings": {
       "_LD2_EntryCount": "0xadd000",
@@ -97,11 +97,11 @@
         {
           "name": ".ld2t",
           "rva": "0x6dc000",
-          "virtual_size": 856,
+          "virtual_size": 2214,
           "raw_size": 4096,
           "raw_pointer": "0x6c3000",
           "characteristics": "0x60000020",
-          "sha256": "c7e508cf02bc840ace06e577b2c068bd6368b40c347e587656bea62e059227e7"
+          "sha256": "83d28ddeb63619eb221ebf97516dcc3ef276464a279cd408466ea795d77484d8"
         },
         {
           "name": ".ld2c",
@@ -123,8 +123,8 @@
         }
       ],
       "size_of_image": "0x705000",
-      "checksum": "0x6f6223",
-      "output_sha256": "b97a5886fdb95f0be92ac182f1b0843212fbad6760ae0be9b0948e3cfa9aedc9",
+      "checksum": "0x6f614d",
+      "output_sha256": "7468ddbedaa4699b63286db7178458f3e213e9cab210d31b5ce59c747c97dc07",
       "output_bytes": 7258112,
       "original_sections_unchanged": true
     },
@@ -135,8 +135,8 @@
     "file_written": false,
     "loader_verified": false,
     "production_can_apply": false,
-    "list_object_sha256": "4ecaf65a3974d2b2d3d1f1ac7423d40aa8e6bbb564a6525695981ab294668493",
-    "list_entry_va": "0xadc330",
+    "list_object_sha256": "d5349e58bd5087bb06aedda6c8b8dbfa1d2c0d1f87de42e1f86993869bfc61e0",
+    "list_entry_va": "0xadc790",
     "list_bindings": {
       "_LD2_EntryCount": "0xadd000",
       "_LD2_Entries": "0xadd008",
@@ -147,9 +147,9 @@
       "@__security_check_cookie@4": "0x4fc870"
     },
     "list_details": {
-      "fixups": 7,
-      "code_bytes": 40,
-      "sections": 1
+      "fixups": 15,
+      "code_bytes": 1398,
+      "sections": 5
     },
     "text_details": {
       "offsets": {
@@ -244,14 +244,14 @@
     "loader_verified": false,
     "production_can_apply": false
   },
-  "m045_dual_synthetic": {
+  "m045_dual": {
     "profile": "m045",
     "source_sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7",
     "object_sha256": "5819838a30cddaea51b4914d87ab3971d603de06cd4f6b1e1c94684fa5ac8c92",
     "catalog_json_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
     "catalog_rows": 264,
     "catalog_bytes": 156300,
-    "code_sha256": "15d78c9cb7d491bf4b888968b4a76f892d0b0d46a57c51a4c75231f0f4f3aff7",
+    "code_sha256": "5f35d96703773f5b7aeb58057d60df2ccd6c2d194136fbcbdedf67d1cdc2d719",
     "entry_va": "0xae3170",
     "bindings": {
       "_LD2_EntryCount": "0xae4000",
@@ -274,11 +274,11 @@
         {
           "name": ".ld2t",
           "rva": "0x6e3000",
-          "virtual_size": 856,
+          "virtual_size": 2214,
           "raw_size": 4096,
           "raw_pointer": "0x6ca000",
           "characteristics": "0x60000020",
-          "sha256": "15d78c9cb7d491bf4b888968b4a76f892d0b0d46a57c51a4c75231f0f4f3aff7"
+          "sha256": "5f35d96703773f5b7aeb58057d60df2ccd6c2d194136fbcbdedf67d1cdc2d719"
         },
         {
           "name": ".ld2c",
@@ -300,8 +300,8 @@
         }
       ],
       "size_of_image": "0x70c000",
-      "checksum": "0x6f3bcf",
-      "output_sha256": "381197703a3581737930e479da62771d819777e114936763e21e7f534e0dde2c",
+      "checksum": "0x6fcb68",
+      "output_sha256": "6a43dc4e3d881a207f4b0dae2fcc5f1fca5d079d6fe90139115da84ac3ef1cfe",
       "output_bytes": 7286784,
       "original_sections_unchanged": true
     },
@@ -312,8 +312,8 @@
     "file_written": false,
     "loader_verified": false,
     "production_can_apply": false,
-    "list_object_sha256": "4ecaf65a3974d2b2d3d1f1ac7423d40aa8e6bbb564a6525695981ab294668493",
-    "list_entry_va": "0xae3330",
+    "list_object_sha256": "d5349e58bd5087bb06aedda6c8b8dbfa1d2c0d1f87de42e1f86993869bfc61e0",
+    "list_entry_va": "0xae3790",
     "list_bindings": {
       "_LD2_EntryCount": "0xae4000",
       "_LD2_Entries": "0xae4008",
@@ -324,9 +324,9 @@
       "@__security_check_cookie@4": "0x4fc870"
     },
     "list_details": {
-      "fixups": 7,
-      "code_bytes": 40,
-      "sections": 1
+      "fixups": 15,
+      "code_bytes": 1398,
+      "sections": 5
     },
     "text_details": {
       "offsets": {
