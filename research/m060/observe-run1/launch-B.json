@@ -1,0 +1,23 @@
+{
+    "step":  "B",
+    "exe":  "Ld95.original.exe",
+    "exe_sha256":  "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+    "start_utc":  "2026-10-28T14:00:27.3034481Z",
+    "end_utc":  "2026-10-28T14:09:20.5180161Z",
+    "seconds":  533.2,
+    "exit_code":  1,
+    "exit_code_hex":  "0x00000001",
+    "usr_before":  {
+
+                   },
+    "usr_after":  {
+                      "path":  "Usr\\LUNAS000.LDP",
+                      "size":  3032781,
+                      "sha256":  "ae945041208d09a50163316ce096de29725bd0ce616972e684f68b10f6627cec",
+                      "last_write_utc":  "2026-10-28T14:05:19.5392896Z"
+                  },
+    "crash_dumps_names_only":  [
+
+                               ],
+    "is_0xC0000409":  false
+}
