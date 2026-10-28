@@ -1,0 +1,26 @@
+{
+    "step":  "L",
+    "exe":  "Ld95.m061-enabled.exe",
+    "exe_sha256":  "57103342f130da2ab51bf70e94d4dfb6c63245c3b375154bb4fbe27906b7ce5b",
+    "start_utc":  "2026-10-28T19:34:46.2153619Z",
+    "end_utc":  "2026-10-28T19:37:00.6717558Z",
+    "seconds":  134.5,
+    "exit_code":  1,
+    "exit_code_hex":  "0x00000001",
+    "exit_policy":  "soft-warn-exit1",
+    "events_ld95_all":  0,
+    "events_relevant":  0,
+    "crash_dumps_new":  [
+
+                        ],
+    "wer_reports_new":  [
+
+                        ],
+    "module_probe":  {
+                         "ok":  false,
+                         "note":  "ReadProcessMemory/OpenProcess 失敗，Win32 錯誤 5（5＝存取被拒：遊戲可能以系統管理員或相容性模式執行）"
+                     },
+    "list_sites_patched":  true,
+    "textoutw_hook_enabled":  true,
+    "production_can_apply":  false
+}
