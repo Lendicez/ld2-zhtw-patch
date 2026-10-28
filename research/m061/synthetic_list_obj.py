@@ -1,13 +1,13 @@
 """Build a minimal i386 COFF stand-in for list_insert_w.obj (audit + dual-merge tests).
 
-This is NOT the real MSVC output. It exports `_LD2_ListInsert@24` with `ret 16`
+This is NOT the real MSVC output. It exports `@LD2_ListInsert@24` with `ret 16`
 and references the seven expected undefined symbols. Replace with the Windows
 compile-only artifact once HANDOFF-COMPILE Stage A succeeds; pin that sha256.
 """
 import struct
 
 
-ENTRY = '_LD2_ListInsert@24'
+ENTRY = '@LD2_ListInsert@24'
 EXTERNS = [
     '_LD2_EntryCount', '_LD2_Entries', '_LD2_OriginalDlgItem',
     '_LD2_SendDlgItemMessageW', '_LD2_MultiByteToWideChar',

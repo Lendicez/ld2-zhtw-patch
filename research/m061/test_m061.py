@@ -186,9 +186,9 @@ class CoffRelocatorTests(unittest.TestCase):
         import synthetic_list_obj, coff_obj, audit_list_obj, hashlib
         raw = synthetic_list_obj.build()
         self.assertEqual(hashlib.sha256(raw).hexdigest(),
-                         '4ecaf65a3974d2b2d3d1f1ac7423d40aa8e6bbb564a6525695981ab294668493')
+                         '8599def6cf44d1dcf20a52c2028ce52fd098f7a4b3043db37c07bf82ef2501be')
         report = audit_list_obj.audit(raw)
-        self.assertEqual(report['entry'], '_LD2_ListInsert@24')
+        self.assertEqual(report['entry'], '@LD2_ListInsert@24')
         self.assertEqual(report['ret_pop'], 16)
         self.assertFalse(report['production_can_apply'])
         bindings = {n: 0x1000 + i * 4 for i, n in enumerate(sorted(synthetic_list_obj.EXTERNS))}
@@ -207,11 +207,33 @@ class CoffRelocatorTests(unittest.TestCase):
         # Corrupt: flip a byte in the string table so a name changes — easier to append a fake undef via parse failure path.
         # Instead, call audit with a patched undefined set by rebuilding with an extra extern.
         # Minimal: change ENTRY name in the object so defined_public mismatches.
-        idx = bytes(raw).find(b'_LD2_ListInsert@24')
+        idx = bytes(raw).find(b'@LD2_ListInsert@24')
         self.assertGreater(idx, 0)
         raw[idx + 3] = ord('X')
         with self.assertRaises(SystemExit):
             audit_list_obj.audit(bytes(raw))
+
+
+REAL_LIST_OBJ = LAB / 'runs/m061/compile-only/list_insert_w.obj'
+REAL_LIST_SHA256 = 'd5349e58bd5087bb06aedda6c8b8dbfa1d2c0d1f87de42e1f86993869bfc61e0'
+
+
+@unittest.skipUnless(importlib.util.find_spec('capstone') and REAL_LIST_OBJ.is_file(),
+                     'capstone or local real MSVC list object missing (object is never committed)')
+class RealListObjectAuditTests(unittest.TestCase):
+    def test_real_object_audit_pins(self):
+        import audit_list_obj, hashlib
+        raw = REAL_LIST_OBJ.read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), REAL_LIST_SHA256)
+        rep = audit_list_obj.audit(raw)
+        self.assertEqual(rep['defined_public'], ['@LD2_ListInsert@24'])
+        self.assertEqual(rep['internal_callees_audited'],
+                         ['?LD2_ListPrepare@@YAHIPBEPBULD2ListRow@@IP6AH0HPAGH@Z2@Z'])
+        self.assertEqual(len(rep['normal_returns']), 5)
+        self.assertEqual(sorted({c['target'] for c in rep['calls']}), [
+            '?LD2_ListPrepare@@YAHIPBEPBULD2ListRow@@IP6AH0HPAGH@Z2@Z', '@__security_check_cookie@4',
+            '_LD2_MultiByteToWideChar', '_LD2_OriginalDlgItem', '_LD2_SendDlgItemMessageW'])
+        self.assertEqual(rep['relocation_counts'], {'6': 11, '20': 4})
 
 
 class CoffVersusM060Tests(unittest.TestCase):

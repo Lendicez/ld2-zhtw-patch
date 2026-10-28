@@ -2,7 +2,7 @@
 
 Pins the undefined-symbol set (5 helper bindings + 2 security-cookie symbols),
 rejects any other CRT / heap / EH / chkstk symbol, checks that the sole public
-entry `_LD2_ListInsert@24` returns with `ret 16` on every normal CFG path, and
+entry `@LD2_ListInsert@24` returns with `ret 16` on every normal CFG path, and
 that ESP and non-volatiles are preserved. Capstone CFG walk; no native execution.
 
 Usage: python3 -I -B audit_list_obj.py path/to/list_insert_w.obj
@@ -18,7 +18,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import coff_obj  # noqa: E402
 
-ENTRY = '_LD2_ListInsert@24'
+ENTRY = '@LD2_ListInsert@24'
 EXPECTED_UNDEFINED = frozenset([
     '_LD2_EntryCount',
     '_LD2_Entries',
@@ -92,78 +92,120 @@ def audit(raw: bytes) -> dict:
     need(all('fs:' not in i.op_str for i in ins), 'FS segment used (SEH registration?)')
     need(not any(i.mnemonic in ('std', 'enter', 'leave') for i in ins), 'banned mnemonic')
 
-    # CFG walk from entry, only through reachable code of this object.
-    initial = {r: r + '_entry' for r in ('ebx', 'ebp', 'esi', 'edi')}
-    todo = [(entry_off, 0, None, initial, {})]
-    seen, normal, calls = set(), [], []
-    while todo:
-        address, sp, fp, regs, stack = todo.pop()
-        state = (address, sp, fp, tuple(sorted(regs.items())), tuple(sorted(stack.items())))
-        if state in seen:
-            continue
-        seen.add(state)
-        need(len(seen) < 20000, 'CFG explosion')
-        need(address in by, f'fallthrough into non-instruction at {address:#x}')
-        i = by[address]
-        mn, op, nxt = i.mnemonic, i.op_str, address + i.size
-        regs, stack = dict(regs), dict(stack)
-        if mn == 'push':
-            sp -= 4
-            stack[sp] = regs.get(op, 'temporary')
-        elif mn == 'pop':
-            if op in regs:
-                regs[op] = stack.get(sp, 'unknown')
-            sp += 4
-        elif mn == 'sub' and op.startswith('esp, '):
-            sp -= int(op.split(', ')[1], 0)
-        elif mn == 'add' and op.startswith('esp, '):
-            sp += int(op.split(', ')[1], 0)
-        elif mn == 'mov' and op == 'ebp, esp':
-            fp = sp
-            regs['ebp'] = 'frame'
-        elif mn == 'mov' and op == 'esp, ebp':
-            need(fp is not None, 'esp,ebp without frame')
-            sp = fp
-        elif mn == 'call':
-            # REL32: reloc sits on the displacement (last 4 of 5-byte call).
-            rr = next((reloc_at[o] for o in range(address + 1, nxt) if o in reloc_at), None)
-            target = rr if rr else op
-            if target in CALLEE_CLEANUP:
-                pop = CALLEE_CLEANUP[target]
-            elif target == ENTRY:
-                pop = 16
-            else:
-                raise SystemExit(f'AUDIT FAIL: unreviewed call at {address:#x} -> {target}')
-            calls.append(dict(offset=hex(address), target=target, pop_bytes=pop))
-            sp += pop
-        elif mn == 'ret':
-            need(op == '0x10' or op == '16', f'ret operand {op!r} (want 16)')
-            need(sp == 0, f'ESP mismatch at ret {address:#x}: {sp}')
-            need(regs == initial, f'nonvolatile mismatch at ret {address:#x}: {regs}')
-            normal.append(hex(address))
-            continue
-        elif mn == 'mov' and op.split(', ')[0] in regs:
-            regs[op.split(', ')[0]] = 'modified'
-        elif mn in ('lea', 'xor', 'add', 'sub', 'inc', 'dec', 'movzx') and op.split(', ')[0] in regs:
-            regs[op.split(', ')[0]] = 'modified'
-        if mn == 'mov' and op.startswith('dword ptr [ebp '):
-            m = re.match(r'dword ptr \[ebp ([+-]) (0x[0-9a-f]+|[0-9]+)\],', op)
-            if m and fp is not None:
-                at = fp + (1 if m[1] == '+' else -1) * int(m[2], 0)
-                if at in stack:
-                    stack[at] = 'local_store'
+    # Internal (static, non-public) functions this object defines in its own code
+    # sections. A REL32 call to one is audited recursively as __cdecl (`ret`, caller
+    # cleans up): ESP and non-volatiles must be preserved on every normal path.
+    internal = {}
+    for sym in obj['symbols'].values():
+        if sym['kind'] == 0x20 and sym['storage'] == 3 and sym['section'] in offsets:
+            internal[sym['name']] = offsets[sym['section']] + sym['value']
+    seen, normal, calls, walked = set(), [], [], {}
 
-        def put(dst):
-            todo.append((dst, sp, fp, regs, stack))
-
-        if mn.startswith('j'):
-            need(op.startswith('0x'), f'indirect jump {op}')
-            put(int(op, 0))
-            if mn == 'jmp':
+    def walk(name, depth):
+        need(depth <= 4, f'internal call depth at {name}')
+        if name in walked:
+            need(walked[name] is not None, f'recursive internal call {name}')
+            return walked[name]
+        walked[name] = None
+        if name == ENTRY:
+            want_pop = 16
+            start_off = entry_off
+        else:
+            need('@@YA' in name, f'internal callee {name} is not __cdecl')
+            want_pop = 0
+            start_off = internal[name]
+        need(start_off in by, f'{name} not at instruction boundary')
+        initial = {r: r + '_entry' for r in ('ebx', 'ebp', 'esi', 'edi')}
+        todo = [(start_off, 0, None, initial, {}, ())]
+        fn_seen = set()
+        while todo:
+            address, sp, fp, regs, stack, srcs = todo.pop()
+            state = (address, sp, fp, tuple(sorted(regs.items())), tuple(sorted(stack.items())), srcs)
+            if state in fn_seen:
                 continue
-        if nxt in by:
-            put(nxt)
+            fn_seen.add(state)
+            seen.add((name,) + state)
+            need(len(fn_seen) < 200000, 'CFG explosion')
+            need(address in by, f'fallthrough into non-instruction at {address:#x}')
+            i = by[address]
+            mn, op, nxt = i.mnemonic, i.op_str, address + i.size
+            regs, stack, srcs = dict(regs), dict(stack), dict(srcs)
+            # Track `mov reg, dword ptr [abs32]` loads of a relocated pointer so that a
+            # later `call reg` resolves to that binding (e.g. LD2_OriginalDlgItem).
+            dst0 = op.split(', ')[0] if op else ''
+            if dst0 in ('eax', 'ecx', 'edx', 'ebx', 'esi', 'edi') and mn != 'call':
+                if dst0 != 'esp' and mn not in ('push', 'cmp', 'test') and ',' in op:
+                    srcs.pop(dst0, None)
+                    if mn == 'mov' and op.endswith(']') and '[' in op.split(', ')[1] and not any(
+                            r in op.split(', ')[1] for r in ('eax', 'ebx', 'ecx', 'edx', 'esi', 'edi', 'ebp', 'esp')):
+                        ld = next((reloc_at[o] for o in range(address + 1, nxt) if o in reloc_at), None)
+                        if ld:
+                            srcs[dst0] = ld
+            elif mn == 'pop' and op in srcs:
+                srcs.pop(op, None)
+            if mn == 'push':
+                sp -= 4
+                stack[sp] = regs.get(op, 'temporary')
+            elif mn == 'pop':
+                if op in regs:
+                    regs[op] = stack.get(sp, 'unknown')
+                sp += 4
+            elif mn == 'sub' and op.startswith('esp, '):
+                sp -= int(op.split(', ')[1], 0)
+            elif mn == 'add' and op.startswith('esp, '):
+                sp += int(op.split(', ')[1], 0)
+            elif mn == 'mov' and op == 'ebp, esp':
+                fp = sp
+                regs['ebp'] = 'frame'
+            elif mn == 'mov' and op == 'esp, ebp':
+                need(fp is not None, 'esp,ebp without frame')
+                sp = fp
+            elif mn == 'call':
+                # REL32: reloc sits on the displacement (last 4 of 5-byte call).
+                rr = next((reloc_at[o] for o in range(address + 1, nxt) if o in reloc_at), None)
+                target = rr if rr else srcs.get(op, op)
+                for v in ('eax', 'ecx', 'edx'):
+                    srcs.pop(v, None)  # volatile across the call
+                if target in CALLEE_CLEANUP:
+                    pop = CALLEE_CLEANUP[target]
+                elif target in internal:
+                    pop = walk(target, depth + 1)
+                else:
+                    raise SystemExit(f'AUDIT FAIL: unreviewed call at {address:#x} -> {target}')
+                calls.append(dict(offset=hex(address), target=target, pop_bytes=pop))
+                sp += pop
+            elif mn == 'ret':
+                got_pop = int(op, 0) if op else 0
+                need(got_pop == want_pop, f'{name}: ret operand {op!r} (want {want_pop})')
+                need(sp == 0, f'{name}: ESP mismatch at ret {address:#x}: {sp}')
+                need(regs == initial, f'{name}: nonvolatile mismatch at ret {address:#x}: {regs}')
+                normal.append(f'{name}:{address:#x}')
+                continue
+            elif mn == 'mov' and op.split(', ')[0] in regs:
+                regs[op.split(', ')[0]] = 'modified'
+            elif mn in ('lea', 'xor', 'add', 'sub', 'inc', 'dec', 'movzx') and op.split(', ')[0] in regs:
+                regs[op.split(', ')[0]] = 'modified'
+            if mn == 'mov' and op.startswith('dword ptr [ebp '):
+                m = re.match(r'dword ptr \[ebp ([+-]) (0x[0-9a-f]+|[0-9]+)\],', op)
+                if m and fp is not None:
+                    at = fp + (1 if m[1] == '+' else -1) * int(m[2], 0)
+                    if at in stack:
+                        stack[at] = 'local_store'
 
+            def put(dst):
+                todo.append((dst, sp, fp, regs, stack, tuple(sorted(srcs.items()))))
+
+            if mn.startswith('j'):
+                need(op.startswith('0x'), f'indirect jump {op}')
+                put(int(op, 0))
+                if mn == 'jmp':
+                    continue
+            if nxt in by:
+                put(nxt)
+        walked[name] = want_pop
+        return want_pop
+
+    walk(ENTRY, 0)
     need(normal, 'no normal return')
     # Every ret in the whole image that is reachable must pop 16; unreachable rets ignored.
     return dict(
@@ -175,6 +217,7 @@ def audit(raw: bytes) -> dict:
         defined_public=sorted(defined),
         normal_returns=sorted(set(normal)),
         normal_cfg_states=len(seen),
+        internal_callees_audited=sorted(k for k in walked if k != ENTRY),
         esp_and_nonvolatile_preserved_on_normal_paths=True,
         calls=[dict(t) for t in sorted({tuple(sorted(c.items())) for c in calls})],
         relocation_counts={
