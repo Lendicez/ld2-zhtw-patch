@@ -76,19 +76,28 @@ m045 在 Win11 上的靜態 UI 已正確顯示繁中。但商店、酒館、委�
 
 紀錄存於 `zhTW_lab/runs/m061/`。
 
-## 5. 仍需 Windows（都還沒做，也還沒授權）
+## 5. HANDOFF-COMPILE（本輪已備妥，待 Win11 執行）
 
-1. **MSVC compile-only**：`list_insert_w.cpp` 用 m056/m058 同組旗標（`/EHs`）編譯，再做 COFF 稽核（fixup／外部符號／ret 16 正常路徑）。不執行，風險最低。
-2. **自有 mock native 測試**：模擬 CWnd、記錄 W／A 呼叫的假 API。驗證 ABI、fallback 原參數不變、緩衝區生命週期。不碰遊戲。
-3. **惰性合併 loader 驗收**：在可丟棄副本上啟動 m045 惰性合併 EXE 一次，確認 loader 接受新區段與 import。因為 hook 未改，遊戲行為應與 m045 相同。這一步需要寫出 EXE 並由使用者授權。
-4. 之後才是「啟用 8 個清單點＋TextOutW hook」的功能版，再做一次 Win11 觀察（商店／酒館／委託畫面）。
+包：交回使用者的 `m061-handoff-compile.zip`（附 `.sha256`；本倉庫只收 HANDOFF-COMPILE 原始檔，不收 zip）。
 
-## 6. 下一個可自動進行的 Linux 步驟
+| Stage | 內容 | 產物 |
+|---|---|---|
+| A | `cl /c /W4 /WX /O2 /Oi /Oy- /GS /Gy /Zl /EHs list_insert_w.cpp`（不連結） | `runs/m061/compile-only/list_insert_w.obj` |
+| B | 編譯 `list_mock_test.cpp`，與 A 連結並執行一次（假 API，不開遊戲） | `runs/m061/mock/once-result.json` |
 
-製作 `HANDOFF-COMPILE`，涵蓋上面第 1 和第 2 步：
+Linux 端已就緒：
 
-- 一個只做 compile-only＋mock 測試的 PowerShell 腳本與 mock harness 源碼（`list_mock_test.cpp`）；
-- Linux 端的 COFF 稽核規則（比照 m056 `audit.py`，固定新 object 的符號、fixup 數與 5 個外部綁定：`_LD2_EntryCount`、`_LD2_Entries`、`_LD2_OriginalDlgItem`、`_LD2_SendDlgItemMessageW`、`_LD2_MultiByteToWideChar`；/GS 符號比照 m058 綁到遊戲本身的 `___security_cookie` 0xa8f284 與 `@__security_check_cookie@4` 0x4fc870，其餘 CRT 符號一律拒絕）；
-- 讓 `merge_plan.py` 能接受第二個 helper object，兩者共用 `.ld2c`。
+- `audit_list_obj.py`：未定義符號恰好 7 個（5 個 helper 綁定＋2 個 security-cookie）；拒絕 memcpy／memset／chkstk／EH／CRT／DEFAULTLIB；入口 `_LD2_ListInsert@24` 正常路徑 `ret 16`。以 synthetic COFF stand-in 跑過（sha `4ecaf65a…8493`）；**真正的 MSVC 物件 hash 待 Stage A 後鎖定**。
+- `coff_obj.py`：通用 i386 COFF 重定位器；對 m058 物件與 m060 `relocate_reviewed` **逐位元組相同**。
+- `merge_plan.py`：可接受第二個 helper（list），與 TextOutW 共用 `.ld2c`；雙 helper 惰性合併另加 `SendDlgItemMessageW` 與尾端 `OriginalDlgItem=0x4ea671` 字。單 helper 輸出 hash 仍與先前一致（原版 `08b9ec9e…41a1`、m045 `40fa133b…143c`）。雙 helper＋synthetic list：m045 `38119770…de2c`。
 
-同時可以並行 m062：versions.json 依 profile 讀取，`release_approved` 仍為 false。
+## 6. 仍需 Windows（使用者執行 HANDOFF-COMPILE；其餘尚未授權）
+
+1. 執行 `HANDOFF-COMPILE/WINDOWS-COMPILE.ps1`（Stage A＋B）。不上遊戲。
+2. 把 `list_insert_w.obj`＋`compile-command.json` 交回 Linux → 跑 `audit_list_obj.py` → pin sha256。
+3. **之後另案授權**：惰性合併 loader 驗收（可丟棄副本寫出 EXE 一次）。
+4. 再之後：啟用 8 個清單點＋TextOutW hook 的功能版，Win11 觀察商店／酒館／委託。
+
+## 7. 下一個可自動進行的 Linux 步驟
+
+等 Stage A 物件交回後：跑稽核、把 list object sha256 寫進 `merge_plan` pin、更新 dual-merge 金樣。並行可做 m062（versions.json 依 profile 讀取；`release_approved` 仍 false）——本輪未展開。
