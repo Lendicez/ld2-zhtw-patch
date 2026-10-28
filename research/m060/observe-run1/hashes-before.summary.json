@@ -1,0 +1,35 @@
+{
+  "schema": "m060-observe-hashes-before/1",
+  "approved": "user approved 2026-10-28: one disposable-copy m060 observation only",
+  "taken_utc": "2026-10-28T14:00:26.8120052Z",
+  "windows": "Microsoft Windows NT 10.0.26200.0",
+  "source_dir": "<LD2_ROOT>\\LunaticDawnPotB",
+  "source_exe": {
+    "path": "<LD2_ROOT>\\LunaticDawnPotB\\Ld95.exe",
+    "size": 7090176,
+    "sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+    "last_write_utc": "2026-10-25T17:55:24.8215298Z"
+  },
+  "source_exe_after_copy": {
+    "path": "<LD2_ROOT>\\LunaticDawnPotB\\Ld95.exe",
+    "size": 7090176,
+    "sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+    "last_write_utc": "2026-10-25T17:55:24.8215298Z"
+  },
+  "source_manifest_excludes": "Usr\\, LUNAS*（私人存檔，未讀取內容）",
+  "copy_original_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "m045": {
+    "path": "<LD2_ROOT>\\zhTW_lab\\runs\\m045\\build-first\\Ld95.exe",
+    "size": 7118848,
+    "sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7"
+  },
+  "copy_excluded_dirs": [
+    "Usr",
+    "LUNAS"
+  ],
+  "saves_created": [],
+  "production_can_apply": false,
+  "release_approved": false,
+  "source_manifest_count": 1029,
+  "source_manifest_note": "完整清單（1,029 檔路徑＋hash）僅留本機，不上傳"
+}
