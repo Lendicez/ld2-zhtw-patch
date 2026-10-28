@@ -257,5 +257,38 @@ class CoffVersusM060Tests(unittest.TestCase):
 
 
 
+class EnablePlanTests(unittest.TestCase):
+    """Hook stub encoding (pure) and refusal on a non-original span; licensed parts below."""
+    def test_hook_stub_shape(self):
+        import enable_plan as ep
+        stub = ep.hook_stub(0xae3170)
+        self.assertEqual(len(stub), 40)
+        self.assertEqual(stub[:10], bytes.fromhex('ff742418' '56' 'ff74241c' '55'))
+        call_va = 0x400000 + 0x6dc7d + 10
+        self.assertEqual(stub[10], 0xE8)
+        self.assertEqual(call_va + 5 + struct.unpack_from('<i', stub, 11)[0], 0xae3170)
+        self.assertEqual(stub[15], 0xE9)
+        self.assertEqual(call_va + 10 + struct.unpack_from('<i', stub, 16)[0], ep.CONTINUATION_VA)
+        self.assertEqual(stub[20:], b'\xcc' * 20)
+        self.assertEqual(hashlib.sha256(stub).hexdigest(), '67f30b3e3460e3035da33b684541fa8fd1c80d17c01c644a6ac857d8f64cca9e')
+
+    def test_refuses_non_original_span(self):
+        import enable_plan as ep
+        with self.assertRaises(ep.Refuse):
+            ep.apply_enabled(bytes(0x6e0000), 0xae3170, 0xae3790, [])
+
+    @unittest.skipUnless(ORIGINAL, 'licensed original EXE not provided')
+    def test_original_profile_enable_changes_only_hook_sites_checksum(self):
+        import enable_plan as ep
+        sites = site_plan.load_sites((HERE / 'list_sites.json').read_bytes())
+        out, rep = ep.apply_enabled(ORIGINAL, 0xadc170, 0xadc790, sites)
+        self.assertEqual(len(rep['sites']), 8)
+        self.assertTrue(rep['hook_enabled'] and rep['list_sites_retargeted'])
+        self.assertFalse(rep['production_can_apply'] or rep['file_written'])
+        diff = [i for i in range(len(out)) if out[i] != ORIGINAL[i]]
+        self.assertTrue(all(0x6dc7d <= i < 0x6dca5 or i < 0x200 or any(int(s['va'], 16) - 0x400000 < i < int(s['va'], 16) - 0x400000 + 5 for s in rep['sites']) for i in diff))
+
+
+
 if __name__ == '__main__':
     unittest.main()

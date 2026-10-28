@@ -1,0 +1,91 @@
+{
+  "schema": "m061-enabled-static-verify/1",
+  "base": "m045 4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7",
+  "inert_sha256": "6a43dc4e3d881a207f4b0dae2fcc5f1fca5d079d6fe90139115da84ac3ef1cfe",
+  "enabled_sha256": "57103342f130da2ab51bf70e94d4dfb6c63245c3b375154bb4fbe27906b7ce5b",
+  "enabled_size": 7286784,
+  "hook_span": [
+    "0x6dc7d",
+    "0x6dca5"
+  ],
+  "hook_stub_sha256": "67f30b3e3460e3035da33b684541fa8fd1c80d17c01c644a6ac857d8f64cca9e",
+  "hook_stub_disasm": [
+    "0x46dc7d push dword ptr [esp + 0x18]",
+    "0x46dc81 push esi",
+    "0x46dc82 push dword ptr [esp + 0x1c]",
+    "0x46dc86 push ebp",
+    "0x46dc87 call 0xae3170",
+    "0x46dc8c jmp 0x46dca5",
+    "0x46dc91..0x46dca4 int3 x20"
+  ],
+  "name_pair_va": "0xae3170",
+  "list_entry_va": "0xae3790",
+  "sites": [
+    {
+      "va": "0x492431",
+      "old": "call 0x4ea671",
+      "new": "call 0xae3790"
+    },
+    {
+      "va": "0x4aaf19",
+      "old": "call 0x4ea671",
+      "new": "call 0xae3790"
+    },
+    {
+      "va": "0x4ab0fe",
+      "old": "call 0x4ea671",
+      "new": "call 0xae3790"
+    },
+    {
+      "va": "0x4b1153",
+      "old": "call 0x4ea671",
+      "new": "call 0xae3790"
+    },
+    {
+      "va": "0x4b2d1f",
+      "old": "call 0x4ea671",
+      "new": "call 0xae3790"
+    },
+    {
+      "va": "0x4b3477",
+      "old": "call 0x4ea671",
+      "new": "call 0xae3790"
+    },
+    {
+      "va": "0x4b46e4",
+      "old": "call 0x4ea671",
+      "new": "call 0xae3790"
+    },
+    {
+      "va": "0x4b4df1",
+      "old": "call 0x4ea671",
+      "new": "call 0xae3790"
+    }
+  ],
+  "changed_bytes_vs_inert": 66,
+  "checksum": "0x700b22",
+  "pefile_checksum_ok": true,
+  "sections": [
+    ".text",
+    ".rdata",
+    ".data",
+    ".rsrc",
+    ".ld2t",
+    ".ld2c",
+    ".ld2i"
+  ],
+  "import_descriptors": 15,
+  "entry_point": "0x10011e",
+  "size_of_image": "0x70c000",
+  "branches_into_span_interior": [],
+  "reviewed_function_insns": 347,
+  "original_dlgitem_slot_value": "0x4ea671",
+  "expected_textouta_value": "0x4e13d7",
+  "iat": {
+    "GDI32!TextOutW": "0xb0b160",
+    "USER32!SendDlgItemMessageW": "0xb0b194"
+  },
+  "stack_contract": "ESP==F at 0x46dc7d; 4 pushes + stdcall ret 0x10 => ESP==F at 0x46dca5 (original: 2x[4 pushes + thiscall ret 0x10]); EBX/ESI/EDI/EBP preserved by helper (m056/m058 audit); 0x4eaa3d uses no incoming registers",
+  "win11_run": false,
+  "production_can_apply": false
+}
