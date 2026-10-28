@@ -1,0 +1,55 @@
+{
+  "milestone": "m045",
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "expected_output_sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7",
+  "output_bytes": 7118848,
+  "base_profile": "m042",
+  "base_commit": "01612edd73981e328ce4d0b63eaf7d98e7500818",
+  "new_positions": 2,
+  "new_distinct_translations": 2,
+  "total_positions": 554,
+  "total_font_locations": 71,
+  "two_builds_exe_and_metadata_identical": true,
+  "resources_changed_vs_m042": [
+    [
+      6,
+      3585,
+      1041
+    ]
+  ],
+  "other_strings_code_data_and_manifest_unchanged": true,
+  "prior_profiles_unchanged": true,
+  "native_cp950_roundtrips": 2,
+  "negative_contract_cases": 16,
+  "offscreen_intrinsic_measurements": 8,
+  "offscreen_missing_glyphs": 0,
+  "actual_game_font_and_clipping_verified": false,
+  "suites": {
+    "full-default": {
+      "total": 334,
+      "passed": 247,
+      "skipped": 87,
+      "failed": 0
+    },
+    "full-licensed": {
+      "total": 334,
+      "passed": 266,
+      "skipped": 68,
+      "failed": 0
+    }
+  },
+  "source_file_hashes_unchanged": 1029,
+  "m043_game_exe_unchanged": true,
+  "production_can_apply": false,
+  "runtime_tested": false,
+  "gui_opened": false,
+  "packaged_tool_updated": false,
+  "m039_enabled": false,
+  "m040_enabled": false,
+  "remote_writes": 0,
+  "limits": [
+    "General/Windows-file tests that require separate fixture opt-in remain skipped.",
+    "Native codec and offscreen font checks are not live game validation.",
+    "No program/permission/UIPI diagnostics were retried."
+  ]
+}

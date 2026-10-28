@@ -146,3 +146,11 @@
 !/docs/M043-ACCEPTANCE.md
 !/docs/M043-CANDIDATE-PROFILES.md
 !/packaging/m043-verification.json
+
+!/patches/m045/catalog.json
+!/patches/m045/versions.json
+!/patches/m045/recipe.json
+!/patches/m045/review.json
+!/patches/m045/build-verification.json
+!/docs/M045-STATUS-PROMPTS.md
+!/tests/test_profile_m045.py

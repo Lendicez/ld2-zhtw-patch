@@ -10,7 +10,7 @@ from ld2patch.patch_engine import build_to_paths,strict_json
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--profile',choices=['m020','m037','m038','m041','m042'],default='m020')
+    parser.add_argument('--profile',choices=['m020','m037','m038','m041','m042','m045'],default='m020')
     parser.add_argument('--input',type=Path,required=True)
     parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--metadata-out',type=Path,required=True)

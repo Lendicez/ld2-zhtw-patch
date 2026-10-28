@@ -228,3 +228,8 @@ Candidate source defaults to m042 (552 locations) and preserves all prior pinned
 ## m043 packaged candidate completion (supersedes source-only checkpoint)
 
 The local m043 onefile now passed 13 background CLI invocations, including exact m042 installation, independent-process DPAPI restore and idempotent restore. The default trial profile is m042 (552 locations); m020/m037/m038/m041 remain selectable. Protected recovery identifies the stored profile even when a different profile is selected at restart. Native store suite: 20/20 pass (6 native, 14 headless). PE manifest is asInvoker/uiAccess=false; unsigned. See M043-CANDIDATE-PROFILES.md, M043-ACCEPTANCE.md and packaging/m043-verification.json. GUI and game have not run; full-game copies have not been prepared. Production can_apply=false. No remote writes.
+
+
+## m045 local status-prompt candidate
+
+Two previously untranslated standard status/help prompts (IDs 57345 and 57346) are now a separate offline profile: 554 positions, 71 unchanged font locations. See M045-STATUS-PROMPTS.md and patches/m045/build-verification.json. Keep m042 and the m043 trial default intact. No GUI/game execution, new package, remote write or repackaging in this milestone. The observed ACP950 conversion loss is supported; the actual runtime chain and automatic-input failure remain unproven.

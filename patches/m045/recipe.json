@@ -1,0 +1,10 @@
+{
+  "schema_version": 2,
+  "id": "m045-status-prompts-v1",
+  "engine": "resource_append_v1",
+  "version_id": "ld95-1.0.3.16-m045",
+  "catalog": "catalog.json",
+  "catalog_sha256": "a3b15568cf7a4047745e8877f682fe8d1ea5b327ba0d113e1a29b46f2248a3bc",
+  "text_locations": 554,
+  "font_locations": 71
+}

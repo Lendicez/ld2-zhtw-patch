@@ -26,3 +26,8 @@ RES DAT／BMH／TIL 不能直接等同外部劇本；圖片字仍暫不處理。
 集中遊戲驗收的五組最小場景見 [本輪結果](M042-STATIC-UI.md)。
 
 本輪成果只在本機，沒有新增遠端 blob、commit、分支或 PR。
+
+
+## m045 local update
+
+Adds 2 distinct standard status/help translations to m042: 554 translated resource positions in total. Both target RT_STRING block 3585; LD95 and 13 empty slots remain exact. This is a bounded correction found through m044 observation, not a claim of complete static UI or whole-game coverage. Story/data/HF parsing and dynamic text remain separate. The two candidates have not been seen in the game; the existing packaged tool still defaults to m042.

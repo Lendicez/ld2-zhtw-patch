@@ -183,3 +183,8 @@ New multi-profile source passed headless and licensed build regression. Packagin
 ## m043 packaged verification update
 
 The earlier tool-preflight blocker and local index mismatch are resolved. The pinned m042 profile is verified inside the packaged candidate and through a real new disposable EXE install/restore cycle. All 13 background CLI checks passed; native recovery suite passed 20/20. This does not verify GUI layout, game execution/save/load, full-game-directory isolation, other hosts or production installation. Native suite overlaps general tests and is not additive. No m039/m040 dynamic/layout integration was enabled. Detailed evidence is in packaging/m043-verification.json; local-only originals, binaries and recovery cards remain excluded.
+
+
+## m045 status prompt scope
+
+Native Windows ACP950 reproduction supports conversion loss for the unchanged idle prompt, not a completed game API trace. Neither candidate has runtime acceptance. Intrinsic offscreen MingLiU metrics do not establish the actual status font/control width. CUA clicks and Alt+F had no visible effect in m044; no measured helper/game integrity or session evidence establishes UIPI. Do not retry GUI, elevate automation or alter security to resolve this by assumption. m045 is build-only; production apply stays disabled and the m043 trial default remains m042.
