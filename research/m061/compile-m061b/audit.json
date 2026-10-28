@@ -1,0 +1,113 @@
+{
+  "object_sha256": "e8144466755d223a18f5d8f586510f64822c5cc1d793c708f171e964f6064d51",
+  "object_bytes": 4038,
+  "profile": "u",
+  "entry": "@LD2_ListInsertU@24",
+  "ret_pop": 16,
+  "undefined": [
+    "@__security_check_cookie@4",
+    "_LD2_Entries",
+    "_LD2_EntryCount",
+    "_LD2_GetClassLongW",
+    "_LD2_GetDlgItem",
+    "_LD2_GetWindowLongW",
+    "_LD2_IsWindowUnicode",
+    "_LD2_ListMode",
+    "_LD2_MultiByteToWideChar",
+    "_LD2_OriginalDlgItem",
+    "_LD2_SendDlgItemMessageW",
+    "_LD2_SetWindowLongW",
+    "___security_cookie"
+  ],
+  "defined_public": [
+    "@LD2_ListInsertU@24"
+  ],
+  "normal_returns": [
+    "?LD2_ListPrepare@@YAHIPBEPBULD2ListRow@@IP6AH0HPAGH@Z2PAH@Z:0x349",
+    "?LD2_ListPrepare@@YAHIPBEPBULD2ListRow@@IP6AH0HPAGH@Z2PAH@Z:0x7b",
+    "@LD2_ListInsertU@24:0x65a",
+    "@LD2_ListInsertU@24:0x70f",
+    "@LD2_ListInsertU@24:0x732"
+  ],
+  "normal_cfg_states": 654,
+  "internal_callees_audited": [
+    "?LD2_ListPrepare@@YAHIPBEPBULD2ListRow@@IP6AH0HPAGH@Z2PAH@Z"
+  ],
+  "esp_and_nonvolatile_preserved_on_normal_paths": true,
+  "calls": [
+    {
+      "offset": "0x2bd",
+      "pop_bytes": 24,
+      "target": "_LD2_MultiByteToWideChar"
+    },
+    {
+      "offset": "0x5ff",
+      "pop_bytes": 0,
+      "target": "?LD2_ListPrepare@@YAHIPBEPBULD2ListRow@@IP6AH0HPAGH@Z2PAH@Z"
+    },
+    {
+      "offset": "0x644",
+      "pop_bytes": 16,
+      "target": "_LD2_OriginalDlgItem"
+    },
+    {
+      "offset": "0x652",
+      "pop_bytes": 0,
+      "target": "@__security_check_cookie@4"
+    },
+    {
+      "offset": "0x674",
+      "pop_bytes": 8,
+      "target": "_LD2_GetDlgItem"
+    },
+    {
+      "offset": "0x681",
+      "pop_bytes": 4,
+      "target": "_LD2_IsWindowUnicode"
+    },
+    {
+      "offset": "0x68e",
+      "pop_bytes": 8,
+      "target": "_LD2_GetWindowLongW"
+    },
+    {
+      "offset": "0x6a1",
+      "pop_bytes": 8,
+      "target": "_LD2_GetClassLongW"
+    },
+    {
+      "offset": "0x6b5",
+      "pop_bytes": 12,
+      "target": "_LD2_SetWindowLongW"
+    },
+    {
+      "offset": "0x6e8",
+      "pop_bytes": 20,
+      "target": "_LD2_SendDlgItemMessageW"
+    },
+    {
+      "offset": "0x707",
+      "pop_bytes": 0,
+      "target": "@__security_check_cookie@4"
+    },
+    {
+      "offset": "0x721",
+      "pop_bytes": 16,
+      "target": "_LD2_OriginalDlgItem"
+    },
+    {
+      "offset": "0x72a",
+      "pop_bytes": 0,
+      "target": "@__security_check_cookie@4"
+    }
+  ],
+  "relocation_counts": {
+    "6": 27,
+    "20": 4
+  },
+  "no_default_crt_link": true,
+  "no_memcpy_memset_heap_chkstk_eh_symbols": true,
+  "native_executed": false,
+  "linked": false,
+  "production_can_apply": false
+}

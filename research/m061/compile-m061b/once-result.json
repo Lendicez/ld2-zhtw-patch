@@ -1,0 +1,11 @@
+{
+    "production_can_apply":  false,
+    "stdout_bytes":  693,
+    "stderr_bytes":  0,
+    "sdk_version":  "10.0.26100.0",
+    "game_touched":  false,
+    "mock_exe_sha256":  "e207e0cbf0713d9b3cdbd87e4be324e5d844b195cdd7dcfb6c6ca9d1f55816f0",
+    "exit_code":  0,
+    "stage":  "B-mock-link-run",
+    "list_object_sha256":  "e8144466755d223a18f5d8f586510f64822c5cc1d793c708f171e964f6064d51"
+}
