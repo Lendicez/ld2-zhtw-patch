@@ -233,3 +233,8 @@ The local m043 onefile now passed 13 background CLI invocations, including exact
 ## m045 local status-prompt candidate
 
 Two previously untranslated standard status/help prompts (IDs 57345 and 57346) are now a separate offline profile: 554 positions, 71 unchanged font locations. See M045-STATUS-PROMPTS.md and patches/m045/build-verification.json. Keep m042 and the m043 trial default intact. No GUI/game execution, new package, remote write or repackaging in this milestone. The observed ACP950 conversion loss is supported; the actual runtime chain and automatic-input failure remain unproven.
+
+
+## m047: pinned m045 candidate integration
+
+The new local candidate defaults to m045 (554 positions), retaining all five prior profiles unchanged. Packaged CLI passed 13 invocations including exact install, protected cross-process profile-aware restore, original identity/metadata restoration, and no-write repeated restore. General: 248 pass/87 skip; licensed: 267 pass/68 skip; each 335 total. Separate native store suite: 20 pass, overlaps general. Manifest remains asInvoker. No production install, GUI/game launch, new dependency or full game copy. See M047-CANDIDATE.md, M047-ACCEPTANCE.md and packaging/m047-verification.json. m046 runtime evidence is limited to the directly seen F1 prompt and user-reported manual menu; save/load and normal exit remain unverified. The m046 directory was not accessed. Publication is pending; no remote writes in this milestone.

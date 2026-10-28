@@ -1,0 +1,148 @@
+{
+  "milestone": "m047",
+  "status": "packaged_candidate_cli_verified_gui_and_full_game_unverified",
+  "base_commit": "eafa7cdd43d124720715054776968ede6860de4d",
+  "tool_version": "0.4.1-m047",
+  "trial_default_profile": "m045",
+  "profiles": [
+    "m020",
+    "m037",
+    "m038",
+    "m041",
+    "m042",
+    "m045"
+  ],
+  "old_profile_pins_unchanged": true,
+  "text_locations": 554,
+  "font_locations": 71,
+  "new_translation_locations": 0,
+  "non_trial_generator_default": "m020",
+  "exe_bytes": 13079314,
+  "exe_sha256": "c61b21cf6aedf964bffc02fad39c78ef1ccb7ec471fc4d45b3035658dc09c0a8",
+  "machine": "AMD64",
+  "manifest": [
+    {
+      "level": "asInvoker",
+      "uiAccess": "false"
+    }
+  ],
+  "signed": false,
+  "bundled_profile_data_exact": true,
+  "bundled_profile_files": 19,
+  "local_bound_policy_verified": true,
+  "tk_runtime_present": true,
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "installed_output_sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7",
+  "installed_output_bytes": 7118848,
+  "general_suite": {
+    "total": 335,
+    "passed": 248,
+    "skipped": 87,
+    "failed": 0
+  },
+  "licensed_suite": {
+    "total": 335,
+    "passed": 267,
+    "skipped": 68,
+    "failed": 0
+  },
+  "native_suite": {
+    "total": 20,
+    "passed": 20,
+    "skipped": 0,
+    "failed": 0,
+    "native": 6,
+    "headless": 14,
+    "overlaps_general_suite": true
+  },
+  "packaged_invocations": [
+    {
+      "name": "help",
+      "exit": 0
+    },
+    {
+      "name": "version",
+      "exit": 0
+    },
+    {
+      "name": "unknown-source",
+      "exit": 1
+    },
+    {
+      "name": "outside-workspace",
+      "exit": 1
+    },
+    {
+      "name": "preview",
+      "exit": 0
+    },
+    {
+      "name": "cancel",
+      "exit": 0
+    },
+    {
+      "name": "no-confirm",
+      "exit": 1
+    },
+    {
+      "name": "old-profile-preview",
+      "exit": 0
+    },
+    {
+      "name": "version-mismatch",
+      "exit": 1
+    },
+    {
+      "name": "install",
+      "exit": 0
+    },
+    {
+      "name": "inspect",
+      "exit": 0
+    },
+    {
+      "name": "restore",
+      "exit": 0
+    },
+    {
+      "name": "restore-again",
+      "exit": 0
+    }
+  ],
+  "cancel_and_refusals_unchanged": true,
+  "cross_process_restore": true,
+  "restore_profile_from_protected_anchor": true,
+  "restored_original_identity_and_metadata": true,
+  "repeated_restore_no_writes": true,
+  "source_unchanged": true,
+  "original_files_verified": 1029,
+  "packaging_bytes": 360218434,
+  "m047_case_bytes": 21301877,
+  "packaging_plus_m047_cases_bytes": 381520311,
+  "budget_bytes": 1000000000,
+  "production_can_apply": false,
+  "gui_tested": false,
+  "game_executed_this_milestone": false,
+  "full_game_copy_created": false,
+  "prior_m046_runtime_evidence": {
+    "idle_f1_prompt": "direct_visual_pass",
+    "manual_file_menu": "user_reported_pass",
+    "attached_image_independently_inspected": false,
+    "full_game": false,
+    "save_load": false,
+    "normal_exit_confirmed": false
+  },
+  "automatic_input_failure_root_cause": "unknown; manual success does not prove UIPI",
+  "m046_directory_accessed": false,
+  "m039_formatter_enabled": false,
+  "m040_layout_enabled": false,
+  "dependencies_added": false,
+  "security_changed": false,
+  "windows_elevated": false,
+  "remote_writes": 0,
+  "release_created": false,
+  "initial_failures_resolved": [
+    "Preparation exact-label assertion corrected without recreating the workspace.",
+    "One historical test still required the old candidate default; updated to assert pinned m045 integration while retaining immutable m045 review metadata. Final full suites passed."
+  ]
+}

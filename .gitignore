@@ -154,3 +154,6 @@
 !/patches/m045/build-verification.json
 !/docs/M045-STATUS-PROMPTS.md
 !/tests/test_profile_m045.py
+!/docs/M047-CANDIDATE.md
+!/docs/M047-ACCEPTANCE.md
+!/packaging/m047-verification.json
