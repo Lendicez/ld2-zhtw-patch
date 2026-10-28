@@ -95,9 +95,19 @@ Linux 端已就緒：
 
 1. ~~執行 `HANDOFF-COMPILE/WINDOWS-COMPILE.ps1`（Stage A＋B）~~ 已完成（2026-10-29，Stage B exit 0）。
 2. ~~交回物件 → 稽核 → pin sha256~~ 已完成：`d5349e58…61e0`。
-3. **之後另案授權**：惰性合併 loader 驗收（可丟棄副本寫出 EXE 一次）。
+3. **已備妥，待 Win11 執行**：惰性合併 loader 驗收（可丟棄副本寫出 EXE 一次）→ `HANDOFF-LOADER-INERT/`（見下方 §8）。
 4. 再之後：啟用 8 個清單點＋TextOutW hook 的功能版，Win11 觀察商店／酒館／委託。
 
 ## 7. 下一個可自動進行的 Linux 步驟
 
-已完成（見 `RESULT.zh-TW.md`）。下一步需另案授權：可丟棄副本惰性 loader 驗收。並行可做 m062（versions.json 依 profile 讀取；`release_approved` 仍 false）——本輪未展開。
+已完成（見 `RESULT.zh-TW.md`）。惰性 loader 驗收包已備妥（§8）。並行可做 m062（versions.json 依 profile 讀取；`release_approved` 仍 false）——本輪未展開。
+
+## 8. HANDOFF-LOADER-INERT（2026-10-29 備妥，待 Win11 一次）
+
+- 目的：只驗證 Windows 能載入雙 helper 惰性合併 EXE（m045 基底，輸出 `6a43dc4e…1cfe`，7,286,784 B，SizeOfImage 0x70C000）並到達標題畫面。hook 區段與 8 個清單點**未修改**。
+- `WINDOWS-LOADER-INERT.ps1`：`-DisposableRoot` 必填且必須是新路徑；只讀原安裝、只寫副本。步驟 `-CheckOnly` → P → `-Launch`（一次）→ `-Finalize`。
+- 差異：m045 → 輸出只差 8 段標頭（103 B）＋檔尾附加 167,936 B；`m061-inert.delta.json`（本倉庫）列出每段位移／長度／sha256。
+  `m061-inert.delta.bin`（sha256 `f26cdbb0…a64a`）含目錄資料，**只放在交付 zip，不進倉庫**；lab 端 `make_loader_delta.py` 可重現並比對。
+- Linux 驗證：`pwsh -CheckOnly`（用 lab 的原版與 m045）記憶體內合併 sha256 = `6a43dc4e…1cfe`、未寫檔；竄改 delta 1 bit → 停止（exit 2）。P／L／G 需 Windows（robocopy、事件記錄、32 位元模組探測）。
+- 證據：`evidence\` 壓成 `m061-loader-inert-evidence.zip`（不含 EXE／存檔／dump）。
+- `production_can_apply=false`、`release_approved=false` 不變。
