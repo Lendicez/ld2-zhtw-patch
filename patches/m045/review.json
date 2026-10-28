@@ -1,0 +1,169 @@
+{
+  "milestone": "m045",
+  "base_commit": "01612edd73981e328ce4d0b63eaf7d98e7500818",
+  "base_profile": "m042",
+  "new_positions": 2,
+  "new_distinct_translations": 2,
+  "total_positions": 554,
+  "total_distinct_translations": 379,
+  "reviewed_resource_block": [
+    6,
+    3585,
+    1041
+  ],
+  "nonempty_members": 3,
+  "changes": [
+    {
+      "source_key": "string:3585:1",
+      "string_id": 57345,
+      "resource": 3585,
+      "index": 1,
+      "source_anchor": "ﾍﾙﾌﾟを表示するには [F1] を押してください。",
+      "translation": "按 [F1] 顯示說明。",
+      "native_cp950_bytes": 18,
+      "utf16_units": 12,
+      "purpose": "Idle F1 help prompt",
+      "evidence": "Original and m042 resource equal; m044 visible F1 anchors and native ACP950 reproduction",
+      "runtime_seen": false
+    },
+    {
+      "source_key": "string:3585:2",
+      "string_id": 57346,
+      "resource": 3585,
+      "index": 2,
+      "source_anchor": "ﾍﾙﾌﾟのﾄﾋﾟｯｸを指定してください。",
+      "translation": "請指定說明主題。",
+      "native_cp950_bytes": 16,
+      "utf16_units": 8,
+      "purpose": "Select a help topic prompt",
+      "evidence": "Adjacent standard resource; complete source sentence explicitly asks for a help topic. Runtime route not observed",
+      "runtime_seen": false
+    }
+  ],
+  "preserved": [
+    {
+      "string_id": 57344,
+      "source_anchor": "LD95",
+      "reason": "Program identifier; retain exactly"
+    }
+  ],
+  "empty_slots_preserved": 13,
+  "resources_changed_vs_m042": [
+    [
+      6,
+      3585,
+      1041
+    ]
+  ],
+  "fonts_changed": 0,
+  "total_font_locations": 71,
+  "offscreen_measurements": [
+    {
+      "string_id": 57345,
+      "dpi": 96,
+      "font": "細明體",
+      "point_size": 9,
+      "text_extent_px": [
+        108,
+        12
+      ],
+      "missing_glyphs": []
+    },
+    {
+      "string_id": 57346,
+      "dpi": 96,
+      "font": "細明體",
+      "point_size": 9,
+      "text_extent_px": [
+        96,
+        12
+      ],
+      "missing_glyphs": []
+    },
+    {
+      "string_id": 57345,
+      "dpi": 120,
+      "font": "細明體",
+      "point_size": 9,
+      "text_extent_px": [
+        144,
+        15
+      ],
+      "missing_glyphs": []
+    },
+    {
+      "string_id": 57346,
+      "dpi": 120,
+      "font": "細明體",
+      "point_size": 9,
+      "text_extent_px": [
+        128,
+        15
+      ],
+      "missing_glyphs": []
+    },
+    {
+      "string_id": 57345,
+      "dpi": 144,
+      "font": "細明體",
+      "point_size": 9,
+      "text_extent_px": [
+        162,
+        18
+      ],
+      "missing_glyphs": []
+    },
+    {
+      "string_id": 57346,
+      "dpi": 144,
+      "font": "細明體",
+      "point_size": 9,
+      "text_extent_px": [
+        144,
+        18
+      ],
+      "missing_glyphs": []
+    },
+    {
+      "string_id": 57345,
+      "dpi": 192,
+      "font": "細明體",
+      "point_size": 9,
+      "text_extent_px": [
+        216,
+        24
+      ],
+      "missing_glyphs": []
+    },
+    {
+      "string_id": 57346,
+      "dpi": 192,
+      "font": "細明體",
+      "point_size": 9,
+      "text_extent_px": [
+        192,
+        24
+      ],
+      "missing_glyphs": []
+    }
+  ],
+  "offscreen_limits": "MingLiU intrinsic size only. Actual status font, width and DPI not measured; no GUI fit claim.",
+  "observations": [
+    "m044 idle status showed question marks. Native Windows ACP950 reproduces the pattern.",
+    "m023 baseline observation record also describes question marks; no fresh baseline comparison."
+  ],
+  "inferences": [
+    "Conversion loss is strongly supported for the unchanged idle resource, but exact runtime loader/conversion/draw chain not traced.",
+    "Second prompt purpose follows its full sentence and adjacency; not observed in gameplay."
+  ],
+  "runtime_seen": false,
+  "game_executed": false,
+  "production_can_apply": false,
+  "m039_formatter_enabled": false,
+  "m040_layout_included": false,
+  "packaged_tool_updated": false,
+  "trial_default_profile": "m042",
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "expected_output_sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7",
+  "output_bytes": 7118848
+}
