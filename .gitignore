@@ -89,6 +89,10 @@
 !/research/m061/loader-inert-run1/hashes-before.summary.json
 !/research/m061/loader-inert-run1/launch-L.json
 !/research/m061/loader-inert-run1/state.json
+!/research/m061/loader-enabled-run1/launch-L.json
+!/research/m061/loader-enabled-run1/state.json
+!/research/m061/loader-enabled-run1/hashes-before.summary.json
+!/research/m061/loader-enabled-run1/observations.filled.md
 !/research/m061/enable_plan.py
 !/research/m061/enabled_static_verify.summary.json
 !/research/m061/HANDOFF-LOADER-ENABLED/README.zh-TW.md
