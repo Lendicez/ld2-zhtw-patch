@@ -17,6 +17,19 @@
 - Windows 10/11 SDK（um\x86、ucrt\x86、rc.exe）；腳本會找 `10.0.26100.0` 或較新版本
 - 可選：設定環境變數 `LD2_ZHTW_LAB` 指向實驗室根目錄；否則腳本會從本包相對路徑尋找 `toolchains\msvc2022`；找不到就要求設定 `LD2_ZHTW_LAB`
 
+## 2026-10-29 修正（Stage B C1083 `cstdio`）
+
+- 原因：可攜式 MSVC 工具鏈沒有 vcvars 環境，腳本只設了 `LIB` 沒設 `INCLUDE`。Stage A 只引用本包標頭（`/Zl`），所以成功；Stage B 的 mock 需要 C++ 標準庫／UCRT 標頭而失敗。
+- 修正：Stage B 前明確設定 `INCLUDE`（`VC\Tools\MSVC\<ver>\include` 與 SDK `ucrt`／`um`／`shared`），並預先檢查 `cstdio`、`libcmt.lib`、`libucrt.lib`。
+- mock 移除自訂的 /GS cookie stub（改由 `/MT` 的 libcmt 提供，避免重複定義）。
+- 新增 `-SkipStageA`：沿用已編好的 `list_insert_w.obj`，並核對 sha256 `d5349e58…61e0`（MSVC 物件含時間戳，重編會變 hash）。
+
+只重跑 Stage B：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\WINDOWS-COMPILE.ps1 -SkipStageA
+```
+
 ## 使用
 
 1. 解壓本 zip 到任意工作目錄（建議不要解到遊戲目錄裡）。

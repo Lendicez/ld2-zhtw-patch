@@ -4,6 +4,11 @@
 #   A) cl /c list_insert_w.cpp  -> runs\m061\compile-only\list_insert_w.obj (+ .asm)
 #   B) cl mock + link with Stage A object -> runs\m061\mock\list-mock.once.exe ; run once
 # After Stage A, copy list_insert_w.obj back to Linux for audit_list_obj.py.
+param(
+  # Re-use an existing Stage A object instead of recompiling (keeps the reported sha256).
+  [switch]$SkipStageA,
+  [string]$ExpectListSha = 'd5349e58bd5087bb06aedda6c8b8dbfa1d2c0d1f87de42e1f86993869bfc61e0'
+)
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
@@ -76,26 +81,35 @@ $MockObj = Join-Path $OutMock 'list_mock_test.obj'
 $MockAsm = Join-Path $OutMock 'list_mock_test.asm'
 $MockExe = Join-Path $OutMock 'list-mock.once.exe'
 
-Write-Host '=== Stage A: compile-only list_insert_w.cpp (/EHs /Zl /GS, no link) ==='
-# Same flag set as m058 name_pair.EHs.obj. /Zl keeps DEFAULTLIB out of the object.
-& $Cl /nologo /c /W4 /WX /O2 /Oi /Oy- /GS /Gy /Zl /EHs `
-  /I$SrcDir $ListCpp `
-  /Fo$ListObj /FAsc /Fa$ListAsm
-if ($LASTEXITCODE -ne 0) { throw "Stage A cl failed $LASTEXITCODE" }
-$ListSha = (Get-FileHash -Algorithm SHA256 -Path $ListObj).Hash.ToLower()
-Write-Host "Stage A OK list_insert_w.obj sha256=$ListSha"
-@{
-  stage = 'A-compile-only'
-  object = 'list_insert_w.obj'
-  object_sha256 = $ListSha
-  object_bytes = (Get-Item $ListObj).Length
-  asm_bytes = (Get-Item $ListAsm).Length
-  flags = @('/c','/W4','/WX','/O2','/Oi','/Oy-','/GS','/Gy','/Zl','/EHs')
-  native_executed = $false
-  linked = $false
-  game_touched = $false
-  production_can_apply = $false
-} | ConvertTo-Json | Set-Content -Path (Join-Path $OutCompile 'compile-command.json') -Encoding utf8
+if ($SkipStageA) {
+  Write-Host '=== Stage A skipped (-SkipStageA): re-using existing object ==='
+  if (-not (Test-Path $ListObj)) { throw "-SkipStageA but missing $ListObj" }
+  if ($ExpectListSha) { Assert-Sha $ListObj $ExpectListSha }
+  $ListSha = (Get-FileHash -Algorithm SHA256 -Path $ListObj).Hash.ToLower()
+  Write-Host "Stage A object sha256=$ListSha"
+} else {
+  Write-Host '=== Stage A: compile-only list_insert_w.cpp (/EHs /Zl /GS, no link) ==='
+  # Same flag set as m058 name_pair.EHs.obj. /Zl keeps DEFAULTLIB out of the object.
+  & $Cl /nologo /c /W4 /WX /O2 /Oi /Oy- /GS /Gy /Zl /EHs `
+    /I$SrcDir $ListCpp `
+    /Fo$ListObj /FAsc /Fa$ListAsm
+  if ($LASTEXITCODE -ne 0) { throw "Stage A cl failed $LASTEXITCODE" }
+  $ListSha = (Get-FileHash -Algorithm SHA256 -Path $ListObj).Hash.ToLower()
+  Write-Host "Stage A OK list_insert_w.obj sha256=$ListSha"
+  @{
+    stage = 'A-compile-only'
+    object = 'list_insert_w.obj'
+    object_sha256 = $ListSha
+    object_bytes = (Get-Item $ListObj).Length
+    asm_bytes = (Get-Item $ListAsm).Length
+    flags = @('/c','/W4','/WX','/O2','/Oi','/Oy-','/GS','/Gy','/Zl','/EHs')
+    native_executed = $false
+    linked = $false
+    game_touched = $false
+    production_can_apply = $false
+  } | ConvertTo-Json | Set-Content -Path (Join-Path $OutCompile 'compile-command.json') -Encoding utf8
+
+}
 
 $SdkVer = Find-SdkVersion $SdkRoot $PreferredSdk
 $UmLib = Join-Path $SdkRoot "Lib\$SdkVer\um\x86"
@@ -104,6 +118,19 @@ $RcExe = Find-RcExe $SdkRoot $SdkVer
 $SdkBin = Split-Path -Parent $RcExe
 $env:PATH = @((Join-Path $Vc 'bin\Hostx64\x86'), $SdkBin, $env:PATH) -join ';'
 $env:LIB = ($VcLib, $UcrtLib, $UmLib) -join ';'
+# Stage B needs the C++ standard library + UCRT headers (Stage A used only local headers).
+# The portable toolchain has no vcvars environment, so set INCLUDE explicitly.
+$VcInclude = Join-Path $Vc 'include'
+$SdkInc = Join-Path $SdkRoot "Include\$SdkVer"
+$IncDirs = @($VcInclude, (Join-Path $SdkInc 'ucrt'), (Join-Path $SdkInc 'um'), (Join-Path $SdkInc 'shared'))
+foreach ($d in $IncDirs) { if (-not (Test-Path $d)) { throw "include dir missing: $d (install Windows SDK headers / MSVC include)" } }
+if (-not (Test-Path (Join-Path $VcInclude 'cstdio'))) { throw "cstdio not found in $VcInclude" }
+if (-not (Test-Path (Join-Path $SdkInc 'ucrt\stdio.h'))) { throw "ucrt stdio.h not found in $SdkInc\ucrt" }
+foreach ($lib in @((Join-Path $VcLib 'libcmt.lib'), (Join-Path $UcrtLib 'libucrt.lib'))) {
+  if (-not (Test-Path $lib)) { throw "CRT lib missing: $lib" }
+}
+$env:INCLUDE = $IncDirs -join ';'
+Write-Host "INCLUDE=$env:INCLUDE"
 $env:TMP = $OutMock
 $env:TEMP = $OutMock
 Write-Host "Using Windows SDK $SdkVer"
@@ -116,7 +143,7 @@ if ($LASTEXITCODE -ne 0) { throw "Stage B cl (mock) failed $LASTEXITCODE" }
 
 & $Link /nologo /MACHINE:X86 /SUBSYSTEM:CONSOLE /INCREMENTAL:NO /DYNAMICBASE /NXCOMPAT `
   /MANIFEST:EMBED "/MANIFESTUAC:level='asInvoker' uiAccess='false'" `
-  $MockObj $ListObj /OUT:$MockExe `
+  $MockObj $ListObj kernel32.lib /OUT:$MockExe `
   "/LIBPATH:$VcLib" "/LIBPATH:$UcrtLib" "/LIBPATH:$UmLib"
 if ($LASTEXITCODE -ne 0) { throw "Stage B link failed $LASTEXITCODE" }
 

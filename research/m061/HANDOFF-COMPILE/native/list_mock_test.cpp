@@ -5,6 +5,7 @@
 #if !defined(_M_IX86)
 #error x86 only
 #endif
+#pragma warning(disable : 4505)  // unused static helpers from list_core.h
 #include "list_bindings.h"
 #include <cstdio>
 #include <cstring>
@@ -88,14 +89,7 @@ extern "C" {
     LD2OriginalDlgItemMessage LD2_OriginalDlgItem = FakeOriginal;
     LD2SendDlgItemMessageW LD2_SendDlgItemMessageW = FakeSendW;
     LD2MultiByteToWideChar LD2_MultiByteToWideChar = FakeMB;
-    // /GS symbols: local stubs so the mock links without CRT cookie objects.
-    unsigned long ___security_cookie = 0xBB40E64EUL;
-    void __fastcall __security_check_cookie(unsigned long cookie) {
-        if (cookie != ___security_cookie) {
-            std::printf("GS cookie mismatch\n");
-            for (;;) {}
-        }
-    }
+    // /GS symbols (___security_cookie, @__security_check_cookie@4) come from libcmt (/MT).
 }
 
 struct Layout {
