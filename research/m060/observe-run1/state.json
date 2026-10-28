@@ -1,0 +1,8 @@
+{
+    "steps_done":  [
+                       "A",
+                       "B"
+                   ],
+    "stopped":  "step B exit 0x00000001",
+    "finalized":  true
+}
