@@ -1,6 +1,6 @@
 # m062 冒險者名稱繪製路徑追蹤（Linux 靜態，唯讀）
 
-最後更新：2026-10-29 05:40（台北）。`production_can_apply=false`。
+最後更新：2026-10-29 04:45（台北）。`production_can_apply=false`。
 
 - 重現方式：`LD2_TEST_EXE=<原版 Ld95.exe> python3 -I -B research/m062/adventurer_draw_trace.py --json-out adventurer_draw_trace.summary.json`
 - 輸出只含 VA、數量與分類，不含遊戲位元組或遊戲文字。
