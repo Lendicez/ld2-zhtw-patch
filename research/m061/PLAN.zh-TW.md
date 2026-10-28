@@ -96,11 +96,11 @@ Linux 端已就緒：
 1. ~~執行 `HANDOFF-COMPILE/WINDOWS-COMPILE.ps1`（Stage A＋B）~~ 已完成（2026-10-29，Stage B exit 0）。
 2. ~~交回物件 → 稽核 → pin sha256~~ 已完成：`d5349e58…61e0`。
 3. ~~惰性合併 loader 驗收（可丟棄副本寫出 EXE 一次）~~ **通過**（2026-10-29 03:07 台北；見 `RESULT.zh-TW.md`、`loader-inert-run1/`）。
-4. **下一步（另案授權）**：啟用 8 個清單點＋TextOutW hook 的功能版，Win11 可丟棄副本觀察商店／酒館／委託。
+4. 啟用版（8 個清單點＋TextOutW hook）：Linux 已合成並靜態驗證，`HANDOFF-LOADER-ENABLED` 已備妥（§9）。**尚未在 Win11 執行**，等待使用者跑一次。
 
 ## 7. 下一個可自動進行的 Linux 步驟
 
-惰性 loader 驗收已通過。下一個 Linux 步驟：合成啟用版（hook＋8 清單點）並靜態驗證、產生 delta handoff——待授權後進行。並行可做 m062（versions.json 依 profile 讀取；`release_approved` 仍 false）——本輪未展開。
+啟用版合成、靜態驗證與 handoff 已完成（§9）。等 Win11 證據回來後，再依觀察結果決定是否補 catalog 或處理更多清單點。並行可做 m062（versions.json 依 profile 讀取；`release_approved` 仍 false）——本輪未展開。
 
 ## 8. HANDOFF-LOADER-INERT（2026-10-29 備妥；同日 Win11 執行一次：**通過**）
 
@@ -112,3 +112,31 @@ Linux 端已就緒：
 - 證據：`evidence\` 壓成 `m061-loader-inert-evidence.zip`（不含 EXE／存檔／dump）。
 - `production_can_apply=false`、`release_approved=false` 不變。
 - 結果（2026-10-29 03:06:57–03:07:29 台北）：到達標題畫面；結束碼 1（soft-warn，選單結束）；事件／WER／dump 皆 0；原安裝未變動。`module_probe` 讀不到 MainModule（最佳努力項，不影響判定，下一版修正）。
+
+## 9. HANDOFF-LOADER-ENABLED（2026-10-29 Linux 備妥；**尚未在 Win11 執行**）
+
+- 輸出 `57103342f130da2ab51bf70e94d4dfb6c63245c3b375154bb4fbe27906b7ce5b`（7,286,784 B，CheckSum 0x700B22）。做法是在惰性版上再改：
+  - hook 區段 0x6dc7d..0x6dca5 的 40 B 換成 stub（sha `67f30b3e…ca9e`），呼叫 `_LD2_NamePair@16`（0xae3170）後跳回 0x46dca5；
+  - 8 個清單點的 rel32 從 0x4ea671 改成 0xae3790（`@LD2_ListInsert@24`）；
+  - 重算 checksum。
+
+  相對惰性版共 66 B 不同。
+- `enable_plan.py`（可進倉庫）只允許改 hook 區段、8 個清單點和 checksum，其餘位置一律拒絕。測試在 `test_m061.py` 的 `EnablePlanTests`。
+- 靜態驗證摘要在 `enabled_static_verify.summary.json`（capstone＋pefile）：
+  - 沒有分支或絕對位址指進 hook 區段內部；
+  - stub 前後 ESP 相同；
+  - 8 個清單點的舊目標和新目標都核對過；
+  - checksum 正確。
+- delta：m045 → 啟用版。共 8 段標頭、9 段既有段改寫（40 B＋8×4 B），加上檔尾附加 167,936 B。`m061-enabled.delta.json` 放在本倉庫；`.bin`（`92d89d4d…2f`）只放在交付 zip，不進倉庫。
+- ps1 的變更：
+  - `-SeedUsrFrom`：從 m060 可丟棄副本只複製 `LUNAS*.LDP`，指向原安裝會被拒絕；
+  - `module_probe` 改用 ReadProcessMemory，檢查 SizeOfImage、IAT 綁定和 9 個改寫點的記憶體 hash；
+  - 觀察紀錄改為必填（各清單顯示結果、錯誤框、是否從選單結束）。
+- Linux 驗證：從 zip 解出後跑 `pwsh -CheckOnly`，記憶體內合併 sha 正確，沒有寫檔。把 delta 改成允許清單以外的位置時，腳本會拒絕。P／L／G 需要 Windows。
+- 已知限制：
+  - 只涵蓋 8 個優先清單點；
+  - 字型和字形顯示還沒驗證；
+  - helper 的例外和 unwind 行為還沒在實機證明；
+  - catalog 沒命中時會顯示日文原文；
+  - 沒有存檔可複製時，需要開新遊戲才能進商店。
+- `production_can_apply=false`、`release_approved=false` 不變。

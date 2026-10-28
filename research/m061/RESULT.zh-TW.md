@@ -58,6 +58,13 @@ Stage B 第一次失敗（C1083 `cstdio`）：可攜式 MSVC 無 vcvars，腳本
 - `module_probe.ok=false`（「不可在值為 Null 的運算式上呼叫方法」）：32 位元 PowerShell 讀不到 `MainModule`（多半是權限／相容性設定造成 `MainModule` 為 null）。屬最佳努力項，不在通過條件內。下一個 handoff 改為 null 安全並改用其他方式讀模組大小。
 - `observations.md` 未填（樣板原樣）；`launch-L-events.txt` 只有 BOM＋換行（0 事件）。截圖檔名為 `L-title..jpg`（多一個點，JPG）。
 
-## 下一步（需另案授權，本輪未準備、未執行）
+## 啟用版準備（Linux，2026-10-29）：已備妥，**尚未在 Win11 執行**
 
-功能版（仍只在可丟棄副本）：啟用 TextOutW hook（0x6dc7d..0x6dca5）與 8 個清單呼叫點改呼叫 `@LD2_ListInsert@24`，在 Win11 觀察商店／酒館／委託清單是否顯示正體中文、無崩潰。Linux 端先做：合成啟用版、靜態驗證每個改寫點、產生 delta 與 handoff。`production_can_apply` 仍 false。
+- 合成：輸出 sha256 `57103342f130da2ab51bf70e94d4dfb6c63245c3b375154bb4fbe27906b7ce5b`，是惰性版（`6a43dc4e…1cfe`）加上 TextOutW hook stub、8 個清單點和 checksum，共 66 B 不同。
+- 靜態驗證通過（`enabled_static_verify.summary.json`），沒有任何失敗項。
+- 交付：`HANDOFF-LOADER-ENABLED`（zip 在倉庫外）。腳本只寫可丟棄副本，存檔從 m060 副本複製，觀察紀錄為必填。
+- 這一節**不是**執行結果：沒有開遊戲，也沒有在 Windows 寫出 EXE。
+
+## 下一步
+
+使用者在 Win11 跑一次 `HANDOFF-LOADER-ENABLED`，交回 `m061-loader-enabled-evidence.zip`，再依證據寫結果。`production_can_apply` 仍 false。
