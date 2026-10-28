@@ -1,0 +1,356 @@
+{
+  "original": {
+    "profile": "original",
+    "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+    "object_sha256": "5819838a30cddaea51b4914d87ab3971d603de06cd4f6b1e1c94684fa5ac8c92",
+    "catalog_json_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
+    "catalog_rows": 264,
+    "catalog_bytes": 156296,
+    "code_sha256": "c08f8b089a2a22cc38a6b4f8d60ddb58d0d4b0c5d7de1cc8333b8673e0ed9cb5",
+    "entry_va": "0xadc170",
+    "bindings": {
+      "_LD2_EntryCount": "0xadd000",
+      "_LD2_ExpectedTextOutA": "0xadd004",
+      "_LD2_Entries": "0xadd008",
+      "_LD2_TextOutW": "0xb0414c",
+      "___security_cookie": "0xa8f284",
+      "@__security_check_cookie@4": "0x4fc870"
+    },
+    "new_imports": [
+      "GDI32.dll!TextOutW"
+    ],
+    "import_descriptors": [
+      13,
+      14
+    ],
+    "serializer": {
+      "sections": [
+        {
+          "name": ".ld2t",
+          "rva": "0x6dc000",
+          "virtual_size": 816,
+          "raw_size": 4096,
+          "raw_pointer": "0x6c3000",
+          "characteristics": "0x60000020",
+          "sha256": "c08f8b089a2a22cc38a6b4f8d60ddb58d0d4b0c5d7de1cc8333b8673e0ed9cb5"
+        },
+        {
+          "name": ".ld2c",
+          "rva": "0x6dd000",
+          "virtual_size": 156296,
+          "raw_size": 159744,
+          "raw_pointer": "0x6c4000",
+          "characteristics": "0x40000040",
+          "sha256": "6f6aad08335111fd9e8240af4e90807a45d27c46e256eacecb24e1b9a58a36f1"
+        },
+        {
+          "name": ".ld2i",
+          "rva": "0x704000",
+          "virtual_size": 340,
+          "raw_size": 4096,
+          "raw_pointer": "0x6eb000",
+          "characteristics": "0xc0000040",
+          "sha256": "16be0bf668aa920662aa4d6f95b1c8d136fe8903fa557c2c48b729ba79bd724d"
+        }
+      ],
+      "size_of_image": "0x705000",
+      "checksum": "0x6ef1c1",
+      "output_sha256": "08b9ec9e958930a162b68ca7ac69dfff9bed041c69ed01faea859939e95d41a1",
+      "output_bytes": 7258112,
+      "original_sections_unchanged": true
+    },
+    "hook_span_patched": false,
+    "list_sites_retargeted": false,
+    "inert": true,
+    "dual_helpers": false,
+    "file_written": false,
+    "loader_verified": false,
+    "production_can_apply": false
+  },
+  "original_dual_synthetic": {
+    "profile": "original",
+    "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+    "object_sha256": "5819838a30cddaea51b4914d87ab3971d603de06cd4f6b1e1c94684fa5ac8c92",
+    "catalog_json_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
+    "catalog_rows": 264,
+    "catalog_bytes": 156300,
+    "code_sha256": "c7e508cf02bc840ace06e577b2c068bd6368b40c347e587656bea62e059227e7",
+    "entry_va": "0xadc170",
+    "bindings": {
+      "_LD2_EntryCount": "0xadd000",
+      "_LD2_ExpectedTextOutA": "0xadd004",
+      "_LD2_Entries": "0xadd008",
+      "_LD2_TextOutW": "0xb04160",
+      "___security_cookie": "0xa8f284",
+      "@__security_check_cookie@4": "0x4fc870"
+    },
+    "new_imports": [
+      "GDI32.dll!TextOutW",
+      "USER32.dll!SendDlgItemMessageW"
+    ],
+    "import_descriptors": [
+      13,
+      15
+    ],
+    "serializer": {
+      "sections": [
+        {
+          "name": ".ld2t",
+          "rva": "0x6dc000",
+          "virtual_size": 856,
+          "raw_size": 4096,
+          "raw_pointer": "0x6c3000",
+          "characteristics": "0x60000020",
+          "sha256": "c7e508cf02bc840ace06e577b2c068bd6368b40c347e587656bea62e059227e7"
+        },
+        {
+          "name": ".ld2c",
+          "rva": "0x6dd000",
+          "virtual_size": 156300,
+          "raw_size": 159744,
+          "raw_pointer": "0x6c4000",
+          "characteristics": "0x40000040",
+          "sha256": "9f74beab33c0d10e2ae68eb975292399ff7d2eaf4f7e9176b9e10c7e1f877534"
+        },
+        {
+          "name": ".ld2i",
+          "rva": "0x704000",
+          "virtual_size": 412,
+          "raw_size": 4096,
+          "raw_pointer": "0x6eb000",
+          "characteristics": "0xc0000040",
+          "sha256": "41c085d56a8a48f5e387152a336bb0a3adf88c7515d936b6f6ac1075d4ae8252"
+        }
+      ],
+      "size_of_image": "0x705000",
+      "checksum": "0x6f6223",
+      "output_sha256": "b97a5886fdb95f0be92ac182f1b0843212fbad6760ae0be9b0948e3cfa9aedc9",
+      "output_bytes": 7258112,
+      "original_sections_unchanged": true
+    },
+    "hook_span_patched": false,
+    "list_sites_retargeted": false,
+    "inert": true,
+    "dual_helpers": true,
+    "file_written": false,
+    "loader_verified": false,
+    "production_can_apply": false,
+    "list_object_sha256": "4ecaf65a3974d2b2d3d1f1ac7423d40aa8e6bbb564a6525695981ab294668493",
+    "list_entry_va": "0xadc330",
+    "list_bindings": {
+      "_LD2_EntryCount": "0xadd000",
+      "_LD2_Entries": "0xadd008",
+      "_LD2_OriginalDlgItem": "0xb03288",
+      "_LD2_SendDlgItemMessageW": "0xb04194",
+      "_LD2_MultiByteToWideChar": "0x52537c",
+      "___security_cookie": "0xa8f284",
+      "@__security_check_cookie@4": "0x4fc870"
+    },
+    "list_details": {
+      "fixups": 7,
+      "code_bytes": 40,
+      "sections": 1
+    },
+    "text_details": {
+      "offsets": {
+        "3": 0,
+        "4": 192,
+        "5": 352,
+        "6": 368,
+        "7": 704,
+        "8": 736,
+        "9": 784
+      },
+      "ignored_link_metadata": [
+        ".drectve",
+        ".debug$S",
+        ".voltbl",
+        ".voltbl",
+        ".voltbl",
+        ".voltbl",
+        ".voltbl",
+        ".chks64"
+      ],
+      "fixups": 25
+    },
+    "original_dlgitem_va": "0x4ea671",
+    "original_dlgitem_slot_va": "0xb03288"
+  },
+  "m045": {
+    "profile": "m045",
+    "source_sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7",
+    "object_sha256": "5819838a30cddaea51b4914d87ab3971d603de06cd4f6b1e1c94684fa5ac8c92",
+    "catalog_json_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
+    "catalog_rows": 264,
+    "catalog_bytes": 156296,
+    "code_sha256": "6bcfd4dde5efe8a750d4a475e05b280d4dc5ff5f5e5cb6ea68beaba8cc0d6d76",
+    "entry_va": "0xae3170",
+    "bindings": {
+      "_LD2_EntryCount": "0xae4000",
+      "_LD2_ExpectedTextOutA": "0xae4004",
+      "_LD2_Entries": "0xae4008",
+      "_LD2_TextOutW": "0xb0b14c",
+      "___security_cookie": "0xa8f284",
+      "@__security_check_cookie@4": "0x4fc870"
+    },
+    "new_imports": [
+      "GDI32.dll!TextOutW"
+    ],
+    "import_descriptors": [
+      13,
+      14
+    ],
+    "serializer": {
+      "sections": [
+        {
+          "name": ".ld2t",
+          "rva": "0x6e3000",
+          "virtual_size": 816,
+          "raw_size": 4096,
+          "raw_pointer": "0x6ca000",
+          "characteristics": "0x60000020",
+          "sha256": "6bcfd4dde5efe8a750d4a475e05b280d4dc5ff5f5e5cb6ea68beaba8cc0d6d76"
+        },
+        {
+          "name": ".ld2c",
+          "rva": "0x6e4000",
+          "virtual_size": 156296,
+          "raw_size": 159744,
+          "raw_pointer": "0x6cb000",
+          "characteristics": "0x40000040",
+          "sha256": "6f6aad08335111fd9e8240af4e90807a45d27c46e256eacecb24e1b9a58a36f1"
+        },
+        {
+          "name": ".ld2i",
+          "rva": "0x70b000",
+          "virtual_size": 340,
+          "raw_size": 4096,
+          "raw_pointer": "0x6f2000",
+          "characteristics": "0xc0000040",
+          "sha256": "3a69a9f90a285cf1acbbf5c5ede3bac13155f1c1b47384e1887927bfcc9cce46"
+        }
+      ],
+      "size_of_image": "0x70c000",
+      "checksum": "0x6fba89",
+      "output_sha256": "40fa133b64dbad697aeb04a8787a4de8f4d05db9342b6fc43f76be6c3e75143c",
+      "output_bytes": 7286784,
+      "original_sections_unchanged": true
+    },
+    "hook_span_patched": false,
+    "list_sites_retargeted": false,
+    "inert": true,
+    "dual_helpers": false,
+    "file_written": false,
+    "loader_verified": false,
+    "production_can_apply": false
+  },
+  "m045_dual_synthetic": {
+    "profile": "m045",
+    "source_sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7",
+    "object_sha256": "5819838a30cddaea51b4914d87ab3971d603de06cd4f6b1e1c94684fa5ac8c92",
+    "catalog_json_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
+    "catalog_rows": 264,
+    "catalog_bytes": 156300,
+    "code_sha256": "15d78c9cb7d491bf4b888968b4a76f892d0b0d46a57c51a4c75231f0f4f3aff7",
+    "entry_va": "0xae3170",
+    "bindings": {
+      "_LD2_EntryCount": "0xae4000",
+      "_LD2_ExpectedTextOutA": "0xae4004",
+      "_LD2_Entries": "0xae4008",
+      "_LD2_TextOutW": "0xb0b160",
+      "___security_cookie": "0xa8f284",
+      "@__security_check_cookie@4": "0x4fc870"
+    },
+    "new_imports": [
+      "GDI32.dll!TextOutW",
+      "USER32.dll!SendDlgItemMessageW"
+    ],
+    "import_descriptors": [
+      13,
+      15
+    ],
+    "serializer": {
+      "sections": [
+        {
+          "name": ".ld2t",
+          "rva": "0x6e3000",
+          "virtual_size": 856,
+          "raw_size": 4096,
+          "raw_pointer": "0x6ca000",
+          "characteristics": "0x60000020",
+          "sha256": "15d78c9cb7d491bf4b888968b4a76f892d0b0d46a57c51a4c75231f0f4f3aff7"
+        },
+        {
+          "name": ".ld2c",
+          "rva": "0x6e4000",
+          "virtual_size": 156300,
+          "raw_size": 159744,
+          "raw_pointer": "0x6cb000",
+          "characteristics": "0x40000040",
+          "sha256": "9f74beab33c0d10e2ae68eb975292399ff7d2eaf4f7e9176b9e10c7e1f877534"
+        },
+        {
+          "name": ".ld2i",
+          "rva": "0x70b000",
+          "virtual_size": 412,
+          "raw_size": 4096,
+          "raw_pointer": "0x6f2000",
+          "characteristics": "0xc0000040",
+          "sha256": "2ebfc02264cd5f7d30977db727ccc2127768fb77ea994a46f70190ef186bbe5c"
+        }
+      ],
+      "size_of_image": "0x70c000",
+      "checksum": "0x6f3bcf",
+      "output_sha256": "381197703a3581737930e479da62771d819777e114936763e21e7f534e0dde2c",
+      "output_bytes": 7286784,
+      "original_sections_unchanged": true
+    },
+    "hook_span_patched": false,
+    "list_sites_retargeted": false,
+    "inert": true,
+    "dual_helpers": true,
+    "file_written": false,
+    "loader_verified": false,
+    "production_can_apply": false,
+    "list_object_sha256": "4ecaf65a3974d2b2d3d1f1ac7423d40aa8e6bbb564a6525695981ab294668493",
+    "list_entry_va": "0xae3330",
+    "list_bindings": {
+      "_LD2_EntryCount": "0xae4000",
+      "_LD2_Entries": "0xae4008",
+      "_LD2_OriginalDlgItem": "0xb0a288",
+      "_LD2_SendDlgItemMessageW": "0xb0b194",
+      "_LD2_MultiByteToWideChar": "0x52537c",
+      "___security_cookie": "0xa8f284",
+      "@__security_check_cookie@4": "0x4fc870"
+    },
+    "list_details": {
+      "fixups": 7,
+      "code_bytes": 40,
+      "sections": 1
+    },
+    "text_details": {
+      "offsets": {
+        "3": 0,
+        "4": 192,
+        "5": 352,
+        "6": 368,
+        "7": 704,
+        "8": 736,
+        "9": 784
+      },
+      "ignored_link_metadata": [
+        ".drectve",
+        ".debug$S",
+        ".voltbl",
+        ".voltbl",
+        ".voltbl",
+        ".voltbl",
+        ".voltbl",
+        ".chks64"
+      ],
+      "fixups": 25
+    },
+    "original_dlgitem_va": "0x4ea671",
+    "original_dlgitem_slot_va": "0xb0a288"
+  }
+}
