@@ -3,7 +3,7 @@
  "production_can_apply": false,
  "release_approved": false,
  "note": "Counts only; no source text. Lab inputs: pristine EXE + Mina draft (hash below).",
- "draft_sha256": "c7d76918b127663864dccc071b7917fedae1a56c093f1b609a8e29d3c11afcef",
+ "draft_sha256": "e0ac370eeca1abdedc63a76764b5ef26c1fa818811ac4bf441591a444075728b",
  "m051_catalog_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
  "rows_by_category": {
   "weapon": 1881,
@@ -22,7 +22,7 @@
  "v1_capacity": 264,
  "v1_fits": false,
  "v3_bytes": 253484,
- "v3_sha256": "c380f8dd99ac80f59d6863349f5352a267bb68ca3b2afcf40f6e05a8b9f0053c",
+ "v3_sha256": "668143b70b0d17a5df2e2b33e780173ca3430ecdf4197b3838a41ba52bf7678e",
  "v3_vs_v1_row_table_bytes": 3627184,
  "male_join": {
   "combinations": 40000,
