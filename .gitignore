@@ -159,3 +159,11 @@
 !/research/m062/native-v3/v3_mock_blob.h
 !/research/m062/rehearse_v3_objs.py
 !/tests/test_m062_research.py
+!/research/m062/RESULT.zh-TW.md
+!/research/m062/audit_list_obj_v3.py
+!/research/m062/audit_name_pair_v3.py
+!/research/m062/test_m062_objs.py
+!/research/m062/compile-v3-run1/audit.json
+!/research/m062/compile-v3-run1/compile-command.json
+!/research/m062/compile-v3-run1/once-result.json
+!/research/m062/compile-v3-run1/stdout.txt
