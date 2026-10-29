@@ -89,3 +89,12 @@ Mona 的 lab_preview 政策（只在 lab，產生 lab 專用子集 sha256 `fc2ae
 
 ### Win11 建議（draft4）
 不變：靜態上可做 lab_preview 拋棄式觀察（模式 2），現在冒險者 1400 名全收、不會再看到日文退回（除 5 組假切分）；但仍屬草稿，需使用者同意才打包，本輪不打包。
+
+## サラ→薩拉 後 lab_preview 重建（2026-10-29）
+
+- 來源：Mina draft4-sara（`33f63c04…0f8e`），Mona hold 清除（0 列回退）；lab 子集與 #26 公開 JSON 的譯名／review_status 1816 列逐列一致。
+- lab_preview 子集 `6bb2e69c…1d40`（1792 列）；完整 lab `e0ac370e…728b`，verified_rows v3 `668143b7…678e`。
+- lab_preview v3 blob `1c5c6993…b928`（5863 列，243,240 B，容量同前）。
+- `build_v3_lab` 靜態（記憶體內，不寫 EXE）：模式 2 inert `0c2b3557…fa58`／enabled `370c7b20…e9c5`；模式 0 inert `1103c6ad…4878`／enabled `30035693…40ed`。
+- male join：衝突譯名 0；40,000 組 ok 39,993／fallback 5／wrong 2（與前相同）。
+- 無 Win11 交接包；`production_can_apply`／`release_approved` 仍 false。

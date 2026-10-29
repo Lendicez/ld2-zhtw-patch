@@ -6,7 +6,7 @@
  "mina_draft3_lab_sha256": "d0e162f3e31c75552536d6d80849b45ccc720e1cdc7a256f2ed9539836ecde25",
  "mina_draft3u_lab_sha256": "83e69d7fa97ee9c1f2ac942c3377115f7d4a5f0288b1d3302a9f64e8d511c593",
  "mina_draft4_lab_sha256": "a3e964ca05dd32997fbee2415aaf9be414342ce9c66ca71353c68b6bed5cf71f",
- "mona_full_lab_sha256": "c7d76918b127663864dccc071b7917fedae1a56c093f1b609a8e29d3c11afcef",
+ "mona_full_lab_sha256": "e0ac370eeca1abdedc63a76764b5ef26c1fa818811ac4bf441591a444075728b",
  "note": "Mona independent review against pinned pristine EXE (lab). No source text. Current source = Mina draft4-sara (draft4 + user decision 2026-10-29: shared sara source bytes -> 薩拉 for male western/95, arabic/37 and female western/94; review_status user_decided). Mona hold cleared; validate_adventurers passes (one bytes -> one zh). Filenames keep the m062-draft3-* prefix for continuity.",
  "mona_hold_reverted_rows": 0,
  "items_verified_vs_exe": 416,
@@ -20,7 +20,7 @@
    "consumable": 649,
    "adventurer": 1400
   },
-  "v3_sha256": "c380f8dd99ac80f59d6863349f5352a267bb68ca3b2afcf40f6e05a8b9f0053c"
+  "v3_sha256": "668143b70b0d17a5df2e2b33e780173ca3430ecdf4197b3838a41ba52bf7678e"
  },
  "validate_adventurers": {
   "adventurer_male_first": 400,
@@ -66,7 +66,7 @@
  },
  "raw_draft3_gate": "refused: review_status 'mina_draft2' not allowed by policy 'lab_preview'",
  "lab_preview": {
-  "sha256": "0a63ccff4c3951c7d45ebb25660b5c25396a0e275437e9c29bc88f9059d89ead",
+  "sha256": "6bb2e69c909a3eef4d0f72e0f8fb834259faf1c53c3d952ffe2e2704ea891d40",
   "items": 1792,
   "by_category": {
    "consumable": 55,
@@ -89,7 +89,7 @@
      }
     },
     {
-     "sha256": "0a63ccff4c3951c7d45ebb25660b5c25396a0e275437e9c29bc88f9059d89ead",
+     "sha256": "6bb2e69c909a3eef4d0f72e0f8fb834259faf1c53c3d952ffe2e2704ea891d40",
      "items": 1792,
      "review_status": {
       "mina_draft": 1792
@@ -107,7 +107,7 @@
    "adventurer": 1400
   },
   "v3_bytes": 243240,
-  "v3_sha256": "6a7a119df4459fc1e96ad33a7403a76511cfd2aa996488db0e1b06fbe13de75c"
+  "v3_sha256": "1c5c6993b275229f5dcecf952ae1a18b6ba065a4cfa762ed7fd8d7510a1eb928"
  },
  "public_files": {
   "m062-draft3-consumables-tools.zh-TW.json": {
