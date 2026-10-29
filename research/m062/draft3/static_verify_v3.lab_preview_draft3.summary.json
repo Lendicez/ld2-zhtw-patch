@@ -6,15 +6,15 @@
   "release_approved": false,
   "modes": {
     "2": {
-      "inert_sha256": "0c2b3557072db21b6e6af0d44d59914f86d84471649f0054ac277a959201fa58",
-      "enabled_sha256": "370c7b20de00f7f159fad9b5194a79ddf5ae76660efa838bfde0c789002fe9c5",
-      "size": 7376896,
+      "inert_sha256": "82aa4491a1c6873be079fd9f5ea1a9b0f60a0cc0e7aac8ef4096cbcc1296f0f5",
+      "enabled_sha256": "f2a4276d54aaff49bcf4015e55a889dfcd5c3bf7f24acbf0787b81d87ac70be9",
+      "size": 7385088,
       "entry_va": "0xae3a10",
       "list_entry_va": "0xae47e0",
       "list_mode_slot_va": "0xae500c",
       "original_dlgitem_slot_va": "0xae5008",
       "hook_stub_sha256": "e82d98a5c773043331ef8d53848872ac208caed872ad1bee745897114d6f471e",
-      "changed_bytes_inert_to_enabled": 66,
+      "changed_bytes_inert_to_enabled": 65,
       "verify": {
         "hook_stub_disasm": [
           "0x46dc7d push dword ptr [esp + 0x18]",
@@ -102,7 +102,7 @@
         ],
         "import_count": 15,
         "entry_point": "0x10011e",
-        "size_of_image": "0x722000",
+        "size_of_image": "0x724000",
         "original_dlgitem_slot_value": "0x4ea671",
         "expected_textouta_value": "0x4e13d7",
         "object_audits": {
@@ -165,8 +165,8 @@
         "binding_targets": {
           "original_dlgitem_value": "0x4ea671",
           "list_mode": 2,
-          "catalog_bytes": 243240,
-          "blob_sha256": "1c5c6993b275229f5dcecf952ae1a18b6ba065a4cfa762ed7fd8d7510a1eb928",
+          "catalog_bytes": 253484,
+          "blob_sha256": "668143b70b0d17a5df2e2b33e780173ca3430ecdf4197b3838a41ba52bf7678e",
           "shared_catalog": true
         },
         "indirect_calls": {
@@ -175,17 +175,17 @@
               "0x52537c",
               "0x525498",
               "0xae5008",
-              "0xb211e8",
-              "0xb211ec",
-              "0xb211f0",
-              "0xb211f4",
-              "0xb211f8"
+              "0xb231e8",
+              "0xb231ec",
+              "0xb231f0",
+              "0xb231f4",
+              "0xb231f8"
             ],
             "other_indirect": []
           },
           "name": {
             "binding_slots_called": [
-              "0xb21160"
+              "0xb23160"
             ],
             "other_indirect": [
               "0xae3b69 call eax"
@@ -203,15 +203,15 @@
       }
     },
     "0": {
-      "inert_sha256": "1103c6added8b09d49dd58f02b1b9fa4c7e69f4e22435013f13265250e734878",
-      "enabled_sha256": "3003569323586241acf30109f69cec53b4cd397519f129fc4167fde0c76840ed",
-      "size": 7376896,
+      "inert_sha256": "b729c2c77c2b9c429f266b2c14593814e37c695c37a2380670afc4b75aa4477d",
+      "enabled_sha256": "c83a32a2bdd6ec273f8a7e7fd602aa87949a1e251dae5886868529a2a4c61433",
+      "size": 7385088,
       "entry_va": "0xae3a10",
       "list_entry_va": "0xae47e0",
       "list_mode_slot_va": "0xae500c",
       "original_dlgitem_slot_va": "0xae5008",
       "hook_stub_sha256": "e82d98a5c773043331ef8d53848872ac208caed872ad1bee745897114d6f471e",
-      "changed_bytes_inert_to_enabled": 66,
+      "changed_bytes_inert_to_enabled": 65,
       "verify": {
         "hook_stub_disasm": [
           "0x46dc7d push dword ptr [esp + 0x18]",
@@ -299,7 +299,7 @@
         ],
         "import_count": 15,
         "entry_point": "0x10011e",
-        "size_of_image": "0x722000",
+        "size_of_image": "0x724000",
         "original_dlgitem_slot_value": "0x4ea671",
         "expected_textouta_value": "0x4e13d7",
         "object_audits": {
@@ -362,8 +362,8 @@
         "binding_targets": {
           "original_dlgitem_value": "0x4ea671",
           "list_mode": 0,
-          "catalog_bytes": 243240,
-          "blob_sha256": "1c5c6993b275229f5dcecf952ae1a18b6ba065a4cfa762ed7fd8d7510a1eb928",
+          "catalog_bytes": 253484,
+          "blob_sha256": "668143b70b0d17a5df2e2b33e780173ca3430ecdf4197b3838a41ba52bf7678e",
           "shared_catalog": true
         },
         "indirect_calls": {
@@ -372,17 +372,17 @@
               "0x52537c",
               "0x525498",
               "0xae5008",
-              "0xb211e8",
-              "0xb211ec",
-              "0xb211f0",
-              "0xb211f4",
-              "0xb211f8"
+              "0xb231e8",
+              "0xb231ec",
+              "0xb231f0",
+              "0xb231f4",
+              "0xb231f8"
             ],
             "other_indirect": []
           },
           "name": {
             "binding_slots_called": [
-              "0xb21160"
+              "0xb23160"
             ],
             "other_indirect": [
               "0xae3b69 call eax"
@@ -400,14 +400,14 @@
       }
     }
   },
-  "blob_sha256": "1c5c6993b275229f5dcecf952ae1a18b6ba065a4cfa762ed7fd8d7510a1eb928",
+  "blob_sha256": "668143b70b0d17a5df2e2b33e780173ca3430ecdf4197b3838a41ba52bf7678e",
   "capacity": {
-    "rows": 5863,
-    "blob_bytes": 243240,
-    "pool_bytes": 149400,
-    "section_bytes": 243256,
+    "rows": 6127,
+    "blob_bytes": 253484,
+    "pool_bytes": 155420,
+    "section_bytes": 253500,
     "section_budget": 1048576,
-    "headroom_bytes": 805320,
+    "headroom_bytes": 795076,
     "helper_blob_max": 1179680
   },
   "catalog_build": {
@@ -422,27 +422,27 @@
           }
         },
         {
-          "sha256": "6bb2e69c909a3eef4d0f72e0f8fb834259faf1c53c3d952ffe2e2704ea891d40",
-          "items": 1792,
+          "sha256": "5ed26c163ddca71ea95b7eca615458f65dc4b16bd279fd3a9dd9ec4436a0a2c7",
+          "items": 1816,
           "review_status": {
-            "mina_draft": 1792
+            "mina_draft": 1816
           }
         }
       ],
       "release_eligible": false
     },
-    "rows": 5863,
+    "rows": 6127,
     "row_stats": {
-      "weapon": 1749,
-      "armor": 1386,
-      "tool": 792,
+      "weapon": 1881,
+      "armor": 1496,
+      "tool": 814,
       "consumable": 649,
       "adventurer": 1400
     }
   },
   "catalog_section": {
-    "virtual_size": 243256,
-    "raw_size": 245760,
+    "virtual_size": 253500,
+    "raw_size": 253952,
     "raw_pointer": "0x6cc000",
     "file_align": 4096
   }

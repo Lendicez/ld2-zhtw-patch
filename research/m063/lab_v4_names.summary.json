@@ -3,21 +3,22 @@
  "counts_only": true,
  "production_can_apply": false,
  "release_approved": false,
- "draft_sha256": "33f63c04403929d3bf0431255bda2b83e2211b5f679f450a52a5e30f6d0c0f8e",
+ "draft_sha256": "13c84914b1def38694128f724dcbb207439ed44265967e657942f9447f6a34d0",
  "m051_catalog_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
  "note": "Counts only. Full draft + m051 (not the lab_preview subset). No source text or names.",
  "v4": {
-  "rows": 6137,
+  "rows": 6148,
   "rows_by_kind": {
-   "full_id": 4840,
+   "full_id": 4851,
    "prefix": 356,
    "suffix": 359,
    "full_any": 582
   },
-  "bytes": 253644,
-  "sha256": "b1a3d25669c94232b1355dbee7650f29c986c7ac45d75256fa5712a708995304",
-  "v3_rows": 6127,
-  "kris_hypothetical_rows_included": false
+  "bytes": 254096,
+  "sha256": "bbe4974f321ca128e4479e774b84da9080de7b4fa351d1f7c3ecc2e6223d1502",
+  "v3_rows": 6138,
+  "kris_hypothetical_rows_included": false,
+  "kris_draft_row_included": true
  },
  "male_join_40000": {
   "v3_list_flags": {
@@ -31,21 +32,30 @@
  },
  "female_600": {
   "v3_list_flags": {
-   "ok": 600
+   "ok": 599,
+   "wrong": 1
   },
   "v4_name_only": {
    "ok": 600
   }
  },
  "items_full_id": {
-  "rows": 4840,
-  "by_id_ok": 4840,
+  "rows": 4851,
+  "by_id_ok": 4851,
   "list_same_as_v3": 4840,
   "name_only_returns_item_text": 0,
-  "name_only_hits_a_name": 1
+  "name_only_hits_a_name": 2,
+  "kris_list_rows": 11,
+  "kris_list_shows_item": 11
+ },
+ "kris": {
+  "female_rows_same_bytes": 1,
+  "name_site_shows_female": true,
+  "item_by_id_shows_item": true,
+  "v3_name_site_would_show_item": true
  },
  "c_core_cross_check": {
-  "cases": 50280,
-  "result": "PASS 50280 FAIL 0"
+  "cases": 50302,
+  "result": "PASS 50302 FAIL 0"
  }
 }
