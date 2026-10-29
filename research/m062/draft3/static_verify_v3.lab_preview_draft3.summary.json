@@ -6,15 +6,15 @@
   "release_approved": false,
   "modes": {
     "2": {
-      "inert_sha256": "bda12d7d56b25277be89e01cf96d59438021ab8605006d8b6c4321a3bafe0f97",
-      "enabled_sha256": "5da5910e13fa9837e80fd28612438a93a28af23abf959699f6e74ae530b01558",
+      "inert_sha256": "4fcdca51c4aa9267b73e8d0cd766698ceb922475795b1ff904c0d7887f4b0c3d",
+      "enabled_sha256": "ea1e5b41a510218d4354a705bc05d67638d0dba0ab2c83bf2a45be93dee4993d",
       "size": 7376896,
       "entry_va": "0xae3a10",
       "list_entry_va": "0xae47e0",
       "list_mode_slot_va": "0xae500c",
       "original_dlgitem_slot_va": "0xae5008",
       "hook_stub_sha256": "e82d98a5c773043331ef8d53848872ac208caed872ad1bee745897114d6f471e",
-      "changed_bytes_inert_to_enabled": 65,
+      "changed_bytes_inert_to_enabled": 66,
       "verify": {
         "hook_stub_disasm": [
           "0x46dc7d push dword ptr [esp + 0x18]",
@@ -165,8 +165,8 @@
         "binding_targets": {
           "original_dlgitem_value": "0x4ea671",
           "list_mode": 2,
-          "catalog_bytes": 243124,
-          "blob_sha256": "5ec21918884c25b73a52a290959e8819e1911e97b92c3471b6d8e6e9b336f511",
+          "catalog_bytes": 243240,
+          "blob_sha256": "6a7a119df4459fc1e96ad33a7403a76511cfd2aa996488db0e1b06fbe13de75c",
           "shared_catalog": true
         },
         "indirect_calls": {
@@ -203,15 +203,15 @@
       }
     },
     "0": {
-      "inert_sha256": "0113c6d719d28b9460608645c1c65eb6631fc921ca3593a9569240a44bc3b776",
-      "enabled_sha256": "6f3df00fa3bd0e73d6806a658d871cb2a561900b555e1495da6c697ee3f9fbe8",
+      "inert_sha256": "09bc8bf4f1bead91d6e4112d6688c6550c17f4afb03798c52791e658285bce67",
+      "enabled_sha256": "c4babb27eb265438071652e324a2561f2e0b6030475b8421b0143df7eb0b7885",
       "size": 7376896,
       "entry_va": "0xae3a10",
       "list_entry_va": "0xae47e0",
       "list_mode_slot_va": "0xae500c",
       "original_dlgitem_slot_va": "0xae5008",
       "hook_stub_sha256": "e82d98a5c773043331ef8d53848872ac208caed872ad1bee745897114d6f471e",
-      "changed_bytes_inert_to_enabled": 65,
+      "changed_bytes_inert_to_enabled": 66,
       "verify": {
         "hook_stub_disasm": [
           "0x46dc7d push dword ptr [esp + 0x18]",
@@ -362,8 +362,8 @@
         "binding_targets": {
           "original_dlgitem_value": "0x4ea671",
           "list_mode": 0,
-          "catalog_bytes": 243124,
-          "blob_sha256": "5ec21918884c25b73a52a290959e8819e1911e97b92c3471b6d8e6e9b336f511",
+          "catalog_bytes": 243240,
+          "blob_sha256": "6a7a119df4459fc1e96ad33a7403a76511cfd2aa996488db0e1b06fbe13de75c",
           "shared_catalog": true
         },
         "indirect_calls": {
@@ -400,14 +400,14 @@
       }
     }
   },
-  "blob_sha256": "5ec21918884c25b73a52a290959e8819e1911e97b92c3471b6d8e6e9b336f511",
+  "blob_sha256": "6a7a119df4459fc1e96ad33a7403a76511cfd2aa996488db0e1b06fbe13de75c",
   "capacity": {
-    "rows": 5859,
-    "blob_bytes": 243124,
-    "pool_bytes": 149348,
-    "section_bytes": 243140,
+    "rows": 5863,
+    "blob_bytes": 243240,
+    "pool_bytes": 149400,
+    "section_bytes": 243256,
     "section_budget": 1048576,
-    "headroom_bytes": 805436,
+    "headroom_bytes": 805320,
     "helper_blob_max": 1179680
   },
   "catalog_build": {
@@ -422,26 +422,26 @@
           }
         },
         {
-          "sha256": "fc2ae80258177f9a9efa33e82047a92b00f28ca2fd7bab03940f4f3e2f9e8425",
-          "items": 1787,
+          "sha256": "0a63ccff4c3951c7d45ebb25660b5c25396a0e275437e9c29bc88f9059d89ead",
+          "items": 1792,
           "review_status": {
-            "mina_draft": 1787
+            "mina_draft": 1792
           }
         }
       ],
       "release_eligible": false
     },
-    "rows": 5859,
+    "rows": 5863,
     "row_stats": {
       "weapon": 1749,
       "armor": 1386,
       "tool": 792,
       "consumable": 649,
-      "adventurer": 1395
+      "adventurer": 1400
     }
   },
   "catalog_section": {
-    "virtual_size": 243140,
+    "virtual_size": 243256,
     "raw_size": 245760,
     "raw_pointer": "0x6cc000",
     "file_align": 4096

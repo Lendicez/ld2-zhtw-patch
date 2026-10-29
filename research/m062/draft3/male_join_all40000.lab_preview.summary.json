@@ -1,13 +1,11 @@
 {
- "milestone": "m062-draft3-lab-preview",
+ "milestone": "m062-draft4-lab-preview",
  "counts_only": true,
  "production_can_apply": false,
  "release_approved": false,
  "male_join_all_40000": {
-  "both_in: ok": 39501,
+  "both_in: ok": 39993,
   "both_in: fallback": 5,
-  "has_machine_fragment: fallback_original": 491,
-  "has_machine_fragment: shows_draft3_text": 1,
-  "has_machine_fragment: shows_other_text": 2
+  "both_in: wrong": 2
  }
 }

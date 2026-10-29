@@ -3,34 +3,35 @@
  "production_can_apply": false,
  "release_approved": false,
  "note": "Counts only; no source text. Lab inputs: pristine EXE + Mina draft (hash below).",
- "draft_sha256": "fc2ae80258177f9a9efa33e82047a92b00f28ca2fd7bab03940f4f3e2f9e8425",
+ "draft_sha256": "0a63ccff4c3951c7d45ebb25660b5c25396a0e275437e9c29bc88f9059d89ead",
  "m051_catalog_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
  "rows_by_category": {
   "weapon": 1749,
   "armor": 1386,
   "tool": 792,
   "consumable": 649,
-  "adventurer": 1395
+  "adventurer": 1400
  },
- "rows_after_dedupe": 5859,
+ "rows_after_dedupe": 5863,
  "rows_by_kind": {
   "full_id": 4576,
-  "prefix": 347,
-  "suffix": 354,
+  "prefix": 350,
+  "suffix": 355,
   "full_any": 582
  },
  "v1_capacity": 264,
  "v1_fits": false,
- "v3_bytes": 243124,
- "v3_sha256": "5ec21918884c25b73a52a290959e8819e1911e97b92c3471b6d8e6e9b336f511",
- "v3_vs_v1_row_table_bytes": 3468528,
+ "v3_bytes": 243240,
+ "v3_sha256": "6a7a119df4459fc1e96ad33a7403a76511cfd2aa996488db0e1b06fbe13de75c",
+ "v3_vs_v1_row_table_bytes": 3470896,
  "male_join": {
-  "combinations": 39506,
-  "join_ok": 39493,
-  "exact_row_wins": 8,
+  "combinations": 40000,
+  "join_ok": 39985,
+  "exact_row_wins": 10,
   "exact_row_wins_same_text": 8,
   "join_ambiguous_or_missing": 5,
-  "distinct_full_strings": 31779,
+  "exact_row_wins_different_text": 2,
+  "distinct_full_strings": 32129,
   "full_strings_with_conflicting_translations": 0,
   "max_joined_utf16_units": 7
  },
@@ -69,6 +70,22 @@
    "second": 67,
    "reason": "ambiguous_split_falls_back_to_original",
    "join_text": "法特恩"
+  },
+  {
+   "region": "arabic",
+   "first": 69,
+   "second": 31,
+   "reason": "exact_row_wins",
+   "join_text": "哈爾巴德",
+   "shown_text": "戟斧"
+  },
+  {
+   "region": "arabic",
+   "first": 69,
+   "second": 95,
+   "reason": "exact_row_wins",
+   "join_text": "哈爾巴德",
+   "shown_text": "戟斧"
   }
  ]
 }
