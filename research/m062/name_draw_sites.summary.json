@@ -1,0 +1,727 @@
+{
+ "milestone": "m062->m063",
+ "kind": "name_draw_sites",
+ "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+ "getname_caller_functions": 80,
+ "functions_with_name_sink": 25,
+ "counts": {
+  "SendDlgItemMessage:composite": 4,
+  "SendDlgItemMessage:whole": 11,
+  "SetDlgItemText:whole": 3,
+  "SetWindowText:whole": 2,
+  "TextOut:composite": 4,
+  "TextOut:whole": 26
+ },
+ "textout_whole_name_sites": 26,
+ "textout_pair5_installable": 25,
+ "textout_manual_install": 1,
+ "textout_sites": [
+  {
+   "function": "0x438910",
+   "va": "0x438a1c",
+   "xy": [
+    12,
+    233
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438a0c",
+    "slot_load_va": "0x438a0e",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438a4b",
+   "xy": [
+    11,
+    232
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438a3b",
+    "slot_load_va": "0x438a3d",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438a61",
+   "xy": [
+    10,
+    232
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438a51",
+    "slot_load_va": "0x438a53",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438ae7",
+   "xy": [
+    12,
+    263
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438ad7",
+    "slot_load_va": "0x438ad9",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438b16",
+   "xy": [
+    11,
+    262
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438b06",
+    "slot_load_va": "0x438b08",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438b2c",
+   "xy": [
+    10,
+    262
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438b1c",
+    "slot_load_va": "0x438b1e",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438bb2",
+   "xy": [
+    12,
+    293
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438ba2",
+    "slot_load_va": "0x438ba4",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438be1",
+   "xy": [
+    11,
+    292
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438bd1",
+    "slot_load_va": "0x438bd3",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438bf7",
+   "xy": [
+    10,
+    292
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438be7",
+    "slot_load_va": "0x438be9",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438c80",
+   "xy": [
+    284,
+    233
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438c6d",
+    "slot_load_va": "0x438c6f",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438cb2",
+   "xy": [
+    283,
+    232
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438c9f",
+    "slot_load_va": "0x438ca1",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438ccb",
+   "xy": [
+    282,
+    232
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438cb8",
+    "slot_load_va": "0x438cba",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438d4f",
+   "xy": [
+    284,
+    263
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438d3c",
+    "slot_load_va": "0x438d3e",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438d81",
+   "xy": [
+    283,
+    262
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438d6e",
+    "slot_load_va": "0x438d70",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438d9a",
+   "xy": [
+    282,
+    262
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438d87",
+    "slot_load_va": "0x438d89",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438e1e",
+   "xy": [
+    284,
+    293
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438e0b",
+    "slot_load_va": "0x438e0d",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438e50",
+   "xy": [
+    283,
+    292
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438e3d",
+    "slot_load_va": "0x438e3f",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x438910",
+   "va": "0x438e69",
+   "xy": [
+    282,
+    292
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x438e56",
+    "slot_load_va": "0x438e58",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "f52cac0f"
+   }
+  },
+  {
+   "function": "0x48f220",
+   "va": "0x48f464",
+   "xy": [
+    null,
+    null
+   ],
+   "tag": "bare",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x48f442",
+    "slot_load_va": "0x48f444",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "951924b1"
+   }
+  },
+  {
+   "function": "0x48f220",
+   "va": "0x48f484",
+   "xy": [
+    null,
+    null
+   ],
+   "tag": "bare",
+   "install": {
+    "kind": "manual",
+    "pair_va": "0x48f47e",
+    "slot_load_va": "0x48f47e",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": false,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "reason": "pair_not_adjacent"
+   }
+  },
+  {
+   "function": "0x4b92d0",
+   "va": "0x4b9580",
+   "xy": [
+    13,
+    9
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x4b9573",
+    "slot_load_va": "0x4b9575",
+    "cdc_reg": "esi",
+    "call_reg": "eax",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "8e163f0e"
+   }
+  },
+  {
+   "function": "0x4b92d0",
+   "va": "0x4b9597",
+   "xy": [
+    12,
+    9
+   ],
+   "tag": "name",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x4b958a",
+    "slot_load_va": "0x4b958c",
+    "cdc_reg": "esi",
+    "call_reg": "edx",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "951924b1"
+   }
+  },
+  {
+   "function": "0x4d77a0",
+   "va": "0x4d79dd",
+   "xy": [
+    13,
+    9
+   ],
+   "tag": "composite",
+   "install": null
+  },
+  {
+   "function": "0x4d77a0",
+   "va": "0x4d79f0",
+   "xy": [
+    12,
+    9
+   ],
+   "tag": "composite",
+   "install": null
+  },
+  {
+   "function": "0x4d77a0",
+   "va": "0x4d9729",
+   "xy": [
+    13,
+    235
+   ],
+   "tag": "bare",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x4d9719",
+    "slot_load_va": "0x4d971b",
+    "cdc_reg": "ebx",
+    "call_reg": "eax",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "899cec29"
+   }
+  },
+  {
+   "function": "0x4d77a0",
+   "va": "0x4d98e1",
+   "xy": [
+    12,
+    235
+   ],
+   "tag": "bare",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x4d98d1",
+    "slot_load_va": "0x4d98d3",
+    "cdc_reg": "ebx",
+    "call_reg": "eax",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "899cec29"
+   }
+  },
+  {
+   "function": "0x4dbcb0",
+   "va": "0x4dbefc",
+   "xy": [
+    13,
+    9
+   ],
+   "tag": "composite",
+   "install": null
+  },
+  {
+   "function": "0x4dbcb0",
+   "va": "0x4dbf0f",
+   "xy": [
+    12,
+    9
+   ],
+   "tag": "composite",
+   "install": null
+  },
+  {
+   "function": "0x4dbcb0",
+   "va": "0x4ddcd9",
+   "xy": [
+    13,
+    235
+   ],
+   "tag": "bare",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x4ddcc9",
+    "slot_load_va": "0x4ddccb",
+    "cdc_reg": "ebx",
+    "call_reg": "eax",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "899cec29"
+   }
+  },
+  {
+   "function": "0x4dbcb0",
+   "va": "0x4dde91",
+   "xy": [
+    12,
+    235
+   ],
+   "tag": "bare",
+   "install": {
+    "kind": "pair5",
+    "pair_va": "0x4dde81",
+    "slot_load_va": "0x4dde83",
+    "cdc_reg": "ebx",
+    "call_reg": "eax",
+    "adjacent": true,
+    "r1_read_before_call": false,
+    "branch_targets_inside": 0,
+    "orig_sha256_8": "899cec29"
+   }
+  }
+ ],
+ "other_sites": [
+  {
+   "function": "0x457700",
+   "va": "0x457985",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "composite"
+  },
+  {
+   "function": "0x458150",
+   "va": "0x4582f6",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "composite"
+  },
+  {
+   "function": "0x458da0",
+   "va": "0x459005",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "composite"
+  },
+  {
+   "function": "0x459320",
+   "va": "0x4595a5",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "composite"
+  },
+  {
+   "function": "0x4605c0",
+   "va": "0x460680",
+   "api": "SetDlgItemText",
+   "msg": null,
+   "tag": "bare"
+  },
+  {
+   "function": "0x46e690",
+   "va": "0x46e73a",
+   "api": "SendDlgItemMessage",
+   "msg": 330,
+   "tag": "name"
+  },
+  {
+   "function": "0x470140",
+   "va": "0x470200",
+   "api": "SetDlgItemText",
+   "msg": null,
+   "tag": "bare"
+  },
+  {
+   "function": "0x470370",
+   "va": "0x470410",
+   "api": "SetDlgItemText",
+   "msg": null,
+   "tag": "bare"
+  },
+  {
+   "function": "0x4734a0",
+   "va": "0x4735f6",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "name"
+  },
+  {
+   "function": "0x474d30",
+   "va": "0x474ead",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "name"
+  },
+  {
+   "function": "0x474f10",
+   "va": "0x47502c",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "name"
+  },
+  {
+   "function": "0x4759f0",
+   "va": "0x475bbe",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "name"
+  },
+  {
+   "function": "0x47c190",
+   "va": "0x47c242",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "name"
+  },
+  {
+   "function": "0x47dac0",
+   "va": "0x47db6a",
+   "api": "SendDlgItemMessage",
+   "msg": 330,
+   "tag": "bare"
+  },
+  {
+   "function": "0x481c90",
+   "va": "0x481d42",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "name"
+  },
+  {
+   "function": "0x4978d0",
+   "va": "0x497a20",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "name"
+  },
+  {
+   "function": "0x4b2b10",
+   "va": "0x4b2d1f",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "bare"
+  },
+  {
+   "function": "0x4cb400",
+   "va": "0x4cb4b2",
+   "api": "SendDlgItemMessage",
+   "msg": 385,
+   "tag": "name"
+  },
+  {
+   "function": "0x4d7320",
+   "va": "0x4d737a",
+   "api": "SetWindowText",
+   "msg": null,
+   "tag": "name"
+  },
+  {
+   "function": "0x4db810",
+   "va": "0x4db87d",
+   "api": "SetWindowText",
+   "msg": null,
+   "tag": "name"
+  }
+ ],
+ "namepair_v3_covers": false,
+ "namepair_v3_reason": "fixed (57,21)/(56,21), id=stored_id, flags 0 (no full_any, no join)",
+ "proposed_helper": "@LD2_NameTextOut@24",
+ "production_can_apply": false,
+ "release_approved": false
+}
