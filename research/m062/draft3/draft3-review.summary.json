@@ -1,26 +1,26 @@
 {
- "milestone": "m062-draft4-review-mona",
+ "milestone": "m062-draft5-review-mona",
  "counts_only": true,
  "production_can_apply": false,
  "release_approved": false,
  "mina_draft3_lab_sha256": "d0e162f3e31c75552536d6d80849b45ccc720e1cdc7a256f2ed9539836ecde25",
  "mina_draft3u_lab_sha256": "83e69d7fa97ee9c1f2ac942c3377115f7d4a5f0288b1d3302a9f64e8d511c593",
  "mina_draft4_lab_sha256": "a3e964ca05dd32997fbee2415aaf9be414342ce9c66ca71353c68b6bed5cf71f",
- "mona_full_lab_sha256": "e0ac370eeca1abdedc63a76764b5ef26c1fa818811ac4bf441591a444075728b",
- "note": "Mona independent review against pinned pristine EXE (lab). No source text. Current source = Mina draft4-sara (draft4 + user decision 2026-10-29: shared sara source bytes -> 薩拉 for male western/95, arabic/37 and female western/94; review_status user_decided). Mona hold cleared; validate_adventurers passes (one bytes -> one zh). Filenames keep the m062-draft3-* prefix for continuity.",
+ "mona_full_lab_sha256": "f896db35ce43c94b76e4d3f6912c06dbf0367caaa93864b5bea5e19d38f77f4d",
+ "note": "Mona independent review against pinned pristine EXE (lab). No source text. Current source = Mina draft5-kris-24 (draft4-sara + user decisions 2026-10-29 via Mina: extended/28 Kris -> 波刃短劍 user_decided (same source bytes as female adventurer_female/western/92 克莉絲); 24 label/desc-mismatch rows primary 272-295 keep name AND description, review_status user_decided_include_name_and_description). v3 lab_preview excludes only extended/28 (v3 name sites cannot keep it apart from the female name; v4 NAME_ONLY can, see research/m063/lab_v4_names.summary.json). Mona edit: extended/28 description hiragana U+304F -> bopomofo U+3111 (same shape, CP950). Filenames keep the m062-draft3-* prefix for continuity.",
  "mona_hold_reverted_rows": 0,
- "items_verified_vs_exe": 416,
+ "items_verified_vs_exe": 417,
  "items_failed": [],
  "full_draft3_v3": {
-  "rows": 6127,
+  "rows": 6138,
   "stats": {
-   "weapon": 1881,
+   "weapon": 1892,
    "armor": 1496,
    "tool": 814,
    "consumable": 649,
    "adventurer": 1400
   },
-  "v3_sha256": "668143b70b0d17a5df2e2b33e780173ca3430ecdf4197b3838a41ba52bf7678e"
+  "v3_sha256": "57ffa90ab19bb41c1cb12d63f3e395b57af1f7425dc03b254215df5472963e2a"
  },
  "validate_adventurers": {
   "adventurer_male_first": 400,
@@ -41,10 +41,14 @@
   30,
   30,
   30,
-  26
+  27
  ],
- "source_bytes_multi_zh": 0,
+ "source_bytes_multi_zh": 1,
  "kana_in_zh_before_edit": [
+  [
+   "extended",
+   28
+  ],
   [
    "extended",
    63
@@ -55,28 +59,30 @@
  "status_counts": {
   "item|mina_draft|-": 72,
   "item|mina_draft2|-": 320,
-  "item|mina_draft2_label_desc_mismatch|-": 24,
+  "item|user_decided_include_name_and_description|-": 24,
+  "item|user_decided|curated": 1,
   "adventurer|mina_draft3|curated_v3": 371,
   "adventurer|mina_draft2|curated_v2": 122,
   "adventurer|mina_draft2|join_unified_m062": 15,
   "adventurer|mina_draft2|curated": 177,
   "adventurer|user_decided|curated_v3": 7,
+  "adventurer|user_decided|curated": 3,
   "adventurer|mina_draft4|curated_v4_web": 5,
   "adventurer|mina_draft2|kanji_traditionalized": 700
  },
  "raw_draft3_gate": "refused: review_status 'mina_draft2' not allowed by policy 'lab_preview'",
  "lab_preview": {
-  "sha256": "6bb2e69c909a3eef4d0f72e0f8fb834259faf1c53c3d952ffe2e2704ea891d40",
-  "items": 1792,
+  "sha256": "5ed26c163ddca71ea95b7eca615458f65dc4b16bd279fd3a9dd9ec4436a0a2c7",
+  "items": 1816,
   "by_category": {
    "consumable": 55,
-   "tool": 70,
-   "weapon": 149,
-   "armor": 118,
+   "tool": 72,
+   "weapon": 161,
+   "armor": 128,
    "adventurer": 1400
   },
   "excluded": {
-   "mina_draft2_label_desc_mismatch": 24
+   "v3_kris_name_collision": 1
   },
   "review_gate": {
    "policy": "lab_preview",
@@ -89,63 +95,65 @@
      }
     },
     {
-     "sha256": "6bb2e69c909a3eef4d0f72e0f8fb834259faf1c53c3d952ffe2e2704ea891d40",
-     "items": 1792,
+     "sha256": "5ed26c163ddca71ea95b7eca615458f65dc4b16bd279fd3a9dd9ec4436a0a2c7",
+     "items": 1816,
      "review_status": {
-      "mina_draft": 1792
+      "mina_draft": 1816
      }
     }
    ],
    "release_eligible": false
   },
-  "v3_rows": 5863,
+  "v3_rows": 6127,
   "v3_row_stats": {
-   "weapon": 1749,
-   "armor": 1386,
-   "tool": 792,
+   "weapon": 1881,
+   "armor": 1496,
+   "tool": 814,
    "consumable": 649,
    "adventurer": 1400
   },
-  "v3_bytes": 243240,
-  "v3_sha256": "1c5c6993b275229f5dcecf952ae1a18b6ba065a4cfa762ed7fd8d7510a1eb928"
+  "v3_bytes": 253484,
+  "v3_sha256": "668143b70b0d17a5df2e2b33e780173ca3430ecdf4197b3838a41ba52bf7678e"
  },
  "public_files": {
   "m062-draft3-consumables-tools.zh-TW.json": {
    "items": 127,
-   "bytes": 145189,
-   "sha256": "8a27d0925b604dd03471d7dc8342e332360867803ed5fa494dc37a252df0bdfa"
+   "bytes": 145994,
+   "sha256": "03a215db600609e714140dfb44b89ad2dfd095daa33883ede0e41f73473a3507"
   },
   "m062-draft3-weapons.zh-TW.json": {
-   "items": 161,
-   "bytes": 184913,
-   "sha256": "662da085bc001098eccb9995a87196f9639b4eb9ffa15eb6b165648d0f15fa95"
+   "items": 162,
+   "bytes": 188796,
+   "sha256": "5b176466efd396d160ea2c7b19724fc15ceec893488f5acae72d4fe784ea2561"
   },
   "m062-draft3-armor.zh-TW.json": {
    "items": 128,
-   "bytes": 147246,
-   "sha256": "21929f8600474b2836904b44fd8facdf4b2a90da69cbfd7993dda467360f9699"
+   "bytes": 149307,
+   "sha256": "eb5f26675aa2dffa3638d4b29023e6259ebdf6bfc665703cd3059be8f13a56d4"
   },
   "m062-draft3-adventurers-western.zh-TW.json": {
    "items": 350,
-   "bytes": 282191,
-   "sha256": "87694a4c878f5e9ca415ad4fbadb18aac68e82c35e46a7d57d013e5ad5244af8"
+   "bytes": 282682,
+   "sha256": "fd3f2c313107f14e6d6bf3f394486fbffe78b1eb8a2d8b88593e460897a69702"
   },
   "m062-draft3-adventurers-arabic.zh-TW.json": {
    "items": 350,
-   "bytes": 285635,
-   "sha256": "e2d4822ebe7c11416cd6929c51d53006154ca30ade32aa99ede8064e79c236ae"
+   "bytes": 286126,
+   "sha256": "4d2ee232c096355927ce94eabb7cc3ed6a1f7c8a91604b9bae50e3710334cc56"
   },
   "m062-draft3-adventurers-chinese.zh-TW.json": {
    "items": 350,
-   "bytes": 282113,
-   "sha256": "7ca594a5c31b9eb60068f957932bd2a447e50f446f6e7ae2b36a38d119971ff7"
+   "bytes": 282604,
+   "sha256": "2668246966682d4eb1dc33de11dbaf77e9ba77c53fc986b4fb6cf419411a0d61"
   },
   "m062-draft3-adventurers-japanese.zh-TW.json": {
    "items": 350,
-   "bytes": 283338,
-   "sha256": "af1841f455570168b3264d8bbab841453e34a3adbc7179d8919b19f053a5a9f7"
+   "bytes": 283829,
+   "sha256": "cc68b9e0ec0ada233b07ee3d693e0087217c4dec1439e245a5cbf8f5717f4e96"
   }
  },
- "public_total_rows": 1816,
- "mina_draft4_sara_lab_sha256": "33f63c04403929d3bf0431255bda2b83e2211b5f679f450a52a5e30f6d0c0f8e"
+ "public_total_rows": 1817,
+ "mina_draft4_sara_lab_sha256": "33f63c04403929d3bf0431255bda2b83e2211b5f679f450a52a5e30f6d0c0f8e",
+ "mina_draft5_kris_24_lab_sha256": "13c84914b1def38694128f724dcbb207439ed44265967e657942f9447f6a34d0",
+ "source_bytes_multi_zh_note": "1 = extended/28 item vs female adventurer name (by design, separated by v4 NAME_ONLY); 0 within items and 0 within adventurers"
 }
