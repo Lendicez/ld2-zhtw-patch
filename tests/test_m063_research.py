@@ -1,0 +1,13 @@
+"""Runs research/m063 unit tests from tools/check.py. Lab tests skip without licensed inputs; rehearsal tests skip without ziglang."""
+import sys
+import unittest
+from pathlib import Path
+
+M063 = Path(__file__).resolve().parents[1] / 'research' / 'm063'
+
+
+def load_tests(loader, standard_tests, pattern):
+    sys.path.insert(0, str(M063))
+    suite = unittest.TestSuite()
+    suite.addTests(loader.discover(str(M063), pattern='test_m063.py', top_level_dir=str(M063)))
+    return suite
