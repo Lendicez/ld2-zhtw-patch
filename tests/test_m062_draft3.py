@@ -8,7 +8,7 @@ D2 = ROOT / 'research' / 'm062' / 'draft3'
 REGIONS = ('western', 'arabic', 'chinese', 'japanese')
 FILES = ['m062-draft3-consumables-tools.zh-TW.json', 'm062-draft3-weapons.zh-TW.json', 'm062-draft3-armor.zh-TW.json'] + \
         [f'm062-draft3-adventurers-{r}.zh-TW.json' for r in REGIONS]
-FULL_SHA = 'd0e162f3e31c75552536d6d80849b45ccc720e1cdc7a256f2ed9539836ecde25'
+FULL_SHA = '83e69d7fa97ee9c1f2ac942c3377115f7d4a5f0288b1d3302a9f64e8d511c593'
 M051_SLOTS = {('primary', s) for s in (0, 1, 2, 3, 5, 7, 9, 11, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 136, 296)}
 BLOCKED = {('extended', 28)} | {('extended', s) for s in range(139, 144)}   # Kris byte collision; placeholders
 KANA = re.compile(r'[\u3040-\u30ff\uff66-\uff9f]')
@@ -48,9 +48,9 @@ class M062Draft3(unittest.TestCase):
             self.assertEqual((t[('adventurer_male_first', r)], t[('adventurer_male_second', r)], t[('adventurer_female', r)]), (100, 100, 150))
         m = Counter(x.get('translation_method') for x in self.items if x['category'] == 'adventurer')
         self.assertEqual(m, {'kanji_traditionalized': 700, 'curated': 180, 'curated_v2': 122,
-                             'join_unified_m062': 15, 'curated_v3': 371, 'machine_translit_draft': 12})
+                             'join_unified_m062': 15, 'curated_v3': 378, 'machine_translit_draft': 5})
         rs = Counter(x['review_status'] for x in self.items)
-        self.assertEqual(rs, {'mina_draft': 72, 'mina_draft2': 1337, 'mina_draft3': 371, 'mina_draft2_label_desc_mismatch': 24, 'machine_needs_review': 12})
+        self.assertEqual(rs, {'mina_draft': 72, 'mina_draft2': 1337, 'mina_draft3': 371, 'mina_draft2_label_desc_mismatch': 24, 'machine_needs_review': 5, 'user_decided': 7})
         self.assertFalse({'human_reviewed', 'approved'} & set(rs))   # nothing promoted in this batch
 
     def test_items_no_overlap_unique_blocked(self):
