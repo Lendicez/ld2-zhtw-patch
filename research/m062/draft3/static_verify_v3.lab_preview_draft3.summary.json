@@ -6,8 +6,8 @@
   "release_approved": false,
   "modes": {
     "2": {
-      "inert_sha256": "62bf5f9a665ec5424e666c243bce32438412bab30efdcf5dc11f81fdc098f94c",
-      "enabled_sha256": "a5e252993c1e2fc3179054b6dce43b93a9ad464d6918cc5cc339ebc56220ddf3",
+      "inert_sha256": "bda12d7d56b25277be89e01cf96d59438021ab8605006d8b6c4321a3bafe0f97",
+      "enabled_sha256": "5da5910e13fa9837e80fd28612438a93a28af23abf959699f6e74ae530b01558",
       "size": 7376896,
       "entry_va": "0xae3a10",
       "list_entry_va": "0xae47e0",
@@ -165,8 +165,8 @@
         "binding_targets": {
           "original_dlgitem_value": "0x4ea671",
           "list_mode": 2,
-          "catalog_bytes": 243040,
-          "blob_sha256": "3da290acc0266e6be9226da967ed549b6b43c37d5403da3cd88823c19671a87a",
+          "catalog_bytes": 243124,
+          "blob_sha256": "5ec21918884c25b73a52a290959e8819e1911e97b92c3471b6d8e6e9b336f511",
           "shared_catalog": true
         },
         "indirect_calls": {
@@ -203,8 +203,8 @@
       }
     },
     "0": {
-      "inert_sha256": "b0bd8c19499e2f9a139cc30e0149535c4fd66469baf18997ded2164848c0c51a",
-      "enabled_sha256": "3f0513d66bc6d8941cfeefe114ecfa08b6db2cc78ffecda8823ca251d02f7add",
+      "inert_sha256": "0113c6d719d28b9460608645c1c65eb6631fc921ca3593a9569240a44bc3b776",
+      "enabled_sha256": "6f3df00fa3bd0e73d6806a658d871cb2a561900b555e1495da6c697ee3f9fbe8",
       "size": 7376896,
       "entry_va": "0xae3a10",
       "list_entry_va": "0xae47e0",
@@ -362,8 +362,8 @@
         "binding_targets": {
           "original_dlgitem_value": "0x4ea671",
           "list_mode": 0,
-          "catalog_bytes": 243040,
-          "blob_sha256": "3da290acc0266e6be9226da967ed549b6b43c37d5403da3cd88823c19671a87a",
+          "catalog_bytes": 243124,
+          "blob_sha256": "5ec21918884c25b73a52a290959e8819e1911e97b92c3471b6d8e6e9b336f511",
           "shared_catalog": true
         },
         "indirect_calls": {
@@ -400,14 +400,14 @@
       }
     }
   },
-  "blob_sha256": "3da290acc0266e6be9226da967ed549b6b43c37d5403da3cd88823c19671a87a",
+  "blob_sha256": "5ec21918884c25b73a52a290959e8819e1911e97b92c3471b6d8e6e9b336f511",
   "capacity": {
-    "rows": 5856,
-    "blob_bytes": 243040,
-    "pool_bytes": 149312,
-    "section_bytes": 243056,
+    "rows": 5859,
+    "blob_bytes": 243124,
+    "pool_bytes": 149348,
+    "section_bytes": 243140,
     "section_budget": 1048576,
-    "headroom_bytes": 805520,
+    "headroom_bytes": 805436,
     "helper_blob_max": 1179680
   },
   "catalog_build": {
@@ -422,26 +422,26 @@
           }
         },
         {
-          "sha256": "d68bfcd7ae719e69657a6546f1c719ba2038fb4a01b0c48a25c447bbf4f60bf5",
-          "items": 1780,
+          "sha256": "fc2ae80258177f9a9efa33e82047a92b00f28ca2fd7bab03940f4f3e2f9e8425",
+          "items": 1787,
           "review_status": {
-            "mina_draft": 1780
+            "mina_draft": 1787
           }
         }
       ],
       "release_eligible": false
     },
-    "rows": 5856,
+    "rows": 5859,
     "row_stats": {
       "weapon": 1749,
       "armor": 1386,
       "tool": 792,
       "consumable": 649,
-      "adventurer": 1388
+      "adventurer": 1395
     }
   },
   "catalog_section": {
-    "virtual_size": 243056,
+    "virtual_size": 243140,
     "raw_size": 245760,
     "raw_pointer": "0x6cc000",
     "file_align": 4096
