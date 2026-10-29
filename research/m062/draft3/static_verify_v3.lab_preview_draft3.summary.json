@@ -1,0 +1,449 @@
+{
+  "catalog": "lab_preview",
+  "name_object_sha256": "8a70e6cde5254d65aae4bf9d65fce6ee2b8065807af5741bc7092f37776c0242",
+  "list_object_sha256": "5ceba5a64b6e43d8f0f2e519cd91c076280656c7c1d1dd52c0f7025a62c3a037",
+  "production_can_apply": false,
+  "release_approved": false,
+  "modes": {
+    "2": {
+      "inert_sha256": "62bf5f9a665ec5424e666c243bce32438412bab30efdcf5dc11f81fdc098f94c",
+      "enabled_sha256": "a5e252993c1e2fc3179054b6dce43b93a9ad464d6918cc5cc339ebc56220ddf3",
+      "size": 7376896,
+      "entry_va": "0xae3a10",
+      "list_entry_va": "0xae47e0",
+      "list_mode_slot_va": "0xae500c",
+      "original_dlgitem_slot_va": "0xae5008",
+      "hook_stub_sha256": "e82d98a5c773043331ef8d53848872ac208caed872ad1bee745897114d6f471e",
+      "changed_bytes_inert_to_enabled": 65,
+      "verify": {
+        "hook_stub_disasm": [
+          "0x46dc7d push dword ptr [esp + 0x18]",
+          "0x46dc81 push esi",
+          "0x46dc82 push dword ptr [esp + 0x1c]",
+          "0x46dc86 push ebp",
+          "0x46dc87 call 0xae3a10",
+          "0x46dc8c jmp 0x46dca5",
+          "0x46dc91 int3 ",
+          "0x46dc92 int3 ",
+          "0x46dc93 int3 ",
+          "0x46dc94 int3 ",
+          "0x46dc95 int3 ",
+          "0x46dc96 int3 ",
+          "0x46dc97 int3 ",
+          "0x46dc98 int3 ",
+          "0x46dc99 int3 ",
+          "0x46dc9a int3 ",
+          "0x46dc9b int3 ",
+          "0x46dc9c int3 ",
+          "0x46dc9d int3 ",
+          "0x46dc9e int3 ",
+          "0x46dc9f int3 ",
+          "0x46dca0 int3 ",
+          "0x46dca1 int3 ",
+          "0x46dca2 int3 ",
+          "0x46dca3 int3 ",
+          "0x46dca4 int3 "
+        ],
+        "branches_into_span_interior": [],
+        "function_insns": 347,
+        "sites": [
+          {
+            "va": "0x492431",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4aaf19",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4ab0fe",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4b1153",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4b2d1f",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4b3477",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4b46e4",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4b4df1",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          }
+        ],
+        "name_pair_entry_bytes_head": "558bec81ec0c0200",
+        "list_entry_bytes_head": "558bec81ec2c0200",
+        "pefile_checksum_ok": true,
+        "sections": [
+          ".text",
+          ".rdata",
+          ".data",
+          ".rsrc",
+          ".ld2t",
+          ".ld2c",
+          ".ld2i"
+        ],
+        "import_count": 15,
+        "entry_point": "0x10011e",
+        "size_of_image": "0x722000",
+        "original_dlgitem_slot_value": "0x4ea671",
+        "expected_textouta_value": "0x4e13d7",
+        "object_audits": {
+          "list_normal_cfg_states": 1347,
+          "list_binding_spills": [
+            [
+              "0xc52",
+              "dword ptr [ebp - 0x21c]",
+              "_LD2_ListMode"
+            ],
+            [
+              "0xc92",
+              "dword ptr [ebp - 0x210]",
+              "_LD2_OriginalDlgItem"
+            ]
+          ],
+          "name_functions": [
+            "?LD2C3_Lookup@@YAIPBULD2C3View@@PBEIHIPCGI@Z",
+            "?ld2c3_cmp@@YAHPBULD2C3View@@IIPBEI@Z",
+            "?ld2c3_find@@YAHPBULD2C3View@@IPBEIHPAPBEPAIPAH@Z",
+            "?ld2c3_open@@YAHPBEIPAULD2C3View@@@Z",
+            "?ld2c3_u32@@YAIPBE@Z",
+            "_LD2_FindCopy@16",
+            "_LD2_LoadMethod@4",
+            "_LD2_NamePair@16",
+            "_LD2_OriginalOne@16",
+            "_LD2_OriginalPair@12",
+            "_LD2_Wipe@8"
+          ]
+        },
+        "fixups_name": {
+          "fixups": 34,
+          "external_refs": {
+            "_LD2_CatalogBytes": 1,
+            "_LD2_Catalog": 1,
+            "___security_cookie": 1,
+            "_LD2_ExpectedTextOutA": 3,
+            "_LD2_TextOutW": 3,
+            "@__security_check_cookie@4": 3
+          }
+        },
+        "fixups_list": {
+          "fixups": 43,
+          "external_refs": {
+            "_LD2_MultiByteToWideChar": 3,
+            "_LD2_GetDlgItem": 3,
+            "_LD2_IsWindowUnicode": 3,
+            "_LD2_GetWindowLongW": 3,
+            "_LD2_GetClassLongW": 3,
+            "_LD2_SetWindowLongW": 3,
+            "___security_cookie": 1,
+            "_LD2_ListMode": 1,
+            "_LD2_SendDlgItemMessageW": 2,
+            "_LD2_OriginalDlgItem": 3,
+            "_LD2_CatalogBytes": 1,
+            "_LD2_Catalog": 1,
+            "@__security_check_cookie@4": 4
+          }
+        },
+        "binding_targets": {
+          "original_dlgitem_value": "0x4ea671",
+          "list_mode": 2,
+          "catalog_bytes": 243040,
+          "blob_sha256": "3da290acc0266e6be9226da967ed549b6b43c37d5403da3cd88823c19671a87a",
+          "shared_catalog": true
+        },
+        "indirect_calls": {
+          "list": {
+            "binding_slots_called": [
+              "0x52537c",
+              "0x525498",
+              "0xae5008",
+              "0xb211e8",
+              "0xb211ec",
+              "0xb211f0",
+              "0xb211f4",
+              "0xb211f8"
+            ],
+            "other_indirect": []
+          },
+          "name": {
+            "binding_slots_called": [
+              "0xb21160"
+            ],
+            "other_indirect": [
+              "0xae3b69 call eax"
+            ]
+          }
+        },
+        "new_imports_vs_pristine": [
+          "GDI32.dll!TextOutW",
+          "USER32.dll!GetClassLongW",
+          "USER32.dll!GetWindowLongW",
+          "USER32.dll!IsWindowUnicode",
+          "USER32.dll!SendDlgItemMessageW",
+          "USER32.dll!SetWindowLongW"
+        ]
+      }
+    },
+    "0": {
+      "inert_sha256": "b0bd8c19499e2f9a139cc30e0149535c4fd66469baf18997ded2164848c0c51a",
+      "enabled_sha256": "3f0513d66bc6d8941cfeefe114ecfa08b6db2cc78ffecda8823ca251d02f7add",
+      "size": 7376896,
+      "entry_va": "0xae3a10",
+      "list_entry_va": "0xae47e0",
+      "list_mode_slot_va": "0xae500c",
+      "original_dlgitem_slot_va": "0xae5008",
+      "hook_stub_sha256": "e82d98a5c773043331ef8d53848872ac208caed872ad1bee745897114d6f471e",
+      "changed_bytes_inert_to_enabled": 65,
+      "verify": {
+        "hook_stub_disasm": [
+          "0x46dc7d push dword ptr [esp + 0x18]",
+          "0x46dc81 push esi",
+          "0x46dc82 push dword ptr [esp + 0x1c]",
+          "0x46dc86 push ebp",
+          "0x46dc87 call 0xae3a10",
+          "0x46dc8c jmp 0x46dca5",
+          "0x46dc91 int3 ",
+          "0x46dc92 int3 ",
+          "0x46dc93 int3 ",
+          "0x46dc94 int3 ",
+          "0x46dc95 int3 ",
+          "0x46dc96 int3 ",
+          "0x46dc97 int3 ",
+          "0x46dc98 int3 ",
+          "0x46dc99 int3 ",
+          "0x46dc9a int3 ",
+          "0x46dc9b int3 ",
+          "0x46dc9c int3 ",
+          "0x46dc9d int3 ",
+          "0x46dc9e int3 ",
+          "0x46dc9f int3 ",
+          "0x46dca0 int3 ",
+          "0x46dca1 int3 ",
+          "0x46dca2 int3 ",
+          "0x46dca3 int3 ",
+          "0x46dca4 int3 "
+        ],
+        "branches_into_span_interior": [],
+        "function_insns": 347,
+        "sites": [
+          {
+            "va": "0x492431",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4aaf19",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4ab0fe",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4b1153",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4b2d1f",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4b3477",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4b46e4",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          },
+          {
+            "va": "0x4b4df1",
+            "old": "call 0x4ea671",
+            "new": "call 0xae47e0"
+          }
+        ],
+        "name_pair_entry_bytes_head": "558bec81ec0c0200",
+        "list_entry_bytes_head": "558bec81ec2c0200",
+        "pefile_checksum_ok": true,
+        "sections": [
+          ".text",
+          ".rdata",
+          ".data",
+          ".rsrc",
+          ".ld2t",
+          ".ld2c",
+          ".ld2i"
+        ],
+        "import_count": 15,
+        "entry_point": "0x10011e",
+        "size_of_image": "0x722000",
+        "original_dlgitem_slot_value": "0x4ea671",
+        "expected_textouta_value": "0x4e13d7",
+        "object_audits": {
+          "list_normal_cfg_states": 1347,
+          "list_binding_spills": [
+            [
+              "0xc52",
+              "dword ptr [ebp - 0x21c]",
+              "_LD2_ListMode"
+            ],
+            [
+              "0xc92",
+              "dword ptr [ebp - 0x210]",
+              "_LD2_OriginalDlgItem"
+            ]
+          ],
+          "name_functions": [
+            "?LD2C3_Lookup@@YAIPBULD2C3View@@PBEIHIPCGI@Z",
+            "?ld2c3_cmp@@YAHPBULD2C3View@@IIPBEI@Z",
+            "?ld2c3_find@@YAHPBULD2C3View@@IPBEIHPAPBEPAIPAH@Z",
+            "?ld2c3_open@@YAHPBEIPAULD2C3View@@@Z",
+            "?ld2c3_u32@@YAIPBE@Z",
+            "_LD2_FindCopy@16",
+            "_LD2_LoadMethod@4",
+            "_LD2_NamePair@16",
+            "_LD2_OriginalOne@16",
+            "_LD2_OriginalPair@12",
+            "_LD2_Wipe@8"
+          ]
+        },
+        "fixups_name": {
+          "fixups": 34,
+          "external_refs": {
+            "_LD2_CatalogBytes": 1,
+            "_LD2_Catalog": 1,
+            "___security_cookie": 1,
+            "_LD2_ExpectedTextOutA": 3,
+            "_LD2_TextOutW": 3,
+            "@__security_check_cookie@4": 3
+          }
+        },
+        "fixups_list": {
+          "fixups": 43,
+          "external_refs": {
+            "_LD2_MultiByteToWideChar": 3,
+            "_LD2_GetDlgItem": 3,
+            "_LD2_IsWindowUnicode": 3,
+            "_LD2_GetWindowLongW": 3,
+            "_LD2_GetClassLongW": 3,
+            "_LD2_SetWindowLongW": 3,
+            "___security_cookie": 1,
+            "_LD2_ListMode": 1,
+            "_LD2_SendDlgItemMessageW": 2,
+            "_LD2_OriginalDlgItem": 3,
+            "_LD2_CatalogBytes": 1,
+            "_LD2_Catalog": 1,
+            "@__security_check_cookie@4": 4
+          }
+        },
+        "binding_targets": {
+          "original_dlgitem_value": "0x4ea671",
+          "list_mode": 0,
+          "catalog_bytes": 243040,
+          "blob_sha256": "3da290acc0266e6be9226da967ed549b6b43c37d5403da3cd88823c19671a87a",
+          "shared_catalog": true
+        },
+        "indirect_calls": {
+          "list": {
+            "binding_slots_called": [
+              "0x52537c",
+              "0x525498",
+              "0xae5008",
+              "0xb211e8",
+              "0xb211ec",
+              "0xb211f0",
+              "0xb211f4",
+              "0xb211f8"
+            ],
+            "other_indirect": []
+          },
+          "name": {
+            "binding_slots_called": [
+              "0xb21160"
+            ],
+            "other_indirect": [
+              "0xae3b69 call eax"
+            ]
+          }
+        },
+        "new_imports_vs_pristine": [
+          "GDI32.dll!TextOutW",
+          "USER32.dll!GetClassLongW",
+          "USER32.dll!GetWindowLongW",
+          "USER32.dll!IsWindowUnicode",
+          "USER32.dll!SendDlgItemMessageW",
+          "USER32.dll!SetWindowLongW"
+        ]
+      }
+    }
+  },
+  "blob_sha256": "3da290acc0266e6be9226da967ed549b6b43c37d5403da3cd88823c19671a87a",
+  "capacity": {
+    "rows": 5856,
+    "blob_bytes": 243040,
+    "pool_bytes": 149312,
+    "section_bytes": 243056,
+    "section_budget": 1048576,
+    "headroom_bytes": 805520,
+    "helper_blob_max": 1179680
+  },
+  "catalog_build": {
+    "review": {
+      "policy": "lab_preview",
+      "catalogs": [
+        {
+          "sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
+          "items": 24,
+          "review_status": {
+            "m051_baseline": 24
+          }
+        },
+        {
+          "sha256": "d68bfcd7ae719e69657a6546f1c719ba2038fb4a01b0c48a25c447bbf4f60bf5",
+          "items": 1780,
+          "review_status": {
+            "mina_draft": 1780
+          }
+        }
+      ],
+      "release_eligible": false
+    },
+    "rows": 5856,
+    "row_stats": {
+      "weapon": 1749,
+      "armor": 1386,
+      "tool": 792,
+      "consumable": 649,
+      "adventurer": 1388
+    }
+  },
+  "catalog_section": {
+    "virtual_size": 243056,
+    "raw_size": 245760,
+    "raw_pointer": "0x6cc000",
+    "file_align": 4096
+  }
+}

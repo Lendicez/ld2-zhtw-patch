@@ -1,0 +1,146 @@
+{
+ "milestone": "m062-draft3-review-mona",
+ "counts_only": true,
+ "production_can_apply": false,
+ "release_approved": false,
+ "mina_draft3_lab_sha256": "d0e162f3e31c75552536d6d80849b45ccc720e1cdc7a256f2ed9539836ecde25",
+ "note": "Mona independent review against pinned pristine EXE (lab). No source text. Lab-only inputs are not published.",
+ "items_verified_vs_exe": 416,
+ "items_failed": [],
+ "full_draft3_v3": {
+  "rows": 6127,
+  "stats": {
+   "weapon": 1881,
+   "armor": 1496,
+   "tool": 814,
+   "consumable": 649,
+   "adventurer": 1400
+  },
+  "v3_sha256": "763ae097c14df7c705313ebfb48edc74c31898ed208047d41930bf9ce0d9c091"
+ },
+ "validate_adventurers": {
+  "adventurer_male_first": 400,
+  "adventurer_male_second": 400,
+  "adventurer_female": 600
+ },
+ "sidecar_batches_ok": [
+  30,
+  30,
+  30,
+  30,
+  30,
+  30,
+  30,
+  30,
+  30,
+  30,
+  30,
+  30,
+  30,
+  26
+ ],
+ "source_bytes_multi_zh": 0,
+ "kana_in_zh_before_edit": [
+  [
+   "extended",
+   63
+  ]
+ ],
+ "cp950_flag_mismatch": 0,
+ "non_cp950_rows": 8,
+ "status_counts": {
+  "item|mina_draft|-": 72,
+  "item|mina_draft2|-": 320,
+  "item|mina_draft2_label_desc_mismatch|-": 24,
+  "adventurer|mina_draft3|curated_v3": 371,
+  "adventurer|mina_draft2|curated_v2": 122,
+  "adventurer|mina_draft2|join_unified_m062": 15,
+  "adventurer|mina_draft2|curated": 180,
+  "adventurer|machine_needs_review|machine_translit_draft": 12,
+  "adventurer|mina_draft2|kanji_traditionalized": 700
+ },
+ "raw_draft3_gate": "refused: review_status 'mina_draft2' not allowed by policy 'lab_preview'",
+ "lab_preview": {
+  "sha256": "d68bfcd7ae719e69657a6546f1c719ba2038fb4a01b0c48a25c447bbf4f60bf5",
+  "items": 1780,
+  "by_category": {
+   "consumable": 55,
+   "tool": 70,
+   "weapon": 149,
+   "armor": 118,
+   "adventurer": 1388
+  },
+  "excluded": {
+   "mina_draft2_label_desc_mismatch": 24,
+   "machine_needs_review": 12
+  },
+  "review_gate": {
+   "policy": "lab_preview",
+   "catalogs": [
+    {
+     "sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
+     "items": 24,
+     "review_status": {
+      "m051_baseline": 24
+     }
+    },
+    {
+     "sha256": "d68bfcd7ae719e69657a6546f1c719ba2038fb4a01b0c48a25c447bbf4f60bf5",
+     "items": 1780,
+     "review_status": {
+      "mina_draft": 1780
+     }
+    }
+   ],
+   "release_eligible": false
+  },
+  "v3_rows": 5856,
+  "v3_row_stats": {
+   "weapon": 1749,
+   "armor": 1386,
+   "tool": 792,
+   "consumable": 649,
+   "adventurer": 1388
+  },
+  "v3_bytes": 243040,
+  "v3_sha256": "3da290acc0266e6be9226da967ed549b6b43c37d5403da3cd88823c19671a87a"
+ },
+ "public_files": {
+  "m062-draft3-consumables-tools.zh-TW.json": {
+   "items": 127,
+   "bytes": 144884,
+   "sha256": "cac9631bb1780b9b7f63e17faf9ef3f0486351ba84903ddc0bbefdb3e17bc984"
+  },
+  "m062-draft3-weapons.zh-TW.json": {
+   "items": 161,
+   "bytes": 184608,
+   "sha256": "b443943a0686a3952bc29e816c3cf18e82e9625939b9df94533fcc75d4b0fcae"
+  },
+  "m062-draft3-armor.zh-TW.json": {
+   "items": 128,
+   "bytes": 146941,
+   "sha256": "e35fadb4c29c618095cf8ca76d0f8f0cf8b0fb0d4bc2340a1d66e5fedaa4a472"
+  },
+  "m062-draft3-adventurers-western.zh-TW.json": {
+   "items": 350,
+   "bytes": 281803,
+   "sha256": "e9b6768cef143324c3c17316ff28137b4122605f645cdf1fd3e2191c41ce21a6"
+  },
+  "m062-draft3-adventurers-arabic.zh-TW.json": {
+   "items": 350,
+   "bytes": 284929,
+   "sha256": "34b8c6f0ea99a773c6900904c6de12bd7806ea359b625f3e126e2ed9c259f0fa"
+  },
+  "m062-draft3-adventurers-chinese.zh-TW.json": {
+   "items": 350,
+   "bytes": 281808,
+   "sha256": "bf1d6f5bf4ca47bb7245b93c0cdb00ff8f563b190ddb733da11f90565b11b1a9"
+  },
+  "m062-draft3-adventurers-japanese.zh-TW.json": {
+   "items": 350,
+   "bytes": 283033,
+   "sha256": "6228e43d0185bf1e3f47f4fe5cc9d9081bee7758b8f4704a5e32f6f51cc34956"
+  }
+ },
+ "public_total_rows": 1816
+}
