@@ -1,0 +1,24 @@
+{
+    "production_can_apply":  false,
+    "object_sha256":  "e8144466755d223a18f5d8f586510f64822c5cc1d793c708f171e964f6064d51",
+    "asm_bytes":  41251,
+    "object":  "list_insert_u.obj",
+    "profile":  "u",
+    "flags":  [
+                  "/c",
+                  "/W4",
+                  "/WX",
+                  "/O2",
+                  "/Oi",
+                  "/Oy-",
+                  "/GS",
+                  "/Gy",
+                  "/Zl",
+                  "/EHs"
+              ],
+    "native_executed":  false,
+    "linked":  false,
+    "game_touched":  false,
+    "object_bytes":  4038,
+    "stage":  "A-compile-only"
+}

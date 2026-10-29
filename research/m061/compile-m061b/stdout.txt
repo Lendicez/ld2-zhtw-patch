@@ -1,0 +1,24 @@
+CASE 1 ascii-original
+CASE 2 mode2-hit-no-flip
+CASE 3 mode2-miss-flip
+CASE 4 mode2-already-unicode
+CASE 5 mode2-subclassed-no-flip
+CASE 6 mode2-proc-zero-no-flip
+CASE 7 mode2-no-child
+CASE 8 mode2-flip-ineffective-still-run1-path
+CASE 9 mode2-combo-no-flip
+CASE 10 mode2-mixed-flip
+CASE 11 mode2-decode-fail-original
+CASE 12 mode0-hit-w
+CASE 13 mode0-miss-original
+CASE 14 mode0-mixed-original
+CASE 15 mode1-miss-w-no-flip
+CASE 16 mode3-disabled
+CASE 17 mode-ffffffff-disabled
+CASE 18 null-binding-original
+CASE 19 ctrl-site-original
+CASE 20 wrong-message-original
+CASE 21 null-wnd-original
+CASE 22 abi-loop
+cases=22 assertions=1116 failed=0 game_or_user32_called=false
+

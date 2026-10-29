@@ -1,0 +1,60 @@
+{
+  "schema": "m061b-loader-enabled-hashes-before/1",
+  "taken_utc": "2026-10-29T02:54:51.3129810Z",
+  "windows": "Microsoft Windows NT 10.0.26200.0",
+  "source_dir": "<LD2_ROOT>\\LunaticDawnPotB",
+  "disposable_root": "<LD2_ROOT>\\zhTW_lab\\game-acceptance\\m061b-loader-enabled",
+  "source_exe": {
+    "path": "<LD2_ROOT>\\LunaticDawnPotB\\Ld95.exe",
+    "size": 7090176,
+    "sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+    "last_write_utc": "2026-10-25T17:55:24.8215298Z"
+  },
+  "source_exe_after_copy": {
+    "path": "<LD2_ROOT>\\LunaticDawnPotB\\Ld95.exe",
+    "size": 7090176,
+    "sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+    "last_write_utc": "2026-10-25T17:55:24.8215298Z"
+  },
+  "source_manifest_excludes": "Usr\\, LUNAS*（私人存檔，未讀取內容）",
+  "m045": {
+    "path": "<LD2_ROOT>\\zhTW_lab\\game-acceptance\\m060\\exe-store\\Ld95.m045.exe",
+    "size": 7118848,
+    "sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7"
+  },
+  "delta_sha256": "5853948ca59d62d818f941cb91e3c4a80939e08077d392a47c2e1c50e27291cd",
+  "enabled_exe_sha256": "3a1b75b35aca01a8b3e0e475ea8fd7454ebe2367f03165ebab18a7054825ed31",
+  "enabled_exe_size": 7286784,
+  "inert_base_sha256": "6f9a8903f9a5ffeb68db1b7a0a0115a179c56084dd0beb0078bfcbe1d1fde1aa",
+  "list_mode": 2,
+  "list_object_sha256": "e8144466755d223a18f5d8f586510f64822c5cc1d793c708f171e964f6064d51",
+  "hook_stub_sha256": "67f30b3e3460e3035da33b684541fa8fd1c80d17c01c644a6ac857d8f64cca9e",
+  "seed_usr_from": "<LD2_ROOT>\\zhTW_lab\\game-acceptance\\m060\\game\\Usr",
+  "seeded_saves": [
+    {
+      "name": "LUNAS000.LDP",
+      "size": 3032781,
+      "sha256_omitted": true
+    },
+    {
+      "name": "LUNAS001.LDP",
+      "size": 3032781,
+      "sha256_omitted": true
+    },
+    {
+      "name": "LUNAS002.LDP",
+      "size": 3032781,
+      "sha256_omitted": true
+    }
+  ],
+  "list_sites_patched": true,
+  "textoutw_hook_enabled": true,
+  "production_can_apply": false,
+  "release_approved": false,
+  "source_manifest_summary": {
+    "files": 1029,
+    "total_bytes": 193798416,
+    "manifest_sha256_of_sorted_lines": "c12dd7b5b5c77fc3eccdae7d483b819a8369b0c5ce9e67a7676fb2cc420729d8"
+  },
+  "note": "source_manifest 全表與私人存檔 hash 留在實驗室 research/m061b/evidence-run1/；此處只放摘要"
+}
