@@ -202,3 +202,12 @@
 !/research/m063/static_verify_m063a.summary.json
 !/research/m063/RESULT-M063A.zh-TW.md
 !/tests/test_m063_research.py
+!/research/m063/catalog_v4.py
+!/research/m063/native-v4/catalog_core_v4.h
+!/research/m063/native-v4/catalog_v4_host_test.c
+!/research/m063/test_catalog_v4.py
+!/research/m063/lab_v4_names.py
+!/research/m063/lab_v4_names.summary.json
+!/research/m063/lab_v4_names.kris_hypothetical.summary.json
+!/research/m063/DESIGN-M063C-CATALOG-V4.zh-TW.md
+!/research/m063/STATUS.zh-TW.md
