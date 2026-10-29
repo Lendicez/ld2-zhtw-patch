@@ -17,9 +17,15 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 M061 = HERE.parent / 'm061'
 sys.path.insert(0, str(M061))
-import audit_list_obj, coff_obj, rehearse_list_obj  # noqa: E402
+import coff_obj, rehearse_list_obj  # noqa: E402
+sys.path.insert(0, str(HERE))
+import audit_list_obj_v3 as audit_list_obj  # noqa: E402  (m062: m061 audit + EBP spill tracking)
 
 NATIVE = HERE / 'native-v3'
+# Locked 2026-10-29 (Asia/Taipei) from the Win11 MSVC 14.44 return (HANDOFF-COMPILE-M062, run1),
+# after audit_list_obj_v3 (profile v3) + audit_name_pair_v3 passed. Objects stay in the lab only.
+LIST_V3_OBJECT_SHA256 = '5ceba5a64b6e43d8f0f2e519cd91c076280656c7c1d1dd52c0f7025a62c3a037'  # 7584 B
+NAME_V3_OBJECT_SHA256 = '8a70e6cde5254d65aae4bf9d65fce6ee2b8065807af5741bc7092f37776c0242'  # 6865 B
 SECURITY = {'___security_cookie', '@__security_check_cookie@4'}
 LIST_V3_UNDEFINED = (audit_list_obj.EXPECTED_UNDEFINED_U - {'_LD2_EntryCount', '_LD2_Entries'}) | {'_LD2_CatalogBytes', '_LD2_Catalog'}
 NAME_V3_UNDEFINED = frozenset({'_LD2_CatalogBytes', '_LD2_Catalog', '_LD2_ExpectedTextOutA', '_LD2_TextOutW'} | SECURITY)
@@ -55,7 +61,8 @@ def main():
             raw_name = build(NATIVE / 'name_pair_v3.cpp', d)
     rep = audit_list_obj.audit(raw_list, 'v3')
     out['list_insert_v3'] = dict(entry=rep['entry'], undefined=rep['undefined'], normal_returns=len(rep['normal_returns']),
-                                 normal_cfg_states=rep['normal_cfg_states'], calls=sorted({c['target'] for c in rep['calls']}),
+                                 normal_cfg_states=rep['normal_cfg_states'], binding_spills=rep['binding_spills'],
+                                 frame_leas_while_spilled=rep['frame_leas_while_spilled'], calls=sorted({c['target'] for c in rep['calls']}),
                                  esp_and_nonvolatile_preserved_on_normal_paths=rep['esp_and_nonvolatile_preserved_on_normal_paths'],
                                  rehearsal_sha256=hashlib.sha256(raw_list).hexdigest())
     obj = coff_obj.parse(raw_name)
