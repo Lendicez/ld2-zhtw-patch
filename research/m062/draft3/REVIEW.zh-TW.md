@@ -98,3 +98,7 @@ Mona 的 lab_preview 政策（只在 lab，產生 lab 專用子集 sha256 `fc2ae
 - `build_v3_lab` 靜態（記憶體內，不寫 EXE）：模式 2 inert `0c2b3557…fa58`／enabled `370c7b20…e9c5`；模式 0 inert `1103c6ad…4878`／enabled `30035693…40ed`。
 - male join：衝突譯名 0；40,000 組 ok 39,993／fallback 5／wrong 2（與前相同）。
 - 無 Win11 交接包；`production_can_apply`／`release_approved` 仍 false。
+
+## m063c 更新（2026-10-29，Linux）
+- 阻礙 2（Kris）、3（男名 7 組）在 catalog v4 模型與 C 核心層面已解：地區標籤＋`NAME_ONLY`。lab（完整 draft4-sara＋m051）男名 40,000/40,000、女名 600/600、道具 4,840 列與 v3 相同；C 核心交叉 50,280 PASS。詳見 `research/m063/DESIGN-M063C-CATALOG-V4.zh-TW.md`、等待項目見 `research/m063/STATUS.zh-TW.md`。
+- 仍需：native helper 改用 v4（Linux）、之後 Win11 一次編譯（需使用者同意）；Kris 短劍譯名需 Mina 確認。
