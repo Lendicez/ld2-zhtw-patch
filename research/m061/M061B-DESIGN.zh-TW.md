@@ -1,6 +1,6 @@
 # m061b 設計：清單框改成 Unicode 視窗（Linux 端設計＋靜態測試）
 
-最後更新：2026-10-29 04:30（台北）。MSVC 物件 `e8144466…4d51` 已稽核鎖定，啟用版交接 `HANDOFF-LOADER-ENABLED-M061B` 已備妥（見 RESULT）。`production_can_apply=false`、`release_approved=false`。本文件只描述 Linux 端已完成的設計、原始碼與靜態測試。**尚未**產生任何要給使用者套用的遊戲 EXE 或 delta。
+最後更新：2026-10-29 04:30（台北）。MSVC 物件 `e8144466…4d51` 已稽核鎖定，啟用版交接 `HANDOFF-LOADER-ENABLED-M061B` 已於 2026-10-29 在 Win11 驗收**通過**（模式 2，清單假名正常；見 `../m061b/RESULT.zh-TW.md`）。`production_can_apply=false`、`release_approved=false`。本文件只描述 Linux 端已完成的設計、原始碼與靜態測試。**尚未**產生任何要給使用者套用的遊戲 EXE 或 delta。
 
 ## 1. 問題（m061 啟用版 run1）
 

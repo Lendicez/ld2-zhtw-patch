@@ -167,10 +167,12 @@ Linux 端已就緒：
 - 尚未產生給使用者的遊戲 EXE 或 delta。下一步是 `HANDOFF-COMPILE-M061B`（只編譯＋mock）。交回 MSVC 物件、稽核並鎖定之後，才合成模式 2 和模式 0 的啟用版 delta。
 - `production_can_apply=false`、`release_approved=false` 不變。
 
-## 12. m061b 啟用版（2026-10-29 04:30 台北 Linux 備妥；待 Win11）
+## 12. m061b 啟用版（2026-10-29 04:30 台北 Linux 備妥；同日 10:55–11:03 Win11 執行一次：**通過**）
 
 - MSVC 物件 `e8144466…4d51` 已稽核並鎖定（`LIST_U_OBJECT_SHA256`）。
 - 模式 2 啟用版 `3a1b75b3…ed31`；保底模式 0 `49b62395…d876`。同一包用 `-Mode0` 切換。
 - 交接：`HANDOFF-LOADER-ENABLED-M061B/USER-STEPS.zh-TW.md`（完整可貼上的 PowerShell 指令）。副本路徑 `<LD2_ROOT>\zhTW_lab\game-acceptance\m061b-loader-enabled`。
 - 判定與 run1 相同；另外記錄假名是否正常。
-
+- **結果（2026-10-29 Win11，模式 2）：通過。** 商店、酒館、旅館委託、委託一覽、道具說明的清單假名正常顯示；453.3 秒、結束碼 1（選單結束）、事件／WER／dump 0；原安裝未變動；Finalize 已跑。詳見 `../m061b/RESULT.zh-TW.md`，去識別化摘要 `../m061b/loader-enabled-run1/`。
+- 殘留：委託資訊（詳情）視窗的非清單欄位仍有 `?`，不在 8 個清單點範圍，另案處理。模式 0 保底不需另外驗收。
+- 下一步：m062 v3 catalog＋重編 helper（Win11 編譯包待執行），讓 catalog 擴充後的清單名稱顯示繁中。

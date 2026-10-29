@@ -157,8 +157,8 @@ Stage B 第一次失敗（C1083 `cstdio`）：可攜式 MSVC 無 vcvars，腳本
 
 ## 下一步
 
-1. 使用者執行 `HANDOFF-LOADER-ENABLED-M061B`（模式 2）一次，回傳 `m061b-loader-enabled-evidence.zip`。重點：清單假名是否正常、選取清單是否正常。
-2. 若模式 2 異常：只跑 G，回報；再用 `-Mode0` 另建副本驗收保底版。
+1. ~~使用者執行 `HANDOFF-LOADER-ENABLED-M061B`（模式 2）一次~~：**已完成，通過**（2026-10-29 10:55–11:03 台北）。清單假名正常、選取無異常、0 事件、原安裝未變動。詳見 `../m061b/RESULT.zh-TW.md`。
+2. 已知殘留：委託資訊視窗非清單欄位仍有 `?`（範圍外，另案）。模式 0 不需另外驗收。
 3. Mina 的消耗品／冒險者名譯稿另案審核（catalog 擴充需要放寬 `reviewed_catalog` 的 24 筆限制，不在本包）。
 
 `production_can_apply=false`、`release_approved=false` 不變。

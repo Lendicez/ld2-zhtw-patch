@@ -1,0 +1,35 @@
+{
+  "schema": "m061b-loader-enabled-evidence-manifest/1",
+  "evidence_zip_sha256": "87d379f47d702f058daf1ab8fd0c81bdf5750de7634656aeacbb74703490cbd5",
+  "evidence_zip_size": 2993178,
+  "received_taipei": "2026-10-29（台北）",
+  "files": {
+    "hashes-after.json": "20754360d3d43f8a066e31d6644b10ce75d9b1977e6547b2007ca476a155172e",
+    "hashes-before.json": "43a12e61880a36301e05b3cf36d7b57d8d0259f16fa625815381659de36cc66c",
+    "launch-L-events.txt": "f01a374e9c81e3db89b3a42940c4d6a5447684986a1296e42bf13f196eed6295",
+    "launch-L.json": "28d2bb47b940f1e3f8a1485db8bd0163e8d8e0d5c42dbccb947ae6f7a0584fba",
+    "observations.md": "00d0a67834d38b945223e6090dd0d23ddb7aecd7427f12194345f73a3667ab7b",
+    "screens/L-commission-info.jpg": "086d9b7d920784be2d99e2b45a8edb556e5748dabda42c3bb409221b06c73058",
+    "screens/L-inn-commission.jpg": "cd2932c58bb42021127e5d5fc05df931fe6863e46e9aacaeb9be39ebbe6c0c79",
+    "screens/L-item-desc.jpg": "8d16665beeed9cc4adb431383ed96c34202fa56e5e06c119e6bdc0f58c711af1",
+    "screens/L-shop-buy.jpg": "2eb8d99b8530132a177688a19eb34fb6ee07458b63a72f1e3a007c44de1da865",
+    "screens/L-shop-sell.jpg": "f2c38ef778f2d93b21bee0b583f14d456c3efbba4e78023ba6a5813a038cf6b0",
+    "screens/L-tavern.jpg": "fe5a00e861b7ac8aaa076cb6770763489e614dbf04c9b7154e0973a54f62b1c6",
+    "screens/L-title.jpg": "e8574c7bbc01f9200e063187a2a7eed0e1b0c3ac1a8db08c94da2b5071ed2884",
+    "screens/bandicam-*.jpg": [
+      "67fea760a7b50faa76995d8de615b25b808879584feada4ad322084f04630156",
+      "c755009b884a8e55b4ae310e5c12bdf60cd7ccde4bf0d2a523611966b716dad9",
+      "3d1f3de5497fe44acad5e48b82e30bc02dc6a1f8d6d1e53e5004191d017c9fd0",
+      "dd733d31190bd6183167772544169133362ebca990f986c4f7e7ea695c041946",
+      "658f439fd9b6907f688067ac38904bd9c76f041dda0c0dfeef1910f367e2e6ec"
+    ],
+    "state.json": "b23f1a3d58a450e9b0e1f1ef55a75035c1a364f920c6b418c7977d7eb20cb5b8"
+  },
+  "not_in_repo": [
+    "screens/*.jpg",
+    "hashes-before.json（完整清單）",
+    "任何 EXE／存檔／dump"
+  ],
+  "production_can_apply": false,
+  "release_approved": false
+}
