@@ -17,6 +17,11 @@ import build_enabled_lab as bl  # noqa: E402
 import rehearse_v3_objs as rv, audit_name_pair_v3 as anp  # noqa: E402
 import capstone, pefile  # noqa: E402
 
+for _k in ('HOOK_SPAN', 'HOOK_SPAN_SHA256', 'COOKIE_VA', 'CHECK_COOKIE_VA', 'TEXTOUTA_HELPER_VA', 'WRAPPER_VA',
+           'MULTIBYTETOWIDECHAR_IAT_VA', 'GETDLGITEM_IAT_VA', 'DELAY_DESCRIPTOR_SHA256', 'LIST_MODES',
+           'DEFAULT_LIST_MODE', 'LIST_U_UNDEFINED', 'LIST_U_APIS'):
+    assert getattr(mv.mp, _k) == getattr(mp, _k), _k   # inlined m061 constants must not drift
+
 LAB = HERE.parents[1]; ROOT = LAB.parent
 OBJ_DIR = Path(os.environ.get('LD2_M062_OBJ_DIR', HERE / 'compile-return-run1'))
 M051 = ROOT / 'ld2-zhtw-patch-m051/research/translations/m051-items.zh-TW.json'

@@ -126,6 +126,7 @@ m061／m061b 的 `merge_plan.py`、`enable_plan.py` 和已鎖定的 v1／u 路�
 ## 測試
 - `test_merge_v3.py` 17 項、`test_m062.py` 8 項（給授權輸入時全跑）、`test_m062_objs.py` 5 項：全過。
 - m061 `test_m061.py`／`test_m061b.py`／`test_merge_lab.py` 共 38 項：全過（m061 原始碼未改）。
+- 公開倉庫：`merge_plan_v3.py` 內嵌 m061 的常數（m061 `merge_plan.py` 依賴實驗室專用的 m060 `memory_plan.py`，不在倉庫裡），`build_v3_lab.py` 在實驗室會逐項比對兩邊常數不漂移。`tests/test_m062_research.py` 加跑 `test_merge_v3.py`；倉庫 `tools/check.py` 64 項通過（20 項因缺授權輸入 skip），`tools/audit_upload.py` 無發現。
 
 ## 下一步（Linux，不改發布旗標）
 1. 冒險者名的顯示點還沒追蹤到（DESIGN §5-2）；lab_preview 裡的 1400 筆人名要等找到顯示點才有意義。

@@ -26,8 +26,39 @@ M061 = HERE.parent / 'm061'
 sys.path.insert(0, str(M061))
 sys.path.insert(0, str(HERE))
 import source_profile, import_builder, pe_serializer, coff_obj  # noqa: E402
-import merge_plan as mp  # noqa: E402  (m061 constants: hook span, IAT slots, API sets)
 import catalog_v3 as c3  # noqa: E402
+
+
+class _M061:
+    """Constants shared with the lab-only m061 merge_plan.py (not in the public repo because it
+    depends on the lab-only m060 memory_plan). build_v3_lab.py asserts they stay identical."""
+    HOOK_SPAN = (0x6dc7d, 0x6dca5)
+    HOOK_SPAN_SHA256 = '8870b605ccc0777ce5ac0080acc0a1df36623064a509585b13b34bff9925db77'
+    COOKIE_VA, CHECK_COOKIE_VA, TEXTOUTA_HELPER_VA = 0xa8f284, 0x4fc870, 0x4e13d7
+    WRAPPER_VA = 0x4ea671            # CWnd::SendDlgItemMessage (thiscall ret 0x10) = OriginalDlgItem
+    MULTIBYTETOWIDECHAR_IAT_VA = 0x52537c
+    GETDLGITEM_IAT_VA = 0x525498
+    DELAY_DESCRIPTOR_SHA256 = 'adab794b6e11f29f838994469dfcc4e7af35f48811c08dbc4999d2ede6d198df'
+    LIST_MODES, DEFAULT_LIST_MODE = (0, 1, 2), 2
+    LIST_U_UNDEFINED = frozenset([
+        '_LD2_EntryCount', '_LD2_Entries', '_LD2_OriginalDlgItem', '_LD2_SendDlgItemMessageW',
+        '_LD2_MultiByteToWideChar', '___security_cookie', '@__security_check_cookie@4',
+        '_LD2_ListMode', '_LD2_GetDlgItem', '_LD2_IsWindowUnicode', '_LD2_GetWindowLongW',
+        '_LD2_GetClassLongW', '_LD2_SetWindowLongW'])
+    LIST_U_APIS = (('GDI32.dll', 'TextOutW'), ('USER32.dll', 'SendDlgItemMessageW'),
+                   ('USER32.dll', 'IsWindowUnicode'), ('USER32.dll', 'GetWindowLongW'),
+                   ('USER32.dll', 'GetClassLongW'), ('USER32.dll', 'SetWindowLongW'))
+
+    @staticmethod
+    def iat_name(view, iat_rva):
+        for r in import_builder.imports(view, view.dirs[1]):
+            for slot, t in r['apis']:
+                if slot == iat_rva and t[0] == 'name':
+                    return (r['dll'].upper().replace('.DLL', '.dll'), t[1])
+        return None
+
+
+mp = _M061
 
 NAME_V3_OBJECT_SHA256 = '8a70e6cde5254d65aae4bf9d65fce6ee2b8065807af5741bc7092f37776c0242'
 LIST_V3_OBJECT_SHA256 = '5ceba5a64b6e43d8f0f2e519cd91c076280656c7c1d1dd52c0f7025a62c3a037'

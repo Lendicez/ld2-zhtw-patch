@@ -10,4 +10,5 @@ def load_tests(loader, standard_tests, pattern):
     sys.path.insert(0, str(M062))
     suite = unittest.TestSuite()
     suite.addTests(loader.discover(str(M062), pattern='test_m062.py', top_level_dir=str(M062)))
+    suite.addTests(loader.discover(str(M062), pattern='test_merge_v3.py', top_level_dir=str(M062)))
     return suite
