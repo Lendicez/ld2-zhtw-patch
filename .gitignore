@@ -167,3 +167,8 @@
 !/research/m062/compile-v3-run1/compile-command.json
 !/research/m062/compile-v3-run1/once-result.json
 !/research/m062/compile-v3-run1/stdout.txt
+!/research/m062/merge_plan_v3.py
+!/research/m062/build_v3_lab.py
+!/research/m062/make_v3_delta.py
+!/research/m062/test_merge_v3.py
+!/research/m062/static_verify_v3.summary.json
