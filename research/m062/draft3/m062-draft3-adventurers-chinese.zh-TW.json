@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "milestone": "m062-draft3-mina",
+ "milestone": "m062-draft3-user-names",
  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
  "production_can_apply": false,
  "rendering_verified": false,
@@ -27,8 +27,8 @@
  "draft_owner": "Mina (translation only; GitHub writes by Mona)",
  "draft1_sha256": "477edfbaa16fb8ca74672fcec8006986fbd90f49dae7bd89fc95702454e14ec1",
  "draft2_sha256": "1e91269d50e3d9e32effd772318966a8b26a32486d252abd30cbbc77752e90d4",
- "note": "Mina draft3, public-sanitized by Mona: source_name_ja and source_name_cp932_hex removed (m051 policy). Statuses are as delivered by Mina (not human_reviewed). Not merged into any production catalog.",
- "lab_full_draft_sha256": "d0e162f3e31c75552536d6d80849b45ccc720e1cdc7a256f2ed9539836ecde25",
+ "note": "Mina draft3, public-sanitized by Mona: source_name_ja and source_name_cp932_hex removed (m051 policy). Statuses are as delivered by Mina (not human_reviewed); draft3u: 7 adventurer rows user_decided (user 2026-10-29). Not merged into any production catalog.",
+ "lab_full_draft_sha256": "83e69d7fa97ee9c1f2ac942c3377115f7d4a5f0288b1d3302a9f64e8d511c593",
  "stripped_fields": [
   "source_name_cp932_hex",
   "source_name_ja"
