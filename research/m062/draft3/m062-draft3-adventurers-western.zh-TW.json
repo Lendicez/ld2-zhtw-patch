@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "milestone": "m062-draft4-names",
+ "milestone": "m062-draft5-kris-24",
  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
  "production_can_apply": false,
  "rendering_verified": false,
@@ -28,17 +28,20 @@
  "draft1_sha256": "477edfbaa16fb8ca74672fcec8006986fbd90f49dae7bd89fc95702454e14ec1",
  "draft2_sha256": "1e91269d50e3d9e32effd772318966a8b26a32486d252abd30cbbc77752e90d4",
  "draft3u_sha256": "83e69d7fa97ee9c1f2ac942c3377115f7d4a5f0288b1d3302a9f64e8d511c593",
- "note": "Mina draft4 (current), public-sanitized by Mona: source_name_ja and source_name_cp932_hex removed (m051 policy). Statuses are as delivered by Mina (not human_reviewed); draft3u: 7 adventurer rows user_decided (user 2026-10-29); draft4: 7 rows mina_draft4/curated_v4_web (web-checked; machine_needs_review 0). Content is draft4; filenames kept as m062-draft3-* for continuity. Not merged into any production catalog.",
- "lab_full_draft_sha256": "a3e964ca05dd32997fbee2415aaf9be414342ce9c66ca71353c68b6bed5cf71f",
+ "note": "Mina draft5-kris-24 (current; superset of draft4-sara), public-sanitized by Mona: source_name_ja and source_name_cp932_hex removed (m051 policy). Statuses are as delivered by Mina (not human_reviewed). User decisions 2026-10-29 (via Mina): extended/28 Kris -> 波刃短劍 (user_decided; same bytes as female adventurer_female/western/92, needs v4 NAME_ONLY); 24 label/desc-mismatch rows (primary 272-295) keep name AND description, review_status user_decided_include_name_and_description (in-game check still pending); shared sara bytes -> 薩拉 (3 rows user_decided). Filenames kept as m062-draft3-* for continuity. Not merged into any production catalog.",
+ "lab_full_draft_sha256": "13c84914b1def38694128f724dcbb207439ed44265967e657942f9447f6a34d0",
  "stripped_fields": [
   "source_name_cp932_hex",
   "source_name_ja"
  ],
  "mona_edits": [
-  "extended/63: description_zh_tw katakana U+30C8 -> CJK 卜 (U+535C)"
+  "extended/63: description_zh_tw kana U+30C8 -> CJK 卜 (U+535C)",
+  "extended/28: description_zh_tw kana U+300C -> CJK 「 (U+300C)",
+  "extended/28: collision_note source-name kana replaced by table/region/index reference"
  ],
  "part": "adventurers-western",
  "item_count": 350,
+ "draft4_sara_sha256": "33f63c04403929d3bf0431255bda2b83e2211b5f679f450a52a5e30f6d0c0f8e",
  "items": [
  {"table":"adventurer_male_first","region":"western","index":0,"slot":null,"stored_id":null,"category":"adventurer","name_status":"translated","source_name_sha256":"b8307338e0696a664343bcf55d90ae186dbd704bfe86344bcb2d1166d6c6d2e4","source_record_sha256":null,"source_name_contract":{"printf":[],"indexed":[],"other_percent":0,"controls":[],"mnemonics":[],"literal_ampersands":0,"shortcuts":[]},"name_zh_tw":"克羅姆","file_offset":3432136,"slot_determination":"VA 0x44e758/0x44e958: first=0x745ec8+8*(region*200+i); region 0=western; file offset = VA-0x400000","translation_method":"curated_v3","name_cp950_encodable":true,"exact_match_usable":false,"ambiguity_blocked":false,"review_status":"mina_draft3","draft1_name_zh_tw":null,"draft2_name_zh_tw":null,"draft3_review_note":"machine draft reviewed and accepted"},
  {"table":"adventurer_male_first","region":"western","index":1,"slot":null,"stored_id":null,"category":"adventurer","name_status":"translated","source_name_sha256":"393362b04b3e321d04520f7265c514079440adcb228b29a2496d4291ebef599e","source_record_sha256":null,"source_name_contract":{"printf":[],"indexed":[],"other_percent":0,"controls":[],"mnemonics":[],"literal_ampersands":0,"shortcuts":[]},"name_zh_tw":"雷貝拉","file_offset":3432144,"slot_determination":"VA 0x44e758/0x44e958: first=0x745ec8+8*(region*200+i); region 0=western; file offset = VA-0x400000","translation_method":"curated_v3","name_cp950_encodable":true,"exact_match_usable":false,"ambiguity_blocked":false,"review_status":"mina_draft3","draft1_name_zh_tw":null,"draft2_name_zh_tw":null,"draft3_review_note":"machine draft reviewed and accepted"},
