@@ -186,3 +186,10 @@
 !/research/m062/draft3/male_join_static.lab_preview.summary.json
 !/research/m062/draft3/static_verify_v3.lab_preview_draft3.summary.json
 !/tests/test_m062_draft3.py
+!/research/m062/PLAN-M063-NAME-TEXTOUT.zh-TW.md
+!/research/m062/name_draw_sites.py
+!/research/m062/name_draw_sites.summary.json
+!/research/m062/test_name_draw_sites.py
+!/research/m062/native-m063/name_textout_v3.h
+!/research/m062/native-m063/name_textout_v3.cpp
+!/research/m062/native-m063/name_textout_mock_v3.cpp

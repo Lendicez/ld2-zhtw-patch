@@ -128,8 +128,20 @@ m061／m061b 的 `merge_plan.py`、`enable_plan.py` 和已鎖定的 v1／u 路�
 - m061 `test_m061.py`／`test_m061b.py`／`test_merge_lab.py` 共 38 項：全過（m061 原始碼未改）。
 - 公開倉庫：`merge_plan_v3.py` 內嵌 m061 的常數（m061 `merge_plan.py` 依賴實驗室專用的 m060 `memory_plan.py`，不在倉庫裡），`build_v3_lab.py` 在實驗室會逐項比對兩邊常數不漂移。`tests/test_m062_research.py` 加跑 `test_merge_v3.py`；倉庫 `tools/check.py` 64 項通過（20 項因缺授權輸入 skip），`tools/audit_upload.py` 無發現。
 
+## 冒險者名顯示點（2026-10-29 11:50 台北，Linux 靜態）
+- 新檔：
+  - `name_draw_sites.py` 與 `.summary.json`：只含 VA、座標、數量、標籤和 sha 前碼；
+  - `PLAN-M063-NAME-TEXTOUT.zh-TW.md`；
+  - `native-m063/name_textout_v3.{h,cpp}`、`name_textout_mock_v3.cpp`；
+  - `test_name_draw_sites.py`：7 項，全過。未給 EXE 時，重跑比對那一項會 skip；沒有 ziglang 時，mock 那一項會 skip。
+- `production_can_apply=false`、`release_approved=false` 不變。
+
 ## 下一步（Linux，不改發布旗標）
-1. 冒險者名的顯示點還沒追蹤到（DESIGN §5-2）；lab_preview 裡的 1400 筆人名要等找到顯示點才有意義。
+1. ~~冒險者名的顯示點還沒追蹤到（DESIGN §5-2）~~ **已靜態追到（2026-10-29 11:50 台北）**，詳見 `PLAN-M063-NAME-TEXTOUT.zh-TW.md`。
+   - 整名 TextOut 26 點：5 bytes 改寫 25 點，8 bytes 尾段 1 點。
+   - 未改寫的整名清單 10 點。
+   - NamePair v3 不涵蓋，需要新的 helper `@LD2_NameTextOut@24`。目前有草稿和 i386 mock（25 案例、0 失敗）。
+   - 下一步是 m063a，在 Linux 上做合併與改寫計畫；接著 m063b，在 Win11 編譯一次。這一輪不準備交接。
 2. Mina 消耗品／冒險者名譯稿人工審核，審過的改成 `human_reviewed`，就能進 `reviewed` 政策。
 3. 委託資訊視窗（156／388）的非清單 `?` 另案追蹤。
 4. 例外／unwind 行為仍只有設計推論，等實機驗收。

@@ -77,7 +77,7 @@
 
 ## 5. 剩下的阻礙
 1. ~~**helper 要重新編譯（需要 Win11，一次就好）。**~~ **已完成（2026-10-29 台北）**：MSVC 物件回傳並通過 Linux 稽核，hash 已鎖定（`name_pair_v3` `8a70e6cd…0242`、`list_insert_v3` `5ceba5a6…a037`），詳見 `RESULT.zh-TW.md`。v3 綁定與容量閘門也已完成（`merge_plan_v3.py`，Linux 靜態驗證通過，見 `RESULT.zh-TW.md`「v3 合併與容量閘門」）。原文： NamePair 和 ListInsert 都要改成 include `catalog_core_v3.h`。NamePair 傳入 stored_id，不做拼接；ListInsert 和男名顯示點傳 id=-1，允許拼接。編好後要再做一次 COFF 稽核、hash 釘選，並且在 `merge_plan` 裡加 v3 綁定（`_LD2_Catalog` 和 `_LD2_CatalogBytes` 取代 Entries 和Count）。
-2. **冒險者名字在哪裡顯示，還沒追蹤到。** 已知的 NamePair 顯示點都帶有道具 ID 的上下文；人名可能走別的 TextOut、DrawText 或 list。下一步要在 Linux 上靜態找出 `CString(obj+名字成員)` 被繪製的呼叫點。在 mode 2 底下，list 裡的人名目前會從 CP932 解碼成 Unicode，所以應該顯示日文，而不是 ???。
+2. ~~**冒險者名字在哪裡顯示，還沒追蹤到。**~~ **已靜態追到（2026-10-29 11:50 台北）**：整名 TextOut 26 點（隊伍面板 18 點等）、未改寫的整名清單 10 點、複合 8 點。NamePair v3 不適用，計畫改用新的 `@LD2_NameTextOut@24`（id=-1、`ALLOW_ANY|ALLOW_JOIN`），以 5 bytes 的 vtable 讀取對改寫，詳見 `PLAN-M063-NAME-TEXTOUT.zh-TW.md`。原文： 已知的 NamePair 顯示點都帶有道具 ID 的上下文；人名可能走別的 TextOut、DrawText 或 list。下一步要在 Linux 上靜態找出 `CString(obj+名字成員)` 被繪製的呼叫點。在 mode 2 底下，list 裡的人名目前會從 CP932 解碼成 Unicode，所以應該顯示日文，而不是 ???。
 3. 515 筆音譯草稿、新增 72 項的遊戲內顯示、7 個 CP950 以外的字都要人工校對。v3 一律輸出 UTF-16，所以這 7 個字理論上能顯示，但還沒驗證。
 4. 約 350 項道具還沒翻譯。v3 的容量足夠，約 350×11 列，總數仍在 8192 列以內。
 
