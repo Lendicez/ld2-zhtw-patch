@@ -6,7 +6,7 @@
 ## 1. 要解的阻礙（`research/m062/draft3/REVIEW.zh-TW.md`「draft4 後剩下的阻礙」2、3）
 | 阻礙 | v3 的行為 | 原因 |
 |---|---|---|
-| Kris 短劍（extended 28）與女名「克莉絲」同 bytes | 人名點（id=-1）先查 `full_id`，會顯示道具譯名，所以短劍目前不收 | v3 沒有「只查人名」的查表模式 |
+| Kris 短劍（extended 28，draft5 定稿「波刃短劍」）與女名「克莉絲」同 bytes | 人名點（id=-1）先查 `full_id`，會顯示道具譯名，所以 v3 不能收短劍 | v3 沒有「只查人名」的查表模式 |
 | 男名 2 組（arabic 69+31、69+95）拼起來等於道具「戟斧」 | 道具 exact row 先命中，顯示「戟斧」 | 同上 |
 | 男名 5 組跨地區假切分（阿爾頓×2、迪翁、法拉恩、法特恩） | 兩種切法得到不同譯名 → 退回原文 | prefix/suffix 不帶地區，A 地區前段＋B 地區後段也被接受 |
 
@@ -40,18 +40,20 @@
 風險：酒館清單若一列有多段（tab 分隔），NAME_ONLY 也會套到非人名段。目前 catalog 只有道具與人名，非人名段本來就查不到，影響是「若某段剛好是道具名，v4 不再翻」。實機觀察時要看。
 
 ## 5. Lab 結果（只出數量；`lab_v4_names.summary.json`）
-輸入：pristine `Ld95.exe`（`6c817a09…d5d2`）＋ Mina draft4-sara 完整稿（`33f63c04…0f8e`）＋ m051。用完整稿，不是 lab_preview 子集。
+輸入：pristine `Ld95.exe`（`6c817a09…d5d2`）＋ Mina **draft5-kris-24** 完整稿（`13c84914…6a34d0`；draft4-sara＋extended 28「波刃短劍」＋24 筆標籤／說明不一致名字＋說明都收）＋ m051。用完整稿，不是 lab_preview 子集。
 | 項目 | v3（清單旗標） | v4 |
 |---|---|---|
 | 男名 40,000 組 | ok 39,993／退回 5／錯 2 | **ok 40,000**（NAME_ONLY） |
-| 女名 600 | ok 600 | ok 600（NAME_ONLY） |
-| 道具 `full_id` 4,840 列，帶 id 查 | — | 4,840 全對 |
-| 道具 4,840 列，商店清單旗標 | — | 與 v3 完全相同 4,840 |
+| 女名 600 | ok 599／**錯 1**（克莉絲被短劍搶走） | **ok 600**（NAME_ONLY） |
+| 道具 `full_id` 4,851 列（含 Kris 11 列），帶 id 查 | — | 4,851 全對 |
+| 道具 4,840 列（Kris 以外），商店清單旗標 | — | 與 v3 完全相同 4,840 |
+| Kris 11 列（+0..+10），商店清單旗標 | — | 11 列都顯示短劍 |
 | 人名點會回道具譯名 | — | 0 |
-| v4 blob | — | 6,137 列、253,644 B、sha256 `b1a3d256…5304` |
-| C 核心 vs Python 模型 | — | 50,280 個查詢 **PASS 50,280 FAIL 0** |
+| v4 blob | — | 6,148 列、254,096 B、sha256 `bbe4974f…1502` |
+| C 核心 vs Python 模型 | — | 50,302 個查詢 **PASS 50,302 FAIL 0** |
 
-**Kris 假設測試**（`lab_v4_names.kris_hypothetical.summary.json`；用 REVIEW 裡的建議譯名當暫代文字，**不是**翻譯定稿）：加入 extended 28 的 11 列（含 +1..+10）後，人名點顯示女名、道具帶 id 顯示短劍、商店清單 11 列都顯示短劍；v3 在人名點會顯示短劍（重現原阻礙）。C 交叉 50,302 PASS。
+**Kris（draft5 實列，2026-10-29 使用者經 Mina 定稿「波刃短劍」）**：draft 內含 extended 28 時 `lab_v4_names.py` 自動跑 Kris 檢查（`kris_draft_row_included: true`）：人名點顯示女名、道具帶 id 顯示短劍、v3 在人名點會顯示短劍（重現原阻礙，所以 v3 lab_preview 仍排除這 1 列）。
+舊的 `lab_v4_names.kris_hypothetical.summary.json` 是 draft5 之前用暫代文字跑的，只留作歷史（只有數量，不含譯名）。
 
 ## 6. 測試
 - `test_catalog_v4.py`（掛進 `tests/test_m063_research.py`，`tools/check.py` 會跑）：

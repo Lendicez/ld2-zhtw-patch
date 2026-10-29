@@ -1,8 +1,8 @@
 # m062 Mina 草稿 draft3 → draft4 審查（Mina 翻譯，Mona 審查與發布）
 
-> **目前來源：draft4**（lab sha256 `a3e964ca05dd32997fbee2415aaf9be414342ce9c66ca71353c68b6bed5cf71f`）。本目錄公開檔已由 draft4 重新產生，檔名沿用 `m062-draft3-*` 以保持連續；詳見文末「draft4」一節。以下 draft3／draft3u 段落保留為歷史紀錄，數字以 draft4 一節為準。
+> **目前來源：draft5-kris-24**（lab sha256 `13c84914b1def38694128f724dcbb207439ed44265967e657942f9447f6a34d0`；draft4-sara＋Kris＋24 筆）。本目錄公開檔已更新為 draft5，檔名沿用 `m062-draft3-*` 以保持連續；詳見文末「draft5」一節（draft4 一節保留為歷史）。以下 draft3／draft3u 段落保留為歷史紀錄，數字以 draft4 一節為準。
 
-最後更新：2026-10-29 12:00（台北）。狀態：**研究草稿**。`production_can_apply=false`、`release_approved=false`、`rendering_verified=false`、`preview_only=true`。
+最後更新：2026-10-29 15:00（台北）。狀態：**研究草稿**。`production_can_apply=false`、`release_approved=false`、`rendering_verified=false`、`preview_only=true`。
 本目錄沒有 EXE、obj、delta、存檔、截圖或任何日文原文。draft3 取代 draft2（draft2 未公開）。
 
 ## 來源與分工
@@ -60,7 +60,7 @@ Mona 的 lab_preview 政策（只在 lab，產生 lab 專用子集 sha256 `fc2ae
 | 含被排除片段、被道具 exact row 搶走顯示「戟斧」（arabic 69+31、69+95） | 2 |
 
 ## 剩下的阻礙
-1. **Kris 短劍（extended 28）**：bytes 與女名「克莉絲」相同，同一 bytes 只能有一個譯名，目前不收。建議：人名顯示點（清單 helper，id=-1）不比對 `full_id`；改好後再收「克力士劍」。
+1. **Kris 短劍（extended 28）**：bytes 與女名「克莉絲」相同，同一 bytes 只能有一個譯名，目前不收。建議：人名顯示點（清單 helper，id=-1）不比對 `full_id`；改好後再收（draft5 已定稿「波刃短劍」，見文末）。
 2. **男名 7 組**：5 組跨地區假切分 → v3 的 prefix/suffix 列加上 region，只接同地區片段；2 組被「戟斧」搶走 → 同第 1 點（id=-1 不比對 `full_id`）。都要改 helper（需 Win11 重編），翻譯端無法解。
 3. **5 列（4 種來源）仍是機器音譯**：阿夫、達奧、法伊、巴德（戟斧衝突）。阿拉／馬達／希姆已由使用者定稿（draft3u，7 列）。
 4. **24 筆標籤／說明不一致**：要在遊戲中確認這些名字是否會出現在道具畫面。
@@ -102,3 +102,21 @@ Mona 的 lab_preview 政策（只在 lab，產生 lab 專用子集 sha256 `fc2ae
 ## m063c 更新（2026-10-29，Linux）
 - 阻礙 2（Kris）、3（男名 7 組）在 catalog v4 模型與 C 核心層面已解：地區標籤＋`NAME_ONLY`。lab（完整 draft4-sara＋m051）男名 40,000/40,000、女名 600/600、道具 4,840 列與 v3 相同；C 核心交叉 50,280 PASS。詳見 `research/m063/DESIGN-M063C-CATALOG-V4.zh-TW.md`、等待項目見 `research/m063/STATUS.zh-TW.md`。
 - 仍需：native helper 改用 v4（Linux）、之後 Win11 一次編譯（需使用者同意）；Kris 短劍譯名需 Mina 確認。
+
+## draft5-kris-24（目前來源，2026-10-29，使用者經 Mina 定稿）
+- 來源：Mina `draft5-kris-24`（sha256 `13c84914…6a34d0`，以 draft4-sara `33f63c04…0f8e` 為底；增量 added 1、updated 24）。公開檔剝 `source_name_ja`／`source_name_cp932_hex`；其他列與前版逐列相同。
+- **Kris 短劍 extended 28 → 「波刃短劍」**（stored_id 330，`review_status: user_decided`，`translation_method: curated`）。record／名字／說明 sha256、說明 offset、數字「50」、contract 對 pristine EXE 重算吻合。列內 `shared_source_bytes_with` 記錄與女名 adventurer_female/western/92（克莉絲）同 bytes；`draft2_name_zh_tw` 保留舊建議作為來歷。
+  - Mona 修改（不影響 hash／contract）：說明中的平假名「く」改成注音「ㄑ」（U+3111，字形相同、CP950 可編碼，比照 extended 63）；`collision_note` 內的片假名人名改成表格位置。
+- **24 筆標籤／說明不一致（primary 272–295）名字＋說明都收**：`review_status` 由 `mina_draft2_label_desc_mismatch` 改為 `user_decided_include_name_and_description`，加 `label_desc_mismatch: true` 與 `user_decision`；譯文沒改。
+- Mona 獨立驗證：道具 417 筆對 EXE 0 失敗；`validate_adventurers` 1400 通過；sidecar 14 批（13×30＋27）通過；道具表內、冒險者表內同 bytes 多譯名皆 0，跨表只有 Kris↔克莉絲 1 組（設計上由 v4 NAME_ONLY 分開）；非 CP950 8 筆。`verified_rows`（m051＋完整 draft5）6138 列，v3 `57ffa90a…3e2a`。
+- **lab_preview**（lab 專用子集 `5ed26c16…a2c7`，1816 列：道具 416、冒險者 1400）：收 `mina_draft`／`mina_draft2`／`mina_draft3`／`mina_draft4`／`user_decided`／`user_decided_include_name_and_description`；**只排除 Kris 1 列**（v3 人名點會把「克莉絲」顯示成短劍：v3 女名 599/600）。與 #26 公開 JSON 的譯名、說明、review_status 1816 列逐列一致。
+  - ＋m051：6127 列、v3 blob 253,484 B、sha256 `668143b7…678e`，`release_eligible=false`。
+  - `build_v3_lab` 靜態（記憶體內，不寫 EXE）：模式 2 inert `82aa4491…f0f5`／enabled `f2a4276d…0be9`；模式 0 inert `b729c2c7…477d`／enabled `c83a32a2…1433`。
+  - 男名 40,000 組：ok 39,993／fallback 5／wrong 2（與前相同）；`male_join_static`（lab_preview 與完整 draft5）衝突譯名 0。
+- **v4（完整 draft5，含 Kris）**：`research/m063/lab_v4_names.summary.json` — 6148 列 `bbe4974f…1502`；男名 40,000/40,000、女名 600/600、Kris 人名點顯示女名、道具帶 id 與商店清單顯示短劍；C 交叉 50,302 PASS。
+- 沒有 Win11 交接包；`production_can_apply`／`release_approved` 仍 false；沒有任何列升為 `human_reviewed`。
+
+### draft5 後剩下的阻礙
+1. Kris／男名 7 組：v4 helper 已在 Linux 完成，等 m063b（Win11 MSVC 一次編譯，需使用者同意）與實機確認。v3 路徑永遠排除 Kris。
+2. 24 筆已收，但這些名字（怪物攻擊標籤）實際出現在哪個畫面仍待實機觀察。
+3. 非 CP950 7 字（8 筆）待實機確認；所有譯名都未經遊戲內確認。
