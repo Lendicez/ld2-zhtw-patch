@@ -1,0 +1,37 @@
+{
+  "catalog_format": "LD2C v3 (catalog_core_v3.h)",
+  "milestone": "m062",
+  "production_can_apply": false,
+  "flags": [
+    "/c",
+    "/W4",
+    "/WX",
+    "/O2",
+    "/Oi",
+    "/Oy-",
+    "/GS",
+    "/Gy",
+    "/Zl",
+    "/EHs"
+  ],
+  "native_executed": false,
+  "linked": false,
+  "game_touched": false,
+  "objects": [
+    {
+      "object_sha256": "8a70e6cde5254d65aae4bf9d65fce6ee2b8065807af5741bc7092f37776c0242",
+      "asm_bytes": 68340,
+      "object": "name_pair_v3.obj",
+      "entry": "_LD2_NamePair@16",
+      "object_bytes": 6865
+    },
+    {
+      "object_sha256": "5ceba5a64b6e43d8f0f2e519cd91c076280656c7c1d1dd52c0f7025a62c3a037",
+      "asm_bytes": 81916,
+      "object": "list_insert_v3.obj",
+      "entry": "@LD2_ListInsertV3@24",
+      "object_bytes": 7584
+    }
+  ],
+  "stage": "A-compile-only"
+}

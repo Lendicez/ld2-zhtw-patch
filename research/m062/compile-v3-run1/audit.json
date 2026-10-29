@@ -1,0 +1,417 @@
+{
+  "milestone": "m062",
+  "stage": "linux-static-audit-of-msvc-return",
+  "date": "2026-10-29 (Asia/Taipei)",
+  "return_zip_sha256": "69c9cd561d371f7cdb33a005d7a40e9759e18cbb1ce82e54a9906c8a0325e3a4",
+  "tools": [
+    "research/m062/audit_list_obj_v3.py (profile v3)",
+    "research/m062/audit_name_pair_v3.py"
+  ],
+  "list_insert_v3": {
+    "object_sha256": "5ceba5a64b6e43d8f0f2e519cd91c076280656c7c1d1dd52c0f7025a62c3a037",
+    "object_bytes": 7584,
+    "profile": "v3",
+    "entry": "@LD2_ListInsertV3@24",
+    "ret_pop": 16,
+    "undefined": [
+      "@__security_check_cookie@4",
+      "_LD2_Catalog",
+      "_LD2_CatalogBytes",
+      "_LD2_GetClassLongW",
+      "_LD2_GetDlgItem",
+      "_LD2_GetWindowLongW",
+      "_LD2_IsWindowUnicode",
+      "_LD2_ListMode",
+      "_LD2_MultiByteToWideChar",
+      "_LD2_OriginalDlgItem",
+      "_LD2_SendDlgItemMessageW",
+      "_LD2_SetWindowLongW",
+      "___security_cookie"
+    ],
+    "defined_public": [
+      "@LD2_ListInsertV3@24"
+    ],
+    "normal_returns": [
+      "?LD2C3_Lookup@@YAIPBULD2C3View@@PBEIHIPCGI@Z:0x15d",
+      "?LD2C3_Lookup@@YAIPBULD2C3View@@PBEIHIPCGI@Z:0x332",
+      "?LD2C3_Lookup@@YAIPBULD2C3View@@PBEIHIPCGI@Z:0x33b",
+      "?LD2_ListPrepareV3@@YAHIPBEPBULD2C3View@@P6AH0HPAGH@Z2PAH@Z:0x3bf",
+      "?LD2_ListPrepareV3@@YAHIPBEPBULD2C3View@@P6AH0HPAGH@Z2PAH@Z:0x566",
+      "?ld2c3_cmp@@YAHPBULD2C3View@@IIPBEI@Z:0x68e",
+      "?ld2c3_cmp@@YAHPBULD2C3View@@IIPBEI@Z:0x6e6",
+      "?ld2c3_cmp@@YAHPBULD2C3View@@IIPBEI@Z:0x6f1",
+      "?ld2c3_cmp@@YAHPBULD2C3View@@IIPBEI@Z:0x6fb",
+      "?ld2c3_find@@YAHPBULD2C3View@@IPBEIHPAPBEPAIPAH@Z:0x916",
+      "?ld2c3_find@@YAHPBULD2C3View@@IPBEIHPAPBEPAIPAH@Z:0x91f",
+      "?ld2c3_open@@YAHPBEIPAULD2C3View@@@Z:0xa9e",
+      "?ld2c3_open@@YAHPBEIPAULD2C3View@@@Z:0xaa7",
+      "?ld2c3_u32@@YAIPBE@Z:0xc15",
+      "@LD2_ListInsertV3@24:0xd29",
+      "@LD2_ListInsertV3@24:0xd8f",
+      "@LD2_ListInsertV3@24:0xe4f",
+      "@LD2_ListInsertV3@24:0xe71"
+    ],
+    "normal_cfg_states": 1347,
+    "internal_callees_audited": [
+      "?LD2C3_Lookup@@YAIPBULD2C3View@@PBEIHIPCGI@Z",
+      "?LD2_ListPrepareV3@@YAHIPBEPBULD2C3View@@P6AH0HPAGH@Z2PAH@Z",
+      "?ld2c3_cmp@@YAHPBULD2C3View@@IIPBEI@Z",
+      "?ld2c3_find@@YAHPBULD2C3View@@IPBEIHPAPBEPAIPAH@Z",
+      "?ld2c3_open@@YAHPBEIPAULD2C3View@@@Z",
+      "?ld2c3_u32@@YAIPBE@Z"
+    ],
+    "esp_and_nonvolatile_preserved_on_normal_paths": true,
+    "calls": [
+      {
+        "offset": "0x1a8",
+        "pop_bytes": 0,
+        "target": "?ld2c3_find@@YAHPBULD2C3View@@IPBEIHPAPBEPAIPAH@Z"
+      },
+      {
+        "offset": "0x1db",
+        "pop_bytes": 0,
+        "target": "?ld2c3_find@@YAHPBULD2C3View@@IPBEIHPAPBEPAIPAH@Z"
+      },
+      {
+        "offset": "0x419",
+        "pop_bytes": 0,
+        "target": "?LD2C3_Lookup@@YAIPBULD2C3View@@PBEIHIPCGI@Z"
+      },
+      {
+        "offset": "0x475",
+        "pop_bytes": 24,
+        "target": "_LD2_MultiByteToWideChar"
+      },
+      {
+        "offset": "0x78",
+        "pop_bytes": 0,
+        "target": "?ld2c3_find@@YAHPBULD2C3View@@IPBEIHPAPBEPAIPAH@Z"
+      },
+      {
+        "offset": "0x792",
+        "pop_bytes": 0,
+        "target": "?ld2c3_cmp@@YAHPBULD2C3View@@IIPBEI@Z"
+      },
+      {
+        "offset": "0x7da",
+        "pop_bytes": 0,
+        "target": "?ld2c3_cmp@@YAHPBULD2C3View@@IIPBEI@Z"
+      },
+      {
+        "offset": "0xa27",
+        "pop_bytes": 0,
+        "target": "?ld2c3_u32@@YAIPBE@Z"
+      },
+      {
+        "offset": "0xa38",
+        "pop_bytes": 0,
+        "target": "?ld2c3_u32@@YAIPBE@Z"
+      },
+      {
+        "offset": "0xa49",
+        "pop_bytes": 0,
+        "target": "?ld2c3_u32@@YAIPBE@Z"
+      },
+      {
+        "offset": "0xb3",
+        "pop_bytes": 0,
+        "target": "?ld2c3_find@@YAHPBULD2C3View@@IPBEIHPAPBEPAIPAH@Z"
+      },
+      {
+        "offset": "0xcf3",
+        "pop_bytes": 0,
+        "target": "?ld2c3_open@@YAHPBEIPAULD2C3View@@@Z"
+      },
+      {
+        "offset": "0xd13",
+        "pop_bytes": 16,
+        "target": "_LD2_OriginalDlgItem"
+      },
+      {
+        "offset": "0xd21",
+        "pop_bytes": 0,
+        "target": "@__security_check_cookie@4"
+      },
+      {
+        "offset": "0xd54",
+        "pop_bytes": 0,
+        "target": "?LD2_ListPrepareV3@@YAHIPBEPBULD2C3View@@P6AH0HPAGH@Z2PAH@Z"
+      },
+      {
+        "offset": "0xd79",
+        "pop_bytes": 16,
+        "target": "_LD2_OriginalDlgItem"
+      },
+      {
+        "offset": "0xd87",
+        "pop_bytes": 0,
+        "target": "@__security_check_cookie@4"
+      },
+      {
+        "offset": "0xdc5",
+        "pop_bytes": 8,
+        "target": "_LD2_GetDlgItem"
+      },
+      {
+        "offset": "0xdd2",
+        "pop_bytes": 4,
+        "target": "_LD2_IsWindowUnicode"
+      },
+      {
+        "offset": "0xddf",
+        "pop_bytes": 8,
+        "target": "_LD2_GetWindowLongW"
+      },
+      {
+        "offset": "0xdf2",
+        "pop_bytes": 8,
+        "target": "_LD2_GetClassLongW"
+      },
+      {
+        "offset": "0xe06",
+        "pop_bytes": 12,
+        "target": "_LD2_SetWindowLongW"
+      },
+      {
+        "offset": "0xe21",
+        "pop_bytes": 20,
+        "target": "_LD2_SendDlgItemMessageW"
+      },
+      {
+        "offset": "0xe47",
+        "pop_bytes": 0,
+        "target": "@__security_check_cookie@4"
+      },
+      {
+        "offset": "0xe5f",
+        "pop_bytes": 16,
+        "target": "_LD2_OriginalDlgItem"
+      },
+      {
+        "offset": "0xe69",
+        "pop_bytes": 0,
+        "target": "@__security_check_cookie@4"
+      }
+    ],
+    "relocation_counts": {
+      "6": 27,
+      "20": 16
+    },
+    "binding_spills": [
+      [
+        "0xc52",
+        "dword ptr [ebp - 0x21c]",
+        "_LD2_ListMode"
+      ],
+      [
+        "0xc92",
+        "dword ptr [ebp - 0x210]",
+        "_LD2_OriginalDlgItem"
+      ]
+    ],
+    "frame_leas_while_spilled": [
+      [
+        "0xce1",
+        "eax, [ebp - 0x22c]",
+        "dword ptr [ebp - 0x210]"
+      ],
+      [
+        "0xce1",
+        "eax, [ebp - 0x22c]",
+        "dword ptr [ebp - 0x21c]"
+      ],
+      [
+        "0xd2c",
+        "eax, [ebp - 0x210]",
+        "dword ptr [ebp - 0x21c]"
+      ],
+      [
+        "0xd3d",
+        "eax, [ebp - 0x208]",
+        "dword ptr [ebp - 0x21c]"
+      ],
+      [
+        "0xd46",
+        "eax, [ebp - 0x22c]",
+        "dword ptr [ebp - 0x21c]"
+      ],
+      [
+        "0xe0c",
+        "eax, [ebp - 0x208]",
+        "dword ptr [ebp - 0x21c]"
+      ]
+    ],
+    "no_default_crt_link": true,
+    "no_memcpy_memset_heap_chkstk_eh_symbols": true,
+    "native_executed": false,
+    "linked": false,
+    "production_can_apply": false
+  },
+  "name_pair_v3": {
+    "object_sha256": "8a70e6cde5254d65aae4bf9d65fce6ee2b8065807af5741bc7092f37776c0242",
+    "object_bytes": 6865,
+    "entry": "_LD2_NamePair@16",
+    "undefined": [
+      "@__security_check_cookie@4",
+      "_LD2_Catalog",
+      "_LD2_CatalogBytes",
+      "_LD2_ExpectedTextOutA",
+      "_LD2_TextOutW",
+      "___security_cookie"
+    ],
+    "public": [
+      "_LD2_FindCopy@16",
+      "_LD2_LoadMethod@4",
+      "_LD2_NamePair@16",
+      "_LD2_OriginalOne@16",
+      "_LD2_OriginalPair@12",
+      "_LD2_Wipe@8"
+    ],
+    "internal_callees_audited": [
+      "?LD2C3_Lookup@@YAIPBULD2C3View@@PBEIHIPCGI@Z",
+      "?ld2c3_cmp@@YAHPBULD2C3View@@IIPBEI@Z",
+      "?ld2c3_find@@YAHPBULD2C3View@@IPBEIHPAPBEPAIPAH@Z",
+      "?ld2c3_open@@YAHPBEIPAULD2C3View@@@Z",
+      "?ld2c3_u32@@YAIPBE@Z"
+    ],
+    "functions": {
+      "?ld2c3_u32@@YAIPBE@Z": {
+        "ret_pop": 0,
+        "normal_returns": [
+          "0x25"
+        ],
+        "cfg_states": 15,
+        "calls": []
+      },
+      "?ld2c3_open@@YAHPBEIPAULD2C3View@@@Z": {
+        "ret_pop": 0,
+        "normal_returns": [
+          "0x15e",
+          "0x167"
+        ],
+        "cfg_states": 140,
+        "calls": [
+          "?ld2c3_u32@@YAIPBE@Z (pop 0)"
+        ]
+      },
+      "?ld2c3_cmp@@YAHPBULD2C3View@@IIPBEI@Z": {
+        "ret_pop": 0,
+        "normal_returns": [
+          "0x2e",
+          "0x86",
+          "0x91",
+          "0x9b"
+        ],
+        "cfg_states": 76,
+        "calls": []
+      },
+      "?ld2c3_find@@YAHPBULD2C3View@@IPBEIHPAPBEPAIPAH@Z": {
+        "ret_pop": 0,
+        "normal_returns": [
+          "0x1b6",
+          "0x1bf"
+        ],
+        "cfg_states": 207,
+        "calls": [
+          "?ld2c3_cmp@@YAHPBULD2C3View@@IIPBEI@Z (pop 0)"
+        ]
+      },
+      "?LD2C3_Lookup@@YAIPBULD2C3View@@PBEIHIPCGI@Z": {
+        "ret_pop": 0,
+        "normal_returns": [
+          "0x15d",
+          "0x332",
+          "0x33b"
+        ],
+        "cfg_states": 398,
+        "calls": [
+          "?ld2c3_find@@YAHPBULD2C3View@@IPBEIHPAPBEPAIPAH@Z (pop 0)"
+        ]
+      },
+      "_LD2_Wipe@8": {
+        "ret_pop": 8,
+        "normal_returns": [
+          "0x1d"
+        ],
+        "cfg_states": 19,
+        "calls": []
+      },
+      "_LD2_FindCopy@16": {
+        "ret_pop": 16,
+        "normal_returns": [
+          "0xd4",
+          "0xf8"
+        ],
+        "cfg_states": 118,
+        "calls": [
+          "?LD2C3_Lookup@@YAIPBULD2C3View@@PBEIHIPCGI@Z (pop 0)",
+          "?ld2c3_open@@YAHPBEIPAULD2C3View@@@Z (pop 0)",
+          "_LD2_Wipe@8 (pop 8)"
+        ]
+      },
+      "_LD2_LoadMethod@4": {
+        "ret_pop": 4,
+        "normal_returns": [
+          "0xc"
+        ],
+        "cfg_states": 7,
+        "calls": []
+      },
+      "_LD2_OriginalOne@16": {
+        "ret_pop": 16,
+        "normal_returns": [
+          "0x1c"
+        ],
+        "cfg_states": 12,
+        "calls": [
+          "_LD2_LoadMethod@4 (pop 4)",
+          "eax (pop 16)"
+        ]
+      },
+      "_LD2_OriginalPair@12": {
+        "ret_pop": 12,
+        "normal_returns": [
+          "0x24"
+        ],
+        "cfg_states": 14,
+        "calls": [
+          "_LD2_OriginalOne@16 (pop 16)"
+        ]
+      },
+      "_LD2_NamePair@16": {
+        "ret_pop": 16,
+        "normal_returns": [
+          "0x113",
+          "0x12e",
+          "0xe3"
+        ],
+        "cfg_states": 116,
+        "calls": [
+          "@__security_check_cookie@4 (pop 0)",
+          "_LD2_FindCopy@16 (pop 16)",
+          "_LD2_LoadMethod@4 (pop 4)",
+          "_LD2_OriginalOne@16 (pop 16)",
+          "_LD2_OriginalPair@12 (pop 12)",
+          "_LD2_TextOutW (pop 20)",
+          "_LD2_Wipe@8 (pop 8)"
+        ]
+      }
+    },
+    "relocation_counts": {
+      "6": 9,
+      "20": 25
+    },
+    "drectve_empty": true,
+    "no_fs_seh": true,
+    "esp_and_nonvolatile_preserved_on_normal_paths": true,
+    "native_executed": false,
+    "linked": false,
+    "production_can_apply": false
+  },
+  "objects_published": false,
+  "native_executed": false,
+  "linked": false,
+  "game_touched": false,
+  "production_can_apply": false,
+  "release_approved": false
+}
