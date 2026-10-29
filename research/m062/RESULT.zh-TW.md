@@ -59,8 +59,76 @@
 - `test_m062_objs.py`（新）5 項：hash 鎖定、兩個稽核通過、兩個負面測試。實驗室有物件時才跑，倉庫內會 skip。
 - `test_m062.py` 8 項（2 項需要授權輸入，skip）；m061 `test_m061b.py` 13 項仍全過（m061 稽核器未改）。
 
+## v3 合併與容量閘門（Linux 靜態，2026-10-29 台北）
+
+`production_can_apply=false`、`release_approved=false` 不變。沒有寫出 EXE、沒有執行遊戲、沒有新的 Win11 交接包。
+
+### 新檔
+| 檔案 | 作用 |
+|---|---|
+| `merge_plan_v3.py` | v3 合併：`name_pair_v3.obj`＋`list_insert_v3.obj` 放進同一個 `.ld2t`，兩者共用**同一份** `.ld2c` v3 blob；審核閘門、容量閘門、OriginalDlgItem 非 0 檢查 |
+| `build_v3_lab.py` | 實驗室：從 m045 在記憶體中合成惰性版＋啟用版（模式 2／0），並做靜態驗證；只輸出 JSON |
+| `make_v3_delta.py` | 實驗室：m045 → 啟用版 delta，只寫到 `lab-deltas/`（**不提交**，含遊戲衍生的 catalog bytes） |
+| `test_merge_v3.py` | 17 項：審核閘門 6、容量閘門 5（合成，永遠跑）＋實驗室 6（缺輸入時 skip） |
+| `static_verify_v3.summary.json` | 兩種 catalog × 兩種模式的完整靜態驗證輸出（只有 hash／VA／數量，沒有日文或遊戲 bytes） |
+
+m061／m061b 的 `merge_plan.py`、`enable_plan.py` 和已鎖定的 v1／u 路徑都沒改；`enable_plan.apply_enabled`（hook stub＋8 個清單呼叫點）直接沿用，因為 NamePair v3 仍是 `_LD2_NamePair@16(cdc, ansi, count, id)`，ListInsertV3 仍是 fastcall／ret 16。
+
+### `.ld2c` 版面（v3）
+| 偏移 | 內容 | 綁定 |
+|---|---|---|
+| +0 | `CatalogBytes`（u32，等於 blob 長度） | `_LD2_CatalogBytes`（兩個 helper 共用） |
+| +4 | `ExpectedTextOutA` = 0x4e13d7 | NamePair |
+| +8 | `OriginalDlgItem` = 0x4ea671（**非 0**） | ListInsertV3 |
+| +12 | `ListMode`（0／1／2） | ListInsertV3 |
+| +16 | v3 blob（`LD2C` header＋rows＋pool） | `_LD2_Catalog`（兩個 helper 共用） |
+
+### 審核閘門（取代 m060 `reviewed_catalog` 的 `len(items)==24`）
+- 每個 catalog 都要 hash 釘選；`production_can_apply` 必須是 false、`release_approved` 不能是 true。
+- 每一筆都要 `name_status ∈ {translated, identity_preserved}`。
+- `review_status`：
+  - 政策 `reviewed`（預設）：只接受 `human_reviewed`／`approved`。沒有這個欄位的只限釘選的 m051 基準（24 筆）。
+  - 政策 `lab_preview`：另外接受 `mina_draft`，但整個 build 標成 `release_eligible=false`。
+- 整個 catalog 一筆不合就整個拒絕，不會偷偷濾掉。筆數不再有上限，只受容量閘門限制。
+- m060 的 v1 路徑（餵給舊 helper）保留 24 筆規則不動。
+
+### 容量閘門（拒絕，不截斷）
+- `decode_v3` 完整解析（header、extent、排序、嚴格 CP932／UTF-16）；列數 ≤ 8192、pool ≤ 1 MiB、blob ≤ helper 的 `ld2c3_open` 上限 1,179,680 B。
+- `.ld2c` 區段（16＋blob）≤ `pe_serializer.MAX_SECTION_BYTES`（1 MiB）。注意 helper 理論上限比區段預算大：合成測試做了一個 8192 列、helper 會接受但超過 1 MiB 的 blob，確認合成前就被拒絕。
+- 合成後再讀回 `.ld2c` 區段頭：VirtualSize＝catalog 長度、RawSize 與 PointerToRawData 依檔案對齊、尾端補 0、內容逐 byte 相同、`CatalogBytes` 讀回正確、blob 讀回後解碼結果相同。
+
+### 實驗室結果（m045 為底，hash 都可重現）
+| catalog | 列數 | blob | blob sha256 | 區段剩餘 |
+|---|---|---|---|---|
+| `reviewed`（m051 24 項） | 264 | 12,236 B | `2879e445…7abf` | 1,036,324 B |
+| `lab_preview`（m051＋Mina 草稿） | 2,343 | 87,628 B | `69f86cdc…96bb` | 960,932 B |
+
+| 組合 | 惰性版 sha256 | 啟用版 sha256 | delta sha256（大小） |
+|---|---|---|---|
+| reviewed 模式 2 | `99f4ae54…5e47` | `67ef9bac…c01a` | `99969b5c…ad9b`（24,749 B） |
+| reviewed 模式 0 | `043efdd6…c140` | `7a51d870…15be` | `b4ec4ee5…9bad`（24,749 B） |
+| lab_preview 模式 2 | `1d0a97a6…f6e2` | `2e6dca9c…91b0` | `69ba0bd3…0e7b`（102,575 B） |
+| lab_preview 模式 0 | `caede6e0…4146` | `969f5c7b…03b9` | `cba1131b…4735`（102,575 B） |
+
+完整 hash 在 `static_verify_v3.summary.json`；delta 與 manifest 只在實驗室 `lab-deltas/`。
+
+### 靜態驗證（四個組合全部通過）
+- 物件稽核先跑：`audit_list_obj_v3`（profile v3，含 EBP spill 追蹤）＋`audit_name_pair_v3`。
+- **重定位獨立重算**：從物件重新解析每一筆 relocation，對照影像中的值。NamePair 34 筆（DIR32 9＋REL32 25）、ListInsertV3 43 筆全部相符；非 fixup 的 code bytes 與物件逐 byte 相同；每個 undefined 符號都至少被用到一次。
+- **綁定目標讀回**：6 個 USER32 IAT、KERNEL32!MultiByteToWideChar、GDI32!TextOutW 都指到正確名稱；兩個 helper 的 `_LD2_Catalog`／`_LD2_CatalogBytes`／cookie 位址相同（共用一份 blob）；`OriginalDlgItem` 槽讀回 **0x4ea671（非 0）**；ListMode、ExpectedTextOutA 讀回正確；blob sha 讀回相符。
+- **間接呼叫掃描**（重定位後的 ListInsertV3）：8 個呼叫目標都是函式綁定槽（含 `call [ebp-0x210]` 經 spill 追回 OriginalDlgItem 槽 0xae5008）；沒有資料綁定被當成呼叫目標；NamePair 只有一個 `call eax`（`LD2_OriginalOne` 的原虛擬方法，物件稽核已審）。
+- m061 共用檢查：hook stub 反組譯、沒有分支跳進 hook 區間內部、8 個清單呼叫點 `call 0x4ea671 → call ListInsertV3`、PE CheckSum（pefile 也通過）。新匯入只有 TextOutW＋5 個 USER32 *W API，沒有禁止的 API。
+- 負面測試：OriginalDlgItem 設成 0、物件 hash 不符或互換、區段超過預算、`reviewed` 政策下放入草稿，都會拒絕。
+
+### Win11 交接
+**這一輪不準備交接包。** 靜態驗證全過，delta 也已在實驗室備好；但 reviewed catalog 只有 m051 的 24 項，遊戲內看起來跟 m061b 差不多，實機驗收的新資訊有限；lab_preview 含未審核草稿。等以下其中一項成立再做：(a) Mina 草稿有一批改成 `human_reviewed`；(b) 使用者同意用 `lab_preview` 做一次可丟棄副本的觀察（模式 2 優先、模式 0 備用）。
+
+## 測試
+- `test_merge_v3.py` 17 項、`test_m062.py` 8 項（給授權輸入時全跑）、`test_m062_objs.py` 5 項：全過。
+- m061 `test_m061.py`／`test_m061b.py`／`test_merge_lab.py` 共 38 項：全過（m061 原始碼未改）。
+
 ## 下一步（Linux，不改發布旗標）
-1. `merge_plan`／`enable_plan` 加入 v3 綁定：`_LD2_Catalog`、`_LD2_CatalogBytes` 取代 Entries／Count。NamePair v3 與 ListInsertV3 共用同一份 catalog blob，合成時把兩個物件併進同一個 helper 區段，再做雙物件重定位稽核。
-2. 容量閘門：v3 blob 大小（目標 ≤8192 列）對照新區段的 RawSize／VirtualSize 與檔案對齊。超過預算時拒絕合成；`reviewed_catalog` 的 24 筆限制改成依審核狀態放行。
-3. 合成 v3 惰性版＋啟用版（模式 2／模式 0）delta，Linux 靜態驗證後，才做下一次 Win11 可丟棄副本驗收包。
-4. Mina 消耗品／冒險者名譯稿要人工審核；委託資訊視窗（156／388）的非清單 `?` 另案追蹤。
+1. 冒險者名的顯示點還沒追蹤到（DESIGN §5-2）；lab_preview 裡的 1400 筆人名要等找到顯示點才有意義。
+2. Mina 消耗品／冒險者名譯稿人工審核，審過的改成 `human_reviewed`，就能進 `reviewed` 政策。
+3. 委託資訊視窗（156／388）的非清單 `?` 另案追蹤。
+4. 例外／unwind 行為仍只有設計推論，等實機驗收。
