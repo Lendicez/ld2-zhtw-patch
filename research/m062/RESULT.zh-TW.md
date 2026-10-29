@@ -142,6 +142,7 @@ m061／m061b 的 `merge_plan.py`、`enable_plan.py` 和已鎖定的 v1／u 路�
    - 未改寫的整名清單 10 點。
    - NamePair v3 不涵蓋，需要新的 helper `@LD2_NameTextOut@24`。目前有草稿和 i386 mock（25 案例、0 失敗）。
    - 下一步是 m063a，在 Linux 上做合併與改寫計畫；接著 m063b，在 Win11 編譯一次。這一輪不準備交接。
+   - **m063a 已完成（2026-10-29 台北）**：第三物件槽、25 pair5＋1 tail8＋18 清單點的改寫計畫和靜態驗證，見 `research/m063/RESULT-M063A.zh-TW.md`。NameTextOut 物件還沒有 MSVC 版本，下一步是 m063b。
 2. Mina 消耗品／冒險者名譯稿人工審核，審過的改成 `human_reviewed`，就能進 `reviewed` 政策。
 3. 委託資訊視窗（156／388）的非清單 `?` 另案追蹤。
 4. 例外／unwind 行為仍只有設計推論，等實機驗收。

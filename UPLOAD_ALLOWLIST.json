@@ -194,7 +194,15 @@
     "tests/test_m062_draft3.py",
     "tests/test_m062_research.py",
     "tools/audit_upload.py",
-    "tools/check.py"
+    "tools/check.py",
+    "research/m063/merge_plan_m063.py",
+    "research/m063/enable_plan_m063.py",
+    "research/m063/audit_name_textout.py",
+    "research/m063/build_m063_lab.py",
+    "research/m063/test_m063.py",
+    "research/m063/static_verify_m063a.summary.json",
+    "research/m063/RESULT-M063A.zh-TW.md",
+    "tests/test_m063_research.py"
   ],
   "excluded_roots": [
     ".git",

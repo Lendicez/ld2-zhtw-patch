@@ -105,6 +105,6 @@ int __fastcall LD2_NameTextOut(LD2Cdc* cdc /*ECX*/, int unused /*EDX*/, int x, i
 
 ## 7. 建議的下一個里程碑
 
-1. **m063a（Linux）**：在 `merge_plan_v3` 加第三個物件槽，在 enable_plan 加 25 個 pair5、1 個 tail8，以及 10 個清單點改寫。用合成物件做靜態驗證，項目包括 ESP、分支、checksum 和 sha 前碼。
+1. ~~**m063a（Linux）**~~ **已完成（2026-10-29 台北，Linux 靜態，以 clang 預演物件驗證）**，見 `research/m063/RESULT-M063A.zh-TW.md`。原文：在 `merge_plan_v3` 加第三個物件槽，在 enable_plan 加 25 個 pair5、1 個 tail8，以及 10 個清單點改寫。用合成物件做靜態驗證，項目包括 ESP、分支、checksum 和 sha 前碼。
 2. **m063b（Win11，一次）**：編譯 `name_textout_v3.cpp`；如果要做空白前綴，就同時編譯 ListInsertV3 的下一版。
 3. 等 Mina 名字草稿有一批 `human_reviewed` 之後，再準備一次可丟棄副本的觀察。
