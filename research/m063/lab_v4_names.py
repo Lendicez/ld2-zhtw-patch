@@ -2,7 +2,8 @@
 Inputs (lab-local, never committed): pristine Ld95.exe, Mina's full draft, m051 catalog.
 Prints/writes COUNTS and hashes only: no source text, no translated names, no blob.
 Optional --kris-proposal adds the extended-28 item row with a HYPOTHETICAL text so the
-Kris collision can be exercised; that text is not a translation decision (Mina owns it)."""
+Kris collision can be exercised (historical, before draft5). Since draft5 the real extended-28
+row (user decision via Mina) is in the draft and the Kris checks run on it automatically."""
 import argparse, collections, hashlib, json, os, shutil, struct, subprocess, sys, tempfile
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
@@ -52,11 +53,17 @@ def main():
         kname, krows = kris_rows(original, a.kris_proposal)
         rows4 = c4.dedupe(rows4 + krows)
         kris = (kname, krows)
+    elif any(i.get('table') == 'extended' and i.get('slot') == 28 for i in json.loads(draft)['items']):
+        # draft5+: the real extended-28 row (Mina/user decision) is in the draft; exercise it the same way
+        base, _ = c3.ITEM_TABLES['extended']
+        kname = original[base + 216 * 28 + 4:base + 216 * 28 + 40].split(b'\0', 1)[0]
+        krows = [r for r in rows4 if r[0] == c4.FULL_ID and r[2] == kname]
+        kris = (kname, krows) if krows else None
     l4, l3 = c4.Lookup(rows4), c3.Lookup(rows3)
     blob = c4.encode_v4(rows4)
     out['v4'] = dict(rows=len(rows4), rows_by_kind=dict(collections.Counter(c3.KIND_NAMES[r[0]] for r in rows4)),
                      bytes=len(blob), sha256=hashlib.sha256(blob).hexdigest(), v3_rows=len(rows3),
-                     kris_hypothetical_rows_included=bool(kris))
+                     kris_hypothetical_rows_included=bool(a.kris_proposal), kris_draft_row_included=bool(kris) and not a.kris_proposal)
     items = json.loads(draft)['items']
     parts, female = collections.defaultdict(dict), []
     for it in items:

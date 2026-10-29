@@ -166,7 +166,7 @@ static const char FEMALE[] = "\x83\x41\x83\x43";        // synthetic full_any ke
 static const char MALE[] = "\x83\x4a\x83\x4c\x83\x4e";  // prefix "\x83\x4a" + suffix "\x83\x4c\x83\x4e"
 static const char AMBIG[] = "\x83\x54\x83\x56\x83\x58"; // two splits with different text
 static const char ROW_MIX[] = "\x83\x4a\x83\x4c\x83\x4e\t\x83\x41\x83\x43\t\xb1\xb2\xc3\xd1";
-static const char KRIS[] = "\x83\x60\x83\x62";          // item row AND female row, same bytes
+static const char KRIS[] = "\x83\x60\x83\x62";          // item row AND female row, same bytes (item text 波刃短劍, draft5)
 static const char HALB[] = "\x83\x64\x83\x66\x83\x68";  // arabic join == an item name
 static const char XQZ[] = "\x83\x6a\x83\x6c\x83\x6e";   // chinese split real; japanese+chinese split false
 static const char MORE[] = "\x83\x70\x83\x72";          // prefix western + suffix arabic only
@@ -180,7 +180,7 @@ int main() {
     wnd.hwnd = reinterpret_cast<LD2Word>(DLG);
     static const LD2LWide tw[] = {0x9053, 0x5177}, fw[] = {0x611b, 0x8389}, p1[] = {0x963f}, s1[] = {0x70c8, 0x723e},
         a1[] = {0x7532}, a2[] = {0x4e59, 0x4e19}, b1[] = {0x4e01, 0x620a}, b2[] = {0x5df1},
-        ki[] = {0x514b, 0x529b, 0x58eb, 0x528d}, kf[] = {0x514b, 0x8389, 0x7d72}, hi[] = {0x621f, 0x65a7},
+        ki[] = {0x6ce2, 0x5203, 0x77ed, 0x528d}, kf[] = {0x514b, 0x8389, 0x7d72}, hi[] = {0x621f, 0x65a7},
         h1[] = {0x54c8}, h2[] = {0x723e, 0x5e03}, x1[] = {0x514b}, x2[] = {0x6069}, x3[] = {0x514b, 0x6069}, x4[] = {0x591a};
     static const MockRow4 rows[] = {
         {LD2C4_FULL_ID, 1, HIT, tw, 2, 2, 0, 0},
@@ -291,7 +291,7 @@ int main() {
       ctx.quiet = 0; }
     // ================= m063c v4 cases =================
     { Case("v4-item-kris-item-text"); entry = LD2_ListInsertV4; Reset(0); CHECK(Call(KRIS) == 0x22222222UL); SEQ(K_SENDW);
-      CHECK(ctx.calls[0].wide_units == 4 && ctx.calls[0].wide[0] == 0x514b && ctx.calls[0].wide[1] == 0x529b); }
+      CHECK(ctx.calls[0].wide_units == 4 && ctx.calls[0].wide[0] == 0x6ce2 && ctx.calls[0].wide[1] == 0x5203); }
     { Case("v4-name-kris-female-text"); entry = LD2_ListInsertNameV4; Reset(0); CHECK(Call(KRIS) == 0x22222222UL); SEQ(K_SENDW);
       CHECK(ctx.calls[0].wide_units == 3 && ctx.calls[0].wide[1] == 0x8389 && ctx.calls[0].wide[2] == 0x7d72); }
     { Case("v4-item-halb-item-text"); entry = LD2_ListInsertV4; Reset(0); CHECK(Call(HALB) == 0x22222222UL); SEQ(K_SENDW);
@@ -340,7 +340,7 @@ int main() {
       CHECK(ctx.calls[0].wide_units == 3 + 1 + 3 + 1 + 3 && ctx.calls[0].wide[1] == 0x8389 && ctx.calls[0].wide[3] == 9 &&
             ctx.calls[0].wide[4] == 0x54c8 && ctx.calls[0].wide[7] == 9 && ctx.calls[0].wide[8] == 0x963f); }
     { Case("v4-item-row-names-w"); entry = LD2_ListInsertV4; Reset(0); CHECK(Call(NAME_ROW) == 0x22222222UL); SEQ(K_SENDW);
-      CHECK(ctx.calls[0].wide_units == 4 + 1 + 2 + 1 + 3 && ctx.calls[0].wide[1] == 0x529b && ctx.calls[0].wide[5] == 0x621f); }
+      CHECK(ctx.calls[0].wide_units == 4 + 1 + 2 + 1 + 3 && ctx.calls[0].wide[1] == 0x5203 && ctx.calls[0].wide[5] == 0x621f); }
     { Case("v4-name-guards-original"); entry = LD2_ListInsertNameV4;
       Reset(3); CHECK(Call(FEMALE) == 0x11111111UL); SEQ(K_ORIG);
       Reset(2); wnd.site = 1; CHECK(Call(FEMALE) == 0x11111111UL); SEQ(K_ORIG); wnd.site = 0;
