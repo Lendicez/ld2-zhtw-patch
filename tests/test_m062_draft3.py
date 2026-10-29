@@ -50,7 +50,7 @@ class M062Draft3(unittest.TestCase):
         self.assertEqual(m, {'kanji_traditionalized': 700, 'curated': 180, 'curated_v2': 122,
                              'join_unified_m062': 15, 'curated_v3': 378, 'curated_v4_web': 5})
         rs = Counter(x['review_status'] for x in self.items)
-        self.assertEqual(rs, {'mina_draft': 72, 'mina_draft2': 1337, 'mina_draft3': 371, 'mina_draft2_label_desc_mismatch': 24, 'mina_draft4': 5, 'user_decided': 7})
+        self.assertEqual(rs, {'mina_draft': 72, 'mina_draft2': 1334, 'mina_draft3': 371, 'mina_draft2_label_desc_mismatch': 24, 'mina_draft4': 5, 'user_decided': 10})
         self.assertNotIn('machine_needs_review', rs)
         self.assertFalse({'human_reviewed', 'approved'} & set(rs))   # nothing promoted in this batch
 

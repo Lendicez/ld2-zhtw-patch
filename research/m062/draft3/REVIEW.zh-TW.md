@@ -20,7 +20,7 @@
 | `m062-draft3-adventurers-{western,arabic,chinese,japanese}.zh-TW.json` | 各 350（男名前段 100、後段 100、女名 150） |
 | `draft3-review.summary.json` | Mona 獨立驗證結果（只有數量與 hash） |
 | `male_join_static.draft3.summary.json` | Mina 對完整 draft3 跑 `male_join_static.py`（只有數量與中文；歷史） |
-| `male_join_static.draft4.summary.json` | Mona 對完整 draft4（含 Mona hold）重跑 `male_join_static.py` |
+| `male_join_static.draft4.summary.json` | Mona 對完整 draft4（draft4；Mona hold 已於 draft4-sara 解除）重跑 `male_join_static.py` |
 | `male_join_static.lab_preview.summary.json`、`male_join_all40000.lab_preview.summary.json` | lab_preview 子集的男名拼接稽核 |
 | `static_verify_v3.lab_preview_draft3.summary.json` | 用 lab_preview 子集重建 v3 映像（記憶體內）並跑完整靜態驗證 |
 
@@ -73,7 +73,7 @@ Mona 的 lab_preview 政策（只在 lab，產生 lab 專用子集 sha256 `fc2ae
 ## draft4（目前來源，2026-10-29）
 - Mina draft4-names：draft3u＋7 列改為 `review_status=mina_draft4`、`translation_method=curated_v4_web`（網路對照）。`machine_needs_review` 歸零。
   - ダオ 達奧→**達烏**（Dawud 達烏德）；アフ 阿夫、ファイ 法伊（拼接強制，改「費」會多 1 個衝突）、バード 巴德 保留；男名 サラ 莎拉→薩拉（2 列）。使用者定稿 阿拉／馬達／希姆 未動。
-- **Mona hold（2 列）**：男名前段 western/95、arabic/37 改「薩拉」後，與女名 western/94「莎拉」為**同一組來源 bytes**，`validate_adventurers` 規定同 bytes 只能一個譯名而拒絕 draft4 原樣（Mina 回報 validators 通過，實際不通過）。這 2 列在公開檔與 lab_preview 中**退回 draft3u（莎拉）**，列上加 `mona_hold` 說明；待使用者選「莎拉」或「薩拉」二者擇一（男女共用）。因此公開檔實際 `mina_draft4` 為 5 列。
+- **サラ 使用者定稿（2026-10-29）**：同一組來源 bytes 的 3 列（男 western/95、arabic/37，女 western/94）一律「**薩拉**」，`review_status: user_decided`；Mona hold 解除，`validate_adventurers` 通過。來源＝Mina draft4-sara（sha256 `33f63c04…0f8e`），公開檔已剝 ja／hex，與其 1816 列譯名逐列一致。
 - 公開清理同前（剝 `source_name_ja`、`source_name_cp932_hex`）；另把 4 種 `draft4_review_note` 內的日文改寫為不含日文的同義說明。
 - Mona 獨立驗證：道具 416 筆對 EXE 0 失敗；`validate_adventurers` 1400 通過；14 批 sidecar 通過；同 bytes 多譯名 0；非 CP950 8 筆。`verified_rows`（m051＋完整 draft4/hold）6127 列，v3 `c380f8dd…053c`。
 - **lab_preview**（lab 專用子集 sha256 `0a63ccff…9ead`，取代 draft3u 子集 `fc2ae802…8425`）：收 `mina_draft`／`mina_draft2`／`mina_draft3`／`mina_draft4`／`user_decided` → 1792 列（道具 392、冒險者 **1400**）；只排除 24 筆 label/desc mismatch，machine 排除 0。＋m051：5863 列、v3 243,240 B，sha256 `6a7a119d…de75c`，`release_eligible=false`。
@@ -81,7 +81,7 @@ Mona 的 lab_preview 政策（只在 lab，產生 lab 專用子集 sha256 `fc2ae
 - 男名 40,000 組（lab_preview）：正確 39,993；跨地區假切分退回原文 5（阿爾頓×2、迪翁、法拉恩、法特恩）；被道具「戟斧」搶走 2（arabic 69+31、69+95）；不再有含被排除片段的組合。`male_join_static`：join_ok 39,985、conflicting 0。
 
 ### draft4 後剩下的阻礙
-1. **サラ 男女同 bytes**：薩拉／莎拉 需使用者二選一（目前公開＝莎拉）。
+1. ~~サラ 男女同 bytes~~：已定稿「薩拉」（2026-10-29）。
 2. **Kris 短劍（extended 28）**：與女名同 bytes，未收；需 helper 在人名點（id=-1）不比對 `full_id`。
 3. **男名 7 組**：5 組跨地區假切分（prefix/suffix 需帶 region）、2 組 哈爾巴德→戟斧（同第 2 點）。需改 helper＋Win11 重編，翻譯端無法解。
 4. **24 筆 label/desc mismatch**（primary 272–295）仍排除。

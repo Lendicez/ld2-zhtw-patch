@@ -7,8 +7,8 @@
  "mina_draft3u_lab_sha256": "83e69d7fa97ee9c1f2ac942c3377115f7d4a5f0288b1d3302a9f64e8d511c593",
  "mina_draft4_lab_sha256": "a3e964ca05dd32997fbee2415aaf9be414342ce9c66ca71353c68b6bed5cf71f",
  "mona_full_lab_sha256": "c7d76918b127663864dccc071b7917fedae1a56c093f1b609a8e29d3c11afcef",
- "note": "Mona independent review against pinned pristine EXE (lab). No source text. Current source = Mina draft4 (draft3u + 7 rows mina_draft4/curated_v4_web; machine_needs_review 0). Mona hold: 2 male rows (western/95, arabic/37) changed to 薩拉 share source bytes with a female row kept as 莎拉; validate_adventurers rejects one-bytes-two-zh, so those 2 rows are reverted to draft3u (莎拉) in public + lab_preview pending a user choice. Filenames keep the m062-draft3-* prefix for continuity.",
- "mona_hold_reverted_rows": 2,
+ "note": "Mona independent review against pinned pristine EXE (lab). No source text. Current source = Mina draft4-sara (draft4 + user decision 2026-10-29: shared sara source bytes -> 薩拉 for male western/95, arabic/37 and female western/94; review_status user_decided). Mona hold cleared; validate_adventurers passes (one bytes -> one zh). Filenames keep the m062-draft3-* prefix for continuity.",
+ "mona_hold_reverted_rows": 0,
  "items_verified_vs_exe": 416,
  "items_failed": [],
  "full_draft3_v3": {
@@ -59,7 +59,7 @@
   "adventurer|mina_draft3|curated_v3": 371,
   "adventurer|mina_draft2|curated_v2": 122,
   "adventurer|mina_draft2|join_unified_m062": 15,
-  "adventurer|mina_draft2|curated": 180,
+  "adventurer|mina_draft2|curated": 177,
   "adventurer|user_decided|curated_v3": 7,
   "adventurer|mina_draft4|curated_v4_web": 5,
   "adventurer|mina_draft2|kanji_traditionalized": 700
@@ -127,13 +127,13 @@
   },
   "m062-draft3-adventurers-western.zh-TW.json": {
    "items": 350,
-   "bytes": 282160,
-   "sha256": "90d7d7425ae1c713aa3415d98ca902a0c87b71b70f6f98acd2f4230f8a599aef"
+   "bytes": 282191,
+   "sha256": "87694a4c878f5e9ca415ad4fbadb18aac68e82c35e46a7d57d013e5ad5244af8"
   },
   "m062-draft3-adventurers-arabic.zh-TW.json": {
    "items": 350,
-   "bytes": 285681,
-   "sha256": "d3abbecc42ace1e5f7cd8ca9e0696e930dec3b638937d897b3895ab8b670e029"
+   "bytes": 285635,
+   "sha256": "e2d4822ebe7c11416cd6929c51d53006154ca30ade32aa99ede8064e79c236ae"
   },
   "m062-draft3-adventurers-chinese.zh-TW.json": {
    "items": 350,
@@ -146,5 +146,6 @@
    "sha256": "af1841f455570168b3264d8bbab841453e34a3adbc7179d8919b19f053a5a9f7"
   }
  },
- "public_total_rows": 1816
+ "public_total_rows": 1816,
+ "mina_draft4_sara_lab_sha256": "33f63c04403929d3bf0431255bda2b83e2211b5f679f450a52a5e30f6d0c0f8e"
 }
