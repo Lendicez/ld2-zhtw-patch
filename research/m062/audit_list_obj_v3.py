@@ -23,6 +23,11 @@ import coff_obj  # noqa: E402
 
 LEAS_WHILE_SPILLED = set()  # m062: other frame addresses taken while a spill is live
 SPILLS = set()  # m062: (offset, slot, binding) spills observed during the last audit()
+# m063c opt-in (default off = m062 behaviour unchanged): a `call @__security_check_cookie@4` whose
+# fall-through is another function's first instruction / int3 / nop / outside the image is a clang
+# cookie-failure tail (noreturn in practice); stop that path instead of walking into the next function.
+COOKIE_NORETURN_TAILS = False
+NORETURN_TAILS = []  # m063c: tails observed during the last audit() when the opt-in is on
 
 ENTRY = '@LD2_ListInsert@24'
 EXPECTED_UNDEFINED = frozenset([
@@ -134,6 +139,9 @@ def audit(raw: bytes, profile: str = 'v1') -> dict:
         if sym['kind'] == 0x20 and sym['storage'] == 3 and sym['section'] in offsets:
             internal[sym['name']] = offsets[sym['section']] + sym['value']
     seen, normal, calls, walked = set(), [], [], {}
+    NORETURN_TAILS.clear()
+    starts = {offsets[sym['section']] + sym['value'] for sym in obj['symbols'].values()
+              if sym['kind'] == 0x20 and sym['section'] in offsets}
 
     def walk(name, depth):
         need(depth <= 4, f'internal call depth at {name}')
@@ -233,6 +241,10 @@ def audit(raw: bytes, profile: str = 'v1') -> dict:
                     raise SystemExit(f'AUDIT FAIL: unreviewed call at {address:#x} -> {target}')
                 calls.append(dict(offset=hex(address), target=target, pop_bytes=pop))
                 sp += pop
+                if COOKIE_NORETURN_TAILS and target == '@__security_check_cookie@4' and (
+                        nxt in starts or nxt not in by or by[nxt].mnemonic in ('nop', 'int3')):
+                    NORETURN_TAILS.append(f'{name}:{address:#x}')
+                    continue
             elif mn == 'ret':
                 got_pop = int(op, 0) if op else 0
                 need(got_pop == want_pop, f'{name}: ret operand {op!r} (want {want_pop})')
