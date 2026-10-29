@@ -8,9 +8,11 @@ D2 = ROOT / 'research' / 'm062' / 'draft3'
 REGIONS = ('western', 'arabic', 'chinese', 'japanese')
 FILES = ['m062-draft3-consumables-tools.zh-TW.json', 'm062-draft3-weapons.zh-TW.json', 'm062-draft3-armor.zh-TW.json'] + \
         [f'm062-draft3-adventurers-{r}.zh-TW.json' for r in REGIONS]
-FULL_SHA = 'a3e964ca05dd32997fbee2415aaf9be414342ce9c66ca71353c68b6bed5cf71f'
+FULL_SHA = '13c84914b1def38694128f724dcbb207439ed44265967e657942f9447f6a34d0'   # Mina draft5-kris-24
 M051_SLOTS = {('primary', s) for s in (0, 1, 2, 3, 5, 7, 9, 11, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 136, 296)}
-BLOCKED = {('extended', 28)} | {('extended', s) for s in range(139, 144)}   # Kris byte collision; placeholders
+BLOCKED = {('extended', s) for s in range(139, 144)}   # placeholders
+KRIS = ('extended', 28)   # draft5: 波刃短劍 (user decision via Mina); same bytes as female adventurer_female/western/92
+LABEL_DESC = {('primary', s) for s in range(272, 296)}   # 24 label/desc-mismatch rows, name+description accepted (draft5)
 KANA = re.compile(r'[\u3040-\u30ff\uff66-\uff9f]')
 HEX64 = re.compile(r'^[0-9a-f]{64}$')
 
@@ -42,7 +44,7 @@ class M062Draft3(unittest.TestCase):
 
     def test_counts(self):
         self.assertEqual(Counter(x['category'] for x in self.items),
-                         {'adventurer': 1400, 'consumable': 55, 'tool': 72, 'weapon': 161, 'armor': 128})
+                         {'adventurer': 1400, 'consumable': 55, 'tool': 72, 'weapon': 162, 'armor': 128})
         t = Counter((x['table'], x.get('region')) for x in self.items if x['category'] == 'adventurer')
         for r in REGIONS:
             self.assertEqual((t[('adventurer_male_first', r)], t[('adventurer_male_second', r)], t[('adventurer_female', r)]), (100, 100, 150))
@@ -50,7 +52,8 @@ class M062Draft3(unittest.TestCase):
         self.assertEqual(m, {'kanji_traditionalized': 700, 'curated': 180, 'curated_v2': 122,
                              'join_unified_m062': 15, 'curated_v3': 378, 'curated_v4_web': 5})
         rs = Counter(x['review_status'] for x in self.items)
-        self.assertEqual(rs, {'mina_draft': 72, 'mina_draft2': 1334, 'mina_draft3': 371, 'mina_draft2_label_desc_mismatch': 24, 'mina_draft4': 5, 'user_decided': 10})
+        self.assertEqual(rs, {'mina_draft': 72, 'mina_draft2': 1334, 'mina_draft3': 371, 'user_decided_include_name_and_description': 24, 'mina_draft4': 5, 'user_decided': 11})
+        self.assertNotIn('mina_draft2_label_desc_mismatch', rs)
         self.assertNotIn('machine_needs_review', rs)
         self.assertFalse({'human_reviewed', 'approved'} & set(rs))   # nothing promoted in this batch
 
@@ -79,13 +82,30 @@ class M062Draft3(unittest.TestCase):
             except UnicodeEncodeError:
                 ok = False
             self.assertEqual(ok, x['name_cp950_encodable'])
-        self.assertTrue(all(len(v) == 1 for v in by_src.values()))
+        multi = {k for k, v in by_src.items() if len(v) > 1}
+        kris = next(x for x in self.items if (x['table'], x.get('slot')) == KRIS)
+        self.assertEqual(multi, {kris['source_name_sha256']})   # only the Kris item vs female name (v4 NAME_ONLY)
+        self.assertEqual(by_src[kris['source_name_sha256']], {'波刃短劍', '克莉絲'})
         self.assertEqual(sum(not x['name_cp950_encodable'] for x in self.items), 8)
+
+    def test_draft5_decisions(self):
+        kris = [x for x in self.items if (x['table'], x.get('slot')) == KRIS]
+        self.assertEqual(len(kris), 1); k = kris[0]
+        self.assertEqual((k['name_zh_tw'], k['review_status'], k['category'], k['stored_id']), ('波刃短劍', 'user_decided', 'weapon', 330))
+        self.assertIn('50', k['description_zh_tw'])
+        self.assertEqual(k['shared_source_bytes_with'], ['adventurer_female/western/92 -> 克莉絲'])
+        for x in self.items:
+            self.assertNotIn('克里斯短劍', x['name_zh_tw']); self.assertNotEqual(x['name_zh_tw'], '克力士劍')
+        ld = [x for x in self.items if x['review_status'] == 'user_decided_include_name_and_description']
+        self.assertEqual({(x['table'], x['slot']) for x in ld}, LABEL_DESC)
+        for x in ld:
+            self.assertIs(x['label_desc_mismatch'], True)
+            self.assertTrue(x['name_zh_tw'] and x['description_zh_tw'])
 
     def test_review_summaries_counts_only(self):
         s = json.loads((D2 / 'draft3-review.summary.json').read_text(encoding='utf-8'))
         self.assertIs(s['production_can_apply'], False); self.assertIs(s['release_approved'], False)
-        self.assertEqual(s['items_failed'], []); self.assertEqual(s['items_verified_vs_exe'], 416)
+        self.assertEqual(s['items_failed'], []); self.assertEqual(s['items_verified_vs_exe'], 417)
         self.assertIs(s['lab_preview']['review_gate']['release_eligible'], False)
         for f in D2.glob('*.summary.json'):
             self.assertIsNone(KANA.search(f.read_text(encoding='utf-8')), f.name)
