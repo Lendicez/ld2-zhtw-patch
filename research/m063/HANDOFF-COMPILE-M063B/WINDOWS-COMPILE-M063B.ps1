@@ -147,7 +147,7 @@ function Run-Mock([string]$Name, [string]$MockCpp, [string]$HelperObj) {
   $masm = Join-Path $OutMock "$Name.asm"
   $exe = Join-Path $OutMock "$Name.once.exe"
   Write-Host "=== Stage B: $Name (mock + Stage A object, no game) ==="
-  & $Cl /nologo /c /W4 /WX /utf-8 /MT /EHs /O2 /Oy- /GS "/I$SrcDir" (Join-Path $SrcDir $MockCpp) "/Fo$mobj" /FAsc "/Fa$masm" | Out-Host
+  & $Cl /nologo /c /W4 /WX /utf-8 /MT /EHs /O2 /Oy- /GS /D_CRT_SECURE_NO_WARNINGS "/I$SrcDir" (Join-Path $SrcDir $MockCpp) "/Fo$mobj" /FAsc "/Fa$masm" | Out-Host
   if ($LASTEXITCODE -ne 0) { throw "Stage B cl failed for $Name ($LASTEXITCODE)" }
   & $Link /nologo /MACHINE:X86 /SUBSYSTEM:CONSOLE /INCREMENTAL:NO /DYNAMICBASE /NXCOMPAT `
     /MANIFEST:EMBED "/MANIFESTUAC:level='asInvoker' uiAccess='false'" `
