@@ -243,3 +243,8 @@
 !/research/m063/HANDOFF-COMPILE-M063B/native/name_textout_v4.cpp
 !/research/m063/HANDOFF-COMPILE-M063B/native/name_textout_v4.h
 !/research/m063/HANDOFF-COMPILE-M063B/native/v4_mock_blob.h
+!/research/m063/RESULT-M063B.zh-TW.md
+!/research/m063/compile-v4-run1/audit.json
+!/research/m063/compile-v4-run1/compile-command.json
+!/research/m063/compile-v4-run1/once-result.json
+!/research/m063/compile-v4-run1/stdout.txt

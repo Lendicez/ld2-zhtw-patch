@@ -69,11 +69,11 @@
    - `@LD2_ListInsertV4@24`：shop 4（0x4aaf19、0x4ab0fe、0x4b46e4、0x4b4df1）＋commission 3（0x492431、0x4b1153、0x4b3477）＝ v3 行為；
    - `@LD2_ListInsertNameV4@24`：酒館 0x4b2d1f＋m063 的 10 個整名清單點。
 2. **NameTextOut v4**：同 v3 公開符號（`@LD2_NameTextOut@24`、`_LD2N_FindCopy@12`、`_LD2N_Wipe@8`），旗標 `ALLOW_ANY|ALLOW_JOIN|NAME_ONLY`（26 點：pair5×25＋tail8×1）。**NamePair v4**：同 v3 的 6 個公開符號，旗標 0，只換 v4 核心。v3／v4 物件靠 sha256 pin 與 blob 版本互相拒絕（v3 helper 拒 v4 blob，v4 helper 拒 v3 blob）。
-3. **合併／啟用計畫**：`merge_plan_v4.py`（`capacity_gate_v4` 只收 version 4 blob；三個 v4 pin 目前皆 `None`，只能用明示的 rehearsal pin，報告 `rehearsal=True`、`handoff_eligible=False`；拒絕 m062/m063a 的 v3 pin）；`enable_plan_v4.py` 依 `LIST_SITE_CLASS` 分流（7 點 → item 入口、11 點 → name 入口），pair5／tail8／hook 與 m063a 相同。
+3. **合併／啟用計畫**：`merge_plan_v4.py`（`capacity_gate_v4` 只收 version 4 blob；三個 v4 pin 已於 2026-10-31 鎖定為 m063b MSVC 物件（`RESULT-M063B.zh-TW.md`）；其他 pin（如 clang 預演）報告 `rehearsal=True`、`handoff_eligible=False`；拒絕 m062/m063a 的 v3 pin）；`enable_plan_v4.py` 依 `LIST_SITE_CLASS` 分流（7 點 → item 入口、11 點 → name 入口），pair5／tail8／hook 與 m063a 相同。
 4. **稽核與測試**：
    - `audit_list_obj_v4.py`：公開符號必須正好是兩個入口，兩個入口各自走 m062 v3 CFG 稽核（ret 16、ESP／非揮發暫存器、資料綁定不可被呼叫）；新增 opt-in 規則「clang 的 cookie 失敗尾端 call 不往下一個函式掉」（m062 預設不變，測試鎖定）。
    - `rehearse_v4_objs.py`：Linux clang 預演三個物件（暫存目錄，不 pin、不提交）。NameTextOut 走完整 CFG 稽核；NamePair 預演只查符號集合（clang 會把 OriginalOne 的 legacy `call eax` 內聯進 NamePair，完整稽核留給 MSVC 物件，與 m062 預演相同）。
    - mock（x86-linux-musl，只驗邏輯與 i386 ABI，不是 MSVC 物件）：List 54 cases／2301 assertions、NameTextOut 36／12398、NamePair 45／25959，全部 0 failed。反向驗證：把 name 入口改成 item 旗標 → 93 失敗；NameTextOut 拿掉 NAME_ONLY → 7 失敗；NamePair 旗標改 1 → 7 失敗。
    - `test_native_v4.py`（已接到 `tests/test_m063_research.py`）：原始碼旗標鎖定、計畫拒絕路徑、mock、預演稽核；lab 測試（box 上 lab 鏡像）以 m051 v4 blob＋預演物件建 inert＋enabled 影像：pair5 25、tail8 1、清單 18（item 7／name 11），每個清單點 rel32 指向正確入口；v3 物件／v3 blob／對調物件／改 1 byte 物件皆拒絕。
 
-剩下（不是 Linux 能做的）：m063b 的 MSVC 一次編譯（NameTextOut＋ListInsert v4＋NamePair v4，**需使用者同意**後才打包交接），回來的物件用 `rehearse_v4_objs.py --list-obj/--textout-obj/--name-obj` 完整稽核後才填 pin。
+剩下（不是 Linux 能做的）：m063b 的 MSVC 一次編譯（NameTextOut＋ListInsert v4＋NamePair v4，**需使用者同意**後才打包交接），回來的物件用 `rehearse_v4_objs.py --list-obj/--textout-obj/--name-obj` 完整稽核後才填 pin。**（2026-10-31 已完成：稽核通過並鎖定，見 `RESULT-M063B.zh-TW.md`。）**

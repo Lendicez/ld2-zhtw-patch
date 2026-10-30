@@ -1,7 +1,7 @@
 """m063c: Linux REHEARSAL of the three v4 helper objects (clang via `python -m ziglang`).
 
-NOT production objects. Only MSVC on Win11 (future m063b compile, needs user consent) may ever
-produce objects that get pinned/merged. Objects live in a temp dir only; never commit or pin them.
+NOT production objects. Only MSVC on Win11 (m063b compile, user-consented, returned
+2026-10-31 and pinned below) may produce objects that get pinned/merged. Objects live in a temp dir only; never commit or pin them.
   * native-v4/list_insert_v4.cpp  -> audit_list_obj_v4 (both entries walked)
   * native-v4/name_textout_v4.cpp -> m063 audit_name_textout (same public/undefined set as v3)
   * native-v4/name_pair_v4.cpp    -> symbol sets (rehearsal) / m062 audit_name_pair_v3 full CFG (MSVC objects)
@@ -22,10 +22,13 @@ import coff_obj, rehearse_list_obj  # noqa: E402
 import audit_list_obj_v4, audit_name_textout, audit_name_pair_v3  # noqa: E402
 
 NATIVE = HERE / 'native-v4'
-# Pins stay None until a consented Win11 MSVC compile (m063b) returns objects that pass these audits.
-LIST_V4_OBJECT_SHA256 = None
-TEXTOUT_V4_OBJECT_SHA256 = None
-NAME_V4_OBJECT_SHA256 = None
+# Pinned 2026-10-31 (Asia/Taipei) from the consented Win11 MSVC compile m063b (compile-v4-run1), after
+# `rehearse_v4_objs.py --list-obj/--textout-obj/--name-obj` passed the full audits below.
+LIST_V4_OBJECT_SHA256 = 'cb74d585c9936f41debc831c863e1eb91dd652770ba4911660e16dd4e3c72b35'     # 9629 B
+TEXTOUT_V4_OBJECT_SHA256 = '76d0adb7cecc82e54c1e0543a2d5f8b932f3b2d9f82a255ac6941390385cc0f6'  # 6631 B
+NAME_V4_OBJECT_SHA256 = 'bf33cfc674f28fd6f8bb069d76176f45d1309a8ab3198f068fc31c3ed87792e6'     # 7006 B
+PINS = dict(list_insert_v4=LIST_V4_OBJECT_SHA256, name_textout_v4=TEXTOUT_V4_OBJECT_SHA256,
+            name_pair_v4=NAME_V4_OBJECT_SHA256)
 
 
 def build(src: Path, d: str) -> bytes:
@@ -62,6 +65,8 @@ def rehearse(objs=None) -> dict:
         depth = 'symbol_sets_only (full CFG audit runs on the MSVC object)'
     out['name_pair_v4'] = dict(public=sorted(audit_name_pair_v3.PUBLIC), undefined=sorted(audit_name_pair_v3.UNDEFINED),
                                audit=depth, rehearsal_sha256=hashlib.sha256(raw).hexdigest())
+    if msvc:
+        out['matches_m063b_pins'] = {k: hashlib.sha256(objs[k]).hexdigest() == v for k, v in PINS.items()}
     return out
 
 

@@ -12,9 +12,10 @@ item/unclassified sites to @LD2_ListInsertV4@24 and name sites to @LD2_ListInser
 
 Fail closed both ways: v3 objects (pinned m062 / any m063a textout pin) are refused here, a v3 blob
 is refused by capacity_gate_v4, and the pinned v3 helpers refuse a v4 blob at run time.
-Object lock: no v4 object has been compiled by MSVC (m063b needs the user's consent), so all
-three pins are None; a build needs explicit rehearsal pins and is marked rehearsal=True /
-handoff_eligible=False. Such a build must never be packaged.
+Object lock: the three v4 objects are pinned to the m063b Win11 MSVC compile (returned and
+audited 2026-10-31, research/m063/compile-v4-run1). Any other pin (e.g. clang rehearsal objects)
+marks the build rehearsal=True / handoff_eligible=False; such a build must never be packaged.
+Pinned objects still do not make production_can_apply / release_approved true.
 """
 from pathlib import Path
 import struct, sys
@@ -30,10 +31,10 @@ mv, mp = mm.mv, mm.mv.mp
 Refuse, need, sha = mm.Refuse, mm.need, mm.sha
 BASE = mm.BASE
 
-# Pending m063b (Win11 MSVC compile + COFF audits via rehearse_v4_objs.py --list-obj/...).
-NAME_V4_OBJECT_SHA256 = None
-LIST_V4_OBJECT_SHA256 = None
-TEXTOUT_V4_OBJECT_SHA256 = None
+# m063b Win11 MSVC compile (2026-10-31), audited by rehearse_v4_objs.py --list-obj/--textout-obj/--name-obj.
+NAME_V4_OBJECT_SHA256 = 'bf33cfc674f28fd6f8bb069d76176f45d1309a8ab3198f068fc31c3ed87792e6'     # 7006 B
+LIST_V4_OBJECT_SHA256 = 'cb74d585c9936f41debc831c863e1eb91dd652770ba4911660e16dd4e3c72b35'     # 9629 B
+TEXTOUT_V4_OBJECT_SHA256 = '76d0adb7cecc82e54c1e0543a2d5f8b932f3b2d9f82a255ac6941390385cc0f6'  # 6631 B
 NAME_V4_ENTRY = mv.NAME_V3_ENTRY                       # '_LD2_NamePair@16' (same symbol names as v3)
 NAME_V4_UNDEFINED = mv.NAME_V3_UNDEFINED
 NAME_V4_PUBLIC = frozenset({'_LD2_NamePair@16', '_LD2_LoadMethod@4', '_LD2_OriginalOne@16',
@@ -78,7 +79,7 @@ def resolve_pins(pins=None):
     need(set(pins) <= set(SLOTS), 'Unknown pin slot')
     out = {s: pins.get(s) or LOCKED[s] for s in SLOTS}
     for s, p in out.items():
-        need(p is not None, f'{s}_v4 object not locked (m063b MSVC compile pending)')
+        need(p is not None, f'{s}_v4 object not locked')
         need(type(p) is str and len(p) == 64, f'{s}_v4 pin shape')
         need(p not in V3_PINS, f'{s}_v4 pin is a v3 object (v3 helpers cannot read a v4 blob)')
     need(len(set(out.values())) == 3, 'v4 pins must be three distinct objects')

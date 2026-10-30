@@ -21,6 +21,24 @@ HAVE_CS = importlib.util.find_spec('capstone') is not None
 def sha(b): return hashlib.sha256(b).hexdigest()
 
 
+# m063b Win11 MSVC objects (compile-v4-run1). The .obj files are never committed; set
+# LD2_M063B_RETURN to a local directory holding them to run the MSVC lab build below.
+MSVC_V4_PINS = dict(list_insert_v4='cb74d585c9936f41debc831c863e1eb91dd652770ba4911660e16dd4e3c72b35',
+                    name_textout_v4='76d0adb7cecc82e54c1e0543a2d5f8b932f3b2d9f82a255ac6941390385cc0f6',
+                    name_pair_v4='bf33cfc674f28fd6f8bb069d76176f45d1309a8ab3198f068fc31c3ed87792e6')
+
+
+def _msvc_objs():
+    d = os.environ.get('LD2_M063B_RETURN')
+    if not d:
+        return None
+    try:
+        objs = {k: (Path(d) / f'{k}.obj').read_bytes() for k in MSVC_V4_PINS}
+    except OSError:
+        return None
+    return objs if all(sha(objs[k]) == v for k, v in MSVC_V4_PINS.items()) else None
+
+
 def tiny_blob():
     return c4.encode_v4([c4.make_row(c4.FULL_ANY, -1, b'\x83\x41', '\u611b'),
                          c4.make_row(c4.PREFIX, -1, b'\x83\x4a', '\u963f', 1),
@@ -86,11 +104,14 @@ class Plans(unittest.TestCase):
 
     def test_pins(self):
         m4 = self.m4
-        self.assertIsNone(m4.NAME_V4_OBJECT_SHA256)
-        self.assertIsNone(m4.LIST_V4_OBJECT_SHA256)
-        self.assertIsNone(m4.TEXTOUT_V4_OBJECT_SHA256)
-        with self.assertRaises(m4.Refuse):
-            m4.resolve_pins()
+        locked = dict(name=MSVC_V4_PINS['name_pair_v4'], list=MSVC_V4_PINS['list_insert_v4'],
+                      textout=MSVC_V4_PINS['name_textout_v4'])
+        self.assertEqual((m4.NAME_V4_OBJECT_SHA256, m4.LIST_V4_OBJECT_SHA256, m4.TEXTOUT_V4_OBJECT_SHA256),
+                         (locked['name'], locked['list'], locked['textout']))
+        import rehearse_v4_objs as rv4
+        self.assertEqual(rv4.PINS, MSVC_V4_PINS)
+        pins, rehearsal = m4.resolve_pins()
+        self.assertEqual((pins, rehearsal), (locked, False))
         good = dict(name='1' * 64, list='2' * 64, textout='3' * 64)
         pins, rehearsal = m4.resolve_pins(good)
         self.assertTrue(rehearsal)
@@ -270,6 +291,20 @@ class LabBuildV4(unittest.TestCase):
         for args, pins in cases:
             with self.assertRaises(m4.Refuse):
                 m4.build_inert_v4(self.o, self.m, *args, pins=pins)
+
+    @unittest.skipUnless(_msvc_objs(), 'm063b MSVC objects not available locally (LD2_M063B_RETURN)')
+    def test_build_msvc_pinned(self):
+        o = _msvc_objs()
+        objs = (o['name_pair_v4'], o['list_insert_v4'], o['name_textout_v4'])
+        inert, rep = self.m4.build_inert_v4(self.o, self.m, *objs, self.blob, list_mode=2)
+        self.assertFalse(rep['rehearsal'])
+        self.assertTrue(rep['handoff_eligible'])
+        self.assertFalse(rep['production_can_apply'] or rep['release_approved'])
+        cr = tuple(int(x, 16) for x in rep['code_range'])
+        va = [int(rep[k], 16) for k in ('entry_va', 'list_item_entry_va', 'list_name_entry_va', 'textout_entry_va')]
+        en, erep = self.e4.apply_enabled_v4(inert, *va, cr, MANIFEST, SUMMARY)
+        self.assertEqual(erep['counts'], dict(pair5=25, tail8=1, list_sites=18, list_item=7, list_name=11))
+        self.assertFalse(erep['production_can_apply'] or erep['release_approved'] or erep['file_written'])
 
     def test_enable_refuses_swapped_or_enabled(self):
         inert, rep, en, erep, va = self.build(2)

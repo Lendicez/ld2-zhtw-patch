@@ -14,7 +14,7 @@
 
 m062 鎖定的 v3 物件（`name_pair_v3.obj`、`list_insert_v3.obj`）與 m063a 的 NameTextOut v3 都讀 v3 catalog。v3 分不開「同一串 bytes 既是道具名又是人名」的情況（Kris 短劍「波刃短劍」vs 女名「克莉絲」、戟斧 2 組、跨地區男名假切分 5 組）。
 
-m063c 的 v4 catalog（`catalog_core_v4.h`）多了地區標籤與 `NAME_ONLY` 查表旗標，在模型與 C 核心層面解掉上面這些。v4 helper 會拒絕 v3 blob（v3 helper 也拒絕 v4），所以**三個用到 catalog 的物件必須一起換成 v4**，用同一套 MSVC 14.44 旗標一次產出，交回 Linux 稽核後才能鎖定 hash。三個 pin（`rehearse_v4_objs.py` 的 `*_V4_OBJECT_SHA256`）目前都是 `None`。
+m063c 的 v4 catalog（`catalog_core_v4.h`）多了地區標籤與 `NAME_ONLY` 查表旗標，在模型與 C 核心層面解掉上面這些。v4 helper 會拒絕 v3 blob（v3 helper 也拒絕 v4），所以**三個用到 catalog 的物件必須一起換成 v4**，用同一套 MSVC 14.44 旗標一次產出，交回 Linux 稽核後才能鎖定 hash。三個 pin（`rehearse_v4_objs.py`／`merge_plan_v4.py` 的 `*_V4_OBJECT_SHA256`）已於 2026-10-31 依本包回傳物件稽核後鎖定（見 `../RESULT-M063B.zh-TW.md`）。
 
 | 物件 | 入口 | 與上一版差異 | 查表旗標 |
 |---|---|---|---|
