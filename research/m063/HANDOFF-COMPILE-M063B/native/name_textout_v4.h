@@ -18,7 +18,7 @@ struct LD2Cdc;
 typedef int (__thiscall *LD2LegacyMethod)(LD2Cdc*,int,int,const char*,int);
 typedef int (__stdcall *LD2WideMethod)(void*,int,int,const LD2Wide*,int);
 static_assert(sizeof(void*)==4 && sizeof(LD2Word)==4 && sizeof(LD2Wide)==2,"x86 widths");
-// catalog_v4.SITE_FLAGS['name']: never consult full_id rows (Kris / 戟斧 fixes).
+// catalog_v4.SITE_FLAGS['name']: never consult full_id rows (Kris / poleaxe join fixes).
 #define LD2N4_FLAGS (LD2C4_ALLOW_ANY|LD2C4_ALLOW_JOIN|LD2C4_NAME_ONLY)
 extern "C" {
     extern LD2Word LD2_CatalogBytes;

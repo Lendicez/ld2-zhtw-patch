@@ -85,7 +85,7 @@ $Helpers = @(
   @{ name = 'list_insert_v4';  entries = @('@LD2_ListInsertV4@24', '@LD2_ListInsertNameV4@24') },
   @{ name = 'name_textout_v4'; entries = @('@LD2_NameTextOut@24') }
 )
-$Flags = @('/c','/W4','/WX','/O2','/Oi','/Oy-','/GS','/Gy','/Zl','/EHs')
+$Flags = @('/c','/W4','/WX','/utf-8','/O2','/Oi','/Oy-','/GS','/Gy','/Zl','/EHs')
 $Shas = @{}
 if ($SkipStageA) {
   Write-Host '=== Stage A skipped (-SkipStageA): re-using existing objects ==='
@@ -100,8 +100,8 @@ if ($SkipStageA) {
     $cpp = Join-Path $SrcDir "$($h.name).cpp"
     $obj = Join-Path $OutCompile "$($h.name).obj"
     $asm = Join-Path $OutCompile "$($h.name).asm"
-    Write-Host "=== Stage A: compile-only $($h.name).cpp (/EHs /Zl /GS, no link) ==="
-    & $Cl /nologo /c /W4 /WX /O2 /Oi /Oy- /GS /Gy /Zl /EHs "/I$SrcDir" $cpp "/Fo$obj" /FAsc "/Fa$asm" | Out-Host
+    Write-Host "=== Stage A: compile-only $($h.name).cpp (/EHs /Zl /GS /utf-8, no link) ==="
+    & $Cl /nologo /c /W4 /WX /utf-8 /O2 /Oi /Oy- /GS /Gy /Zl /EHs "/I$SrcDir" $cpp "/Fo$obj" /FAsc "/Fa$asm" | Out-Host
     if ($LASTEXITCODE -ne 0) { throw "Stage A cl failed for $($h.name) ($LASTEXITCODE)" }
     $Shas[$h.name] = Sha $obj
     Write-Host "Stage A OK $($h.name).obj sha256=$($Shas[$h.name])"
