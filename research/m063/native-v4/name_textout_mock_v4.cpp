@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 // m063c mock harness for LD2_NameTextOut v4 (logic + i386 ABI only, NOT the MSVC object).
 // Port of research/m062/native-m063/name_textout_mock_v3.cpp over a runtime v4 blob, plus v4
 // cases: NAME_ONLY (item full_id rows never shown at a name site: Kris / 戟斧 shapes),
