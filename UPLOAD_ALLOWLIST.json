@@ -228,7 +228,22 @@
     "research/m063/rehearse_v4_objs.py",
     "research/m063/merge_plan_v4.py",
     "research/m063/enable_plan_v4.py",
-    "research/m063/test_native_v4.py"
+    "research/m063/test_native_v4.py",
+    "research/m063/HANDOFF-COMPILE-M063B/README.zh-TW.md",
+    "research/m063/HANDOFF-COMPILE-M063B/USER-STEPS.zh-TW.md",
+    "research/m063/HANDOFF-COMPILE-M063B/WINDOWS-COMPILE-M063B.ps1",
+    "research/m063/HANDOFF-COMPILE-M063B/native/catalog_core_v4.h",
+    "research/m063/HANDOFF-COMPILE-M063B/native/list_bindings_v4.h",
+    "research/m063/HANDOFF-COMPILE-M063B/native/list_core_v4.h",
+    "research/m063/HANDOFF-COMPILE-M063B/native/list_insert_v4.cpp",
+    "research/m063/HANDOFF-COMPILE-M063B/native/list_mock_test_v4.cpp",
+    "research/m063/HANDOFF-COMPILE-M063B/native/name_pair_mock_v4.cpp",
+    "research/m063/HANDOFF-COMPILE-M063B/native/name_pair_v4.cpp",
+    "research/m063/HANDOFF-COMPILE-M063B/native/name_pair_v4.h",
+    "research/m063/HANDOFF-COMPILE-M063B/native/name_textout_mock_v4.cpp",
+    "research/m063/HANDOFF-COMPILE-M063B/native/name_textout_v4.cpp",
+    "research/m063/HANDOFF-COMPILE-M063B/native/name_textout_v4.h",
+    "research/m063/HANDOFF-COMPILE-M063B/native/v4_mock_blob.h"
   ],
   "excluded_roots": [
     ".git",

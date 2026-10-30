@@ -1,12 +1,13 @@
 # m062／m063 狀態與等待項目（Linux 端）
 
-最後更新：2026-10-29（台北）。分支 `research/m062-catalog-capacity`（PR #26，Draft，不合併）。`production_can_apply=false`、`release_approved=false`。
+最後更新：2026-10-31（台北）。分支 `research/m062-catalog-capacity`（PR #26，Draft，不合併）。`production_can_apply=false`、`release_approved=false`。
 
 ## 已完成（Linux）
 - m063a：NameTextOut 第三物件槽、25 pair5＋1 tail8＋18 清單點改寫計畫、靜態驗證（`RESULT-M063A.zh-TW.md`）。
 - 男女同 bytes 名定稿「薩拉」（3 列 user_decided）與 lab_preview 靜態重建。
 - **Mina draft5-kris-24 收進 #26（2026-10-29，使用者經 Mina 定稿）**：Kris 短劍 extended 28 定稿「**波刃短劍**」（新增 1 列 user_decided，公開 JSON 1817 列）；24 筆標籤／說明不一致（primary 272–295）**名字＋說明都收**，`review_status=user_decided_include_name_and_description`（不等實機）。lab_preview 重建：v3 子集 1816 列（只排除 Kris，因 v3 人名點分不開），v3 blob `668143b7…678e`（6127 列，253,484 B）；v4 完整稿 6148 列 `bbe4974f…1502`，Kris 女名 600/600。mock 的 Kris 道具文字改為「波刃短劍」。
 - **m063c**：catalog v4（地區標籤＋NAME_ONLY）模型、C 核心、主機交叉測試、lab 數量摘要（`DESIGN-M063C-CATALOG-V4.zh-TW.md`）。在模型與 C 核心層面解掉 Kris、戟斧 2 組、跨地區假切分 5 組；男名 40,000 組全對。
+- **m063b 交接包已打包（2026-10-31，使用者經 Rona 同意）**：`HANDOFF-COMPILE-M063B/`（compile-only：三個 `cl /c`＋三個 mock 連結執行一次＋桌面回傳 zip；不開遊戲、不碰 `Ld95.exe`、不含 loader／啟用驗收）。`native/` 12 檔與 `native-v4/` 逐位元組相同；打包前 Linux mock 重跑：清單 `cases=54 assertions=2301 failed=0`、NameTextOut 36／12398／0、NamePair 45／25959／0。
 - **m063c native v4**（DESIGN §7 1–4）：ListInsert v4 兩入口（item／name）、NameTextOut v4（NAME_ONLY）、NamePair v4（旗標 0）、`merge_plan_v4`／`enable_plan_v4`（7 item＋11 name 清單點分流）、兩入口 COFF 稽核、Linux 預演與 mock 全過；lab 鏡像上 v4 inert＋enabled 影像靜態建置通過（只在記憶體，沒寫 EXE）。三個 v4 物件 pin 仍為 `None`。
 
 ## 阻礙一覽
@@ -18,11 +19,11 @@
 | 3 | ~~24 筆 label/desc mismatch（primary 272–295）~~ | **已決定名字＋說明都收**（draft5，`user_decided_include_name_and_description`）；已進 lab_preview（v3 +264 列） | 實機只剩「顯示是否合理」的觀察，不再擋收錄 | — |
 | 4 | 非 CP950 7 字（8 筆） | v3／v4 都輸出 UTF-16，理論可顯示 | 只能實機確認（同一次觀察即可） | 使用者（Win11，需同意） |
 | 5 | 沒有任何列是 `human_reviewed` | reviewed catalog 只有 m051 24 項 | 使用者或遊戲內確認後才升級 | 使用者／Mina |
-| 6 | m063b MSVC 編譯 | 未打包（Linux 前置已全部完成） | 使用者同意後才打包：一次編 NameTextOut v4＋ListInsert v4＋NamePair v4，回傳物件以 `rehearse_v4_objs.py` 完整稽核再填 pin | 使用者（需同意） |
+| 6 | m063b MSVC 編譯 | **已打包** `HANDOFF-COMPILE-M063B/`（2026-10-31）；**等 Win11 回傳** `m063b-v4-compile-return.zip` | 使用者在 Win11 照 `USER-STEPS.zh-TW.md` 跑一次 `WINDOWS-COMPILE-M063B.ps1`，回傳桌面 zip；Linux 以 `rehearse_v4_objs.py --list-obj/--textout-obj/--name-obj` 完整稽核後才填 pin | 使用者（Win11，已同意，待執行） |
 
-## 目前不需要使用者操作
-Linux 端 DESIGN §7 的 1–4 已完成。接下來全部是等待項：
-- **使用者（需同意）**：是否進行 m063b（Win11 MSVC 一次編譯三個 v4 物件）。未同意前不打包任何 Win11 交接。
+## 目前等待使用者的操作
+Linux 端 DESIGN §7 的 1–4 已完成，m063b 交接包也已打包。接下來全部是等待項：
+- **使用者（Win11，已同意）**：跑一次 m063b（`research/m063/HANDOFF-COMPILE-M063B/USER-STEPS.zh-TW.md`，約 5–10 分鐘，不開遊戲），把桌面 `m063b-v4-compile-return.zip` 傳回。`production_can_apply` 仍為 false。
 - **Win11 實機觀察（m063b 之後）**：Kris／戟斧／跨地區男名在清單與 TextOut 的實際顯示；commission 3 點清單內容（決定 `unclassified_list` 要不要改 name）；非 CP950 7 字；24 筆 label/desc mismatch（已收）實際出現在哪個畫面、譯名是否合理；Kris「波刃短劍」在商店／道具畫面、「克莉絲」在人名點。
 - **Mina**：見下。
 
