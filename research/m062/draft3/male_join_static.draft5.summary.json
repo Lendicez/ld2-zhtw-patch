@@ -1,0 +1,91 @@
+{
+ "milestone": "m062",
+ "production_can_apply": false,
+ "release_approved": false,
+ "note": "Counts only; no source text. Lab inputs: pristine EXE + Mina draft (hash below).",
+ "draft_sha256": "f896db35ce43c94b76e4d3f6912c06dbf0367caaa93864b5bea5e19d38f77f4d",
+ "m051_catalog_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
+ "rows_by_category": {
+  "weapon": 1892,
+  "armor": 1496,
+  "tool": 814,
+  "consumable": 649,
+  "adventurer": 1400
+ },
+ "rows_after_dedupe": 6138,
+ "rows_by_kind": {
+  "full_id": 4851,
+  "prefix": 350,
+  "suffix": 355,
+  "full_any": 582
+ },
+ "v1_capacity": 264,
+ "v1_fits": false,
+ "v3_bytes": 253936,
+ "v3_sha256": "57ffa90ab19bb41c1cb12d63f3e395b57af1f7425dc03b254215df5472963e2a",
+ "v3_vs_v1_row_table_bytes": 3633696,
+ "male_join": {
+  "combinations": 40000,
+  "join_ok": 39985,
+  "exact_row_wins": 10,
+  "exact_row_wins_same_text": 8,
+  "join_ambiguous_or_missing": 5,
+  "exact_row_wins_different_text": 2,
+  "distinct_full_strings": 32129,
+  "full_strings_with_conflicting_translations": 0,
+  "max_joined_utf16_units": 7
+ },
+ "review": [
+  {
+   "region": "western",
+   "first": 12,
+   "second": 48,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "阿爾頓"
+  },
+  {
+   "region": "western",
+   "first": 22,
+   "second": 32,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "迪翁"
+  },
+  {
+   "region": "western",
+   "first": 81,
+   "second": 48,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "阿爾頓"
+  },
+  {
+   "region": "arabic",
+   "first": 65,
+   "second": 67,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "法拉恩"
+  },
+  {
+   "region": "arabic",
+   "first": 67,
+   "second": 67,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "法特恩"
+  },
+  {
+   "region": "arabic",
+   "first": 69,
+   "second": 31,
+   "reason": "exact_row_wins",
+   "join_text": "哈爾巴德",
+   "shown_text": "戟斧"
+  },
+  {
+   "region": "arabic",
+   "first": 69,
+   "second": 95,
+   "reason": "exact_row_wins",
+   "join_text": "哈爾巴德",
+   "shown_text": "戟斧"
+  }
+ ]
+}

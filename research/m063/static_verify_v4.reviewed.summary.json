@@ -1,0 +1,1039 @@
+{
+ "milestone": "m063d",
+ "catalog": "reviewed",
+ "base": "m045",
+ "base_sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7",
+ "objects": {
+  "name_pair_v4": "bf33cfc674f28fd6f8bb069d76176f45d1309a8ab3198f068fc31c3ed87792e6",
+  "list_insert_v4": "cb74d585c9936f41debc831c863e1eb91dd652770ba4911660e16dd4e3c72b35",
+  "name_textout_v4": "76d0adb7cecc82e54c1e0543a2d5f8b932f3b2d9f82a255ac6941390385cc0f6"
+ },
+ "production_can_apply": false,
+ "release_approved": false,
+ "release_eligible_catalog": true,
+ "modes": {
+  "2": {
+   "inert_sha256": "4472cd50746456736e96920e2bcf7f8e9aff3ba50c310b177ee0ac8453b4a1d1",
+   "enabled_sha256": "340af66da5b00f42e09a75c599f85acedc2c349a45a30354b4528537d1097c72",
+   "size": 7147520,
+   "size_of_image": "0x6ea000",
+   "entry_va": "0xae3aa0",
+   "list_item_entry_va": "0xae4d40",
+   "list_name_entry_va": "0xae4b20",
+   "textout_entry_va": "0xae5900",
+   "code_range": [
+    "0xae3000",
+    "0xae5b40"
+   ],
+   "code_sha256": "0520c1b43a0a51ca2d3732d95c54243edf1004ed5bf37e138677c5f53f8b954c",
+   "list_mode_slot_va": "0xae600c",
+   "original_dlgitem_slot_va": "0xae6008",
+   "hook_stub_sha256": "d70b10c7a53e1d6ed4a77e4a3a10cf9bd4220f00283a26c1359c768bc0f6b522",
+   "counts": {
+    "pair5": 25,
+    "tail8": 1,
+    "list_sites": 18,
+    "list_item": 7,
+    "list_name": 11
+   },
+   "handoff_eligible": true,
+   "verify": {
+    "sites_item": [
+     {
+      "va": "0x492431",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     },
+     {
+      "va": "0x4aaf19",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     },
+     {
+      "va": "0x4ab0fe",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     },
+     {
+      "va": "0x4b1153",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     },
+     {
+      "va": "0x4b3477",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     },
+     {
+      "va": "0x4b46e4",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     },
+     {
+      "va": "0x4b4df1",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     }
+    ],
+    "hook_stub_disasm": [
+     "0x46dc7d push dword ptr [esp + 0x18]",
+     "0x46dc81 push esi",
+     "0x46dc82 push dword ptr [esp + 0x1c]",
+     "0x46dc86 push ebp",
+     "0x46dc87 call 0xae3aa0",
+     "0x46dc8c jmp 0x46dca5",
+     "0x46dc91 int3 ",
+     "0x46dc92 int3 ",
+     "0x46dc93 int3 ",
+     "0x46dc94 int3 ",
+     "0x46dc95 int3 ",
+     "0x46dc96 int3 ",
+     "0x46dc97 int3 ",
+     "0x46dc98 int3 ",
+     "0x46dc99 int3 ",
+     "0x46dc9a int3 ",
+     "0x46dc9b int3 ",
+     "0x46dc9c int3 ",
+     "0x46dc9d int3 ",
+     "0x46dc9e int3 ",
+     "0x46dc9f int3 ",
+     "0x46dca0 int3 ",
+     "0x46dca1 int3 ",
+     "0x46dca2 int3 ",
+     "0x46dca3 int3 ",
+     "0x46dca4 int3 "
+    ],
+    "pefile_checksum_ok": true,
+    "sections": [
+     ".text",
+     ".rdata",
+     ".data",
+     ".rsrc",
+     ".ld2t",
+     ".ld2c",
+     ".ld2i"
+    ],
+    "import_count": 15,
+    "entry_point": "0x10011e",
+    "size_of_image": "0x6ea000",
+    "original_dlgitem_slot_value": "0x4ea671",
+    "expected_textouta_value": "0x4e13d7",
+    "sites_name": [
+     {
+      "va": "0x46e73a",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x4735f6",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x474ead",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x47502c",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x475bbe",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x47c242",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x47db6a",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x481d42",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x497a20",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x4b2d1f",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x4cb4b2",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     }
+    ],
+    "fixups_name": {
+     "fixups": 34,
+     "external_refs": {
+      "_LD2_CatalogBytes": 1,
+      "_LD2_Catalog": 1,
+      "___security_cookie": 1,
+      "_LD2_ExpectedTextOutA": 3,
+      "_LD2_TextOutW": 3,
+      "@__security_check_cookie@4": 3
+     }
+    },
+    "fixups_list": {
+     "fixups": 83,
+     "external_refs": {
+      "_LD2_MultiByteToWideChar": 5,
+      "___security_cookie": 3,
+      "_LD2_ListMode": 3,
+      "_LD2_SendDlgItemMessageW": 6,
+      "_LD2_OriginalDlgItem": 9,
+      "_LD2_GetDlgItem": 4,
+      "_LD2_IsWindowUnicode": 4,
+      "_LD2_GetWindowLongW": 4,
+      "_LD2_GetClassLongW": 4,
+      "_LD2_SetWindowLongW": 4,
+      "_LD2_CatalogBytes": 3,
+      "_LD2_Catalog": 3,
+      "@__security_check_cookie@4": 12
+     }
+    },
+    "fixups_textout": {
+     "fixups": 28,
+     "external_refs": {
+      "___security_cookie": 1,
+      "@__security_check_cookie@4": 3,
+      "_LD2_ExpectedTextOutA": 2,
+      "_LD2_TextOutW": 2,
+      "_LD2_CatalogBytes": 1,
+      "_LD2_Catalog": 1
+     }
+    },
+    "binding_targets": {
+     "original_dlgitem_value": "0x4ea671",
+     "list_mode": 2,
+     "catalog_bytes": 12236,
+     "blob_sha256": "d8214a95791f98db06a67fccc3710cf5e6b002eb88a0453b4bd8ad65174c1de2",
+     "shared_catalog": true
+    },
+    "indirect_calls": {
+     "list": {
+      "binding_slots_called": [
+       "0x52537c",
+       "0x525498",
+       "0xae6008",
+       "0xae91e8",
+       "0xae91ec",
+       "0xae91f0",
+       "0xae91f4",
+       "0xae91f8"
+      ],
+      "other_indirect": []
+     },
+     "name": {
+      "binding_slots_called": [
+       "0xae9160"
+      ],
+      "other_indirect": [
+       "0xae3bf9 call eax"
+      ]
+     }
+    },
+    "textout_site_windows": 26,
+    "textout_abs_dword_hits": 0,
+    "object_audits": {
+     "rehearsal": false,
+     "compiler": "MSVC (returned objects)",
+     "production_object": false,
+     "may_pin": false,
+     "production_can_apply": false,
+     "list_insert_v4": {
+      "entries": {
+       "@LD2_ListInsertV4@24": {
+        "normal_returns": 19,
+        "normal_cfg_states": 1485,
+        "internal_callees_audited": [
+         "?LD2C4_Lookup@@YAIPBULD2C4View@@PBEIHIPCGI@Z",
+         "?LD2_ListPrepareV4@@YAHIPBEPBULD2C4View@@P6AH0HPAGH@ZI2PAH@Z",
+         "?ld2_make_unicode@@YAXPAXH@Z",
+         "?ld2c4_cmp@@YAHPBULD2C4View@@IIPBEI@Z",
+         "?ld2c4_find@@YAHPBULD2C4View@@IPBEIHIPAPBEPAIPAH@Z",
+         "?ld2c4_open@@YAHPBEIPAULD2C4View@@@Z",
+         "?ld2c4_u32@@YAIPBE@Z"
+        ],
+        "calls": [
+         "?LD2C4_Lookup@@YAIPBULD2C4View@@PBEIHIPCGI@Z",
+         "?LD2_ListPrepareV4@@YAHIPBEPBULD2C4View@@P6AH0HPAGH@ZI2PAH@Z",
+         "?ld2_make_unicode@@YAXPAXH@Z",
+         "?ld2c4_cmp@@YAHPBULD2C4View@@IIPBEI@Z",
+         "?ld2c4_find@@YAHPBULD2C4View@@IPBEIHIPAPBEPAIPAH@Z",
+         "?ld2c4_open@@YAHPBEIPAULD2C4View@@@Z",
+         "?ld2c4_u32@@YAIPBE@Z",
+         "@__security_check_cookie@4",
+         "_LD2_GetClassLongW",
+         "_LD2_GetDlgItem",
+         "_LD2_GetWindowLongW",
+         "_LD2_IsWindowUnicode",
+         "_LD2_MultiByteToWideChar",
+         "_LD2_OriginalDlgItem",
+         "_LD2_SendDlgItemMessageW",
+         "_LD2_SetWindowLongW"
+        ],
+        "binding_spills": [
+         [
+          "0x1115",
+          "dword ptr [ebp - 0x214]",
+          "_LD2_ListMode"
+         ],
+         [
+          "0x1159",
+          "dword ptr [ebp - 0x20c]",
+          "_LD2_OriginalDlgItem"
+         ]
+        ],
+        "frame_leas_while_spilled": [
+         [
+          "0x11a8",
+          "eax, [ebp - 0x228]",
+          "dword ptr [ebp - 0x20c]"
+         ],
+         [
+          "0x11a8",
+          "eax, [ebp - 0x228]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0x11f0",
+          "eax, [ebp - 0x20c]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0x1201",
+          "eax, [ebp - 0x208]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0x120c",
+          "eax, [ebp - 0x228]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0x1289",
+          "eax, [ebp - 0x208]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0x129e",
+          "eax, [ebp - 0x208]",
+          "dword ptr [ebp - 0x214]"
+         ]
+        ],
+        "ret_pop": 16,
+        "cookie_noreturn_tails": [],
+        "esp_and_nonvolatile_preserved_on_normal_paths": true
+       },
+       "@LD2_ListInsertNameV4@24": {
+        "normal_returns": 19,
+        "normal_cfg_states": 1485,
+        "internal_callees_audited": [
+         "?LD2C4_Lookup@@YAIPBULD2C4View@@PBEIHIPCGI@Z",
+         "?LD2_ListPrepareV4@@YAHIPBEPBULD2C4View@@P6AH0HPAGH@ZI2PAH@Z",
+         "?ld2_make_unicode@@YAXPAXH@Z",
+         "?ld2c4_cmp@@YAHPBULD2C4View@@IIPBEI@Z",
+         "?ld2c4_find@@YAHPBULD2C4View@@IPBEIHIPAPBEPAIPAH@Z",
+         "?ld2c4_open@@YAHPBEIPAULD2C4View@@@Z",
+         "?ld2c4_u32@@YAIPBE@Z"
+        ],
+        "calls": [
+         "?LD2C4_Lookup@@YAIPBULD2C4View@@PBEIHIPCGI@Z",
+         "?LD2_ListPrepareV4@@YAHIPBEPBULD2C4View@@P6AH0HPAGH@ZI2PAH@Z",
+         "?ld2_make_unicode@@YAXPAXH@Z",
+         "?ld2c4_cmp@@YAHPBULD2C4View@@IIPBEI@Z",
+         "?ld2c4_find@@YAHPBULD2C4View@@IPBEIHIPAPBEPAIPAH@Z",
+         "?ld2c4_open@@YAHPBEIPAULD2C4View@@@Z",
+         "?ld2c4_u32@@YAIPBE@Z",
+         "@__security_check_cookie@4",
+         "_LD2_GetClassLongW",
+         "_LD2_GetDlgItem",
+         "_LD2_GetWindowLongW",
+         "_LD2_IsWindowUnicode",
+         "_LD2_MultiByteToWideChar",
+         "_LD2_OriginalDlgItem",
+         "_LD2_SendDlgItemMessageW",
+         "_LD2_SetWindowLongW"
+        ],
+        "binding_spills": [
+         [
+          "0xef5",
+          "dword ptr [ebp - 0x214]",
+          "_LD2_ListMode"
+         ],
+         [
+          "0xf39",
+          "dword ptr [ebp - 0x20c]",
+          "_LD2_OriginalDlgItem"
+         ]
+        ],
+        "frame_leas_while_spilled": [
+         [
+          "0x1069",
+          "eax, [ebp - 0x208]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0x107e",
+          "eax, [ebp - 0x208]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0xf88",
+          "eax, [ebp - 0x228]",
+          "dword ptr [ebp - 0x20c]"
+         ],
+         [
+          "0xf88",
+          "eax, [ebp - 0x228]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0xfd0",
+          "eax, [ebp - 0x20c]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0xfe1",
+          "eax, [ebp - 0x208]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0xfec",
+          "eax, [ebp - 0x228]",
+          "dword ptr [ebp - 0x214]"
+         ]
+        ],
+        "ret_pop": 16,
+        "cookie_noreturn_tails": [],
+        "esp_and_nonvolatile_preserved_on_normal_paths": true
+       }
+      },
+      "undefined": [
+       "@__security_check_cookie@4",
+       "_LD2_Catalog",
+       "_LD2_CatalogBytes",
+       "_LD2_GetClassLongW",
+       "_LD2_GetDlgItem",
+       "_LD2_GetWindowLongW",
+       "_LD2_IsWindowUnicode",
+       "_LD2_ListMode",
+       "_LD2_MultiByteToWideChar",
+       "_LD2_OriginalDlgItem",
+       "_LD2_SendDlgItemMessageW",
+       "_LD2_SetWindowLongW",
+       "___security_cookie"
+      ],
+      "public": [
+       "@LD2_ListInsertNameV4@24",
+       "@LD2_ListInsertV4@24"
+      ],
+      "rehearsal_sha256": "cb74d585c9936f41debc831c863e1eb91dd652770ba4911660e16dd4e3c72b35"
+     },
+     "name_textout_v4": {
+      "public": [
+       "@LD2_NameTextOut@24",
+       "_LD2N_FindCopy@12",
+       "_LD2N_Wipe@8"
+      ],
+      "undefined": [
+       "@__security_check_cookie@4",
+       "_LD2_Catalog",
+       "_LD2_CatalogBytes",
+       "_LD2_ExpectedTextOutA",
+       "_LD2_TextOutW",
+       "___security_cookie"
+      ],
+      "audit": "full_cfg_audit",
+      "rehearsal_sha256": "76d0adb7cecc82e54c1e0543a2d5f8b932f3b2d9f82a255ac6941390385cc0f6"
+     },
+     "name_pair_v4": {
+      "public": [
+       "_LD2_FindCopy@16",
+       "_LD2_LoadMethod@4",
+       "_LD2_NamePair@16",
+       "_LD2_OriginalOne@16",
+       "_LD2_OriginalPair@12",
+       "_LD2_Wipe@8"
+      ],
+      "undefined": [
+       "@__security_check_cookie@4",
+       "_LD2_Catalog",
+       "_LD2_CatalogBytes",
+       "_LD2_ExpectedTextOutA",
+       "_LD2_TextOutW",
+       "___security_cookie"
+      ],
+      "audit": "full_cfg_audit",
+      "rehearsal_sha256": "bf33cfc674f28fd6f8bb069d76176f45d1309a8ab3198f068fc31c3ed87792e6"
+     },
+     "matches_m063b_pins": {
+      "list_insert_v4": true,
+      "name_textout_v4": true,
+      "name_pair_v4": true
+     }
+    },
+    "new_imports_vs_pristine": [
+     "GDI32.dll!TextOutW",
+     "USER32.dll!GetClassLongW",
+     "USER32.dll!GetWindowLongW",
+     "USER32.dll!IsWindowUnicode",
+     "USER32.dll!SendDlgItemMessageW",
+     "USER32.dll!SetWindowLongW"
+    ],
+    "inert_vs_m045_body_changed_bytes": 0,
+    "enable_windows": 45,
+    "inert_to_enabled_changed_bytes": 228,
+    "checksum_offset": 328,
+    "checksum_inert": "0x6d3e94",
+    "checksum_enabled": "0x6dd8de",
+    "catalog_rows_readback": 264
+   }
+  },
+  "0": {
+   "inert_sha256": "590ae63ed5191ee1bfe353420f1579b9cfcc2921b118a2db84e055c41558888d",
+   "enabled_sha256": "27cec126ff4b0cc6ac1e10254b3807a3dcdf9d570bcd217fec0de32043d9b5d2",
+   "size": 7147520,
+   "size_of_image": "0x6ea000",
+   "entry_va": "0xae3aa0",
+   "list_item_entry_va": "0xae4d40",
+   "list_name_entry_va": "0xae4b20",
+   "textout_entry_va": "0xae5900",
+   "code_range": [
+    "0xae3000",
+    "0xae5b40"
+   ],
+   "code_sha256": "0520c1b43a0a51ca2d3732d95c54243edf1004ed5bf37e138677c5f53f8b954c",
+   "list_mode_slot_va": "0xae600c",
+   "original_dlgitem_slot_va": "0xae6008",
+   "hook_stub_sha256": "d70b10c7a53e1d6ed4a77e4a3a10cf9bd4220f00283a26c1359c768bc0f6b522",
+   "counts": {
+    "pair5": 25,
+    "tail8": 1,
+    "list_sites": 18,
+    "list_item": 7,
+    "list_name": 11
+   },
+   "handoff_eligible": true,
+   "verify": {
+    "sites_item": [
+     {
+      "va": "0x492431",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     },
+     {
+      "va": "0x4aaf19",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     },
+     {
+      "va": "0x4ab0fe",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     },
+     {
+      "va": "0x4b1153",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     },
+     {
+      "va": "0x4b3477",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     },
+     {
+      "va": "0x4b46e4",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     },
+     {
+      "va": "0x4b4df1",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4d40"
+     }
+    ],
+    "hook_stub_disasm": [
+     "0x46dc7d push dword ptr [esp + 0x18]",
+     "0x46dc81 push esi",
+     "0x46dc82 push dword ptr [esp + 0x1c]",
+     "0x46dc86 push ebp",
+     "0x46dc87 call 0xae3aa0",
+     "0x46dc8c jmp 0x46dca5",
+     "0x46dc91 int3 ",
+     "0x46dc92 int3 ",
+     "0x46dc93 int3 ",
+     "0x46dc94 int3 ",
+     "0x46dc95 int3 ",
+     "0x46dc96 int3 ",
+     "0x46dc97 int3 ",
+     "0x46dc98 int3 ",
+     "0x46dc99 int3 ",
+     "0x46dc9a int3 ",
+     "0x46dc9b int3 ",
+     "0x46dc9c int3 ",
+     "0x46dc9d int3 ",
+     "0x46dc9e int3 ",
+     "0x46dc9f int3 ",
+     "0x46dca0 int3 ",
+     "0x46dca1 int3 ",
+     "0x46dca2 int3 ",
+     "0x46dca3 int3 ",
+     "0x46dca4 int3 "
+    ],
+    "pefile_checksum_ok": true,
+    "sections": [
+     ".text",
+     ".rdata",
+     ".data",
+     ".rsrc",
+     ".ld2t",
+     ".ld2c",
+     ".ld2i"
+    ],
+    "import_count": 15,
+    "entry_point": "0x10011e",
+    "size_of_image": "0x6ea000",
+    "original_dlgitem_slot_value": "0x4ea671",
+    "expected_textouta_value": "0x4e13d7",
+    "sites_name": [
+     {
+      "va": "0x46e73a",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x4735f6",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x474ead",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x47502c",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x475bbe",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x47c242",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x47db6a",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x481d42",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x497a20",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x4b2d1f",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     },
+     {
+      "va": "0x4cb4b2",
+      "old": "call 0x4ea671",
+      "new": "call 0xae4b20"
+     }
+    ],
+    "fixups_name": {
+     "fixups": 34,
+     "external_refs": {
+      "_LD2_CatalogBytes": 1,
+      "_LD2_Catalog": 1,
+      "___security_cookie": 1,
+      "_LD2_ExpectedTextOutA": 3,
+      "_LD2_TextOutW": 3,
+      "@__security_check_cookie@4": 3
+     }
+    },
+    "fixups_list": {
+     "fixups": 83,
+     "external_refs": {
+      "_LD2_MultiByteToWideChar": 5,
+      "___security_cookie": 3,
+      "_LD2_ListMode": 3,
+      "_LD2_SendDlgItemMessageW": 6,
+      "_LD2_OriginalDlgItem": 9,
+      "_LD2_GetDlgItem": 4,
+      "_LD2_IsWindowUnicode": 4,
+      "_LD2_GetWindowLongW": 4,
+      "_LD2_GetClassLongW": 4,
+      "_LD2_SetWindowLongW": 4,
+      "_LD2_CatalogBytes": 3,
+      "_LD2_Catalog": 3,
+      "@__security_check_cookie@4": 12
+     }
+    },
+    "fixups_textout": {
+     "fixups": 28,
+     "external_refs": {
+      "___security_cookie": 1,
+      "@__security_check_cookie@4": 3,
+      "_LD2_ExpectedTextOutA": 2,
+      "_LD2_TextOutW": 2,
+      "_LD2_CatalogBytes": 1,
+      "_LD2_Catalog": 1
+     }
+    },
+    "binding_targets": {
+     "original_dlgitem_value": "0x4ea671",
+     "list_mode": 0,
+     "catalog_bytes": 12236,
+     "blob_sha256": "d8214a95791f98db06a67fccc3710cf5e6b002eb88a0453b4bd8ad65174c1de2",
+     "shared_catalog": true
+    },
+    "indirect_calls": {
+     "list": {
+      "binding_slots_called": [
+       "0x52537c",
+       "0x525498",
+       "0xae6008",
+       "0xae91e8",
+       "0xae91ec",
+       "0xae91f0",
+       "0xae91f4",
+       "0xae91f8"
+      ],
+      "other_indirect": []
+     },
+     "name": {
+      "binding_slots_called": [
+       "0xae9160"
+      ],
+      "other_indirect": [
+       "0xae3bf9 call eax"
+      ]
+     }
+    },
+    "textout_site_windows": 26,
+    "textout_abs_dword_hits": 0,
+    "object_audits": {
+     "rehearsal": false,
+     "compiler": "MSVC (returned objects)",
+     "production_object": false,
+     "may_pin": false,
+     "production_can_apply": false,
+     "list_insert_v4": {
+      "entries": {
+       "@LD2_ListInsertV4@24": {
+        "normal_returns": 19,
+        "normal_cfg_states": 1485,
+        "internal_callees_audited": [
+         "?LD2C4_Lookup@@YAIPBULD2C4View@@PBEIHIPCGI@Z",
+         "?LD2_ListPrepareV4@@YAHIPBEPBULD2C4View@@P6AH0HPAGH@ZI2PAH@Z",
+         "?ld2_make_unicode@@YAXPAXH@Z",
+         "?ld2c4_cmp@@YAHPBULD2C4View@@IIPBEI@Z",
+         "?ld2c4_find@@YAHPBULD2C4View@@IPBEIHIPAPBEPAIPAH@Z",
+         "?ld2c4_open@@YAHPBEIPAULD2C4View@@@Z",
+         "?ld2c4_u32@@YAIPBE@Z"
+        ],
+        "calls": [
+         "?LD2C4_Lookup@@YAIPBULD2C4View@@PBEIHIPCGI@Z",
+         "?LD2_ListPrepareV4@@YAHIPBEPBULD2C4View@@P6AH0HPAGH@ZI2PAH@Z",
+         "?ld2_make_unicode@@YAXPAXH@Z",
+         "?ld2c4_cmp@@YAHPBULD2C4View@@IIPBEI@Z",
+         "?ld2c4_find@@YAHPBULD2C4View@@IPBEIHIPAPBEPAIPAH@Z",
+         "?ld2c4_open@@YAHPBEIPAULD2C4View@@@Z",
+         "?ld2c4_u32@@YAIPBE@Z",
+         "@__security_check_cookie@4",
+         "_LD2_GetClassLongW",
+         "_LD2_GetDlgItem",
+         "_LD2_GetWindowLongW",
+         "_LD2_IsWindowUnicode",
+         "_LD2_MultiByteToWideChar",
+         "_LD2_OriginalDlgItem",
+         "_LD2_SendDlgItemMessageW",
+         "_LD2_SetWindowLongW"
+        ],
+        "binding_spills": [
+         [
+          "0x1115",
+          "dword ptr [ebp - 0x214]",
+          "_LD2_ListMode"
+         ],
+         [
+          "0x1159",
+          "dword ptr [ebp - 0x20c]",
+          "_LD2_OriginalDlgItem"
+         ]
+        ],
+        "frame_leas_while_spilled": [
+         [
+          "0x11a8",
+          "eax, [ebp - 0x228]",
+          "dword ptr [ebp - 0x20c]"
+         ],
+         [
+          "0x11a8",
+          "eax, [ebp - 0x228]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0x11f0",
+          "eax, [ebp - 0x20c]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0x1201",
+          "eax, [ebp - 0x208]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0x120c",
+          "eax, [ebp - 0x228]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0x1289",
+          "eax, [ebp - 0x208]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0x129e",
+          "eax, [ebp - 0x208]",
+          "dword ptr [ebp - 0x214]"
+         ]
+        ],
+        "ret_pop": 16,
+        "cookie_noreturn_tails": [],
+        "esp_and_nonvolatile_preserved_on_normal_paths": true
+       },
+       "@LD2_ListInsertNameV4@24": {
+        "normal_returns": 19,
+        "normal_cfg_states": 1485,
+        "internal_callees_audited": [
+         "?LD2C4_Lookup@@YAIPBULD2C4View@@PBEIHIPCGI@Z",
+         "?LD2_ListPrepareV4@@YAHIPBEPBULD2C4View@@P6AH0HPAGH@ZI2PAH@Z",
+         "?ld2_make_unicode@@YAXPAXH@Z",
+         "?ld2c4_cmp@@YAHPBULD2C4View@@IIPBEI@Z",
+         "?ld2c4_find@@YAHPBULD2C4View@@IPBEIHIPAPBEPAIPAH@Z",
+         "?ld2c4_open@@YAHPBEIPAULD2C4View@@@Z",
+         "?ld2c4_u32@@YAIPBE@Z"
+        ],
+        "calls": [
+         "?LD2C4_Lookup@@YAIPBULD2C4View@@PBEIHIPCGI@Z",
+         "?LD2_ListPrepareV4@@YAHIPBEPBULD2C4View@@P6AH0HPAGH@ZI2PAH@Z",
+         "?ld2_make_unicode@@YAXPAXH@Z",
+         "?ld2c4_cmp@@YAHPBULD2C4View@@IIPBEI@Z",
+         "?ld2c4_find@@YAHPBULD2C4View@@IPBEIHIPAPBEPAIPAH@Z",
+         "?ld2c4_open@@YAHPBEIPAULD2C4View@@@Z",
+         "?ld2c4_u32@@YAIPBE@Z",
+         "@__security_check_cookie@4",
+         "_LD2_GetClassLongW",
+         "_LD2_GetDlgItem",
+         "_LD2_GetWindowLongW",
+         "_LD2_IsWindowUnicode",
+         "_LD2_MultiByteToWideChar",
+         "_LD2_OriginalDlgItem",
+         "_LD2_SendDlgItemMessageW",
+         "_LD2_SetWindowLongW"
+        ],
+        "binding_spills": [
+         [
+          "0xef5",
+          "dword ptr [ebp - 0x214]",
+          "_LD2_ListMode"
+         ],
+         [
+          "0xf39",
+          "dword ptr [ebp - 0x20c]",
+          "_LD2_OriginalDlgItem"
+         ]
+        ],
+        "frame_leas_while_spilled": [
+         [
+          "0x1069",
+          "eax, [ebp - 0x208]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0x107e",
+          "eax, [ebp - 0x208]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0xf88",
+          "eax, [ebp - 0x228]",
+          "dword ptr [ebp - 0x20c]"
+         ],
+         [
+          "0xf88",
+          "eax, [ebp - 0x228]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0xfd0",
+          "eax, [ebp - 0x20c]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0xfe1",
+          "eax, [ebp - 0x208]",
+          "dword ptr [ebp - 0x214]"
+         ],
+         [
+          "0xfec",
+          "eax, [ebp - 0x228]",
+          "dword ptr [ebp - 0x214]"
+         ]
+        ],
+        "ret_pop": 16,
+        "cookie_noreturn_tails": [],
+        "esp_and_nonvolatile_preserved_on_normal_paths": true
+       }
+      },
+      "undefined": [
+       "@__security_check_cookie@4",
+       "_LD2_Catalog",
+       "_LD2_CatalogBytes",
+       "_LD2_GetClassLongW",
+       "_LD2_GetDlgItem",
+       "_LD2_GetWindowLongW",
+       "_LD2_IsWindowUnicode",
+       "_LD2_ListMode",
+       "_LD2_MultiByteToWideChar",
+       "_LD2_OriginalDlgItem",
+       "_LD2_SendDlgItemMessageW",
+       "_LD2_SetWindowLongW",
+       "___security_cookie"
+      ],
+      "public": [
+       "@LD2_ListInsertNameV4@24",
+       "@LD2_ListInsertV4@24"
+      ],
+      "rehearsal_sha256": "cb74d585c9936f41debc831c863e1eb91dd652770ba4911660e16dd4e3c72b35"
+     },
+     "name_textout_v4": {
+      "public": [
+       "@LD2_NameTextOut@24",
+       "_LD2N_FindCopy@12",
+       "_LD2N_Wipe@8"
+      ],
+      "undefined": [
+       "@__security_check_cookie@4",
+       "_LD2_Catalog",
+       "_LD2_CatalogBytes",
+       "_LD2_ExpectedTextOutA",
+       "_LD2_TextOutW",
+       "___security_cookie"
+      ],
+      "audit": "full_cfg_audit",
+      "rehearsal_sha256": "76d0adb7cecc82e54c1e0543a2d5f8b932f3b2d9f82a255ac6941390385cc0f6"
+     },
+     "name_pair_v4": {
+      "public": [
+       "_LD2_FindCopy@16",
+       "_LD2_LoadMethod@4",
+       "_LD2_NamePair@16",
+       "_LD2_OriginalOne@16",
+       "_LD2_OriginalPair@12",
+       "_LD2_Wipe@8"
+      ],
+      "undefined": [
+       "@__security_check_cookie@4",
+       "_LD2_Catalog",
+       "_LD2_CatalogBytes",
+       "_LD2_ExpectedTextOutA",
+       "_LD2_TextOutW",
+       "___security_cookie"
+      ],
+      "audit": "full_cfg_audit",
+      "rehearsal_sha256": "bf33cfc674f28fd6f8bb069d76176f45d1309a8ab3198f068fc31c3ed87792e6"
+     },
+     "matches_m063b_pins": {
+      "list_insert_v4": true,
+      "name_textout_v4": true,
+      "name_pair_v4": true
+     }
+    },
+    "new_imports_vs_pristine": [
+     "GDI32.dll!TextOutW",
+     "USER32.dll!GetClassLongW",
+     "USER32.dll!GetWindowLongW",
+     "USER32.dll!IsWindowUnicode",
+     "USER32.dll!SendDlgItemMessageW",
+     "USER32.dll!SetWindowLongW"
+    ],
+    "inert_vs_m045_body_changed_bytes": 0,
+    "enable_windows": 45,
+    "inert_to_enabled_changed_bytes": 228,
+    "checksum_offset": 328,
+    "checksum_inert": "0x6d3e92",
+    "checksum_enabled": "0x6dd8dc",
+    "catalog_rows_readback": 264
+   }
+  }
+ },
+ "catalog_build": {
+  "policy": "reviewed",
+  "review": {
+   "policy": "reviewed",
+   "catalogs": [
+    {
+     "sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
+     "items": 24,
+     "review_status": {
+      "m051_baseline": 24
+     }
+    }
+   ],
+   "release_eligible": true
+  },
+  "rows": 264,
+  "rows_by_kind": {
+   "full_id": 264
+  }
+ },
+ "blob_sha256": "d8214a95791f98db06a67fccc3710cf5e6b002eb88a0453b4bd8ad65174c1de2",
+ "semantics": {
+  "kris_item_rows": 0,
+  "kris_female_rows": 0
+ },
+ "capacity": {
+  "rows": 264,
+  "blob_bytes": 12236,
+  "pool_bytes": 7980,
+  "section_bytes": 12252,
+  "section_budget": 1048576,
+  "headroom_bytes": 1036324,
+  "helper_blob_max": 1179680,
+  "catalog_version": 4
+ },
+ "catalog_section": {
+  "virtual_size": 12252,
+  "raw_size": 12288,
+  "raw_pointer": "0x6cd000",
+  "file_align": 4096
+ }
+}

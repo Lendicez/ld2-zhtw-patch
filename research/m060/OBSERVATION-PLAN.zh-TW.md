@@ -1,10 +1,12 @@
-# m060 可丟棄副本：遊戲／字型／例外／存讀檔 觀察計畫（run1：B 後誤判停止；run2：只跑 C～F，已批准、待執行）
+# m060 可丟棄副本：遊戲／字型／例外／存讀檔 觀察計畫（run1：B 後誤判停止；run2：C～F＋G 完成）
 
 狀態：**使用者已於 2026-10-28 批准「可丟棄副本單次觀察」，只限一次（one run only）**；交接包：`HANDOFF-OBSERVE/`（`WINDOWS-ONCE.ps1`、`USER-STEPS.zh-TW.md`）；重跑或第二次觀察需另外授權；仍不授權正式套用。`production_can_apply=false`、`release_approved=false` 不變。回傳證據後將同步 GitHub 並改以 GitHub 為主作業。
 
 > **執行紀錄（2026-10-28）**：已執行一次。步驟 A、B 完成，B 結束碼 `0x00000001` 觸發 §3 停止；無 0xC0000409、無 WER 事件、無 dump，且已正常建檔——判讀為很可能是正常退出的誤判。C～F（m045 字型／UI／存讀檔）**未執行、仍未測**；G 收尾確認原安裝未變。詳見 `research/m060/observe-run1/RESULT.zh-TW.md（公開版；本機原件在 zhTW_lab/runs/m060-observe/）`。本次核准已用畢，續跑 C～F 需另行批准。
 
 > **第二次觀察（run2）**：使用者 2026-10-28（訊息 t33u「請繼續」）批准續跑，**只跑 C～F＋G**，沿用 run1 的副本與第 1 格存檔；交接包 `HANDOFF-OBSERVE-CF/`（`WINDOWS-ONCE.ps1 -Run2`）。腳本已改：結束碼 1 在「無錯誤／WER 事件、無新 dump、有存檔」時為**軟警告**（見 §2b、§3）。仍不授權正式套用。
+
+> **run2 執行紀錄（2026-10-28）**：R、C、D、E、F、G 全部完成，無硬停；C、F 結束碼 1 皆判為軟警告（0 事件、0 dump、有新存檔）。m045 靜態 UI（選單、狀態列、對話框標籤）在 Win11 正確顯示繁中；對話框清單中的遊戲動態字串（道具名、冒險者、委託）顯示 `?`／亂碼，已以位元組驗證為 Shift-JIS 資料被當 CP950 解讀（既有碼頁問題，非 m045 回歸）。原版↔m045 存讀檔往返在檔案層級成立。原安裝未變。詳見 `research/m060/observe-run2/RESULT.zh-TW.md（公開版；本機原件在 zhTW_lab/runs/m060-observe-run2/）`。依 §5：基本可用、仍非 release-gate；下一步進入 helper 合併鏈。`production_can_apply=false`、`release_approved=false`。
 
 ## 0. 這輪要回答的問題（只三題）
 

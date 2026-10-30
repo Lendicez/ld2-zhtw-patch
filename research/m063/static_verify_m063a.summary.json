@@ -1,0 +1,135 @@
+{
+  "milestone": "m063a",
+  "catalog": "reviewed",
+  "textout_object_sha256": "30590f1e414c2cd1b1841f9d2ae57cd2a4b4f11f05d760ee26db719d57df135f",
+  "textout_rehearsal": true,
+  "production_can_apply": false,
+  "release_approved": false,
+  "modes": {
+    "2": {
+      "inert_sha256": "757c8121e7c842ffb7f37ab0a0a40cb72b37ab327c663552d8b9a517f3511eb1",
+      "enabled_sha256": "9cc6a04ae9f0cddd8a29971f1e6e242cd48236490cdfef0217895643d93b9eb5",
+      "size": 7147520,
+      "entry_va": "0xae3a10",
+      "list_entry_va": "0xae47e0",
+      "textout_entry_va": "0xae50d0",
+      "code_range": [
+        "0xae3000",
+        "0xae53f5"
+      ],
+      "changed_bytes_inert_to_enabled": 228,
+      "counts": {
+        "pair5": 25,
+        "tail8": 1,
+        "list_sites": 18
+      },
+      "handoff_eligible": false,
+      "textout_fixups": {
+        "fixups": 32,
+        "external_refs": {
+          "___security_cookie": 4,
+          "_LD2_CatalogBytes": 1,
+          "_LD2_Catalog": 11,
+          "@__security_check_cookie@4": 2,
+          "_LD2_ExpectedTextOutA": 1,
+          "_LD2_TextOutW": 2
+        }
+      },
+      "textout_audit": {
+        "object_sha256": "30590f1e414c2cd1b1841f9d2ae57cd2a4b4f11f05d760ee26db719d57df135f",
+        "entry": "@LD2_NameTextOut@24",
+        "cookie_noreturn_tails": [
+          "@LD2_NameTextOut@24:0x777",
+          "_LD2N_FindCopy@12:0x68b"
+        ],
+        "esp_and_nonvolatile_preserved_on_normal_paths": true
+      },
+      "textout_site_windows": 26,
+      "branch_hits": 0,
+      "abs_dword_hits_into_windows": 0,
+      "pefile_checksum_ok": true,
+      "new_imports_vs_pristine": [
+        "GDI32.dll!TextOutW",
+        "USER32.dll!GetClassLongW",
+        "USER32.dll!GetWindowLongW",
+        "USER32.dll!IsWindowUnicode",
+        "USER32.dll!SendDlgItemMessageW",
+        "USER32.dll!SetWindowLongW"
+      ]
+    },
+    "0": {
+      "inert_sha256": "b47d611b59c60edb39cac143be31c359853a61932126e92284d879dc4bfd721e",
+      "enabled_sha256": "b738d405df616cf5f85b31189831ad903478d3336d411b9159077f9253a246e6",
+      "size": 7147520,
+      "entry_va": "0xae3a10",
+      "list_entry_va": "0xae47e0",
+      "textout_entry_va": "0xae50d0",
+      "code_range": [
+        "0xae3000",
+        "0xae53f5"
+      ],
+      "changed_bytes_inert_to_enabled": 228,
+      "counts": {
+        "pair5": 25,
+        "tail8": 1,
+        "list_sites": 18
+      },
+      "handoff_eligible": false,
+      "textout_fixups": {
+        "fixups": 32,
+        "external_refs": {
+          "___security_cookie": 4,
+          "_LD2_CatalogBytes": 1,
+          "_LD2_Catalog": 11,
+          "@__security_check_cookie@4": 2,
+          "_LD2_ExpectedTextOutA": 1,
+          "_LD2_TextOutW": 2
+        }
+      },
+      "textout_audit": {
+        "object_sha256": "30590f1e414c2cd1b1841f9d2ae57cd2a4b4f11f05d760ee26db719d57df135f",
+        "entry": "@LD2_NameTextOut@24",
+        "cookie_noreturn_tails": [
+          "@LD2_NameTextOut@24:0x777",
+          "_LD2N_FindCopy@12:0x68b"
+        ],
+        "esp_and_nonvolatile_preserved_on_normal_paths": true
+      },
+      "textout_site_windows": 26,
+      "branch_hits": 0,
+      "abs_dword_hits_into_windows": 0,
+      "pefile_checksum_ok": true,
+      "new_imports_vs_pristine": [
+        "GDI32.dll!TextOutW",
+        "USER32.dll!GetClassLongW",
+        "USER32.dll!GetWindowLongW",
+        "USER32.dll!IsWindowUnicode",
+        "USER32.dll!SendDlgItemMessageW",
+        "USER32.dll!SetWindowLongW"
+      ]
+    }
+  },
+  "blob_sha256": "2879e445a1e40977e4ec21818df0317d82c3ee516a7d8d173b744458a0247abf",
+  "capacity": {
+    "rows": 264,
+    "blob_bytes": 12236,
+    "pool_bytes": 7980,
+    "section_bytes": 12252,
+    "section_budget": 1048576,
+    "headroom_bytes": 1036324,
+    "helper_blob_max": 1179680
+  },
+  "slots": {
+    "offsets": [
+      0,
+      3008,
+      6720
+    ],
+    "lengths": [
+      3008,
+      3700,
+      2485
+    ],
+    "align": 16
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "run": "run2",
+  "steps_done": [
+    "A",
+    "B",
+    "R",
+    "C",
+    "F"
+  ],
+  "stopped": null,
+  "soft_warnings": [
+    "run1 step B exit 0x00000001 (reassessed)",
+    "step C exit 0x00000001",
+    "step F exit 0x00000001"
+  ],
+  "finalized": true
+}

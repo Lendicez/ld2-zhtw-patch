@@ -1,0 +1,40 @@
+{
+  "schema": "m060-observe-run2-hashes-before/1",
+  "approved": "user approved 2026-10-28 (t33u): second disposable-copy m060 observation, steps C-F + G only, reusing run1 copy",
+  "taken_utc": "2026-10-28T15:38:15.6388712Z",
+  "windows": "Microsoft Windows NT 10.0.26200.0",
+  "source_dir": "<LD2_ROOT>\\LunaticDawnPotB",
+  "disposable_root": "<LD2_ROOT>\\zhTW_lab\\game-acceptance\\m060",
+  "disposable_root_resolved": "<LD2_ROOT>\\zhTW_lab\\game-acceptance\\m060",
+  "source_exe": {
+    "path": "<LD2_ROOT>\\LunaticDawnPotB\\Ld95.exe",
+    "size": 7090176,
+    "sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+    "last_write_utc": "2026-10-25T17:55:24.8215298Z"
+  },
+  "source_manifest_excludes": "Usr\\, LUNAS*（私人存檔，未讀取內容）",
+  "source_manifest_changes_since_run1": [],
+  "store_original_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "store_m045_sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7",
+  "game_usr_at_start": [
+    {
+      "path": "Usr\\LUNAS000.LDP",
+      "size": 3032781,
+      "sha256": "ae945041208d09a50163316ce096de29725bd0ce616972e684f68b10f6627cec",
+      "last_write_utc": "2026-10-28T14:05:19.5392896Z"
+    }
+  ],
+  "run1_step_B_reassessed": {
+    "exit_code": 1,
+    "exit_policy": "soft-warn-exit1",
+    "events": 0,
+    "dumps": 0,
+    "saves": [
+      "Usr\\LUNAS000.LDP ae945041208d09a50163316ce096de29725bd0ce616972e684f68b10f6627cec"
+    ]
+  },
+  "production_can_apply": false,
+  "release_approved": false,
+  "source_manifest_count": 1029,
+  "source_manifest_note": "完整清單（1,029 檔路徑＋hash）僅留本機，不上傳"
+}
