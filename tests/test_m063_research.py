@@ -9,6 +9,6 @@ M063 = Path(__file__).resolve().parents[1] / 'research' / 'm063'
 def load_tests(loader, standard_tests, pattern):
     sys.path.insert(0, str(M063))
     suite = unittest.TestSuite()
-    for pattern in ('test_m063.py', 'test_catalog_v4.py', 'test_native_v4.py'):
+    for pattern in ('test_m063.py', 'test_catalog_v4.py', 'test_native_v4.py', 'test_handoff_m063d.py'):
         suite.addTests(loader.discover(str(M063), pattern=pattern, top_level_dir=str(M063)))
     return suite

@@ -248,3 +248,16 @@
 !/research/m063/compile-v4-run1/compile-command.json
 !/research/m063/compile-v4-run1/once-result.json
 !/research/m063/compile-v4-run1/stdout.txt
+!/research/m063/build_lab_preview_v4.py
+!/research/m063/build_v4_lab.py
+!/research/m063/make_v4_delta.py
+!/research/m063/test_handoff_m063d.py
+!/research/m063/static_verify_v4.lab_preview.summary.json
+!/research/m063/static_verify_v4.reviewed.summary.json
+!/research/m063/HANDOFF-ENABLE-M063D/README.zh-TW.md
+!/research/m063/HANDOFF-ENABLE-M063D/USER-STEPS.zh-TW.md
+!/research/m063/HANDOFF-ENABLE-M063D/PLAN-ACCEPTANCE.zh-TW.md
+!/research/m063/HANDOFF-ENABLE-M063D/observations.template.md
+!/research/m063/HANDOFF-ENABLE-M063D/WINDOWS-ENABLE-M063D.ps1
+!/research/m063/HANDOFF-ENABLE-M063D/m063d-v4-lab_preview-mode2.delta.json
+!/research/m063/HANDOFF-ENABLE-M063D/m063d-v4-lab_preview-mode0.delta.json
