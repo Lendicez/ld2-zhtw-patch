@@ -289,7 +289,9 @@
     "research/translations/m063-draft8-runtime-ansi-quest-confirm.zh-TW.json",
     "research/m063/DRAFT8-RUNTIME-ANSI-QUEST-CONFIRM.zh-TW.md",
     "research/translations/m063-draft9-runtime-ansi-party-travel.zh-TW.json",
-    "research/m063/DRAFT9-RUNTIME-ANSI-PARTY-TRAVEL.zh-TW.md"
+    "research/m063/DRAFT9-RUNTIME-ANSI-PARTY-TRAVEL.zh-TW.md",
+    "research/translations/m063-draft10-runtime-ansi-guild-town.zh-TW.json",
+    "research/m063/DRAFT10-RUNTIME-ANSI-GUILD-TOWN.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",
