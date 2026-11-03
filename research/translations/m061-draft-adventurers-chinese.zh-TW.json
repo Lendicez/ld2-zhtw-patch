@@ -25,7 +25,7 @@
  "base_catalog_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
  "release_approved": false,
  "draft_owner": "Mina (translation only; GitHub writes by Mona)",
- "note": "Incremental Mina draft, public-sanitized: source_name_ja and source_name_cp932_hex removed (m051 policy, no Japanese source text). Not merged into helper catalog.",
+ "note": "Incremental Mina draft, public-sanitized: source_name_ja and source_name_cp932_hex removed (m051 policy, no Japanese source text). Not merged into helper catalog. m061 adventurer upgrade delta applied (Mona-approved, 523 rows).",
  "lab_full_draft_sha256": "477edfbaa16fb8ca74672fcec8006986fbd90f49dae7bd89fc95702454e14ec1",
  "stripped_fields": [
   "source_name_cp932_hex",

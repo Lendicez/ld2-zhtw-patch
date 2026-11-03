@@ -51,7 +51,7 @@ class M061TranslationDraft(unittest.TestCase):
             self.assertEqual(t[('adventurer_male_second', r)], 100)
             self.assertEqual(t[('adventurer_female', r)], 150)
         m = Counter(x.get('translation_method') for x in self.items if x['category'] == 'adventurer')
-        self.assertEqual(m, {'kanji_traditionalized': 700, 'curated': 185, 'machine_translit_draft': 515})
+        self.assertEqual(m, {'kanji_traditionalized': 700, 'curated_v3': 378, 'curated': 180, 'curated_v2': 122, 'join_unified_m062': 15, 'curated_v4_web': 5})
 
     def test_items_no_m051_overlap_and_unique(self):
         keys = [(x['table'], x['slot']) for x in self.items if x['category'] != 'adventurer']
