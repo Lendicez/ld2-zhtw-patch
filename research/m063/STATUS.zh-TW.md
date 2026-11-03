@@ -39,3 +39,7 @@ Linux 端 DESIGN §7 的 1–4 與 m063b（MSVC 編譯＋稽核＋pin）都已�
 2. **m063e 判讀**（Linux）：驗 hash、L1／L2 判定、載入檢查；依觀察決定 commission 3 點是否改 `name`、非 CP950 7 字、Kris／戟斧／男名是否關閉阻礙 #1／#2／#4。如需改分類 → 重建 v4 delta（不需重新編譯，除非 helper 本身要改）。
 3. **人工審閱升級**：實機看過的列才可能升 `human_reviewed`（阻礙 #5）。
 4. **發行前**：reviewed catalog 版（已靜態驗證：模式 2 惰性 `4472cd50…a1d1`／啟用 `340af66d…7c72`）或升級後的 catalog；正式套用需使用者明確的 Finalize 指示與另一個交接包。在那之前 `production_can_apply=false`。
+
+## Win11 觀測證據（Rona，僅文字）
+- `evidence-clean-exit/RESULT.zh-TW.md`：clean_exit＝WM_COMMAND 57665＋存檔確認按「否」id=7；結束碼 1；三次綠燈 run；六個主步驟檔已換用。
+- `evidence-ui-smoke-wm-001/RESULT.zh-TW.md`：旅館 5 頁（含「建築」）、情報所新「通行證」頁、水鏡都市無競技場選單、選單 id 32815／32834／32880–32883；截圖留 Win11。
