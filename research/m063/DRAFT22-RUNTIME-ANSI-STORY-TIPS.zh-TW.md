@@ -2,7 +2,7 @@
 
 - 檔案：`research/translations/m063-draft22-runtime-ansi-story-tips.zh-TW.json`
 - 來源：Mina public_copy（已剝 ja／cp932_hex），sha256 `dce963b60e2e351c776b874240a5a878f156e4f7d0a61f7491cce834d60ad772`
-- 本檔 sha256：``
+- 本檔 sha256：`43cecd415f3226d2698ed04f18212e2d57ecd065d610ee3c14405765926f4e80`
 - 19 列：書簡／崩塌事件、穿堂風提示、委託提示7、閒聊等
 - Mona 已審譯文：`review_status = mona_approved_candidate_pending_site`
 
