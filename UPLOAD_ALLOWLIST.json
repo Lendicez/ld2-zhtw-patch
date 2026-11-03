@@ -352,7 +352,9 @@
     "research/translations/m063-draft38-runtime-ansi-rename-rumor-gap.zh-TW.json",
     "research/m063/DRAFT38-RUNTIME-ANSI-RENAME-RUMOR-GAP.zh-TW.md",
     "research/translations/m063-draft39-runtime-ansi-roadnames-tourney.zh-TW.json",
-    "research/m063/DRAFT39-RUNTIME-ANSI-ROADNAMES-TOURNEY.zh-TW.md"
+    "research/m063/DRAFT39-RUNTIME-ANSI-ROADNAMES-TOURNEY.zh-TW.md",
+    "research/translations/m063-draft40-runtime-ansi-roadnames2-affinity.zh-TW.json",
+    "research/m063/DRAFT40-RUNTIME-ANSI-ROADNAMES2-AFFINITY.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",
