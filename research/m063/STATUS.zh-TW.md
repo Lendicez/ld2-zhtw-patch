@@ -43,3 +43,4 @@ Linux 端 DESIGN §7 的 1–4 與 m063b（MSVC 編譯＋稽核＋pin）都已�
 ## Win11 觀測證據（Rona，僅文字）
 - `evidence-clean-exit/RESULT.zh-TW.md`：clean_exit＝WM_COMMAND 57665＋存檔確認按「否」id=7；結束碼 1；三次綠燈 run；六個主步驟檔已換用。
 - `evidence-ui-smoke-wm-001/RESULT.zh-TW.md`：旅館 5 頁（含「建築」）、情報所新「通行證」頁、水鏡都市無競技場選單、選單 id 32815／32834／32880–32883；截圖留 Win11。
+- `evidence-ui-smoke-wm2/RESULT.zh-TW.md`：綠燈 006（寺院32834／委託32815／設定32881–32883）＋007（酒館詳情1004）；新缺口 32880隊名未譯、聽傳聞1013動態「?」、聽傳聞後 clean_exit 卡；001 invalid；截圖留 Win11。
