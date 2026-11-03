@@ -335,7 +335,9 @@
     "research/translations/m063-draft30-runtime-ansi-adv-party.zh-TW.json",
     "research/m063/DRAFT30-RUNTIME-ANSI-ADV-PARTY.zh-TW.md",
     "research/translations/m063-draft31-runtime-ansi-affinity-jobs.zh-TW.json",
-    "research/m063/DRAFT31-RUNTIME-ANSI-AFFINITY-JOBS.zh-TW.md"
+    "research/m063/DRAFT31-RUNTIME-ANSI-AFFINITY-JOBS.zh-TW.md",
+    "research/translations/m063-draft32-runtime-ansi-bonds-jobs.zh-TW.json",
+    "research/m063/DRAFT32-RUNTIME-ANSI-BONDS-JOBS.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",
