@@ -8,7 +8,7 @@
   "preview_only": true,
   "draft_owner": "Mina (translation only; GitHub writes by Mona)",
   "note": "Candidate runtime ANSI Rona gap pack: name/title/world input prompts, home name label, town rumor title prefix, demon rumor bodies, party/lottery/tournament scraps. site unconfirmed. UTF-16 dialog leads (~0x6b6d8a name, ~0x6b3968 listen-rumor) deferred.",
-  "base_doc": "Rona gap: party rename menu 32880 + tavern 噂を聞く",
+  "base_doc": "Rona gap: party rename menu 32880 + tavern listen-rumor",
   "item_count": 12,
   "items": [
     {
