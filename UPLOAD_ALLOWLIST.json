@@ -327,7 +327,9 @@
     "research/m063/DRAFT23-RUNTIME-ANSI-QUEST-TIPS-MORE.zh-TW.md",
     "research/m063/DRAFT22-RUNTIME-ANSI-STORY-TIPS.zh-TW.md",
     "research/m063/evidence-clean-exit/RESULT.zh-TW.md",
-    "research/m063/evidence-ui-smoke-wm-001/RESULT.zh-TW.md"
+    "research/m063/evidence-ui-smoke-wm-001/RESULT.zh-TW.md",
+    "research/translations/m063-draft28-runtime-ansi-fairy-roads.zh-TW.json",
+    "research/m063/DRAFT28-RUNTIME-ANSI-FAIRY-ROADS.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",
