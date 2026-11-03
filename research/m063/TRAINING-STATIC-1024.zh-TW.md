@@ -28,3 +28,5 @@
 2. 由 Mona 加入 resource/ANSI profile（`.rdata` 原位替換，邊界僅限原 payload），在 lab 副本驗證。
 3. Rona 自動測：訓練所三種狀態（可訓練／經驗不足／上限）各截一張確認。
 4. 不改旗標，不 merge。
+
+- draft7（Mina 譯、Mona 核准）已落地：`research/translations/m063-draft7-training-static-1024.zh-TW.json`（5 筆，review_status=mona_approved_draft7；旗標全 false）。

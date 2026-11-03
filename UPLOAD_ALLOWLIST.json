@@ -281,7 +281,8 @@
     "research/m063/TRAINING-STATIC-1024.zh-TW.md",
     "research/m061/MEMORY-PLAN-M045-INPUT.zh-TW.md",
     "research/m061/VERSIONS-BY-PROFILE.zh-TW.md",
-    "research/m061/versions-by-profile.DRAFT.json"
+    "research/m061/versions-by-profile.DRAFT.json",
+    "research/translations/m063-draft7-training-static-1024.zh-TW.json"
   ],
   "excluded_roots": [
     ".git",
