@@ -339,7 +339,9 @@
     "research/translations/m063-draft32-runtime-ansi-bonds-jobs.zh-TW.json",
     "research/m063/DRAFT32-RUNTIME-ANSI-BONDS-JOBS.zh-TW.md",
     "research/translations/m063-draft33-runtime-ansi-roads-escort.zh-TW.json",
-    "research/m063/DRAFT33-RUNTIME-ANSI-ROADS-ESCORT.zh-TW.md"
+    "research/m063/DRAFT33-RUNTIME-ANSI-ROADS-ESCORT.zh-TW.md",
+    "research/translations/m063-draft34-runtime-ansi-roads-tourney.zh-TW.json",
+    "research/m063/DRAFT34-RUNTIME-ANSI-ROADS-TOURNEY.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",
