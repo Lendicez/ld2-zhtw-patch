@@ -1,0 +1,171 @@
+﻿{
+    "schema":  "m063d-evidence-list/1",
+    "taken_utc":  "2026-11-03T08:25:15.6593291Z",
+    "files":  [
+                  {
+                      "path":  "autotest-load-inn-tavern-quest-004-report.md",
+                      "size":  4036,
+                      "sha256":  "56b70d13d452c89c6493f4a0b4c340723582b12b9ab83fe8bc5b4432040d88ba"
+                  },
+                  {
+                      "path":  "autotest-load-shop-item-001-report.md",
+                      "size":  1853,
+                      "sha256":  "e7f3ee2d05f91f1905bb7fc4bb6e6f8bdf03d754748cec8d44084b3376800469"
+                  },
+                  {
+                      "path":  "autotest-load-shop-weapon-002-report.md",
+                      "size":  2687,
+                      "sha256":  "6cfd6b89185f3e3926ef5b40880ba0aa7271e110a90fce2972664a1e6a8f651c"
+                  },
+                  {
+                      "path":  "enable-E.json",
+                      "size":  378,
+                      "sha256":  "0c678a675a23400c42064517e88cb31362f2d7a6ee409300ef09e18a770436db"
+                  },
+                  {
+                      "path":  "hashes-after.json",
+                      "size":  1215,
+                      "sha256":  "50d283e7e9a7014edf29ff517096aa98939c9b9157478b46512f5346f3c03c6c"
+                  },
+                  {
+                      "path":  "hashes-before.json",
+                      "size":  385452,
+                      "sha256":  "0625b546026aa355b4a4e4a9b7ee7bc47ce2d348f89186d0e59b87281acbcfd5"
+                  },
+                  {
+                      "path":  "launch-L1-events.txt",
+                      "size":  5,
+                      "sha256":  "f01a374e9c81e3db89b3a42940c4d6a5447684986a1296e42bf13f196eed6295"
+                  },
+                  {
+                      "path":  "launch-L1.json",
+                      "size":  945,
+                      "sha256":  "21ad9a473515f824a2ebd2e83e61567120f35234d465ef77765bb45888a8516a"
+                  },
+                  {
+                      "path":  "launch-L2-events.txt",
+                      "size":  5,
+                      "sha256":  "f01a374e9c81e3db89b3a42940c4d6a5447684986a1296e42bf13f196eed6295"
+                  },
+                  {
+                      "path":  "launch-L2.json",
+                      "size":  948,
+                      "sha256":  "737b050a909f1ad5cb6f71adb5467bd5d54b17570372308fd6fbcf1581fa7b1b"
+                  },
+                  {
+                      "path":  "observations.md",
+                      "size":  5638,
+                      "sha256":  "37d7b7393b76014537ff14d6476c2454ab65ad913cc04e0706106cc4e9b0e645"
+                  },
+                  {
+                      "path":  "state.json",
+                      "size":  345,
+                      "sha256":  "03c4cc5c509f9030a7c6890ac1c493ba49033faf51da5c03b3f2afbf43a8e4c8"
+                  },
+                  {
+                      "path":  "auto-smoke\\smoke-20261103-011804.json",
+                      "size":  603,
+                      "sha256":  "84bf5c44c909288c5e0ec9bc591b6c47a85ffdfa6b94e851f361464690685bd7"
+                  },
+                  {
+                      "path":  "screens\\auto-smoke-20261103-011804.png",
+                      "size":  151989,
+                      "sha256":  "44a1800632c20ea514d151203c5257b4ff3009d2a97e686cca1a8e4a9a0a109e"
+                  },
+                  {
+                      "path":  "screens\\L1-shop-buy.png",
+                      "size":  1429231,
+                      "sha256":  "3f8e85fc4f65da07c09f2b765f7d26b90378c951f087a690db57482d98fc7897"
+                  },
+                  {
+                      "path":  "screens\\L1-title.png",
+                      "size":  327437,
+                      "sha256":  "5e39b29f5a9664e9f1710239246c675a09048040927fe7d1bf79cafe69e12484"
+                  },
+                  {
+                      "path":  "screens\\L2-after-load-autotest.png",
+                      "size":  557491,
+                      "sha256":  "d1ffcfd7980dbe74a8c2467f125d382e4d05bbcb3959d0166f97104a39359ac6"
+                  },
+                  {
+                      "path":  "screens\\L2-capture-full.png",
+                      "size":  2096895,
+                      "sha256":  "8d7007b36bf5a429f168f6686e36d631aaf827a62fd0f8ae2d08892d254a9a94"
+                  },
+                  {
+                      "path":  "screens\\L2-capture-now.png",
+                      "size":  151989,
+                      "sha256":  "44a1800632c20ea514d151203c5257b4ff3009d2a97e686cca1a8e4a9a0a109e"
+                  },
+                  {
+                      "path":  "screens\\L2-commission-info.png",
+                      "size":  8565,
+                      "sha256":  "13f79e4d3c1fe57758f8fa8e866bb9dc665a3f959edfbf95548dda8345c4706c"
+                  },
+                  {
+                      "path":  "screens\\L2-commission-union.png",
+                      "size":  588007,
+                      "sha256":  "c767d94c8166598bea4f8d1eb1a3e7edb35868bf5c8fa2379f9c74fe237b6516"
+                  },
+                  {
+                      "path":  "screens\\L2-info-tab.png",
+                      "size":  9043,
+                      "sha256":  "0ed831cfda8f93b2216d1462cf5081865ffe839062aa1271ef1e43dd482223cc"
+                  },
+                  {
+                      "path":  "screens\\L2-inn-lodging.png",
+                      "size":  13490,
+                      "sha256":  "d8c8b4503da10ee99e11211ccbe34e519f37962906d229d53d86d08f1d68dbd5"
+                  },
+                  {
+                      "path":  "screens\\L2-kris-item.png",
+                      "size":  14102,
+                      "sha256":  "67053135deb027237c9f7384768efeb2b0071f70bcef3cde35730b48654d82b3"
+                  },
+                  {
+                      "path":  "screens\\L2-party-panel.png",
+                      "size":  454436,
+                      "sha256":  "d071d9335180fbdfc8b4c4a8134111bdd40dcba822210ff5520445858aa9fde7"
+                  },
+                  {
+                      "path":  "screens\\L2-shop-buy-items.png",
+                      "size":  11238,
+                      "sha256":  "548dfedd48ace3bf65d0b81625ab06d9fa85de2d00e7fab9994871d72e92b5ca"
+                  },
+                  {
+                      "path":  "screens\\L2-shop-buy.png",
+                      "size":  14102,
+                      "sha256":  "67053135deb027237c9f7384768efeb2b0071f70bcef3cde35730b48654d82b3"
+                  },
+                  {
+                      "path":  "screens\\L2-tavern-union.png",
+                      "size":  608076,
+                      "sha256":  "d82a5bde64c55d25e554d36c82324bccb62e2b3406e2c0d8c08eb87593fe5c6c"
+                  },
+                  {
+                      "path":  "screens\\L2-tavern.png",
+                      "size":  13251,
+                      "sha256":  "3d3232c4fc20070b391bd5e469ebd4c72650cacce37f78617c406554c4552fda"
+                  },
+                  {
+                      "path":  "screens\\L2-title-autotest.png",
+                      "size":  80651,
+                      "sha256":  "8a126cdaddd0cfad6ca3da337d30691e20a84f26706c384e3de2420d0ae250dc"
+                  },
+                  {
+                      "path":  "screens\\L2-title.png",
+                      "size":  151989,
+                      "sha256":  "44a1800632c20ea514d151203c5257b4ff3009d2a97e686cca1a8e4a9a0a109e"
+                  },
+                  {
+                      "path":  "screens\\L2-training-union.png",
+                      "size":  589511,
+                      "sha256":  "dd41c43c62f308a20918d32c48440665236c9153c75f9c964e110b46f5ab87d1"
+                  },
+                  {
+                      "path":  "screens\\L2-training.png",
+                      "size":  11050,
+                      "sha256":  "f2fae2e506fae805fe8e391c54b9cce48c341b3db48e9ee0199d28d95b5e08b6"
+                  }
+              ]
+}

@@ -261,7 +261,22 @@
     "research/m063/HANDOFF-ENABLE-M063D/observations.template.md",
     "research/m063/HANDOFF-ENABLE-M063D/WINDOWS-ENABLE-M063D.ps1",
     "research/m063/HANDOFF-ENABLE-M063D/m063d-v4-lab_preview-mode2.delta.json",
-    "research/m063/HANDOFF-ENABLE-M063D/m063d-v4-lab_preview-mode0.delta.json"
+    "research/m063/HANDOFF-ENABLE-M063D/m063d-v4-lab_preview-mode0.delta.json",
+    "research/m063/RESULT-M063D.zh-TW.md",
+    "research/m063/enable-v4-run1/EVIDENCE-ZIP.sha256.txt",
+    "research/m063/enable-v4-run1/auto-smoke/smoke-20261103-011804.json",
+    "research/m063/enable-v4-run1/autotest-load-inn-tavern-quest-004-report.md",
+    "research/m063/enable-v4-run1/autotest-load-shop-item-001-report.md",
+    "research/m063/enable-v4-run1/autotest-load-shop-weapon-002-report.md",
+    "research/m063/enable-v4-run1/enable-E.json",
+    "research/m063/enable-v4-run1/evidence-list.json",
+    "research/m063/enable-v4-run1/hashes-after.json",
+    "research/m063/enable-v4-run1/launch-L1-events.txt",
+    "research/m063/enable-v4-run1/launch-L1.json",
+    "research/m063/enable-v4-run1/launch-L2-events.txt",
+    "research/m063/enable-v4-run1/launch-L2.json",
+    "research/m063/enable-v4-run1/observations.md",
+    "research/m063/enable-v4-run1/state.json"
   ],
   "excluded_roots": [
     ".git",

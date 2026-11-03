@@ -1,0 +1,9 @@
+﻿{
+    "step":  "E",
+    "taken_utc":  "2026-11-02T16:42:49.6664454Z",
+    "from_sha256":  "c796bc12378440b1ea027c5e268b0f564aff47bd4675b3a61bc1465068726e37",
+    "to_sha256":  "240ab04d7f81f185820865549c72b12a0c73475bb1f8dd073146731dab3f4121",
+    "l1_exit_policy":  "soft-warn-exit1",
+    "only_disposable_copy_changed":  true,
+    "production_can_apply":  false
+}
