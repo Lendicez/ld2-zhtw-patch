@@ -366,7 +366,9 @@
     "research/translations/m063-draft45-runtime-ansi-ui-dojo.zh-TW.json",
     "research/m063/DRAFT45-RUNTIME-ANSI-UI-DOJO.zh-TW.md",
     "research/translations/m063-draft46-runtime-ansi-shop-combat.zh-TW.json",
-    "research/m063/DRAFT46-RUNTIME-ANSI-SHOP-COMBAT.zh-TW.md"
+    "research/m063/DRAFT46-RUNTIME-ANSI-SHOP-COMBAT.zh-TW.md",
+    "research/translations/m063-draft47-runtime-ansi-inn-muramasa.zh-TW.json",
+    "research/m063/DRAFT47-RUNTIME-ANSI-INN-MURAMASA.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",
