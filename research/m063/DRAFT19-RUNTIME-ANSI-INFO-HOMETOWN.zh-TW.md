@@ -2,7 +2,7 @@
 
 - 檔案：`research/translations/m063-draft19-runtime-ansi-info-hometown.zh-TW.json`
 - 來源：Mina public_copy（已剝 ja／cp932_hex），sha256 `1c97d84feb3980942e50fbf77fbdcfdbd7d7874fc2f869bdf97031bce1644063`
-- 本檔 sha256：``
+- 本檔 sha256：`17cc64ba2ff1b86f41b58037ad3da3157c20dd439d82de6fd12276a852f68a68`
 - 19 列：情報屋9（%A–%D）、故鄉7、閒聊2、風珠瞬移說明
 - Mona 已審譯文：`review_status = mona_approved_candidate_pending_site`
 
