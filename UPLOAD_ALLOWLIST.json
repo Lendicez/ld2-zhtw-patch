@@ -285,7 +285,9 @@
     "research/m061/versions-by-profile.DRAFT.json",
     "research/translations/m063-draft7-training-static-1024.zh-TW.json",
     "research/m063/LAB-RDATA-TRAINING-STATIC-1024.zh-TW.md",
-    "research/m063/lab-rdata-training-static-1024.DRAFT.json"
+    "research/m063/lab-rdata-training-static-1024.DRAFT.json",
+    "research/translations/m063-draft8-runtime-ansi-quest-confirm.zh-TW.json",
+    "research/m063/DRAFT8-RUNTIME-ANSI-QUEST-CONFIRM.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",
