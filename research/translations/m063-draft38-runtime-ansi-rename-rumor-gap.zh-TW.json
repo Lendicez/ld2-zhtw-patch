@@ -7,7 +7,7 @@
   "rendering_verified": false,
   "preview_only": true,
   "draft_owner": "Mina (translation only; GitHub writes by Mona)",
-  "note": "Gap pack per Rona: (1) CP932 name/title/world input prompts — UTF-16 dialog twins also exist (e.g. 名前を入力してください @u16 0x6b6d8a; 噂を聞く button; 称号の変更). Menu 32880 site not bound. (2) 町の噂 - title prefix + unused demon-rumor bodies. Dynamic rumor popup may still need more bodies + UTF-16 button.",
+  "note": "Candidate runtime ANSI Rona gap pack: name/title/world input prompts, home name label, town rumor title prefix, demon rumor bodies, party/lottery/tournament scraps. site unconfirmed. UTF-16 dialog leads (~0x6b6d8a name, ~0x6b3968 listen-rumor) deferred.",
   "base_doc": "Rona gap: party rename menu 32880 + tavern 噂を聞く",
   "item_count": 12,
   "items": [
