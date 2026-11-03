@@ -297,7 +297,9 @@
     "research/translations/m063-draft12-runtime-ansi-tournament-rumor.zh-TW.json",
     "research/m063/DRAFT12-RUNTIME-ANSI-TOURNAMENT-RUMOR.zh-TW.md",
     "research/translations/m063-draft13-runtime-ansi-tournament-more.zh-TW.json",
-    "research/m063/DRAFT13-RUNTIME-ANSI-TOURNAMENT-MORE.zh-TW.md"
+    "research/m063/DRAFT13-RUNTIME-ANSI-TOURNAMENT-MORE.zh-TW.md",
+    "research/translations/m063-draft14-runtime-ansi-lottery-quest.zh-TW.json",
+    "research/m063/DRAFT14-RUNTIME-ANSI-LOTTERY-QUEST.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",
