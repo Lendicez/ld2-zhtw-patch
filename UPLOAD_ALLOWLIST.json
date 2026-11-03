@@ -331,7 +331,9 @@
     "research/translations/m063-draft28-runtime-ansi-fairy-roads.zh-TW.json",
     "research/m063/DRAFT28-RUNTIME-ANSI-FAIRY-ROADS.zh-TW.md",
     "research/translations/m063-draft29-runtime-ansi-tips-lore.zh-TW.json",
-    "research/m063/DRAFT29-RUNTIME-ANSI-TIPS-LORE.zh-TW.md"
+    "research/m063/DRAFT29-RUNTIME-ANSI-TIPS-LORE.zh-TW.md",
+    "research/translations/m063-draft30-runtime-ansi-adv-party.zh-TW.json",
+    "research/m063/DRAFT30-RUNTIME-ANSI-ADV-PARTY.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",
