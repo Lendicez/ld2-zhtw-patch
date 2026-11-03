@@ -1,0 +1,9 @@
+{
+  "_DRAFT": "NOT WIRED. Research shape only (option B). Not read by any code. release_approved must stay false.",
+  "schema_version": 3,
+  "source": {"filename": "Ld95.exe", "file_version": "1.0.3.16", "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2", "source_size": 7090176},
+  "profiles": {
+    "m020": {"id": "ld95-1.0.3.16", "expected_output_sha256": "a15bf7313636a7c19a065b388345f93b46bbce8eb6bf3c9b910a7dc192c3da81", "expected_output_size": 7102464, "catalog": "ui-m020.zh-TW.json", "historical": true, "release_approved": false},
+    "m045": {"id": "ld95-1.0.3.16-m045", "expected_output_sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7", "expected_output_size": 7118848, "catalog": "m045/catalog.json", "release_approved": false}
+  }
+}
