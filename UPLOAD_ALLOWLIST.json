@@ -276,7 +276,9 @@
     "research/m063/enable-v4-run1/launch-L2-events.txt",
     "research/m063/enable-v4-run1/launch-L2.json",
     "research/m063/enable-v4-run1/observations.md",
-    "research/m063/enable-v4-run1/state.json"
+    "research/m063/enable-v4-run1/state.json",
+    "research/m063/STACK-TRIAGE-22-26.zh-TW.md",
+    "research/m063/TRAINING-STATIC-1024.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",
