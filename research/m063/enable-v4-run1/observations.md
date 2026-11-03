@@ -2,12 +2,14 @@
 
 > **2026-11-03 更新（supersede）**：Rona 報告 sheet_tab 誤用 0x466（刪頁）而非 0x465（切換）；load-inn-tavern-quest-004／相關旅館酒館委託觀察 **暫不當最終依據**，等修復後重跑路徑。詳見 `research/m063/SUPERSEDE-inn-tavern-quest-004.zh-TW.md`。
 
+> **2026-11-03 16:48（台北）更新**：canonical 旅館／酒館／委託／訓練證據改為 **load-inn-tavern-quest-005**（修復 harness，0x465；66/67，僅已知 WM_CLOSE TimeoutExpired）。004 保留為 superseded。見 `enable-v4-run1/autotest-load-inn-tavern-quest-005-report.md` 與 SUPERSEDE 檔。
+
 - 日期／時間（台北）：2026-11-03（腳本 L1/L2 約 00:37–01:02；自動補觀察 16:20–16:21）
 - 讀取的存檔格（2 或 1）：2（LUNAS001／m060 Usr fixture）
 - 用的是模式 2 還是模式 0：模式 2（lab_preview）
 - 啟用版 EXE sha256：`240ab04d7f81f185820865549c72b12a0c73475bb1f8dd073146731dab3f4121`
 - 惰性版 EXE sha256：`c796bc12378440b1ea027c5e268b0f564aff47bd4675b3a61bc1465068726e37`
-- 自動證據：`ld2-autotest\runs\load-shop-item-001`、`load-shop-weapon-002`、`load-inn-tavern-quest-004`（皆隔離副本；未買賣／未招募／未住宿／未存檔）
+- 自動證據：`ld2-autotest\runs\load-shop-item-001`、`load-shop-weapon-002`、`load-inn-tavern-quest-005`（canonical；004 superseded；皆隔離副本；未買賣／未招募／未住宿／未存檔）
 - production_can_apply：false；release_approved：false
 
 ## L1 惰性版（應和以前 m045 一樣）

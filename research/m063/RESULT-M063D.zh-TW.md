@@ -2,6 +2,8 @@
 
 > **2026-11-03 更新（supersede）**：Rona 報告 sheet_tab 誤用 0x466（刪頁）而非 0x465（切換）；load-inn-tavern-quest-004／相關旅館酒館委託觀察 **暫不當最終依據**，等修復後重跑路徑。詳見 `research/m063/SUPERSEDE-inn-tavern-quest-004.zh-TW.md`。
 
+> **2026-11-03 16:48（台北）更新**：canonical 旅館／酒館／委託／訓練證據改為 **load-inn-tavern-quest-005**（修復 harness，0x465；66/67，僅已知 WM_CLOSE TimeoutExpired）。004 保留為 superseded。見 `enable-v4-run1/autotest-load-inn-tavern-quest-005-report.md` 與 SUPERSEDE 檔。
+
 > production_can_apply = false；release_approved = false。本結果僅為實驗室驗收紀錄。
 
 ## 摘要
@@ -18,7 +20,7 @@
 - 未進行購買／販賣／招募／住宿／存檔
 
 ## 自動測試 runs
-- load-shop-item-001、load-shop-weapon-002、load-inn-tavern-quest-004（report 見 `enable-v4-run1/`）
+- load-shop-item-001、load-shop-weapon-002、load-inn-tavern-quest-005（canonical；004 superseded）（report 見 `enable-v4-run1/`）
 
 ## 其他
 - #25 冒險者譯名升級 delta 已另行審核通過，屬 PR #25，不併入本 PR。

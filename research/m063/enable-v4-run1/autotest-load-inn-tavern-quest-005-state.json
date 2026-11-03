@@ -1,0 +1,1492 @@
+{
+  "run_id": "load-inn-tavern-quest-005",
+  "results": [
+    {
+      "i": 0,
+      "op": "wait_window",
+      "name": "等待主視窗",
+      "time": "2026-11-03T16:47:28+08:00",
+      "ok": true,
+      "title": "Passage of The Book",
+      "rect": [
+        176,
+        176,
+        1136,
+        926
+      ]
+    },
+    {
+      "i": 1,
+      "op": "resize",
+      "name": "固定 1280x800",
+      "time": "2026-11-03T16:47:29+08:00",
+      "ok": true
+    },
+    {
+      "i": 2,
+      "op": "sleep",
+      "name": "sleep",
+      "time": "2026-11-03T16:47:29+08:00",
+      "ok": true
+    },
+    {
+      "i": 3,
+      "op": "dismiss_splash",
+      "name": "關閉啟動 splash",
+      "time": "2026-11-03T16:47:30+08:00",
+      "ok": true,
+      "closed": [
+        {
+          "hwnd": 775228220,
+          "class": "Afx:00400000:b:00010003:00000006:00000000",
+          "rect": [
+            967,
+            551,
+            1593,
+            889
+          ]
+        }
+      ]
+    },
+    {
+      "i": 4,
+      "op": "sleep",
+      "name": "sleep",
+      "time": "2026-11-03T16:47:30+08:00",
+      "ok": true
+    },
+    {
+      "i": 5,
+      "op": "focus",
+      "name": "前景＋AttachThreadInput",
+      "time": "2026-11-03T16:47:31+08:00",
+      "ok": true
+    },
+    {
+      "i": 6,
+      "op": "screenshot",
+      "name": "title",
+      "time": "2026-11-03T16:47:31+08:00",
+      "ok": true,
+      "file": "screens\\006_title.png"
+    },
+    {
+      "i": 7,
+      "op": "open_load_dialog",
+      "name": "檔案→讀取遊戲",
+      "time": "2026-11-03T16:47:31+08:00",
+      "ok": true,
+      "attempts": [
+        {
+          "attempt": 0,
+          "file": [
+            88,
+            111,
+            140,
+            130
+          ],
+          "open_ok": true,
+          "open": [
+            88,
+            131,
+            88,
+            131
+          ],
+          "method": "press_O_after_file"
+        },
+        {
+          "attempt": 0,
+          "file": [
+            88,
+            111,
+            140,
+            130
+          ],
+          "open_ok": true,
+          "open": [
+            88,
+            131,
+            88,
+            131
+          ],
+          "method": "sc_keymenu_O"
+        },
+        {
+          "attempt": 0,
+          "file": [
+            88,
+            111,
+            140,
+            130
+          ],
+          "open_ok": true,
+          "open": [
+            88,
+            131,
+            88,
+            131
+          ],
+          "method": "down_enter"
+        },
+        {
+          "attempt": 0,
+          "file": [
+            88,
+            111,
+            140,
+            130
+          ],
+          "open_ok": true,
+          "open": [
+            91,
+            155,
+            299,
+            177
+          ],
+          "method": "click_open"
+        }
+      ],
+      "dialog_title": "讀取存檔",
+      "dialog_hwnd": 17568712
+    },
+    {
+      "i": 8,
+      "op": "screenshot",
+      "name": "load_dialog",
+      "time": "2026-11-03T16:47:39+08:00",
+      "ok": true,
+      "file": "screens\\008_load_dialog.png"
+    },
+    {
+      "i": 9,
+      "op": "dialog_select",
+      "name": "選存檔第2格 LUNAS001",
+      "time": "2026-11-03T16:47:39+08:00",
+      "ok": true,
+      "list": {
+        "hwnd": 20977268,
+        "title": "",
+        "class": "ListBox",
+        "id": 1025,
+        "visible": true,
+        "rect": [
+          486,
+          462,
+          976,
+          624
+        ]
+      }
+    },
+    {
+      "i": 10,
+      "op": "sleep",
+      "name": "sleep",
+      "time": "2026-11-03T16:47:39+08:00",
+      "ok": true
+    },
+    {
+      "i": 11,
+      "op": "dialog_button",
+      "name": "按讀取",
+      "time": "2026-11-03T16:47:40+08:00",
+      "ok": true,
+      "button": {
+        "hwnd": 150213770,
+        "title": "讀取",
+        "class": "Button",
+        "id": 1,
+        "visible": true,
+        "rect": [
+          989,
+          357,
+          1102,
+          390
+        ]
+      }
+    },
+    {
+      "i": 12,
+      "op": "expect_dialog_gone",
+      "name": "讀檔框關閉",
+      "time": "2026-11-03T16:47:40+08:00",
+      "ok": true,
+      "gone": true
+    },
+    {
+      "i": 13,
+      "op": "sleep",
+      "name": "sleep",
+      "time": "2026-11-03T16:47:40+08:00",
+      "ok": true
+    },
+    {
+      "i": 14,
+      "op": "screenshot",
+      "name": "after_load",
+      "time": "2026-11-03T16:47:43+08:00",
+      "ok": true,
+      "file": "screens\\014_after_load.png"
+    },
+    {
+      "i": 15,
+      "op": "menu_dump",
+      "name": "城鎮選單（岩塊之町）",
+      "time": "2026-11-03T16:47:43+08:00",
+      "ok": true,
+      "items": [
+        {
+          "pos": 0,
+          "id": 32831,
+          "text": "旅館(&I)",
+          "state": 0
+        },
+        {
+          "pos": 1,
+          "id": 32832,
+          "text": "武器店(&W)",
+          "state": 3
+        },
+        {
+          "pos": 2,
+          "id": 32833,
+          "text": "道具店(&I)",
+          "state": 0
+        },
+        {
+          "pos": 3,
+          "id": 32834,
+          "text": "寺院(&T)",
+          "state": 0
+        },
+        {
+          "pos": 4,
+          "id": 32835,
+          "text": "訓練所(&T)",
+          "state": 3
+        },
+        {
+          "pos": 5,
+          "id": 32837,
+          "text": "情報所(&G)",
+          "state": 0
+        },
+        {
+          "pos": 6,
+          "id": 0,
+          "text": "",
+          "state": 2051
+        },
+        {
+          "pos": 7,
+          "id": 32838,
+          "text": "住家(&H)",
+          "state": 3
+        },
+        {
+          "pos": 8,
+          "id": 0,
+          "text": "",
+          "state": 2051
+        },
+        {
+          "pos": 9,
+          "id": 32839,
+          "text": "前往迷宮(&D)",
+          "state": 0
+        },
+        {
+          "pos": 10,
+          "id": 32840,
+          "text": "前往其他城鎮(&E)",
+          "state": 0
+        }
+      ]
+    },
+    {
+      "i": 16,
+      "op": "menu_command",
+      "name": "前往其他城鎮 32840（Post；模態框勿 SendMessage）",
+      "time": "2026-11-03T16:47:43+08:00",
+      "ok": true,
+      "id": 32840
+    },
+    {
+      "i": 17,
+      "op": "wait_window_title",
+      "name": "等待「移動」對話框",
+      "time": "2026-11-03T16:47:43+08:00",
+      "ok": true,
+      "dialog_title": "移動",
+      "dialog_hwnd": 4921854
+    },
+    {
+      "i": 18,
+      "op": "sleep",
+      "name": "sleep",
+      "time": "2026-11-03T16:47:48+08:00",
+      "ok": true
+    },
+    {
+      "i": 19,
+      "op": "dump_dialog",
+      "name": "dump 移動框（目的地 ListBox 1000）",
+      "time": "2026-11-03T16:47:49+08:00",
+      "ok": true,
+      "rect": [
+        1036,
+        641,
+        1700,
+        988
+      ],
+      "controls": [
+        {
+          "hwnd": 16979696,
+          "title": "移動",
+          "class": "Button",
+          "id": 112,
+          "visible": true,
+          "rect": [
+            1569,
+            691,
+            1682,
+            724
+          ]
+        },
+        {
+          "hwnd": 110499550,
+          "title": "進入",
+          "class": "Button",
+          "id": 1,
+          "visible": true,
+          "rect": [
+            1569,
+            736,
+            1682,
+            767
+          ]
+        },
+        {
+          "hwnd": 57806064,
+          "title": "",
+          "class": "ListBox",
+          "id": 1000,
+          "visible": true,
+          "rect": [
+            1057,
+            831,
+            1552,
+            971
+          ],
+          "items": [
+            {
+              "cp950": "�C?�^�[??\t?���s�s      \t150G\t 8��",
+              "cp932": "イ?ター??\t?鏡都市      \t150G\t 8日",
+              "hex": "83433f835e815b3f3f093f8bbe93738e73202020202020093135304709203893fa"
+            },
+            {
+              "cp950": "�C?�^�[??\t�O�p�B����    \t210G\t10��",
+              "cp932": "イ?ター??\t三角州の村    \t210G\t10日",
+              "hex": "83433f835e815b3f3f098e4f8a708f4282cc91ba20202020093231304709313093fa"
+            },
+            {
+              "cp950": "��??      \t?������      \t700G\t14��",
+              "cp932": "日??      \t?火の町      \t700G\t14日",
+              "hex": "93fa3f3f202020202020093f89ce82cc92ac202020202020093730304709313493fa"
+            }
+          ]
+        },
+        {
+          "hwnd": 422056928,
+          "title": "目的地：",
+          "class": "Static",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1057,
+            807,
+            1182,
+            826
+          ]
+        },
+        {
+          "hwnd": 40962334,
+          "title": "目前位置",
+          "class": "Button",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1054,
+            681,
+            1369,
+            724
+          ]
+        },
+        {
+          "hwnd": 379652376,
+          "title": "??? ",
+          "class": "Static",
+          "id": 1021,
+          "visible": true,
+          "rect": [
+            1057,
+            700,
+            1357,
+            719
+          ],
+          "title_raw": {
+            "cp950": "�C?�^�[?? ��������",
+            "cp932": "イ?ター?? 岩塊の町"
+          }
+        },
+        {
+          "hwnd": 236653916,
+          "title": "持有金錢",
+          "class": "Button",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1382,
+            681,
+            1555,
+            724
+          ]
+        },
+        {
+          "hwnd": 490212862,
+          "title": "3990",
+          "class": "Static",
+          "id": 1022,
+          "visible": true,
+          "rect": [
+            1409,
+            700,
+            1514,
+            719
+          ]
+        },
+        {
+          "hwnd": 3348386,
+          "title": "費用",
+          "class": "Static",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1394,
+            807,
+            1444,
+            826
+          ]
+        },
+        {
+          "hwnd": 50599908,
+          "title": "天數",
+          "class": "Static",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1459,
+            807,
+            1509,
+            826
+          ]
+        },
+        {
+          "hwnd": 16127848,
+          "title": "G",
+          "class": "Static",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1519,
+            700,
+            1539,
+            719
+          ]
+        },
+        {
+          "hwnd": 17962844,
+          "title": "持有通行證",
+          "class": "Button",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1054,
+            738,
+            1554,
+            788
+          ]
+        },
+        {
+          "hwnd": 213784330,
+          "title": "",
+          "class": "Static",
+          "id": 168,
+          "visible": true,
+          "rect": [
+            1067,
+            762,
+            1195,
+            783
+          ]
+        },
+        {
+          "hwnd": 14161752,
+          "title": "???   ",
+          "class": "Static",
+          "id": 169,
+          "visible": true,
+          "rect": [
+            1199,
+            762,
+            1327,
+            783
+          ],
+          "title_raw": {
+            "cp950": "�C?�^�[??   ",
+            "cp932": "イ?ター??   "
+          }
+        },
+        {
+          "hwnd": 63115058,
+          "title": "",
+          "class": "Static",
+          "id": 170,
+          "visible": true,
+          "rect": [
+            1349,
+            762,
+            1449,
+            783
+          ]
+        },
+        {
+          "hwnd": 190846164,
+          "title": "",
+          "class": "Static",
+          "id": 171,
+          "visible": true,
+          "rect": [
+            1444,
+            762,
+            1537,
+            783
+          ]
+        },
+        {
+          "hwnd": 9771232,
+          "title": "資訊",
+          "class": "Button",
+          "id": 1012,
+          "visible": true,
+          "rect": [
+            1569,
+            831,
+            1682,
+            864
+          ]
+        }
+      ]
+    },
+    {
+      "i": 20,
+      "op": "screenshot",
+      "name": "travel_dialog",
+      "time": "2026-11-03T16:47:49+08:00",
+      "ok": true,
+      "file": "screens\\020_travel_dialog.png"
+    },
+    {
+      "i": 21,
+      "op": "dialog_select_text",
+      "name": "選目的地 水鏡都市（cp932 含「鏡都市」）",
+      "time": "2026-11-03T16:47:49+08:00",
+      "ok": true,
+      "selected": {
+        "index": 0,
+        "text": {
+          "cp950": "�C?�^�[??\t?���s�s      \t150G\t 8��",
+          "cp932": "イ?ター??\t?鏡都市      \t150G\t 8日",
+          "hex": "83433f835e815b3f3f093f8bbe93738e73202020202020093135304709203893fa"
+        },
+        "ctrl_id": 1000,
+        "class": "ListBox"
+      }
+    },
+    {
+      "i": 22,
+      "op": "sleep",
+      "name": "sleep",
+      "time": "2026-11-03T16:47:49+08:00",
+      "ok": true
+    },
+    {
+      "i": 23,
+      "op": "dialog_post_click",
+      "name": "按「移動」id=112",
+      "time": "2026-11-03T16:47:49+08:00",
+      "ok": true,
+      "button": {
+        "hwnd": 16979696,
+        "title": "",
+        "class": "Button",
+        "id": 112,
+        "visible": true,
+        "rect": [
+          1569,
+          691,
+          1682,
+          724
+        ]
+      }
+    },
+    {
+      "i": 24,
+      "op": "wait_static_text",
+      "name": "等待目前位置=水鏡都市（static 1021）",
+      "time": "2026-11-03T16:47:49+08:00",
+      "ok": true,
+      "text": {
+        "cp950": "�C?�^�[?? ?���s�s",
+        "cp932": "イ?ター?? ?鏡都市"
+      }
+    },
+    {
+      "i": 25,
+      "op": "screenshot",
+      "name": "arrived_dialog",
+      "time": "2026-11-03T16:47:53+08:00",
+      "ok": true,
+      "file": "screens\\025_arrived_dialog.png"
+    },
+    {
+      "i": 26,
+      "op": "screenshot",
+      "name": "arrived_union",
+      "time": "2026-11-03T16:47:53+08:00",
+      "ok": true,
+      "file": "screens\\026_arrived_union.png"
+    },
+    {
+      "i": 27,
+      "op": "dialog_post_click",
+      "name": "按「進入」id=1",
+      "time": "2026-11-03T16:47:53+08:00",
+      "ok": true,
+      "button": {
+        "hwnd": 110499550,
+        "title": "進入",
+        "class": "Button",
+        "id": 1,
+        "visible": true,
+        "rect": [
+          1569,
+          736,
+          1682,
+          767
+        ]
+      }
+    },
+    {
+      "i": 28,
+      "op": "expect_dialog_gone",
+      "name": "移動框關閉",
+      "time": "2026-11-03T16:47:53+08:00",
+      "ok": true,
+      "gone": true
+    },
+    {
+      "i": 29,
+      "op": "sleep",
+      "name": "sleep",
+      "time": "2026-11-03T16:47:53+08:00",
+      "ok": true
+    },
+    {
+      "i": 30,
+      "op": "screenshot",
+      "name": "in_town",
+      "time": "2026-11-03T16:47:55+08:00",
+      "ok": true,
+      "file": "screens\\030_in_town.png"
+    },
+    {
+      "i": 31,
+      "op": "menu_dump",
+      "name": "城鎮選單（水鏡都市）",
+      "time": "2026-11-03T16:47:55+08:00",
+      "ok": true,
+      "items": [
+        {
+          "pos": 0,
+          "id": 32831,
+          "text": "旅館(&I)",
+          "state": 0
+        },
+        {
+          "pos": 1,
+          "id": 32832,
+          "text": "武器店(&W)",
+          "state": 0
+        },
+        {
+          "pos": 2,
+          "id": 32833,
+          "text": "道具店(&I)",
+          "state": 0
+        },
+        {
+          "pos": 3,
+          "id": 32834,
+          "text": "寺院(&T)",
+          "state": 0
+        },
+        {
+          "pos": 4,
+          "id": 32835,
+          "text": "訓練所(&T)",
+          "state": 0
+        },
+        {
+          "pos": 5,
+          "id": 32837,
+          "text": "情報所(&G)",
+          "state": 0
+        },
+        {
+          "pos": 6,
+          "id": 0,
+          "text": "",
+          "state": 2051
+        },
+        {
+          "pos": 7,
+          "id": 32838,
+          "text": "住家(&H)",
+          "state": 3
+        },
+        {
+          "pos": 8,
+          "id": 0,
+          "text": "",
+          "state": 2051
+        },
+        {
+          "pos": 9,
+          "id": 32839,
+          "text": "前往迷宮(&D)",
+          "state": 0
+        },
+        {
+          "pos": 10,
+          "id": 32840,
+          "text": "前往其他城鎮(&E)",
+          "state": 0
+        }
+      ]
+    },
+    {
+      "i": 32,
+      "op": "expect_menu_enabled",
+      "name": "旅館 32831 可用",
+      "time": "2026-11-03T16:47:55+08:00",
+      "ok": true,
+      "state": 0
+    },
+    {
+      "i": 33,
+      "op": "menu_command",
+      "name": "城鎮→旅館 32831（Post）",
+      "time": "2026-11-03T16:47:55+08:00",
+      "ok": true,
+      "id": 32831
+    },
+    {
+      "i": 34,
+      "op": "wait_window_title",
+      "name": "等待旅館視窗",
+      "time": "2026-11-03T16:47:55+08:00",
+      "ok": true,
+      "dialog_title": "旅館",
+      "dialog_hwnd": 23730438
+    },
+    {
+      "i": 35,
+      "op": "sleep",
+      "name": "sleep",
+      "time": "2026-11-03T16:47:56+08:00",
+      "ok": true
+    },
+    {
+      "i": 36,
+      "op": "sheet_tab",
+      "name": "旅館 tab0 住宿",
+      "time": "2026-11-03T16:47:57+08:00",
+      "ok": true,
+      "tab_count": 5,
+      "set": 1
+    },
+    {
+      "i": 37,
+      "op": "expect_page",
+      "name": "頁=旅館",
+      "time": "2026-11-03T16:47:57+08:00",
+      "ok": true,
+      "pages": [
+        "旅館",
+        "住宿"
+      ]
+    },
+    {
+      "i": 38,
+      "op": "screenshot",
+      "name": "L1_inn",
+      "time": "2026-11-03T16:47:57+08:00",
+      "ok": true,
+      "file": "screens\\038_L1_inn.png"
+    },
+    {
+      "i": 39,
+      "op": "sheet_tab",
+      "name": "旅館 tab1 酒館",
+      "time": "2026-11-03T16:47:57+08:00",
+      "ok": true,
+      "tab_count": 5,
+      "set": 1
+    },
+    {
+      "i": 40,
+      "op": "expect_page",
+      "name": "頁=酒館（冒險者清單 ListBox 1000）",
+      "time": "2026-11-03T16:47:58+08:00",
+      "ok": true,
+      "pages": [
+        "旅館",
+        "酒館"
+      ]
+    },
+    {
+      "i": 41,
+      "op": "screenshot",
+      "name": "L1_tavern_adventurers",
+      "time": "2026-11-03T16:47:58+08:00",
+      "ok": true,
+      "file": "screens\\041_L1_tavern_adventurers.png"
+    },
+    {
+      "i": 42,
+      "op": "screenshot",
+      "name": "L1_tavern_union",
+      "time": "2026-11-03T16:47:58+08:00",
+      "ok": true,
+      "file": "screens\\042_L1_tavern_union.png"
+    },
+    {
+      "i": 43,
+      "op": "close_title",
+      "name": "關旅館（WM_CLOSE，不住宿）",
+      "time": "2026-11-03T16:47:58+08:00",
+      "ok": true,
+      "closed": "旅館"
+    },
+    {
+      "i": 44,
+      "op": "expect_menu_enabled",
+      "name": "情報所 32837 可用",
+      "time": "2026-11-03T16:47:59+08:00",
+      "ok": true,
+      "state": 0
+    },
+    {
+      "i": 45,
+      "op": "menu_command",
+      "name": "城鎮→情報所 32837（Post）",
+      "time": "2026-11-03T16:47:59+08:00",
+      "ok": true,
+      "id": 32837
+    },
+    {
+      "i": 46,
+      "op": "wait_window_title",
+      "name": "等待情報所視窗",
+      "time": "2026-11-03T16:47:59+08:00",
+      "ok": true,
+      "dialog_title": "情報所",
+      "dialog_hwnd": 23927046
+    },
+    {
+      "i": 47,
+      "op": "sleep",
+      "name": "sleep",
+      "time": "2026-11-03T16:48:00+08:00",
+      "ok": true
+    },
+    {
+      "i": 48,
+      "op": "sheet_tab",
+      "name": "情報所 tab0 資訊",
+      "time": "2026-11-03T16:48:01+08:00",
+      "ok": true,
+      "tab_count": 3,
+      "set": 1
+    },
+    {
+      "i": 49,
+      "op": "screenshot",
+      "name": "L1_info",
+      "time": "2026-11-03T16:48:01+08:00",
+      "ok": true,
+      "file": "screens\\049_L1_info.png"
+    },
+    {
+      "i": 50,
+      "op": "sheet_tab",
+      "name": "情報所 tab1 委託資訊",
+      "time": "2026-11-03T16:48:01+08:00",
+      "ok": true,
+      "tab_count": 3,
+      "set": 1
+    },
+    {
+      "i": 51,
+      "op": "expect_page",
+      "name": "頁=委託資訊",
+      "time": "2026-11-03T16:48:03+08:00",
+      "ok": true,
+      "pages": [
+        "971",
+        "委託資訊"
+      ]
+    },
+    {
+      "i": 52,
+      "op": "screenshot",
+      "name": "L1_quest_board",
+      "time": "2026-11-03T16:48:03+08:00",
+      "ok": true,
+      "file": "screens\\052_L1_quest_board.png"
+    },
+    {
+      "i": 53,
+      "op": "screenshot",
+      "name": "L1_quest_union",
+      "time": "2026-11-03T16:48:03+08:00",
+      "ok": true,
+      "file": "screens\\053_L1_quest_union.png"
+    },
+    {
+      "i": 54,
+      "op": "close_title",
+      "name": "關情報所",
+      "time": "2026-11-03T16:48:03+08:00",
+      "ok": true,
+      "closed": "情報所"
+    },
+    {
+      "i": 55,
+      "op": "expect_menu_enabled",
+      "name": "訓練所 32835 可用",
+      "time": "2026-11-03T16:48:04+08:00",
+      "ok": true,
+      "state": 0
+    },
+    {
+      "i": 56,
+      "op": "menu_command",
+      "name": "城鎮→訓練所 32835（Post）",
+      "time": "2026-11-03T16:48:04+08:00",
+      "ok": true,
+      "id": 32835
+    },
+    {
+      "i": 57,
+      "op": "sleep",
+      "name": "sleep",
+      "time": "2026-11-03T16:48:04+08:00",
+      "ok": true
+    },
+    {
+      "i": 58,
+      "op": "list_windows",
+      "name": "訓練所後視窗",
+      "time": "2026-11-03T16:48:06+08:00",
+      "ok": true,
+      "windows": [
+        {
+          "hwnd": 217649038,
+          "title": "訓練所",
+          "class": "Afx:00400000:8:00010003:00000000:00000000",
+          "rect": [
+            1162,
+            664,
+            1580,
+            957
+          ],
+          "owner": 240058494
+        },
+        {
+          "hwnd": 196744774,
+          "title": "ToolPalette",
+          "class": "Afx:00400000:8:00010003:00000000:00000000",
+          "rect": [
+            685,
+            821,
+            804,
+            960
+          ],
+          "owner": 240058494
+        },
+        {
+          "hwnd": 240058494,
+          "title": "Passage of The Book",
+          "class": "Afx:00400000:8:00010003:00000000:46F30E2B",
+          "rect": [
+            80,
+            80,
+            1360,
+            880
+          ],
+          "owner": 0
+        }
+      ]
+    },
+    {
+      "i": 59,
+      "op": "wait_window_title",
+      "name": "等待訓練所視窗",
+      "time": "2026-11-03T16:48:06+08:00",
+      "ok": true,
+      "dialog_title": "訓練所",
+      "dialog_hwnd": 217649038
+    },
+    {
+      "i": 60,
+      "op": "expect_page",
+      "name": "頁=訓練所（筋力頁；sheet 標題不穩定）",
+      "time": "2026-11-03T16:48:06+08:00",
+      "ok": true,
+      "pages": [
+        "971",
+        "筋力"
+      ]
+    },
+    {
+      "i": 61,
+      "op": "dump_dialog",
+      "name": "dump 訓練所",
+      "time": "2026-11-03T16:48:06+08:00",
+      "ok": true,
+      "rect": [
+        1162,
+        664,
+        1580,
+        957
+      ],
+      "controls": [
+        {
+          "hwnd": 24123654,
+          "title": " 971",
+          "class": "#32770",
+          "id": 0,
+          "visible": true,
+          "rect": [
+            1165,
+            690,
+            1577,
+            954
+          ]
+        },
+        {
+          "hwnd": 41685328,
+          "title": "筋力  ",
+          "class": "#32770",
+          "id": 0,
+          "visible": true,
+          "rect": [
+            1176,
+            722,
+            1566,
+            904
+          ]
+        },
+        {
+          "hwnd": 37554938,
+          "title": "訓練",
+          "class": "Button",
+          "id": 1,
+          "visible": true,
+          "rect": [
+            1468,
+            752,
+            1547,
+            778
+          ]
+        },
+        {
+          "hwnd": 211554778,
+          "title": "持有金錢",
+          "class": "Button",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1194,
+            741,
+            1317,
+            779
+          ]
+        },
+        {
+          "hwnd": 472061010,
+          "title": "訓練費用",
+          "class": "Button",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1325,
+            741,
+            1448,
+            779
+          ]
+        },
+        {
+          "hwnd": 223285240,
+          "title": "3840",
+          "class": "Static",
+          "id": 1003,
+          "visible": true,
+          "rect": [
+            1223,
+            760,
+            1293,
+            775
+          ]
+        },
+        {
+          "hwnd": 247923284,
+          "title": "250",
+          "class": "Static",
+          "id": 1007,
+          "visible": true,
+          "rect": [
+            1355,
+            760,
+            1425,
+            775
+          ]
+        },
+        {
+          "hwnd": 7930742,
+          "title": "G",
+          "class": "Static",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1299,
+            760,
+            1313,
+            775
+          ]
+        },
+        {
+          "hwnd": 160175106,
+          "title": "G",
+          "class": "Static",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1430,
+            760,
+            1444,
+            775
+          ]
+        },
+        {
+          "hwnd": 102371304,
+          "title": "",
+          "class": "Static",
+          "id": 1024,
+          "visible": true,
+          "rect": [
+            1218,
+            853,
+            1437,
+            868
+          ]
+        },
+        {
+          "hwnd": 56039114,
+          "title": "30",
+          "class": "Static",
+          "id": 1044,
+          "visible": true,
+          "rect": [
+            1281,
+            808,
+            1307,
+            823
+          ]
+        },
+        {
+          "hwnd": 213782798,
+          "title": "目前能力值",
+          "class": "Button",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1194,
+            790,
+            1317,
+            828
+          ]
+        },
+        {
+          "hwnd": 107676292,
+          "title": "狀態",
+          "class": "Button",
+          "id": 65535,
+          "visible": true,
+          "rect": [
+            1194,
+            838,
+            1446,
+            876
+          ]
+        },
+        {
+          "hwnd": 69671178,
+          "title": "確定",
+          "class": "Button",
+          "id": 1,
+          "visible": false,
+          "rect": [
+            1199,
+            915,
+            1287,
+            941
+          ]
+        },
+        {
+          "hwnd": 45094838,
+          "title": "取消",
+          "class": "Button",
+          "id": 2,
+          "visible": false,
+          "rect": [
+            1294,
+            915,
+            1382,
+            941
+          ]
+        },
+        {
+          "hwnd": 525011244,
+          "title": "套用(&A)",
+          "class": "Button",
+          "id": 12321,
+          "visible": false,
+          "rect": [
+            1388,
+            915,
+            1476,
+            941
+          ]
+        },
+        {
+          "hwnd": 483656178,
+          "title": "說明",
+          "class": "Button",
+          "id": 9,
+          "visible": false,
+          "rect": [
+            1483,
+            915,
+            1571,
+            941
+          ]
+        },
+        {
+          "hwnd": 85398992,
+          "title": "",
+          "class": "SysTabControl32",
+          "id": 12320,
+          "visible": true,
+          "rect": [
+            1172,
+            698,
+            1570,
+            908
+          ]
+        },
+        {
+          "hwnd": 203428796,
+          "title": "",
+          "class": "Button",
+          "id": 34000,
+          "visible": true,
+          "rect": [
+            1172,
+            914,
+            1280,
+            947
+          ]
+        }
+      ]
+    },
+    {
+      "i": 62,
+      "op": "screenshot",
+      "name": "L1_training",
+      "time": "2026-11-03T16:48:06+08:00",
+      "ok": true,
+      "file": "screens\\062_L1_training.png"
+    },
+    {
+      "i": 63,
+      "op": "screenshot",
+      "name": "L1_training_union",
+      "time": "2026-11-03T16:48:06+08:00",
+      "ok": true,
+      "file": "screens\\063_L1_training_union.png"
+    },
+    {
+      "i": 64,
+      "op": "expect_alive",
+      "name": "無崩潰",
+      "time": "2026-11-03T16:48:06+08:00",
+      "ok": true,
+      "windows": [
+        "訓練所",
+        "ToolPalette",
+        "Passage of The Book"
+      ]
+    },
+    {
+      "i": 65,
+      "op": "close",
+      "name": "WM_CLOSE",
+      "time": "2026-11-03T16:48:06+08:00",
+      "ok": true
+    },
+    {
+      "i": 66,
+      "op": "expect_exit",
+      "name": "結束（可強制）",
+      "time": "2026-11-03T16:48:08+08:00",
+      "ok": false,
+      "error": "TimeoutExpired: Command '['C:\\\\GameDev\\\\LD2\\\\zhTW_lab\\\\ld2-autotest\\\\runs\\\\load-inn-tavern-quest-005\\\\game\\\\Ld95.exe']' timed out after 5 seconds",
+      "file": "screens\\066_failure.png"
+    }
+  ],
+  "next_step": 67,
+  "status": "done",
+  "source": "C:\\GameDev\\LD2\\zhTW_lab\\game-acceptance\\m063d-v4-enable\\game",
+  "steps": "C:\\GameDev\\LD2\\zhTW_lab\\ld2-autotest\\steps\\load_inn_tavern_quest.json",
+  "exe": null,
+  "save_fixture": "C:\\GameDev\\LD2\\zhTW_lab\\game-acceptance\\m060\\game\\Usr",
+  "started": "2026-11-03T16:47:27+08:00",
+  "exe_sha256": "240ab04d7f81f185820865549c72b12a0c73475bb1f8dd073146731dab3f4121",
+  "pid": 59268,
+  "shot_union": {
+    "006_title.png": {
+      "hwnds": [
+        240058494
+      ],
+      "bbox": [
+        80,
+        80,
+        1360,
+        880
+      ]
+    },
+    "014_after_load.png": {
+      "hwnds": [
+        240058494,
+        196744774
+      ],
+      "bbox": [
+        80,
+        80,
+        1360,
+        960
+      ]
+    },
+    "026_arrived_union.png": {
+      "hwnds": [
+        240058494,
+        4921854
+      ],
+      "bbox": [
+        80,
+        80,
+        1700,
+        988
+      ]
+    },
+    "030_in_town.png": {
+      "hwnds": [
+        240058494
+      ],
+      "bbox": [
+        80,
+        80,
+        1360,
+        880
+      ]
+    },
+    "042_L1_tavern_union.png": {
+      "hwnds": [
+        240058494,
+        196744774,
+        23730438
+      ],
+      "bbox": [
+        80,
+        80,
+        1580,
+        960
+      ]
+    },
+    "053_L1_quest_union.png": {
+      "hwnds": [
+        240058494,
+        23927046,
+        196744774
+      ],
+      "bbox": [
+        80,
+        80,
+        1572,
+        960
+      ]
+    },
+    "063_L1_training_union.png": {
+      "hwnds": [
+        240058494,
+        217649038,
+        196744774
+      ],
+      "bbox": [
+        80,
+        80,
+        1580,
+        960
+      ]
+    },
+    "066_failure.png": {
+      "hwnds": [
+        240058494,
+        214112010,
+        217649038,
+        196744774
+      ],
+      "bbox": [
+        80,
+        80,
+        1580,
+        960
+      ]
+    }
+  },
+  "exit_code": 1,
+  "verdict": "通過",
+  "production_can_apply": false
+}
