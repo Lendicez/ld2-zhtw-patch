@@ -293,7 +293,9 @@
     "research/translations/m063-draft10-runtime-ansi-guild-town.zh-TW.json",
     "research/m063/DRAFT10-RUNTIME-ANSI-GUILD-TOWN.zh-TW.md",
     "research/translations/m063-draft11-runtime-ansi-tournament-guild.zh-TW.json",
-    "research/m063/DRAFT11-RUNTIME-ANSI-TOURNAMENT-GUILD.zh-TW.md"
+    "research/m063/DRAFT11-RUNTIME-ANSI-TOURNAMENT-GUILD.zh-TW.md",
+    "research/translations/m063-draft12-runtime-ansi-tournament-rumor.zh-TW.json",
+    "research/m063/DRAFT12-RUNTIME-ANSI-TOURNAMENT-RUMOR.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",

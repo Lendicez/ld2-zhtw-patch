@@ -1,0 +1,577 @@
+{
+  "schema_version": 1,
+  "milestone": "m063-draft12-runtime-ansi-tournament-rumor-mina",
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "production_can_apply": false,
+  "release_approved": false,
+  "rendering_verified": false,
+  "preview_only": true,
+  "draft_owner": "Mina (translation only; GitHub writes by Mona)",
+  "note": "Candidate runtime ANSI: tournament results/prizes, shop pitches, wanted rumors, town tip. site_binding unconfirmed like draft8–11. printf preserved.",
+  "base_doc": "follow-on dynamic CP932 inventory",
+  "item_count": 19,
+  "items": [
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1507416,
+      "file_offset_hex": "0x170058",
+      "source_bytes_len": 27,
+      "source_name_sha256": "eba8bf45fb9ce178a552541bd1fe49958ca00c3629f743c477e494d18f6411f5",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "勝者是%s的隊伍！",
+      "text_cp950_bytes_len": 16,
+      "text_cp950_hex": "b3d3aaccac4f2573aabab6a4a5eea149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 11,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1507304,
+      "file_offset_hex": "0x16ffe8",
+      "source_bytes_len": 59,
+      "source_name_sha256": "71fa29ff167ebac3ec91ebaf8be998a6a7dc171c158d010d47b4cff08bab55dd",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "優勝者是%s的隊伍！請大家熱烈鼓掌！",
+      "text_cp950_bytes_len": 34,
+      "text_cp950_hex": "c075b3d3aaccac4f2573aabab6a4a5eea149bdd0a46aae61bcf6af50b9aab478a149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 25,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1503736,
+      "file_offset_hex": "0x16f1f8",
+      "source_bytes_len": 79,
+      "source_name_sha256": "52fac1e100041f753557c5fdbe17b6d0744d0cb211cbaa45101750a5418b2639",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "已放棄參加天下一武鬥會。傳聞似乎是%s奪冠了……",
+      "text_cp950_bytes_len": 46,
+      "text_cp950_hex": "a477a9f1b1f3b0d1a55ba4d1a455a440aa5ab0abb77ca143b6c7bb44a6fca547ac4f2573b9dcab61a446a14ba14b",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 33,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1507240,
+      "file_offset_hex": "0x16ffa8",
+      "source_bytes_len": 63,
+      "source_name_sha256": "64948e976777cba12ac3bb679a9ba1fa2727bed39403e6c90c1b70bd44d0d5bb",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s",
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "將贈予%s的隊伍獎品%s與賞金%dG。",
+      "text_cp950_bytes_len": 31,
+      "text_cp950_hex": "b14ec3d8a4a92573aabab6a4a5eebcfaab7e2573bb50bde0aaf7256447a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 32,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1506960,
+      "file_offset_hex": "0x16fe90",
+      "source_bytes_len": 71,
+      "source_name_sha256": "00afaaa390db94d639af4a6a0847b523f6abfcf7e2bdb93141b315c0ef78adeb",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s",
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "將贈予優勝的%s隊伍獎品%s與賞金%dG。",
+      "text_cp950_bytes_len": 35,
+      "text_cp950_hex": "b14ec3d8a4a9c075b3d3aaba2573b6a4a5eebcfaab7e2573bb50bde0aaf7256447a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 36,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1507628,
+      "file_offset_hex": "0x17012c",
+      "source_bytes_len": 59,
+      "source_name_sha256": "6efae4e7b8b4cacacf313e080a9191b7a4572a6a729d9f9b88a3bd7bfc82171e",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "勝者是%s的隊伍！%s的隊伍很遺憾！",
+      "text_cp950_bytes_len": 32,
+      "text_cp950_hex": "b3d3aaccac4f2573aabab6a4a5eea1492573aabab6a4a5eeabdcbff2bed1a149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 27,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1507448,
+      "file_offset_hex": "0x170078",
+      "source_bytes_len": 79,
+      "source_name_sha256": "3b406434eedb0968bf5adfebfb8c719bf633ebe2ddf51afca4e2ba2ae125fe9d",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "勝者是%s的隊伍！遺憾，%s的隊伍未能贏得激戰！",
+      "text_cp950_bytes_len": 44,
+      "text_cp950_hex": "b3d3aaccac4f2573aabab6a4a5eea149bff2bed1a1412573aabab6a4a5eea5bcafe0c4b9b16fbf45bed4a149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 35,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1507128,
+      "file_offset_hex": "0x16ff38",
+      "source_bytes_len": 105,
+      "source_name_sha256": "5e46c661160803b469335fd81c7aedc29929054606b8eb56cbf9ca0ed927c70c",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s",
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "遺憾在決賽落敗的%s隊伍，將獲贈亞軍獎品%s與賞金%dG。",
+      "text_cp950_bytes_len": 51,
+      "text_cp950_hex": "bff2bed1a662a84dc1c9b8a8b1d1aaba2573b6a4a5eea141b14ec0f2c3d8a8c8ad78bcfaab7e2573bb50bde0aaf7256447a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 54,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1506584,
+      "file_offset_hex": "0x16fd18",
+      "source_bytes_len": 68,
+      "source_name_sha256": "62879148e5a8a35252596fb60bbd4583bfb144c11783cc5adaf039ace202c476",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "決賽似乎是%s的隊伍擊敗%s的隊伍奪冠。",
+      "text_cp950_bytes_len": 36,
+      "text_cp950_hex": "a84dc1c9a6fca547ac4f2573aabab6a4a5eec0bbb1d12573aabab6a4a5eeb9dcab61a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 32,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1509480,
+      "file_offset_hex": "0x170868",
+      "source_bytes_len": 69,
+      "source_name_sha256": "e7041ef1b9231f354c1fb9d74c570038ddd8952a6eab956233161aa57686684f",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s獲勝！壓倒性的實力連怪物都逃走了！",
+      "text_cp950_bytes_len": 36,
+      "text_cp950_hex": "2573c0f2b3d3a149c0a3adcba9caaabab9eaa44fb373a9c7aaabb3a3b06ba8aba446a149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 33,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1483812,
+      "file_offset_hex": "0x16a424",
+      "source_bytes_len": 58,
+      "source_name_sha256": "8705626b1f617d546e1b12923a3c963b967ce4b72752c1a609c654060b995773",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "對手是名列優勝候選之一的%s隊伍。",
+      "text_cp950_bytes_len": 32,
+      "text_cp950_hex": "b9efa4e2ac4fa657a643c075b3d3add4bfefa4a7a440aaba2573b6a4a5eea143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 26,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1484256,
+      "file_offset_hex": "0x16a5e0",
+      "source_bytes_len": 60,
+      "source_name_sha256": "ef2f45ecad9f274437a858fc88f1a22a0a5908ea2ecfb5565d0c9e76e9014d97",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "在混戰中勝出，%s的隊伍晉級準決賽。",
+      "text_cp950_bytes_len": 34,
+      "text_cp950_hex": "a662b256bed4a4a4b3d3a558a1412573aabab6a4a5eeaecaafc5b7c7a84dc1c9a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 26,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1503888,
+      "file_offset_hex": "0x16f290",
+      "source_bytes_len": 73,
+      "source_name_sha256": "dad3e54ea92d11bf61c7cd99a37a8687c3e4c20fc02efcd63fa926bad88f19e6",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "好多看起來很強的隊伍報名了呢。請加油……",
+      "text_cp950_bytes_len": 40,
+      "text_cp950_hex": "a66ea668acddb05fa8d3abdcb16aaabab6a4a5eeb3f8a657a446a94fa143bdd0a55baa6fa14ba14b",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 33,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "item_lore",
+      "file_offset": 1475248,
+      "file_offset_hex": "0x1682b0",
+      "source_bytes_len": 72,
+      "source_name_sha256": "561cbf3b112daa2bc9557a82f74fb75643302da0af82858df2b02ba3b58fb575",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "喔，那%s沒錯。是只頒給天下一武鬥會優勝者的榮譽證明。",
+      "text_cp950_bytes_len": 52,
+      "text_cp950_hex": "b3e1a141a8ba2573a853bff9a143ac4fa575b97bb5b9a4d1a455a440aa5ab0abb77cc075b3d3aaccaababa61c541c3d2a9faa143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 20,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "item_lore"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "shop_pitch",
+      "file_offset": 1439948,
+      "file_offset_hex": "0x15f8cc",
+      "source_bytes_len": 54,
+      "source_name_sha256": "36bcd7e75a1f3c107f787f85d71eb99bf0ab79ce6fc8028795817df464904aa5",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "常跟你碰面呢。怎麼樣？要不要看看",
+      "text_cp950_bytes_len": 32,
+      "text_cp950_hex": "b160b8f2a741b849adb1a94fa143abe7bbf2bccba148ad6ea4a3ad6eacddacdd",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 22,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "shop_pitch"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "shop_pitch",
+      "file_offset": 1440008,
+      "file_offset_hex": "0x15f908",
+      "source_bytes_len": 66,
+      "source_name_sha256": "e9ba036b45557a460c520415a00d4fcdf6f3a21dcc600c06c03d586fa21f9cd3",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "真巧呢。又見面了呢。怎麼樣？要不要看看。",
+      "text_cp950_bytes_len": 40,
+      "text_cp950_hex": "af75a5a9a94fa143a453a8a3adb1a446a94fa143abe7bbf2bccba148ad6ea4a3ad6eacddacdda143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 26,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "shop_pitch"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "wanted_rumor",
+      "file_offset": 1459536,
+      "file_offset_hex": "0x164550",
+      "source_bytes_len": 60,
+      "source_name_sha256": "1b0b19f1f07ba57d82e65ec2c028cb58c734269d39abe71473004560a542836b",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "聽說%s逃掉了。通緝令都發那麼多了呢。",
+      "text_cp950_bytes_len": 36,
+      "text_cp950_hex": "c5a5bba12573b06bb1bca446a143b371bd72a54fb3a3b56fa8babbf2a668a446a94fa143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 24,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "wanted_rumor"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "wanted_rumor",
+      "file_offset": 1459376,
+      "file_offset_hex": "0x1644b0",
+      "source_bytes_len": 66,
+      "source_name_sha256": "2e155e630bdd57f5491ac5ee322f4fb939103d052d5f61fe2ebf8f29c6de7e1a",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s被通緝好幾天了，聽說還沒抓到、仍在逃。",
+      "text_cp950_bytes_len": 40,
+      "text_cp950_hex": "2573b351b371bd72a66eb458a4d1a446a141c5a5bba1c1d9a853a7eca8eca142a4b4a662b06ba143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 26,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "wanted_rumor"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "town_tip",
+      "file_offset": 1456052,
+      "file_offset_hex": "0x1637b4",
+      "source_bytes_len": 52,
+      "source_name_sha256": "76b230c67e18d53e039dc5ef18d6d25e7bd4d136d9bda941a7b0834cdc56ae0e",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "「%s」附近的「%s」從以前就是怪物的巢穴喔。",
+      "text_cp950_bytes_len": 42,
+      "text_cp950_hex": "a1752573a176aafeaaf1aabaa1752573a176b171a548ab65b44eac4fa9c7aaabaabab15fa5deb3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 10,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "town_tip"
+    }
+  ],
+  "stripped_fields": [
+    "source_name_ja",
+    "source_name_cp932_hex"
+  ],
+  "mona_approved_candidate": true,
+  "site_binding_confirmed": false,
+  "source_public_copy_sha256": "47cfecf74bc980f6e5d056187b2100215016b165800e98e017047609f498764f"
+}
