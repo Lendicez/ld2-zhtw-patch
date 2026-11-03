@@ -41,3 +41,5 @@
 3. 擷取 **確認對話「要訓練嗎？」** 與 **所需時間「訓練約需兩週。」**。
 4. 回報 run 路徑、locale／ANSI CP、是否亂碼或截斷；不提交截圖，只交路徑。
 5. 結果經 Mona 審後才能討論是否接線；在此之前本 profile 保持 NOT WIRED。
+
+> 更新（m063 load-training-states-001）：`0x165b90`（もっと、経験が必要です）顯示位置已於 Win11 實機確認（四頁 Static 1024，原文觀察，未套譯文）；其餘 4 列仍待存檔。見 [TRAINING-STATES-001](TRAINING-STATES-001.zh-TW.md)。
