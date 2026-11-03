@@ -305,7 +305,9 @@
     "research/translations/m063-draft16-runtime-ansi-tips-tournament.zh-TW.json",
     "research/m063/DRAFT16-RUNTIME-ANSI-TIPS-TOURNAMENT.zh-TW.md",
     "research/translations/m063-draft17-runtime-ansi-hometown-tournament.zh-TW.json",
-    "research/m063/DRAFT17-RUNTIME-ANSI-HOMETOWN-TOURNAMENT.zh-TW.md"
+    "research/m063/DRAFT17-RUNTIME-ANSI-HOMETOWN-TOURNAMENT.zh-TW.md",
+    "research/translations/m063-draft18-runtime-ansi-hometown-ui.zh-TW.json",
+    "research/m063/DRAFT18-RUNTIME-ANSI-HOMETOWN-UI.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",
