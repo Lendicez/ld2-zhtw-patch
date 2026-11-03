@@ -1,5 +1,7 @@
 # m063d v4 啟用驗收觀察
 
+> **2026-11-03 更新（supersede）**：Rona 報告 sheet_tab 誤用 0x466（刪頁）而非 0x465（切換）；load-inn-tavern-quest-004／相關旅館酒館委託觀察 **暫不當最終依據**，等修復後重跑路徑。詳見 `research/m063/SUPERSEDE-inn-tavern-quest-004.zh-TW.md`。
+
 - 日期／時間（台北）：2026-11-03（腳本 L1/L2 約 00:37–01:02；自動補觀察 16:20–16:21）
 - 讀取的存檔格（2 或 1）：2（LUNAS001／m060 Usr fixture）
 - 用的是模式 2 還是模式 0：模式 2（lab_preview）

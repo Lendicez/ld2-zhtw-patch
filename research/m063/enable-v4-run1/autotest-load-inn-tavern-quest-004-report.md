@@ -1,5 +1,7 @@
 # LD2 自動驗收報告 load-inn-tavern-quest-004
 
+> **2026-11-03 更新（supersede）**：Rona 報告 sheet_tab 誤用 0x466（刪頁）而非 0x465（切換）；load-inn-tavern-quest-004／相關旅館酒館委託觀察 **暫不當最終依據**，等修復後重跑路徑。詳見 `research/m063/SUPERSEDE-inn-tavern-quest-004.zh-TW.md`。
+
 - 時間（台北）：2026-11-03T16:21:04+08:00
 - 步驟腳本：load_inn_tavern_quest：讀檔→水鏡都市→旅館/酒館/委託(+訓練所)
 - Ld95.exe SHA-256：`240ab04d7f81f185820865549c72b12a0c73475bb1f8dd073146731dab3f4121`

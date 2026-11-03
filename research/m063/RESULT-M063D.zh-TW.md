@@ -1,5 +1,7 @@
 # RESULT M063D — v4 啟用驗收（Win11，Mode 2 lab_preview）
 
+> **2026-11-03 更新（supersede）**：Rona 報告 sheet_tab 誤用 0x466（刪頁）而非 0x465（切換）；load-inn-tavern-quest-004／相關旅館酒館委託觀察 **暫不當最終依據**，等修復後重跑路徑。詳見 `research/m063/SUPERSEDE-inn-tavern-quest-004.zh-TW.md`。
+
 > production_can_apply = false；release_approved = false。本結果僅為實驗室驗收紀錄。
 
 ## 摘要
