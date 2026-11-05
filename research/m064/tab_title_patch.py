@@ -31,6 +31,7 @@ WTMP, WTMP2, AFULL = 0xb25880, 0xb25980, 0xb25a80   # 半形→全形正規化�
 NORM = 0xae5c50                                     # FindCopyNorm stub（NameTextOut 用）
 NTO_FINDCOPY_CALL = 0xae598d                        # NameTextOut v4 內唯一的 call LD2N_FindCopy
 WTMP3, WTMP4, AFULL3 = 0xb25b00, 0xb25c00, 0xb25d00
+NLOG_IDX, NLOG = 0xb25d50, 0xb25d60                  # --debug：FindCopyNorm 最近 8 筆輸入（每筆 32 B）
 CP950, CP932 = 950, 932
 LCID_JA, LCMAP_FULLWIDTH = 0x411, 0x00800000
 
@@ -174,11 +175,17 @@ def build_stub(lstrlen_slot, wctmb_slot, mbtwc_slot, lcmap_slot, origin=STUB, fi
     return a.finish()
 
 
-def build_norm_stub(mbtwc_slot, lcmap_slot, wctmb_slot, origin=NORM, findcopy=FINDCOPY):
+def build_norm_stub(mbtwc_slot, lcmap_slot, wctmb_slot, origin=NORM, findcopy=FINDCOPY, debug=False):
     """FindCopyNorm(ansi, count, dest)（stdcall @12）：先原樣查；查無則半形→全形後再查。"""
     a = Asm(origin)
     JZ, JNZ, JA = 0x84, 0x85, 0x87
     a.emit([0x55, 0x8B, 0xEC, 0x60])                       # push ebp; mov ebp,esp; pushad
+    if debug:   # 記錄輸入：idx=(idx+1)&7；memcpy(NLOG+idx*32, ansi, min(count,31))；NUL
+        a.emit([0x8B, 0x1D], a.imm32(NLOG_IDX), [0x43, 0x83, 0xE3, 0x07], [0x89, 0x1D], a.imm32(NLOG_IDX))
+        a.emit([0xC1, 0xE3, 0x05, 0x81, 0xC3], a.imm32(NLOG))          # shl ebx,5; add ebx,NLOG
+        a.emit([0x8B, 0x75, 0x08, 0x8B, 0x4D, 0x0C, 0x83, 0xF9, 0x1F])  # esi=ansi; ecx=count; cmp ecx,31
+        a.jcc8(0x76, 'cpy'); a.emit([0xB9], a.imm32(31))              # jbe cpy; mov ecx,31
+        a.label('cpy'); a.emit([0x89, 0xDF, 0xFC, 0xF3, 0xA4, 0xC6, 0x07, 0x00])  # mov edi,ebx; cld; rep movsb; mov byte [edi],0
     a.emit([0xFF, 0x75, 0x10, 0xFF, 0x75, 0x0C, 0xFF, 0x75, 0x08])
     a.call_rel(findcopy)
     a.emit([0x85, 0xC0]); a.jcc32(JNZ, 'store')
@@ -233,7 +240,7 @@ def patch(exe: bytes, debug=False, norm=True):
     if norm:
         if STUB + len(stub) > NORM:
             raise ValueError('tab stub overlaps NORM')
-        ns = build_norm_stub(mbtwc, lcmap, wctmb)
+        ns = build_norm_stub(mbtwc, lcmap, wctmb, debug=debug)
         no = va2off(secs, NORM)
         end_rva = max(end_rva, NORM - BASE + len(ns))
         if end_rva > t['va'] + t['rsz'] or any(exe[no:no + len(ns)]):
@@ -243,7 +250,7 @@ def patch(exe: bytes, debug=False, norm=True):
             raise ValueError('NameTextOut FindCopy call site mismatch')
         out[no:no + len(ns)] = ns
         struct.pack_into('<i', out, co + 1, NORM - (NTO_FINDCOPY_CALL + 5))
-        buf_end = max(buf_end, AFULL3 + SLOT_BYTES)
+        buf_end = max(buf_end, (NLOG + 8 * 32) if debug else AFULL3 + SLOT_BYTES)
         norm_info = {'norm_va': hex(NORM), 'norm_len': len(ns), 'norm_hex': ns.hex(), 'rerouted_call': hex(NTO_FINDCOPY_CALL)}
     sites = []
     for orv in SITES_OR:

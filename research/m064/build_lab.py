@@ -22,6 +22,7 @@ def main(argv=None):
     ap.add_argument('--enabled', required=True); ap.add_argument('--pristine', required=True)
     ap.add_argument('--lab', required=True); ap.add_argument('--apply-images')
     ap.add_argument('--img-dirs', nargs='*', default=[]); ap.add_argument('--manifest')
+    ap.add_argument('--tab-debug', action='store_true', help='tab_title_patch 偵錯版（.ld2i 紀錄）')
     x = ap.parse_args(argv)
     lab = Path(x.lab)
     if 'pristine' in str(lab).lower() or 'baseline' in str(lab).lower():
@@ -35,7 +36,7 @@ def main(argv=None):
     exe, log['charset'] = charset_patch.patch(exe)
     exe, info = list_reroute.reroute(exe, EQUIP_SITES, 'item'); log['reroute'] = info['sites']
     exe, log['catalog'] = catalog_patch.patch(exe, catalog_patch.load_rows(HERE / 'hook-rows-equip.json'))
-    exe, info = tab_title_patch.patch(exe); log['tab_sites'] = info['sites']
+    exe, info = tab_title_patch.patch(exe, debug=x.tab_debug); log['tab_sites'] = info['sites']; log['norm'] = info.get('norm')
     (lab / 'Ld95.exe').write_bytes(exe); log['pre_image_sha256'] = hashlib.sha256(exe).hexdigest()
     if x.apply_images:
         r = subprocess.run([sys.executable, x.apply_images, x.pristine, str(lab)] + x.img_dirs,
