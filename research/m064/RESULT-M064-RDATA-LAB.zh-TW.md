@@ -148,3 +148,12 @@
 - 稱號譯文 379 條（含女性／複合職業、「武術達人」等）在 `gen_lab_detail.py`，`build()` 會核對表內 376 條全覆蓋。
 - **選單隊員名**：`0x488c73 call 0x46cc50`（隊員名 by slot → AppendMenuA）改導同一型名字 stub（`MENU_STUB 0xae5e40`）。`m064-cs-detail-006`：「角色狀態」「角色詳情」子項皆為「達吉爾塔爾」。
 - **回歸 `m064-full7-*`**（含稱號／名字 stub、未含選單 stub）：7 組全通過（旅館／酒館／任務、商店物品、武器、謠言、UI smoke、角色視窗、住宿天數 d10）。
+
+## 2026-11-06 04:40 更新：CDC::TextOut 全域後備＋詳情視窗各分頁
+- **`cdc_textout_patch.py`**：MFC `CDC::TextOut`（0x4e13d7；CDC／CPaintDC／CClientDC／CWindowDC 四個 vtable +0x5c 共用）開頭改 `jmp TO_HOOK`（0xae5ec0，246 B）。字串 1–64 B 且含 0x81–0x9F 位元組（＝CP932 日文；cp950 繁中不會出現 0x80–0xA0）時：
+  1. 先查 v4 catalog（helper 內部 `0xae5620` 開表＋`0xae4f60` 查表，flags＝ANY|JOIN，**不含 NAME_ONLY → 物品 FULL_ID 列也查得到**）→ TextOutW 繁中；
+  2. 查無 → `MultiByteToWideChar(932)` → TextOutW 顯示日文原文（不再亂碼）。
+  其他（Big5 譯文、ASCII、半形）走原 TextOutA。NameTextOut 查無時走 vtable → 同樣進這裡，所以先前的 `nto_fallback_patch` 不再建置（保留原始碼）。
+- **詳情視窗分頁（`m064-detail-tabs-005`）**：能力／戰力／家系／物品1 全部繁中——物品「軍刀／頭巾／軟皮甲／火把」、父母「卡德爾南多／芙特娜」（catalog 人名）、特殊技能「背刺」、家／配偶／子女「無」。`lab-detail` 增特殊技能 4 列（背刺、全體祝福、破陣、衝鋒攻擊）與「無」（`0x12f80c`）。
+- 家系分頁名字 getter 4 處（`0x4d9268/0x4d9435/0x4dd7fc/0x4dd9db`）也接上名字 stub。
+- 意義：charset_patch 的副作用（未譯 CP932 → Big5 亂碼）從此**全域降級為「顯示日文」**；catalog 有的直接顯示繁中。
