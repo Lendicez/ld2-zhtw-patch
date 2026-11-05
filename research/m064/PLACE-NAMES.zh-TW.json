@@ -2,7 +2,7 @@
  "schema": "m064-place-glossary/1",
  "production_can_apply": false,
  "release_approved": false,
- "policy": "の村→村、の町→鎮、の港町→港、の道／の路→道／路（去「の」）、都市保留；日式新字體改繁體（氷→冰、険→險…）；片假名地名音譯。地圖圖片（WP_MC*、F_MARK）與 .data 城鎮表（0x617258 起 17 B×18）共用本表。",
+ "policy": "の村→村、の町→鎮、の港町→港、の道／の路→道／路（去「の」）、都市保留；日式新字體改繁體（氷→冰、険→險…）；片假名地名音譯。地圖圖片（WP_MC*、F_MARK）與 .data 城鎮表（0x617258 起 17 B×18）共用本表。；路名與 m063 catalog 統一（去「之」，保留「砂」「岳」「冰融」「嶺」等用字）。",
  "decided_by": "Claude（風格預設；使用者可改）",
  "source": "WP_MC00–16／F_MARK 圖像判讀＋.data 城鎮表",
  "rows": [
@@ -113,18 +113,21 @@
   },
   {
    "ja": "氷解の道",
-   "zh_tw": "冰解道",
-   "kind": "route"
+   "zh_tw": "冰融道",
+   "kind": "route",
+   "note": "2026-11-05 與 m063 catalog 路名（Mina）用字統一"
   },
   {
    "ja": "流砂の町",
-   "zh_tw": "流沙鎮",
-   "kind": "town"
+   "zh_tw": "流砂鎮",
+   "kind": "town",
+   "note": "2026-11-05 與 m063 catalog 路名（Mina）用字統一"
   },
   {
    "ja": "海岳の道",
-   "zh_tw": "海嶽道",
-   "kind": "route"
+   "zh_tw": "海岳道",
+   "kind": "route",
+   "note": "2026-11-05 與 m063 catalog 路名（Mina）用字統一"
   },
   {
    "ja": "深林の山路",
@@ -153,8 +156,15 @@
   },
   {
    "ja": "熱砂の道",
-   "zh_tw": "熱沙道",
-   "kind": "route"
+   "zh_tw": "熱砂道",
+   "kind": "route",
+   "note": "2026-11-05 與 m063 catalog 路名（Mina）用字統一"
+  },
+  {
+   "ja": "登高の峠道",
+   "zh_tw": "登高嶺道",
+   "kind": "route",
+   "note": "2026-11-05 與 m063 catalog 路名（Mina）用字統一"
   },
   {
    "ja": "白夜の村",
@@ -173,8 +183,9 @@
   },
   {
    "ja": "砂塵の路",
-   "zh_tw": "沙塵路",
-   "kind": "route"
+   "zh_tw": "砂塵路",
+   "kind": "route",
+   "note": "2026-11-05 與 m063 catalog 路名（Mina）用字統一"
   },
   {
    "ja": "砂海都市",
@@ -209,11 +220,6 @@
   {
    "ja": "荒蕪の路",
    "zh_tw": "荒蕪路",
-   "kind": "route"
-  },
-  {
-   "ja": "蒼高の峠道",
-   "zh_tw": "蒼高山道",
    "kind": "route"
   },
   {

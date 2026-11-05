@@ -2,7 +2,7 @@
 
 - 檔案：`research/translations/m063-draft39-runtime-ansi-roadnames-tourney.zh-TW.json`
 - 來源：Mina public_copy（已剝 ja／cp932_hex），sha256 `daac1e815ba64954d073611b9fec36bbfe1d3395bf791a933c76d63fad4fff9d`
-- 本檔 sha256：`3fed03f76db86ee8e4b40e250b1412cd01382cfbe862a9fdb95b691039eb34c2`
+- 本檔 sha256：`0627b3b6318917b40ede3c04ace9a25514198a0ae12ddf74d738304993c1ace5`
 - 19 列：道路短名15（峠→嶺，cp950）、競技場單挑規則、決賽司儀、大魔王預言、任務保密
 - Mona 已審譯文：`review_status = mona_approved_candidate_pending_site`
 

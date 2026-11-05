@@ -54,16 +54,16 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "草露之道",
-      "text_cp950_bytes_len": 8,
-      "text_cp950_hex": "aff3c553a4a7b944",
+      "text_zh_tw": "草露道",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "aff3c553b944",
       "name_cp950_encodable": true,
       "fits_capacity": true,
-      "capacity_slack_bytes": 0,
+      "capacity_slack_bytes": 2,
       "review_status": "mona_approved_candidate_pending_site",
       "translation_method": "curated",
       "site_binding": "unconfirmed_candidate_adjacent_rdata",
-      "note": "road_name"
+      "note": "road_name; 2026-11-05 aligned to PLACE-NAMES"
     },
     {
       "category": "runtime_ansi",
@@ -81,16 +81,16 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "綠波之道",
-      "text_cp950_bytes_len": 8,
-      "text_cp950_hex": "baf1aa69a4a7b944",
+      "text_zh_tw": "綠波道",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "baf1aa69b944",
       "name_cp950_encodable": true,
       "fits_capacity": true,
-      "capacity_slack_bytes": 0,
+      "capacity_slack_bytes": 2,
       "review_status": "mona_approved_candidate_pending_site",
       "translation_method": "curated",
       "site_binding": "unconfirmed_candidate_adjacent_rdata",
-      "note": "road_name"
+      "note": "road_name; 2026-11-05 aligned to PLACE-NAMES"
     },
     {
       "category": "runtime_ansi",
@@ -162,16 +162,16 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "森羅之道",
-      "text_cp950_bytes_len": 8,
-      "text_cp950_hex": "b4cbc3b9a4a7b944",
+      "text_zh_tw": "森羅道",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "b4cbc3b9b944",
       "name_cp950_encodable": true,
       "fits_capacity": true,
-      "capacity_slack_bytes": 0,
+      "capacity_slack_bytes": 2,
       "review_status": "mona_approved_candidate_pending_site",
       "translation_method": "curated",
       "site_binding": "unconfirmed_candidate_adjacent_rdata",
-      "note": "road_name"
+      "note": "road_name; 2026-11-05 aligned to PLACE-NAMES"
     },
     {
       "category": "runtime_ansi",
@@ -216,16 +216,16 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "熱砂之道",
-      "text_cp950_bytes_len": 8,
-      "text_cp950_hex": "bcf6ace2a4a7b944",
+      "text_zh_tw": "熱砂道",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "bcf6ace2b944",
       "name_cp950_encodable": true,
       "fits_capacity": true,
-      "capacity_slack_bytes": 0,
+      "capacity_slack_bytes": 2,
       "review_status": "mona_approved_candidate_pending_site",
       "translation_method": "curated",
       "site_binding": "unconfirmed_candidate_adjacent_rdata",
-      "note": "road_name"
+      "note": "road_name; 2026-11-05 aligned to PLACE-NAMES"
     },
     {
       "category": "runtime_ansi",
@@ -243,16 +243,16 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "海岳之道",
-      "text_cp950_bytes_len": 8,
-      "text_cp950_hex": "aefca9a8a4a7b944",
+      "text_zh_tw": "海岳道",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "aefca9a8b944",
       "name_cp950_encodable": true,
       "fits_capacity": true,
-      "capacity_slack_bytes": 0,
+      "capacity_slack_bytes": 2,
       "review_status": "mona_approved_candidate_pending_site",
       "translation_method": "curated",
       "site_binding": "unconfirmed_candidate_adjacent_rdata",
-      "note": "road_name"
+      "note": "road_name; 2026-11-05 aligned to PLACE-NAMES"
     },
     {
       "category": "runtime_ansi",
@@ -270,16 +270,16 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "荒蕪之路",
-      "text_cp950_bytes_len": 8,
-      "text_cp950_hex": "afeebfbea4a7b8f4",
+      "text_zh_tw": "荒蕪路",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "afeebfbeb8f4",
       "name_cp950_encodable": true,
       "fits_capacity": true,
-      "capacity_slack_bytes": 0,
+      "capacity_slack_bytes": 2,
       "review_status": "mona_approved_candidate_pending_site",
       "translation_method": "curated",
       "site_binding": "unconfirmed_candidate_adjacent_rdata",
-      "note": "road_name"
+      "note": "road_name; 2026-11-05 aligned to PLACE-NAMES"
     },
     {
       "category": "runtime_ansi",
@@ -297,16 +297,16 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "砂塵之路",
-      "text_cp950_bytes_len": 8,
-      "text_cp950_hex": "ace2b9d0a4a7b8f4",
+      "text_zh_tw": "砂塵路",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "ace2b9d0b8f4",
       "name_cp950_encodable": true,
       "fits_capacity": true,
-      "capacity_slack_bytes": 0,
+      "capacity_slack_bytes": 2,
       "review_status": "mona_approved_candidate_pending_site",
       "translation_method": "curated",
       "site_binding": "unconfirmed_candidate_adjacent_rdata",
-      "note": "road_name"
+      "note": "road_name; 2026-11-05 aligned to PLACE-NAMES"
     },
     {
       "category": "runtime_ansi",
@@ -324,16 +324,16 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "風岸之道",
-      "text_cp950_bytes_len": 8,
-      "text_cp950_hex": "adb7a9a4a4a7b944",
+      "text_zh_tw": "風岸道",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "adb7a9a4b944",
       "name_cp950_encodable": true,
       "fits_capacity": true,
-      "capacity_slack_bytes": 0,
+      "capacity_slack_bytes": 2,
       "review_status": "mona_approved_candidate_pending_site",
       "translation_method": "curated",
       "site_binding": "unconfirmed_candidate_adjacent_rdata",
-      "note": "road_name"
+      "note": "road_name; 2026-11-05 aligned to PLACE-NAMES"
     },
     {
       "category": "runtime_ansi",
@@ -405,16 +405,16 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "星芒之路",
-      "text_cp950_bytes_len": 8,
-      "text_cp950_hex": "ac50a87ea4a7b8f4",
+      "text_zh_tw": "星芒路",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "ac50a87eb8f4",
       "name_cp950_encodable": true,
       "fits_capacity": true,
-      "capacity_slack_bytes": 0,
+      "capacity_slack_bytes": 2,
       "review_status": "mona_approved_candidate_pending_site",
       "translation_method": "curated",
       "site_binding": "unconfirmed_candidate_adjacent_rdata",
-      "note": "road_name"
+      "note": "road_name; 2026-11-05 aligned to PLACE-NAMES"
     },
     {
       "category": "runtime_ansi",
