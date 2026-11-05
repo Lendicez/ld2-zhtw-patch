@@ -4,6 +4,10 @@ r"""m064 lab：在 m063d 啟用版 EXE 的 `.ld2c` v4 catalog blob 追加 FULL_A
 hook 會以 CP932 解碼而出現亂碼。在 catalog 加一列「鍵＝新 Big5 位元組、值＝繁中 UTF-16」，
 hook 查表命中即輸出繁中。另可加「鍵＝原 CP932 位元組」列，未原位替換的點也能顯示繁中。
 
+`.ld2c` 版面（merge_plan_v3／v4）：+0 CatalogBytes（u32，必須 == blob 長度，helper 據此開 blob；不符即
+整份 catalog 失效、退回原文）｜+4 ExpectedTextOutA｜+8 OriginalDlgItem｜+12 ListMode｜+16 blob。本工具會同步更新
+CatalogBytes 與區段 VirtualSize（== 0x10 + blob）。
+
 格式與排序和 `research/m063/catalog_v4.encode_v4` 相同（header 32、row 16、pool 對齊），
 差別只在不要求鍵為合法 CP932（native helper 只做位元組比對）。blob 必須放得進 `.ld2c` 原始大小；
 必要時調大該區段 VirtualSize（不超過 raw 大小，不移動任何區段）。
@@ -48,6 +52,8 @@ def find_blob(exe: bytes):
     magic, ver, hsize, count, rsize, roff, poff, plen, flags = struct.unpack_from('<IHHIIIIII', exe, i)
     if (ver, hsize, rsize, roff, flags) != (VERSION, HEADER, ROW, HEADER, 1) or poff != roff + count * rsize:
         raise ValueError('unexpected v4 header')
+    if i != sec['raw'] + 16 or struct.unpack_from('<I', exe, sec['raw'])[0] != poff + plen:
+        raise ValueError('.ld2c prefix (CatalogBytes) does not match blob')
     return sec, i, poff + plen
 
 
@@ -116,11 +122,10 @@ def patch(exe: bytes, new_rows) -> tuple[bytes, dict]:
         raise ValueError(f'blob {len(blob)} B does not fit .ld2c (room {limit - off} B)')
     buf = bytearray(exe)
     buf[off:off + max(old_len, len(blob))] = blob + b'\0' * max(0, old_len - len(blob))
+    struct.pack_into('<I', buf, sec['raw'], len(blob))          # CatalogBytes
     need_vsz = end - sec['raw']
-    vsz_changed = False
-    if need_vsz > sec['vsz']:
-        struct.pack_into('<I', buf, sec['hdr'] + 8, need_vsz)
-        vsz_changed = True
+    vsz_changed = need_vsz != sec['vsz']
+    struct.pack_into('<I', buf, sec['hdr'] + 8, need_vsz)       # VirtualSize == 0x10 + blob
     if decode(bytes(buf[off:off + len(blob)])) != sorted(
             {(r[0], r[1], r[2], r[4]): r for r in old + add}.values(), key=sort_key):
         raise AssertionError('round trip')

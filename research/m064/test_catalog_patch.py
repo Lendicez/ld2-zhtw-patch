@@ -25,6 +25,26 @@ class CatalogPatchTests(unittest.TestCase):
         blob = P.encode(rows)
         self.assertEqual(sorted(P.decode(blob), key=P.sort_key), sorted(rows, key=P.sort_key))
 
+    def test_patch_updates_catalogbytes_and_vsz(self):
+        import struct
+        blob = P.encode(self.rows)
+        raw, rsz = 0x400, 0x1000
+        exe = bytearray(raw + rsz)
+        pe = 0x80
+        struct.pack_into('<I', exe, 0x3c, pe)
+        struct.pack_into('<H', exe, pe + 6, 1)
+        struct.pack_into('<H', exe, pe + 20, 0xe0)
+        hdr = pe + 24 + 0xe0
+        struct.pack_into('<8sIIII', exe, hdr, b'.ld2c', 16 + len(blob), 0x5000, rsz, raw)
+        struct.pack_into('<IIII', exe, raw, len(blob), 0x4e13d7, 0x4ea671, 2)
+        exe[raw + 16:raw + 16 + len(blob)] = blob
+        out, info = P.patch(bytes(exe), [(P.FULL_ANY, -1, '廣場'.encode('cp950'), '廣場', 0)])
+        n = struct.unpack_from('<I', out, raw)[0]
+        self.assertEqual(n, info['blob_after'])
+        self.assertEqual(struct.unpack_from('<I', out, hdr + 8)[0], 16 + n)
+        self.assertEqual(out[raw + 4:raw + 16], exe[raw + 4:raw + 16])
+        self.assertEqual(len(P.decode(out[raw + 16:raw + 16 + n])), len(self.rows) + 1)
+
     def test_ambiguous_key_rejected(self):
         with self.assertRaises(ValueError):
             P.encode(self.rows + [(c4.FULL_ANY, -1, 'エ'.encode('cp932'), '別', 0)])
