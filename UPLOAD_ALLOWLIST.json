@@ -405,7 +405,10 @@
     "research/translations/m063-draft63-runtime-ansi-death-protect-thanks-dying.zh-TW.json",
     "research/m063/DRAFT63-RUNTIME-ANSI-DEATH-PROTECT-THANKS-DYING.zh-TW.md",
     "research/translations/m063-draft64-runtime-ansi-protect-thanks-status-ff.zh-TW.json",
-    "research/m063/DRAFT64-RUNTIME-ANSI-PROTECT-THANKS-STATUS-FF.zh-TW.md"
+    "research/m063/DRAFT64-RUNTIME-ANSI-PROTECT-THANKS-STATUS-FF.zh-TW.md",
+    "research/m064/rdata_ansi.py",
+    "research/m064/test_rdata_ansi.py",
+    "tests/test_m064_research.py"
   ],
   "excluded_roots": [
     ".git",
