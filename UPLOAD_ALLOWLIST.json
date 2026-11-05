@@ -413,7 +413,8 @@
     "research/m064/RESULT-M064-RDATA-LAB.zh-TW.md",
     "research/m064/SITE-LEDGER.json",
     "research/m064/bmh.py",
-    "research/m064/test_bmh.py"
+    "research/m064/test_bmh.py",
+    "research/m064/PLACE-NAMES.zh-TW.json"
   ],
   "excluded_roots": [
     ".git",

@@ -1,0 +1,255 @@
+{
+ "schema": "m064-place-glossary/1",
+ "production_can_apply": false,
+ "release_approved": false,
+ "policy": "の村→村、の町→鎮、の港町→港、の道／の路→道／路（去「の」）、都市保留；日式新字體改繁體（氷→冰、険→險…）；片假名地名音譯。地圖圖片（WP_MC*、F_MARK）與 .data 城鎮表（0x617258 起 17 B×18）共用本表。",
+ "decided_by": "Claude（風格預設；使用者可改）",
+ "source": "WP_MC00–16／F_MARK 圖像判讀＋.data 城鎮表",
+ "rows": [
+  {
+   "ja": "イルタール",
+   "zh_tw": "伊爾塔爾",
+   "kind": "region"
+  },
+  {
+   "ja": "レンシア",
+   "zh_tw": "蓮西亞",
+   "kind": "region"
+  },
+  {
+   "ja": "ロシュフォーン",
+   "zh_tw": "羅修馮",
+   "kind": "region"
+  },
+  {
+   "ja": "三角州の村",
+   "zh_tw": "三角洲村",
+   "kind": "town"
+  },
+  {
+   "ja": "丘墟の道",
+   "zh_tw": "丘墟道",
+   "kind": "route"
+  },
+  {
+   "ja": "千年都市",
+   "zh_tw": "千年都市",
+   "kind": "town"
+  },
+  {
+   "ja": "天鐘の町",
+   "zh_tw": "天鐘鎮",
+   "kind": "town"
+  },
+  {
+   "ja": "山峡の険道",
+   "zh_tw": "山峽險道",
+   "kind": "route"
+  },
+  {
+   "ja": "山脚道",
+   "zh_tw": "山腳道",
+   "kind": "route"
+  },
+  {
+   "ja": "岩塊の町",
+   "zh_tw": "岩塊鎮",
+   "kind": "town"
+  },
+  {
+   "ja": "峭壁の狭路",
+   "zh_tw": "峭壁狹路",
+   "kind": "route"
+  },
+  {
+   "ja": "島繋回廊",
+   "zh_tw": "連島迴廊",
+   "kind": "route"
+  },
+  {
+   "ja": "崖岸道",
+   "zh_tw": "崖岸道",
+   "kind": "route"
+  },
+  {
+   "ja": "日紫",
+   "zh_tw": "日紫",
+   "kind": "region"
+  },
+  {
+   "ja": "星屑の町",
+   "zh_tw": "星屑鎮",
+   "kind": "town"
+  },
+  {
+   "ja": "星芒の路",
+   "zh_tw": "星芒路",
+   "kind": "route"
+  },
+  {
+   "ja": "月明の村",
+   "zh_tw": "月明村",
+   "kind": "town"
+  },
+  {
+   "ja": "月空の道",
+   "zh_tw": "月空道",
+   "kind": "route"
+  },
+  {
+   "ja": "東方都市",
+   "zh_tw": "東方都市",
+   "kind": "town"
+  },
+  {
+   "ja": "森羅の道",
+   "zh_tw": "森羅道",
+   "kind": "route"
+  },
+  {
+   "ja": "水鏡都市",
+   "zh_tw": "水鏡都市",
+   "kind": "town"
+  },
+  {
+   "ja": "氷解の道",
+   "zh_tw": "冰解道",
+   "kind": "route"
+  },
+  {
+   "ja": "流砂の町",
+   "zh_tw": "流沙鎮",
+   "kind": "town"
+  },
+  {
+   "ja": "海岳の道",
+   "zh_tw": "海嶽道",
+   "kind": "route"
+  },
+  {
+   "ja": "深林の山路",
+   "zh_tw": "深林山路",
+   "kind": "route"
+  },
+  {
+   "ja": "深森の町",
+   "zh_tw": "深森鎮",
+   "kind": "town"
+  },
+  {
+   "ja": "渡船の海道",
+   "zh_tw": "渡船海道",
+   "kind": "route"
+  },
+  {
+   "ja": "港湾海路",
+   "zh_tw": "港灣海路",
+   "kind": "route"
+  },
+  {
+   "ja": "漁火の町",
+   "zh_tw": "漁火鎮",
+   "kind": "town"
+  },
+  {
+   "ja": "熱砂の道",
+   "zh_tw": "熱沙道",
+   "kind": "route"
+  },
+  {
+   "ja": "白夜の村",
+   "zh_tw": "白夜村",
+   "kind": "town"
+  },
+  {
+   "ja": "白昼の航路",
+   "zh_tw": "白晝航路",
+   "kind": "route"
+  },
+  {
+   "ja": "百鐘の海路",
+   "zh_tw": "百鐘海路",
+   "kind": "route"
+  },
+  {
+   "ja": "砂塵の路",
+   "zh_tw": "沙塵路",
+   "kind": "route"
+  },
+  {
+   "ja": "砂海都市",
+   "zh_tw": "砂海都市",
+   "kind": "town"
+  },
+  {
+   "ja": "竜江",
+   "zh_tw": "龍江",
+   "kind": "region"
+  },
+  {
+   "ja": "細流の村",
+   "zh_tw": "細流村",
+   "kind": "town"
+  },
+  {
+   "ja": "緑波の道",
+   "zh_tw": "綠波道",
+   "kind": "route"
+  },
+  {
+   "ja": "茫洋の港町",
+   "zh_tw": "茫洋港",
+   "kind": "town"
+  },
+  {
+   "ja": "草露の道",
+   "zh_tw": "草露道",
+   "kind": "route"
+  },
+  {
+   "ja": "荒蕪の路",
+   "zh_tw": "荒蕪路",
+   "kind": "route"
+  },
+  {
+   "ja": "蒼高の峠道",
+   "zh_tw": "蒼高山道",
+   "kind": "route"
+  },
+  {
+   "ja": "越河の道",
+   "zh_tw": "越河道",
+   "kind": "route"
+  },
+  {
+   "ja": "跨越海道",
+   "zh_tw": "跨越海道",
+   "kind": "route"
+  },
+  {
+   "ja": "鈴音の町",
+   "zh_tw": "鈴音鎮",
+   "kind": "town"
+  },
+  {
+   "ja": "陰火の船路",
+   "zh_tw": "陰火船路",
+   "kind": "route"
+  },
+  {
+   "ja": "雪嵐の道",
+   "zh_tw": "雪嵐道",
+   "kind": "route"
+  },
+  {
+   "ja": "風岸の道",
+   "zh_tw": "風岸道",
+   "kind": "route"
+  },
+  {
+   "ja": "黄埃の路",
+   "zh_tw": "黃埃路",
+   "kind": "route"
+  }
+ ]
+}
