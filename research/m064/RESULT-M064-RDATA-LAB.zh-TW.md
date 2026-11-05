@@ -88,3 +88,10 @@
   - 畫面確認：資訊視窗「伊爾塔爾國 岩塊鎮」、地點〈廣場〉〈旅館〉〈道具店〉〈武器店〉〈寺院〉〈訓練所〉〈鎮外〉；移動對話框目前位置／通行證／6 目的地；地圖視窗「水鏡都市／崖岸道／岩塊鎮／白夜村／雪嵐道」；裝備欄「無裝備」。
 - 地名統一：PLACE-NAMES 與 m063 路名一致（去「之」；砂／岳／冰融／嶺；登高嶺道、流砂鎮）；place_ui「情報屋」→「情報所」。
 - 剩餘：裝備視窗分頁（角色名）與下拉（道具名）為未 hook 的 ANSI 控制項；場景視窗標題亂碼（配線前即有）；地圖 6 張細部殘點（第 4 版處理中）；改字集後字型為細明體（可評估改 face）。
+
+## 2026-11-05 22:10 更新：裝備視窗下拉道具名
+- 裝備對話框的 5 個下拉（ID 1014–1018）由 `CB_INSERTSTRING` 填入。m063 已把 `0x46e73a`、`0x47db6a` 導向 v4 **name** 入口（NAME_ONLY，不查道具列）→ 道具名未翻；`0x46bacb`、`0x46c46c`（dialog 151）未 hook。
+- `list_reroute.py`：4 點 call rel32 改導 v4 **item** 入口（入口位址由商店 0x4aaf19／教育 0x4735f6 讀出）；`catalog_patch.py` 加 `hook-rows-equip.json`（「無裝備」Big5 鍵）。
+- 結果 `m064-reroute-charwin-002`：下拉 = 無裝備／軍刀／軟皮甲／頭巾（全繁中），回歸通過。
+- 建置流程更新：rdata → charset → **list_reroute → catalog_patch(equip)** → images。
+- 待查：這 4 點在其他對話框（party／birthday 類）是否也列人名；item 入口同樣 ALLOW_ANY|JOIN，人名仍可命中（Kris 類同 bytes 例外）。分頁標籤＝角色名（屬性頁標題）仍未翻。

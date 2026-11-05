@@ -1,6 +1,6 @@
 {
  "schema": "m064-site-ledger/1",
- "updated": "2026-11-05T21:20+08:00",
+ "updated": "2026-11-05T22:10+08:00",
  "lab_machine_acp": 950,
  "production_can_apply": false,
  "release_approved": false,
@@ -106,6 +106,17 @@
     "m064-full-char_windows-001"
    ],
    "method": "screenshot review (with charset_patch)"
+  },
+  {
+   "offset_hex": "list sites 0x46e73a,0x47db6a,0x46bacb,0x46c46c",
+   "catalog": "m063 item catalog via v4 item entry",
+   "screen": "equip dialog combos 1014-1018 (軍刀/軟皮甲/頭巾/無裝備)",
+   "site_confirmed": true,
+   "rendering_checked": false,
+   "evidence": [
+    "m064-reroute-charwin-002"
+   ],
+   "method": "control text dump (W)"
   }
  ],
  "blocked": [],

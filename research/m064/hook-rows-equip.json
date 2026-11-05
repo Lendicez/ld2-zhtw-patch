@@ -1,0 +1,4 @@
+[
+ {"ansi_hex": "b54cb8cbb3c6", "zh": "無裝備", "note": "0x1398c4 already Big5 (lab-extra); equip combo now routed through v4 item entry"},
+ {"ansi_hex": "919594f582c882b5", "zh": "無裝備", "note": "original CP932 装備なし (if .rdata not wired)"}
+]
