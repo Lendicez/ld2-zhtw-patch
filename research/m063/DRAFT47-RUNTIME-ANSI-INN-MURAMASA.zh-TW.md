@@ -13,3 +13,6 @@
 
 ## 旗標
 `production_can_apply: false`、`release_approved: false`、`rendering_verified: false`。
+
+## 2026-11-05 site-bind 註記（Rona harness）
+- `0x13c3f0`「可休養天數為%d～%d日。」＝**住家／休養**用途，**非旅館宿泊**。旅館住宿天數彈窗對應 draft10 `0x168dd4`（未配線）。site 仍未確認。見 `evidence-draft40-47-sitebind/RESULT.zh-TW.md`。

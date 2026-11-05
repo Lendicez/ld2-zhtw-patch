@@ -22,3 +22,5 @@
 - 關鍵圖（僅名稱，不入庫）：038 旅館、041／042 酒館、049 資訊、052／053 委託、062／063 訓練。
 - Repo 文字：`enable-v4-run1/autotest-load-inn-tavern-quest-005-report.md`、`-state.json`、`-run.log`。
 - 未重新 Finalize／Pack 證據 zip（docs-only）。
+
+> 2026-11-05 追記：舊 `load_inn_tavern_quest` 若訓練所視窗未關會 force_kill；harness 結尾須補關訓練所視窗。

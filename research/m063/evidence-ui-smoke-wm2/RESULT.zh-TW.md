@@ -37,3 +37,5 @@
 
 ## 截圖位置
 截圖只保留在 Win11 `Desktop\ld2-cal\ui-smoke-wm2-00{4,6,7}\`，本 repo 不附檔。
+
+> 2026-11-05 追記：`ui_smoke_wm2_no32880` 已改用 `dismiss_chain`；`site4047-uismoke-001` 綠燈。

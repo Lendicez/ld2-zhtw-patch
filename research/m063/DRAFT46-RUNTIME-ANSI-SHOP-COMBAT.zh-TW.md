@@ -13,3 +13,6 @@
 
 ## 旗標
 `production_can_apply: false`、`release_approved: false`、`rendering_verified: false`。
+
+## 2026-11-05 site-bind 註記（Rona harness）
+- `0x158f60` 枚數行：一般道具店不跳數量框；疑為卡片／卷軸店；仍 unconfirmed。見 `evidence-draft40-47-sitebind/RESULT.zh-TW.md`。

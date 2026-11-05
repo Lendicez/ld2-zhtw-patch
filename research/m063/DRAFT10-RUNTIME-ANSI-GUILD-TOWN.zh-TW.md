@@ -13,3 +13,6 @@
 
 ## 旗標
 `production_can_apply: false`、`release_approved: false`、`rendering_verified: false`。
+
+## 2026-11-05 site 註記（Rona harness）
+- `0x168dd4` `宿泊できる日数は%d日から%d日までです。`→「可住宿天數為%d日至%d日。」：旅館彈窗執行期仍顯示日文「宿泊できる日数は1日から30日までです。」＝**未配線**，非漏翻；site 仍未確認。見 `evidence-draft40-47-sitebind/RESULT.zh-TW.md`。
