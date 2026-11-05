@@ -95,3 +95,7 @@
 - 結果 `m064-reroute-charwin-002`：下拉 = 無裝備／軍刀／軟皮甲／頭巾（全繁中），回歸通過。
 - 建置流程更新：rdata → charset → **list_reroute → catalog_patch(equip)** → images。
 - 待查：這 4 點在其他對話框（party／birthday 類）是否也列人名；item 入口同樣 ALLOW_ANY|JOIN，人名仍可命中（Kris 類同 bytes 例外）。分頁標籤＝角色名（屬性頁標題）仍未翻。
+
+## 2026-11-05 22:45 更新
+- 新流程完整建置（含 list_reroute＋equip catalog）回歸 `m064-full4-*-001` 7 組全通過，改導 4 點未造成人名退化。
+- 屬性表分頁（角色名）設計：`DESIGN-EQUIP-TAB.zh-TW.md`（6 處 `mov [eax+0x14],edi` 改呼叫 stub，走 `LD2N_FindCopy`＋CP950 轉換）。
