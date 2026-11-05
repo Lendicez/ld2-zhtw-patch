@@ -28,6 +28,9 @@ STUB = 0xae5b40                       # .ld2t 剩餘空間（16 對齊）
 WBUF, SLOT, ABUF = 0xb25400, 0xb25610, 0xb25620
 SLOTS, SLOT_BYTES = 8, 72
 WTMP, WTMP2, AFULL = 0xb25880, 0xb25980, 0xb25a80   # 半形→全形正規化暫存
+NORM = 0xae5c50                                     # FindCopyNorm stub（NameTextOut 用）
+NTO_FINDCOPY_CALL = 0xae598d                        # NameTextOut v4 內唯一的 call LD2N_FindCopy
+WTMP3, WTMP4, AFULL3 = 0xb25b00, 0xb25c00, 0xb25d00
 CP950, CP932 = 950, 932
 LCID_JA, LCMAP_FULLWIDTH = 0x411, 0x00800000
 
@@ -171,7 +174,38 @@ def build_stub(lstrlen_slot, wctmb_slot, mbtwc_slot, lcmap_slot, origin=STUB, fi
     return a.finish()
 
 
-def patch(exe: bytes, debug=False):
+def build_norm_stub(mbtwc_slot, lcmap_slot, wctmb_slot, origin=NORM, findcopy=FINDCOPY):
+    """FindCopyNorm(ansi, count, dest)（stdcall @12）：先原樣查；查無則半形→全形後再查。"""
+    a = Asm(origin)
+    JZ, JNZ, JA = 0x84, 0x85, 0x87
+    a.emit([0x55, 0x8B, 0xEC, 0x60])                       # push ebp; mov ebp,esp; pushad
+    a.emit([0xFF, 0x75, 0x10, 0xFF, 0x75, 0x0C, 0xFF, 0x75, 0x08])
+    a.call_rel(findcopy)
+    a.emit([0x85, 0xC0]); a.jcc32(JNZ, 'store')
+    a.emit([0x8B, 0x75, 0x08, 0x8B, 0x4D, 0x0C])           # esi=ansi; ecx=count
+    a.emit([0x68], a.imm32(128), [0x68], a.imm32(WTMP3), [0x51, 0x56, 0x6A, 0x00], [0x68], a.imm32(CP932))
+    a.call_ind(mbtwc_slot)
+    a.emit([0x85, 0xC0]); a.jcc32(JZ, 'fail')
+    a.emit([0x68], a.imm32(128), [0x68], a.imm32(WTMP4), [0x50], [0x68], a.imm32(WTMP3),
+           [0x68], a.imm32(LCMAP_FULLWIDTH), [0x68], a.imm32(LCID_JA))
+    a.call_ind(lcmap_slot)
+    a.emit([0x85, 0xC0]); a.jcc32(JZ, 'fail')
+    a.emit([0x6A, 0x00, 0x6A, 0x00, 0x6A, SLOT_BYTES], [0x68], a.imm32(AFULL3), [0x50], [0x68], a.imm32(WTMP4),
+           [0x6A, 0x00], [0x68], a.imm32(CP932))
+    a.call_ind(wctmb_slot)
+    a.emit([0x85, 0xC0]); a.jcc32(JZ, 'fail')
+    a.emit([0x83, 0xF8, 0x40]); a.jcc32(JA, 'fail')
+    a.emit([0xC6, 0x80], a.imm32(AFULL3), [0x00])
+    a.emit([0xFF, 0x75, 0x10, 0x50], [0x68], a.imm32(AFULL3))
+    a.call_rel(findcopy)
+    a.jcc8(0xEB, 'store')
+    a.label('fail'); a.emit([0x31, 0xC0])
+    a.label('store'); a.emit([0x89, 0x44, 0x24, 0x1C])     # pushad 的 eax 槽
+    a.emit([0x61, 0x5D, 0xC2, 0x0C, 0x00])                 # popad; pop ebp; ret 0xc
+    return a.finish()
+
+
+def patch(exe: bytes, debug=False, norm=True):
     secs, pe = sections(exe)
     t, i = secs['.ld2t'], secs['.ld2i']
     if hashlib.sha256(exe[t['raw']:t['raw'] + LD2T_USED]).hexdigest() != LD2T_SHA:
@@ -188,13 +222,29 @@ def patch(exe: bytes, debug=False):
     end_rva = STUB - BASE + len(stub)
     if end_rva > t['va'] + t['rsz'] or any(exe[so:so + len(stub)]):
         raise ValueError('.ld2t cave not free')
-    buf_end = AFULL + SLOT_BYTES
+    buf_end = (AFULL3 if norm else AFULL) + SLOT_BYTES
     if buf_end - BASE > i['va'] + i['rsz'] or any(exe[va2off(secs, WBUF):va2off(secs, buf_end)]):
         raise ValueError('.ld2i buffer area not free')
     if not WBUF < WBUF + 0x202 <= SLOT < ABUF + SLOTS * SLOT_BYTES <= WTMP < WTMP + 0x100 <= WTMP2 < WTMP2 + 0x100 <= AFULL:
         raise AssertionError('buffer layout overlap')
     out = bytearray(exe)
     out[so:so + len(stub)] = stub
+    norm_info = None
+    if norm:
+        if STUB + len(stub) > NORM:
+            raise ValueError('tab stub overlaps NORM')
+        ns = build_norm_stub(mbtwc, lcmap, wctmb)
+        no = va2off(secs, NORM)
+        end_rva = max(end_rva, NORM - BASE + len(ns))
+        if end_rva > t['va'] + t['rsz'] or any(exe[no:no + len(ns)]):
+            raise ValueError('.ld2t cave not free for NORM')
+        co = va2off(secs, NTO_FINDCOPY_CALL)
+        if exe[co] != 0xE8 or NTO_FINDCOPY_CALL + 5 + struct.unpack_from('<i', exe, co + 1)[0] != FINDCOPY:
+            raise ValueError('NameTextOut FindCopy call site mismatch')
+        out[no:no + len(ns)] = ns
+        struct.pack_into('<i', out, co + 1, NORM - (NTO_FINDCOPY_CALL + 5))
+        buf_end = max(buf_end, AFULL3 + SLOT_BYTES)
+        norm_info = {'norm_va': hex(NORM), 'norm_len': len(ns), 'norm_hex': ns.hex(), 'rerouted_call': hex(NTO_FINDCOPY_CALL)}
     sites = []
     for orv in SITES_OR:
         call1, mid, call2 = orv - 15, orv - 10, orv - 5
@@ -212,7 +262,7 @@ def patch(exe: bytes, debug=False):
         sites.append(hex(mid))
     struct.pack_into('<I', out, t['hdr'] + 8, max(t['vsz'], end_rva - t['va']))
     struct.pack_into('<I', out, i['hdr'] + 8, max(i['vsz'], buf_end - BASE - i['va']))
-    return bytes(out), {'stub_va': hex(STUB), 'stub_len': len(stub), 'sites': sites,
+    return bytes(out), {'stub_va': hex(STUB), 'stub_len': len(stub), 'sites': sites, 'norm': norm_info,
                         'lstrlenA_iat': hex(lstrlen), 'WideCharToMultiByte_iat': hex(wctmb),
                         'stub_hex': stub.hex()}
 
@@ -220,12 +270,13 @@ def patch(exe: bytes, debug=False):
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument('--exe', required=True); ap.add_argument('--out', required=True)
+    ap.add_argument('--no-norm', action='store_true', help='不安裝 NameTextOut 的 FindCopyNorm')
     ap.add_argument('--debug', action='store_true', help='在 .ld2i 0xb25600 記錄呼叫次數／名字指標／長度／FindCopy 結果')
     x = ap.parse_args(argv)
     if Path(x.exe).resolve() == Path(x.out).resolve():
         print('拒絕覆寫輸入 EXE', file=sys.stderr); return 2
     exe = Path(x.exe).read_bytes()
-    out, info = patch(exe, x.debug)
+    out, info = patch(exe, x.debug, norm=not x.no_norm)
     Path(x.out).write_bytes(out)
     info.update(input_sha256=hashlib.sha256(exe).hexdigest(), output_sha256=hashlib.sha256(out).hexdigest(),
                 lab_only=True, production_can_apply=False)
