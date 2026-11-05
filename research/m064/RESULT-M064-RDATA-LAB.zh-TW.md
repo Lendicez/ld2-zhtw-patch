@@ -146,4 +146,5 @@
   - 繪製函式兩處（`0x4d77a0`、`0x4dbd..`）以「稱號 getter `0x44dab0`＋" "＋名字 getter `0x44d870`」組字後 TextOut。4 個 getter 呼叫點（`0x4d78a1/0x4d78bc`、`0x4dbdba/0x4dbdd8`）改導 thiscall 透傳 stub：稱號 → 查「CP932→Big5」對照表（建置時由使用者 EXE 產生、附加在 `.ld2i` 檔尾 0xb26000，371 對、7134 B，不入庫）；名字 → FindCopyNorm → CP950。查無即原樣。
   - 第 1 版 epi stub 誤用 pushad 內 edi（被 `repe cmpsb` 用掉）→ 視窗不繪；改以 ebp 保存 CString* 後正常。
 - 稱號譯文 379 條（含女性／複合職業、「武術達人」等）在 `gen_lab_detail.py`，`build()` 會核對表內 376 條全覆蓋。
-- 仍待：選單「角色狀態／角色詳情」子項的隊員名（AppendMenu／ModifyMenu 類 ANSI）；回歸 `m064-full7-*` 進行中。
+- **選單隊員名**：`0x488c73 call 0x46cc50`（隊員名 by slot → AppendMenuA）改導同一型名字 stub（`MENU_STUB 0xae5e40`）。`m064-cs-detail-006`：「角色狀態」「角色詳情」子項皆為「達吉爾塔爾」。
+- **回歸 `m064-full7-*`**（含稱號／名字 stub、未含選單 stub）：7 組全通過（旅館／酒館／任務、商店物品、武器、謠言、UI smoke、角色視窗、住宿天數 d10）。
