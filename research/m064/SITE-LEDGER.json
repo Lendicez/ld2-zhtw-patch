@@ -1,6 +1,6 @@
 {
  "schema": "m064-site-ledger/1",
- "updated": "2026-11-05T16:30+08:00",
+ "updated": "2026-11-05T21:20+08:00",
  "lab_machine_acp": 950,
  "production_can_apply": false,
  "release_approved": false,
@@ -51,6 +51,61 @@
     "m064-all-load_inn_tavern_quest-001"
    ],
    "method": "Static text"
+  },
+  {
+   "offset_hex": "0x159734",
+   "catalog": "m063-draft57",
+   "screen": "info window place 〈廣場〉",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-full-load_inn_tavern_quest-001"
+   ],
+   "method": "screenshot review (with charset_patch)"
+  },
+  {
+   "offset_hex": "0x617258..0x617368",
+   "catalog": "m064-lab-places",
+   "screen": "travel dialog / info window town names",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-full-load_shop_weapon-001"
+   ],
+   "method": "screenshot review (with charset_patch)"
+  },
+  {
+   "offset_hex": "0x1723e8..0x17241b",
+   "catalog": "m064-lab-places",
+   "screen": "region names (伊爾塔爾國 …)",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-full-load_shop_weapon-001"
+   ],
+   "method": "screenshot review (with charset_patch)"
+  },
+  {
+   "offset_hex": "0x138be0",
+   "catalog": "m064-lab-places",
+   "screen": "'國 ' in info window",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-full-load_inn_tavern_quest-001"
+   ],
+   "method": "screenshot review (with charset_patch)"
+  },
+  {
+   "offset_hex": "0x1398c4",
+   "catalog": "m064-lab-extra",
+   "screen": "equip combo 無裝備",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-full-char_windows-001"
+   ],
+   "method": "screenshot review (with charset_patch)"
   }
  ],
  "blocked": [],
