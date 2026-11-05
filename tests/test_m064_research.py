@@ -10,4 +10,5 @@ def load_tests(loader, standard_tests, pattern):
     sys.path.insert(0, str(M064))
     suite = unittest.TestSuite()
     suite.addTests(loader.discover(str(M064), pattern='test_rdata_ansi.py', top_level_dir=str(M064)))
+    suite.addTests(loader.discover(str(M064), pattern='test_bmh.py', top_level_dir=str(M064)))
     return suite
