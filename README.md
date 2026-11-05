@@ -10,10 +10,11 @@
 | 層 | 內容 | 狀態 |
 |---|---|---|
 | 資源文字（選單／對話框） | m020 已審核 239 處 | lab 建置中顯示繁中 |
-| 道具／冒險者名稱 | catalog v4＋NameTextOut／ListInsert／NamePair hook（m063d 啟用版） | lab 建置中商店／清單顯示繁中 |
-| 執行期 ANSI 字串（`.rdata`） | 1081 列候選譯文（m063 draft7–64）；**1040 列已在 lab 原位配線**（m064） | 回歸全綠；畫面逐列確認中 |
-| 圖片內嵌文字 | 按鈕 23 張、狀態面板 8 張已重繪；移動地圖 17 張待做（m064） | lab |
-| 地名 | 49 筆詞彙表（`research/m064/PLACE-NAMES.zh-TW.json`） | 已定案 |
+| 道具／冒險者名稱 | catalog v4＋NameTextOut／ListInsert／NamePair hook（m063d 啟用版） | 商店、清單、裝備下拉、屬性表分頁顯示繁中 |
+| 執行期 ANSI 字串（`.rdata`／`.data`） | m063 draft7–64＋地名表＋lab 補充：**1107 列原位 Big5**（m064） | 回歸全綠；畫面逐列確認中 |
+| 字型 | 3 處 SHIFTJIS 字型改 CHINESEBIG5（資訊視窗、移動對話框等） | lab |
+| 圖片內嵌文字 | 按鈕 23、狀態面板 8、移動地圖 17 重繪（m064） | lab |
+| 地名 | 49 筆詞彙表，地圖／遊戲文字一致 | 已定案 |
 
 開發主線在 **PR #26**（branch `research/m062-catalog-capacity`，Draft）。
 
@@ -22,8 +23,10 @@
 - **執行期字串**：lab 機系統 ANSI code page 為 950（zh-TW）。遊戲以 ANSI API 顯示 `.rdata` 字串，
   在原位址改寫為 Big5（CP950）位元組即可直接顯示繁中，不需 hook。工具：`research/m064/rdata_ansi.py`
   （逐列檢查原文槽 sha256、NUL 結尾、CP950 編碼、容量、printf／`%A` 類替換符合約；只寫 lab 複本）。
-- **hook 路徑例外**：經 m063 v4 TextOut hook 顯示的字串（hook 以 CP932 解碼）不可原位改 Big5，
-  改由 v4 catalog 在 hook 端換成 UTF-16 繁中。
+- **字型字集**：部分視窗以 SHIFTJIS_CHARSET 建字型，位元組一律以 CP932 解讀；`research/m064/charset_patch.py`
+  改為 CHINESEBIG5 後 Big5 字串正確顯示（同視窗的日文須同步翻譯）。
+- **hook 擴充**：`list_reroute.py`（清單填入點改導 v4 item 入口）、`catalog_patch.py`（`.ld2c` 追加查表列）、
+  `tab_title_patch.py`（屬性表分頁標題：半形→全形→人名查表→Big5 的小型 stub）。完整 lab 建置：`research/m064/build_lab.py`。
 - **圖片**：EXE `RT_BITMAP`、`RES\*.BMP`，以及遊戲自訂 `.BMH`（Huffman 區塊格式，`research/m064/bmh.py`
   已逆向，518 檔往返驗證）。重繪時維持原尺寸、原調色盤、原格式，字形用 Windows GDI 細明體點陣（無反鋸齒）。
 - **驗證**：Win11 本機 harness（`zhTW_lab\ld2-autotest`，不在本庫）在隔離副本中自動讀檔、走 UI、截圖；
