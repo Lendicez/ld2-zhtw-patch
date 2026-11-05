@@ -16,6 +16,9 @@ wsprintfA…）顯示 `.rdata` 內的 CP932 字串，在 CP950 下本來就是�
   5. 槽位互不重疊。
 寫入：`cp950 bytes + NUL × (source_bytes_len − len)`；指標與相鄰字串不動。
 
+注意：經由 m063 v4 TextOut hook 顯示的字串（hook 以 CP932 解碼原文），原位改成 Big5 會變亂碼
+（lab 實測：資訊視窗地點 `place_ui`）。這類列用 `--exclude-subcategory` 排除，改走 v4 catalog。
+
 用法（Windows 或 Linux 皆可）：
   python rdata_ansi.py check --exe Ld95.exe --catalog research\translations\m063-draft10-*.json
   python rdata_ansi.py apply --exe in\Ld95.exe --out lab\Ld95.exe --catalog ... [--only 0x168dd4,...] [--strict]
@@ -127,11 +130,14 @@ def check_item(exe: bytes, it: dict) -> tuple[bytes | None, str | None]:
     return enc + b'\0' * (n - len(enc)), None
 
 
-def plan(exe: bytes, items: list[dict], only: set[int] | None = None) -> dict:
+def plan(exe: bytes, items: list[dict], only: set[int] | None = None,
+         exclude_subcategories: set[str] | None = None) -> dict:
     rows, last_end = [], -1
     for it in items:
         off = int(it['file_offset'])
         if only is not None and off not in only:
+            continue
+        if exclude_subcategories and it.get('subcategory') in exclude_subcategories:
             continue
         payload, reason = check_item(exe, it)
         n = int(it['source_bytes_len'])
@@ -200,6 +206,8 @@ def main(argv=None) -> int:
         a.add_argument('--exe', required=True)
         a.add_argument('--catalog', required=True, action='append')
         a.add_argument('--only')
+        a.add_argument('--exclude-subcategory', action='append', default=[],
+                       help='略過此 subcategory（例：走 v4 TextOut hook、需維持 CP932 的 place_ui）')
         a.add_argument('--strict', action='store_true')
         a.add_argument('--manifest')
         if name == 'apply':
@@ -208,7 +216,7 @@ def main(argv=None) -> int:
     exe_path = Path(x.exe)
     exe = exe_path.read_bytes()
     items = load_items(x.catalog)
-    p = plan(exe, items, _parse_only(x.only))
+    p = plan(exe, items, _parse_only(x.only), set(x.exclude_subcategory) or None)
     out = None
     if x.strict and p['skipped']:
         print(json.dumps(manifest(exe, None, p, vars(x))['skipped_by_reason'], ensure_ascii=False))

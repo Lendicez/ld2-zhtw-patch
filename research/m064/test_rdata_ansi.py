@@ -108,6 +108,12 @@ class PlanApplyTests(unittest.TestCase):
         p = R.plan(bytes(self.exe), items, only={0x200})
         self.assertEqual([r['offset'] for r in p['rows']], [0x200])
 
+    def test_exclude_subcategory(self):
+        a, b = _item(self.s1, '可%d'), _item(self.s2, '確定')
+        b['subcategory'] = 'place_ui'
+        p = R.plan(bytes(self.exe), [a, b], exclude_subcategories={'place_ui'})
+        self.assertEqual([r['offset'] for r in p['rows']], [0x100])
+
     def test_cli_refuses_overwrite_and_flags_false(self):
         with tempfile.TemporaryDirectory() as d:
             d = Path(d)
