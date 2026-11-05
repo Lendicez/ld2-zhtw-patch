@@ -377,11 +377,13 @@
     "research/translations/m063-draft51-runtime-ansi-confirm-sys-ui.zh-TW.json",
     "research/translations/m063-draft52-runtime-ansi-sys-life-ui.zh-TW.json",
     "research/translations/m063-draft53-runtime-ansi-place-king-prophecy.zh-TW.json",
+    "research/translations/m063-draft54-runtime-ansi-prophecy-escort.zh-TW.json",
     "research/m063/DRAFT50-RUNTIME-ANSI-PARTY-FMT-UI.zh-TW.md",
     "research/m063/DRAFT49-RUNTIME-ANSI-SHOP-ITEM-UI.zh-TW.md",
     "research/m063/DRAFT51-RUNTIME-ANSI-CONFIRM-SYS-UI.zh-TW.md",
     "research/m063/DRAFT52-RUNTIME-ANSI-SYS-LIFE-UI.zh-TW.md",
     "research/m063/DRAFT53-RUNTIME-ANSI-PLACE-KING-PROPHECY.zh-TW.md",
+    "research/m063/DRAFT54-RUNTIME-ANSI-PROPHECY-ESCORT.zh-TW.md",
     "research/m063/DRAFT47-RUNTIME-ANSI-INN-MURAMASA.zh-TW.md"
   ],
   "excluded_roots": [
