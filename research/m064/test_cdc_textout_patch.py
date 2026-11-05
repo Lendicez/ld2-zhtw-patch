@@ -14,7 +14,7 @@ class TextOutFallbackTests(unittest.TestCase):
         self.assertEqual(C.model(b'65/ 65', 6), 'a')
         self.assertEqual(C.model('グルメ'.encode('cp932'), 6, have_w=False), 'a')
         self.assertEqual(C.model(b'', 0), 'a')
-        self.assertEqual(C.model('あ'.encode('cp932') * 200, 400), 'a')    # 過長 → 原路徑
+        self.assertEqual(C.model('あ'.encode('cp932') * 40, 80), 'a')      # 過長 → 原路徑
 
     def test_stub_tail_is_original_body(self):
         s = C.build_stub(0x52537c)

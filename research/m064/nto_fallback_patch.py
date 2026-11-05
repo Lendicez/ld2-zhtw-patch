@@ -1,4 +1,4 @@
-r"""m064 lab：NameTextOut 查無時的日文後備顯示。
+r"""m064 lab：NameTextOut 查無時的日文後備顯示。（已被 cdc_textout_patch 取代，build_lab 不再使用；保留供對照）
 
 charset_patch 把字型 A／B 改成 CHINESEBIG5 後，NameTextOut（m063 v4）查表**查無**的字串會走原
 CDC::TextOutA，以 Big5 解讀 CP932 → 亂碼（例：詳情視窗「特殊技能」值、物品名）。

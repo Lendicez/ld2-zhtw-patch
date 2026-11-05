@@ -4,8 +4,7 @@ r"""m064 lab：一次建出完整 lab EXE＋圖檔（6 步）。只寫 --lab 目
                       --apply-images <apply_images.py> --img-dirs out_zh out_zh_bmh out_zh_maps [--work <暫存目錄>]
 
 1 rdata_ansi（m063 draft*＋lab-extra-*＋lab-places）  2 charset_patch  3 list_reroute（裝備下拉→item）
-4 catalog_patch（hook-rows-equip）  5 tab_title_patch  5b detail_name_patch（詳情視窗稱號＋名字）  5c nto_fallback_patch（NameTextOut 查無→日文 TextOutW）
-5d cdc_textout_patch（CDC::TextOut 含 CP932 lead 0x81–0x9F → TextOutW）
+4 catalog_patch（hook-rows-equip）  5 tab_title_patch  5b detail_name_patch（詳情視窗稱號＋名字）  5c cdc_textout_patch（CDC::TextOut 含 CP932 lead 0x81–0x9F → catalog 查表或日文 TextOutW；取代 nto_fallback_patch）
 → 寫 lab\Ld95.exe  6 apply_images（RES＋EXE RT_BITMAP）
 """
 import argparse, glob, hashlib, json, subprocess, sys
@@ -15,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 import rdata_ansi, charset_patch, list_reroute, catalog_patch, tab_title_patch  # noqa: E402
-import detail_name_patch, gen_lab_detail, nto_fallback_patch, cdc_textout_patch  # noqa: E402
+import detail_name_patch, gen_lab_detail, cdc_textout_patch  # noqa: E402
 
 EQUIP_SITES = [0x46e73a, 0x47db6a, 0x46bacb, 0x46c46c]
 
@@ -44,7 +43,6 @@ def main(argv=None):
     exe, log['catalog'] = catalog_patch.patch(exe, catalog_patch.load_rows(HERE / 'hook-rows-equip.json'))
     exe, info = tab_title_patch.patch(exe, debug=x.tab_debug); log['tab_sites'] = info['sites']; log['norm'] = info.get('norm')
     exe, log['detail_name'] = detail_name_patch.patch(exe, epi_pairs)
-    exe, log['nto_fallback'] = nto_fallback_patch.patch(exe)
     exe, log['cdc_textout'] = cdc_textout_patch.patch(exe)
     (lab / 'Ld95.exe').write_bytes(exe); log['pre_image_sha256'] = hashlib.sha256(exe).hexdigest()
     if x.apply_images:
