@@ -13,4 +13,5 @@ def load_tests(loader, standard_tests, pattern):
     suite.addTests(loader.discover(str(M064), pattern='test_bmh.py', top_level_dir=str(M064)))
     suite.addTests(loader.discover(str(M064), pattern='test_catalog_patch.py', top_level_dir=str(M064)))
     suite.addTests(loader.discover(str(M064), pattern='test_charset_patch.py', top_level_dir=str(M064)))
+    suite.addTests(loader.discover(str(M064), pattern='test_list_reroute.py', top_level_dir=str(M064)))
     return suite
