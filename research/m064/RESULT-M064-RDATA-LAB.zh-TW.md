@@ -105,3 +105,8 @@
 - 偵錯（`--debug`＋harness 新 op `read_mem`）：第 1 版 stub 有執行但 FindCopy 查無 → 屬性表標題用**半形片假名**（「ﾀﾞｼﾞﾙﾀｰﾙ」）。第 2 版先 `MultiByteToWideChar(932)`→`LCMapStringW(0x411, LCMAP_FULLWIDTH)`→`WideCharToMultiByte(932)` 正規化再查表；輸出 Big5「達吉爾塔爾」。
 - 畫面：裝備視窗分頁「達吉爾塔爾」（`m064-full5-char_windows-001`）。
 - 建置流程第 6 步：`tab_title_patch.py`。回歸 `m064-full5-*` 7 組通過（site_inn_days_d10 首跑移動步驟偶發逾時，重跑 -002 通過）。
+
+## 2026-11-06 00:20 更新
+- **場景視窗標題**（配線前即亂碼）：進城後遊戲以 `.rdata 0x171fbc`「ビジュアルウインドウ」重設 MDI 子視窗標題 → lab-extra 譯「場景視窗」。harness 新 op `dump_main`（子視窗標題 W／A 原始 bytes）確認進城前後皆「場景視窗」（`m064-probe-titles-002`）。
+- **build_lab.py**：6 步一次建置（rdata → charset → list_reroute → catalog(equip) → tab_title → images）。EXE `8b0e81f2…78ba`；回歸 `m064-full6-*` 7 組全通過。
+- **讀檔清單**：每列為存檔檔頭文字（角色名、城鎮名＝存檔當時的 CP932），非 EXE 字串；ListBox 1025 為 ANSI → 亂碼。可行方向：該清單填入點導入 v4 helper（查無時 helper 以 CP932 正確解碼，至少顯示日文）；新舊存檔混碼問題待設計。
