@@ -29,7 +29,7 @@ def main(argv=None):
     if 'pristine' in str(lab).lower() or 'baseline' in str(lab).lower():
         print('refuse: lab path looks like baseline', file=sys.stderr); return 2
     exe = Path(x.enabled).read_bytes(); log = {'enabled_sha256': hashlib.sha256(exe).hexdigest()}
-    cats = [str(ROOT / 'research/translations/m063-draft*.json'), str(HERE / 'lab-extra-*.json'), str(HERE / 'lab-places.zh-TW.json')]
+    cats = [str(ROOT / 'research/translations/m063-draft*.json'), str(HERE / 'lab-extra-*.json'), str(HERE / 'lab-places.zh-TW.json'), str(HERE / 'lab-detail.zh-TW.json')]
     p = rdata_ansi.plan(exe, rdata_ansi.load_items(cats))
     if p['skipped']:
         print(json.dumps([r for r in p['rows'] if not r['ok']], default=str)[:2000], file=sys.stderr); return 3

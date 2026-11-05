@@ -421,6 +421,8 @@
     "research/m064/charset_patch.py",
     "research/m064/test_charset_patch.py",
     "research/m064/lab-places.zh-TW.json",
+    "research/m064/lab-detail.zh-TW.json",
+    "research/m064/gen_lab_detail.py",
     "research/m064/list_reroute.py",
     "research/m064/test_list_reroute.py",
     "research/m064/hook-rows-equip.json",
