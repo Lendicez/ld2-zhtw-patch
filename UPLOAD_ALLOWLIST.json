@@ -432,6 +432,8 @@
     "research/m064/test_detail_name_patch.py",
     "research/m064/detail_name_patch.py",
     "research/m064/nto_fallback_patch.py",
+    "research/m064/cdc_textout_patch.py",
+    "research/m064/test_cdc_textout_patch.py",
     "research/m064/test_nto_fallback_patch.py",
     "research/m064/build_lab.py"
   ],
