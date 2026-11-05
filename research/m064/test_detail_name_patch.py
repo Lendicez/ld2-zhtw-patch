@@ -44,6 +44,12 @@ class StubTests(unittest.TestCase):
         self.assertIn(bytes([0x68]) + struct.pack('<I', 950), s)
         self.assertEqual(s[-4:], bytes.fromhex('61c20800'))
 
+    def test_menu_stub_uses_member_getter(self):
+        s = D.build_name_stub(0x525378, origin=D.MENU_STUB, getter=D.GET_MEMBER)
+        rel = struct.unpack_from('<i', s, 9)[0]
+        self.assertEqual(D.MENU_STUB + 13 + rel, D.GET_MEMBER)
+        self.assertLessEqual(D.NAME_STUB + len(D.build_name_stub(0x525378)), D.MENU_STUB)
+
     def test_golden(self):
         got = hashlib.sha256(D.build_epi_stub(0xb26000) + D.build_name_stub(0x525378)).hexdigest()
         self.assertEqual(got, 'ea7718e4f4d690bb212e00d5bf248de35a442a6d53a31316dce18f1e44d36329')

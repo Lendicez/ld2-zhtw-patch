@@ -18,10 +18,12 @@ from tab_title_patch import Asm, sections, va2off, iat_slot, NORM, BASE
 GET_EPI, GET_NAME = 0x44dab0, 0x44d870
 # (稱號 getter 呼叫點, 名字 getter 呼叫點)：兩個繪製函式（同一組字樣式：稱號＋" "＋名字 → TextOut）
 SITES = ((0x4d78a1, 0x4d78bc), (0x4dbdba, 0x4dbdd8))
+# 選單「角色狀態／角色詳情」子項：0x488c73 call 0x46cc50（隊員名 by slot，內部呼叫名字 getter）→ AppendMenuA
+MENU_SITE, GET_MEMBER = 0x488c73, 0x46cc50
 SET_STRING = 0x405990                 # CSimpleStringT::SetString(const char*, int)，thiscall ret 8
 SET_STRING_HEAD = bytes.fromhex('53568b74241085f68bd9')
 GETTER_TAILS = {GET_EPI: 0x19, GET_NAME: 0x08}   # getter 內 `add ecx,+X`（記錄欄位）
-EPI_STUB, NAME_STUB = 0xae5d40, 0xae5dc0
+EPI_STUB, NAME_STUB, MENU_STUB = 0xae5d40, 0xae5dc0, 0xae5e40
 WBUF2, ABUF2 = 0xb25e80, 0xb25f80     # .ld2i：128 UTF-16 units／128 bytes
 CP950 = 950
 
@@ -88,9 +90,9 @@ def build_epi_stub(table_va, origin=EPI_STUB):
     return a.finish()
 
 
-def build_name_stub(wctmb_slot, origin=NAME_STUB, norm=NORM):
+def build_name_stub(wctmb_slot, origin=NAME_STUB, norm=NORM, getter=GET_NAME):
     a = Asm(origin)
-    _passthrough_head(a, GET_NAME)
+    _passthrough_head(a, getter)
     a.emit([0x68], a.imm32(WBUF2), [0x51, 0x56])     # FindCopyNorm(esi, ecx, WBUF2)
     a.call_rel(norm)
     a.emit([0x85, 0xC0]); a.jcc32(0x84, 'done')
@@ -135,19 +137,26 @@ def patch(exe: bytes, pairs):
     grow = (len(table) + 0xfff) & ~0xfff
     wctmb = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'WideCharToMultiByte')
     es, ns = build_epi_stub(table_va), build_name_stub(wctmb)
-    if EPI_STUB + len(es) > NAME_STUB or NAME_STUB + len(ns) - BASE > t['va'] + t['rsz']:
+    ms = build_name_stub(wctmb, origin=MENU_STUB, getter=GET_MEMBER)
+    so_m = _check_call(exe, secs, MENU_SITE, GET_MEMBER)
+    if exe[va2off(secs, GET_MEMBER) + 0x34:va2off(secs, GET_MEMBER) + 0x37] != bytes.fromhex('c20800'):
+        raise ValueError('member-name getter shape mismatch')
+    if (EPI_STUB + len(es) > NAME_STUB or NAME_STUB + len(ns) > MENU_STUB
+            or MENU_STUB + len(ms) - BASE > t['va'] + t['rsz']):
         raise ValueError('stub size')
-    for va, code in ((EPI_STUB, es), (NAME_STUB, ns)):
+    for va, code in ((EPI_STUB, es), (NAME_STUB, ns), (MENU_STUB, ms)):
         o = va2off(secs, va)
         if any(exe[o:o + len(code)]):
             raise ValueError(f'cave {va:#x} not free')
     out = bytearray(exe) + table + b'\0' * (grow - len(table))
     out[va2off(secs, EPI_STUB):va2off(secs, EPI_STUB) + len(es)] = es
     out[va2off(secs, NAME_STUB):va2off(secs, NAME_STUB) + len(ns)] = ns
+    out[va2off(secs, MENU_STUB):va2off(secs, MENU_STUB) + len(ms)] = ms
+    struct.pack_into('<i', out, so_m + 1, MENU_STUB - (MENU_SITE + 5))
     for so_e, so_n, e, n in offs:
         struct.pack_into('<i', out, so_e + 1, EPI_STUB - (e + 5))
         struct.pack_into('<i', out, so_n + 1, NAME_STUB - (n + 5))
-    struct.pack_into('<I', out, t['hdr'] + 8, max(t['vsz'], NAME_STUB + len(ns) - BASE - t['va']))
+    struct.pack_into('<I', out, t['hdr'] + 8, max(t['vsz'], MENU_STUB + len(ms) - BASE - t['va']))
     struct.pack_into('<I', out, i['hdr'] + 8, i['rsz'] + grow)          # VirtualSize
     struct.pack_into('<I', out, i['hdr'] + 16, i['rsz'] + grow)         # SizeOfRawData
     opt = pe + 24
@@ -155,5 +164,5 @@ def patch(exe: bytes, pairs):
     struct.pack_into('<I', out, opt + 56, (i['va'] + i['rsz'] + grow + salign - 1) // salign * salign)
     return bytes(out), {'epi_stub': hex(EPI_STUB), 'epi_len': len(es), 'name_stub': hex(NAME_STUB),
                         'name_len': len(ns), 'table_va': hex(table_va), 'table_bytes': len(table),
-                        'sites': [hex(v) for pr in SITES for v in pr],
+                        'sites': [hex(v) for pr in SITES for v in pr] + [hex(MENU_SITE)],
                         'stub_sha256': hashlib.sha256(es + ns).hexdigest()}
