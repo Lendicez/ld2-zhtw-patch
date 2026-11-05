@@ -1,0 +1,62 @@
+{
+ "schema": "m064-site-ledger/1",
+ "updated": "2026-11-05T16:30+08:00",
+ "lab_machine_acp": 950,
+ "production_can_apply": false,
+ "release_approved": false,
+ "note": "Per-row on-screen confirmation after .rdata in-place CP950 wiring in lab builds. Draft-level flags unchanged.",
+ "rows": [
+  {
+   "offset_hex": "0x168dd4",
+   "catalog": "m063-draft10-runtime-ansi-guild-town",
+   "screen": "inn stay-days validation MessageBox body",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-pilot-d10-001",
+    "m064-all2-site_inn_days_d10-001"
+   ],
+   "method": "control text (W) + screenshot review"
+  },
+  {
+   "offset_hex": "0x125ba4",
+   "catalog": "m064-lab-extra-captions",
+   "screen": "MessageBox caption (241 push refs)",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-all2-site_inn_days_d10-001"
+   ],
+   "method": "screenshot review"
+  },
+  {
+   "offset_hex": "0x17183c",
+   "catalog": "m063-draft58-runtime-ansi-fmt-combat-thanks",
+   "screen": "travel destination ListBox row format",
+   "site_confirmed": true,
+   "rendering_checked": false,
+   "evidence": [
+    "m064-all-site_inn_days_d10-001",
+    "m064-all-load_shop_weapon-001"
+   ],
+   "method": "ListBox text; %s args still CP932 (town names untranslated)"
+  },
+  {
+   "offset_hex": "0x165b90",
+   "catalog": "m063-draft7-training-static-1024",
+   "screen": "training Static 1024 (need more exp)",
+   "site_confirmed": true,
+   "rendering_checked": false,
+   "evidence": [
+    "m064-all-load_inn_tavern_quest-001"
+   ],
+   "method": "Static text"
+  }
+ ],
+ "blocked": [
+  {
+   "offset_hex": "0x166e28",
+   "reason": "contract_mismatch: translation adds %E absent in source"
+  }
+ ]
+}

@@ -409,7 +409,9 @@
     "research/m064/rdata_ansi.py",
     "research/m064/test_rdata_ansi.py",
     "tests/test_m064_research.py",
-    "research/m064/lab-extra-captions.zh-TW.json"
+    "research/m064/lab-extra-captions.zh-TW.json",
+    "research/m064/RESULT-M064-RDATA-LAB.zh-TW.md",
+    "research/m064/SITE-LEDGER.json"
   ],
   "excluded_roots": [
     ".git",
