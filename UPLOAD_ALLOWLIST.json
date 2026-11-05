@@ -414,7 +414,10 @@
     "research/m064/SITE-LEDGER.json",
     "research/m064/bmh.py",
     "research/m064/test_bmh.py",
-    "research/m064/PLACE-NAMES.zh-TW.json"
+    "research/m064/PLACE-NAMES.zh-TW.json",
+    "research/m064/catalog_patch.py",
+    "research/m064/test_catalog_patch.py",
+    "research/m064/build_hook_rows.py"
   ],
   "excluded_roots": [
     ".git",
