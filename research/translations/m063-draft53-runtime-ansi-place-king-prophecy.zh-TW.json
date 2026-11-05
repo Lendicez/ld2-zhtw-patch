@@ -27,16 +27,16 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "情報屋",
+      "text_zh_tw": "情報所",
       "text_cp950_bytes_len": 6,
-      "text_cp950_hex": "b1a1b3f8abce",
+      "text_cp950_hex": "b1a1b3f8a9d2",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 0,
       "review_status": "mona_approved_candidate_pending_site",
       "translation_method": "curated",
       "site_binding": "unconfirmed_candidate_adjacent_rdata",
-      "note": "place_ui"
+      "note": "place_ui; 2026-11-05 match facility name 情報所"
     },
     {
       "category": "runtime_ansi",
