@@ -98,6 +98,9 @@ STATUS = {
 }
 # 性別（.rdata；0x173340 女、0x173344 男，程式直接引用）
 GENDER = {0x173340: '女', 0x173344: '男'}
+# 特殊技能（.rdata，以索引顯示）、詳情「家系」的「なし」
+SKILL = {0x12d4bc: '背刺', 0x12d4cc: '全體祝福', 0x12d4dc: '破陣', 0x12d4f8: '衝鋒攻擊'}
+NONE = {0x12f80c: '無'}
 # 特徵（.data，17 bytes 槽）
 TRAIT = {
     0x345c0b: '圓圓大眼', 0x345c1c: '銳眼', 0x345c2d: '單眼皮', 0x345c3e: '雙眼皮', 0x345c4f: '獨眼',
@@ -112,7 +115,7 @@ TRAIT = {
 }
 EPITHET = {**EPITHET_A, **EPITHET}
 EPITHET_TABLE = (0x349700, 0x34a2c0)  # .data {char* name; u32 flags} ×376
-GROUPS = (('status', STATUS), ('gender', GENDER), ('trait', TRAIT))
+GROUPS = (('status', STATUS), ('gender', GENDER), ('skill', SKILL), ('none', NONE), ('trait', TRAIT))
 
 
 def build(exe: bytes) -> dict:
