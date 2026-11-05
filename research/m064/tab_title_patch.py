@@ -27,7 +27,9 @@ PSP_GETTER = 0x4ef7f3
 STUB = 0xae5b40                       # .ld2t 剩餘空間（16 對齊）
 WBUF, SLOT, ABUF = 0xb25400, 0xb25610, 0xb25620
 SLOTS, SLOT_BYTES = 8, 72
-CP950 = 950
+WTMP, WTMP2, AFULL = 0xb25880, 0xb25980, 0xb25a80   # 半形→全形正規化暫存
+CP950, CP932 = 950, 932
+LCID_JA, LCMAP_FULLWIDTH = 0x411, 0x00800000
 
 
 def sections(exe):
@@ -76,7 +78,7 @@ def iat_slot(exe, secs, pe, dll, func):
 
 class Asm:
     def __init__(self, origin):
-        self.org, self.b, self.labels, self.fix8 = origin, bytearray(), {}, []
+        self.org, self.b, self.labels, self.fix8, self.fix32 = origin, bytearray(), {}, [], []
 
     def emit(self, *parts):
         for p in parts:
@@ -89,6 +91,9 @@ class Asm:
     def jcc8(self, op, name):
         self.emit([op, 0]); self.fix8.append((len(self.b) - 1, name))
 
+    def jcc32(self, op, name):
+        self.emit([0x0F, op, 0, 0, 0, 0]); self.fix32.append((len(self.b) - 4, name))
+
     def call_rel(self, target):
         self.emit([0xE8], struct.pack('<i', target - (self.here() + 5)))
 
@@ -100,30 +105,52 @@ class Asm:
             if not -128 <= rel <= 127:
                 raise ValueError('rel8 out of range')
             self.b[pos] = rel & 0xff
+        for pos, name in self.fix32:
+            struct.pack_into('<i', self.b, pos, self.labels[name] - (self.org + pos + 4))
         return bytes(self.b)
 
 
 DBG = 0xb25600   # --debug：+0 name ptr，+0x14 呼叫次數，+0x18 strlen，+0x1c FindCopy units
 
 
-def build_stub(lstrlen_slot, wctmb_slot, origin=STUB, findcopy=FINDCOPY, wbuf=WBUF, slot=SLOT, abuf=ABUF, debug=False):
+def build_stub(lstrlen_slot, wctmb_slot, mbtwc_slot, lcmap_slot, origin=STUB, findcopy=FINDCOPY,
+               wbuf=WBUF, slot=SLOT, abuf=ABUF, debug=False):
+    """v2：查表前先把名字正規化成全形（屬性表標題用半形片假名，如「ﾀﾞｼﾞﾙﾀｰﾙ」）。"""
     a = Asm(origin)
+    JZ, JA = 0x84, 0x87
     a.emit([0x8B, 0xCE])                         # mov ecx,esi (原指令)
     a.emit([0x60])                               # pushad
     if debug:
         a.emit([0xFF, 0x05], a.imm32(DBG + 0x14))   # inc dword [DBG+0x14]
         a.emit([0x89, 0x3D], a.imm32(DBG))          # mov [DBG],edi
     a.emit([0x89, 0xFE])                         # mov esi,edi
-    a.emit([0x56]); a.call_ind(lstrlen_slot)     # lstrlenA(esi)
+    a.emit([0x56]); a.call_ind(lstrlen_slot)     # n = lstrlenA(esi)
     if debug:
-        a.emit([0xA3], a.imm32(DBG + 0x18))         # mov [DBG+0x18],eax
-    a.emit([0x85, 0xC0]); a.jcc8(0x74, 'fb')     # test/jz
-    a.emit([0x83, 0xF8, 0x40]); a.jcc8(0x77, 'fb')   # cmp eax,64 / ja
-    a.emit([0x68], a.imm32(wbuf), [0x50, 0x56])  # push WBUF; push n; push ansi
+        a.emit([0xA3], a.imm32(DBG + 0x18))
+    a.emit([0x85, 0xC0]); a.jcc32(JZ, 'fb')
+    a.emit([0x83, 0xF8, 0x40]); a.jcc32(JA, 'fb')
+    # w = MultiByteToWideChar(932, 0, esi, n, WTMP, 128)
+    a.emit([0x68], a.imm32(128), [0x68], a.imm32(WTMP), [0x50, 0x56, 0x6A, 0x00], [0x68], a.imm32(CP932))
+    a.call_ind(mbtwc_slot)
+    a.emit([0x85, 0xC0]); a.jcc32(JZ, 'fb')
+    # w2 = LCMapStringW(0x411, LCMAP_FULLWIDTH, WTMP, w, WTMP2, 128)
+    a.emit([0x68], a.imm32(128), [0x68], a.imm32(WTMP2), [0x50], [0x68], a.imm32(WTMP),
+           [0x68], a.imm32(LCMAP_FULLWIDTH), [0x68], a.imm32(LCID_JA))
+    a.call_ind(lcmap_slot)
+    a.emit([0x85, 0xC0]); a.jcc32(JZ, 'fb')
+    # m = WideCharToMultiByte(932, 0, WTMP2, w2, AFULL, 72, 0, 0)
+    a.emit([0x6A, 0x00, 0x6A, 0x00, 0x6A, SLOT_BYTES], [0x68], a.imm32(AFULL), [0x50], [0x68], a.imm32(WTMP2),
+           [0x6A, 0x00], [0x68], a.imm32(CP932))
+    a.call_ind(wctmb_slot)
+    a.emit([0x85, 0xC0]); a.jcc32(JZ, 'fb')
+    a.emit([0x83, 0xF8, 0x40]); a.jcc32(JA, 'fb')
+    a.emit([0xC6, 0x80], a.imm32(AFULL), [0x00])  # mov byte [eax+AFULL],0
+    # units = LD2N_FindCopy(AFULL, m, WBUF)
+    a.emit([0x68], a.imm32(wbuf), [0x50], [0x68], a.imm32(AFULL))
     a.call_rel(findcopy)
     if debug:
-        a.emit([0xA3], a.imm32(DBG + 0x1c))         # mov [DBG+0x1c],eax
-    a.emit([0x85, 0xC0]); a.jcc8(0x74, 'fb')
+        a.emit([0xA3], a.imm32(DBG + 0x1c))
+    a.emit([0x85, 0xC0]); a.jcc32(JZ, 'fb')
     a.emit([0x8B, 0x1D], a.imm32(slot))          # mov ebx,[SLOT]
     a.emit([0x43, 0x83, 0xE3, SLOTS - 1])        # inc ebx; and ebx,7
     a.emit([0x89, 0x1D], a.imm32(slot))          # mov [SLOT],ebx
@@ -132,7 +159,7 @@ def build_stub(lstrlen_slot, wctmb_slot, origin=STUB, findcopy=FINDCOPY, wbuf=WB
     a.emit([0x6A, 0x00, 0x6A, 0x00, 0x6A, SLOT_BYTES - 1, 0x53, 0x50])   # 0,0,71,ebx,units
     a.emit([0x68], a.imm32(wbuf), [0x6A, 0x00], [0x68], a.imm32(CP950))  # WBUF,0,950
     a.call_ind(wctmb_slot)
-    a.emit([0x85, 0xC0]); a.jcc8(0x74, 'fb')
+    a.emit([0x85, 0xC0]); a.jcc32(JZ, 'fb')
     a.emit([0xC6, 0x04, 0x03, 0x00])             # mov byte [ebx+eax],0
     a.emit([0x89, 0xDF])                         # mov edi,ebx
     a.jcc8(0xEB, 'done')
@@ -154,14 +181,18 @@ def patch(exe: bytes, debug=False):
         raise ValueError('LD2N_FindCopy prologue mismatch')
     lstrlen = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'lstrlenA')
     wctmb = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'WideCharToMultiByte')
-    stub = build_stub(lstrlen, wctmb, debug=debug)
+    mbtwc = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'MultiByteToWideChar')
+    lcmap = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'LCMapStringW')
+    stub = build_stub(lstrlen, wctmb, mbtwc, lcmap, debug=debug)
     so = va2off(secs, STUB)
     end_rva = STUB - BASE + len(stub)
     if end_rva > t['va'] + t['rsz'] or any(exe[so:so + len(stub)]):
         raise ValueError('.ld2t cave not free')
-    buf_end = ABUF + SLOTS * SLOT_BYTES
+    buf_end = AFULL + SLOT_BYTES
     if buf_end - BASE > i['va'] + i['rsz'] or any(exe[va2off(secs, WBUF):va2off(secs, buf_end)]):
         raise ValueError('.ld2i buffer area not free')
+    if not WBUF < WBUF + 0x202 <= SLOT < ABUF + SLOTS * SLOT_BYTES <= WTMP < WTMP + 0x100 <= WTMP2 < WTMP2 + 0x100 <= AFULL:
+        raise AssertionError('buffer layout overlap')
     out = bytearray(exe)
     out[so:so + len(stub)] = stub
     sites = []
