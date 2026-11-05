@@ -46,7 +46,7 @@ class StubTests(unittest.TestCase):
 
     def test_golden(self):
         got = hashlib.sha256(D.build_epi_stub(0xb26000) + D.build_name_stub(0x525378)).hexdigest()
-        self.assertEqual(got, '14ec304a4c02ff37e879e0e90801d32df5e55957f27bd197524305573f42c477')
+        self.assertEqual(got, 'ea7718e4f4d690bb212e00d5bf248de35a442a6d53a31316dce18f1e44d36329')
 
 
 if __name__ == '__main__':

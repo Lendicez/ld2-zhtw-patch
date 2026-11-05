@@ -57,7 +57,7 @@ def _passthrough_head(a, getter):
     a.emit([0xFF, 0x74, 0x24, 0x08, 0xFF, 0x74, 0x24, 0x08])
     a.call_rel(getter)
     a.emit([0x60])                                   # pushad
-    a.emit([0x89, 0xC7, 0x8B, 0x37, 0x8B, 0x4E, 0xF4])   # edi=CString*；esi=buf；ecx=len([buf-0xc])
+    a.emit([0x89, 0xC5, 0x89, 0xC7, 0x8B, 0x37, 0x8B, 0x4E, 0xF4])   # ebp=edi=CString*；esi=buf；ecx=len([buf-0xc])
     a.emit([0x85, 0xC9]); a.jcc32(0x84, 'done')
     a.emit([0x81, 0xF9], a.imm32(0x40)); a.jcc32(0x87, 'done')
 
@@ -77,8 +77,7 @@ def build_epi_stub(table_va, origin=EPI_STUB):
     a.jcc8(0x75, 'next')
     a.emit([0x8D, 0x54, 0x0B, 0x01])                 # edx = ebx+1+ecx（big5 長度位元組）
     a.emit([0x0F, 0xB6, 0x02, 0x42])                 # movzx eax,[edx]; inc edx
-    a.emit([0x8B, 0x7C, 0x24, 0x00])                 # edi = pushad 的 edi（CString*）
-    a.emit([0x50, 0x52, 0x89, 0xF9])                 # push len; push ptr; mov ecx,edi
+    a.emit([0x50, 0x52, 0x89, 0xE9])                 # push len; push ptr; mov ecx,ebp（edi 已被 cmpsb 用掉）
     a.call_rel(SET_STRING)
     a.emit([0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, 'done'))
     a.label('next')
