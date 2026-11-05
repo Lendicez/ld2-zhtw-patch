@@ -103,16 +103,26 @@ class Asm:
         return bytes(self.b)
 
 
-def build_stub(lstrlen_slot, wctmb_slot, origin=STUB, findcopy=FINDCOPY, wbuf=WBUF, slot=SLOT, abuf=ABUF):
+DBG = 0xb25600   # --debug：+0 name ptr，+0x14 呼叫次數，+0x18 strlen，+0x1c FindCopy units
+
+
+def build_stub(lstrlen_slot, wctmb_slot, origin=STUB, findcopy=FINDCOPY, wbuf=WBUF, slot=SLOT, abuf=ABUF, debug=False):
     a = Asm(origin)
     a.emit([0x8B, 0xCE])                         # mov ecx,esi (原指令)
     a.emit([0x60])                               # pushad
+    if debug:
+        a.emit([0xFF, 0x05], a.imm32(DBG + 0x14))   # inc dword [DBG+0x14]
+        a.emit([0x89, 0x3D], a.imm32(DBG))          # mov [DBG],edi
     a.emit([0x89, 0xFE])                         # mov esi,edi
     a.emit([0x56]); a.call_ind(lstrlen_slot)     # lstrlenA(esi)
+    if debug:
+        a.emit([0xA3], a.imm32(DBG + 0x18))         # mov [DBG+0x18],eax
     a.emit([0x85, 0xC0]); a.jcc8(0x74, 'fb')     # test/jz
     a.emit([0x83, 0xF8, 0x40]); a.jcc8(0x77, 'fb')   # cmp eax,64 / ja
     a.emit([0x68], a.imm32(wbuf), [0x50, 0x56])  # push WBUF; push n; push ansi
     a.call_rel(findcopy)
+    if debug:
+        a.emit([0xA3], a.imm32(DBG + 0x1c))         # mov [DBG+0x1c],eax
     a.emit([0x85, 0xC0]); a.jcc8(0x74, 'fb')
     a.emit([0x8B, 0x1D], a.imm32(slot))          # mov ebx,[SLOT]
     a.emit([0x43, 0x83, 0xE3, SLOTS - 1])        # inc ebx; and ebx,7
@@ -134,7 +144,7 @@ def build_stub(lstrlen_slot, wctmb_slot, origin=STUB, findcopy=FINDCOPY, wbuf=WB
     return a.finish()
 
 
-def patch(exe: bytes):
+def patch(exe: bytes, debug=False):
     secs, pe = sections(exe)
     t, i = secs['.ld2t'], secs['.ld2i']
     if hashlib.sha256(exe[t['raw']:t['raw'] + LD2T_USED]).hexdigest() != LD2T_SHA:
@@ -144,7 +154,7 @@ def patch(exe: bytes):
         raise ValueError('LD2N_FindCopy prologue mismatch')
     lstrlen = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'lstrlenA')
     wctmb = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'WideCharToMultiByte')
-    stub = build_stub(lstrlen, wctmb)
+    stub = build_stub(lstrlen, wctmb, debug=debug)
     so = va2off(secs, STUB)
     end_rva = STUB - BASE + len(stub)
     if end_rva > t['va'] + t['rsz'] or any(exe[so:so + len(stub)]):
@@ -179,11 +189,12 @@ def patch(exe: bytes):
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument('--exe', required=True); ap.add_argument('--out', required=True)
+    ap.add_argument('--debug', action='store_true', help='在 .ld2i 0xb25600 記錄呼叫次數／名字指標／長度／FindCopy 結果')
     x = ap.parse_args(argv)
     if Path(x.exe).resolve() == Path(x.out).resolve():
         print('拒絕覆寫輸入 EXE', file=sys.stderr); return 2
     exe = Path(x.exe).read_bytes()
-    out, info = patch(exe)
+    out, info = patch(exe, x.debug)
     Path(x.out).write_bytes(out)
     info.update(input_sha256=hashlib.sha256(exe).hexdigest(), output_sha256=hashlib.sha256(out).hexdigest(),
                 lab_only=True, production_can_apply=False)
