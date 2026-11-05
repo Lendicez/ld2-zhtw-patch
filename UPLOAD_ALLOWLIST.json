@@ -433,6 +433,12 @@
     "research/m064/detail_name_patch.py",
     "research/m064/nto_fallback_patch.py",
     "research/m064/cdc_textout_patch.py",
+    "research/m064/make_zh_panels.py",
+    "research/m064/make_zh_maps.py",
+    "research/m064/make_zh_buttons.py",
+    "research/m064/extract_bitmaps.py",
+    "research/m064/dump_bmh.py",
+    "research/m064/apply_images.py",
     "research/m064/test_cdc_textout_patch.py",
     "research/m064/test_nto_fallback_patch.py",
     "research/m064/build_lab.py"
