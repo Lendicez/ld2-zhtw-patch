@@ -1,4 +1,4 @@
-r"""m064 lab：角色詳情視窗字串（稱號／特徵／狀態）原位 Big5 目錄產生器。
+r"""m064 lab：角色詳情視窗字串（特徵／狀態／性別原位 Big5；稱號為顯示時對照）產生器。
 
 這些字串由字型 A／B（charset_patch 改 CHINESEBIG5 後）繪製，必須同步改 Big5，否則亂碼。
 輸入只有 offset→繁中（本檔 ZH），原文槽 sha256／長度／合約一律由使用者的 pristine EXE 讀出，
@@ -112,15 +112,11 @@ TRAIT = {
 }
 EPITHET = {**EPITHET_A, **EPITHET}
 EPITHET_TABLE = (0x349700, 0x34a2c0)  # .data {char* name; u32 flags} ×376
-GROUPS = (('epithet', EPITHET), ('status', STATUS), ('gender', GENDER), ('trait', TRAIT))
+GROUPS = (('status', STATUS), ('gender', GENDER), ('trait', TRAIT))
 
 
 def build(exe: bytes) -> dict:
     items = []
-    for k in range(*EPITHET_TABLE, 8):
-        o = int.from_bytes(exe[k:k + 4], 'little') - 0x400000
-        if o not in EPITHET:
-            raise ValueError(f'epithet table entry {k:#x} -> {o:#x} untranslated')
     for sub, table in GROUPS:
         for off, zh in sorted(table.items()):
             end = exe.index(b'\0', off)
@@ -144,6 +140,23 @@ def build(exe: bytes) -> dict:
             'preview_only': True, 'draft_owner': 'Claude',
             'note': 'Detail window epithet/status/trait tables; drawn with SHIFTJIS fonts A/B -> pair with charset_patch.py.',
             'item_count': len(items), 'mona_approved_candidate': False, 'site_binding_confirmed': False, 'items': items}
+
+
+def epithet_pairs(exe: bytes):
+    """稱號會被複製進角色記錄（存檔），表不原位改；改由 detail_name_patch 在顯示時以
+    「CP932 原文→Big5」對照。對照表只在建置時由使用者的 EXE 產生，不入庫。"""
+    for k in range(*EPITHET_TABLE, 8):
+        o = int.from_bytes(exe[k:k + 4], 'little') - 0x400000
+        if o not in EPITHET:
+            raise ValueError(f'epithet table entry {k:#x} -> {o:#x} untranslated')
+    pairs = []
+    for off, zh in sorted(EPITHET.items()):
+        src = exe[off:exe.index(b'\0', off)]
+        if off and exe[off - 1] != 0:
+            raise ValueError(f'{off:#x} not at string start')
+        src.decode('cp932')
+        pairs.append((src, zh.encode('cp950')))
+    return pairs
 
 
 def main(argv=None) -> int:

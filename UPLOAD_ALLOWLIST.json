@@ -429,6 +429,8 @@
     "research/m064/DESIGN-EQUIP-TAB.zh-TW.md",
     "research/m064/tab_title_patch.py",
     "research/m064/test_tab_title_patch.py",
+    "research/m064/test_detail_name_patch.py",
+    "research/m064/detail_name_patch.py",
     "research/m064/build_lab.py"
   ],
   "excluded_roots": [
