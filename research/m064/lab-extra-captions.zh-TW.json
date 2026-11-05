@@ -8,7 +8,7 @@
  "preview_only": true,
  "draft_owner": "Claude (lab candidate; found via site run m064-pilot-d10-001)",
  "note": "Shared MessageBox caption; push imm32 to VA 0x525ba4 appears 241 times in .text. Caption showed as tofu (□□) under ACP 950.",
- "item_count": 2,
+ "item_count": 3,
  "mona_approved_candidate": false,
  "site_binding_confirmed": false,
  "items": [
@@ -65,6 +65,33 @@
    "translation_method": "curated",
    "site_binding": "equip_combobox_none (m064-charwin-002 dump)",
    "note": "equip combo 'none' entry; raw ANSI ComboBox under ACP 950"
+  },
+  {
+   "category": "runtime_ansi",
+   "subcategory": "window_title",
+   "file_offset": 1515452,
+   "file_offset_hex": "0x171fbc",
+   "source_bytes_len": 20,
+   "source_name_sha256": "edd0b9cdec4672533c2600298ff38a1ad9894c627df1a27676e7fc46ea741d9e",
+   "source_name_contract": {
+    "printf": [],
+    "indexed": [],
+    "other_percent": 0,
+    "controls": [],
+    "mnemonics": [],
+    "literal_ampersands": 0,
+    "shortcuts": 0
+   },
+   "text_zh_tw": "場景視窗",
+   "text_cp950_bytes_len": 8,
+   "text_cp950_hex": "b3f5b4bab5f8b5a1",
+   "name_cp950_encodable": true,
+   "fits_capacity": true,
+   "capacity_slack_bytes": 12,
+   "review_status": "claude_lab_candidate",
+   "translation_method": "curated",
+   "site_binding": "scene MDI child title after entering town (m064-probe-titles-001 dump_main)",
+   "note": "matches resource-layer title 場景視窗"
   }
  ]
 }

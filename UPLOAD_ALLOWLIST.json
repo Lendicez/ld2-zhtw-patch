@@ -426,7 +426,8 @@
     "research/m064/hook-rows-equip.json",
     "research/m064/DESIGN-EQUIP-TAB.zh-TW.md",
     "research/m064/tab_title_patch.py",
-    "research/m064/test_tab_title_patch.py"
+    "research/m064/test_tab_title_patch.py",
+    "research/m064/build_lab.py"
   ],
   "excluded_roots": [
     ".git",
