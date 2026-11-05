@@ -54,3 +54,16 @@
 ## 旗標
 - 各 draft 頂層 `site_binding_confirmed`／`rendering_verified` **不改**（一個 draft 19 列，只有個別列被看到）；逐列確認紀錄在 `SITE-LEDGER.json`。
 - `production_can_apply`、`release_approved` 全部 false。
+
+## 2026-11-05 17:00 更新：hook 路徑退化與排除
+- 現象：第 1／2 版 lab 建置中，資訊視窗地點欄由「〈広場〉」變成半形片假名亂碼。
+- 原因：資訊視窗經 m063 v4 TextOut hook 繪製，hook 以 **CP932** 解碼 ANSI 原文 → 原位改成 Big5 會被誤解。
+- 處置：`rdata_ansi.py --exclude-subcategory place_ui --exclude-subcategory road_name`（12＋29 列）。第 3 版 lab 建置（`65f91564…1d7e`，1040 列）`m064-all3-innfix-001` 通過，地點欄恢復與配線前相同。
+- 後續：這兩類改加入 v4 catalog（hook 端查表換繁中），不走 `.rdata` 原位。
+- 既有問題（非本次造成）：訓練所後場景視窗標題亂碼，配線前 `innfix-20261105-003` 即如此。
+
+## 圖像（lab；圖檔不入庫）
+- `research/m064/bmh.py`：BMH（HF Huffman）編解碼；本機 518 個 RES BMH 解碼＋重壓往返全過。
+- 有字圖片盤點：EXE RT_BITMAP＋RES BMP 46 張（按鈕 9 種字 × 狀態），BMH 51 張（移動地圖 17、狀態面板 7、片尾 3、標題 2…）。
+- 按鈕：本機 Codex 以原調色盤重繪 23 張（確定／取消／下一頁／返回／能 力／家 系／物品1／物品2／戰力），檔頭與調色盤逐位元組不變；「系」仍需手繪修正。已套入 lab 建置（RES 23＋EXE 資源 23），回歸通過。
+- 地名詞彙表：`PLACE-NAMES.zh-TW.json`（49 筆），供地圖圖片與 `.data` 城鎮表（0x617258 起 17 B×18）共用。
