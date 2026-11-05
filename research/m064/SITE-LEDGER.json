@@ -1,6 +1,6 @@
 {
  "schema": "m064-site-ledger/1",
- "updated": "2026-11-05T22:10+08:00",
+ "updated": "2026-11-05T23:30+08:00",
  "lab_machine_acp": 950,
  "production_can_apply": false,
  "release_approved": false,
@@ -117,6 +117,18 @@
     "m064-reroute-charwin-002"
    ],
    "method": "control text dump (W)"
+  },
+  {
+   "offset_hex": "tab sites 0x46c814,0x4705f4,0x47c2f4,0x481df4,0x496744,0x4b7034",
+   "catalog": "m063 name catalog via LD2N_FindCopy (half→full width)",
+   "screen": "property-sheet page tab (character name) e.g. equip dialog 達吉爾塔爾",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-tabdbg-002",
+    "m064-full5-char_windows-001"
+   ],
+   "method": "read_mem + screenshot"
   }
  ],
  "blocked": [],

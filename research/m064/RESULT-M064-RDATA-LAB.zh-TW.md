@@ -99,3 +99,9 @@
 ## 2026-11-05 22:45 更新
 - 新流程完整建置（含 list_reroute＋equip catalog）回歸 `m064-full4-*-001` 7 組全通過，改導 4 點未造成人名退化。
 - 屬性表分頁（角色名）設計：`DESIGN-EQUIP-TAB.zh-TW.md`（6 處 `mov [eax+0x14],edi` 改呼叫 stub，走 `LD2N_FindCopy`＋CP950 轉換）。
+
+## 2026-11-05 23:30 更新：屬性表分頁標題（角色名）
+- `tab_title_patch.py`：6 處 `mov ecx,esi; mov [eax+0x14],edi`（5 B）改 `call stub`；258 B stub 置 `.ld2t` 剩餘空間，緩衝在 `.ld2i`。
+- 偵錯（`--debug`＋harness 新 op `read_mem`）：第 1 版 stub 有執行但 FindCopy 查無 → 屬性表標題用**半形片假名**（「ﾀﾞｼﾞﾙﾀｰﾙ」）。第 2 版先 `MultiByteToWideChar(932)`→`LCMapStringW(0x411, LCMAP_FULLWIDTH)`→`WideCharToMultiByte(932)` 正規化再查表；輸出 Big5「達吉爾塔爾」。
+- 畫面：裝備視窗分頁「達吉爾塔爾」（`m064-full5-char_windows-001`）。
+- 建置流程第 6 步：`tab_title_patch.py`。回歸 `m064-full5-*` 7 組通過（site_inn_days_d10 首跑移動步驟偶發逾時，重跑 -002 通過）。
