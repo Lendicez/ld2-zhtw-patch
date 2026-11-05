@@ -408,7 +408,8 @@
     "research/m063/DRAFT64-RUNTIME-ANSI-PROTECT-THANKS-STATUS-FF.zh-TW.md",
     "research/m064/rdata_ansi.py",
     "research/m064/test_rdata_ansi.py",
-    "tests/test_m064_research.py"
+    "tests/test_m064_research.py",
+    "research/m064/lab-extra-captions.zh-TW.json"
   ],
   "excluded_roots": [
     ".git",

@@ -1,0 +1,43 @@
+{
+ "schema_version": 1,
+ "milestone": "m064-lab-extra-captions",
+ "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+ "production_can_apply": false,
+ "release_approved": false,
+ "rendering_verified": false,
+ "preview_only": true,
+ "draft_owner": "Claude (lab candidate; found via site run m064-pilot-d10-001)",
+ "note": "Shared MessageBox caption; push imm32 to VA 0x525ba4 appears 241 times in .text. Caption showed as tofu (□□) under ACP 950.",
+ "item_count": 1,
+ "mona_approved_candidate": false,
+ "site_binding_confirmed": false,
+ "items": [
+  {
+   "category": "runtime_ansi",
+   "subcategory": "msgbox_caption",
+   "file_offset": 1203108,
+   "file_offset_hex": "0x125ba4",
+   "source_bytes_len": 4,
+   "source_name_sha256": "995248c79c06b9f95958f22712121046323f8a4cf289ba13c08a7839ecb47aff",
+   "source_name_contract": {
+    "printf": [],
+    "indexed": [],
+    "other_percent": 0,
+    "controls": [],
+    "mnemonics": [],
+    "literal_ampersands": 0,
+    "shortcuts": 0
+   },
+   "text_zh_tw": "確認",
+   "text_cp950_bytes_len": 4,
+   "text_cp950_hex": "bd54bb7b",
+   "name_cp950_encodable": true,
+   "fits_capacity": true,
+   "capacity_slack_bytes": 0,
+   "review_status": "claude_lab_candidate",
+   "translation_method": "curated",
+   "site_binding": "msgbox_caption_241_push_refs",
+   "note": "msgbox_caption"
+  }
+ ]
+}
