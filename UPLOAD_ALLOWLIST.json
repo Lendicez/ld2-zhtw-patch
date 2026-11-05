@@ -396,7 +396,9 @@
     "research/translations/m063-draft59-runtime-ansi-family-farewell.zh-TW.json",
     "research/m063/DRAFT59-RUNTIME-ANSI-FAMILY-FAREWELL.zh-TW.md",
     "research/translations/m063-draft60-runtime-ansi-death-thanks-boss.zh-TW.json",
-    "research/m063/DRAFT60-RUNTIME-ANSI-DEATH-THANKS-BOSS.zh-TW.md"
+    "research/m063/DRAFT60-RUNTIME-ANSI-DEATH-THANKS-BOSS.zh-TW.md",
+    "research/translations/m063-draft61-runtime-ansi-death-boss-protect.zh-TW.json",
+    "research/m063/DRAFT61-RUNTIME-ANSI-DEATH-BOSS-PROTECT.zh-TW.md"
   ],
   "excluded_roots": [
     ".git",
