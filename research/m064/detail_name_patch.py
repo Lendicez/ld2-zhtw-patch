@@ -6,16 +6,18 @@ r"""m064 lab：角色詳情視窗名字欄（稱號＋名字）繁中化。
 組成「稱號 名字」後經 CDC::TextOut（字型 A，charset_patch 後為 CHINESEBIG5）繪製，原文會亂碼。
 稱號與名字都存在角色記錄（存檔）裡，所以不在稱號表原位改字（避免把 Big5 寫進存檔），
 改在這兩個 getter 呼叫點後轉換 CString：
-    0x4d78a1 call 0x44dab0 → call EPI_STUB：查「CP932 稱號→Big5」對照表（附加在 .ld2i 尾端）
-    0x4d78bc call 0x44d870 → call NAME_STUB：FindCopyNorm（v4 人名＋半形正規化）→ CP950
+    call 0x44dab0 → call EPI_STUB：查「CP932 稱號→Big5」對照表（附加在 .ld2i 尾端）
+    call 0x44d870 → call NAME_STUB：FindCopyNorm（v4 人名＋半形正規化）→ CP950
+兩處繪製函式（0x4d77a0、0x4dbd..）各一組呼叫點，見 SITES。
 查無 → 原樣保留。兩個 stub 都是 thiscall 透傳（ret 8），只動 getter 回傳的 CString（SetString 0x405990）。
 只寫 lab 複本；production_can_apply=false。輸入須已套 tab_title_patch（FindCopyNorm 已裝）。
 """
 import hashlib, struct
 from tab_title_patch import Asm, sections, va2off, iat_slot, NORM, BASE
 
-SITE_EPI, GET_EPI = 0x4d78a1, 0x44dab0
-SITE_NAME, GET_NAME = 0x4d78bc, 0x44d870
+GET_EPI, GET_NAME = 0x44dab0, 0x44d870
+# (稱號 getter 呼叫點, 名字 getter 呼叫點)：兩個繪製函式（同一組字樣式：稱號＋" "＋名字 → TextOut）
+SITES = ((0x4d78a1, 0x4d78bc), (0x4dbdba, 0x4dbdd8))
 SET_STRING = 0x405990                 # CSimpleStringT::SetString(const char*, int)，thiscall ret 8
 SET_STRING_HEAD = bytes.fromhex('53568b74241085f68bd9')
 GETTER_TAILS = {GET_EPI: 0x19, GET_NAME: 0x08}   # getter 內 `add ecx,+X`（記錄欄位）
@@ -122,7 +124,7 @@ def patch(exe: bytes, pairs):
         body = exe[va2off(secs, g):va2off(secs, g) + 0x80]
         if bytes([0x83, 0xC1, fld]) not in body:
             raise ValueError(f'getter {g:#x} field mismatch')
-    so_e, so_n = _check_call(exe, secs, SITE_EPI, GET_EPI), _check_call(exe, secs, SITE_NAME, GET_NAME)
+    offs = [(_check_call(exe, secs, e, GET_EPI), _check_call(exe, secs, n, GET_NAME), e, n) for e, n in SITES]
     # .ld2i 為最後一個區段：在檔尾附加對照表
     last = max(secs.values(), key=lambda s: s['raw'])
     if last is not i or len(exe) != i['raw'] + i['rsz']:
@@ -143,8 +145,9 @@ def patch(exe: bytes, pairs):
     out = bytearray(exe) + table + b'\0' * (grow - len(table))
     out[va2off(secs, EPI_STUB):va2off(secs, EPI_STUB) + len(es)] = es
     out[va2off(secs, NAME_STUB):va2off(secs, NAME_STUB) + len(ns)] = ns
-    struct.pack_into('<i', out, so_e + 1, EPI_STUB - (SITE_EPI + 5))
-    struct.pack_into('<i', out, so_n + 1, NAME_STUB - (SITE_NAME + 5))
+    for so_e, so_n, e, n in offs:
+        struct.pack_into('<i', out, so_e + 1, EPI_STUB - (e + 5))
+        struct.pack_into('<i', out, so_n + 1, NAME_STUB - (n + 5))
     struct.pack_into('<I', out, t['hdr'] + 8, max(t['vsz'], NAME_STUB + len(ns) - BASE - t['va']))
     struct.pack_into('<I', out, i['hdr'] + 8, i['rsz'] + grow)          # VirtualSize
     struct.pack_into('<I', out, i['hdr'] + 16, i['rsz'] + grow)         # SizeOfRawData
@@ -153,5 +156,5 @@ def patch(exe: bytes, pairs):
     struct.pack_into('<I', out, opt + 56, (i['va'] + i['rsz'] + grow + salign - 1) // salign * salign)
     return bytes(out), {'epi_stub': hex(EPI_STUB), 'epi_len': len(es), 'name_stub': hex(NAME_STUB),
                         'name_len': len(ns), 'table_va': hex(table_va), 'table_bytes': len(table),
-                        'sites': [hex(SITE_EPI), hex(SITE_NAME)],
+                        'sites': [hex(v) for pr in SITES for v in pr],
                         'stub_sha256': hashlib.sha256(es + ns).hexdigest()}
