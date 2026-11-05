@@ -110,3 +110,7 @@
 - **場景視窗標題**（配線前即亂碼）：進城後遊戲以 `.rdata 0x171fbc`「ビジュアルウインドウ」重設 MDI 子視窗標題 → lab-extra 譯「場景視窗」。harness 新 op `dump_main`（子視窗標題 W／A 原始 bytes）確認進城前後皆「場景視窗」（`m064-probe-titles-002`）。
 - **build_lab.py**：6 步一次建置（rdata → charset → list_reroute → catalog(equip) → tab_title → images）。EXE `8b0e81f2…78ba`；回歸 `m064-full6-*` 7 組全通過。
 - **讀檔清單**：每列為存檔檔頭文字（角色名、城鎮名＝存檔當時的 CP932），非 EXE 字串；ListBox 1025 為 ANSI → 亂碼。可行方向：該清單填入點導入 v4 helper（查無時 helper 以 CP932 正確解碼，至少顯示日文）；新舊存檔混碼問題待設計。
+
+## 2026-11-06 00:50 更新
+- **委託一覽**：控制項 dump 為「委託一覽」「狀態」等繁體正字（`m064-full6-char_windows-001`）；先前截圖判讀的「一覧／状態」為低解析度誤判，**不需修**。
+- **讀檔清單（擱置）**：讀檔 dialog 152 的 ListBox 1025 在 `m061/list_sites.json` 沒有 ADDSTRING 點（填入走未解析的包裝），且有 `LB_GETTEXT` 讀回（0x47fd1e；存檔 dialog 153 亦有 0x499671）。若改成 Unicode 清單，遊戲讀回的 ANSI 可能變動 → 讀檔風險。效益僅限舊存檔（檔頭 CP932）；新存檔檔頭混合 Big5 城鎮名與 CP932 角色名。另案設計（可能做法：存檔時把檔頭角色名正規化為 Big5，或只在顯示層轉換且讀回點同步攔截）。
