@@ -20,6 +20,8 @@ GET_EPI, GET_NAME = 0x44dab0, 0x44d870
 SITES = ((0x4d78a1, 0x4d78bc), (0x4dbdba, 0x4dbdd8))
 # 選單「角色狀態／角色詳情」子項：0x488c73 call 0x46cc50（隊員名 by slot，內部呼叫名字 getter）→ AppendMenuA
 MENU_SITE, GET_MEMBER = 0x488c73, 0x46cc50
+# 詳情「家系」分頁：父母（0x4d9268/0x4dd7fc）、配偶／子女（0x4d9435/0x4dd9db）的名字 getter 呼叫點
+FAMILY_NAME_SITES = (0x4d9268, 0x4d9435, 0x4dd7fc, 0x4dd9db)
 SET_STRING = 0x405990                 # CSimpleStringT::SetString(const char*, int)，thiscall ret 8
 SET_STRING_HEAD = bytes.fromhex('53568b74241085f68bd9')
 GETTER_TAILS = {GET_EPI: 0x19, GET_NAME: 0x08}   # getter 內 `add ecx,+X`（記錄欄位）
@@ -153,6 +155,9 @@ def patch(exe: bytes, pairs):
     out[va2off(secs, NAME_STUB):va2off(secs, NAME_STUB) + len(ns)] = ns
     out[va2off(secs, MENU_STUB):va2off(secs, MENU_STUB) + len(ms)] = ms
     struct.pack_into('<i', out, so_m + 1, MENU_STUB - (MENU_SITE + 5))
+    fam = [(_check_call(exe, secs, f, GET_NAME), f) for f in FAMILY_NAME_SITES]
+    for so_f, f in fam:
+        struct.pack_into('<i', out, so_f + 1, NAME_STUB - (f + 5))
     for so_e, so_n, e, n in offs:
         struct.pack_into('<i', out, so_e + 1, EPI_STUB - (e + 5))
         struct.pack_into('<i', out, so_n + 1, NAME_STUB - (n + 5))
@@ -164,5 +169,5 @@ def patch(exe: bytes, pairs):
     struct.pack_into('<I', out, opt + 56, (i['va'] + i['rsz'] + grow + salign - 1) // salign * salign)
     return bytes(out), {'epi_stub': hex(EPI_STUB), 'epi_len': len(es), 'name_stub': hex(NAME_STUB),
                         'name_len': len(ns), 'table_va': hex(table_va), 'table_bytes': len(table),
-                        'sites': [hex(v) for pr in SITES for v in pr] + [hex(MENU_SITE)],
+                        'sites': [hex(v) for pr in SITES for v in pr] + [hex(MENU_SITE)] + [hex(f) for f in FAMILY_NAME_SITES],
                         'stub_sha256': hashlib.sha256(es + ns).hexdigest()}
