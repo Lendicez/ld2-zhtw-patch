@@ -1,0 +1,565 @@
+{
+  "schema_version": 1,
+  "milestone": "m063-draft55-runtime-ansi-rel-prophecy-altar-mina",
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "production_can_apply": false,
+  "release_approved": false,
+  "rendering_verified": false,
+  "preview_only": true,
+  "draft_owner": "Mina (translation only; GitHub writes by Mona)",
+  "note": "Candidate runtime ANSI: month/year (%2d/%4d), family relation labels (%s), dungeon floor (%d), more prophecy (%s), king-qualification suffix, altar examine/glow lines. Atsuyu name provisional. No UTF-16; no lodging patch. site unconfirmed.",
+  "base_doc": "expanded CP932 inventory",
+  "item_count": 19,
+  "items": [
+    {
+      "category": "runtime_ansi",
+      "subcategory": "fmt_ui",
+      "file_offset": 1290528,
+      "file_offset_hex": "0x13b120",
+      "source_bytes_len": 5,
+      "source_name_sha256": "6450ebe5a045e208f97a408fb23de0012b082bb78d692258ac1c16fc73929819",
+      "source_name_contract": {
+        "printf": [
+          "%2d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%2d月",
+      "text_cp950_bytes_len": 5,
+      "text_cp950_hex": "253264a4eb",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "fmt_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "fmt_ui",
+      "file_offset": 1290536,
+      "file_offset_hex": "0x13b128",
+      "source_bytes_len": 5,
+      "source_name_sha256": "2bdb61d2eaf184cd78a31bcd0c91c1cadc2e0c365d39213fc99076b3a17ec58f",
+      "source_name_contract": {
+        "printf": [
+          "%4d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%4d年",
+      "text_cp950_bytes_len": 5,
+      "text_cp950_hex": "253464a67e",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "fmt_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "rel_ui",
+      "file_offset": 1298028,
+      "file_offset_hex": "0x13ce6c",
+      "source_bytes_len": 8,
+      "source_name_sha256": "fade17b0920ca3e17bd4e06f7967893fe6352c0175b33df98d4e782a9264415d",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "同伴－%s",
+      "text_cp950_bytes_len": 8,
+      "text_cp950_hex": "a650a6f1a1d02573",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "rel_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "rel_ui",
+      "file_offset": 1298040,
+      "file_offset_hex": "0x13ce78",
+      "source_bytes_len": 8,
+      "source_name_sha256": "5eed1bd0800231096833537a3f8a5bd9c7610a367a865443a0161eb499608605",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "子女－%s",
+      "text_cp950_bytes_len": 8,
+      "text_cp950_hex": "a46ca46ba1d02573",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "rel_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "rel_ui",
+      "file_offset": 1298052,
+      "file_offset_hex": "0x13ce84",
+      "source_bytes_len": 6,
+      "source_name_sha256": "87747f716c69ae97afd377a870c1eb3bd6a912279593007c42d7198c5a5559b8",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "妻－%s",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "a964a1d02573",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "rel_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "rel_ui",
+      "file_offset": 1298060,
+      "file_offset_hex": "0x13ce8c",
+      "source_bytes_len": 6,
+      "source_name_sha256": "eca4e088b4f12de7dd22667b531581668a0c855bd1a4404f38a78a6adeebb4fe",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "夫－%s",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "a4d2a1d02573",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "rel_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "dungeon_ui",
+      "file_offset": 1302092,
+      "file_offset_hex": "0x13de4c",
+      "source_bytes_len": 6,
+      "source_name_sha256": "3747584fd527a0d2cef64129dba1cabf64d81bbfa2ead71388c4130a8100384c",
+      "source_name_contract": {
+        "printf": [
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": " %d 層",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "20256420bc68",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "dungeon_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1421196,
+      "file_offset_hex": "0x15af8c",
+      "source_bytes_len": 18,
+      "source_name_sha256": "fc923275add5f9a8325f67ebb1bc9269174a5f966ccbe8a73db676f8ae2d8a4b",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "正是%s第一。",
+      "text_cp950_bytes_len": 12,
+      "text_cp950_hex": "a5bfac4f2573b2c4a440a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 6,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1421604,
+      "file_offset_hex": "0x15b124",
+      "source_bytes_len": 30,
+      "source_name_sha256": "a3958caf9893e5a528731dcb2d4d8b88498e6c68b53f70c49e139cfff7ea5cae",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "其人於%s之地大展威勢，",
+      "text_cp950_bytes_len": 22,
+      "text_cp950_hex": "a8e4a448a9f32573a4a7a661a46aae69abc2b6d5a141",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 8,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1421796,
+      "file_offset_hex": "0x15b1e4",
+      "source_bytes_len": 18,
+      "source_name_sha256": "e4468b90dcac1584c6225b9eaba67f907ac8760faee8eb7c246b912ab48a47d7",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s打倒阿津優。",
+      "text_cp950_bytes_len": 14,
+      "text_cp950_hex": "2573a5b4adcbaafcac7ac075a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 4,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1421980,
+      "file_offset_hex": "0x15b29c",
+      "source_bytes_len": 28,
+      "source_name_sha256": "b4036dd5f7e4cd5d5340d4ed21dc06c3ddeb1719c7c0c6b3a6364018d03d13e9",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "其再度造訪%s之地。",
+      "text_cp950_bytes_len": 18,
+      "text_cp950_hex": "a8e4a641abd7b379b3582573a4a7a661a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 10,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1424884,
+      "file_offset_hex": "0x15bdf4",
+      "source_bytes_len": 28,
+      "source_name_sha256": "33abce67000417380836edc6170b69582d52ebcc1e2f57a7f262330cd11aa947",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "善者，依%s王之命，",
+      "text_cp950_bytes_len": 18,
+      "text_cp950_hex": "b5bdaacca141a8cc2573a4fda4a7a952a141",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 10,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1425632,
+      "file_offset_hex": "0x15c0e0",
+      "source_bytes_len": 18,
+      "source_name_sha256": "60ad0de5e9321f822c6ede64812ebe038cce5abc3f5585af7b881772ba9e94e5",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s有秩序之人。",
+      "text_cp950_bytes_len": 14,
+      "text_cp950_hex": "2573a6b3afb4a7c7a4a7a448a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 4,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1426032,
+      "file_offset_hex": "0x15c270",
+      "source_bytes_len": 24,
+      "source_name_sha256": "e37ddd481f0281b24b71076edb927a0cb92b2ae3f6aeaa75f1899f0529d69bbe",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s有超越常人之物。",
+      "text_cp950_bytes_len": 18,
+      "text_cp950_hex": "2573a6b3b657b656b160a448a4a7aaaba143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 6,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1421232,
+      "file_offset_hex": "0x15afb0",
+      "source_bytes_len": 24,
+      "source_name_sha256": "1d43bb689e5d35147a8c04c5329636c971cf8ab49500f7c44df98ce984decc27",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s有武術達人……",
+      "text_cp950_bytes_len": 16,
+      "text_cp950_hex": "2573a6b3aa5ab34eb946a448a14ba14b",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 8,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "king_ui",
+      "file_offset": 1242196,
+      "file_offset_hex": "0x12f454",
+      "source_bytes_len": 50,
+      "source_name_sha256": "9538a7009555b21468802a04694b9b9c9d3388021e7582e8a9389d09e1592ead",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "」持來即可取得國王資格。",
+      "text_cp950_bytes_len": 24,
+      "text_cp950_hex": "a176abf9a8d3a759a569a8fab16fb0eaa4fdb8eaaee6a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 26,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "king_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "altar_ui",
+      "file_offset": 1281956,
+      "file_offset_hex": "0x138fa4",
+      "source_bytes_len": 38,
+      "source_name_sha256": "25cd7df154236532e28b13e9e6afcc8ac01c06bfdb465651655914e766b59b4b",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "冰冷、長滿青苔的石壇佇立著。",
+      "text_cp950_bytes_len": 28,
+      "text_cp950_hex": "a642a74ea142aaf8baa1ab43ad61aabaa5dbbec2a6eea5dfb5dba143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 10,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "altar_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "altar_ui",
+      "file_offset": 1282136,
+      "file_offset_hex": "0x139058",
+      "source_bytes_len": 58,
+      "source_name_sha256": "beb714f1f3fb52bdf7d187951db4506efac2fde83a3fc542292861f28e0d3166",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "放下劍的瞬間，祭壇四周發出刺眼光芒。",
+      "text_cp950_bytes_len": 36,
+      "text_cp950_hex": "a9f1a455bc43aabac0feb6a1a141b2bdbec2a57ca950b56fa558a8ebb2b4a5faa87ea143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 22,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "altar_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "altar_ui",
+      "file_offset": 1282224,
+      "file_offset_hex": "0x1390b0",
+      "source_bytes_len": 76,
+      "source_name_sha256": "3a7cdc6d61982ed43f8fb71ecfeb1b0c68053404cbcfcaaf764224b29ddb7fa3",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "細看祭壇，上方有劍形凹槽，隱隱泛著青白光。",
+      "text_cp950_bytes_len": 42,
+      "text_cp950_hex": "b2d3acddb2bdbec2a141a457a4e8a6b3bc43a7cea557bcd1a141c1f4c1f4aa78b5dbab43a5d5a5faa143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 34,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "altar_ui"
+    }
+  ],
+  "stripped_fields": [
+    "source_name_ja",
+    "source_name_cp932_hex"
+  ],
+  "mona_approved_candidate": true,
+  "site_binding_confirmed": false,
+  "source_public_copy_sha256": "a2913325b7d9f1c0235aa9a91d84234b69c0e4fdfc32e005f5f93c650dc6a1b7"
+}
