@@ -18,3 +18,4 @@
 ## harness 附註
 - `ui_smoke_wm2_no32880` 改用 `dismiss_chain`；`site4047-uismoke-001` 綠燈。
 - 舊 `load_inn_tavern_quest` 若訓練所視窗未關會 force_kill；結尾須補關窗。
+  - 2026-11-05：已修，見 `innfix-20261105-001` 綠燈（force_killed=false；clean_exit 左鍵 dismiss，不再 WM_CLOSE）。

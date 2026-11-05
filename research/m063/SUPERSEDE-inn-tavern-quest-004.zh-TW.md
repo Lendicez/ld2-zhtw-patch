@@ -24,3 +24,10 @@
 - 未重新 Finalize／Pack 證據 zip（docs-only）。
 
 > 2026-11-05 追記：舊 `load_inn_tavern_quest` 若訓練所視窗未關會 force_kill；harness 結尾須補關訓練所視窗。
+
+## 2026-11-05 追記：innfix-20261105-001（Rona，台北時間）
+- `load_inn_tavern_quest` 結尾已修：run `innfix-20261105-001` **綠燈**，`force_killed=false`。
+- clean_exit 對 `:b:`／訓練所改用**左鍵 dismiss**，**不再 WM_CLOSE**。
+- `dialog_set_text` 新增 `auto_confirm`（預設關）。
+- 上方「訓練所視窗未關會 force_kill」問題已由此 harness 修正處理。
+- draft10 `0x168dd4` 宿泊句 site 截圖仍**待補**（後續讀檔焦點失敗），Rona 將重試；**未** site-confirmed。
