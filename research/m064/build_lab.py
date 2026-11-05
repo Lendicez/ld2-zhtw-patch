@@ -23,6 +23,7 @@ def main(argv=None):
     ap.add_argument('--lab', required=True); ap.add_argument('--apply-images')
     ap.add_argument('--img-dirs', nargs='*', default=[]); ap.add_argument('--manifest')
     ap.add_argument('--tab-debug', action='store_true', help='tab_title_patch 偵錯版（.ld2i 紀錄）')
+    ap.add_argument('--charset-only', help='只修補這些 LOGFONT 點（逗號分隔檔案偏移，如 0x31dbe）')
     x = ap.parse_args(argv)
     lab = Path(x.lab)
     if 'pristine' in str(lab).lower() or 'baseline' in str(lab).lower():
@@ -33,7 +34,8 @@ def main(argv=None):
     if p['skipped']:
         print(json.dumps([r for r in p['rows'] if not r['ok']], default=str)[:2000], file=sys.stderr); return 3
     exe = rdata_ansi.apply(exe, p); log['rdata_rows'] = p['ok']
-    exe, log['charset'] = charset_patch.patch(exe)
+    only = {int(v, 0) for v in x.charset_only.split(',')} if x.charset_only else None
+    exe, log['charset'] = charset_patch.patch(exe, only)
     exe, info = list_reroute.reroute(exe, EQUIP_SITES, 'item'); log['reroute'] = info['sites']
     exe, log['catalog'] = catalog_patch.patch(exe, catalog_patch.load_rows(HERE / 'hook-rows-equip.json'))
     exe, info = tab_title_patch.patch(exe, debug=x.tab_debug); log['tab_sites'] = info['sites']; log['norm'] = info.get('norm')
