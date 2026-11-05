@@ -50,7 +50,7 @@ class ContractTests(unittest.TestCase):
             self.skipTest('no m063 catalogs')
         bad = [it['file_offset_hex'] for it in items
                if R._norm_contract(R.zh_contract(it['text_zh_tw'])) != R._norm_contract(it['source_name_contract'])]
-        self.assertEqual(bad, ['0x166e28'])
+        self.assertEqual(bad, [])
 
 
 class PlanApplyTests(unittest.TestCase):

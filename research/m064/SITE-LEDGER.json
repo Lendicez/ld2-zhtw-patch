@@ -53,10 +53,11 @@
    "method": "Static text"
   }
  ],
- "blocked": [
+ "blocked": [],
+ "fixed": [
   {
    "offset_hex": "0x166e28",
-   "reason": "contract_mismatch: translation adds %E absent in source"
+   "fix": "removed extra %E (draft44), 2026-11-05"
   }
  ]
 }
