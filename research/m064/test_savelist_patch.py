@@ -26,7 +26,7 @@ class SaveListTests(unittest.TestCase):
         self.assertIn(bytes.fromhex('68a4030000'), code)                 # 932
         self.assertIn(bytes.fromhex('68b6030000'), code)                 # 950
         self.assertEqual(dlen, 0x340)
-        self.assertLess(len(code), 0x140)
+        self.assertLess(len(code), 0x180)
 
 
 if __name__ == '__main__':

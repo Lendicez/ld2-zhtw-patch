@@ -21,6 +21,11 @@ SITES = (
     # 讀檔／存檔框的檔案清單（_findfirst 列舉後 0x47f980 組「NNN:」＋標頭 → LB_ADDSTRING 0x401）
     (0x480150, '526a0068800100006801040000' + '8bcd'),
     (0x480403, '526a0068800100006801040000' + '8bcd'),
+    # 戰鬥「選擇攻擊目標」清單（對話框 120，清單 0x429）：「●」＋怪物名（CP932）
+    (0x4a79df, '6aff688101000068290400008bcd'), (0x4a80cf, '6aff688101000068290400008bcd'),
+    (0x4a878f, '6aff688101000068290400008bce'), (0x4a885a, '6aff688101000068290400008bce'),
+    (0x4a8923, '6aff688101000068290400008bce'), (0x4a89f0, '6aff688101000068290400008bce'),
+    (0x4c6c3c, '6aff688101000068290400008bcf'), (0x4c6c86, '6aff688101000068290400008bcf'),
 )
 SITE = SITES[0][0]
 CAT_OPEN, CAT_FIND, CAT_BLOB, CAT_BYTES = 0xae5620, 0xae4f60, 0xae6010, 0xae6000
@@ -49,7 +54,13 @@ def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, 
     a.emit([0x3C, 0x20]); a.jcc8(0x75, 'word')
     a.emit([0x39, 0xDF]); a.jcc32(0x83, 'fin')                # cmp edi,ebx; jae
     a.emit([0x88, 0x07, 0x47, 0x46]); a.emit([0xEB, 0]); a.fix8.append((len(a.b) - 1, 'tok'))
-    a.label('word'); a.emit([0x89, 0xF5])                     # ebp = esi
+    a.label('word')
+    # Big5 符號（lead 0xA1，例如原位改寫的「●」）整個字原樣複製，不併入後面的 CP932 名字
+    a.emit([0x3C, 0xA1]); a.jcc8(0x75, 'w0')
+    a.emit([0x8D, 0x57, 0x01, 0x39, 0xDA]); a.jcc32(0x83, 'fin')   # lea edx,[edi+1]; cmp edx,ebx; jae fin
+    a.emit([0x66, 0x8B, 0x06, 0x66, 0x89, 0x07, 0x83, 0xC6, 0x02, 0x83, 0xC7, 0x02])
+    a.emit([0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, 'tok'))
+    a.label('w0'); a.emit([0x89, 0xF5])                       # ebp = esi
     a.label('w1'); a.emit([0x8A, 0x45, 0x00, 0x84, 0xC0]); a.jcc8(0x74, 'w2')
     a.emit([0x3C, 0x20]); a.jcc8(0x74, 'w2'); a.emit([0x45]); a.emit([0xEB, 0]); a.fix8.append((len(a.b) - 1, 'w1'))
     a.label('w2'); a.emit([0x89, 0xF1])                       # ecx = esi
