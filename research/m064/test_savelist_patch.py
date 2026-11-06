@@ -16,8 +16,8 @@ class SaveListTests(unittest.TestCase):
         s = ' 971年 7月12日 達吉爾塔爾  岩塊鎮'
         self.assertEqual(S.model(s.encode('cp950').decode('cp932', 'replace') if False else s, {}), s)
 
-    def test_model_kana_fallback(self):
-        self.assertIn('?', S.model(' カナ', {}))
+    def test_model_kana_kept(self):
+        self.assertEqual(S.model(' カナ', {}), ' カナ')   # cp950 有假名（C6xx 區）
 
     def test_stub_shape(self):
         code, dlen = S.build_stub(0xb28000, 0xb28140, 0x52537c, 0x525378)
