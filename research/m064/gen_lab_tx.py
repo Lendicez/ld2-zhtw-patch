@@ -32,6 +32,17 @@ def known_offsets(skip_name: str | None = None) -> set[int]:
     return out
 
 
+def keep_edges(ja: str, zh: str, cap: int) -> str:
+    """保留原文前後的半形／全形空白（版面對齊用），容量允許時補回。"""
+    lead = ja[:len(ja) - len(ja.lstrip(' \u3000'))]
+    trail = ja[len(ja.rstrip(' \u3000')):]
+    core = zh.strip(' \u3000')
+    for cand in (lead + core + trail, lead + core, core + trail, zh):
+        if len(cand.encode('cp950')) <= cap:
+            return cand
+    return zh
+
+
 def build(exe: bytes, rows, skip=frozenset(), sub='dialogue'):
     items, rejected = [], []
     for r in rows:
@@ -49,6 +60,8 @@ def build(exe: bytes, rows, skip=frozenset(), sub='dialogue'):
             rejected.append((r['id'], 'encoding')); continue
         if len(enc) > len(src) or not enc:
             rejected.append((r['id'], 'over_capacity')); continue
+        zh = keep_edges(ja, zh, len(src))
+        enc = zh.encode('cp950')
         c = R.zh_contract(ja)
         if R._norm_contract(R.zh_contract(zh)) != R._norm_contract(c):
             rejected.append((r['id'], 'contract_mismatch')); continue
