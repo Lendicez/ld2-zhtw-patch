@@ -32,6 +32,26 @@ def known_offsets(skip_name: str | None = None) -> set[int]:
     return out
 
 
+import re as _re
+_WEIRD = _re.compile(r'[\ue000-\uf8ff\ufffd@`<>&=\\{}|^~\[\]\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]')
+_HALF = _re.compile(r'[\uff61-\uff9f]')
+_FULL = _re.compile(r'[\u3040-\u30ff\u4e00-\u9fff]')
+_ASCII_LETTER = _re.compile(r'[A-Za-z?]')
+JUNK_RDATA_FROM = 0x174000   # .rdata 此後為二進位表（浮點常數、圖表資料），偶然可解成 CP932 → 一律不碰
+
+
+def is_junk(ja: str, off: int) -> bool:
+    """二進位資料偶然解碼成 CP932 的假字串（覆寫會破壞資料表 → 攻擊時閃退的根因）。"""
+    if 0x125000 <= off < 0x195000 and off >= JUNK_RDATA_FROM:
+        return True
+    if _WEIRD.search(ja):
+        return True
+    core = ja.strip(' \u3000')
+    if len(core) <= 3 and (_HALF.search(core) and _FULL.search(core) or _ASCII_LETTER.search(core)):
+        return True
+    return False
+
+
 def keep_edges(ja: str, zh: str, cap: int) -> str:
     """保留原文前後的半形／全形空白（版面對齊用），容量允許時補回。"""
     lead = ja[:len(ja) - len(ja.lstrip(' \u3000'))]
@@ -55,6 +75,8 @@ def build(exe: bytes, rows, skip=frozenset(), sub='dialogue'):
         src = exe[off:end]
         try:
             ja = src.decode('cp932')
+            if is_junk(ja, off):
+                rejected.append((r['id'], 'junk_binary')); continue
             enc = zh.encode('cp950')
         except UnicodeError:
             rejected.append((r['id'], 'encoding')); continue
