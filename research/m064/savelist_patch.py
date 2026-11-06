@@ -27,11 +27,14 @@ CAT_OPEN, CAT_FIND, CAT_BLOB, CAT_BYTES = 0xae5620, 0xae4f60, 0xae6010, 0xae6000
 IMAGE_SCN_EXEC = 0x20000000 | 0x00000020
 
 
-def build_stub(origin, data, mbtwc_slot, wctmb_slot):
+def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, target_ind=None):
+    """arg_esp：入口時字串參數相對 esp 的位移；target＝相對跳轉目標，target_ind＝經 IAT 間接跳轉。"""
+    if target is None and target_ind is None:
+        target = SEND_DLG_ITEM_MSG
     ctx, catok, wbuf, sbuf = data, data + 0x10, data + 0x20, data + 0x240
     a = Asm(origin)
     a.emit([0x60])                                            # pushad
-    a.emit([0x8B, 0x74, 0x24, 0x30])                          # esi = lParam（[esp+0x20+0x10]）
+    a.emit([0x8B, 0x74, 0x24, 0x20 + arg_esp])                # esi = 字串參數（pushad 後 +0x20）
     a.emit([0x85, 0xF6]); a.jcc32(0x84, 'noswap')
     # 整串先掃：沒有 0x81–0x9F → 原樣
     a.emit([0x89, 0xF1])                                      # mov ecx,esi
@@ -78,9 +81,15 @@ def build_stub(origin, data, mbtwc_slot, wctmb_slot):
     a.emit([0x8A, 0x06, 0x88, 0x07, 0x46, 0x47]); a.emit([0xEB, 0]); a.fix8.append((len(a.b) - 1, 'raw'))
     a.label('fin')
     a.emit([0xC6, 0x07, 0x00, 0x61])                          # mov byte [edi],0; popad
-    a.emit([0xC7, 0x44, 0x24, 0x10], a.imm32(sbuf))           # lParam = sbuf
-    a.emit([0xE9]); a.emit(struct.pack('<i', SEND_DLG_ITEM_MSG - (a.here() + 4)))
-    a.label('noswap'); a.emit([0x61, 0xE9]); a.emit(struct.pack('<i', SEND_DLG_ITEM_MSG - (a.here() + 4)))
+    a.emit([0xC7, 0x44, 0x24, arg_esp], a.imm32(sbuf))        # 字串參數 = sbuf
+
+    def tail():
+        if target_ind is not None:
+            a.emit([0xFF, 0x25], a.imm32(target_ind))         # jmp [IAT]
+        else:
+            a.emit([0xE9]); a.emit(struct.pack('<i', target - (a.here() + 4)))
+    tail()
+    a.label('noswap'); a.emit([0x61]); tail()
     return a.finish(), sbuf + 0x100 - data
 
 

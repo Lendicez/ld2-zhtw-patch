@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 import rdata_ansi, charset_patch, list_reroute, catalog_patch, tab_title_patch  # noqa: E402
-import detail_name_patch, gen_lab_detail, cdc_textout_patch, savelist_patch, fmt_expand_patch, drawtext_patch, res_extra  # noqa: E402
+import detail_name_patch, gen_lab_detail, cdc_textout_patch, savelist_patch, fmt_expand_patch, drawtext_patch, res_extra, title_patch  # noqa: E402
 
 EQUIP_SITES = [0x46e73a, 0x47db6a, 0x46bacb, 0x46c46c]
 
@@ -52,6 +52,7 @@ def main(argv=None):
     if 'savelist' not in skip: exe, log['savelist'] = savelist_patch.patch(exe)
     if 'fmt_expand' not in skip: exe, log['fmt_expand'] = fmt_expand_patch.patch(exe)
     if 'drawtext' not in skip: exe, log['drawtext'] = drawtext_patch.patch(exe)
+    if 'title' not in skip: exe, log['title'] = title_patch.patch(exe)
     if (HERE / 'res-extra.zh-TW.json').exists() and 'res_extra' not in skip:
         exe, log['res_extra'] = res_extra.apply(exe, json.loads((HERE / 'res-extra.zh-TW.json').read_text('utf-8')))
     (lab / 'Ld95.exe').write_bytes(exe); log['pre_image_sha256'] = hashlib.sha256(exe).hexdigest()
