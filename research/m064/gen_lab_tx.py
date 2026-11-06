@@ -3,7 +3,7 @@ r"""m064 lab：把批次譯文（[{id: "0x…", zh: "…"}]）轉成 rdata_ansi 
 原文槽長度、sha256、合約由使用者的 pristine EXE 讀出，本庫不含日文原文。
 已在其他目錄（m063 drafts、lab-*.json）出現的 offset 會略過，避免重複列。
 
-  python gen_lab_tx.py --exe pristine\Ld95.exe --out ..\translations\m064-tx-dialogue.zh-TW.json out-*.json
+  python gen_lab_tx.py --exe pristine\Ld95.exe --out ..\translations\m064-tx-dialogue.zh-TW.json "out-*.json" "fix-*.json"
 """
 from __future__ import annotations
 
@@ -91,10 +91,12 @@ def main(argv=None) -> int:
     ap.add_argument('--sub', default='dialogue')
     ap.add_argument('batches', nargs='+')
     x = ap.parse_args(argv)
-    rows = []
+    merged = {}   # 依參數順序合併，後者覆蓋前者（例：out-*.json 之後給 fix-*.json）
     for pat in x.batches:
         for p in sorted(glob.glob(pat)):
-            rows += json.loads(Path(p).read_text('utf-8'))
+            for r in json.loads(Path(p).read_text('utf-8')):
+                merged[r['id']] = {'id': r['id'], 'zh': r['zh']}
+    rows = list(merged.values())
     doc, rej = build(Path(x.exe).read_bytes(), rows, known_offsets(Path(x.out).name), x.sub)
     Path(x.out).write_text(json.dumps(doc, ensure_ascii=False, indent=1), 'utf-8')
     print(json.dumps({'items': doc['item_count'], 'rejected': len(rej),
