@@ -1,0 +1,95 @@
+r"""m064 lab：把批次譯文（[{id: "0x…", zh: "…"}]）轉成 rdata_ansi 目錄（只含繁中＋原文槽 sha／合約）。
+
+原文槽長度、sha256、合約由使用者的 pristine EXE 讀出，本庫不含日文原文。
+已在其他目錄（m063 drafts、lab-*.json）出現的 offset 會略過，避免重複列。
+
+  python gen_lab_tx.py --exe pristine\Ld95.exe --out ..\translations\m064-tx-dialogue.zh-TW.json out-*.json
+"""
+from __future__ import annotations
+
+import argparse
+import glob
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import rdata_ansi as R  # noqa: E402
+
+HERE = Path(__file__).resolve().parent
+OTHER = [str(HERE.parent / 'translations' / 'm063-draft*.json'), str(HERE / 'lab-*.json')]
+
+
+def known_offsets(skip_name: str | None = None) -> set[int]:
+    out = set()
+    for pat in OTHER:
+        for p in glob.glob(pat):
+            if skip_name and Path(p).name == skip_name:
+                continue
+            for it in json.loads(Path(p).read_text('utf-8-sig'))['items']:
+                out.add(int(it['file_offset']))
+    return out
+
+
+def build(exe: bytes, rows, skip=frozenset(), sub='dialogue'):
+    items, rejected = [], []
+    for r in rows:
+        off, zh = int(r['id'], 16), r['zh']
+        if off in skip:
+            rejected.append((r['id'], 'already_cataloged')); continue
+        if off <= 0 or exe[off - 1] != 0:
+            rejected.append((r['id'], 'not_string_start')); continue
+        end = exe.index(b'\0', off)
+        src = exe[off:end]
+        try:
+            ja = src.decode('cp932')
+            enc = zh.encode('cp950')
+        except UnicodeError:
+            rejected.append((r['id'], 'encoding')); continue
+        if len(enc) > len(src) or not enc:
+            rejected.append((r['id'], 'over_capacity')); continue
+        c = R.zh_contract(ja)
+        if R._norm_contract(R.zh_contract(zh)) != R._norm_contract(c):
+            rejected.append((r['id'], 'contract_mismatch')); continue
+        if zh.count('?') > ja.count('?') + ja.count('？'):
+            rejected.append((r['id'], 'question_marks')); continue
+        items.append({
+            'category': 'runtime_ansi', 'subcategory': f'tx_{sub}', 'file_offset': off, 'file_offset_hex': hex(off),
+            'source_bytes_len': len(src), 'source_name_sha256': hashlib.sha256(src).hexdigest(),
+            'source_name_contract': c, 'text_zh_tw': zh, 'text_cp950_bytes_len': len(enc),
+            'text_cp950_hex': enc.hex(), 'name_cp950_encodable': True, 'fits_capacity': True,
+            'capacity_slack_bytes': len(src) - len(enc), 'review_status': 'codex_draft_claude_checked',
+            'translation_method': 'codex+validator', 'site_binding': 'static (not yet seen on screen)'})
+    items.sort(key=lambda it: it['file_offset'])
+    doc = {'schema_version': 1, 'milestone': f'm064-tx-{sub}', 'source_sha256': hashlib.sha256(exe).hexdigest(),
+           'production_can_apply': False, 'release_approved': False, 'rendering_verified': False,
+           'preview_only': True, 'draft_owner': 'Codex (validated by Claude)',
+           'note': 'Static translation of runtime ANSI strings not yet reached by the harness.',
+           'item_count': len(items), 'mona_approved_candidate': False, 'site_binding_confirmed': False,
+           'items': items}
+    return doc, rejected
+
+
+def main(argv=None) -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--exe', required=True)
+    ap.add_argument('--out', required=True)
+    ap.add_argument('--sub', default='dialogue')
+    ap.add_argument('batches', nargs='+')
+    x = ap.parse_args(argv)
+    rows = []
+    for pat in x.batches:
+        for p in sorted(glob.glob(pat)):
+            rows += json.loads(Path(p).read_text('utf-8'))
+    doc, rej = build(Path(x.exe).read_bytes(), rows, known_offsets(Path(x.out).name), x.sub)
+    Path(x.out).write_text(json.dumps(doc, ensure_ascii=False, indent=1), 'utf-8')
+    print(json.dumps({'items': doc['item_count'], 'rejected': len(rej),
+                      'reasons': {k: sum(1 for _, r in rej if r == k) for k in {r for _, r in rej}}}, ensure_ascii=False))
+    for i, r in rej[:40]:
+        print(' ', i, r)
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
