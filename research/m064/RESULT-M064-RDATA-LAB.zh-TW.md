@@ -167,3 +167,11 @@
 - **harness**：`wait_static_text` 支援 `retry_click`（移動框偶發沒吃到第一次點擊），20 個 step 檔自動加上。
 - **回歸 `m064-full10-*` 7/7 通過**＋`m064-cs-tx-003` 通過。
 - 說明書：Codex 已將 `マニュアル` 71 檔譯為繁中 UTF-8（lab：`m064-lab\manual\zh`，`check_manual.py` 0 問題）。屬遊戲文件衍生物，不入庫；之後由安裝器在使用者端產生或另議。
+
+## 2026-11-06 15:00 更新：迷宮、替換符展開、Codex 改用 GPT-6-Astra
+- **迷宮名稱表**（`.data 0x37b778`，16 B 槽 70 個，`0x45f3e0 GetDungeonName` 以索引取用、44 處呼叫）原位 Big5（`lab-dungeon-names.zh-TW.json`）。「前往迷宮」清單畫面：魔術師之塔／火焰洞窟／背德城址。
+- **`fmt_expand_patch.py`**：遊戲自訂替換符展開 `0x4014b0 Expand(fmt, dest, ctx)`（`%0`–`%9` 整數、`%A`–`%Z` 字串 = `ctx[ch-0x37]`）。在 `%A`–`%Z` 複製點 `0x401520` 改 `call CONV`：插入值含 CP932 → catalog（ANY|JOIN）→ 否則照字形 → cp950 靜態緩衝。解決「繁中模板＋日文名字」混碼。
+- **實機迷宮探測**（`m064-probe-dungeon2-001`）：進入魔術師之塔、「確認：點亮了燈。」繁中、資訊視窗「魔術師之塔」。發現「地上 1 層」的「地上／地下」仍為 CP932 短漢字 → 與 Big5「 %d 層」拼接後被 TextOut 後備整串當 CP932 解 → 「層」變亂碼。根因：第一輪抽取濾掉了**純漢字短字串**（無假名、無標點）。
+- **補抽純漢字字串 712 條**（UI 標籤、道具分類、怪物名、NPC 稱呼、戰鬥統計、製作人員名…），交 Codex（`m064-lab\tx2`）。
+- **Codex 模型**：依和良指示改用 `gpt-6-astra`、推理 `max`（`dispatch.py` 預設，job 可覆寫）。並以 Astra 對 2,985 條對話做第三輪終審（`fixb-*.json`）。
+- 回歸 `m064-full11-*` 7/7 通過（含 fmt_expand 與迷宮名）。
