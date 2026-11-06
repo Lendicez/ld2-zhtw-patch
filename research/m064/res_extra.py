@@ -153,7 +153,25 @@ def main(argv=None):
     a = sub.add_parser('extract'); a.add_argument('--exe', required=True); a.add_argument('--out', required=True)
     b = sub.add_parser('apply'); b.add_argument('--exe', required=True); b.add_argument('--out', required=True)
     b.add_argument('--catalog', required=True)
+    c = sub.add_parser('catalog'); c.add_argument('--src', required=True); c.add_argument('--zh', required=True)
+    c.add_argument('--out', required=True)
     x = ap.parse_args(argv)
+    if x.cmd == 'catalog':          # extract 結果（含日文，lab）＋譯文 → 入庫目錄（只含繁中＋sha＋定位）
+        src = json.loads(Path(x.src).read_text('utf-8'))
+        zh = {r['id']: r['zh'] for r in json.loads(Path(x.zh).read_text('utf-8'))}
+        ents = []
+        for k, e in enumerate(src):
+            z = zh.get(f'r{k:03d}')
+            if not z:
+                continue
+            ent = {kk: e[kk] for kk in ('kind', 'resource', 'language', 'locator', 'command_id', 'item_index',
+                                         'string_id', 'source_utf16_sha256') if kk in e}
+            ent['translation'] = z
+            ents.append(ent)
+        doc = {'schema_version': 1, 'milestone': 'm064-res-extra', 'production_can_apply': False,
+               'release_approved': False, 'dialog_font': 'MingLiU', 'entries': ents}
+        Path(x.out).write_text(json.dumps(doc, ensure_ascii=False, indent=1), 'utf-8')
+        print(len(ents)); return 0
     exe = Path(x.exe).read_bytes()
     if x.cmd == 'extract':
         items = extract(exe)
