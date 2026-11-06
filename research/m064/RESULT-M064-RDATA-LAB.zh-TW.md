@@ -177,3 +177,9 @@
 - 回歸 `m064-full11-*` 7/7 通過（含 fmt_expand 與迷宮名）。
 - **15:50**：Astra 終審 165 處＋純漢字 147 條（只取 `.rdata`；`.data` 的人名用字表 565 條不改，因生成後寫入存檔，顯示時走 catalog／後備）入 `m064-tx-kanji.zh-TW.json`。迷宮資訊欄「地上 1 層」修正確認（`m064-probe-dungeon2-002`）。回歸 `m064-full12-*` 7/7 通過。
 - harness 新 op `explore_until_battle`（迷宮內輪流移動、左鍵關訊息彈窗、偵測戰鬥選單「攻擊」啟用）。
+
+## 2026-11-06 19:00 更新：剩餘資源＋DrawText 後備
+- **`res_extra.py`**：m020 之後仍為日文的資源 145 處（右鍵選單 130／131、對話框 24＋標題 8、字串表 103：狀態列／工具提示、MFC 系統與錯誤訊息），Codex（gpt-6-astra/max）翻譯＋`validate_res.py`（cp950、替換符、`\n`、`&` 快速鍵）→ `res-extra.zh-TW.json`（只含繁中＋原文 UTF-16 sha＋定位）。套用：38 個資源原位覆寫（新內容不大於原大小），0 個需搬移；對話框日文字型名改 MingLiU（同 m020）。套用後 `extract` 掃描剩餘假名 0。
+- **`drawtext_patch.py`**：`CDC::DrawText`（0x4e1450，四個 vtable 共用）比照 TextOut：含 0x81–0x9F → MultiByteToWideChar(932) → DrawTextW（未匯入，首次以 GetModuleHandleA／GetProcAddress 取得並快取）。程式碼在 .ld2i 尾。
+- `.rdata` 含假名而未翻的字串只剩 22 條（怪物／精靈名，會被複製進世界資料／存檔，走 catalog）。
+- rdata 總列數 4,366。回歸 `m064-full13-*` 7/7、讀檔清單、迷宮探測皆通過。
