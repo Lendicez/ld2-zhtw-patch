@@ -175,3 +175,5 @@
 - **補抽純漢字字串 712 條**（UI 標籤、道具分類、怪物名、NPC 稱呼、戰鬥統計、製作人員名…），交 Codex（`m064-lab\tx2`）。
 - **Codex 模型**：依和良指示改用 `gpt-6-astra`、推理 `max`（`dispatch.py` 預設，job 可覆寫）。並以 Astra 對 2,985 條對話做第三輪終審（`fixb-*.json`）。
 - 回歸 `m064-full11-*` 7/7 通過（含 fmt_expand 與迷宮名）。
+- **15:50**：Astra 終審 165 處＋純漢字 147 條（只取 `.rdata`；`.data` 的人名用字表 565 條不改，因生成後寫入存檔，顯示時走 catalog／後備）入 `m064-tx-kanji.zh-TW.json`。迷宮資訊欄「地上 1 層」修正確認（`m064-probe-dungeon2-002`）。回歸 `m064-full12-*` 7/7 通過。
+- harness 新 op `explore_until_battle`（迷宮內輪流移動、左鍵關訊息彈窗、偵測戰鬥選單「攻擊」啟用）。
