@@ -26,7 +26,15 @@ class SaveListTests(unittest.TestCase):
         self.assertIn(bytes.fromhex('68a4030000'), code)                 # 932
         self.assertIn(bytes.fromhex('68b6030000'), code)                 # 950
         self.assertEqual(dlen, 0x340)
-        self.assertLess(len(code), 0x180)
+        self.assertLess(len(code), 0x300)
+        self.assertTrue(code.endswith(S.kana_table()))                   # 音譯表附在程式碼後
+
+    def test_translit_model(self):
+        self.assertEqual(S.translit_model('ダジルタール'), '達吉爾塔爾')
+        self.assertEqual(S.translit_model('ガーゴイル・ロード'), '加哥伊爾‧羅多')
+        self.assertEqual(S.translit_model('ちびっこ'), '奇比科')
+        for ch in S.translit_model(S.KANA):
+            ch.encode('cp950')                                            # 全部可編成 Big5
 
 
 if __name__ == '__main__':

@@ -21,7 +21,7 @@ class TitleTests(unittest.TestCase):
     def test_conv_tail_indirect(self):
         c, _ = S.build_stub(0xb28100, 0xb28000, 0x52537c, 0x525378, arg_esp=8, target_ind=0x525414)
         self.assertIn(bytes.fromhex('8b742428'), c)                 # esi=[esp+0x28]
-        self.assertTrue(c.endswith(bytes.fromhex('61ff2514545200')))  # popad; jmp [SetWindowTextA]
+        self.assertIn(bytes.fromhex('61ff2514545200'), c[:-len(S.kana_table())])  # popad; jmp [SetWindowTextA]（音譯表之前）
         self.assertIn(bytes.fromhex('c7442408'), c)                 # [esp+8] = sbuf
 
 
