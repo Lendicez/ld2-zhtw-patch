@@ -17,7 +17,10 @@ SEND_DLG_ITEM_MSG = 0x4ea671
 # (call 位址, 呼叫前的位元組簽章)：兩處都是 SendDlgItemMessage(id, LB_INSERTSTRING, -1, s)
 SITES = (
     (0x460974, '516aff688101000068220400008bcb'),      # push ecx; push -1; push 0x181; push 0x422; mov ecx,ebx
-    (0x476a0e, '8b4c241c536aff68810100006801040000'),  # 讀檔框：mov ecx,[esp+0x1c]; push ebx; push -1; push 0x181; push 0x401
+    (0x476a0e, '8b4c241c536aff68810100006801040000'),  # 另一處標頭清單：mov ecx,[esp+0x1c]; push ebx; push -1; push 0x181; push 0x401
+    # 讀檔／存檔框的檔案清單（_findfirst 列舉後 0x47f980 組「NNN:」＋標頭 → LB_ADDSTRING 0x401）
+    (0x480150, '526a0068800100006801040000' + '8bcd'),
+    (0x480403, '526a0068800100006801040000' + '8bcd'),
 )
 SITE = SITES[0][0]
 CAT_OPEN, CAT_FIND, CAT_BLOB, CAT_BYTES = 0xae5620, 0xae4f60, 0xae6010, 0xae6000
