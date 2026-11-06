@@ -4,14 +4,14 @@ r"""m064 lab：讀檔／存檔清單（存檔標頭說明）繁中化。
 清單以 `SendDlgItemMessage(id, LB_INSERTSTRING, -1, s)`（0x4ea671；存檔框 0x460974 → 0x422、讀檔框 0x476a0e → 0x401）放進 ANSI 清單 → ACP 950 下亂碼。存檔內容**不改**，只在插入清單時轉換顯示字串：
 
     以空白切詞；含 0x81–0x9F 位元組的詞（CP932 日文）→ 先查 v4 catalog（ANY|JOIN，人名、地名）
-    → 查無則 MultiByteToWideChar(932) → 一律 WideCharToMultiByte(950) 寫入靜態緩衝；其他位元組原樣複製。
+    → 查無則 FindCopyNorm（人名音節表）→ 再無則 MultiByteToWideChar(932) → 一律 WideCharToMultiByte(950) 寫入靜態緩衝；其他位元組原樣複製。
 
 遊戲之後只用清單索引（不讀回文字比對），前綴「NNN:」為 ASCII 不變。
 .ld2t 已滿，程式碼與緩衝附加在 .ld2i 檔尾（該區段加上 EXECUTE 屬性；lab 限定）。
 地名 catalog 列（CP932 鍵）由 `place_rows()` 在建置時由使用者 EXE 產生，不入庫。
 """
 import struct
-from tab_title_patch import Asm, sections, va2off, iat_slot, BASE
+from tab_title_patch import Asm, sections, va2off, iat_slot, BASE, NORM
 
 SEND_DLG_ITEM_MSG = 0x4ea671
 # (call 位址, 呼叫前的位元組簽章)：兩處都是 SendDlgItemMessage(id, LB_INSERTSTRING, -1, s)
@@ -32,7 +32,7 @@ CAT_OPEN, CAT_FIND, CAT_BLOB, CAT_BYTES = 0xae5620, 0xae4f60, 0xae6010, 0xae6000
 IMAGE_SCN_EXEC = 0x20000000 | 0x00000020
 
 
-def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, target_ind=None):
+def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, target_ind=None, norm=NORM):
     """arg_esp：入口時字串參數相對 esp 的位移；target＝相對跳轉目標，target_ind＝經 IAT 間接跳轉。"""
     if target is None and target_ind is None:
         target = SEND_DLG_ITEM_MSG
@@ -76,6 +76,10 @@ def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, 
     a.emit([0x83, 0xC4, 0x1C, 0x59])                          # add esp,0x1c; pop ecx
     a.emit([0x8D, 0x50, 0xFF, 0x81, 0xFA], a.imm32(0xFF)); a.jcc8(0x76, 'conv')
     a.label('dec')
+    if norm is not None:   # 人名（存檔中的 CP932 角色名）→ FindCopyNorm 名字音節表（與詳情視窗同一路徑）
+        a.emit([0x51, 0x68], a.imm32(wbuf), [0x51, 0x56])   # push ecx; push wbuf; push ecx; push esi
+        a.call_rel(norm)
+        a.emit([0x59, 0x85, 0xC0]); a.jcc32(0x85, 'conv')   # pop ecx; test eax,eax; jnz conv
     a.emit([0x68], a.imm32(0x100), [0x68], a.imm32(wbuf), [0x51, 0x56, 0x6A, 0x00], [0x68], a.imm32(932))
     a.call_ind(mbtwc_slot)
     a.emit([0x85, 0xC0]); a.jcc8(0x74, 'raw')
