@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 import rdata_ansi, charset_patch, list_reroute, catalog_patch, tab_title_patch  # noqa: E402
-import detail_name_patch, gen_lab_detail, cdc_textout_patch, savelist_patch  # noqa: E402
+import detail_name_patch, gen_lab_detail, cdc_textout_patch, savelist_patch, fmt_expand_patch  # noqa: E402
 
 EQUIP_SITES = [0x46e73a, 0x47db6a, 0x46bacb, 0x46c46c]
 
@@ -33,7 +33,7 @@ def main(argv=None):
     exe = Path(x.enabled).read_bytes(); log = {'enabled_sha256': hashlib.sha256(exe).hexdigest()}
     epi_pairs = gen_lab_detail.epithet_pairs(exe)   # 必須在 rdata 套用前，由原文 .rdata 取得
     place_rows = savelist_patch.place_rows(exe, json.loads((HERE / 'lab-places.zh-TW.json').read_text('utf-8'))['items'])
-    cats = [str(ROOT / 'research/translations/m063-draft*.json'), str(HERE / 'lab-extra-*.json'), str(HERE / 'lab-places.zh-TW.json'), str(HERE / 'lab-detail.zh-TW.json'), str(ROOT / 'research/translations/m064-tx-*.json')]
+    cats = [str(ROOT / 'research/translations/m063-draft*.json'), str(HERE / 'lab-extra-*.json'), str(HERE / 'lab-places.zh-TW.json'), str(HERE / 'lab-detail.zh-TW.json'), str(HERE / 'lab-dungeon-names.zh-TW.json'), str(ROOT / 'research/translations/m064-tx-*.json')]
     p = rdata_ansi.plan(exe, rdata_ansi.load_items(cats))
     if p['skipped']:
         print(json.dumps([r for r in p['rows'] if not r['ok']], default=str)[:2000], file=sys.stderr); return 3
@@ -46,6 +46,7 @@ def main(argv=None):
     exe, log['detail_name'] = detail_name_patch.patch(exe, epi_pairs)
     exe, log['cdc_textout'] = cdc_textout_patch.patch(exe)
     exe, log['savelist'] = savelist_patch.patch(exe)
+    exe, log['fmt_expand'] = fmt_expand_patch.patch(exe)
     (lab / 'Ld95.exe').write_bytes(exe); log['pre_image_sha256'] = hashlib.sha256(exe).hexdigest()
     if x.apply_images:
         r = subprocess.run([sys.executable, x.apply_images, x.pristine, str(lab)] + x.img_dirs,
