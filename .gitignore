@@ -452,6 +452,9 @@
 !/research/m064/gen_lab_tx.py
 !/research/m064/test_savelist_patch.py
 !/research/m064/savelist_patch.py
+!/research/m064/res_extra.py
+!/research/m064/test_drawtext_patch.py
+!/research/m064/drawtext_patch.py
 !/research/m064/lab-dungeon-names.zh-TW.json
 !/research/m064/test_fmt_expand_patch.py
 !/research/m064/fmt_expand_patch.py
