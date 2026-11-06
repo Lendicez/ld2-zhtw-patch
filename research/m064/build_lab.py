@@ -26,7 +26,9 @@ def main(argv=None):
     ap.add_argument('--img-dirs', nargs='*', default=[]); ap.add_argument('--manifest')
     ap.add_argument('--tab-debug', action='store_true', help='tab_title_patch 偵錯版（.ld2i 紀錄）')
     ap.add_argument('--charset-only', help='只修補這些 LOGFONT 點（逗號分隔檔案偏移，如 0x31dbe）')
+    ap.add_argument('--skip', default='', help='略過的步驟（逗號分隔：detail_name,cdc_textout,savelist,fmt_expand,drawtext,res_extra,tx）— 二分查錯用')
     x = ap.parse_args(argv)
+    skip = {v.strip() for v in x.skip.split(',') if v.strip()}
     lab = Path(x.lab)
     if 'pristine' in str(lab).lower() or 'baseline' in str(lab).lower():
         print('refuse: lab path looks like baseline', file=sys.stderr); return 2
@@ -34,21 +36,23 @@ def main(argv=None):
     epi_pairs = gen_lab_detail.epithet_pairs(exe)   # 必須在 rdata 套用前，由原文 .rdata 取得
     place_rows = savelist_patch.place_rows(exe, json.loads((HERE / 'lab-places.zh-TW.json').read_text('utf-8'))['items'])
     cats = [str(ROOT / 'research/translations/m063-draft*.json'), str(HERE / 'lab-extra-*.json'), str(HERE / 'lab-places.zh-TW.json'), str(HERE / 'lab-detail.zh-TW.json'), str(HERE / 'lab-dungeon-names.zh-TW.json'), str(ROOT / 'research/translations/m064-tx-*.json')]
+    if 'tx' in skip:
+        cats = cats[:-1]
     p = rdata_ansi.plan(exe, rdata_ansi.load_items(cats))
     if p['skipped']:
         print(json.dumps([r for r in p['rows'] if not r['ok']], default=str)[:2000], file=sys.stderr); return 3
-    exe = rdata_ansi.apply(exe, p); log['rdata_rows'] = p['ok']
+    exe = rdata_ansi.apply(exe, p); log['rdata_rows'] = p['ok']; log['skip'] = sorted(skip)
     only = {int(v, 0) for v in x.charset_only.split(',')} if x.charset_only else None
     exe, log['charset'] = charset_patch.patch(exe, only)
     exe, info = list_reroute.reroute(exe, EQUIP_SITES, 'item'); log['reroute'] = info['sites']
     exe, log['catalog'] = catalog_patch.patch(exe, catalog_patch.load_rows(HERE / 'hook-rows-equip.json') + place_rows)
     exe, info = tab_title_patch.patch(exe, debug=x.tab_debug); log['tab_sites'] = info['sites']; log['norm'] = info.get('norm')
-    exe, log['detail_name'] = detail_name_patch.patch(exe, epi_pairs)
-    exe, log['cdc_textout'] = cdc_textout_patch.patch(exe)
-    exe, log['savelist'] = savelist_patch.patch(exe)
-    exe, log['fmt_expand'] = fmt_expand_patch.patch(exe)
-    exe, log['drawtext'] = drawtext_patch.patch(exe)
-    if (HERE / 'res-extra.zh-TW.json').exists():
+    if 'detail_name' not in skip: exe, log['detail_name'] = detail_name_patch.patch(exe, epi_pairs)
+    if 'cdc_textout' not in skip: exe, log['cdc_textout'] = cdc_textout_patch.patch(exe)
+    if 'savelist' not in skip: exe, log['savelist'] = savelist_patch.patch(exe)
+    if 'fmt_expand' not in skip: exe, log['fmt_expand'] = fmt_expand_patch.patch(exe)
+    if 'drawtext' not in skip: exe, log['drawtext'] = drawtext_patch.patch(exe)
+    if (HERE / 'res-extra.zh-TW.json').exists() and 'res_extra' not in skip:
         exe, log['res_extra'] = res_extra.apply(exe, json.loads((HERE / 'res-extra.zh-TW.json').read_text('utf-8')))
     (lab / 'Ld95.exe').write_bytes(exe); log['pre_image_sha256'] = hashlib.sha256(exe).hexdigest()
     if x.apply_images:
