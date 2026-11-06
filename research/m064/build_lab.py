@@ -35,7 +35,7 @@ def main(argv=None):
     exe = Path(x.enabled).read_bytes(); log = {'enabled_sha256': hashlib.sha256(exe).hexdigest()}
     epi_pairs = gen_lab_detail.epithet_pairs(exe)   # 必須在 rdata 套用前，由原文 .rdata 取得
     place_rows = savelist_patch.place_rows(exe, json.loads((HERE / 'lab-places.zh-TW.json').read_text('utf-8'))['items'])
-    cats = [str(ROOT / 'research/translations/m063-draft*.json'), str(HERE / 'lab-extra-*.json'), str(HERE / 'lab-places.zh-TW.json'), str(HERE / 'lab-detail.zh-TW.json'), str(HERE / 'lab-dungeon-names.zh-TW.json'), str(HERE / 'lab-misc.zh-TW.json'), str(ROOT / 'research/translations/m064-tx-*.json')]
+    cats = [str(ROOT / 'research/translations/m063-draft*.json'), str(HERE / 'lab-extra-*.json'), str(HERE / 'lab-places.zh-TW.json'), str(HERE / 'lab-detail.zh-TW.json'), str(HERE / 'lab-dungeon-names.zh-TW.json'), str(HERE / 'lab-misc.zh-TW.json'), str(HERE / 'lab-monster-names.zh-TW.json'), str(ROOT / 'research/translations/m064-tx-*.json')]
     if 'tx' in skip:
         cats = cats[:-1]
     p = rdata_ansi.plan(exe, rdata_ansi.load_items(cats))
