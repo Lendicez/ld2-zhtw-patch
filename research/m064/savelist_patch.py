@@ -1,8 +1,7 @@
 r"""m064 lab：讀檔／存檔清單（存檔標頭說明）繁中化。
 
 存檔檔頭存有存檔當下組好的說明字串（CP932，例「 971年 7月12日 ダジルタール  岩塊の町」），
-讀檔框以 `CString::Format("%03d:%s")` 後 `SendDlgItemMessage(0x422, LB_INSERTSTRING, -1, s)`（0x460974
-call 0x4ea671）放進 ANSI 清單 → ACP 950 下亂碼。存檔內容**不改**，只在插入清單時轉換顯示字串：
+清單以 `SendDlgItemMessage(id, LB_INSERTSTRING, -1, s)`（0x4ea671；存檔框 0x460974 → 0x422、讀檔框 0x476a0e → 0x401）放進 ANSI 清單 → ACP 950 下亂碼。存檔內容**不改**，只在插入清單時轉換顯示字串：
 
     以空白切詞；含 0x81–0x9F 位元組的詞（CP932 日文）→ 先查 v4 catalog（ANY|JOIN，人名、地名）
     → 查無則 MultiByteToWideChar(932) → 一律 WideCharToMultiByte(950) 寫入靜態緩衝；其他位元組原樣複製。
@@ -14,7 +13,13 @@ call 0x4ea671）放進 ANSI 清單 → ACP 950 下亂碼。存檔內容**不改*
 import struct
 from tab_title_patch import Asm, sections, va2off, iat_slot, BASE
 
-SITE, SEND_DLG_ITEM_MSG = 0x460974, 0x4ea671
+SEND_DLG_ITEM_MSG = 0x4ea671
+# (call 位址, 呼叫前的位元組簽章)：兩處都是 SendDlgItemMessage(id, LB_INSERTSTRING, -1, s)
+SITES = (
+    (0x460974, '516aff688101000068220400008bcb'),      # push ecx; push -1; push 0x181; push 0x422; mov ecx,ebx
+    (0x476a0e, '8b4c241c536aff68810100006801040000'),  # 讀檔框：mov ecx,[esp+0x1c]; push ebx; push -1; push 0x181; push 0x401
+)
+SITE = SITES[0][0]
 CAT_OPEN, CAT_FIND, CAT_BLOB, CAT_BYTES = 0xae5620, 0xae4f60, 0xae6010, 0xae6000
 IMAGE_SCN_EXEC = 0x20000000 | 0x00000020
 
@@ -105,12 +110,15 @@ def place_rows(pristine_exe: bytes, places_items):
 def patch(exe: bytes):
     secs, pe = sections(exe)
     i = secs['.ld2i']
-    so = va2off(secs, SITE)
-    if exe[so] != 0xE8 or SITE + 5 + struct.unpack_from('<i', exe, so + 1)[0] != SEND_DLG_ITEM_MSG:
-        raise ValueError('save-list insert site mismatch')
-    # push ecx; push -1; push 0x181 (LB_INSERTSTRING); push 0x422; mov ecx,ebx
-    if exe[so - 0xf:so] != bytes.fromhex('516aff688101000068220400008bcb'):
-        raise ValueError('save-list insert args mismatch')
+    offs = []
+    for site, sig in SITES:
+        so = va2off(secs, site)
+        if exe[so] != 0xE8 or site + 5 + struct.unpack_from('<i', exe, so + 1)[0] != SEND_DLG_ITEM_MSG:
+            raise ValueError(f'list insert site {site:#x} mismatch')
+        sig = bytes.fromhex(sig)
+        if exe[so - len(sig):so] != sig:
+            raise ValueError(f'list insert args mismatch at {site:#x}')
+        offs.append((so, site))
     last = max(secs.values(), key=lambda s: s['raw'])
     if last is not i or len(exe) != i['raw'] + i['rsz']:
         raise ValueError('.ld2i is not the file tail')
@@ -123,7 +131,8 @@ def patch(exe: bytes):
     blob = code + b'\0' * (data_va - code_va - len(code)) + b'\0' * dlen
     grow = (len(blob) + 0xfff) & ~0xfff
     out = bytearray(exe) + blob + b'\0' * (grow - len(blob))
-    struct.pack_into('<i', out, so + 1, code_va - (SITE + 5))
+    for so, site in offs:
+        struct.pack_into('<i', out, so + 1, code_va - (site + 5))
     struct.pack_into('<I', out, i['hdr'] + 8, i['rsz'] + grow)
     struct.pack_into('<I', out, i['hdr'] + 16, i['rsz'] + grow)
     ch = struct.unpack_from('<I', out, i['hdr'] + 36)[0]
@@ -131,4 +140,4 @@ def patch(exe: bytes):
     opt = pe + 24
     salign = struct.unpack_from('<I', out, opt + 32)[0]
     struct.pack_into('<I', out, opt + 56, (i['va'] + i['rsz'] + grow + salign - 1) // salign * salign)
-    return bytes(out), {'site': hex(SITE), 'code_va': hex(code_va), 'code_len': len(code), 'data_va': hex(data_va)}
+    return bytes(out), {'sites': [hex(x) for x, _ in SITES], 'code_va': hex(code_va), 'code_len': len(code), 'data_va': hex(data_va)}
