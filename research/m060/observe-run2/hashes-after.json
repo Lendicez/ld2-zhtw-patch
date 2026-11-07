@@ -1,0 +1,45 @@
+{
+  "schema": "m060-observe-run2-hashes-after/1",
+  "taken_utc": "2026-10-28T15:56:01.7131621Z",
+  "source_exe": {
+    "path": "<LD2_ROOT>\\LunaticDawnPotB\\Ld95.exe",
+    "size": 7090176,
+    "sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+    "last_write_utc": "2026-10-25T17:55:24.8215298Z"
+  },
+  "source_exe_same_as_before": true,
+  "source_manifest_changes": [],
+  "store_original_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "store_m045_sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7",
+  "game_active_exe_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "game_usr": [
+    {
+      "path": "Usr\\LUNAS000.LDP",
+      "size": 3032781,
+      "sha256": "ae945041208d09a50163316ce096de29725bd0ce616972e684f68b10f6627cec",
+      "last_write_utc": "2026-10-28T14:05:19.5392896Z"
+    },
+    {
+      "path": "Usr\\LUNAS001.LDP",
+      "size": 3032781,
+      "sha256": "74f161ab23e53f6be5cb49daf4e0196f0207c3b73246a6f63724d8c9b9506fd5",
+      "last_write_utc": "2026-10-28T15:48:01.3769449Z"
+    },
+    {
+      "path": "Usr\\LUNAS002.LDP",
+      "size": 3032781,
+      "sha256": "e4e9eebd544ffe6d2652f03b0cbabfa2ddcf3670a3e9188174ffac476364e6d4",
+      "last_write_utc": "2026-10-28T15:52:51.9418674Z"
+    }
+  ],
+  "steps_done": [
+    "A",
+    "B",
+    "R",
+    "C",
+    "F"
+  ],
+  "stopped": null,
+  "production_can_apply": false,
+  "release_approved": false
+}

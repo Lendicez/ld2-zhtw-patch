@@ -1,0 +1,24 @@
+{
+  "production_can_apply": false,
+  "object_sha256": {
+    "list_insert_v3": "5ceba5a64b6e43d8f0f2e519cd91c076280656c7c1d1dd52c0f7025a62c3a037",
+    "name_pair_v3": "8a70e6cde5254d65aae4bf9d65fce6ee2b8065807af5741bc7092f37776c0242"
+  },
+  "name_ok": true,
+  "name_mock": {
+    "mock_exe_sha256": "bb5548e11edca2d4fe10b36bafb59d4222ccd2b0a28445d0933feb49b80aa51b",
+    "name": "name-mock-v3",
+    "last_line": "{\"cases\":38,\"assertions\":25815,\"failed\":0,\"normal_abi_iterations\":1000,\"pointer_bytes\":4,\"wide_bytes\":2,\"four_parameter_helper\":true,\"game_or_gdi_called\":false}",
+    "exit_code": 0
+  },
+  "list_ok": true,
+  "sdk_version": "10.0.26100.0",
+  "game_touched": false,
+  "list_mock": {
+    "mock_exe_sha256": "2432eb3e01ea9803aa9ae2286bdca7dc1c7eea2e9dbcc04f25a10895a08d9379",
+    "name": "list-mock-v3",
+    "last_line": "cases=29 assertions=1164 failed=0 game_or_user32_called=false",
+    "exit_code": 0
+  },
+  "stage": "B-mock-link-run"
+}

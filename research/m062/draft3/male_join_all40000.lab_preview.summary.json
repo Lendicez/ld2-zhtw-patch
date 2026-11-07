@@ -1,0 +1,11 @@
+{
+ "milestone": "m062-draft5-lab-preview",
+ "counts_only": true,
+ "production_can_apply": false,
+ "release_approved": false,
+ "male_join_all_40000": {
+  "both_in: ok": 39993,
+  "both_in: fallback": 5,
+  "both_in: wrong": 2
+ }
+}

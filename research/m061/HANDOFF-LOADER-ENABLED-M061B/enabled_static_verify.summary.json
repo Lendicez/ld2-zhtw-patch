@@ -1,0 +1,413 @@
+{
+  "schema": "m061b-enabled-static-verify-summary/1",
+  "list_object_sha256": "e8144466755d223a18f5d8f586510f64822c5cc1d793c708f171e964f6064d51",
+  "production_can_apply": false,
+  "release_approved": false,
+  "modes": {
+    "2": {
+      "inert_sha256": "6f9a8903f9a5ffeb68db1b7a0a0115a179c56084dd0beb0078bfcbe1d1fde1aa",
+      "enabled_sha256": "3a1b75b35aca01a8b3e0e475ea8fd7454ebe2367f03165ebab18a7054825ed31",
+      "enabled_size": 7286784,
+      "changed_bytes_vs_inert": 65,
+      "checksum": "0x6f8780",
+      "list_entry_va": "0xae3850",
+      "name_pair_va": "0xae3170",
+      "hook_stub_sha256": "67f30b3e3460e3035da33b684541fa8fd1c80d17c01c644a6ac857d8f64cca9e",
+      "sites": [
+        {
+          "va": "0x492431",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4aaf19",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4ab0fe",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b1153",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b2d1f",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b3477",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b46e4",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b4df1",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        }
+      ],
+      "hook_stub_disasm": [
+        "0x46dc7d push dword ptr [esp + 0x18]",
+        "0x46dc81 push esi",
+        "0x46dc82 push dword ptr [esp + 0x1c]",
+        "0x46dc86 push ebp",
+        "0x46dc87 call 0xae3170",
+        "0x46dc8c jmp 0x46dca5",
+        "0x46dc91 int3 ",
+        "0x46dc92 int3 ",
+        "0x46dc93 int3 ",
+        "0x46dc94 int3 ",
+        "0x46dc95 int3 ",
+        "0x46dc96 int3 ",
+        "0x46dc97 int3 ",
+        "0x46dc98 int3 ",
+        "0x46dc99 int3 ",
+        "0x46dc9a int3 ",
+        "0x46dc9b int3 ",
+        "0x46dc9c int3 ",
+        "0x46dc9d int3 ",
+        "0x46dc9e int3 ",
+        "0x46dc9f int3 ",
+        "0x46dca0 int3 ",
+        "0x46dca1 int3 ",
+        "0x46dca2 int3 ",
+        "0x46dca3 int3 ",
+        "0x46dca4 int3 "
+      ],
+      "branches_into_span_interior": [],
+      "pefile_checksum_ok": true,
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".rsrc",
+        ".ld2t",
+        ".ld2c",
+        ".ld2i"
+      ],
+      "import_count": 15,
+      "entry_point": "0x10011e",
+      "size_of_image": "0x70c000",
+      "list_mode": 2,
+      "list_mode_slot_va": "0xb0a28c",
+      "list_indirect_call_slots": [
+        "0x52537c",
+        "0x525498",
+        "0xb0a288",
+        "0xb0b1e8",
+        "0xb0b1ec",
+        "0xb0b1f0",
+        "0xb0b1f4",
+        "0xb0b1f8"
+      ],
+      "list_register_indirect_branches": [
+        "0xae3a51 call eax <- [0xb0a288]"
+      ],
+      "new_imports": [
+        "GDI32.dll!TextOutW",
+        "USER32.dll!SendDlgItemMessageW",
+        "USER32.dll!IsWindowUnicode",
+        "USER32.dll!GetWindowLongW",
+        "USER32.dll!GetClassLongW",
+        "USER32.dll!SetWindowLongW"
+      ],
+      "new_forbidden_imports": [],
+      "list_bindings": {
+        "_LD2_EntryCount": "0xae4000",
+        "_LD2_Entries": "0xae4008",
+        "_LD2_OriginalDlgItem": "0xb0a288",
+        "_LD2_SendDlgItemMessageW": "0xb0b1e8",
+        "_LD2_MultiByteToWideChar": "0x52537c",
+        "___security_cookie": "0xa8f284",
+        "@__security_check_cookie@4": "0x4fc870",
+        "_LD2_ListMode": "0xb0a28c",
+        "_LD2_GetDlgItem": "0x525498",
+        "_LD2_IsWindowUnicode": "0xb0b1ec",
+        "_LD2_GetWindowLongW": "0xb0b1f0",
+        "_LD2_GetClassLongW": "0xb0b1f4",
+        "_LD2_SetWindowLongW": "0xb0b1f8"
+      },
+      "original_dlgitem_slot_value": "0x4ea671",
+      "expected_textouta_value": "0x4e13d7"
+    },
+    "0": {
+      "inert_sha256": "287472ccd4c966b6f840ea2023b19e2a26cf783c6e7140e7a6935c5309236c99",
+      "enabled_sha256": "49b623950708612c16b8b2a9f234ce499094104514820c84b7fb5c3d44d0d876",
+      "enabled_size": 7286784,
+      "changed_bytes_vs_inert": 65,
+      "checksum": "0x6f877e",
+      "list_entry_va": "0xae3850",
+      "name_pair_va": "0xae3170",
+      "hook_stub_sha256": "67f30b3e3460e3035da33b684541fa8fd1c80d17c01c644a6ac857d8f64cca9e",
+      "sites": [
+        {
+          "va": "0x492431",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4aaf19",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4ab0fe",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b1153",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b2d1f",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b3477",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b46e4",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b4df1",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        }
+      ],
+      "hook_stub_disasm": [
+        "0x46dc7d push dword ptr [esp + 0x18]",
+        "0x46dc81 push esi",
+        "0x46dc82 push dword ptr [esp + 0x1c]",
+        "0x46dc86 push ebp",
+        "0x46dc87 call 0xae3170",
+        "0x46dc8c jmp 0x46dca5",
+        "0x46dc91 int3 ",
+        "0x46dc92 int3 ",
+        "0x46dc93 int3 ",
+        "0x46dc94 int3 ",
+        "0x46dc95 int3 ",
+        "0x46dc96 int3 ",
+        "0x46dc97 int3 ",
+        "0x46dc98 int3 ",
+        "0x46dc99 int3 ",
+        "0x46dc9a int3 ",
+        "0x46dc9b int3 ",
+        "0x46dc9c int3 ",
+        "0x46dc9d int3 ",
+        "0x46dc9e int3 ",
+        "0x46dc9f int3 ",
+        "0x46dca0 int3 ",
+        "0x46dca1 int3 ",
+        "0x46dca2 int3 ",
+        "0x46dca3 int3 ",
+        "0x46dca4 int3 "
+      ],
+      "branches_into_span_interior": [],
+      "pefile_checksum_ok": true,
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".rsrc",
+        ".ld2t",
+        ".ld2c",
+        ".ld2i"
+      ],
+      "import_count": 15,
+      "entry_point": "0x10011e",
+      "size_of_image": "0x70c000",
+      "list_mode": 0,
+      "list_mode_slot_va": "0xb0a28c",
+      "list_indirect_call_slots": [
+        "0x52537c",
+        "0x525498",
+        "0xb0a288",
+        "0xb0b1e8",
+        "0xb0b1ec",
+        "0xb0b1f0",
+        "0xb0b1f4",
+        "0xb0b1f8"
+      ],
+      "list_register_indirect_branches": [
+        "0xae3a51 call eax <- [0xb0a288]"
+      ],
+      "new_imports": [
+        "GDI32.dll!TextOutW",
+        "USER32.dll!SendDlgItemMessageW",
+        "USER32.dll!IsWindowUnicode",
+        "USER32.dll!GetWindowLongW",
+        "USER32.dll!GetClassLongW",
+        "USER32.dll!SetWindowLongW"
+      ],
+      "new_forbidden_imports": [],
+      "list_bindings": {
+        "_LD2_EntryCount": "0xae4000",
+        "_LD2_Entries": "0xae4008",
+        "_LD2_OriginalDlgItem": "0xb0a288",
+        "_LD2_SendDlgItemMessageW": "0xb0b1e8",
+        "_LD2_MultiByteToWideChar": "0x52537c",
+        "___security_cookie": "0xa8f284",
+        "@__security_check_cookie@4": "0x4fc870",
+        "_LD2_ListMode": "0xb0a28c",
+        "_LD2_GetDlgItem": "0x525498",
+        "_LD2_IsWindowUnicode": "0xb0b1ec",
+        "_LD2_GetWindowLongW": "0xb0b1f0",
+        "_LD2_GetClassLongW": "0xb0b1f4",
+        "_LD2_SetWindowLongW": "0xb0b1f8"
+      },
+      "original_dlgitem_slot_value": "0x4ea671",
+      "expected_textouta_value": "0x4e13d7"
+    },
+    "1": {
+      "inert_sha256": "b6d3f9e3a7af4acce85fab96e486119ef1d9dc7e7b2befb37a7fb7b8136d1477",
+      "enabled_sha256": "27edd49e7bd798264970339aa43ff5e2ded0b9a2821854976a17c3eaf21ec7f3",
+      "enabled_size": 7286784,
+      "changed_bytes_vs_inert": 65,
+      "checksum": "0x6f877f",
+      "list_entry_va": "0xae3850",
+      "name_pair_va": "0xae3170",
+      "hook_stub_sha256": "67f30b3e3460e3035da33b684541fa8fd1c80d17c01c644a6ac857d8f64cca9e",
+      "sites": [
+        {
+          "va": "0x492431",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4aaf19",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4ab0fe",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b1153",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b2d1f",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b3477",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b46e4",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        },
+        {
+          "va": "0x4b4df1",
+          "old": "call 0x4ea671",
+          "new": "call 0xae3850"
+        }
+      ],
+      "hook_stub_disasm": [
+        "0x46dc7d push dword ptr [esp + 0x18]",
+        "0x46dc81 push esi",
+        "0x46dc82 push dword ptr [esp + 0x1c]",
+        "0x46dc86 push ebp",
+        "0x46dc87 call 0xae3170",
+        "0x46dc8c jmp 0x46dca5",
+        "0x46dc91 int3 ",
+        "0x46dc92 int3 ",
+        "0x46dc93 int3 ",
+        "0x46dc94 int3 ",
+        "0x46dc95 int3 ",
+        "0x46dc96 int3 ",
+        "0x46dc97 int3 ",
+        "0x46dc98 int3 ",
+        "0x46dc99 int3 ",
+        "0x46dc9a int3 ",
+        "0x46dc9b int3 ",
+        "0x46dc9c int3 ",
+        "0x46dc9d int3 ",
+        "0x46dc9e int3 ",
+        "0x46dc9f int3 ",
+        "0x46dca0 int3 ",
+        "0x46dca1 int3 ",
+        "0x46dca2 int3 ",
+        "0x46dca3 int3 ",
+        "0x46dca4 int3 "
+      ],
+      "branches_into_span_interior": [],
+      "pefile_checksum_ok": true,
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".rsrc",
+        ".ld2t",
+        ".ld2c",
+        ".ld2i"
+      ],
+      "import_count": 15,
+      "entry_point": "0x10011e",
+      "size_of_image": "0x70c000",
+      "list_mode": 1,
+      "list_mode_slot_va": "0xb0a28c",
+      "list_indirect_call_slots": [
+        "0x52537c",
+        "0x525498",
+        "0xb0a288",
+        "0xb0b1e8",
+        "0xb0b1ec",
+        "0xb0b1f0",
+        "0xb0b1f4",
+        "0xb0b1f8"
+      ],
+      "list_register_indirect_branches": [
+        "0xae3a51 call eax <- [0xb0a288]"
+      ],
+      "new_imports": [
+        "GDI32.dll!TextOutW",
+        "USER32.dll!SendDlgItemMessageW",
+        "USER32.dll!IsWindowUnicode",
+        "USER32.dll!GetWindowLongW",
+        "USER32.dll!GetClassLongW",
+        "USER32.dll!SetWindowLongW"
+      ],
+      "new_forbidden_imports": [],
+      "list_bindings": {
+        "_LD2_EntryCount": "0xae4000",
+        "_LD2_Entries": "0xae4008",
+        "_LD2_OriginalDlgItem": "0xb0a288",
+        "_LD2_SendDlgItemMessageW": "0xb0b1e8",
+        "_LD2_MultiByteToWideChar": "0x52537c",
+        "___security_cookie": "0xa8f284",
+        "@__security_check_cookie@4": "0x4fc870",
+        "_LD2_ListMode": "0xb0a28c",
+        "_LD2_GetDlgItem": "0x525498",
+        "_LD2_IsWindowUnicode": "0xb0b1ec",
+        "_LD2_GetWindowLongW": "0xb0b1f0",
+        "_LD2_GetClassLongW": "0xb0b1f4",
+        "_LD2_SetWindowLongW": "0xb0b1f8"
+      },
+      "original_dlgitem_slot_value": "0x4ea671",
+      "expected_textouta_value": "0x4e13d7"
+    }
+  }
+}

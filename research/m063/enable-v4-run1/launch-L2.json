@@ -1,0 +1,27 @@
+﻿{
+    "step":  "L2",
+    "exe":  "Ld95.m063d-enabled-mode2.exe",
+    "exe_sha256":  "240ab04d7f81f185820865549c72b12a0c73475bb1f8dd073146731dab3f4121",
+    "list_mode":  2,
+    "catalog_policy":  "lab_preview",
+    "start_utc":  "2026-11-02T16:43:26.5380690Z",
+    "end_utc":  "2026-11-02T17:02:29.2560823Z",
+    "seconds":  1142.7,
+    "exit_code":  1,
+    "exit_code_hex":  "0x00000001",
+    "exit_policy":  "soft-warn-exit1",
+    "events_ld95_all":  0,
+    "events_relevant":  0,
+    "crash_dumps_new":  [
+
+                        ],
+    "wer_reports_new":  [
+
+                        ],
+    "module_probe":  {
+                         "ok":  false,
+                         "note":  "ReadProcessMemory/OpenProcess 失敗，Win32 錯誤 5（5＝存取被拒：常見於相容性模式或權限設定；不影響判定）"
+                     },
+    "production_can_apply":  false,
+    "release_approved":  false
+}

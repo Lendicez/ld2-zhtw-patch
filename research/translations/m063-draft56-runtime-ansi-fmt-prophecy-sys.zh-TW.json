@@ -1,0 +1,563 @@
+{
+  "schema_version": 1,
+  "milestone": "m063-draft56-runtime-ansi-fmt-prophecy-sys-mina",
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "production_can_apply": false,
+  "release_approved": false,
+  "rendering_verified": false,
+  "preview_only": true,
+  "draft_owner": "Mina (translation only; GitHub writes by Mona)",
+  "note": "Candidate runtime ANSI: age/count format tokens (%3s/%d), more prophecy (%s), sys labels (warning/report/error), moss altar examine, decline-king dialog. No UTF-16; no lodging patch. site unconfirmed.",
+  "base_doc": "expanded CP932 inventory",
+  "item_count": 19,
+  "items": [
+    {
+      "category": "runtime_ansi",
+      "subcategory": "fmt_ui",
+      "file_offset": 1520392,
+      "file_offset_hex": "0x173308",
+      "source_bytes_len": 5,
+      "source_name_sha256": "bcf1cdf9c3688285474f5243d6cbd6614c6a76cec96ea94dbe658c4f1ccff070",
+      "source_name_contract": {
+        "printf": [
+          "%3s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%3s歲",
+      "text_cp950_bytes_len": 5,
+      "text_cp950_hex": "253373b7b3",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "fmt_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "fmt_ui",
+      "file_offset": 1520400,
+      "file_offset_hex": "0x173310",
+      "source_bytes_len": 6,
+      "source_name_sha256": "58cbe0e09cea37dcba9069d2a28d52193ff9db4bb8b40d900a997e9c966eaade",
+      "source_name_contract": {
+        "printf": [
+          "%3s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": " %3s歲",
+      "text_cp950_bytes_len": 6,
+      "text_cp950_hex": "20253373b7b3",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "fmt_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "fmt_ui",
+      "file_offset": 1250068,
+      "file_offset_hex": "0x131314",
+      "source_bytes_len": 4,
+      "source_name_sha256": "5bd8deea31d7103b17df4963e6aa8a6d624fc67f06334fb9edf02593ae7133bc",
+      "source_name_contract": {
+        "printf": [
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%d隻",
+      "text_cp950_bytes_len": 4,
+      "text_cp950_hex": "2564b0a6",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "fmt_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "fmt_ui",
+      "file_offset": 1250160,
+      "file_offset_hex": "0x131370",
+      "source_bytes_len": 4,
+      "source_name_sha256": "febb593a9fb65148b5133bf728357b8efd314689a1237122f769b1819fd52ffc",
+      "source_name_contract": {
+        "printf": [
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%d人",
+      "text_cp950_bytes_len": 4,
+      "text_cp950_hex": "2564a448",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "fmt_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "fmt_ui",
+      "file_offset": 1250436,
+      "file_offset_hex": "0x131484",
+      "source_bytes_len": 4,
+      "source_name_sha256": "f1a51b787c1a2bfbe5dabb0afcc34650529e163371ab5864c00fcbebe8ece6cd",
+      "source_name_contract": {
+        "printf": [
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%d回",
+      "text_cp950_bytes_len": 4,
+      "text_cp950_hex": "2564a65e",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "fmt_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1422272,
+      "file_offset_hex": "0x15b3c0",
+      "source_bytes_len": 28,
+      "source_name_sha256": "d96eb7fb608e684b4ee8d0bc3b8466e6cde569f1a0f68b73d3db5058d0f4e97a",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "自%s現，不知去向",
+      "text_cp950_bytes_len": 16,
+      "text_cp950_hex": "a6db2573b27ba141a4a3aabea568a656",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 12,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1423780,
+      "file_offset_hex": "0x15b9a4",
+      "source_bytes_len": 14,
+      "source_name_sha256": "d027cf6395878d30478a3d03b0db60369db308195f7c45a388d40e9a2e049931",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "立於%s之前。",
+      "text_cp950_bytes_len": 12,
+      "text_cp950_hex": "a5dfa9f32573a4a7ab65a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 2,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1425300,
+      "file_offset_hex": "0x15bf94",
+      "source_bytes_len": 34,
+      "source_name_sha256": "a0a68bd50b005f586b5967ebfa651e4a2492fcc73c31e45f9699147558fb01bd",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "此由今日%s之姿訴說。",
+      "text_cp950_bytes_len": 20,
+      "text_cp950_hex": "a6b9a5d1a4b5a4e92573a4a7abbab644bba1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 14,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1426972,
+      "file_offset_hex": "0x15c61c",
+      "source_bytes_len": 28,
+      "source_name_sha256": "9a0878add49e31cd0ca6e4151fdc11bbab43c47b3c2d82f16201c06d3716add1",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "昔日，%s國之人的故事……",
+      "text_cp950_bytes_len": 24,
+      "text_cp950_hex": "a9f5a4e9a1412573b0eaa4a7a448aabaac47a8c6a14ba14b",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 4,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1420440,
+      "file_offset_hex": "0x15ac98",
+      "source_bytes_len": 28,
+      "source_name_sha256": "60c1c800b06ce96c0c4e7567580f5dea4b12ab06ad0faa89eccdfee70bfdcfcc",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s有馳騁大地者……",
+      "text_cp950_bytes_len": 18,
+      "text_cp950_hex": "2573a6b3b9a3c1fea46aa661aacca14ba14b",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 10,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1422712,
+      "file_offset_hex": "0x15b578",
+      "source_bytes_len": 34,
+      "source_name_sha256": "50581f3ed79aafc1ebb2ffa06f1b46fdd3fea1ce2112f0830a5758df0c9f0128",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "將於%s永世流傳吧……",
+      "text_cp950_bytes_len": 20,
+      "text_cp950_hex": "b14ea9f32573a5c3a540ac79b6c7a761a14ba14b",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 14,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1423172,
+      "file_offset_hex": "0x15b744",
+      "source_bytes_len": 22,
+      "source_name_sha256": "36970d4d22075874f04cca67d9368c336e59c5c66490774623d476adfe7dae6f",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "災禍降臨%s……",
+      "text_cp950_bytes_len": 14,
+      "text_cp950_hex": "a861bad7adb0c17b2573a14ba14b",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 8,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1425264,
+      "file_offset_hex": "0x15bf70",
+      "source_bytes_len": 34,
+      "source_name_sha256": "d00c5ba5477ef4a17adc1936e9175af37886baf39678766e231bb46660255b0e",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s之王已感到自己死期將至",
+      "text_cp950_bytes_len": 24,
+      "text_cp950_hex": "2573a4a7a4fda477b750a8eca6dba476a6bab4c1b14ea6dc",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 10,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "prophecy",
+      "file_offset": 1425392,
+      "file_offset_hex": "0x15bff0",
+      "source_bytes_len": 26,
+      "source_name_sha256": "6da960d41d10bc50ffb04cd42fe124fe9e82960e63111a8b1755de24358ea024",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "其人修成的%s之光……",
+      "text_cp950_bytes_len": 20,
+      "text_cp950_hex": "a8e4a448add7a6a8aaba2573a4a7a5faa14ba14b",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 6,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "prophecy"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "sys_ui",
+      "file_offset": 1414828,
+      "file_offset_hex": "0x1596ac",
+      "source_bytes_len": 4,
+      "source_name_sha256": "420c8447459e484083f5d2d30f198ee5e2172e28ce3b73d8de00475a6232e3e9",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "警告",
+      "text_cp950_bytes_len": 4,
+      "text_cp950_hex": "c4b5a769",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "sys_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "sys_ui",
+      "file_offset": 1414916,
+      "file_offset_hex": "0x159704",
+      "source_bytes_len": 4,
+      "source_name_sha256": "8ce87d6b650c3bebd889ad570b76d71a554ee965ac8595b468de0ca4304367eb",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "報告",
+      "text_cp950_bytes_len": 4,
+      "text_cp950_hex": "b3f8a769",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 0,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "sys_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "sys_ui",
+      "file_offset": 1414956,
+      "file_offset_hex": "0x15972c",
+      "source_bytes_len": 6,
+      "source_name_sha256": "006b68d4c9e2ff5e65bce6bfb6ed55184595f5e8c3366cf8049664f3b4031923",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "錯誤",
+      "text_cp950_bytes_len": 4,
+      "text_cp950_hex": "bff9bb7e",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 2,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "sys_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "altar_ui",
+      "file_offset": 1282304,
+      "file_offset_hex": "0x139100",
+      "source_bytes_len": 86,
+      "source_name_sha256": "000a19f0f632a2b9a894922386250292411f5932041a9199761883b2f7aa2a9a",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "眼前有座青苔覆蓋的祭壇。似乎無人造訪，荒廢不堪。",
+      "text_cp950_bytes_len": 48,
+      "text_cp950_hex": "b2b4ab65a6b3ae79ab43ad61c2d0bb5caabab2bdbec2a143a6fca547b54ca448b379b358a141afeebc6fa4a3b3f4a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 38,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "altar_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "king_ui",
+      "file_offset": 1283200,
+      "file_offset_hex": "0x139480",
+      "source_bytes_len": 88,
+      "source_name_sha256": "633d1f6960df6328fd9184aae078c3fe2c651014a95d3fc1d6609abce666fb5a",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "什麼！不做國王嗎！也好。下次再來此處吧……。",
+      "text_cp950_bytes_len": 44,
+      "text_cp950_hex": "a4b0bbf2a149a4a3b0b5b0eaa4fdb6dca149a45da66ea143a455a6b8a641a8d3a6b9b342a761a14ba14ba143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 44,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "king_ui"
+    }
+  ],
+  "stripped_fields": [
+    "source_name_ja",
+    "source_name_cp932_hex"
+  ],
+  "mona_approved_candidate": true,
+  "site_binding_confirmed": false,
+  "source_public_copy_sha256": "5c9bb1250332d0655baf9c6cd0aaf4886648dce5e660ca491137341149f2275d"
+}

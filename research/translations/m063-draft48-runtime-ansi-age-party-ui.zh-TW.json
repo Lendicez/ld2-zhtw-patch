@@ -1,0 +1,567 @@
+{
+  "schema_version": 1,
+  "milestone": "m063-draft48-runtime-ansi-age-party-ui-mina",
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "production_can_apply": false,
+  "release_approved": false,
+  "rendering_verified": false,
+  "preview_only": true,
+  "draft_owner": "Mina (translation only; GitHub writes by Mona)",
+  "note": "Candidate runtime ANSI: age/birthday/lifespan (%s/%d), GOLD/loot/stolen (%d/%s), stat/damage/MP drain (%d), altar place (%s), under-16 party lock, marriage-join asks (%s), charm combat fragment, family welcome-home. No UTF-16. site unconfirmed.",
+  "base_doc": "expanded CP932 inventory",
+  "item_count": 19,
+  "items": [
+    {
+      "category": "runtime_ansi",
+      "subcategory": "loot_ui",
+      "file_offset": 1203124,
+      "file_offset_hex": "0x125bb4",
+      "source_bytes_len": 25,
+      "source_name_sha256": "d6170956bd75bd72f0c103ee7507d70ce04cade134361346bede53528e9b325e",
+      "source_name_contract": {
+        "printf": [
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "得到了%dGOLD。",
+      "text_cp950_bytes_len": 14,
+      "text_cp950_hex": "b16fa8eca4462564474f4c44a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 11,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "loot_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "age_ui",
+      "file_offset": 1224428,
+      "file_offset_hex": "0x12aeec",
+      "source_bytes_len": 27,
+      "source_name_sha256": "f5ca46fd3735158d59b1c309388e8711a68c6762fdfac91d91c89171e5df6cc9",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s 滿 %d 歲了!",
+      "text_cp950_bytes_len": 14,
+      "text_cp950_hex": "257320baa120256420b7b3a44621",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 13,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "age_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "age_ui",
+      "file_offset": 1224456,
+      "file_offset_hex": "0x12af08",
+      "source_bytes_len": 23,
+      "source_name_sha256": "9488be0401eb6cf786440a453dda08acf30ca4d6c2b567002e0988a5fef5237d",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s 年輕了 %d 歲!",
+      "text_cp950_bytes_len": 16,
+      "text_cp950_hex": "257320a67ebbb4a44620256420b7b321",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 7,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "age_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "age_ui",
+      "file_offset": 1241712,
+      "file_offset_hex": "0x12f270",
+      "source_bytes_len": 30,
+      "source_name_sha256": "8e84dd5b9d9074a89ff2349a249910a43e7dd4515ba3d9846a83f158273ad1cd",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s 迎來了 16 歲生日。",
+      "text_cp950_bytes_len": 21,
+      "text_cp950_hex": "257320aaefa8d3a44620313620b7b3a5cda4e9a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 9,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "age_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "age_ui",
+      "file_offset": 1241776,
+      "file_offset_hex": "0x12f2b0",
+      "source_bytes_len": 22,
+      "source_name_sha256": "3f46b6495b7596cf9dcaf985272899a88097dc009afd421ba3ac0a9d3b7a981e",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s 壽終了。",
+      "text_cp950_bytes_len": 11,
+      "text_cp950_hex": "257320b9d8b2d7a446a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 11,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "age_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "stat_ui",
+      "file_offset": 1234788,
+      "file_offset_hex": "0x12d764",
+      "source_bytes_len": 24,
+      "source_name_sha256": "ac40b9de7c72e73052b27aedb690d4edd7442e2ac94d20b1d8311b972f2f5be5",
+      "source_name_contract": {
+        "printf": [
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "上升了 %d 點！",
+      "text_cp950_bytes_len": 14,
+      "text_cp950_hex": "a457a4c9a44620256420c249a149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 10,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "stat_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "loot_ui",
+      "file_offset": 1234544,
+      "file_offset_hex": "0x12d670",
+      "source_bytes_len": 12,
+      "source_name_sha256": "d50e6b81922aef5d38116385d3ddb6d472a6ff0494b40c1bc8861dd2c5a24d40",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "偷到了%s！",
+      "text_cp950_bytes_len": 10,
+      "text_cp950_hex": "b0bda8eca4462573a149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 2,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "loot_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "party_ui",
+      "file_offset": 1235532,
+      "file_offset_hex": "0x12da4c",
+      "source_bytes_len": 28,
+      "source_name_sha256": "69376eed2e8656022bb4ab86c1c932ad900e12cc2424ced406ec91e71169f07f",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%s 離開了隊伍。",
+      "text_cp950_bytes_len": 15,
+      "text_cp950_hex": "257320c2f7b67da446b6a4a5eea143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 13,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "party_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "loot_ui",
+      "file_offset": 1243784,
+      "file_offset_hex": "0x12fa88",
+      "source_bytes_len": 21,
+      "source_name_sha256": "854a4818eb1f49aec98ca06f814f018e5cf27bbee50998d96c1d3676f93c1d20",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "得到了 %s！",
+      "text_cp950_bytes_len": 11,
+      "text_cp950_hex": "b16fa8eca446202573a149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 10,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "loot_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "pay_ui",
+      "file_offset": 1243808,
+      "file_offset_hex": "0x12faa0",
+      "source_bytes_len": 45,
+      "source_name_sha256": "0487aeac710932a7f4bcc72d856ec99d272aa8466fb68da25c0301537036a5ea",
+      "source_name_contract": {
+        "printf": [
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "來，%dG。確實交給你了。辛苦了。",
+      "text_cp950_bytes_len": 31,
+      "text_cp950_hex": "a8d3a141256447a143bd54b9eaa5e6b5b9a741a446a143a8afad57a446a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 14,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "pay_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "combat_ui",
+      "file_offset": 1281696,
+      "file_offset_hex": "0x138ea0",
+      "source_bytes_len": 32,
+      "source_name_sha256": "b1552404a9b62c587caf84a64d7109161040e28f6af3a374afe09bf315ef9fa9",
+      "source_name_contract": {
+        "printf": [
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "被吸走了 %d 點魔力！",
+      "text_cp950_bytes_len": 20,
+      "text_cp950_hex": "b351a76ca8aba44620256420c249c55da44fa149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 12,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "combat_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "combat_ui",
+      "file_offset": 1281732,
+      "file_offset_hex": "0x138ec4",
+      "source_bytes_len": 30,
+      "source_name_sha256": "1170917af68b5fc32352e7678a5b5b60514daed8338a826f1c587c6fa14b7b47",
+      "source_name_contract": {
+        "printf": [
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "受到了 %d 點傷害！",
+      "text_cp950_bytes_len": 18,
+      "text_cp950_hex": "a8fca8eca44620256420c249b6cbae60a149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 12,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "combat_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "altar_ui",
+      "file_offset": 1282196,
+      "file_offset_hex": "0x139094",
+      "source_bytes_len": 20,
+      "source_name_sha256": "e0b29fc48ebb5bcc4727f9050f2bae26632047cc1f6974c536937266e277e56a",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "要放置%s嗎？",
+      "text_cp950_bytes_len": 12,
+      "text_cp950_hex": "ad6ea9f1b86d2573b6dca148",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 8,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "altar_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "party_ui",
+      "file_offset": 1294084,
+      "file_offset_hex": "0x13bf04",
+      "source_bytes_len": 36,
+      "source_name_sha256": "c5252844d3ada4a06776349fae6f0e33174fe5c2c197ad660cc53ce3c39aab7c",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "未滿 16 歲無法加入同伴。",
+      "text_cp950_bytes_len": 24,
+      "text_cp950_hex": "a5bcbaa120313620b7b3b54caa6ba55ba44aa650a6f1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 12,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "party_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "party_ui",
+      "file_offset": 1235112,
+      "file_offset_hex": "0x12d8a8",
+      "source_bytes_len": 119,
+      "source_name_sha256": "4149117f3bfaadcea53a4ff664208e1aa4dc6bb5810c4e1b709d246672470140",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "突然說出口——我想和%s結婚，想讓他加入我們的隊伍，可以嗎？",
+      "text_cp950_bytes_len": 58,
+      "text_cp950_hex": "acf0b54dbba1a558a466a158a158a7dab751a94d2573b5b2b142a141b751c5fda54ca55ba44aa7daadccaabab6a4a5eea141a569a548b6dca148",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 61,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "party_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "party_ui",
+      "file_offset": 1235232,
+      "file_offset_hex": "0x12d920",
+      "source_bytes_len": 115,
+      "source_name_sha256": "0a5c65cc154d306cb1af7feb2066f5304dd7ef33b83a9f2bd46d2fc6d7c21b08",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "突然說——我想和%s結婚，想讓她加入我們的隊伍，可以嗎？",
+      "text_cp950_bytes_len": 54,
+      "text_cp950_hex": "acf0b54dbba1a158a158a7dab751a94d2573b5b2b142a141b751c5fda66fa55ba44aa7daadccaabab6a4a5eea141a569a548b6dca148",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 61,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "party_ui"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "combat",
+      "file_offset": 1214688,
+      "file_offset_hex": "0x1288e0",
+      "source_bytes_len": 29,
+      "source_name_sha256": "ad4efca4a46f2ab5d22063494ce441ad7fcbfaa2963bdfc4a219e07ab08e1ae9",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "唔，區區……魅了魔法……",
+      "text_cp950_bytes_len": 24,
+      "text_cp950_hex": "adf8a141b0cfb0cfa14ba14bbe79a446c55daa6ba14ba14b",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 5,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "combat"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "family",
+      "file_offset": 1296232,
+      "file_offset_hex": "0x13c768",
+      "source_bytes_len": 58,
+      "source_name_sha256": "c770aea1116341cc920e93647f69e7e1a2c05232d78c3c6727bc8cec37e32a86",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "歡迎回家，媽!!太好了!!今天媽煮飯對吧。",
+      "text_cp950_bytes_len": 38,
+      "text_cp950_hex": "c577aaefa65eae61a141b6fd2121a4d3a66ea4462121a4b5a4d1b6fdb54eb6bab9efa761a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 20,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "family"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "family",
+      "file_offset": 1296728,
+      "file_offset_hex": "0x13c958",
+      "source_bytes_len": 64,
+      "source_name_sha256": "3e20c2871aba0521bea56a64e504dddf795069debb6184e6c47f5cee910339e2",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "歡迎回來，爸爸。今天慢慢說冒險的事給我聽。",
+      "text_cp950_bytes_len": 42,
+      "text_cp950_hex": "c577aaefa65ea8d3a141aaa8aaa8a143a4b5a4d1ba43ba43bba1ab5fc049aabaa8c6b5b9a7dac5a5a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 22,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "family"
+    }
+  ],
+  "stripped_fields": [
+    "source_name_ja",
+    "source_name_cp932_hex"
+  ],
+  "mona_approved_candidate": true,
+  "site_binding_confirmed": false,
+  "source_public_copy_sha256": "14c898720bab93614da7036b71e65b104f000c1b6ce86cf53403e2221917bcbf"
+}

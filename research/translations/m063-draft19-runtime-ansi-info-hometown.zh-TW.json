@@ -1,0 +1,583 @@
+{
+  "schema_version": 1,
+  "milestone": "m063-draft19-runtime-ansi-info-hometown-mina",
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "production_can_apply": false,
+  "release_approved": false,
+  "rendering_verified": false,
+  "preview_only": true,
+  "draft_owner": "Mina (translation only; GitHub writes by Mona)",
+  "note": "Candidate runtime ANSI: info-broker (%A–%D), remaining hometown, chat, wind-pearl teleport desc. site unconfirmed. printf preserved.",
+  "base_doc": "follow-on dynamic CP932 inventory",
+  "item_count": 19,
+  "items": [
+    {
+      "category": "runtime_ansi",
+      "subcategory": "info_broker",
+      "file_offset": 1469276,
+      "file_offset_hex": "0x166b5c",
+      "source_bytes_len": 47,
+      "source_name_sha256": "86110cace79aa112d2bf77c84a19a6b77cef25acfbe0f96170d1f0f73a6c7b25",
+      "source_name_contract": {
+        "printf": [
+          "%A",
+          "%A",
+          "%B",
+          "%C"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "「%A」嗎？「%A」的話就在「%B」的「%C」附近。",
+      "text_cp950_bytes_len": 44,
+      "text_cp950_hex": "a1752541a176b6dca148a1752541a176aabab8dcb44ea662a1752542a176aabaa1752543a176aafeaaf1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 3,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "info_broker"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "info_broker",
+      "file_offset": 1469324,
+      "file_offset_hex": "0x166b8c",
+      "source_bytes_len": 32,
+      "source_name_sha256": "f0b63d7bd498860c9609c4ccd76c0722786b3b734a7372a25f4b04f9b6fa767e",
+      "source_name_contract": {
+        "printf": [
+          "%A"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "在這個國家叫「%A」的城鎮。",
+      "text_cp950_bytes_len": 26,
+      "text_cp950_hex": "a662b36fadd3b0eaae61a573a1752541a176aabaabb0c2eda143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 6,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "info_broker"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "info_broker",
+      "file_offset": 1469540,
+      "file_offset_hex": "0x166c64",
+      "source_bytes_len": 42,
+      "source_name_sha256": "8f3ba27c786ea56ebaef06e52f50fe7b9ef0b5fbb52bd380896352cf9d7b0a20",
+      "source_name_contract": {
+        "printf": [
+          "%A",
+          "%B",
+          "%C"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "啊，%A的話正在「%B」的「%C」停留。",
+      "text_cp950_bytes_len": 34,
+      "text_cp950_hex": "b0daa1412541aabab8dca5bfa662a1752542a176aabaa1752543a176b0b1af64a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 8,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "info_broker"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "info_broker",
+      "file_offset": 1469584,
+      "file_offset_hex": "0x166c90",
+      "source_bytes_len": 65,
+      "source_name_sha256": "b78aa5ecfedc4f220511f4a448dd6dd3079193cec7b6101ec6bab19b72e7c629",
+      "source_name_contract": {
+        "printf": [
+          "%A",
+          "%A",
+          "%B",
+          "%C"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "呃，%A嗎？聽說%A正往「%B」的「%C」移動中。",
+      "text_cp950_bytes_len": 42,
+      "text_cp950_hex": "a763a1412541b6dca148c5a5bba12541a5bfa9b9a1752542a176aabaa1752543a176b2beb0caa4a4a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 23,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "info_broker"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "info_broker",
+      "file_offset": 1469652,
+      "file_offset_hex": "0x166cd4",
+      "source_bytes_len": 29,
+      "source_name_sha256": "a9a47cd2bc3a478f97a76c059f2994849d697ac12c9aa804e7606dd782164ff8",
+      "source_name_contract": {
+        "printf": [
+          "%A"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%A嗎？聽說死了。",
+      "text_cp950_bytes_len": 16,
+      "text_cp950_hex": "2541b6dca148c5a5bba1a6baa446a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 13,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "info_broker"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "info_broker",
+      "file_offset": 1469684,
+      "file_offset_hex": "0x166cf4",
+      "source_bytes_len": 36,
+      "source_name_sha256": "d819081a12cf55076dc3f2242a18d5bdbc1513923b5f65dd37592799b69ef6e7",
+      "source_name_contract": {
+        "printf": [
+          "%A",
+          "%B",
+          "%C"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "%A的話在「%B」的「%C」有賣。",
+      "text_cp950_bytes_len": 28,
+      "text_cp950_hex": "2541aabab8dca662a1752542a176aabaa1752543a176a6b3bde6a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 8,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "info_broker"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "info_broker",
+      "file_offset": 1470348,
+      "file_offset_hex": "0x166f8c",
+      "source_bytes_len": 52,
+      "source_name_sha256": "351fe4f873e164a4a3d0b7208738315a1b90cc19b156efb0a2a476e712ab764f",
+      "source_name_contract": {
+        "printf": [
+          "%A",
+          "%B",
+          "%C"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "問%A嗎？正往「%B」的「%C」移動中。",
+      "text_cp950_bytes_len": 34,
+      "text_cp950_hex": "b0dd2541b6dca148a5bfa9b9a1752542a176aabaa1752543a176b2beb0caa4a4a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 18,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "info_broker"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "info_broker",
+      "file_offset": 1470404,
+      "file_offset_hex": "0x166fc4",
+      "source_bytes_len": 55,
+      "source_name_sha256": "0b1c8578c0b00e973b96dd1471349f12d616bc5b7180ad3d1591d88e610f050a",
+      "source_name_contract": {
+        "printf": [
+          "%A"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "問%A嗎？不確定，但聽說死了。",
+      "text_cp950_bytes_len": 28,
+      "text_cp950_hex": "b0dd2541b6dca148a4a3bd54a977a141a6fdc5a5bba1a6baa446a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 27,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "info_broker"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "info_broker",
+      "file_offset": 1469728,
+      "file_offset_hex": "0x166d20",
+      "source_bytes_len": 74,
+      "source_name_sha256": "09ee1282d1094632eba7748087ad6a4ce82c512bf0c2d1b1d4ed34b434e20f8f",
+      "source_name_contract": {
+        "printf": [
+          "%A",
+          "%B",
+          "%C",
+          "%D"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "嗯，情報說%A在「%B」的「%C」那個叫「%D」的迷宮。",
+      "text_cp950_bytes_len": 48,
+      "text_cp950_hex": "b6e2a141b1a1b3f8bba12541a662a1752542a176aabaa1752543a176a8baadd3a573a1752544a176aabab067ae63a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 26,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "info_broker"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449848,
+      "file_offset_hex": "0x161f78",
+      "source_bytes_len": 70,
+      "source_name_sha256": "2e26af09635703267d7ebb938cb5224c81d64a160ed2c7c980b0a8108f577419",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我在「%s」出生。聽說是無數河流削岩而成的地形。",
+      "text_cp950_bytes_len": 46,
+      "text_cp950_hex": "a7daa662a1752573a176a558a5cda143c5a5bba1ac4fb54cbcc6aa65ac79ab64a9a5a6d3a6a8aabaa661a7cea143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 24,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1450000,
+      "file_offset_hex": "0x162010",
+      "source_bytes_len": 66,
+      "source_name_sha256": "53d3fc2a14954698ce29f713466ee8dafb54f7013c317af78f1836fe8b1ab955",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出生長大的「%s」河水清澈如鏡喔。",
+      "text_cp950_bytes_len": 34,
+      "text_cp950_hex": "a7daa558a5cdaaf8a46aaabaa1752573a176aa65a4f4b24dbaaba670c3e8b3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 32,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450292,
+      "file_offset_hex": "0x162134",
+      "source_bytes_len": 52,
+      "source_name_sha256": "ce320feb4e2d2c40f24c8d4dbb6e4a36aae89f540d3ba5520a2e5daf6471b68c",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我在「%s」長大。大陸東邊島上的城鎮。",
+      "text_cp950_bytes_len": 36,
+      "text_cp950_hex": "a7daa662a1752573a176aaf8a46aa143a46ab3b0aa46c3e4ae71a457aabaabb0c2eda143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 16,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450456,
+      "file_offset_hex": "0x1621d8",
+      "source_bytes_len": 56,
+      "source_name_sha256": "5abdb58b0d933f4f797841f64416665a6e9ac544636e5b88d25f6e09cacdd172",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我在「%s」出生長大。面向海的沙漠。",
+      "text_cp950_bytes_len": 34,
+      "text_cp950_hex": "a7daa662a1752573a176a558a5cdaaf8a46aa143adb1a656aefcaabaa846ba7aa143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 22,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450568,
+      "file_offset_hex": "0x162248",
+      "source_bytes_len": 38,
+      "source_name_sha256": "7c48f738ade8f233395562ce4b9c7f167ea8732bd81a5edd7ea05c72efe35a32",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出生長大的「%s」是島喔。",
+      "text_cp950_bytes_len": 26,
+      "text_cp950_hex": "a7daa558a5cdaaf8a46aaabaa1752573a176ac4fae71b3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 12,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450664,
+      "file_offset_hex": "0x1622a8",
+      "source_bytes_len": 54,
+      "source_name_sha256": "871c4b245b5783b20ec0871bd12ac718d264fc98a0904354df66da7057f7ddf9",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我在「%s」長大。山腳湖畔的村子。",
+      "text_cp950_bytes_len": 32,
+      "text_cp950_hex": "a7daa662a1752573a176aaf8a46aa143a473b87db4f2af60aabaa7f8a46ca143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 22,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_dungeon",
+      "file_offset": 1455956,
+      "file_offset_hex": "0x163754",
+      "source_bytes_len": 44,
+      "source_name_sha256": "42c132680e38a954ee1070e57f2fd9dde5587b4e147f79a73d89deb9f72808b2",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "「%s」在我出生長大的「%s」喔。",
+      "text_cp950_bytes_len": 30,
+      "text_cp950_hex": "a1752573a176a662a7daa558a5cdaaf8a46aaabaa1752573a176b3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 14,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_dungeon"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "chat",
+      "file_offset": 1440380,
+      "file_offset_hex": "0x15fa7c",
+      "source_bytes_len": 39,
+      "source_name_sha256": "1d681c9f3622247ad3c9448ee3db411938d445d5bbd406704ff13f88715e8bad",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "欸，你知道我生日是哪天嗎？",
+      "text_cp950_bytes_len": 26,
+      "text_cp950_hex": "d5d9a141a741aabeb944a7daa5cda4e9ac4fadfea4d1b6dca148",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 13,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "chat"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "chat",
+      "file_offset": 1441692,
+      "file_offset_hex": "0x15ff9c",
+      "source_bytes_len": 43,
+      "source_name_sha256": "8740255637484b29e38cee69a3b97652850674f3fa226a1d19c0e9b9f39dcb73",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "嗯，還過得去。你那邊狀況如何？",
+      "text_cp950_bytes_len": 30,
+      "text_cp950_hex": "b6e2a141c1d9b94cb16fa568a143a741a8bac3e4aaacaa70a670a6f3a148",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 13,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "chat"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "spell_desc",
+      "file_offset": 1510088,
+      "file_offset_hex": "0x170ac8",
+      "source_bytes_len": 87,
+      "source_name_sha256": "4bc76b5b80023ecbd3e678951788e9757c7edab92221d61a4f12ccd81bbe6c38",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "使用封有風精靈之力的珠，瞬間移動到其他城鎮。消耗MP100。",
+      "text_cp950_bytes_len": 55,
+      "text_cp950_hex": "a8cfa5ceabcaa6b3adb7baebc646a4a7a44faabaaf5da141c0feb6a1b2beb0caa8eca8e4a54cabb0c2eda143aef8afd34d50313030a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 32,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "spell_desc"
+    }
+  ],
+  "stripped_fields": [
+    "source_name_ja",
+    "source_name_cp932_hex"
+  ],
+  "mona_approved_candidate": true,
+  "site_binding_confirmed": false,
+  "source_public_copy_sha256": "1c97d84feb3980942e50fbf77fbdcfdbd7d7874fc2f869bdf97031bce1644063"
+}

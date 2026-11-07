@@ -1,0 +1,154 @@
+{
+  "schema": "m061b-loader-enabled-delta/1",
+  "base": "m045",
+  "base_sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7",
+  "base_size": 7118848,
+  "list_profile": "u",
+  "list_mode": 2,
+  "list_mode_slot_va": "0xb0a28c",
+  "list_object_sha256": "e8144466755d223a18f5d8f586510f64822c5cc1d793c708f171e964f6064d51",
+  "inert_sha256": "6f9a8903f9a5ffeb68db1b7a0a0115a179c56084dd0beb0078bfcbe1d1fde1aa",
+  "out_sha256": "3a1b75b35aca01a8b3e0e475ea8fd7454ebe2367f03165ebab18a7054825ed31",
+  "out_size": 7286784,
+  "delta_file": "m061b-enabled-mode2.delta.bin",
+  "delta_sha256": "5853948ca59d62d818f941cb91e3c4a80939e08077d392a47c2e1c50e27291cd",
+  "delta_size": 168111,
+  "runs": [
+    {
+      "offset": 246,
+      "length": 1,
+      "kind": "header",
+      "sha256": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879"
+    },
+    {
+      "offset": 269,
+      "length": 6,
+      "kind": "header",
+      "sha256": "31d58544143348877909958d6d1fc21a7d1b7d2efcd8d1f922090c21ccd39b91"
+    },
+    {
+      "offset": 321,
+      "length": 10,
+      "kind": "header",
+      "sha256": "b37a2dcfad4b89be976564137d9a00dfdae9a8e8a1090b56924dcec2794d740d"
+    },
+    {
+      "offset": 368,
+      "length": 5,
+      "kind": "header",
+      "sha256": "fe7164d60d7cd6b197461d00e5950eab06068dbd7ec8eb32739a6ccd2bdc84df"
+    },
+    {
+      "offset": 648,
+      "length": 23,
+      "kind": "header",
+      "sha256": "f3b26666b935e22ea519a33a5ec602269d184197e4297ba12cc6c7b267ae1e1e"
+    },
+    {
+      "offset": 684,
+      "length": 27,
+      "kind": "header",
+      "sha256": "9993932017cd9f9c1392e743cf3cdfb63789bd7920d66e9bf8d4b8c2365c1a16"
+    },
+    {
+      "offset": 724,
+      "length": 27,
+      "kind": "header",
+      "sha256": "1fd382eeb09b03b8ce8182fd0ea368d35641954864345c9a7d4da4576b6fd9f7"
+    },
+    {
+      "offset": 764,
+      "length": 4,
+      "kind": "header",
+      "sha256": "351e341dbcc14b6b559c3a91cee562cc4954e505a5a1a88d0512703bf9446fae"
+    },
+    {
+      "offset": 449661,
+      "length": 40,
+      "kind": "code",
+      "sha256": "67f30b3e3460e3035da33b684541fa8fd1c80d17c01c644a6ac857d8f64cca9e"
+    },
+    {
+      "offset": 599090,
+      "length": 4,
+      "kind": "code",
+      "sha256": "86549ac42e3561dc444143c2f02480156b4d8cda073748a0d8aac4f92faa92ec"
+    },
+    {
+      "offset": 700186,
+      "length": 4,
+      "kind": "code",
+      "sha256": "966ae0192ac10253ff1609d3022081531b91ffbd18a2ef771d10777d8884559e"
+    },
+    {
+      "offset": 700671,
+      "length": 4,
+      "kind": "code",
+      "sha256": "9095cd51dbaac8476f163c9362e17897cadd517d8075b4bca49b922f4cb94b05"
+    },
+    {
+      "offset": 725332,
+      "length": 4,
+      "kind": "code",
+      "sha256": "4d62adf21ff31f0344315865dfe92f2ccbb5976a24650bbba380b66a739de107"
+    },
+    {
+      "offset": 732448,
+      "length": 4,
+      "kind": "code",
+      "sha256": "aae9f330d1d2e602a7fb6f4ce8ca15247c3cea98961c8c5ceee910e66a6f3716"
+    },
+    {
+      "offset": 734328,
+      "length": 4,
+      "kind": "code",
+      "sha256": "1fd23642b0c19eb80d08c0b927bd6ca1663f417801580e597f669e078b490487"
+    },
+    {
+      "offset": 739045,
+      "length": 4,
+      "kind": "code",
+      "sha256": "ad4fa8e39726fc1bf65134b8bdb6f4c1f978c7cf4942ef6bc9a34e43c870cfa1"
+    },
+    {
+      "offset": 740850,
+      "length": 4,
+      "kind": "code",
+      "sha256": "3bbbab53978de8fc1a9059957282299d1f3d2d0b254527ef7a70270a9fa4b0e3"
+    },
+    {
+      "offset": 7118848,
+      "length": 167936,
+      "kind": "append",
+      "sha256": "9f51609857ec290a37fcbaa291baa181697fc1894e8cded5c1b1bc31380a198b"
+    }
+  ],
+  "hook_span": [
+    449661,
+    449701
+  ],
+  "hook_stub_sha256": "67f30b3e3460e3035da33b684541fa8fd1c80d17c01c644a6ac857d8f64cca9e",
+  "name_pair_va": "0xae3170",
+  "list_entry_va": "0xae3850",
+  "sites": [
+    "0x492431",
+    "0x4aaf19",
+    "0x4ab0fe",
+    "0x4b1153",
+    "0x4b2d1f",
+    "0x4b3477",
+    "0x4b46e4",
+    "0x4b4df1"
+  ],
+  "iat": {
+    "GDI32!TextOutW": "0xb0b160",
+    "USER32!SendDlgItemMessageW": "0xb0b1e8",
+    "USER32!IsWindowUnicode": "0xb0b1ec",
+    "USER32!GetWindowLongW": "0xb0b1f0",
+    "USER32!GetClassLongW": "0xb0b1f4",
+    "USER32!SetWindowLongW": "0xb0b1f8"
+  },
+  "list_sites_patched": true,
+  "textoutw_hook_enabled": true,
+  "production_can_apply": false
+}
