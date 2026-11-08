@@ -1,0 +1,94 @@
+{
+ "schema_version": 1,
+ "milestone": "m064-catalog-copied-names",
+ "production_can_apply": false,
+ "release_approved": false,
+ "note": "會被複製進世界資料／存檔的名稱（精靈、召喚、怪物、地名）：不原位改，於建置時以原檔 CP932 位元組為鍵加入 v4 catalog（FULL_ANY），所有顯示後備查表即顯示繁中。譯名與 lab-monster-names 一致。",
+ "items": [
+  {
+   "file_offset": 1243180,
+   "file_offset_hex": "0x12f82c",
+   "text_zh_tw": "阿克梅亞"
+  },
+  {
+   "file_offset": 1243196,
+   "file_offset_hex": "0x12f83c",
+   "text_zh_tw": "拜杜拉克"
+  },
+  {
+   "file_offset": 1243256,
+   "file_offset_hex": "0x12f878",
+   "text_zh_tw": "貝希摩斯"
+  },
+  {
+   "file_offset": 1243268,
+   "file_offset_hex": "0x12f884",
+   "text_zh_tw": "水精靈"
+  },
+  {
+   "file_offset": 1243284,
+   "file_offset_hex": "0x12f894",
+   "text_zh_tw": "火蜥蜴"
+  },
+  {
+   "file_offset": 1243300,
+   "file_offset_hex": "0x12f8a4",
+   "text_zh_tw": "風精靈"
+  },
+  {
+   "file_offset": 1243496,
+   "file_offset_hex": "0x12f968",
+   "text_zh_tw": "不朽者"
+  },
+  {
+   "file_offset": 1249276,
+   "file_offset_hex": "0x130ffc",
+   "text_zh_tw": "死靈法師"
+  },
+  {
+   "file_offset": 1280996,
+   "file_offset_hex": "0x138be4",
+   "text_zh_tw": "城堡地牢"
+  },
+  {
+   "file_offset": 1408640,
+   "file_offset_hex": "0x157e80",
+   "text_zh_tw": "未登錄道具"
+  },
+  {
+   "file_offset": 1516592,
+   "file_offset_hex": "0x172430",
+   "text_zh_tw": "死亡龍"
+  },
+  {
+   "file_offset": 1516624,
+   "file_offset_hex": "0x172450",
+   "text_zh_tw": "穆修胡修"
+  },
+  {
+   "file_offset": 1516656,
+   "file_offset_hex": "0x172470",
+   "text_zh_tw": "窫窳"
+  },
+  {
+   "file_offset": 1516720,
+   "file_offset_hex": "0x1724b0",
+   "text_zh_tw": "風精靈"
+  },
+  {
+   "file_offset": 1516752,
+   "file_offset_hex": "0x1724d0",
+   "text_zh_tw": "火蜥蜴"
+  },
+  {
+   "file_offset": 1516784,
+   "file_offset_hex": "0x1724f0",
+   "text_zh_tw": "水精靈"
+  },
+  {
+   "file_offset": 1516816,
+   "file_offset_hex": "0x172510",
+   "text_zh_tw": "貝希摩斯"
+  }
+ ]
+}
