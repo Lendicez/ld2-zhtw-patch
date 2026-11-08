@@ -37,11 +37,14 @@ _WEIRD = _re.compile(r'[\ue000-\uf8ff\ufffd@`<>&=\\{}|^~\[\]\x00-\x08\x0b\x0c\x0
 _HALF = _re.compile(r'[\uff61-\uff9f]')
 _FULL = _re.compile(r'[\u3040-\u30ff\u4e00-\u9fff]')
 _ASCII_LETTER = _re.compile(r'[A-Za-z?]')
-JUNK_RDATA_FROM = 0x174000   # .rdata 此後為二進位表（浮點常數、圖表資料），偶然可解成 CP932 → 一律不碰
+JUNK_RDATA_FROM = 0x174000
+NOT_TEXT = {0x12c338}   # 字型名「ＭＳ ゴシック」（LOGFONT face；由 charset_patch.face_patch 改 MingLiU）   # .rdata 此後為二進位表（浮點常數、圖表資料），偶然可解成 CP932 → 一律不碰
 
 
 def is_junk(ja: str, off: int) -> bool:
     """二進位資料偶然解碼成 CP932 的假字串（覆寫會破壞資料表 → 攻擊時閃退的根因）。"""
+    if off in NOT_TEXT:
+        return True
     if 0x125000 <= off < 0x195000 and off >= JUNK_RDATA_FROM:
         return True
     if _WEIRD.search(ja):

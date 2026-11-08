@@ -25,5 +25,23 @@ class CharsetPatchTests(unittest.TestCase):
             C.patch(bytes(exe))
 
 
+class FaceTests(unittest.TestCase):
+    def _exe(self):
+        b = bytearray(0x140000)
+        b[C.FACE_OFF:C.FACE_OFF + 14] = 'ＭＳ ゴシック'.encode('cp932') + b'\0'
+        b[C.FACE_LEN_SITE:C.FACE_LEN_SITE + 7] = C.FACE_LEN_WANT
+        return bytes(b)
+
+    def test_face(self):
+        out, info = C.face_patch(self._exe())
+        self.assertEqual(out[C.FACE_OFF:C.FACE_OFF + 14], b'MingLiU' + b'\0' * 7)
+        self.assertEqual(out[C.FACE_LEN_SITE + 1], 7)
+        self.assertEqual(C.face_patch(out)[1]['status'], 'already')
+
+    def test_face_mismatch(self):
+        b = bytearray(self._exe()); b[C.FACE_OFF] = 0x41
+        with self.assertRaises(ValueError):
+            C.face_patch(bytes(b))
+
 if __name__ == '__main__':
     unittest.main()

@@ -16,7 +16,31 @@ SITES = [
     (0xd0b5c, bytes.fromhex('c644243380'), 'mov byte [esp+0x33],0x80 -> CreateFontIndirectA @0x4d0b6a'),
     (0xd0bbc, bytes.fromhex('c644243380'), 'mov byte [esp+0x33],0x80 (second LOGFONT, same function)'),
     (0x31dbe, bytes.fromhex('c686cf00000080'), 'mov byte [esi+0xcf],0x80 -> CreateFontIndirectA @0x431df7'),
+    (0xd0bf3, bytes.fromhex('c644242f80'), 'mov byte [esp+0x2f],0x80 (third LOGFONT, height -12, same function)'),
 ]
+# 字型名：上述 LOGFONT 與設定預設值都取 .rdata 0x12c338「ＭＳ ゴシック」（CP932 13 B）。
+# 字集改 Big5 後此名稱在 ACP 950 下是亂碼 → 由系統替代（結果不固定）。改為 ASCII「MingLiU」（等寬點陣，
+# 與原 MS Gothic 版面相同；ASCII 名稱不受系統 ACP 影響），設定預設值的長度參數 13 → 7。
+FACE_OFF, FACE_SHA_LEN = 0x12c338, 13
+FACE_NEW = b'MingLiU'
+FACE_SRC_SHA256 = '482a053efd81f4f02ee6989471a88c7a01842fa50249e6afc83470afbf81a01f'
+FACE_LEN_SITE, FACE_LEN_WANT = 0x31b43, bytes.fromhex('6a0d6838c35200')
+
+
+def face_patch(exe: bytes):
+    import hashlib as _h
+    buf = bytearray(exe)
+    src = bytes(buf[FACE_OFF:FACE_OFF + FACE_SHA_LEN + 1])
+    if src[:len(FACE_NEW) + 1] == FACE_NEW + b'\0':
+        return bytes(buf), {'status': 'already'}
+    if src[-1] != 0 or _h.sha256(src[:-1]).hexdigest() != FACE_SRC_SHA256:
+        raise ValueError('face name slot mismatch')
+    got = bytes(buf[FACE_LEN_SITE:FACE_LEN_SITE + len(FACE_LEN_WANT)])
+    if got != FACE_LEN_WANT:
+        raise ValueError(f'{FACE_LEN_SITE:#x}: unexpected bytes {got.hex()}')
+    buf[FACE_OFF:FACE_OFF + FACE_SHA_LEN + 1] = FACE_NEW + b'\0' * (FACE_SHA_LEN + 1 - len(FACE_NEW))
+    buf[FACE_LEN_SITE + 1] = len(FACE_NEW)
+    return bytes(buf), {'status': 'patched', 'face': FACE_NEW.decode()}
 SJIS, BIG5 = 0x80, 0x88
 
 

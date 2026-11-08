@@ -26,7 +26,7 @@ def main(argv=None):
     ap.add_argument('--img-dirs', nargs='*', default=[]); ap.add_argument('--manifest')
     ap.add_argument('--tab-debug', action='store_true', help='tab_title_patch 偵錯版（.ld2i 紀錄）')
     ap.add_argument('--charset-only', help='只修補這些 LOGFONT 點（逗號分隔檔案偏移，如 0x31dbe）')
-    ap.add_argument('--skip', default='', help='略過的步驟（逗號分隔：detail_name,cdc_textout,savelist,fmt_expand,drawtext,res_extra,tx）— 二分查錯用')
+    ap.add_argument('--skip', default='', help='略過的步驟（逗號分隔：face,detail_name,cdc_textout,savelist,fmt_expand,drawtext,res_extra,tx）— 二分查錯用')
     x = ap.parse_args(argv)
     skip = {v.strip() for v in x.skip.split(',') if v.strip()}
     lab = Path(x.lab)
@@ -44,6 +44,7 @@ def main(argv=None):
     exe = rdata_ansi.apply(exe, p); log['rdata_rows'] = p['ok']; log['skip'] = sorted(skip)
     only = {int(v, 0) for v in x.charset_only.split(',')} if x.charset_only else None
     exe, log['charset'] = charset_patch.patch(exe, only)
+    if 'face' not in skip: exe, log['face'] = charset_patch.face_patch(exe)
     exe, info = list_reroute.reroute(exe, EQUIP_SITES, 'item'); log['reroute'] = info['sites']
     exe, log['catalog'] = catalog_patch.patch(exe, catalog_patch.load_rows(HERE / 'hook-rows-equip.json') + place_rows)
     exe, info = tab_title_patch.patch(exe, debug=x.tab_debug); log['tab_sites'] = info['sites']; log['norm'] = info.get('norm')

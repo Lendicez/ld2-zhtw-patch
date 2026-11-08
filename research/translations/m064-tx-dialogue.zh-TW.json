@@ -8,7 +8,7 @@
  "preview_only": true,
  "draft_owner": "Codex (validated by Claude)",
  "note": "Static translation of runtime ANSI strings not yet reached by the harness.",
- "item_count": 2957,
+ "item_count": 2956,
  "mona_approved_candidate": false,
  "site_binding_confirmed": false,
  "items": [
@@ -16908,32 +16908,6 @@
    "name_cp950_encodable": true,
    "fits_capacity": true,
    "capacity_slack_bytes": 0,
-   "review_status": "codex_draft_claude_checked",
-   "translation_method": "codex+validator",
-   "site_binding": "static (not yet seen on screen)"
-  },
-  {
-   "category": "runtime_ansi",
-   "subcategory": "tx_dialogue",
-   "file_offset": 1229624,
-   "file_offset_hex": "0x12c338",
-   "source_bytes_len": 13,
-   "source_name_sha256": "482a053efd81f4f02ee6989471a88c7a01842fa50249e6afc83470afbf81a01f",
-   "source_name_contract": {
-    "printf": [],
-    "indexed": [],
-    "other_percent": 0,
-    "controls": [],
-    "mnemonics": [],
-    "literal_ampersands": 0,
-    "shortcuts": 0
-   },
-   "text_zh_tw": "ＭＳ 哥德體",
-   "text_cp950_bytes_len": 11,
-   "text_cp950_hex": "a2dba2e120adf4bc77c5e9",
-   "name_cp950_encodable": true,
-   "fits_capacity": true,
-   "capacity_slack_bytes": 2,
    "review_status": "codex_draft_claude_checked",
    "translation_method": "codex+validator",
    "site_binding": "static (not yet seen on screen)"
