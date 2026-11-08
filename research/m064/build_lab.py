@@ -35,9 +35,9 @@ def main(argv=None):
     exe = Path(x.enabled).read_bytes(); log = {'enabled_sha256': hashlib.sha256(exe).hexdigest()}
     epi_pairs = gen_lab_detail.epithet_pairs(exe)   # 必須在 rdata 套用前，由原文 .rdata 取得
     place_rows = savelist_patch.place_rows(exe, json.loads((HERE / 'lab-places.zh-TW.json').read_text('utf-8'))['items'])
-    # 會被複製進存檔的名稱（稱號、精靈／召喚名…）→ v4 catalog 列，所有顯示後備都查得到
+    # 會被複製進存檔的名稱（精靈／召喚名、地牢名…）→ v4 catalog 列，所有顯示後備都查得到
     place_rows += savelist_patch.place_rows(exe, json.loads((HERE / 'catalog-copied-names.zh-TW.json').read_text('utf-8'))['items'])
-    place_rows += [(catalog_patch.FULL_ANY, catalog_patch.ANY_ID, src, zh.decode('cp950'), 0) for src, zh in epi_pairs]
+    # 稱號（epi_pairs，376 列）放不進 .ld2c 剩餘空間（超出約 11 KB）→ 只在詳情視窗由 detail_name_patch 對照
     cats = [str(ROOT / 'research/translations/m063-draft*.json'), str(HERE / 'lab-extra-*.json'), str(HERE / 'lab-places.zh-TW.json'), str(HERE / 'lab-detail.zh-TW.json'), str(HERE / 'lab-dungeon-names.zh-TW.json'), str(HERE / 'lab-misc.zh-TW.json'), str(HERE / 'lab-monster-names.zh-TW.json'), str(ROOT / 'research/translations/m064-tx-*.json')]
     if 'tx' in skip:
         cats = cats[:-1]
