@@ -443,6 +443,7 @@
     "research/m064/lab-monster-names.zh-TW.json",
     "research/m064/catalog-copied-names.zh-TW.json",
     "research/release/make_delta.py",
+    "research/release/make_release.py",
     "research/release/test_make_delta.py",
     "research/release/installer/LD2ZhTWSetup.cs",
     "research/m064/test_title_patch.py",

@@ -94,6 +94,13 @@ def apply_ops(src: bytes, blob: bytes) -> bytes:
     return bytes(out)
 
 
+def read_meta(payload: bytes) -> dict:
+    if payload[:8] != MAGIC:
+        raise ValueError('bad magic')
+    n = struct.unpack_from('<I', payload, 8)[0]
+    return json.loads(payload[12:12 + n].decode('utf-8'))
+
+
 def changed_files(src_root: Path, dst_root: Path):
     for root, dirs, files in os.walk(dst_root):
         dirs[:] = [d for d in dirs if not (Path(root) == dst_root and d in SKIP_DIRS)]

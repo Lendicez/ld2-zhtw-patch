@@ -27,6 +27,7 @@ class DeltaTests(unittest.TestCase):
             payload, rep = M.build(a, b, '0.0.1')
             self.assertTrue(payload.startswith(M.MAGIC))
             self.assertEqual([x['path'] for x in rep], ['RES/x.bmp'])
+            self.assertEqual(M.read_meta(payload)['files'][0]['dst_size'], 100)
 
 
 if __name__ == '__main__':
