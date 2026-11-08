@@ -1,4 +1,4 @@
-// LD2（Lunatic Dawn II / Ld95.exe）繁體中文化補丁安裝程式。
+// 《俠客遊 前途道標》（Lunatic Dawn: Passage of the Book / Ld95.exe）繁體中文化補丁安裝程式。
 // 以 Windows 內建 .NET Framework 4 csc.exe 編譯；payload（差分包，見 make_delta.py）以內嵌資源方式附帶。
 // 只改寫 payload 列出的檔案；原檔先備份到 <遊戲資料夾>\_zhTW_backup\ 並核對雜湊；可解除安裝還原。
 // 不處理 Usr（存檔）、ini 或任何其他檔案。命令列：/status <dir>、/install <dir>、/uninstall <dir>（自動測試用）。
@@ -15,7 +15,7 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
-[assembly: AssemblyTitle("LD2 繁體中文化補丁")]
+[assembly: AssemblyTitle("俠客遊 前途道標 繁體中文化補丁")]
 [assembly: AssemblyProduct("ld2-zhtw-patch")]
 [assembly: AssemblyVersion(LD2ZhTW.Ver.Assembly)]
 
@@ -135,7 +135,7 @@ namespace LD2ZhTW
                 }
             }
             File.WriteAllText(System.IO.Path.Combine(BackupDir, "README.txt"),
-                "LD2 繁中補丁的原檔備份（解除安裝時使用）。請勿刪除，除非已解除安裝或改用 Steam「驗證檔案完整性」還原。\r\n" +
+                "俠客遊 前途道標 繁中補丁的原檔備份（解除安裝時使用）。請勿刪除，除非已解除安裝或改用 Steam「驗證檔案完整性」還原。\r\n" +
                 "補丁版本：" + P.Version + "\r\n", new UTF8Encoding(true));
             // 3) 逐檔寫入（暫存檔 → 取代），失敗則以備份回滾已寫入者
             var done = new List<PFile>();
@@ -252,12 +252,12 @@ namespace LD2ZhTW
         public MainForm(Payload p, string initialDir)
         {
             P = p;
-            Text = "LD2 繁體中文化補丁 " + p.Version;
+            Text = "俠客遊 前途道標 繁體中文化補丁 " + p.Version;
             Font = new Font("Microsoft JhengHei UI", 9.5f);
             ClientSize = new Size(640, 420); FormBorderStyle = FormBorderStyle.FixedDialog; MaximizeBox = false;
             StartPosition = FormStartPosition.CenterScreen;
             var intro = new Label { Left = 16, Top = 12, Width = 608, Height = 52,
-                Text = "本程式會把《Lunatic Dawn II》（Steam 版 Ld95.exe 1.0.3.16）改為繁體中文。\r\n" +
+                Text = "本程式會把《俠客遊 前途道標》（Lunatic Dawn: Passage of the Book，Steam 版 Ld95.exe 1.0.3.16）改為繁體中文。\r\n" +
                        "原檔會先備份在遊戲資料夾的 _zhTW_backup，隨時可用本程式「解除安裝」還原。存檔（Usr）不會被修改。" };
             var dl = new Label { Left = 16, Top = 72, Width = 120, Text = "遊戲資料夾：" };
             dirBox.SetBounds(16, 94, 500, 26);
