@@ -1,10 +1,12 @@
-# ld2-zhtw-patch
+# 俠客遊 前途道標 繁體中文化補丁（ld2-zhtw-patch）
+
+[![release](https://img.shields.io/github/v/release/Lendicez/ld2-zhtw-patch)](https://github.com/Lendicez/ld2-zhtw-patch/releases/latest)
 
 《俠客遊 前途道標》（Lunatic Dawn: Passage of the Book，`Ld95.exe`，Steam 版）的**繁體中文化補丁**開發庫。
 
 ## 安裝（玩家）
 
-**1.0.0 已發行**：到 [Releases](https://github.com/Lendicez/ld2-zhtw-patch/releases) 下載 `LD2-zhTW-Patch-1.0.0.exe`，執行後按「安裝」。
+**最新版 1.0.0**：到 [Releases](https://github.com/Lendicez/ld2-zhtw-patch/releases/latest) 下載 `LD2-zhTW-Patch-1.0.0.exe`，執行後按「安裝」。
 
 - 對象：Steam 版《俠客遊 前途道標》（Lunatic Dawn: Passage of the Book，`Ld95.exe` 1.0.3.16，sha256 `6c817a09…d5d2`）。其他版本會被拒絕，不做任何修改。
 - 需求：Windows 10／11，「非 Unicode 程式語言」為**中文（繁體，台灣）**（代碼頁 950）。
@@ -27,7 +29,7 @@
 | 圖片 | 按鈕 23、狀態面板 8、移動地圖 17、結局 3、國名標籤、啟動畫面 |
 | 說明書 | 遊戲資料夾 HTML 說明書 70 頁（`ld95.chm` 維持原版） |
 
-開發主線在 **PR #26**（branch `research/m062-catalog-capacity`，Draft）。
+原始碼以 `main` 為主線；1.0.0 對應標籤 `v1.0.0`。實玩發現未翻譯或亂碼，請到 [Issues](https://github.com/Lendicez/ld2-zhtw-patch/issues) 附截圖與所在畫面回報。
 
 ## 技術路線
 
@@ -50,7 +52,8 @@
 | `src/ld2patch/` | 可攜核心：翻譯合約、catalog、PE 資源、Steam VDF |
 | `patches/` | m020 資源譯文、詞彙、版本 |
 | `research/m060`–`m063` | 觀察紀錄、catalog v3／v4、native helper、啟用交接 |
-| `research/m064/` | `.rdata` 原位配線、BMH 編解碼、地名表、逐列畫面確認（`SITE-LEDGER.json`） |
+| `research/m064/` | `.rdata` 原位配線、顯示後備 hook、BMH 編解碼、怪物表、建置（`build_lab.py`） |
+| `research/release/` | 發行：差分 payload（`make_delta.py`）、安裝程式原始碼（C#）、組裝與自我測試（`make_release.py`） |
 | `research/translations/` | 候選譯文 JSON（只含繁中＋來源雜湊／offset，不含原文全文） |
 | `docs/` | 交接、架構、安裝器規格、驗證缺口 |
 | `tests/`、`tools/check.py` | 單元測試入口 |
