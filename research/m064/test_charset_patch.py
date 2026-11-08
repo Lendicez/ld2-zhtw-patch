@@ -34,8 +34,8 @@ class FaceTests(unittest.TestCase):
 
     def test_face(self):
         out, info = C.face_patch(self._exe())
-        self.assertEqual(out[C.FACE_OFF:C.FACE_OFF + 14], b'MingLiU' + b'\0' * 7)
-        self.assertEqual(out[C.FACE_LEN_SITE + 1], 7)
+        self.assertEqual(out[C.FACE_OFF:C.FACE_OFF + 14], '微軟正黑體'.encode('cp950') + b'\0' * 4)
+        self.assertEqual(out[C.FACE_LEN_SITE + 1], 10)
         self.assertEqual(C.face_patch(out)[1]['status'], 'already')
 
     def test_face_mismatch(self):

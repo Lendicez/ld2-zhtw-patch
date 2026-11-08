@@ -19,10 +19,11 @@ SITES = [
     (0xd0bf3, bytes.fromhex('c644242f80'), 'mov byte [esp+0x2f],0x80 (third LOGFONT, height -12, same function)'),
 ]
 # 字型名：上述 LOGFONT 與設定預設值都取 .rdata 0x12c338「ＭＳ ゴシック」（CP932 13 B）。
-# 字集改 Big5 後此名稱在 ACP 950 下是亂碼 → 由系統替代（結果不固定）。改為 ASCII「MingLiU」（等寬點陣，
-# 與原 MS Gothic 版面相同；ASCII 名稱不受系統 ACP 影響），設定預設值的長度參數 13 → 7。
+# 字集改 Big5 後此名稱在 ACP 950 下是亂碼 → 由系統替代（多半變細明體）。改為「微軟正黑體」（Win10/11 內建、
+# 繁中 Windows 預設 UI 字型；英文名 18 B 放不下 13 B 槽，故用 CP950 名稱，本補丁本就要求 ACP 950）。
+# 設定預設值的長度參數 13 → 10。
 FACE_OFF, FACE_SHA_LEN = 0x12c338, 13
-FACE_NEW = b'MingLiU'
+FACE_NEW = '微軟正黑體'.encode('cp950')
 FACE_SRC_SHA256 = '482a053efd81f4f02ee6989471a88c7a01842fa50249e6afc83470afbf81a01f'
 FACE_LEN_SITE, FACE_LEN_WANT = 0x31b43, bytes.fromhex('6a0d6838c35200')
 
@@ -40,7 +41,7 @@ def face_patch(exe: bytes):
         raise ValueError(f'{FACE_LEN_SITE:#x}: unexpected bytes {got.hex()}')
     buf[FACE_OFF:FACE_OFF + FACE_SHA_LEN + 1] = FACE_NEW + b'\0' * (FACE_SHA_LEN + 1 - len(FACE_NEW))
     buf[FACE_LEN_SITE + 1] = len(FACE_NEW)
-    return bytes(buf), {'status': 'patched', 'face': FACE_NEW.decode()}
+    return bytes(buf), {'status': 'patched', 'face': FACE_NEW.decode('cp950')}
 SJIS, BIG5 = 0x80, 0x88
 
 

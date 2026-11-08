@@ -28,6 +28,7 @@ from ld2patch import menu  # noqa: E402
 
 JA = re.compile(r'[぀-ヿｦ-ﾟ]')
 IMAGE_SCN_EXEC = 0x20000000 | 0x00000020
+REPLACE_FONTS = {'MingLiU', 'PMingLiU', 'MS Gothic', 'MS UI Gothic', 'MS Mincho'}
 
 
 def sha16(t: str) -> str:
@@ -110,10 +111,13 @@ def apply(exe: bytes, cat: dict):
         holder[k] = e['translation']; applied += 1
     font = cat.get('dialog_font')
     if font:
+        for key in raw:                                  # 所有對話框（含 m020 已譯者）都套用字型
+            if key[0] == 5:
+                get(*key)
         for (typ, rid, lang), o in objs.items():
-            if typ == 5 and 'font' in o and 'text' in o['font'] and JA.search(o['font']['text']) is None \
-                    and any(ord(c) > 0x7f for c in o['font']['text']):
-                o['font']['text'] = font                     # 日文字型名（ＭＳ ゴシック等）→ 繁中字型
+            if typ == 5 and 'font' in o and 'text' in o['font'] and o['font']['text'] != font and (
+                    any(ord(c) > 0x7f for c in o['font']['text']) or o['font']['text'] in REPLACE_FONTS):
+                o['font']['text'] = font                     # 日文字型名（ＭＳ ゴシック等）／m020 細明體 → 指定字型
     # 寫回
     out = bytearray(exe)
     secs = pe.sections
@@ -169,7 +173,7 @@ def main(argv=None):
             ent['translation'] = z
             ents.append(ent)
         doc = {'schema_version': 1, 'milestone': 'm064-res-extra', 'production_can_apply': False,
-               'release_approved': False, 'dialog_font': 'MingLiU', 'entries': ents}
+               'release_approved': False, 'dialog_font': 'Microsoft JhengHei', 'entries': ents}
         Path(x.out).write_text(json.dumps(doc, ensure_ascii=False, indent=1), 'utf-8')
         print(len(ents)); return 0
     exe = Path(x.exe).read_bytes()
