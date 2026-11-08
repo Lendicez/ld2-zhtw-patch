@@ -1,0 +1,576 @@
+{
+  "schema_version": 1,
+  "milestone": "m063-draft18-runtime-ansi-hometown-ui-mina",
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "production_can_apply": false,
+  "release_approved": false,
+  "rendering_verified": false,
+  "preview_only": true,
+  "draft_owner": "Mina (translation only; GitHub writes by Mona)",
+  "note": "Candidate runtime ANSI: more hometown + hometown-dungeon links, rest/donate ranges, pass, chat. site unconfirmed. printf preserved.",
+  "base_doc": "follow-on dynamic CP932 inventory",
+  "item_count": 19,
+  "items": [
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450608,
+      "file_offset_hex": "0x162270",
+      "source_bytes_len": 54,
+      "source_name_sha256": "83414a12bb1fada13a8dec85f6c55b270ceacfe416c1500d96457739e8c4a988",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出身「%s」。海邊城鎮，漁業興盛。",
+      "text_cp950_bytes_len": 34,
+      "text_cp950_hex": "a7daa558a8ada1752573a176a143aefcc3e4abb0c2eda141baaeb77ebfb3b2b1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 20,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450720,
+      "file_offset_hex": "0x1622e0",
+      "source_bytes_len": 58,
+      "source_name_sha256": "37b6d4bf272649bf06b28c9685d6528c94e7228ab7cb6b0a43ba1063dde3e87b",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我的故鄉「%s」綠意盎然，鎮中央有河流過。",
+      "text_cp950_bytes_len": 40,
+      "text_cp950_hex": "a7daaabaac47b66da1752573a176baf1b74eaf73b54da141c2eda4a4a5a1a6b3aa65ac79b94ca143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 18,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450780,
+      "file_offset_hex": "0x16231c",
+      "source_bytes_len": 52,
+      "source_name_sha256": "3752e258de6e9f047bb2707d6c9890ae21afa4d467ddb998e6843072b60c7aab",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出身地「%s」位在無數河流之間。",
+      "text_cp950_bytes_len": 32,
+      "text_cp950_hex": "a7daa558a8ada661a1752573a176a6eca662b54cbcc6aa65ac79a4a7b6a1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 20,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450896,
+      "file_offset_hex": "0x162390",
+      "source_bytes_len": 62,
+      "source_name_sha256": "1d0427babb871bd8740ed33ace28abf8360ce1481b1b3377673e6b65389d44e8",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出生故鄉「%s」有太陽終日不落的時期。",
+      "text_cp950_bytes_len": 38,
+      "text_cp950_hex": "a7daa558a5cdac47b66da1752573a176a6b3a4d3b6a7b2d7a4e9a4a3b8a8aabaaec9b4c1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 24,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450960,
+      "file_offset_hex": "0x1623d0",
+      "source_bytes_len": 68,
+      "source_name_sha256": "ff1351f9d7ae290e64cb4249d6397b0876d4b8c4564b3cfe44fc38085c91c77b",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我的出生故鄉是「%s」。有美麗河流，中洲上有城。",
+      "text_cp950_bytes_len": 46,
+      "text_cp950_hex": "a7daaabaa558a5cdac47b66dac4fa1752573a176a143a6b3acfcc452aa65ac79a141a4a4ac77a457a6b3abb0a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 22,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449376,
+      "file_offset_hex": "0x161da0",
+      "source_bytes_len": 74,
+      "source_name_sha256": "6216c041a5f35cdee5876560db0174c5e7ba1af848087175dade3db30c5e3541",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我在「%s」出生長大。靠海所以雖是沙漠卻很滋潤。",
+      "text_cp950_bytes_len": 46,
+      "text_cp950_hex": "a7daa662a1752573a176a558a5cdaaf8a46aa143be61aefca9d2a548c1f6ac4fa846ba7aab6fabdcb4febceda143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 28,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449504,
+      "file_offset_hex": "0x161e20",
+      "source_bytes_len": 68,
+      "source_name_sha256": "b796b23326384c847a091847f8ac917827c59da7debdeabce373cf1dff394145",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出生長大的「%s」是島。雖小但不覺得不便。",
+      "text_cp950_bytes_len": 42,
+      "text_cp950_hex": "a7daa558a5cdaaf8a46aaabaa1752573a176ac4fae71a143c1f6a470a6fda4a3c4b1b16fa4a3ab4ba143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 26,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449648,
+      "file_offset_hex": "0x161eb0",
+      "source_bytes_len": 72,
+      "source_name_sha256": "ac3d5c262a386c56f678ea04f8a0694c96bb640506802bdac62487adaa3208d8",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我在「%s」長大。地勢高，月亮看起來特別美喔。",
+      "text_cp950_bytes_len": 44,
+      "text_cp950_hex": "a7daa662a1752573a176aaf8a46aa143a661b6d5b0aaa141a4ebab47acddb05fa8d3af53a74facfcb3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 28,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1450068,
+      "file_offset_hex": "0x162054",
+      "source_bytes_len": 28,
+      "source_name_sha256": "153ff533413fc16f2ab819623ba2b039597539ae51380cf261c2c3ddd6b9ba5b",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我國是空中都市「%s」。",
+      "text_cp950_bytes_len": 22,
+      "text_cp950_hex": "a7dab0eaac4faac5a4a4b3a3a5aba1752573a176a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 6,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450100,
+      "file_offset_hex": "0x162074",
+      "source_bytes_len": 60,
+      "source_name_sha256": "58c95e85b50c9739ededbf08036d099ef270ca8454448e6a2e9a6b17fc98b538",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我成長於「%s」。高崖上有細瀑落下。",
+      "text_cp950_bytes_len": 34,
+      "text_cp950_hex": "a7daa6a8aaf8a9f3a1752573a176a143b0aab156a457a6b3b2d3c272b8a8a455a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 26,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_dungeon",
+      "file_offset": 1455832,
+      "file_offset_hex": "0x1636d8",
+      "source_bytes_len": 36,
+      "source_name_sha256": "7640c655c818d794a55774b2ae6c23b171ff41c617eb357854281a4a95814cf6",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我的故鄉「%s」有「%s」。",
+      "text_cp950_bytes_len": 24,
+      "text_cp950_hex": "a7daaabaac47b66da1752573a176a6b3a1752573a176a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 12,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_dungeon"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_dungeon",
+      "file_offset": 1455872,
+      "file_offset_hex": "0x163700",
+      "source_bytes_len": 42,
+      "source_name_sha256": "cad989be81698a59d62028f2531f50bb46a319342d54cd8c390e4152e420ace4",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出身地「%s」旁邊有「%s」。",
+      "text_cp950_bytes_len": 28,
+      "text_cp950_hex": "a7daa558a8ada661a1752573a176aec7c3e4a6b3a1752573a176a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 14,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_dungeon"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_dungeon",
+      "file_offset": 1455916,
+      "file_offset_hex": "0x16372c",
+      "source_bytes_len": 38,
+      "source_name_sha256": "0a9f7a1d722ed62ad6d55e836f2bfd747b2c373ccf3d23714e07d23ef30519ea",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "「%s」在我出身地「%s」喔。",
+      "text_cp950_bytes_len": 26,
+      "text_cp950_hex": "a1752573a176a662a7daa558a8ada661a1752573a176b3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 12,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_dungeon"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_dungeon",
+      "file_offset": 1456004,
+      "file_offset_hex": "0x163784",
+      "source_bytes_len": 46,
+      "source_name_sha256": "66150b5ee0235655fb59917aecfda2001f48769e7513d4ff96db77aee274a784",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出生故鄉「%s」附近有「%s」。",
+      "text_cp950_bytes_len": 30,
+      "text_cp950_hex": "a7daa558a5cdac47b66da1752573a176aafeaaf1a6b3a1752573a176a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 16,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_dungeon"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_dungeon",
+      "file_offset": 1456108,
+      "file_offset_hex": "0x1637ec",
+      "source_bytes_len": 44,
+      "source_name_sha256": "021fecc41dcba4aefabf2390d7ae14f46f27a605b7f2c209b25bc1354c3b4705",
+      "source_name_contract": {
+        "printf": [
+          "%s",
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出身地「%s」附近有「%s」。",
+      "text_cp950_bytes_len": 28,
+      "text_cp950_hex": "a7daa558a8ada661a1752573a176aafeaaf1a6b3a1752573a176a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 16,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_dungeon"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "inn_status",
+      "file_offset": 1457772,
+      "file_offset_hex": "0x163e6c",
+      "source_bytes_len": 42,
+      "source_name_sha256": "1186da4f0bd2d22d9917a120ae31df05cfb07ea3978062c38139c128f0345fbf",
+      "source_name_contract": {
+        "printf": [
+          "%d",
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "可休息時間為%d小時至%d小時。",
+      "text_cp950_bytes_len": 28,
+      "text_cp950_hex": "a569a5f0aea7aec9b6a1acb02564a470aec9a6dc2564a470aec9a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 14,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "inn_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "donate_status",
+      "file_offset": 1468540,
+      "file_offset_hex": "0x16687c",
+      "source_bytes_len": 36,
+      "source_name_sha256": "2ef102ee81f108c118c9a70ab5891f3e417ef6aac54d6edc4f9bef0370c01283",
+      "source_name_contract": {
+        "printf": [
+          "%d",
+          "%d"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "可捐贈金額為%dG至%dG。",
+      "text_cp950_bytes_len": 22,
+      "text_cp950_hex": "a569aebdc3d8aaf7c342acb0256447a6dc256447a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 14,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "donate_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "pass_status",
+      "file_offset": 1460700,
+      "file_offset_hex": "0x1649dc",
+      "source_bytes_len": 38,
+      "source_name_sha256": "9ac80ecb3e9b473ce6954a3ee44647a0d7c9d4da59ab3c7b1feae719c78e1c16",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "通行證弄丟了？算了。",
+      "text_cp950_bytes_len": 20,
+      "text_cp950_hex": "b371a6e6c3d2a7cba5e1a446a148bae2a446a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 18,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "pass_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "chat",
+      "file_offset": 1440772,
+      "file_offset_hex": "0x15fc04",
+      "source_bytes_len": 39,
+      "source_name_sha256": "a23ca7a84b211211214490022a9b6872650642186c50dcdf7792b16bcff92641",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "嗯，狀況還不錯。你呢？",
+      "text_cp950_bytes_len": 22,
+      "text_cp950_hex": "b6e2a141aaacaa70c1d9a4a3bff9a143a741a94fa148",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 17,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "chat"
+    }
+  ],
+  "stripped_fields": [
+    "source_name_ja",
+    "source_name_cp932_hex"
+  ],
+  "mona_approved_candidate": true,
+  "site_binding_confirmed": false,
+  "source_public_copy_sha256": "5344462769a57c9c700a0406f93d4ddcf164369cd554d0a0463c15980df16696"
+}

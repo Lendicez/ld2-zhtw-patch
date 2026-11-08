@@ -1,0 +1,1201 @@
+{
+ "schema_version": 1,
+ "milestone": "m064-res-extra",
+ "production_can_apply": false,
+ "release_approved": false,
+ "dialog_font": "Microsoft JhengHei",
+ "entries": [
+  {
+   "kind": "menu",
+   "resource": 130,
+   "language": 1041,
+   "locator": [
+    0,
+    0
+   ],
+   "command_id": 57600,
+   "source_utf16_sha256": "153b2a739d5cd841c4d04f2d896dd2972a4068538cac985d0ed062036c719dc3",
+   "translation": "新世界"
+  },
+  {
+   "kind": "menu",
+   "resource": 130,
+   "language": 1041,
+   "locator": [
+    0,
+    1
+   ],
+   "command_id": 57601,
+   "source_utf16_sha256": "5b804cf3b8b0e8cbd9bb8c1d84b3822ca5de11c27d8f56e3bf45fb19f15eab7b",
+   "translation": "讀取遊戲"
+  },
+  {
+   "kind": "menu",
+   "resource": 130,
+   "language": 1041,
+   "locator": [
+    0,
+    3
+   ],
+   "command_id": 32825,
+   "source_utf16_sha256": "7c13e956741a4bb56c62fcf3d767bc4de8e783d51dc1aaa793ba52d5711e3de7",
+   "translation": "開場動畫"
+  },
+  {
+   "kind": "menu",
+   "resource": 131,
+   "language": 1041,
+   "locator": [
+    0,
+    0
+   ],
+   "command_id": 32801,
+   "source_utf16_sha256": "2f3390a8bf65a7b411cddd883fd0dceae0436d6e78646c2b9c23459857d3d1ed",
+   "translation": "場景視窗"
+  },
+  {
+   "kind": "menu",
+   "resource": 131,
+   "language": 1041,
+   "locator": [
+    0,
+    1
+   ],
+   "command_id": 32802,
+   "source_utf16_sha256": "3239db757d6cddf7356304487f072ef2828c6d3dd9f48f097687dc7ebfacd462",
+   "translation": "資訊視窗"
+  },
+  {
+   "kind": "menu",
+   "resource": 131,
+   "language": 1041,
+   "locator": [
+    0,
+    2
+   ],
+   "command_id": 32804,
+   "source_utf16_sha256": "31cb273cf455fc585ab28472ea8e5e66ba73c6922fa604cceb83c18daa130f19",
+   "translation": "地圖視窗"
+  },
+  {
+   "kind": "menu",
+   "resource": 131,
+   "language": 1041,
+   "locator": [
+    0,
+    3
+   ],
+   "command_id": 32803,
+   "source_utf16_sha256": "2ef253d3bde6bbba8fa686104fac2357d96a64c85a94d80cac014c08c40fc2dd",
+   "translation": "角色狀態視窗"
+  },
+  {
+   "kind": "menu",
+   "resource": 131,
+   "language": 1041,
+   "locator": [
+    0,
+    4
+   ],
+   "command_id": 32805,
+   "source_utf16_sha256": "ac8244bfb80f5425a7a2e6b833e1acead9b316518628699276e8d80b0dc70030",
+   "translation": "角色詳情視窗"
+  },
+  {
+   "kind": "menu",
+   "resource": 131,
+   "language": 1041,
+   "locator": [
+    0,
+    6
+   ],
+   "command_id": 59392,
+   "source_utf16_sha256": "df03bf4e15722da365cde374a249485923f5f4cbaa496d822767e9d9658d50d5",
+   "translation": "工具列"
+  },
+  {
+   "kind": "menu",
+   "resource": 131,
+   "language": 1041,
+   "locator": [
+    0,
+    7
+   ],
+   "command_id": 32793,
+   "source_utf16_sha256": "32fa85aba44e1a2a8bebca86b32eddbfeed4867d6dacd00d3a61f9231f93c879",
+   "translation": "工具面板"
+  },
+  {
+   "kind": "dialog_title",
+   "resource": 132,
+   "language": 1041,
+   "source_utf16_sha256": "1c8e482cfcad35c87eab1d5ebafd5b1fd217ab3029dd71118e238adb2326ccb1",
+   "translation": "對話框"
+  },
+  {
+   "kind": "dialog_title",
+   "resource": 150,
+   "language": 1041,
+   "source_utf16_sha256": "1c8e482cfcad35c87eab1d5ebafd5b1fd217ab3029dd71118e238adb2326ccb1",
+   "translation": "對話框"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 154,
+   "language": 1041,
+   "item_index": 5,
+   "source_utf16_sha256": "9a8f4112d679392d7d8b5c372e7681823a17792188789462675ba939c2ee6797",
+   "translation": "歐爾德布魯格"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 168,
+   "language": 1041,
+   "item_index": 4,
+   "source_utf16_sha256": "9a8f4112d679392d7d8b5c372e7681823a17792188789462675ba939c2ee6797",
+   "translation": "歐爾德布魯格"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 171,
+   "language": 1041,
+   "item_index": 2,
+   "source_utf16_sha256": "6ac0ffb562e031219a5266c5ff0507258adc1bd605ba298e9c6faba26fa9a5bd",
+   "translation": "交談"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 171,
+   "language": 1041,
+   "item_index": 5,
+   "source_utf16_sha256": "229f32825e7b4360fa700d86d06c1d1ecf13f5275b5d7e2e589dc869a12f369c",
+   "translation": "偷竊"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 171,
+   "language": 1041,
+   "item_index": 6,
+   "source_utf16_sha256": "0df65cdd29736a2359f07fd68937b66e27e52c54fd83d112788a7c69bbf27275",
+   "translation": "襲擊"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 171,
+   "language": 1041,
+   "item_index": 7,
+   "source_utf16_sha256": "6e8e464d3f49f5fdf3235f5e5fa0107f263f9ae45bdb75a20dfbe6504b35ef10",
+   "translation": "邀請加入隊伍"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 171,
+   "language": 1041,
+   "item_index": 8,
+   "source_utf16_sha256": "04902817d0210f55a2cf0fd4f84ea499d1ef3f756d2c568bf1c66b2e57f71229",
+   "translation": "取消"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 180,
+   "language": 1041,
+   "item_index": 10,
+   "source_utf16_sha256": "985e1ee3dd8b384d5f78a65897391133399c8e26f46142bf27d6d800f84dfe88",
+   "translation": "蓮西亞"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 180,
+   "language": 1041,
+   "item_index": 11,
+   "source_utf16_sha256": "fdfb744635ecfe824d3318e59c36a3153a0483d8b6e03765994160e70e497b56",
+   "translation": "伊爾塔爾"
+  },
+  {
+   "kind": "dialog_title",
+   "resource": 181,
+   "language": 1041,
+   "source_utf16_sha256": "233094a9fa588dbee50f114ca659fb81e6f73d0bb773e1835e9173c0e32369fa",
+   "translation": "請輸入姓名"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 181,
+   "language": 1041,
+   "item_index": 2,
+   "source_utf16_sha256": "04902817d0210f55a2cf0fd4f84ea499d1ef3f756d2c568bf1c66b2e57f71229",
+   "translation": "取消"
+  },
+  {
+   "kind": "dialog_title",
+   "resource": 192,
+   "language": 1041,
+   "source_utf16_sha256": "5b71cf3d44ff480d6bbeb40b0b9229381471d7c30f7a79b12e67223aac632782",
+   "translation": "DEBUG::選擇物品"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 192,
+   "language": 1041,
+   "item_index": 2,
+   "source_utf16_sha256": "04902817d0210f55a2cf0fd4f84ea499d1ef3f756d2c568bf1c66b2e57f71229",
+   "translation": "取消"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 192,
+   "language": 1041,
+   "item_index": 3,
+   "source_utf16_sha256": "0a22399351f5f5d1206ab45524462aeba98b84ef4631aef28693e975be373fc4",
+   "translation": "物品編號:"
+  },
+  {
+   "kind": "dialog_title",
+   "resource": 450,
+   "language": 1041,
+   "source_utf16_sha256": "d4f64aea457a0555d6dd86fdee48ce49b5fcc9239ec00fa0891009ec614e6079",
+   "translation": "選擇怪物"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 450,
+   "language": 1041,
+   "item_index": 4,
+   "source_utf16_sha256": "236675ee455be884eb87b77ec2ba804007f509b52d927c53ba05cb256e0f078a",
+   "translation": "陣形"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 450,
+   "language": 1041,
+   "item_index": 5,
+   "source_utf16_sha256": "696d0b7e88fe37537b71fcc2b05a2ee3c46ed172a1d516b3cf599ef956292e4a",
+   "translation": "怪物"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 450,
+   "language": 1041,
+   "item_index": 7,
+   "source_utf16_sha256": "b405fa4ce2c4b726251653dea0c4878cdd465399b71c4e9861d54b09957379be",
+   "translation": "羅馬爾"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 450,
+   "language": 1041,
+   "item_index": 8,
+   "source_utf16_sha256": "f55025ec514be3979139cc3f96c8e2bf73adcda7d4a74e2a3fc797b97c3b0b7e",
+   "translation": "夏拉巴"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 450,
+   "language": 1041,
+   "item_index": 11,
+   "source_utf16_sha256": "6a2de3bed4619332c7090f0c1d084a609c4b3b6582e88c256d44fed675e607ca",
+   "translation": "取消"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 454,
+   "language": 1041,
+   "item_index": 7,
+   "source_utf16_sha256": "e09251ec5d4b26cf63424fdb88c1e2a90a2904d1acc9c754f6d3c0447b34d9a6",
+   "translation": "可購買的彩券號碼為１００號～２００號"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 454,
+   "language": 1041,
+   "item_index": 9,
+   "source_utf16_sha256": "1a249f883b54b93ae8180fcb17970b225f6de8f32370688c85ba4ccd5dfa98b6",
+   "translation": "最多可購買１張"
+  },
+  {
+   "kind": "dialog_title",
+   "resource": 455,
+   "language": 1041,
+   "source_utf16_sha256": "bf468691416f8c8a5cc1a43246a614c084531b4579b3a74369ba41be04f1147c",
+   "translation": "選擇迷宮(DEBUG專用)"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 455,
+   "language": 1041,
+   "item_index": 1,
+   "source_utf16_sha256": "b45dccbebd7141010f5bd97924f4dcb56796b4a7a5cdda991f62bdaa53655e8b",
+   "translation": "不選擇"
+  },
+  {
+   "kind": "dialog_title",
+   "resource": 462,
+   "language": 1041,
+   "source_utf16_sha256": "a4df7a96bb86252b1edadeb011fd9bda75b05b85b39e8c5808c83fe9789cee8b",
+   "translation": "黑暗公會資訊 "
+  },
+  {
+   "kind": "dialog_title",
+   "resource": 464,
+   "language": 1041,
+   "source_utf16_sha256": "a4323210fa1e6bad47f80f206bbda1c2c7400a3a3ae30991d4363217aa62d4c5",
+   "translation": "風之精珠"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 464,
+   "language": 1041,
+   "item_index": 1,
+   "source_utf16_sha256": "2b97bf2aee251561c1c43bb0462e2eb641e191afa1aecd2ea097ea4bb5e3dcd7",
+   "translation": "取消"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 519,
+   "language": 1041,
+   "item_index": 1,
+   "source_utf16_sha256": "6a2de3bed4619332c7090f0c1d084a609c4b3b6582e88c256d44fed675e607ca",
+   "translation": "取消"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 30721,
+   "language": 1041,
+   "item_index": 3,
+   "source_utf16_sha256": "f1868f48741c58b44f059b1b306418485e6acfd3d178e836b6c24529fc61b952",
+   "translation": "取消"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 30721,
+   "language": 1041,
+   "item_index": 4,
+   "source_utf16_sha256": "03aecb261f7594571ba2b7112a624f0b390d679f7425e1cf6e14637bdb6356e6",
+   "translation": "說明(&H)"
+  },
+  {
+   "kind": "string",
+   "resource": 68,
+   "language": 1041,
+   "string_id": 1073,
+   "source_utf16_sha256": "6ac0ffb562e031219a5266c5ff0507258adc1bd605ba298e9c6faba26fa9a5bd",
+   "translation": "交談"
+  },
+  {
+   "kind": "string",
+   "resource": 2049,
+   "language": 1041,
+   "string_id": 32769,
+   "source_utf16_sha256": "44373453bd1c98c24ce41b7bb75273dfe0714cb811aea252210183d529b0e893",
+   "translation": "讀取檔案失敗。"
+  },
+  {
+   "kind": "string",
+   "resource": 3601,
+   "language": 1041,
+   "string_id": 57602,
+   "source_utf16_sha256": "22e2cb556494df4f92d64ca33ccf7ae00714f989ceb14216aeaba5859635ba80",
+   "translation": "關閉目前的檔案\n關閉"
+  },
+  {
+   "kind": "string",
+   "resource": 3601,
+   "language": 1041,
+   "string_id": 57604,
+   "source_utf16_sha256": "76bc3e48c23336f24791a72f4ef38a2e45faaa534039a1556248ab86e2542914",
+   "translation": "將目前的檔案另存新檔\n另存新檔"
+  },
+  {
+   "kind": "string",
+   "resource": 3602,
+   "language": 1041,
+   "string_id": 57616,
+   "source_utf16_sha256": "e9fc720676fd8262083495888a27c822cf059ce576e7555ff8c74f232d9196f4",
+   "translation": "開啟指定的檔案"
+  },
+  {
+   "kind": "string",
+   "resource": 3602,
+   "language": 1041,
+   "string_id": 57617,
+   "source_utf16_sha256": "e9fc720676fd8262083495888a27c822cf059ce576e7555ff8c74f232d9196f4",
+   "translation": "開啟指定的檔案"
+  },
+  {
+   "kind": "string",
+   "resource": 3602,
+   "language": 1041,
+   "string_id": 57618,
+   "source_utf16_sha256": "e9fc720676fd8262083495888a27c822cf059ce576e7555ff8c74f232d9196f4",
+   "translation": "開啟指定的檔案"
+  },
+  {
+   "kind": "string",
+   "resource": 3602,
+   "language": 1041,
+   "string_id": 57619,
+   "source_utf16_sha256": "e9fc720676fd8262083495888a27c822cf059ce576e7555ff8c74f232d9196f4",
+   "translation": "開啟指定的檔案"
+  },
+  {
+   "kind": "string",
+   "resource": 3604,
+   "language": 1041,
+   "string_id": 57648,
+   "source_utf16_sha256": "595a6de1880959a60d3584166b4aee3fd9c264ae638b6f8813bd9e40f9764dde",
+   "translation": "複製目前的視窗並顯示\n新增視窗"
+  },
+  {
+   "kind": "string",
+   "resource": 3604,
+   "language": 1041,
+   "string_id": 57652,
+   "source_utf16_sha256": "cab16157da8b647feadf93b57ac97bc276cedc2414e95dc8ab44ca415c3e29e2",
+   "translation": "將視窗垂直並排顯示\n垂直並排"
+  },
+  {
+   "kind": "string",
+   "resource": 3604,
+   "language": 1041,
+   "string_id": 57653,
+   "source_utf16_sha256": "abf1f23c4750530416838518ac832c82aac0aad8042ceaf4583111e707c5389d",
+   "translation": "分割目前的視窗\n分割"
+  },
+  {
+   "kind": "string",
+   "resource": 3605,
+   "language": 1041,
+   "string_id": 57666,
+   "source_utf16_sha256": "af4b07394c54d0aa2efbdda4d4cc250ff9ae3b6f8937c83f7ef8fcfe60a21a3b",
+   "translation": "顯示說明主題清單\n說明"
+  },
+  {
+   "kind": "string",
+   "resource": 3605,
+   "language": 1041,
+   "string_id": 57669,
+   "source_utf16_sha256": "12a0929ee016a58cba8785ffef53234465f02662c37d24f5f896c30ccf9ada33",
+   "translation": "顯示所點選按鈕、選單或視窗的說明\n說明"
+  },
+  {
+   "kind": "string",
+   "resource": 3606,
+   "language": 1041,
+   "string_id": 57680,
+   "source_utf16_sha256": "47bae1399fb8005b8d86c5d56815c537bd99895a6033357010107bd4d40ace22",
+   "translation": "切換至下一個視窗\n下一頁"
+  },
+  {
+   "kind": "string",
+   "resource": 3606,
+   "language": 1041,
+   "string_id": 57681,
+   "source_utf16_sha256": "e834a888c14478fd9773120d443de113ff9f2d8adeddb03fc7eae01b549dfe0e",
+   "translation": "切換至上一個視窗\n上一頁"
+  },
+  {
+   "kind": "string",
+   "resource": 3825,
+   "language": 1041,
+   "string_id": 61184,
+   "source_utf16_sha256": "bead3a62d9c272ac9391d710f668e0f3778ee985cb44b6748891dc801e21467b",
+   "translation": "調整視窗大小"
+  },
+  {
+   "kind": "string",
+   "resource": 3825,
+   "language": 1041,
+   "string_id": 61185,
+   "source_utf16_sha256": "ff49f6d96bee9ba70bd0bb6fd4f1cc6ffb7d521cbdca5d5ebc92348fd32a31f2",
+   "translation": "移動視窗位置"
+  },
+  {
+   "kind": "string",
+   "resource": 3825,
+   "language": 1041,
+   "string_id": 61186,
+   "source_utf16_sha256": "428245a7e99df2358bbf1b368a66443ff84994d039246f7aaef7fa4f3d8093cb",
+   "translation": "將視窗最小化"
+  },
+  {
+   "kind": "string",
+   "resource": 3825,
+   "language": 1041,
+   "string_id": 61187,
+   "source_utf16_sha256": "edb84ad65e11b9667f9b579bdb66061b5d641a4cc74ff4e5b6703b226229169c",
+   "translation": "將視窗最大化"
+  },
+  {
+   "kind": "string",
+   "resource": 3825,
+   "language": 1041,
+   "string_id": 61188,
+   "source_utf16_sha256": "b0556c45cbccb2e305d60cdd240a3a21d0a530c70659d713a458eb6ce8e8e4e8",
+   "translation": "切換至下一個視窗"
+  },
+  {
+   "kind": "string",
+   "resource": 3825,
+   "language": 1041,
+   "string_id": 61189,
+   "source_utf16_sha256": "be619a2c1128dae4b088a39ca4eb16382479d91220d21ae22c99025de82ca9dd",
+   "translation": "切換至上一個視窗"
+  },
+  {
+   "kind": "string",
+   "resource": 3825,
+   "language": 1041,
+   "string_id": 61190,
+   "source_utf16_sha256": "ad82aa6ab188c3c64efa7af7440e8088b3535903166daee51860130b8518a9cb",
+   "translation": "關閉目前的視窗，並提示儲存已變更的檔案"
+  },
+  {
+   "kind": "string",
+   "resource": 3826,
+   "language": 1041,
+   "string_id": 61202,
+   "source_utf16_sha256": "5a7dfc17ed7fb7b32dc01b9567dc6d97f67fb09cffb9e23a980041fd6e4fdd9c",
+   "translation": "將視窗還原為一般大小"
+  },
+  {
+   "kind": "string",
+   "resource": 3826,
+   "language": 1041,
+   "string_id": 61203,
+   "source_utf16_sha256": "a35370ae9f06dfe1cfebb3b3799aaa918308d52c8ce791367b1ead6c2c368922",
+   "translation": "切換應用程式"
+  },
+  {
+   "kind": "string",
+   "resource": 3826,
+   "language": 1041,
+   "string_id": 61215,
+   "source_utf16_sha256": "8bdfa0f71db95992f04a14711dfb14e9db0ef507ff6fb144b8abb1592f6c7e92",
+   "translation": "顯示指定的視窗"
+  },
+  {
+   "kind": "string",
+   "resource": 3841,
+   "language": 1041,
+   "string_id": 61440,
+   "source_utf16_sha256": "2d9787291d4b6c8066eb5dbda5c7cd767ee52eb1bfd4884d24c592a2144e3ab1",
+   "translation": "開啟"
+  },
+  {
+   "kind": "string",
+   "resource": 3841,
+   "language": 1041,
+   "string_id": 61441,
+   "source_utf16_sha256": "cd9b297be47c6e65c4ef804c3c4929e17b80271021b03a8d51dd34374c93f508",
+   "translation": "另存新檔"
+  },
+  {
+   "kind": "string",
+   "resource": 3841,
+   "language": 1041,
+   "string_id": 61442,
+   "source_utf16_sha256": "90aee7c11683052daee361fa7ccda8b11a4db5b2d5edbd6a897cba5ed80b7b05",
+   "translation": "所有檔案 (*.*)"
+  },
+  {
+   "kind": "string",
+   "resource": 3841,
+   "language": 1041,
+   "string_id": 61446,
+   "source_utf16_sha256": "369632663c87074f7526f947b8679a63e61b18aaad000694455ae9132885e722",
+   "translation": "無標題檔案"
+  },
+  {
+   "kind": "string",
+   "resource": 3843,
+   "language": 1041,
+   "string_id": 61472,
+   "source_utf16_sha256": "0ecbb52e0ffe8704c625f7e823566d3844f42e6029dfd13d62090a0246b1867a",
+   "translation": "沒有錯誤訊息。"
+  },
+  {
+   "kind": "string",
+   "resource": 3843,
+   "language": 1041,
+   "string_id": 61473,
+   "source_utf16_sha256": "20c64f7f01b5396c19753284974778d5022b1d3853251dc083914cc0e092ff6e",
+   "translation": "執行了不支援的操作。"
+  },
+  {
+   "kind": "string",
+   "resource": 3843,
+   "language": 1041,
+   "string_id": 61474,
+   "source_utf16_sha256": "e0c93719d3b064bdaeeba6f9478c18c399e43eb7e26bf6772051ab411b2196c6",
+   "translation": "無法使用所需的資源。"
+  },
+  {
+   "kind": "string",
+   "resource": 3843,
+   "language": 1041,
+   "string_id": 61475,
+   "source_utf16_sha256": "a1e123d009482b2e54e52eecbdce7e142d0cd740c9ab858fbeb0a6557995a66c",
+   "translation": "記憶體不足。"
+  },
+  {
+   "kind": "string",
+   "resource": 3843,
+   "language": 1041,
+   "string_id": 61476,
+   "source_utf16_sha256": "aaa76fc3fa850b60ee28b4be384d77accf9b10c43fc0db43fb5203ebcdc9c41a",
+   "translation": "發生不明的錯誤。"
+  },
+  {
+   "kind": "string",
+   "resource": 3843,
+   "language": 1041,
+   "string_id": 61477,
+   "source_utf16_sha256": "72a4615300373b30ed0b00219cbb3da28b17488c58777cc077ef11c5790a2e1d",
+   "translation": "無效的引數。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61696,
+   "source_utf16_sha256": "3b3a9d193816997bcb12d5293e38c1b63796ff06de4a924eb412eba523eb6b70",
+   "translation": "無效的檔案名稱。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61697,
+   "source_utf16_sha256": "4c7d58515a6e8ac5b0b1361f4b56909753fbfe3b087636ed91ba79575e3159b1",
+   "translation": "無法開啟文件。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61698,
+   "source_utf16_sha256": "306d12346fdf10df152ca176f19c69d14c572090b25486a5e4f9ced7fcef219e",
+   "translation": "無法儲存文件。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61699,
+   "source_utf16_sha256": "21a76fd0d3c665ea471097a8b1a461773013e02fd5b89f15809a3bfef2db527e",
+   "translation": "是否儲存對 %1 的變更？"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61700,
+   "source_utf16_sha256": "e2bdc2ffff4091b6e7089d739eb7d0be74751d24a19385f69d373d648373c434",
+   "translation": "無法建立空白文件。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61701,
+   "source_utf16_sha256": "c9b8f3ffbf4e2ba7a7a8fc611490cd868e26f0c2a255430d25f52505d218c8f0",
+   "translation": "檔案太大，無法開啟。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61702,
+   "source_utf16_sha256": "b76a721e17981e069bcff0bd8184b92b500879b23b767596886f4499c0a70f4f",
+   "translation": "無法開始列印工作。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61703,
+   "source_utf16_sha256": "46bb6bdd39f8fb078699005eb8c7e4af4b95bb9e760e2222a4c00c153c5fc7e1",
+   "translation": "無法啟動說明。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61704,
+   "source_utf16_sha256": "06aa304e193b308c604dab4ba9504bd6f440c052816fea0abdf7548a85001132",
+   "translation": "應用程式發生內部錯誤。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61705,
+   "source_utf16_sha256": "926001e872841800bf1cb58fec530227efddbf33855f96ce9e5ef829943f9e5e",
+   "translation": "無法執行命令。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61706,
+   "source_utf16_sha256": "f9b11467015af35c1e245bd66e72b333f5efd15641704e539837a19d7c087956",
+   "translation": "記憶體不足，無法執行。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61707,
+   "source_utf16_sha256": "f97e5e1fa34aa7ff54968ba7a551232a9cb80ac2866c1fad51ab7251a4cd7b6f",
+   "translation": "系統登錄項目已刪除。若有 INI 檔案，也已一併刪除。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61708,
+   "source_utf16_sha256": "34ee663c55bfeb5b962bbee13872fd843253baf3ccf28ab063b3ec44bf46fde2",
+   "translation": "部分系統登錄項目（或 INI 檔案）未能刪除。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61709,
+   "source_utf16_sha256": "e54dcdea72ca2aee6e716f33784ff574ef5bd808b935ddddc58c432f80abd777",
+   "translation": "本程式需要檔案 %s，但在此系統中找不到該檔案。"
+  },
+  {
+   "kind": "string",
+   "resource": 3857,
+   "language": 1041,
+   "string_id": 61710,
+   "source_utf16_sha256": "74978e7a32d315d2e5d670f68de6c96211b85150a917b908fc65e4c63001703d",
+   "translation": "本程式連結的匯出項目 %s 在檔案 %s 中不存在。此電腦可能含有不相容版本的 %s。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61712,
+   "source_utf16_sha256": "54041cacf4ca5c283515fddea117179efb8cee45a61961cd703b0a94e7d8ffa8",
+   "translation": "請輸入整數。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61713,
+   "source_utf16_sha256": "2657a32e95573a25ea07d9434d5a882f4ac74ee6a8eed0a47242511bdb357f40",
+   "translation": "請輸入數值。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61714,
+   "source_utf16_sha256": "a9b2fc212f2545f767a10ce5c5914b0c0c1d1d6050fc967b326dec18c4b67f3a",
+   "translation": "請輸入 %1 到 %2 之間的整數。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61715,
+   "source_utf16_sha256": "43b9be278edd8dd880162c57e7bcfe07de723561ea57460d110b476659251c7d",
+   "translation": "請輸入 %1 到 %2 之間的數值。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61716,
+   "source_utf16_sha256": "ab2299b71830c74cf3c0706336fe51c8093a59731c3cff2fb97d20c3a159038c",
+   "translation": "請輸入不超過 %1 個字元的文字。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61717,
+   "source_utf16_sha256": "eabbc0909e54284bf708c6f3d28458031c0cba348614ba51b6859897ac984ad3",
+   "translation": "請選取按鈕。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61718,
+   "source_utf16_sha256": "97a8af8d536f254bd791a44899e368611942246612766f9c4b6204992f4c834a",
+   "translation": "請輸入 0 到 255 之間的整數。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61719,
+   "source_utf16_sha256": "ed19ad2fd83f29ed06ce1dc73100ce43e743eda0e58a96360d3737c815eeb0f0",
+   "translation": "請輸入正整數。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61720,
+   "source_utf16_sha256": "72afaf348fb21d04684d729dc8a3bb2baf6994f32a80bc2052f82ea1c68b96a4",
+   "translation": "請輸入日期/時間。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61721,
+   "source_utf16_sha256": "539a13480d744ed2ebe0ff6a9bf1d8ff08bfbf68ceea6204809a396897cbbaf9",
+   "translation": "請輸入貨幣類型的值。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61722,
+   "source_utf16_sha256": "1e8b682422ce8a896a959ad17b24b536ae358ebc77f0b6565c92f39d6169bb12",
+   "translation": "請輸入 GUID。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61723,
+   "source_utf16_sha256": "2135bd4eec70eea03b80df19a395e1d81593fa4ea09ed431125f3ed0f3cef0c4",
+   "translation": "請輸入時間。"
+  },
+  {
+   "kind": "string",
+   "resource": 3858,
+   "language": 1041,
+   "string_id": 61724,
+   "source_utf16_sha256": "1e0af56122732268a7827ab4f18a83584ea34fad55e1fc4b4527abcb7b72b631",
+   "translation": "請輸入日期。"
+  },
+  {
+   "kind": "string",
+   "resource": 3859,
+   "language": 1041,
+   "string_id": 61728,
+   "source_utf16_sha256": "f012c3cd957ec5d181b517fe7a27508c7d7c90d9b65d27a5c9d500a99cdbc52e",
+   "translation": "非預期的檔案格式。"
+  },
+  {
+   "kind": "string",
+   "resource": 3859,
+   "language": 1041,
+   "string_id": 61729,
+   "source_utf16_sha256": "d920ff50ed00dbc4b48155190edf02c2fde7c9ad69df3b0985c61469e7882fbc",
+   "translation": "%1\n找不到此檔案。\n請確認路徑與檔案名稱是否正確。"
+  },
+  {
+   "kind": "string",
+   "resource": 3859,
+   "language": 1041,
+   "string_id": 61730,
+   "source_utf16_sha256": "975973f2965e0070a180e688acb486cf24534855280af95a6935763d35612100",
+   "translation": "目的磁碟機的可用空間不足。"
+  },
+  {
+   "kind": "string",
+   "resource": 3859,
+   "language": 1041,
+   "string_id": 61731,
+   "source_utf16_sha256": "11c05c4ecf6df64e552b872553f9e8c66ea8f5569416b0fad643d721f9952ce1",
+   "translation": "%1 正在使用中，無法讀取。"
+  },
+  {
+   "kind": "string",
+   "resource": 3859,
+   "language": 1041,
+   "string_id": 61732,
+   "source_utf16_sha256": "fd7b9854cdf6eb29d0d3406d5b9e3b6bb6c134290134b8ede756a1cfb6c7e4de",
+   "translation": "%1 正在使用中或為唯讀，無法寫入。"
+  },
+  {
+   "kind": "string",
+   "resource": 3859,
+   "language": 1041,
+   "string_id": 61733,
+   "source_utf16_sha256": "9b593487b097ef122f8be2581bcda47fb619d811f17cce885011e2e45e600c7a",
+   "translation": "讀取 %1 時發生非預期的錯誤。"
+  },
+  {
+   "kind": "string",
+   "resource": 3859,
+   "language": 1041,
+   "string_id": 61734,
+   "source_utf16_sha256": "5ca39c5869a2b2926a9272b40c725a142b5b201bdfeb434dde4da12e925324c0",
+   "translation": "寫入 %1 時發生非預期的錯誤。"
+  },
+  {
+   "kind": "string",
+   "resource": 3860,
+   "language": 1041,
+   "string_id": 61744,
+   "source_utf16_sha256": "efce21fcb40c5dd3eaf59022540dea2818cc129b5661bca93ccda5f09a026624",
+   "translation": "%1: %2\n是否繼續執行指令碼？"
+  },
+  {
+   "kind": "string",
+   "resource": 3860,
+   "language": 1041,
+   "string_id": 61745,
+   "source_utf16_sha256": "1d4f986e2621cf212a7ae3f3a5b37360a32989d0ffcc9eee1f2dfebc84ff68a7",
+   "translation": "分派例外：%1"
+  },
+  {
+   "kind": "string",
+   "resource": 3865,
+   "language": 1041,
+   "string_id": 61836,
+   "source_utf16_sha256": "a497de50cce566b7855f5cf567a3cfa6afc1f59ff457cc24ce5d426270c415af",
+   "translation": "無法讀取唯寫屬性。"
+  },
+  {
+   "kind": "string",
+   "resource": 3865,
+   "language": 1041,
+   "string_id": 61837,
+   "source_utf16_sha256": "07e4d4850bc25e5343792a8a63eab5a55c090a8663c57cecb723d3e7989dea7c",
+   "translation": "無法寫入唯讀屬性。"
+  },
+  {
+   "kind": "string",
+   "resource": 3866,
+   "language": 1041,
+   "string_id": 61840,
+   "source_utf16_sha256": "a14a8551d022b986dd1cef8434733828f3f749da948e32e34db562dcd0165e2c",
+   "translation": "無法載入郵件系統支援功能。"
+  },
+  {
+   "kind": "string",
+   "resource": 3866,
+   "language": 1041,
+   "string_id": 61841,
+   "source_utf16_sha256": "b3b8465e649b3be053721827dc07ad08efc153950ed9bc655e52a566a0834e51",
+   "translation": "郵件系統 DLL 無效。"
+  },
+  {
+   "kind": "string",
+   "resource": 3866,
+   "language": 1041,
+   "string_id": 61842,
+   "source_utf16_sha256": "548b6e1073fc0d50b5b02ff1c0333ab006a6f142e368930fad11814303bc1884",
+   "translation": "郵件傳送失敗。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61856,
+   "source_utf16_sha256": "6c517e71d3b25923ecb5230a3f548e72f8135a2fd118b84ce3e353c6ed5d0fcb",
+   "translation": "未發生錯誤。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61857,
+   "source_utf16_sha256": "834b56358af60e5db5f9bdd014971d63fc6f372a73de5ba664171895c6b185df",
+   "translation": "存取 %1 時發生不明的錯誤。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61858,
+   "source_utf16_sha256": "1d761caf6941871fb6b2fc8351a96d1603175a1a196d7c48ae4abb454ccd0bf3",
+   "translation": "找不到 %1。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61859,
+   "source_utf16_sha256": "210624fada0e68130ae0e9d6f0e6e411f1620a9792db46172e04a147d459b31b",
+   "translation": "%1 包含無效的路徑。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61860,
+   "source_utf16_sha256": "0ee82f8f45b9f4cf6c1f6982faa22569c3210d7b0af3c305901e3d7a450151ba",
+   "translation": "開啟的檔案過多，無法開啟 %1。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61861,
+   "source_utf16_sha256": "03a81761b8498b30bc5ddbd91e6498b933541c6703abb5eca13f0cf9d81e57f8",
+   "translation": "存取 %1 遭到拒絕。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61862,
+   "source_utf16_sha256": "5ed225787d2b9f2b8a4214d4abc2edcf189215362db57abced157d4dde666c75",
+   "translation": "%1 所關聯的檔案控制代碼無效。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61863,
+   "source_utf16_sha256": "5cf1c7e0ba53a05ca35eaaf02326093176688664c859b56c0112f5fac4fe93ba",
+   "translation": "無法刪除目前的目錄 %1。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61864,
+   "source_utf16_sha256": "d6b978abc6651985862b14324dd38f17454a2b5659c641acfca9b3b1b894e049",
+   "translation": "無法建立 %1，因為該目錄已滿。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61865,
+   "source_utf16_sha256": "396b1c7ee347026400a7188f04487463a1820324324517164977ec79a7319226",
+   "translation": "在 %1 中移動讀寫位置失敗。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61866,
+   "source_utf16_sha256": "5624e36e4aed80aa44c0a8a3b61b5b02372810c36c82eb39fb40c27d3796fe45",
+   "translation": "存取 %1 時，系統回報硬體 I/O 錯誤。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61867,
+   "source_utf16_sha256": "c82d3acecfdf59adb9cbfce13ee0cbb02fd59098aee30f19326fc166c188b194",
+   "translation": "存取 %1 時發生共用違規。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61868,
+   "source_utf16_sha256": "7a770aeca93ce6eadf0b1fcebc4b51d648999763dce8ebee640a52974f2cbd1d",
+   "translation": "存取 %1 時發生鎖定違規。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61869,
+   "source_utf16_sha256": "0d323a83d02384e4acbb17f9d74479dbce49decf214f2563d29d6dd01c57fe81",
+   "translation": "存取 %1 時，磁碟空間已滿。"
+  },
+  {
+   "kind": "string",
+   "resource": 3867,
+   "language": 1041,
+   "string_id": 61870,
+   "source_utf16_sha256": "f0790b90d3fb0420d75b0af68cc4327b9452d634a479fda3024f453497ff2fff",
+   "translation": "嘗試存取超出 %1 結尾的位置。"
+  },
+  {
+   "kind": "string",
+   "resource": 3868,
+   "language": 1041,
+   "string_id": 61872,
+   "source_utf16_sha256": "6c517e71d3b25923ecb5230a3f548e72f8135a2fd118b84ce3e353c6ed5d0fcb",
+   "translation": "未發生錯誤。"
+  },
+  {
+   "kind": "string",
+   "resource": 3868,
+   "language": 1041,
+   "string_id": 61873,
+   "source_utf16_sha256": "834b56358af60e5db5f9bdd014971d63fc6f372a73de5ba664171895c6b185df",
+   "translation": "存取 %1 時發生不明的錯誤。"
+  },
+  {
+   "kind": "string",
+   "resource": 3868,
+   "language": 1041,
+   "string_id": 61874,
+   "source_utf16_sha256": "b66e9b6abe766d091ba21c76274a616961a85e5d99cdc9446cea3f22ebdceb23",
+   "translation": "嘗試在讀取 %1 時寫入資料。"
+  },
+  {
+   "kind": "string",
+   "resource": 3868,
+   "language": 1041,
+   "string_id": 61875,
+   "source_utf16_sha256": "f0790b90d3fb0420d75b0af68cc4327b9452d634a479fda3024f453497ff2fff",
+   "translation": "嘗試存取超出 %1 結尾的位置。"
+  },
+  {
+   "kind": "string",
+   "resource": 3868,
+   "language": 1041,
+   "string_id": 61876,
+   "source_utf16_sha256": "7fc7fc27e0a52704a8fc0bf59c9b6205e5e73464e43e23e4d336753e9b04a55e",
+   "translation": "嘗試在寫入 %1 時讀取資料。"
+  },
+  {
+   "kind": "string",
+   "resource": 3868,
+   "language": 1041,
+   "string_id": 61877,
+   "source_utf16_sha256": "3f9221c0897d0c1a04ad9cd061c489cd18677fb9b4d74f484b4febc14ca3b5a3",
+   "translation": "%1 的格式不正確。"
+  },
+  {
+   "kind": "string",
+   "resource": 3868,
+   "language": 1041,
+   "string_id": 61878,
+   "source_utf16_sha256": "bb2e642fe26e6079e066637010ca427aed5cd999208e6a3711c5578ae24ad8aa",
+   "translation": "%1 包含非預期的物件。"
+  },
+  {
+   "kind": "string",
+   "resource": 3868,
+   "language": 1041,
+   "string_id": 61879,
+   "source_utf16_sha256": "a57caa0ca41084b408ec7393378ebe4f61eadf6498f0813383e8c29c755c487b",
+   "translation": "%1 包含無效的結構描述。"
+  },
+  {
+   "kind": "string",
+   "resource": 3869,
+   "language": 1041,
+   "string_id": 61888,
+   "source_utf16_sha256": "538c892a82d1dcb34ada99ae2f607294a36c3f2f0ba02c5a38d62538ac2a9974",
+   "translation": "像素"
+  },
+  {
+   "kind": "string",
+   "resource": 3887,
+   "language": 1041,
+   "string_id": 62177,
+   "source_utf16_sha256": "04848b796860f96bf6fa5914ad3982adeb277db740e563716808721fb5cd4ad8",
+   "translation": "關閉"
+  },
+  {
+   "kind": "string",
+   "resource": 3887,
+   "language": 1041,
+   "string_id": 62178,
+   "source_utf16_sha256": "801797aac9d6253349ce13b7bd4375ce9e24c46800c6ef9e621c83ceaffc3b06",
+   "translation": "開啟"
+  }
+ ]
+}

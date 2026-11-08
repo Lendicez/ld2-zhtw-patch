@@ -1,0 +1,44 @@
+{
+  "run": "run2",
+  "step": "C",
+  "exe": "Ld95.m045.exe",
+  "exe_sha256": "4a0910243d159af8007b5e77369c21f262d9e7a402bcb92a991e4c368ccd9da7",
+  "start_utc": "2026-10-28T15:38:59.1697399Z",
+  "end_utc": "2026-10-28T15:48:15.9692489Z",
+  "seconds": 556.8,
+  "exit_code": 1,
+  "exit_code_hex": "0x00000001",
+  "exit_policy": "soft-warn-exit1",
+  "is_0xC0000409": false,
+  "events_ld95_all": 0,
+  "events_relevant": 0,
+  "crash_dumps_names_only": [],
+  "crash_dumps_new": [],
+  "wer_reports_new": [],
+  "saves_changed": [
+    "Usr\\LUNAS001.LDP"
+  ],
+  "hard_stop_reasons": [],
+  "usr_before": [
+    {
+      "path": "Usr\\LUNAS000.LDP",
+      "size": 3032781,
+      "sha256": "ae945041208d09a50163316ce096de29725bd0ce616972e684f68b10f6627cec",
+      "last_write_utc": "2026-10-28T14:05:19.5392896Z"
+    }
+  ],
+  "usr_after": [
+    {
+      "path": "Usr\\LUNAS000.LDP",
+      "size": 3032781,
+      "sha256": "ae945041208d09a50163316ce096de29725bd0ce616972e684f68b10f6627cec",
+      "last_write_utc": "2026-10-28T14:05:19.5392896Z"
+    },
+    {
+      "path": "Usr\\LUNAS001.LDP",
+      "size": 3032781,
+      "sha256": "74f161ab23e53f6be5cb49daf4e0196f0207c3b73246a6f63724d8c9b9506fd5",
+      "last_write_utc": "2026-10-28T15:48:01.3769449Z"
+    }
+  ]
+}

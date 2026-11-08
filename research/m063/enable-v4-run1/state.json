@@ -1,0 +1,14 @@
+﻿{
+    "steps_done":  [
+                       "P",
+                       "L1",
+                       "E",
+                       "L2",
+                       "G"
+                   ],
+    "stopped":  null,
+    "list_mode":  2,
+    "l1_policy":  "soft-warn-exit1",
+    "l2_policy":  "soft-warn-exit1",
+    "finalized":  true
+}

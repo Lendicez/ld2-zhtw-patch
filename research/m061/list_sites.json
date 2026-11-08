@@ -1,0 +1,2419 @@
+{
+ "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+ "wrapper_va": "0x4ea671",
+ "wrapper_iat_call_va": "0x4ea689",
+ "window_bytes_before_call": 16,
+ "counts": {
+  "CB_INSERTSTRING": 5,
+  "LB_ADDSTRING": 33,
+  "LB_GETTEXT": 5,
+  "LB_INSERTSTRING": 71
+ },
+ "unresolved_wrapper_message_sites": 5,
+ "phase1_candidates": 83,
+ "priority_sites": 8,
+ "imports_present": {
+  "LoadStringA": false,
+  "MultiByteToWideChar_iat": "0x52537c",
+  "SendDlgItemMessageW": false
+ },
+ "sites": [
+  {
+   "va": "0x4379ee",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "CB_INSERTSTRING",
+   "control_id": 1045,
+   "function_va": "0x4379b0",
+   "dialogs": [
+    191
+   ],
+   "roles": [
+    "birthday"
+   ],
+   "control_styles": [
+    "0x50210003"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "2f43a7e69b646aeef618b1408f6bccf8cece6249a6201f9f08d360ede0db63dc",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x457985",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x457700",
+   "dialogs": [
+    189
+   ],
+   "roles": [
+    "assault"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "5edbe3ba8aba2ec7d9cf98e6b31d4901ec71409de206a2a312f7af52619c4229",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4582f6",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x458150",
+   "dialogs": [
+    187
+   ],
+   "roles": [
+    "invite"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "fd1df9010bf09309c6aa3086f29b9f408bd560bb96115b7f7e3f34b4aba4bb47",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x458c0a",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1008,
+   "function_va": "0x458a60",
+   "dialogs": [
+    188
+   ],
+   "roles": [
+    "steal"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "b04b9bd3db0a643f1b3178db8635ba8afb36b97cdc70414348af21498e3c5815",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x459005",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x458da0",
+   "dialogs": [
+    188
+   ],
+   "roles": [
+    "steal"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "aac455947ae06ad8b17ff8821387ec398f2192bb3a6f5260b998af68c9debf9b",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4595a5",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x459320",
+   "dialogs": [
+    186
+   ],
+   "roles": [
+    "talk-b"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "5fd2e4ec7862a4bb9a91cf88501686de582665dc2438f78295cc9df9d5a98828",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45f94f",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "fca891a395da1713972748ab1e558a762970f8331c296fe70124fa5cd301a2c2",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45f99c",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "d42f14e9d4f70dc50a0ca2e920a76755a53e11c38deeefa92af7c000474862ce",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fa1d",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "77e8ac7062738f2d3dafd20ccbf6b36e68a98d59aa63455381c74ddd38e6569a",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fa49",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "e03aea2910e48ab5373ca56e2a5e35bc981efa9e3babce5d96f2d411e69065fb",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fa75",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "f5f5a204aef91440e65fc2eb30b81a9ec6081b2fa72b8d361722c3ae62491e9f",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fac0",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "e364afb289e952f8937b7425fddc50f5cf390fb81d300ebd30c97a5e88230758",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fb0b",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "7db900b6fd2c22dcacdbdb8da4a53930f92c0a081267e7ed7a4df9c42e281980",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fb56",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "58f2891fdf548989b6abf0ab01c2148f469cc17cecdd3607d2c3d3c510162415",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fba1",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "1566bc097603935da6410cd24fc5c23dbfdb934fbc1d426affc3a0112af83f3a",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fbcd",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "48bda35725a46b52c5c6307d1ac3762cd33e7e7e9495dc7647eb5727da779839",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fbf9",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "91bcfe536d105b9b60c0da3720ac53db5e95f3f2a6b1b2ace5e62ad67d30f503",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fc44",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "0ec4e39350b1cb8c3d89c9710af4a0071981f52dd185038f82ff081ebb46f2b6",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fc8f",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "d4b938c55a71f69659cb84a285a5a11c6ffbc46050139cb91fc158cb33e1ffc7",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fcbb",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "8aa13e8b0472e9840713e23ee982b8bd27ac3cfb508bbf4133f09e258dec76fc",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fce7",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "bb711ba4cd197e721b5e5b6f91117774f87d8dedb2653e1a84c71ede2bf1d557",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fd32",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "72347123c0f56434610a21dcedc9944a3f29d5589a25dced5a77ca5b3db87447",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fd5e",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "695d999fefe8f751772fe08d41a99a539627756981efcfb218743219b649333b",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fd8a",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "9255975fb8ef32219c67de40128df233b5b264e4e0d95c88c14f7ce664afeb50",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fdd5",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "3d03bfa06f796615618856897cad19bb103462de5043912ad021eceeaf6f3a92",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fe22",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "9e093e056528dec884ea7606412b7c7f4747d118db1fb7a64f5372149d8c0369",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45fea3",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "d61b8a714d4afce8a1cf09b415c68465e348fc52cead95a3e8c40665007985f0",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45feee",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "5a03c7891e39b60022b67c659d007aeb47445861ed41ffaa04eb03cf1c7f8e5c",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45ff39",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "56a09c3e46c78007b71e20e256c6c83c832ad2e602893390275ae91049da0759",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x45ff88",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x45f870",
+   "dialogs": [
+    457
+   ],
+   "roles": [
+    "records"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "d9ef7b24a9cdd51540a14363801bf2c431b0dfb7c38a95c0efc2249ad6b3ee33",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x460185",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1061,
+   "function_va": "0x4600d0",
+   "dialogs": [
+    455
+   ],
+   "roles": [
+    "dialog-455"
+   ],
+   "control_styles": [
+    "0x50a10101"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "8964609b8721c1bd23433042626e684047896afd8ef18cb0a557cdcda7f7139a",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x460730",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1057,
+   "function_va": "0x4605c0",
+   "dialogs": [
+    520
+   ],
+   "roles": [
+    "list-pair-b"
+   ],
+   "control_styles": [
+    "0x50b10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "445f68bd6c489187f5544f47bfd22a4ec619fb812bb444306999036fb57fc153",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x460974",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1058,
+   "function_va": "0x4607f0",
+   "dialogs": [
+    520
+   ],
+   "roles": [
+    "list-pair-b"
+   ],
+   "control_styles": [
+    "0x50b10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "2a66ef0d3166842f49fccbe184023ec3b7597012c788b8ad0fe163451193bd72",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4612d3",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1071,
+   "function_va": "0x4611b0",
+   "dialogs": [
+    172
+   ],
+   "roles": [
+    "item-distribute"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "e8c80db9a0a22eb67501155d019bf34b6d94566a17c12a5b4354f8fa3558a1ff",
+   "readback_on_same_control": true,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x461457",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_GETTEXT",
+   "control_id": 1071,
+   "function_va": "0x461370",
+   "dialogs": [
+    172
+   ],
+   "roles": [
+    "item-distribute"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "d820bde0568a95f024bcb4f2a87fe9bf5c4d12d759a48d3d0a069821de8fe683",
+   "readback_on_same_control": true,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x465819",
+   "kind": "SendMessageA",
+   "message": "LB_INSERTSTRING",
+   "control_id": null,
+   "function_va": "0x465680",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "d5b41fddabb8882d9ddaa99478ad356abc9512c3c209ab09e05294ea3719aa14",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x46bacb",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "CB_INSERTSTRING",
+   "control_id": null,
+   "function_va": "0x46ba50",
+   "dialogs": [
+    151
+   ],
+   "roles": [
+    "dialog-151"
+   ],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "9885f410d2a081386a9017b09d3380980db8d4e4e0ddcb89e89c4cc8848dda25",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x46c46c",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "CB_INSERTSTRING",
+   "control_id": null,
+   "function_va": "0x46c350",
+   "dialogs": [
+    151
+   ],
+   "roles": [
+    "dialog-151"
+   ],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "9d1c7665388e01c9ddac2361e6cb66d36ac622f0c9291ee1dea20d420699b9da",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x46e73a",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "CB_INSERTSTRING",
+   "control_id": null,
+   "function_va": "0x46e690",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "a71079b28a488588936836b846c5b71f2fd8b1e975c1302c0b497d820e75f0e5",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4702b0",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1057,
+   "function_va": "0x470140",
+   "dialogs": [
+    438
+   ],
+   "roles": [
+    "list-pair-a"
+   ],
+   "control_styles": [
+    "0x50b10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "757fe7ce8cf00cec64d9faae252379c4b0342e7d8147892eb30db012554e1963",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4704c0",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1058,
+   "function_va": "0x470370",
+   "dialogs": [
+    438
+   ],
+   "roles": [
+    "list-pair-a"
+   ],
+   "control_styles": [
+    "0x50b10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "3acef1b37c8f4c24ee1e7dd9f5b8e12e9af95c141f2dc0e096fbf0f81af0a836",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x472bf4",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1000,
+   "function_va": "0x471e00",
+   "dialogs": [
+    456
+   ],
+   "roles": [
+    "chronicle"
+   ],
+   "control_styles": [
+    "0x50b10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "06d714c23443caf4c93a8f9b035c1f7e8cc46e6435a98ad431e108b01c2c60e2",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4735f6",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1075,
+   "function_va": "0x4734a0",
+   "dialogs": [
+    463
+   ],
+   "roles": [
+    "education"
+   ],
+   "control_styles": [
+    "0x50b30103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "1bd020ce7a072b92d435d801e75cc70271c86fbc5bb364be366303711c1d5a29",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x473afe",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1026,
+   "function_va": "0x473990",
+   "dialogs": [
+    165
+   ],
+   "roles": [
+    "display"
+   ],
+   "control_styles": [
+    "0x50b10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "a194974a34d60ad7e3895e06566102e172b8cdc00badf085f249e9114de0c152",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x473cf4",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1027,
+   "function_va": "0x473b80",
+   "dialogs": [
+    165
+   ],
+   "roles": [
+    "display"
+   ],
+   "control_styles": [
+    "0x50b10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "07491241c7fef3d5ab72a85ef9b62b3de96f688457dab1180e818a275544fd41",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x474ead",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1032,
+   "function_va": "0x474e49",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "48f9d26b4b552af6cfd6f08346cb9efde4f012137304561a8aecd167910c8a0c",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x47502c",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1033,
+   "function_va": "0x474f10",
+   "dialogs": [
+    160,
+    388
+   ],
+   "roles": [
+    "dialog-388",
+    "party"
+   ],
+   "control_styles": [
+    "0x50b10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "e7cd400d03524e60dfb9429cbac04418f415c4aee0f5d3b25cb48cc7759e4739",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4750bb",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1033,
+   "function_va": "0x474f10",
+   "dialogs": [
+    160,
+    388
+   ],
+   "roles": [
+    "dialog-388",
+    "party"
+   ],
+   "control_styles": [
+    "0x50b10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "7169a218dc2fab8c3c2a19d72917b9bbbab00a81a524c6c089f4e9c6a8e53e1b",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x475bbe",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1039,
+   "function_va": "0x4759f0",
+   "dialogs": [
+    162
+   ],
+   "roles": [
+    "proposal"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "3f823e94e4aacdcf0783841114b1f3a2ba697bd2bcdb3d62b9c586073d53f018",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x476a0e",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1025,
+   "function_va": "0x4768a0",
+   "dialogs": [
+    159
+   ],
+   "roles": [
+    "storage"
+   ],
+   "control_styles": [
+    "0x50b10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "6af43d2f855bb7b90a21e3ef820c0c918054165d5d4a4640ce42e55232e6cec1",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x476c04",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1008,
+   "function_va": "0x476a90",
+   "dialogs": [
+    159
+   ],
+   "roles": [
+    "storage"
+   ],
+   "control_styles": [
+    "0x50b10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "f06593cedff119ec8bd9470fc7ac2920a4e2b4cf26a60b705b8f6a386df27696",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x47c102",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1031,
+   "function_va": "0x47bfc0",
+   "dialogs": [
+    178
+   ],
+   "roles": [
+    "item-page"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "a95f494fbdea80860cd3c267a6e9d113c187dd4770d4ec13f88f6371c0a44e90",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x47c242",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1032,
+   "function_va": "0x47c190",
+   "dialogs": [
+    178
+   ],
+   "roles": [
+    "item-page"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "14efc6e002f0666f77dfe5391678e866169b1f4d66963b80186e0a1be1bcc56c",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x47c4b8",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1032,
+   "function_va": "0x47c350",
+   "dialogs": [
+    178
+   ],
+   "roles": [
+    "item-page"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "4cb555244b6b193969a4a8f79d37905ce145efaadb668adac9fc85f96ed3362f",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x47c619",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1032,
+   "function_va": "0x47c350",
+   "dialogs": [
+    178
+   ],
+   "roles": [
+    "item-page"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "f3fa793ab95df7f200941db282eba223513a0ba9bc11ae26d8378c346caaec50",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x47db6a",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "CB_INSERTSTRING",
+   "control_id": null,
+   "function_va": "0x47dac0",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "29c3c05fb011c047cdf046a0ea4308e955438bfedf3d9ca7ca61e658ee74f1db",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x47f540",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1026,
+   "function_va": "0x47f3d0",
+   "dialogs": [
+    152
+   ],
+   "roles": [
+    "save-load"
+   ],
+   "control_styles": [
+    "0x50a11181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "a5b961f3106afaea83b7641fc1269ac96658340ca53b9d7785b87a6c2e735d24",
+   "readback_on_same_control": true,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x47f6a0",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1026,
+   "function_va": "0x47f3d0",
+   "dialogs": [
+    152
+   ],
+   "roles": [
+    "save-load"
+   ],
+   "control_styles": [
+    "0x50a11181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "b10219251b182b86b0153f08974f4c635a54bf855705c8c63e62298dfd186299",
+   "readback_on_same_control": true,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x47fd1e",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_GETTEXT",
+   "control_id": 1025,
+   "function_va": "0x47fcc0",
+   "dialogs": [
+    152
+   ],
+   "roles": [
+    "save-load"
+   ],
+   "control_styles": [
+    "0x50a11181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "b63c482dd0c0a3b124abf5dc99630aac07cc83842bbc32c0d8a720b660c5aa93",
+   "readback_on_same_control": true,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x480150",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1025,
+   "function_va": "0x480063",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "f67bd4ca063904940a3ce888f798fb30855f98611a6cdd1d8c9952bb0b65ec47",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x480403",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1025,
+   "function_va": "0x480063",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "7489b14b26db86c5a79253b49ed9a3c1bf6a8be5233ebcb1c67c9aa1bccb48f0",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4806cc",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_GETTEXT",
+   "control_id": 1026,
+   "function_va": "0x480670",
+   "dialogs": [
+    152
+   ],
+   "roles": [
+    "save-load"
+   ],
+   "control_styles": [
+    "0x50a11181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "9eecb5bba190df06ba167ac99fbca1343bdbcf9d306e0cd124421b6efc660b54",
+   "readback_on_same_control": true,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x481bfb",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1036,
+   "function_va": "0x481a30",
+   "dialogs": [
+    177
+   ],
+   "roles": [
+    "item-page-b"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "119c63dd93e7e757387e20df0bb7967329daa63e97b3b107a6da0534bb527e02",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x481d42",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1008,
+   "function_va": "0x481c90",
+   "dialogs": [
+    177
+   ],
+   "roles": [
+    "item-page-b"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "c8a485a80237276222ff91a2ff7dc17b9e9b00d2f4ac263967d6ad37a07834a2",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x481f9d",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1008,
+   "function_va": "0x481e50",
+   "dialogs": [
+    177
+   ],
+   "roles": [
+    "item-page-b"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "2077ce33bd36e501219fe04aa3349fff9981a8da967b6a3f251496db0b7cf212",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x482108",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1008,
+   "function_va": "0x481e50",
+   "dialogs": [
+    177
+   ],
+   "roles": [
+    "item-page-b"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "fa8b62163c322a37b402ffc9f2c1beeff9dc6566d4349677fa922943f3aaf582",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x492431",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1073,
+   "function_va": "0x4921b0",
+   "dialogs": [
+    169
+   ],
+   "roles": [
+    "commission-list"
+   ],
+   "control_styles": [
+    "0x50a10183"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "0cc8f4aa656832df0117a01ce2dbe19e80ff6faad542109e5d4bc68c92c27ff9",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": true
+  },
+  {
+   "va": "0x496611",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x496590",
+   "dialogs": [
+    176
+   ],
+   "roles": [
+    "talk"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "8c299df1aa770912fb65856569a1ca8416f870721d2cf198b29ea70f0814e9aa",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x496649",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x496590",
+   "dialogs": [
+    176
+   ],
+   "roles": [
+    "talk"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "c7086bca163d1dddbb55babbb7f8cebbd6b2e23c52f74961e6073f0d4a490484",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x496681",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x496590",
+   "dialogs": [
+    176
+   ],
+   "roles": [
+    "talk"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "a22a3f50b26d38089f5894f4810e1bb5314f6bb1647f2e1e8d338f6ff6b913b0",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4966b9",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x496590",
+   "dialogs": [
+    176
+   ],
+   "roles": [
+    "talk"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "b0a6721745791cf64b898114d6ab60400f6a8a4a0fd5817d867e7f766e04e3f0",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x497a20",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1074,
+   "function_va": "0x4978d0",
+   "dialogs": [
+    170
+   ],
+   "roles": [
+    "dialog-170"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "b07e64602635b00a2b0cbe7cfd9cac657c07f1b78e2026464e54de68dc88cedd",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4990ed",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1026,
+   "function_va": "0x498f80",
+   "dialogs": [
+    153
+   ],
+   "roles": [
+    "save-store"
+   ],
+   "control_styles": [
+    "0x50a11181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "c33548227a741f9f554ce95ab46e4932b8d2ff2d1a6009bd8b4692781a49b964",
+   "readback_on_same_control": true,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x49924d",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1026,
+   "function_va": "0x498f80",
+   "dialogs": [
+    153
+   ],
+   "roles": [
+    "save-store"
+   ],
+   "control_styles": [
+    "0x50a11181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "62a75e97b6e0ca91a584c70cd783ca6042328835a8682677a8333392d60de32b",
+   "readback_on_same_control": true,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x499671",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_GETTEXT",
+   "control_id": 1025,
+   "function_va": "0x499610",
+   "dialogs": [
+    153
+   ],
+   "roles": [
+    "save-store"
+   ],
+   "control_styles": [
+    "0x50a11181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "8d3fcaceeeceee1976969b4418ac76471c851f67efac5da47f6510c81ad4dc5b",
+   "readback_on_same_control": true,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x499a19",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1025,
+   "function_va": "0x4998c0",
+   "dialogs": [
+    153
+   ],
+   "roles": [
+    "save-store"
+   ],
+   "control_styles": [
+    "0x50a11181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "ba013f5545f41ce5b30ba72a6b7c4890b4bbb26ff948c22ae70d87b1de983cce",
+   "readback_on_same_control": true,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x499b9f",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_ADDSTRING",
+   "control_id": 1025,
+   "function_va": "0x4998c0",
+   "dialogs": [
+    153
+   ],
+   "roles": [
+    "save-store"
+   ],
+   "control_styles": [
+    "0x50a11181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "233e645bcbb975a1a2774cf7d346fe4c444657f221faaedad285ef060f873b66",
+   "readback_on_same_control": true,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x499efc",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_GETTEXT",
+   "control_id": 1026,
+   "function_va": "0x499ea0",
+   "dialogs": [
+    153
+   ],
+   "roles": [
+    "save-store"
+   ],
+   "control_styles": [
+    "0x50a11181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "e4ee20d4680b855f51997c5648393b34f5830ed2916c2d8fc6bc8d9a232b7a6a",
+   "readback_on_same_control": true,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4a79df",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1065,
+   "function_va": "0x4a7880",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "7fea3a9475b2ca18a1400320edc9791a1482b8145110d3d14efc0624834b6ed3",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4a80cf",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1065,
+   "function_va": "0x4a7f70",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "c145f7f7c11bf6aa30d82ec6760483769a2535b9cdcf58f32fb27a7a5a41ff9a",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4a878f",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1065,
+   "function_va": "0x4a8680",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "9517acd0210795a5cc459113af6756a8760003b0a1a482bd20fcc77bb4dc692f",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4a885a",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1065,
+   "function_va": "0x4a8680",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "1cc7f5f4cebabf507a1a959010ae75099729e549404aea6d7099dacca723cd46",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4a8923",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1065,
+   "function_va": "0x4a8680",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "6efbdcce7a79f0b09a996a377836aa49bea8d6e258ec35bda81d584cb27ccb4a",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4a89f0",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1065,
+   "function_va": "0x4a8680",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "5f9c4ed9d18692c3bba430452c4b88c1dfa0b63b7a894b57207f5a1aadf9a922",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4a8b9d",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1045,
+   "function_va": "0x4a8a50",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "7339d7bcc15ed883c5130aa98d93611395025caad9b908cb208a70b445ee0133",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4a8d08",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1045,
+   "function_va": "0x4a8a50",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "af9787f0da87698a779d28365e00e4ca7f5d6a4fbf4f4931ed0e71c4f126b65b",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4aaf19",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4aa5e0",
+   "dialogs": [
+    137
+   ],
+   "roles": [
+    "shop-buy"
+   ],
+   "control_styles": [
+    "0x50a10183"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "d6da0e66d3dd8d727359b781caec07908f5ae943e3003517e8654adf5ed97f39",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": true
+  },
+  {
+   "va": "0x4ab0fe",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4aa5e0",
+   "dialogs": [
+    137
+   ],
+   "roles": [
+    "shop-buy"
+   ],
+   "control_styles": [
+    "0x50a10183"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "a0afd925d94b20d5ef7d8eed38e1da09235c42cae67dcc4b9184609296a5c2ca",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": true
+  },
+  {
+   "va": "0x4abcab",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4abaa0",
+   "dialogs": [
+    145
+   ],
+   "roles": [
+    "revive"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "7ea699df2a9e085db1ea42a734aa3d41bf223138fdb673eefdc11be3ce9fd0ef",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4ac010",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4abf80",
+   "dialogs": [
+    142
+   ],
+   "roles": [
+    "info"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "e62270f576c56b1a37818d31814e9bbb6e9a997ce9816c9094c70f5e2fc86f5e",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4ac730",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4ac4f0",
+   "dialogs": [
+    461
+   ],
+   "roles": [
+    "dark-guild"
+   ],
+   "control_styles": [
+    "0x50a10183"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "f82cad690dcd2ccc64430c850c7c3b1bccb275d5f046383e54ed906ffab3212d",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4b1153",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1021,
+   "function_va": "0x4b0fc0",
+   "dialogs": [
+    156,
+    388
+   ],
+   "roles": [
+    "commission-info",
+    "dialog-388"
+   ],
+   "control_styles": [
+    "0x50a10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "000b41d30a58bb8c8a7ffe02de91ff59fd0acc4fc452f80eca63cfde1e31f98c",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": true
+  },
+  {
+   "va": "0x4b166a",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1047,
+   "function_va": "0x4b1550",
+   "dialogs": [
+    157
+   ],
+   "roles": [
+    "pass"
+   ],
+   "control_styles": [
+    "0x50a10181"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "3470c0c0ebe3d529835f1c5b25d91ee45463ae6a0c83953b3fc6aaa1fdfa67a7",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4b1ff3",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4b1f60",
+   "dialogs": [
+    142
+   ],
+   "roles": [
+    "info"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "ead2b03226bdeb6fdd670f25978ce4962cc3e702f93ad7735103f0f358d9ca88",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4b2d1f",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4b2b10",
+   "dialogs": [
+    143
+   ],
+   "roles": [
+    "tavern"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "c033b174a90d1cd49ba10730d5a3ad29ec0801888520c4ca3f56de9b03e0f6cb",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": true
+  },
+  {
+   "va": "0x4b3477",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4b31f0",
+   "dialogs": [
+    140
+   ],
+   "roles": [
+    "inn-commission"
+   ],
+   "control_styles": [
+    "0x50a10183"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "659ca739b1d4e899ada27de152ea93c104af9d8ebb990d1a7ee878fc6194b4a8",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": true
+  },
+  {
+   "va": "0x4b46e4",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4b43e0",
+   "dialogs": [
+    139
+   ],
+   "roles": [
+    "shop-strengthen"
+   ],
+   "control_styles": [
+    "0x50a10183"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "548a094aa447d50d92bb04ff2f2bcb54bdb2ce16d470164d8f69e583aa55479a",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": true
+  },
+  {
+   "va": "0x4b4df1",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4b4b70",
+   "dialogs": [
+    138
+   ],
+   "roles": [
+    "shop-sell"
+   ],
+   "control_styles": [
+    "0x50a10183"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "834da1e2bc6afe86edfb6ea113c57d6b8e7a169f59e4cf4dfcae9f7b6e15f8a4",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": true
+  },
+  {
+   "va": "0x4b71c2",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1036,
+   "function_va": "0x4b7090",
+   "dialogs": [
+    185
+   ],
+   "roles": [
+    "item-page-c"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "b400ee9aa1171ea23e327b4d66fea8490b65551d84867717c15a9cea5cf2eae2",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4b71fd",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1036,
+   "function_va": "0x4b7090",
+   "dialogs": [
+    185
+   ],
+   "roles": [
+    "item-page-c"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "eaf64a6e89034c328a9ab496b92306b33e00dc341692fbc6f54699f3ec8eb2d4",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4b7238",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1036,
+   "function_va": "0x4b7090",
+   "dialogs": [
+    185
+   ],
+   "roles": [
+    "item-page-c"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "067eab0d6a8751c3116040cca57043a017def37d032eedaf304a6721a08a7bdc",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4b7273",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1036,
+   "function_va": "0x4b7090",
+   "dialogs": [
+    185
+   ],
+   "roles": [
+    "item-page-c"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "b1db74105dd3c26c2986737efea1aa9ad06e02af048aae4d3c30a86c327eed75",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4b72ae",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1036,
+   "function_va": "0x4b7090",
+   "dialogs": [
+    185
+   ],
+   "roles": [
+    "item-page-c"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "50a779c8cdac7cf052826c2c3506f50affc63ed812227dbd03116c84ee7d58b4",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4b72e9",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1036,
+   "function_va": "0x4b7090",
+   "dialogs": [
+    185
+   ],
+   "roles": [
+    "item-page-c"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "7aca184ed29a3653b16457d474a2f25a83bd94c47eaeb16ce41d6cb142209596",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4b7509",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1008,
+   "function_va": "0x4b73a0",
+   "dialogs": [
+    185
+   ],
+   "roles": [
+    "item-page-c"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "c303c41e576d7acad66b2a17b196f30821c2a925bdd6eeac6d594ba941319b12",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4b7644",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1008,
+   "function_va": "0x4b73a0",
+   "dialogs": [
+    185
+   ],
+   "roles": [
+    "item-page-c"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "e17d0d4d594826ee4f3597e4963a411c05ee602556a6747cce7a7d1d801a5f6d",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4c6c3c",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1065,
+   "function_va": "0x4c6ba0",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "4fd43b1c096b4333137b3d11d5ebd9458eea694a9e31ced699cf2d4ac61d1508",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4c6c86",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1065,
+   "function_va": "0x4c6ba0",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "2109ac12e432989999fcc09438702a66589e3286795813535eaf0e559e29d7b5",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4c8e74",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4c8020",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "21da20a16b4f9a905d1ae59076de69fa2fdc6d9714b359ec6a705eda7e3942c5",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4c927a",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4c8020",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "49f03f91d4e5071955cf08275fe389eb3fd605e401fe15a98d6b8035067d5c81",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4c9306",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4c8020",
+   "dialogs": [],
+   "roles": [],
+   "control_styles": [],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "607d2920146b89ac1800ed06283f078b8c83400c9562e920c0c41742b849c6b8",
+   "readback_on_same_control": false,
+   "phase1_candidate": false,
+   "priority": false
+  },
+  {
+   "va": "0x4cb36d",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1031,
+   "function_va": "0x4cb250",
+   "dialogs": [
+    225
+   ],
+   "roles": [
+    "item-arrange"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "b88cf308405bbb6ec3dd9ee7f7332beec53ec21709c5a57d57ac8d94f6b0bd26",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4cb4b2",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1032,
+   "function_va": "0x4cb400",
+   "dialogs": [
+    225
+   ],
+   "roles": [
+    "item-arrange"
+   ],
+   "control_styles": [
+    "0x50a10103"
+   ],
+   "sorted_listbox": true,
+   "owner_draw": false,
+   "window_sha256": "81c3c87929d8c0a394e4808fdb7fc8d2f7d4002ec4b305a668624c7f4a08ff87",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  },
+  {
+   "va": "0x4ce8ca",
+   "kind": "CWnd::SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "control_id": 1000,
+   "function_va": "0x4ce570",
+   "dialogs": [
+    464
+   ],
+   "roles": [
+    "wind-orb"
+   ],
+   "control_styles": [
+    "0x50a10101"
+   ],
+   "sorted_listbox": false,
+   "owner_draw": false,
+   "window_sha256": "fc18cf18e97f1c88afb013698f5e249e020fe381c196003c607f6df49671a129",
+   "readback_on_same_control": false,
+   "phase1_candidate": true,
+   "priority": false
+  }
+ ],
+ "production_can_apply": false
+}

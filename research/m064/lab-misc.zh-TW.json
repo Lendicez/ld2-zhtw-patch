@@ -1,0 +1,42 @@
+{
+ "schema_version": 1,
+ "milestone": "m064-lab-misc",
+ "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+ "production_can_apply": false,
+ "release_approved": false,
+ "rendering_verified": false,
+ "preview_only": true,
+ "draft_owner": "Codex (validated by Claude)",
+ "note": "Small hand-checked fixes: 0x15816c target-list marker.",
+ "item_count": 1,
+ "mona_approved_candidate": false,
+ "site_binding_confirmed": false,
+ "items": [
+  {
+   "category": "runtime_ansi",
+   "subcategory": "tx_misc",
+   "file_offset": 1409388,
+   "file_offset_hex": "0x15816c",
+   "source_bytes_len": 2,
+   "source_name_sha256": "bb11020f81c39f6c756d13a9cc550355a2973b122147f2f3907084154bccd415",
+   "source_name_contract": {
+    "printf": [],
+    "indexed": [],
+    "other_percent": 0,
+    "controls": [],
+    "mnemonics": [],
+    "literal_ampersands": 0,
+    "shortcuts": 0
+   },
+   "text_zh_tw": "●",
+   "text_cp950_bytes_len": 2,
+   "text_cp950_hex": "a1b4",
+   "name_cp950_encodable": true,
+   "fits_capacity": true,
+   "capacity_slack_bytes": 0,
+   "review_status": "codex_draft_claude_checked",
+   "translation_method": "codex+validator",
+   "site_binding": "static (not yet seen on screen)"
+  }
+ ]
+}

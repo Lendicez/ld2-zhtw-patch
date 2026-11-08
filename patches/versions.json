@@ -15,5 +15,18 @@
       "catalog": "ui-m020.zh-TW.json",
       "release_approved": false
     }
+  ],
+  "zhtw_releases": [
+    {
+      "version": "1.0.0",
+      "date": "2026-11-08",
+      "installer": "LD2-zhTW-Patch-1.0.0.exe",
+      "installer_sha256": "64f890ab47a3b1e4e748dbea78f21c86a52c0015648729285c5fdc24a6a2e549",
+      "payload_sha256": "74312586f8daf1bb70395cf4b2a92efcbe7b788f8bf267877fa5bb35c9cd1d56",
+      "source_version": "ld95-1.0.3.16",
+      "files": 124,
+      "release_approved": true,
+      "approved_by": "project owner (2026-11-08)"
+    }
   ]
 }

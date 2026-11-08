@@ -1,0 +1,2 @@
+53399e09d4e05c2f9e6515a9127e40a42dd44febe053bdccdbe762eb0db1e151  m063d-v4-enable-mode2-evidence.zip
+# 6.3MB, 20 PNG screenshots; zip and PNGs intentionally NOT committed. hashes-before.json (385KB) also omitted; hashes-after.json included.

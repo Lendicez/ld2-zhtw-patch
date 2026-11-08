@@ -1,0 +1,27 @@
+﻿{
+    "schema":  "m063d-v4-enable-hashes-after/1",
+    "taken_utc":  "2026-11-03T08:25:08.0635274Z",
+    "source_exe":  {
+                       "path":  "C:\\GameDev\\LD2\\LunaticDawnPotB\\Ld95.exe",
+                       "size":  7090176,
+                       "sha256":  "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+                       "last_write_utc":  "2026-10-25T17:55:24.8215298Z"
+                   },
+    "source_exe_same_as_before":  true,
+    "source_manifest_changes":  [
+
+                                ],
+    "store_original_sha256":  "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+    "store_inert_sha256":  "c796bc12378440b1ea027c5e268b0f564aff47bd4675b3a61bc1465068726e37",
+    "store_enabled_sha256":  "240ab04d7f81f185820865549c72b12a0c73475bb1f8dd073146731dab3f4121",
+    "game_active_exe_sha256":  "240ab04d7f81f185820865549c72b12a0c73475bb1f8dd073146731dab3f4121",
+    "steps_done":  [
+                       "P",
+                       "L1",
+                       "E",
+                       "L2"
+                   ],
+    "stopped":  null,
+    "production_can_apply":  false,
+    "release_approved":  false
+}

@@ -1,0 +1,59 @@
+{
+ "milestone": "m063c-lab",
+ "counts_only": true,
+ "production_can_apply": false,
+ "release_approved": false,
+ "draft_sha256": "33f63c04403929d3bf0431255bda2b83e2211b5f679f450a52a5e30f6d0c0f8e",
+ "m051_catalog_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
+ "note": "Counts only. Full draft + m051 (not the lab_preview subset). No source text or names.",
+ "v4": {
+  "rows": 6148,
+  "rows_by_kind": {
+   "full_id": 4851,
+   "prefix": 356,
+   "suffix": 359,
+   "full_any": 582
+  },
+  "bytes": 254096,
+  "sha256": "4b07a1365608c22ceb60cfa10088c94792bc07f43ecee53c2e456bdbf04416fa",
+  "v3_rows": 6127,
+  "kris_hypothetical_rows_included": true
+ },
+ "male_join_40000": {
+  "v3_list_flags": {
+   "ok": 39993,
+   "fallback": 5,
+   "wrong": 2
+  },
+  "v4_name_only": {
+   "ok": 40000
+  }
+ },
+ "female_600": {
+  "v3_list_flags": {
+   "ok": 600
+  },
+  "v4_name_only": {
+   "ok": 600
+  }
+ },
+ "items_full_id": {
+  "rows": 4851,
+  "by_id_ok": 4851,
+  "list_same_as_v3": 4840,
+  "name_only_returns_item_text": 0,
+  "name_only_hits_a_name": 2,
+  "kris_list_rows": 11,
+  "kris_list_shows_item": 11
+ },
+ "kris": {
+  "female_rows_same_bytes": 1,
+  "name_site_shows_female": true,
+  "item_by_id_shows_item": true,
+  "v3_name_site_would_show_item": true
+ },
+ "c_core_cross_check": {
+  "cases": 50302,
+  "result": "PASS 50302 FAIL 0"
+ }
+}

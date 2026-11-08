@@ -1,0 +1,23 @@
+# m063 draft56：執行期 ANSI 格式／預言／系統候選目錄
+
+- 目錄 JSON：`research/translations/m063-draft56-runtime-ansi-fmt-prophecy-sys.zh-TW.json`
+- 來源 public_copy sha256：`5c9bb1250332d0655baf9c6cd0aaf4886648dce5e660ca491137341149f2275d`
+- 提交檔 sha256：`296a313aad26957f575b91f230941f21687c184e1672b0cf309ee8d52bf67e6d`
+
+## 內容（19 列）
+年齡／數量格式（`%3s`／`%d`）、預言續（`%s`）、警告／報告／錯誤、苔壇檢視、拒當國王。純 ANSI，不含 UTF-16。
+
+## 檢查
+- 已驗證無假名；保留 `%3s`／`%d`／`%s`。
+- review_status = `mona_approved_candidate_pending_site`
+- stripped_fields：source_name_ja、source_name_cp932_hex（項目內無 ja／cp932 資料）
+
+## 註記
+- 無宿泊補包：宿泊天數句已在 draft10 `0x168dd4`（未配線）。
+- UTF-16 未開啟。
+
+## 為何是候選
+site_binding 未確認：mona_approved_candidate true；site_binding_confirmed false。**未配線**（不進 apply／profile）。
+
+## 旗標
+production_can_apply／release_approved／rendering_verified 皆為 false。

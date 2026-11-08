@@ -1,0 +1,22 @@
+{
+  "step": "L",
+  "exe": "Ld95.m061-inert.exe",
+  "exe_sha256": "6a43dc4e3d881a207f4b0dae2fcc5f1fca5d079d6fe90139115da84ac3ef1cfe",
+  "start_utc": "2026-10-28T19:06:57.5482379Z",
+  "end_utc": "2026-10-28T19:07:29.3330761Z",
+  "seconds": 31.8,
+  "exit_code": 1,
+  "exit_code_hex": "0x00000001",
+  "exit_policy": "soft-warn-exit1",
+  "events_ld95_all": 0,
+  "events_relevant": 0,
+  "crash_dumps_new": [],
+  "wer_reports_new": [],
+  "module_probe": {
+    "ok": false,
+    "note": "不可在值為 Null 的運算式上呼叫方法。"
+  },
+  "list_sites_patched": false,
+  "textoutw_hook_enabled": false,
+  "production_can_apply": false
+}

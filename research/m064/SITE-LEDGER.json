@@ -1,0 +1,141 @@
+{
+ "schema": "m064-site-ledger/1",
+ "updated": "2026-11-05T23:30+08:00",
+ "lab_machine_acp": 950,
+ "production_can_apply": false,
+ "release_approved": false,
+ "note": "Per-row on-screen confirmation after .rdata in-place CP950 wiring in lab builds. Draft-level flags unchanged.",
+ "rows": [
+  {
+   "offset_hex": "0x168dd4",
+   "catalog": "m063-draft10-runtime-ansi-guild-town",
+   "screen": "inn stay-days validation MessageBox body",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-pilot-d10-001",
+    "m064-all2-site_inn_days_d10-001"
+   ],
+   "method": "control text (W) + screenshot review"
+  },
+  {
+   "offset_hex": "0x125ba4",
+   "catalog": "m064-lab-extra-captions",
+   "screen": "MessageBox caption (241 push refs)",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-all2-site_inn_days_d10-001"
+   ],
+   "method": "screenshot review"
+  },
+  {
+   "offset_hex": "0x17183c",
+   "catalog": "m063-draft58-runtime-ansi-fmt-combat-thanks",
+   "screen": "travel destination ListBox row format",
+   "site_confirmed": true,
+   "rendering_checked": false,
+   "evidence": [
+    "m064-all-site_inn_days_d10-001",
+    "m064-all-load_shop_weapon-001"
+   ],
+   "method": "ListBox text; %s args still CP932 (town names untranslated)"
+  },
+  {
+   "offset_hex": "0x165b90",
+   "catalog": "m063-draft7-training-static-1024",
+   "screen": "training Static 1024 (need more exp)",
+   "site_confirmed": true,
+   "rendering_checked": false,
+   "evidence": [
+    "m064-all-load_inn_tavern_quest-001"
+   ],
+   "method": "Static text"
+  },
+  {
+   "offset_hex": "0x159734",
+   "catalog": "m063-draft57",
+   "screen": "info window place 〈廣場〉",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-full-load_inn_tavern_quest-001"
+   ],
+   "method": "screenshot review (with charset_patch)"
+  },
+  {
+   "offset_hex": "0x617258..0x617368",
+   "catalog": "m064-lab-places",
+   "screen": "travel dialog / info window town names",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-full-load_shop_weapon-001"
+   ],
+   "method": "screenshot review (with charset_patch)"
+  },
+  {
+   "offset_hex": "0x1723e8..0x17241b",
+   "catalog": "m064-lab-places",
+   "screen": "region names (伊爾塔爾國 …)",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-full-load_shop_weapon-001"
+   ],
+   "method": "screenshot review (with charset_patch)"
+  },
+  {
+   "offset_hex": "0x138be0",
+   "catalog": "m064-lab-places",
+   "screen": "'國 ' in info window",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-full-load_inn_tavern_quest-001"
+   ],
+   "method": "screenshot review (with charset_patch)"
+  },
+  {
+   "offset_hex": "0x1398c4",
+   "catalog": "m064-lab-extra",
+   "screen": "equip combo 無裝備",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-full-char_windows-001"
+   ],
+   "method": "screenshot review (with charset_patch)"
+  },
+  {
+   "offset_hex": "list sites 0x46e73a,0x47db6a,0x46bacb,0x46c46c",
+   "catalog": "m063 item catalog via v4 item entry",
+   "screen": "equip dialog combos 1014-1018 (軍刀/軟皮甲/頭巾/無裝備)",
+   "site_confirmed": true,
+   "rendering_checked": false,
+   "evidence": [
+    "m064-reroute-charwin-002"
+   ],
+   "method": "control text dump (W)"
+  },
+  {
+   "offset_hex": "tab sites 0x46c814,0x4705f4,0x47c2f4,0x481df4,0x496744,0x4b7034",
+   "catalog": "m063 name catalog via LD2N_FindCopy (half→full width)",
+   "screen": "property-sheet page tab (character name) e.g. equip dialog 達吉爾塔爾",
+   "site_confirmed": true,
+   "rendering_checked": true,
+   "evidence": [
+    "m064-tabdbg-002",
+    "m064-full5-char_windows-001"
+   ],
+   "method": "read_mem + screenshot"
+  }
+ ],
+ "blocked": [],
+ "fixed": [
+  {
+   "offset_hex": "0x166e28",
+   "fix": "removed extra %E (draft44), 2026-11-05"
+  }
+ ]
+}

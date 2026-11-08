@@ -1,0 +1,2229 @@
+{
+ "milestone": "m062",
+ "kind": "adventurer-name draw trace (static, read-only)",
+ "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+ "getname_va": "0x44d870",
+ "getname_caller_functions": 108,
+ "classification": {
+  "no_direct_sink": 80,
+  "textout": 6,
+  "list": 20,
+  "dialog_text": 2
+ },
+ "tavern": {
+  "site": "0x4b2d1f",
+  "function": "0x4b2b10",
+  "message": "LB_INSERTSTRING",
+  "control_id": 1000,
+  "dialog_role": "tavern",
+  "string": "wsprintfA(\"%s\", name) = the bare name, one segment, no tab",
+  "retargeted_by_m061b": true
+ },
+ "name_list_sites": [
+  {
+   "function": "0x457700",
+   "va": "0x457985",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "assault"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x458150",
+   "va": "0x4582f6",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "invite"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x458da0",
+   "va": "0x459005",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "steal"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x459320",
+   "va": "0x4595a5",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "talk-b"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4605c0",
+   "va": "0x460730",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "list-pair-b"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x46e690",
+   "va": "0x46e73a",
+   "api": "SendDlgItemMessage",
+   "message": "CB_INSERTSTRING",
+   "roles": [],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x470140",
+   "va": "0x4702b0",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "list-pair-a"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x470370",
+   "va": "0x4704c0",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "list-pair-a"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4734a0",
+   "va": "0x4735f6",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "education"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x474d30",
+   "va": "0x474ead",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x474f10",
+   "va": "0x47502c",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "dialog-388",
+    "party"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x474f10",
+   "va": "0x4750bb",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "dialog-388",
+    "party"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4759f0",
+   "va": "0x475bbe",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "proposal"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x47c190",
+   "va": "0x47c242",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "item-page"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x47dac0",
+   "va": "0x47db6a",
+   "api": "SendDlgItemMessage",
+   "message": "CB_INSERTSTRING",
+   "roles": [],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x481c90",
+   "va": "0x481d42",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "item-page-b"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4978d0",
+   "va": "0x49793d",
+   "api": "SendDlgItemMessage",
+   "message": null,
+   "roles": null,
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4978d0",
+   "va": "0x497a20",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "dialog-170"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4abaa0",
+   "va": "0x4abaf6",
+   "api": "SendDlgItemMessage",
+   "message": null,
+   "roles": null,
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4abaa0",
+   "va": "0x4abb11",
+   "api": "SendDlgItemMessage",
+   "message": null,
+   "roles": null,
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4abaa0",
+   "va": "0x4abcab",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "revive"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4b2b10",
+   "va": "0x4b2d1f",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "tavern"
+   ],
+   "retargeted_by_m061b": true
+  },
+  {
+   "function": "0x4b7090",
+   "va": "0x4b71c2",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "item-page-c"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4b7090",
+   "va": "0x4b71fd",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "item-page-c"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4b7090",
+   "va": "0x4b7238",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "item-page-c"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4b7090",
+   "va": "0x4b7273",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "item-page-c"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4b7090",
+   "va": "0x4b72ae",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "item-page-c"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4b7090",
+   "va": "0x4b72e9",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "item-page-c"
+   ],
+   "retargeted_by_m061b": false
+  },
+  {
+   "function": "0x4cb400",
+   "va": "0x4cb4b2",
+   "api": "SendDlgItemMessage",
+   "message": "LB_INSERTSTRING",
+   "roles": [
+    "item-arrange"
+   ],
+   "retargeted_by_m061b": false
+  }
+ ],
+ "name_list_sites_retargeted": [
+  "0x4b2d1f"
+ ],
+ "name_dialog_text_sites": [
+  {
+   "function": "0x4605c0",
+   "va": "0x460680",
+   "api": "SetDlgItemText"
+  },
+  {
+   "function": "0x470140",
+   "va": "0x470200",
+   "api": "SetDlgItemText"
+  },
+  {
+   "function": "0x470370",
+   "va": "0x470410",
+   "api": "SetDlgItemText"
+  },
+  {
+   "function": "0x4d7320",
+   "va": "0x4d737a",
+   "api": "SetWindowText"
+  },
+  {
+   "function": "0x4d7320",
+   "va": "0x4d73c1",
+   "api": "SetWindowText"
+  },
+  {
+   "function": "0x4db810",
+   "va": "0x4db87d",
+   "api": "SetWindowText"
+  },
+  {
+   "function": "0x4db810",
+   "va": "0x4db8c5",
+   "api": "SetWindowText"
+  }
+ ],
+ "name_textout_functions": [
+  "0x438910",
+  "0x48f220",
+  "0x4b92d0",
+  "0x4d77a0",
+  "0x4dbcb0",
+  "0x4dc720"
+ ],
+ "textout_sites_total": 185,
+ "namepair_hook_continuation": "0x46dca5",
+ "rows": [
+  {
+   "function": "0x418e80",
+   "getname_calls": [
+    "0x418f54",
+    "0x41904d"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x433460",
+   "getname_calls": [
+    "0x433535"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x433590",
+   "getname_calls": [
+    "0x433b66",
+    "0x43431c"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x438910",
+   "getname_calls": [
+    "0x4389a4"
+   ],
+   "sinks": [
+    {
+     "va": "0x438a1c",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x438a4b",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x438a61",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x438a84",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x438ab2",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x438ae7",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x438b16",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x438b2c",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x438b4f",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x438b7d",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    }
+   ]
+  },
+  {
+   "function": "0x439370",
+   "getname_calls": [
+    "0x43961b"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x439700",
+   "getname_calls": [
+    "0x4397d2"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x439eb0",
+   "getname_calls": [
+    "0x43a10a"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x43a2d0",
+   "getname_calls": [
+    "0x43a4c2",
+    "0x43a4ef",
+    "0x43a6cc",
+    "0x43a6f9",
+    "0x43a723",
+    "0x43a9a8",
+    "0x43a9d5",
+    "0x43a9ff",
+    "0x43aa29",
+    "0x43ad59",
+    "0x43ad86",
+    "0x43adb0",
+    "0x43adda",
+    "0x43ae04",
+    "0x43b1dc",
+    "0x43b209",
+    "0x43b233",
+    "0x43b25d",
+    "0x43b287",
+    "0x43b2b4"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x43e530",
+   "getname_calls": [
+    "0x43e547"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x444570",
+   "getname_calls": [
+    "0x4446a1",
+    "0x44486a",
+    "0x4449a1"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4449e0",
+   "getname_calls": [
+    "0x444b08"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x447b60",
+   "getname_calls": [
+    "0x447bbe",
+    "0x447bf1",
+    "0x447e34",
+    "0x447f0c",
+    "0x447f6f"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x447fe0",
+   "getname_calls": [
+    "0x448112",
+    "0x448150",
+    "0x448233",
+    "0x448355",
+    "0x4483a3",
+    "0x448478"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4485c0",
+   "getname_calls": [
+    "0x448606",
+    "0x4486bd",
+    "0x4487a1",
+    "0x4487f6"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x448860",
+   "getname_calls": [
+    "0x448bbf"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x448ca0",
+   "getname_calls": [
+    "0x448d02",
+    "0x448d21"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x448e40",
+   "getname_calls": [
+    "0x448f99"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x449200",
+   "getname_calls": [
+    "0x4492cd"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4494a0",
+   "getname_calls": [
+    "0x449569"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x449a80",
+   "getname_calls": [
+    "0x449ae4"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x44e330",
+   "getname_calls": [
+    "0x44e3bc"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x44e5d0",
+   "getname_calls": [
+    "0x44e65e"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x44ec10",
+   "getname_calls": [
+    "0x44eee8"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x44f760",
+   "getname_calls": [
+    "0x44f8c7",
+    "0x44f8f6",
+    "0x44faa1"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x44fb80",
+   "getname_calls": [
+    "0x44fc0b"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x450510",
+   "getname_calls": [
+    "0x4505aa"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x453390",
+   "getname_calls": [
+    "0x453641"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x453e50",
+   "getname_calls": [
+    "0x453ff4",
+    "0x454025",
+    "0x454259",
+    "0x454434",
+    "0x454531"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x454bc0",
+   "getname_calls": [
+    "0x454dfb"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x455ae0",
+   "getname_calls": [
+    "0x455ea1",
+    "0x45608c",
+    "0x456371",
+    "0x45650f",
+    "0x456706"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x457700",
+   "getname_calls": [
+    "0x4577ea"
+   ],
+   "sinks": [
+    {
+     "va": "0x457985",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "assault"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x4579f0",
+   "getname_calls": [
+    "0x457c45",
+    "0x457da8",
+    "0x457e2c"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x458150",
+   "getname_calls": [
+    "0x458233"
+   ],
+   "sinks": [
+    {
+     "va": "0x4582f6",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "invite"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x458360",
+   "getname_calls": [
+    "0x4583e3",
+    "0x4584a0",
+    "0x458560",
+    "0x4585fe"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x458da0",
+   "getname_calls": [
+    "0x458e74"
+   ],
+   "sinks": [
+    {
+     "va": "0x459005",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "steal"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x459320",
+   "getname_calls": [
+    "0x45940a"
+   ],
+   "sinks": [
+    {
+     "va": "0x4595a5",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "talk-b"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x459610",
+   "getname_calls": [
+    "0x4596c2",
+    "0x459740",
+    "0x459875"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x45e8d0",
+   "getname_calls": [
+    "0x45ea3b"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4605c0",
+   "getname_calls": [
+    "0x460648"
+   ],
+   "sinks": [
+    {
+     "va": "0x460680",
+     "api": "SetDlgItemText"
+    },
+    {
+     "va": "0x460730",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "list-pair-b"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x461600",
+   "getname_calls": [
+    "0x4616ca"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x464e10",
+   "getname_calls": [
+    "0x464eb4",
+    "0x464f15"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x465010",
+   "getname_calls": [
+    "0x465036"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4687b0",
+   "getname_calls": [
+    "0x468a4d"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x469080",
+   "getname_calls": [
+    "0x469227",
+    "0x469313",
+    "0x469453",
+    "0x4695ec"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x469690",
+   "getname_calls": [
+    "0x469837",
+    "0x46993e"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x46cc50",
+   "getname_calls": [
+    "0x46cc78"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x46e690",
+   "getname_calls": [
+    "0x46e6e0"
+   ],
+   "sinks": [
+    {
+     "va": "0x46e73a",
+     "api": "SendDlgItemMessage",
+     "message": "CB_INSERTSTRING",
+     "roles": [],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x470140",
+   "getname_calls": [
+    "0x4701c8"
+   ],
+   "sinks": [
+    {
+     "va": "0x470200",
+     "api": "SetDlgItemText"
+    },
+    {
+     "va": "0x4702b0",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "list-pair-a"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x470370",
+   "getname_calls": [
+    "0x4703d8"
+   ],
+   "sinks": [
+    {
+     "va": "0x470410",
+     "api": "SetDlgItemText"
+    },
+    {
+     "va": "0x4704c0",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "list-pair-a"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x470a10",
+   "getname_calls": [
+    "0x470c3c",
+    "0x470c5a",
+    "0x470d8b",
+    "0x470da9"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4734a0",
+   "getname_calls": [
+    "0x473588"
+   ],
+   "sinks": [
+    {
+     "va": "0x4735f6",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "education"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x474d30",
+   "getname_calls": [
+    "0x474e3f"
+   ],
+   "sinks": [
+    {
+     "va": "0x474ead",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x474f10",
+   "getname_calls": [
+    "0x474fbe",
+    "0x475079"
+   ],
+   "sinks": [
+    {
+     "va": "0x47502c",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "dialog-388",
+      "party"
+     ],
+     "retargeted_by_m061b": false
+    },
+    {
+     "va": "0x4750bb",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "dialog-388",
+      "party"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x475170",
+   "getname_calls": [
+    "0x475378"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4759f0",
+   "getname_calls": [
+    "0x475b1a",
+    "0x475b50"
+   ],
+   "sinks": [
+    {
+     "va": "0x475bbe",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "proposal"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x476ea0",
+   "getname_calls": [
+    "0x477017",
+    "0x477092",
+    "0x477134",
+    "0x477229"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x477370",
+   "getname_calls": [
+    "0x47758f",
+    "0x4775b5",
+    "0x477659"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x477810",
+   "getname_calls": [
+    "0x47792e",
+    "0x477a05",
+    "0x477a2e",
+    "0x477ce7",
+    "0x477dbe",
+    "0x477de7"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x47c190",
+   "getname_calls": [
+    "0x47c200"
+   ],
+   "sinks": [
+    {
+     "va": "0x47c242",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "item-page"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x47d320",
+   "getname_calls": [
+    "0x47d377"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x47dac0",
+   "getname_calls": [
+    "0x47db10"
+   ],
+   "sinks": [
+    {
+     "va": "0x47db6a",
+     "api": "SendDlgItemMessage",
+     "message": "CB_INSERTSTRING",
+     "roles": [],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x481c90",
+   "getname_calls": [
+    "0x481d00"
+   ],
+   "sinks": [
+    {
+     "va": "0x481d42",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "item-page-b"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x4828b0",
+   "getname_calls": [
+    "0x482907"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x484500",
+   "getname_calls": [
+    "0x4846cd"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x48a330",
+   "getname_calls": [
+    "0x48a3be"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x48c910",
+   "getname_calls": [
+    "0x48cf7c",
+    "0x48d280"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x48d2d0",
+   "getname_calls": [
+    "0x48d54c",
+    "0x48d817"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x48d9a0",
+   "getname_calls": [
+    "0x48da91"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x48f220",
+   "getname_calls": [
+    "0x48f3e1"
+   ],
+   "sinks": [
+    {
+     "va": "0x48f464",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x48f5b5",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x48f5ef",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    }
+   ]
+  },
+  {
+   "function": "0x4937d0",
+   "getname_calls": [
+    "0x493807"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x496f20",
+   "getname_calls": [
+    "0x497079"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4978d0",
+   "getname_calls": [
+    "0x4979df"
+   ],
+   "sinks": [
+    {
+     "va": "0x49793d",
+     "api": "SendDlgItemMessage",
+     "message": null,
+     "roles": null,
+     "retargeted_by_m061b": false
+    },
+    {
+     "va": "0x497a20",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "dialog-170"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x497a90",
+   "getname_calls": [
+    "0x497c8a",
+    "0x497e15",
+    "0x497f96",
+    "0x498046",
+    "0x49813f",
+    "0x4981b9",
+    "0x498226"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x49e7b0",
+   "getname_calls": [
+    "0x49e896"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x49e980",
+   "getname_calls": [
+    "0x49ea18"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x49ea70",
+   "getname_calls": [
+    "0x49eb70",
+    "0x49ec19"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x49eda0",
+   "getname_calls": [
+    "0x49ee7a"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x49f9c0",
+   "getname_calls": [
+    "0x49fdbd",
+    "0x49ff44",
+    "0x4a001c",
+    "0x4a00f4",
+    "0x4a0224",
+    "0x4a030a",
+    "0x4a0337",
+    "0x4a0695",
+    "0x4a0868",
+    "0x4a0956",
+    "0x4a09c1",
+    "0x4a0cb4",
+    "0x4a0e25",
+    "0x4a10ab"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4a1ba0",
+   "getname_calls": [
+    "0x4a1d51",
+    "0x4a1e35",
+    "0x4a1ed5"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4a3710",
+   "getname_calls": [
+    "0x4a37bb"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4a38a0",
+   "getname_calls": [
+    "0x4a3908",
+    "0x4a3a2b"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4a3b10",
+   "getname_calls": [
+    "0x4a3c5a"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4a4720",
+   "getname_calls": [
+    "0x4a4999",
+    "0x4a4ba7",
+    "0x4a4e01",
+    "0x4a4f10"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4a4fe0",
+   "getname_calls": [
+    "0x4a5315",
+    "0x4a54fa",
+    "0x4a5693"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4abaa0",
+   "getname_calls": [
+    "0x4abbd0"
+   ],
+   "sinks": [
+    {
+     "va": "0x4abaf6",
+     "api": "SendDlgItemMessage",
+     "message": null,
+     "roles": null,
+     "retargeted_by_m061b": false
+    },
+    {
+     "va": "0x4abb11",
+     "api": "SendDlgItemMessage",
+     "message": null,
+     "roles": null,
+     "retargeted_by_m061b": false
+    },
+    {
+     "va": "0x4abcab",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "revive"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x4adbe0",
+   "getname_calls": [
+    "0x4adf31"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4ae240",
+   "getname_calls": [
+    "0x4ae516",
+    "0x4ae665",
+    "0x4ae79a"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4afd20",
+   "getname_calls": [
+    "0x4afdf6"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4b02a0",
+   "getname_calls": [
+    "0x4b04d1",
+    "0x4b0595",
+    "0x4b0609"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4b2b10",
+   "getname_calls": [
+    "0x4b2c99"
+   ],
+   "sinks": [
+    {
+     "va": "0x4b2d1f",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "tavern"
+     ],
+     "retargeted_by_m061b": true
+    }
+   ]
+  },
+  {
+   "function": "0x4b7090",
+   "getname_calls": [
+    "0x4b70ee",
+    "0x4b714d"
+   ],
+   "sinks": [
+    {
+     "va": "0x4b71c2",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "item-page-c"
+     ],
+     "retargeted_by_m061b": false
+    },
+    {
+     "va": "0x4b71fd",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "item-page-c"
+     ],
+     "retargeted_by_m061b": false
+    },
+    {
+     "va": "0x4b7238",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "item-page-c"
+     ],
+     "retargeted_by_m061b": false
+    },
+    {
+     "va": "0x4b7273",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "item-page-c"
+     ],
+     "retargeted_by_m061b": false
+    },
+    {
+     "va": "0x4b72ae",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "item-page-c"
+     ],
+     "retargeted_by_m061b": false
+    },
+    {
+     "va": "0x4b72e9",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "item-page-c"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x4b92d0",
+   "getname_calls": [
+    "0x4b936d"
+   ],
+   "sinks": [
+    {
+     "va": "0x4b9580",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4b9597",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4b95dc",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4b95ee",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4b960f",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4b9621",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    }
+   ]
+  },
+  {
+   "function": "0x4c0550",
+   "getname_calls": [
+    "0x4c09cd",
+    "0x4c0aaa"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4c2f30",
+   "getname_calls": [
+    "0x4c32b0"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4c3410",
+   "getname_calls": [
+    "0x4c350b"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4c3c20",
+   "getname_calls": [
+    "0x4c3c90",
+    "0x4c3ca5"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4c42a0",
+   "getname_calls": [
+    "0x4c4317",
+    "0x4c432f"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4c4550",
+   "getname_calls": [
+    "0x4c4fb0"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4c5270",
+   "getname_calls": [
+    "0x4c5477"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4c5980",
+   "getname_calls": [
+    "0x4c59e4"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4c78b0",
+   "getname_calls": [
+    "0x4c7e45"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4c9400",
+   "getname_calls": [
+    "0x4c9590"
+   ],
+   "sinks": []
+  },
+  {
+   "function": "0x4cb400",
+   "getname_calls": [
+    "0x4cb470"
+   ],
+   "sinks": [
+    {
+     "va": "0x4cb4b2",
+     "api": "SendDlgItemMessage",
+     "message": "LB_INSERTSTRING",
+     "roles": [
+      "item-arrange"
+     ],
+     "retargeted_by_m061b": false
+    }
+   ]
+  },
+  {
+   "function": "0x4d7320",
+   "getname_calls": [
+    "0x4d7366"
+   ],
+   "sinks": [
+    {
+     "va": "0x4d737a",
+     "api": "SetWindowText"
+    },
+    {
+     "va": "0x4d73c1",
+     "api": "SetWindowText"
+    }
+   ]
+  },
+  {
+   "function": "0x4d77a0",
+   "getname_calls": [
+    "0x4d78bc",
+    "0x4d9268",
+    "0x4d9435"
+   ],
+   "sinks": [
+    {
+     "va": "0x4d79dd",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d79f0",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d7f41",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d7f5b",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d7f75",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d7f8f",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d7fac",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d7fe6",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d8003",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d8020",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d803d",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d8073",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d808a",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d80af",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d80c9",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d80e3",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d80fd",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d811a",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d8137",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d8154",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d818e",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d81ab",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d81df",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d81f6",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d87ac",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d87c6",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d87dc",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d87f6",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d884d",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d8867",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d887d",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d8897",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9619",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9633",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d964d",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9667",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9681",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d969b",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d96d5",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d96ef",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d970c",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9729",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9749",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9777",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9797",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d97d1",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d97eb",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9805",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d981f",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9839",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9853",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d986d",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d98a7",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d98c4",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d98e1",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9901",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9932",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9952",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9c43",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4d9c60",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    }
+   ]
+  },
+  {
+   "function": "0x4db810",
+   "getname_calls": [
+    "0x4db869"
+   ],
+   "sinks": [
+    {
+     "va": "0x4db87d",
+     "api": "SetWindowText"
+    },
+    {
+     "va": "0x4db8c5",
+     "api": "SetWindowText"
+    }
+   ]
+  },
+  {
+   "function": "0x4dbcb0",
+   "getname_calls": [
+    "0x4dbdd8"
+   ],
+   "sinks": [
+    {
+     "va": "0x4dbefc",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dbf0f",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc47e",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc498",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc4b2",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc4cc",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc4e9",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc523",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc540",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc55d",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc57a",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc5b0",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc5c7",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc5ec",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc606",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc620",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc63a",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc657",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc674",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc691",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc6cb",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc6e8",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dc71c",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    }
+   ]
+  },
+  {
+   "function": "0x4dc720",
+   "getname_calls": [
+    "0x4dd7fc",
+    "0x4dd9db"
+   ],
+   "sinks": [
+    {
+     "va": "0x4dc733",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dcd01",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dcd1b",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dcd31",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dcd4b",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dcda2",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dcdbc",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dcdd2",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dcdec",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddbc9",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddbe3",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddbfd",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddc17",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddc31",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddc4b",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddc85",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddc9f",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddcbc",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddcd9",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddcf9",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddd27",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddd47",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddd81",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddd9b",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dddb5",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dddcf",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddde9",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dde03",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dde1d",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dde57",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dde74",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4dde91",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddeb1",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddee2",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4ddf02",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4de204",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    },
+    {
+     "va": "0x4de221",
+     "api": "CDC::TextOut(vtable+0x5c)",
+     "hooked_by_namepair": false
+    }
+   ]
+  }
+ ],
+ "production_can_apply": false
+}

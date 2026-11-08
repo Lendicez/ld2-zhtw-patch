@@ -1,0 +1,285 @@
+{
+ "milestone": "m062",
+ "production_can_apply": false,
+ "release_approved": false,
+ "note": "Counts only; no source text. Lab inputs: pristine EXE + Mina draft (hash below).",
+ "draft_sha256": "477edfbaa16fb8ca74672fcec8006986fbd90f49dae7bd89fc95702454e14ec1",
+ "m051_catalog_sha256": "afe520f3826804e49029177fcf4aabfc933d0152d495b55fa269436b21403147",
+ "rows_by_category": {
+  "weapon": 110,
+  "armor": 88,
+  "tool": 209,
+  "consumable": 649,
+  "adventurer": 1400
+ },
+ "rows_after_dedupe": 2343,
+ "rows_by_kind": {
+  "full_id": 1056,
+  "prefix": 350,
+  "suffix": 355,
+  "full_any": 582
+ },
+ "v1_capacity": 264,
+ "v1_fits": false,
+ "v3_bytes": 87628,
+ "v3_sha256": "69f86cdce7a16edd172f1889b5b6892c68ee6cae30f5050075960764bb3796bb",
+ "v3_vs_v1_row_table_bytes": 1387056,
+ "male_join": {
+  "combinations": 40000,
+  "join_ok": 39966,
+  "exact_row_wins": 8,
+  "exact_row_wins_different_text": 8,
+  "join_ambiguous_or_missing": 26,
+  "distinct_full_strings": 32129,
+  "full_strings_with_conflicting_translations": 6,
+  "max_joined_utf16_units": 7
+ },
+ "review": [
+  {
+   "region": "western",
+   "first": 5,
+   "second": 23,
+   "reason": "exact_row_wins",
+   "join_text": "馬魯",
+   "shown_text": "瑪兒"
+  },
+  {
+   "region": "western",
+   "first": 5,
+   "second": 91,
+   "reason": "exact_row_wins",
+   "join_text": "馬魯",
+   "shown_text": "瑪兒"
+  },
+  {
+   "region": "western",
+   "first": 12,
+   "second": 48,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "阿爾頓"
+  },
+  {
+   "region": "western",
+   "first": 13,
+   "second": 23,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "菲羅魯"
+  },
+  {
+   "region": "western",
+   "first": 13,
+   "second": 91,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "菲羅魯"
+  },
+  {
+   "region": "western",
+   "first": 14,
+   "second": 45,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "菲羅爾"
+  },
+  {
+   "region": "western",
+   "first": 16,
+   "second": 23,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "迪奧魯"
+  },
+  {
+   "region": "western",
+   "first": 16,
+   "second": 91,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "迪奧魯"
+  },
+  {
+   "region": "western",
+   "first": 22,
+   "second": 24,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "迪奧爾"
+  },
+  {
+   "region": "western",
+   "first": 22,
+   "second": 32,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "迪翁"
+  },
+  {
+   "region": "western",
+   "first": 22,
+   "second": 33,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "迪奧爾"
+  },
+  {
+   "region": "western",
+   "first": 22,
+   "second": 34,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "迪里爾"
+  },
+  {
+   "region": "western",
+   "first": 47,
+   "second": 23,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "迪里魯"
+  },
+  {
+   "region": "western",
+   "first": 47,
+   "second": 91,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "迪里魯"
+  },
+  {
+   "region": "western",
+   "first": 81,
+   "second": 48,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "阿爾頓"
+  },
+  {
+   "region": "arabic",
+   "first": 0,
+   "second": 13,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "姆哈德魯"
+  },
+  {
+   "region": "arabic",
+   "first": 11,
+   "second": 6,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "法拉爾"
+  },
+  {
+   "region": "arabic",
+   "first": 11,
+   "second": 30,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "法伊爾"
+  },
+  {
+   "region": "arabic",
+   "first": 16,
+   "second": 13,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "夏哈魯"
+  },
+  {
+   "region": "arabic",
+   "first": 18,
+   "second": 13,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "法伊魯"
+  },
+  {
+   "region": "arabic",
+   "first": 33,
+   "second": 13,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "法里魯"
+  },
+  {
+   "region": "arabic",
+   "first": 54,
+   "second": 13,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "阿布杜魯"
+  },
+  {
+   "region": "arabic",
+   "first": 55,
+   "second": 2,
+   "reason": "exact_row_wins",
+   "join_text": "伊斯汗",
+   "shown_text": "伊絲涵"
+  },
+  {
+   "region": "arabic",
+   "first": 55,
+   "second": 68,
+   "reason": "exact_row_wins",
+   "join_text": "伊斯汗",
+   "shown_text": "伊絲涵"
+  },
+  {
+   "region": "arabic",
+   "first": 65,
+   "second": 13,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "法拉魯"
+  },
+  {
+   "region": "arabic",
+   "first": 65,
+   "second": 67,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "法拉恩"
+  },
+  {
+   "region": "arabic",
+   "first": 67,
+   "second": 67,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "法特恩"
+  },
+  {
+   "region": "arabic",
+   "first": 74,
+   "second": 13,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "卡里德魯"
+  },
+  {
+   "region": "arabic",
+   "first": 96,
+   "second": 2,
+   "reason": "exact_row_wins",
+   "join_text": "夏汗",
+   "shown_text": "莎涵"
+  },
+  {
+   "region": "arabic",
+   "first": 96,
+   "second": 9,
+   "reason": "exact_row_wins",
+   "join_text": "夏曼",
+   "shown_text": "莎曼"
+  },
+  {
+   "region": "arabic",
+   "first": 96,
+   "second": 29,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "夏哈爾"
+  },
+  {
+   "region": "arabic",
+   "first": 96,
+   "second": 68,
+   "reason": "exact_row_wins",
+   "join_text": "夏汗",
+   "shown_text": "莎涵"
+  },
+  {
+   "region": "arabic",
+   "first": 96,
+   "second": 77,
+   "reason": "exact_row_wins",
+   "join_text": "夏曼",
+   "shown_text": "莎曼"
+  },
+  {
+   "region": "arabic",
+   "first": 96,
+   "second": 78,
+   "reason": "ambiguous_split_falls_back_to_original",
+   "join_text": "夏哈爾"
+  }
+ ]
+}

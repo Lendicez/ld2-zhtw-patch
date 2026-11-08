@@ -1,0 +1,21 @@
+{
+  "ts": "2026-11-03T01:18:04.079348+08:00",
+  "title": "Passage of The Book",
+  "disposable_root": "C:\\GameDev\\LD2\\zhTW_lab\\game-acceptance\\m063d-v4-enable",
+  "original_install": "C:\\GameDev\\LD2\\LunaticDawnPotB",
+  "writes_original": false,
+  "hwnd_found": true,
+  "ok": true,
+  "box": [
+    -8,
+    -8,
+    2568,
+    1400
+  ],
+  "png": "C:\\GameDev\\LD2\\zhTW_lab\\game-acceptance\\m063d-v4-enable\\evidence\\screens\\auto-smoke-20261103-011804.png",
+  "png_sha256": "44a1800632c20ea514d151203c5257b4ff3009d2a97e686cca1a8e4a9a0a109e",
+  "size": [
+    2576,
+    1408
+  ]
+}

@@ -1,0 +1,62 @@
+# list-mock-v4 (stdout)
+CASE 1 ascii-original
+CASE 2 mode2-hit-no-flip
+CASE 3 mode2-miss-flip
+CASE 4 mode2-already-unicode
+CASE 5 mode2-subclassed-no-flip
+CASE 6 mode2-proc-zero-no-flip
+CASE 7 mode2-no-child
+CASE 8 mode2-flip-ineffective-still-run1-path
+CASE 9 mode2-combo-no-flip
+CASE 10 mode2-mixed-flip
+CASE 11 mode2-decode-fail-original
+CASE 12 mode0-hit-w
+CASE 13 mode0-miss-original
+CASE 14 mode0-mixed-original
+CASE 15 mode1-miss-w-no-flip
+CASE 16 mode3-disabled
+CASE 17 mode-ffffffff-disabled
+CASE 18 null-binding-original
+CASE 19 ctrl-site-original
+CASE 20 wrong-message-original
+CASE 21 null-wnd-original
+CASE 22 v3-mode0-female-any-hit-w
+CASE 23 v3-mode0-male-join-hit-w
+CASE 24 v3-mode0-ambiguous-join-original
+CASE 25 v3-mode2-ambiguous-join-decoded
+CASE 26 v3-mode0-tab-row-all-hits-w
+CASE 27 v3-corrupt-blob-original
+CASE 28 v3-bad-row-text-original
+CASE 29 abi-loop
+CASE 30 v4-item-kris-item-text
+CASE 31 v4-name-kris-female-text
+CASE 32 v4-item-halb-item-text
+CASE 33 v4-name-halb-join
+CASE 34 v4-item-same-region-split-hit
+CASE 35 v4-item-cross-region-original
+CASE 36 v4-item-female-hit
+CASE 37 v4-item-male-hit
+CASE 38 v4-item-ambiguous-original
+CASE 39 v4-item-v3-header-original
+CASE 40 v4-item-bad-region-original
+CASE 41 v4-name-same-region-split-hit
+CASE 42 v4-name-cross-region-original
+CASE 43 v4-name-female-hit
+CASE 44 v4-name-male-hit
+CASE 45 v4-name-ambiguous-original
+CASE 46 v4-name-v3-header-original
+CASE 47 v4-name-bad-region-original
+CASE 48 v4-name-item-segment-miss-mode0
+CASE 49 v4-name-item-segment-decoded-mode2
+CASE 50 v4-name-row-mix-mode0-original
+CASE 51 v4-name-row-all-names-w
+CASE 52 v4-item-row-names-w
+CASE 53 v4-name-guards-original
+CASE 54 v4-entry-alternation-abi-loop
+cases=54 assertions=2301 failed=0 game_or_user32_called=false
+
+# textout-mock-v4 (stdout last line)
+{"cases":36,"assertions":13431,"failed":0,"normal_abi_iterations":1000,"entry":"@LD2_NameTextOut@24","flags":"ALLOW_ANY|ALLOW_JOIN|NAME_ONLY","catalog_version":4,"game_or_gdi_called":false}
+
+# name-mock-v4 (stdout last line)
+{"cases":45,"assertions":25959,"failed":0,"normal_abi_iterations":1000,"pointer_bytes":4,"wide_bytes":2,"four_parameter_helper":true,"flags":0,"catalog_version":4,"game_or_gdi_called":false}

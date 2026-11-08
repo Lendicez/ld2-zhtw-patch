@@ -1,0 +1,290 @@
+{
+  "milestone": "m063b",
+  "stage": "linux-static-audit-of-msvc-return",
+  "date": "2026-10-31 (Asia/Taipei)",
+  "return_zip_sha256": "c1534129eb327b4c8f002bcc8f1269913dca52c2052ff5500a3d5e98fd569727",
+  "tools": [
+    "research/m063/rehearse_v4_objs.py --list-obj/--textout-obj/--name-obj (audit_list_obj_v4 both entries, audit_name_textout full CFG, audit_name_pair_v3 full CFG)"
+  ],
+  "objects": {
+    "name_pair_v4": {
+      "object_sha256": "bf33cfc674f28fd6f8bb069d76176f45d1309a8ab3198f068fc31c3ed87792e6",
+      "object_bytes": 7006
+    },
+    "list_insert_v4": {
+      "object_sha256": "cb74d585c9936f41debc831c863e1eb91dd652770ba4911660e16dd4e3c72b35",
+      "object_bytes": 9629
+    },
+    "name_textout_v4": {
+      "object_sha256": "76d0adb7cecc82e54c1e0543a2d5f8b932f3b2d9f82a255ac6941390385cc0f6",
+      "object_bytes": 6631
+    }
+  },
+  "objects_committed": false,
+  "rehearse_v4_objs": {
+    "rehearsal": false,
+    "compiler": "MSVC (returned objects)",
+    "production_object": false,
+    "may_pin": false,
+    "production_can_apply": false,
+    "list_insert_v4": {
+      "entries": {
+        "@LD2_ListInsertV4@24": {
+          "normal_returns": 19,
+          "normal_cfg_states": 1485,
+          "internal_callees_audited": [
+            "?LD2C4_Lookup@@YAIPBULD2C4View@@PBEIHIPCGI@Z",
+            "?LD2_ListPrepareV4@@YAHIPBEPBULD2C4View@@P6AH0HPAGH@ZI2PAH@Z",
+            "?ld2_make_unicode@@YAXPAXH@Z",
+            "?ld2c4_cmp@@YAHPBULD2C4View@@IIPBEI@Z",
+            "?ld2c4_find@@YAHPBULD2C4View@@IPBEIHIPAPBEPAIPAH@Z",
+            "?ld2c4_open@@YAHPBEIPAULD2C4View@@@Z",
+            "?ld2c4_u32@@YAIPBE@Z"
+          ],
+          "calls": [
+            "?LD2C4_Lookup@@YAIPBULD2C4View@@PBEIHIPCGI@Z",
+            "?LD2_ListPrepareV4@@YAHIPBEPBULD2C4View@@P6AH0HPAGH@ZI2PAH@Z",
+            "?ld2_make_unicode@@YAXPAXH@Z",
+            "?ld2c4_cmp@@YAHPBULD2C4View@@IIPBEI@Z",
+            "?ld2c4_find@@YAHPBULD2C4View@@IPBEIHIPAPBEPAIPAH@Z",
+            "?ld2c4_open@@YAHPBEIPAULD2C4View@@@Z",
+            "?ld2c4_u32@@YAIPBE@Z",
+            "@__security_check_cookie@4",
+            "_LD2_GetClassLongW",
+            "_LD2_GetDlgItem",
+            "_LD2_GetWindowLongW",
+            "_LD2_IsWindowUnicode",
+            "_LD2_MultiByteToWideChar",
+            "_LD2_OriginalDlgItem",
+            "_LD2_SendDlgItemMessageW",
+            "_LD2_SetWindowLongW"
+          ],
+          "binding_spills": [
+            [
+              "0x1115",
+              "dword ptr [ebp - 0x214]",
+              "_LD2_ListMode"
+            ],
+            [
+              "0x1159",
+              "dword ptr [ebp - 0x20c]",
+              "_LD2_OriginalDlgItem"
+            ]
+          ],
+          "frame_leas_while_spilled": [
+            [
+              "0x11a8",
+              "eax, [ebp - 0x228]",
+              "dword ptr [ebp - 0x20c]"
+            ],
+            [
+              "0x11a8",
+              "eax, [ebp - 0x228]",
+              "dword ptr [ebp - 0x214]"
+            ],
+            [
+              "0x11f0",
+              "eax, [ebp - 0x20c]",
+              "dword ptr [ebp - 0x214]"
+            ],
+            [
+              "0x1201",
+              "eax, [ebp - 0x208]",
+              "dword ptr [ebp - 0x214]"
+            ],
+            [
+              "0x120c",
+              "eax, [ebp - 0x228]",
+              "dword ptr [ebp - 0x214]"
+            ],
+            [
+              "0x1289",
+              "eax, [ebp - 0x208]",
+              "dword ptr [ebp - 0x214]"
+            ],
+            [
+              "0x129e",
+              "eax, [ebp - 0x208]",
+              "dword ptr [ebp - 0x214]"
+            ]
+          ],
+          "ret_pop": 16,
+          "cookie_noreturn_tails": [],
+          "esp_and_nonvolatile_preserved_on_normal_paths": true
+        },
+        "@LD2_ListInsertNameV4@24": {
+          "normal_returns": 19,
+          "normal_cfg_states": 1485,
+          "internal_callees_audited": [
+            "?LD2C4_Lookup@@YAIPBULD2C4View@@PBEIHIPCGI@Z",
+            "?LD2_ListPrepareV4@@YAHIPBEPBULD2C4View@@P6AH0HPAGH@ZI2PAH@Z",
+            "?ld2_make_unicode@@YAXPAXH@Z",
+            "?ld2c4_cmp@@YAHPBULD2C4View@@IIPBEI@Z",
+            "?ld2c4_find@@YAHPBULD2C4View@@IPBEIHIPAPBEPAIPAH@Z",
+            "?ld2c4_open@@YAHPBEIPAULD2C4View@@@Z",
+            "?ld2c4_u32@@YAIPBE@Z"
+          ],
+          "calls": [
+            "?LD2C4_Lookup@@YAIPBULD2C4View@@PBEIHIPCGI@Z",
+            "?LD2_ListPrepareV4@@YAHIPBEPBULD2C4View@@P6AH0HPAGH@ZI2PAH@Z",
+            "?ld2_make_unicode@@YAXPAXH@Z",
+            "?ld2c4_cmp@@YAHPBULD2C4View@@IIPBEI@Z",
+            "?ld2c4_find@@YAHPBULD2C4View@@IPBEIHIPAPBEPAIPAH@Z",
+            "?ld2c4_open@@YAHPBEIPAULD2C4View@@@Z",
+            "?ld2c4_u32@@YAIPBE@Z",
+            "@__security_check_cookie@4",
+            "_LD2_GetClassLongW",
+            "_LD2_GetDlgItem",
+            "_LD2_GetWindowLongW",
+            "_LD2_IsWindowUnicode",
+            "_LD2_MultiByteToWideChar",
+            "_LD2_OriginalDlgItem",
+            "_LD2_SendDlgItemMessageW",
+            "_LD2_SetWindowLongW"
+          ],
+          "binding_spills": [
+            [
+              "0xef5",
+              "dword ptr [ebp - 0x214]",
+              "_LD2_ListMode"
+            ],
+            [
+              "0xf39",
+              "dword ptr [ebp - 0x20c]",
+              "_LD2_OriginalDlgItem"
+            ]
+          ],
+          "frame_leas_while_spilled": [
+            [
+              "0x1069",
+              "eax, [ebp - 0x208]",
+              "dword ptr [ebp - 0x214]"
+            ],
+            [
+              "0x107e",
+              "eax, [ebp - 0x208]",
+              "dword ptr [ebp - 0x214]"
+            ],
+            [
+              "0xf88",
+              "eax, [ebp - 0x228]",
+              "dword ptr [ebp - 0x20c]"
+            ],
+            [
+              "0xf88",
+              "eax, [ebp - 0x228]",
+              "dword ptr [ebp - 0x214]"
+            ],
+            [
+              "0xfd0",
+              "eax, [ebp - 0x20c]",
+              "dword ptr [ebp - 0x214]"
+            ],
+            [
+              "0xfe1",
+              "eax, [ebp - 0x208]",
+              "dword ptr [ebp - 0x214]"
+            ],
+            [
+              "0xfec",
+              "eax, [ebp - 0x228]",
+              "dword ptr [ebp - 0x214]"
+            ]
+          ],
+          "ret_pop": 16,
+          "cookie_noreturn_tails": [],
+          "esp_and_nonvolatile_preserved_on_normal_paths": true
+        }
+      },
+      "undefined": [
+        "@__security_check_cookie@4",
+        "_LD2_Catalog",
+        "_LD2_CatalogBytes",
+        "_LD2_GetClassLongW",
+        "_LD2_GetDlgItem",
+        "_LD2_GetWindowLongW",
+        "_LD2_IsWindowUnicode",
+        "_LD2_ListMode",
+        "_LD2_MultiByteToWideChar",
+        "_LD2_OriginalDlgItem",
+        "_LD2_SendDlgItemMessageW",
+        "_LD2_SetWindowLongW",
+        "___security_cookie"
+      ],
+      "public": [
+        "@LD2_ListInsertNameV4@24",
+        "@LD2_ListInsertV4@24"
+      ],
+      "rehearsal_sha256": "cb74d585c9936f41debc831c863e1eb91dd652770ba4911660e16dd4e3c72b35"
+    },
+    "name_textout_v4": {
+      "public": [
+        "@LD2_NameTextOut@24",
+        "_LD2N_FindCopy@12",
+        "_LD2N_Wipe@8"
+      ],
+      "undefined": [
+        "@__security_check_cookie@4",
+        "_LD2_Catalog",
+        "_LD2_CatalogBytes",
+        "_LD2_ExpectedTextOutA",
+        "_LD2_TextOutW",
+        "___security_cookie"
+      ],
+      "audit": "full_cfg_audit",
+      "rehearsal_sha256": "76d0adb7cecc82e54c1e0543a2d5f8b932f3b2d9f82a255ac6941390385cc0f6"
+    },
+    "name_pair_v4": {
+      "public": [
+        "_LD2_FindCopy@16",
+        "_LD2_LoadMethod@4",
+        "_LD2_NamePair@16",
+        "_LD2_OriginalOne@16",
+        "_LD2_OriginalPair@12",
+        "_LD2_Wipe@8"
+      ],
+      "undefined": [
+        "@__security_check_cookie@4",
+        "_LD2_Catalog",
+        "_LD2_CatalogBytes",
+        "_LD2_ExpectedTextOutA",
+        "_LD2_TextOutW",
+        "___security_cookie"
+      ],
+      "audit": "full_cfg_audit",
+      "rehearsal_sha256": "bf33cfc674f28fd6f8bb069d76176f45d1309a8ab3198f068fc31c3ed87792e6"
+    }
+  },
+  "lab_in_memory_build": {
+    "note": "lab mirror, m051 catalog rows only; in memory, no file written",
+    "rows": 264,
+    "rehearsal": false,
+    "handoff_eligible": true,
+    "blob_sha256": "d8214a95791f98db06a67fccc3710cf5e6b002eb88a0453b4bd8ad65174c1de2",
+    "code_sha256": "0520c1b43a0a51ca2d3732d95c54243edf1004ed5bf37e138677c5f53f8b954c",
+    "code_range": [
+      "0xae3000",
+      "0xae5b40"
+    ],
+    "entry_va": "0xae3aa0",
+    "list_item_entry_va": "0xae4d40",
+    "list_name_entry_va": "0xae4b20",
+    "textout_entry_va": "0xae5900",
+    "enable_counts": {
+      "pair5": 25,
+      "tail8": 1,
+      "list_sites": 18,
+      "list_item": 7,
+      "list_name": 11
+    },
+    "file_written": false
+  },
+  "pinned_in": [
+    "research/m063/rehearse_v4_objs.py",
+    "research/m063/merge_plan_v4.py",
+    "research/m063/test_native_v4.py"
+  ],
+  "production_can_apply": false,
+  "release_approved": false,
+  "game_touched": false
+}

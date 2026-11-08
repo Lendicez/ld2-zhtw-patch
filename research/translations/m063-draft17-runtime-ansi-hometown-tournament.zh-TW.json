@@ -1,0 +1,569 @@
+{
+  "schema_version": 1,
+  "milestone": "m063-draft17-runtime-ansi-hometown-tournament-mina",
+  "source_sha256": "6c817a0978cd9f02b66a7f15e6e46b752e490eaffaa520e18d360d296d40d5d2",
+  "production_can_apply": false,
+  "release_approved": false,
+  "rendering_verified": false,
+  "preview_only": true,
+  "draft_owner": "Mina (translation only; GitHub writes by Mona)",
+  "note": "Candidate runtime ANSI: adventurer hometown templates (F/M) + leftover tournament announcer. site unconfirmed. printf preserved.",
+  "base_doc": "follow-on dynamic CP932 inventory",
+  "item_count": 19,
+  "items": [
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1448968,
+      "file_offset_hex": "0x161c08",
+      "source_bytes_len": 56,
+      "source_name_sha256": "6de03c0453f95f22ed747656ca158c0c4905435da742f358087f992c8bb49e7d",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我成長於「%s」。是能聽見瀑布聲的小村子喔。",
+      "text_cp950_bytes_len": 42,
+      "text_cp950_hex": "a7daa6a8aaf8a9f3a1752573a176a143ac4fafe0c5a5a8a3c272a5acc16eaabaa470a7f8a46cb3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 14,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449028,
+      "file_offset_hex": "0x161c44",
+      "source_bytes_len": 52,
+      "source_name_sha256": "46fbf20916557b1fdc10125f223f2db993354b87fe68d7b2d0ffee0fa6614221",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我的故鄉是「%s」。在被深林覆蓋的島上。",
+      "text_cp950_bytes_len": 38,
+      "text_cp950_hex": "a7daaabaac47b66dac4fa1752573a176a143a662b351b260aa4cc2d0bb5caabaae71a457a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 14,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449088,
+      "file_offset_hex": "0x161c80",
+      "source_bytes_len": 76,
+      "source_name_sha256": "bea74b30a115d7a81a609d5e44f35f8f65811a6d292088d7b76996c5ce1fe2ee",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出身「%s」。草原上的城鎮，秋天蟲鳴迴盪，很美喔。",
+      "text_cp950_bytes_len": 50,
+      "text_cp950_hex": "a7daa558a8ada1752573a176a143aff3adeca457aabaabb0c2eda141aceea4d1c2cebbefb06ac0faa141abdcacfcb3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 26,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449168,
+      "file_offset_hex": "0x161cd0",
+      "source_bytes_len": 70,
+      "source_name_sha256": "0a6e87517e41c6d00c046e5888a28fb33ec7ca609e894b626d258f0bfac39d2f",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我在「%s」長大。大島上的城鎮，自然多又涼爽。",
+      "text_cp950_bytes_len": 44,
+      "text_cp950_hex": "a7daa662a1752573a176aaf8a46aa143a46aae71a457aabaabb0c2eda141a6dbb54da668a453b244b26ea143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 26,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449240,
+      "file_offset_hex": "0x161d18",
+      "source_bytes_len": 62,
+      "source_name_sha256": "500b97721c4fe781fc2944d4f5d5a5003a07aa9af121a9f9010b669d129c3f7d",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我的故鄉是「%s」。鄰鎮很多地方要搭船移動喔。",
+      "text_cp950_bytes_len": 44,
+      "text_cp950_hex": "a7daaabaac47b66dac4fa1752573a176a143be46c2edabdca668a661a4e8ad6eb766b2eeb2beb0cab3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 18,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449304,
+      "file_offset_hex": "0x161d58",
+      "source_bytes_len": 66,
+      "source_name_sha256": "74b7999e3bb39ce095d9610b554552c8dc2955a2d47ee10aea0c47eff330fa8d",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我的出身地是「%s」。能看見許多流星、在山上的城鎮喔。",
+      "text_cp950_bytes_len": 52,
+      "text_cp950_hex": "a7daaabaa558a8ada661ac4fa1752573a176a143afe0acdda8a3b35ca668ac79ac50a142a662a473a457aabaabb0c2edb3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 14,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449452,
+      "file_offset_hex": "0x161dec",
+      "source_bytes_len": 48,
+      "source_name_sha256": "66d1d33e76fb89df8c131eb105c714d96ee1a9366c215b0ccf984dc2e0e97423",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我的出生故鄉是「%s」。非常熱的地方喔。",
+      "text_cp950_bytes_len": 38,
+      "text_cp950_hex": "a7daaabaa558a5cdac47b66dac4fa1752573a176a143ab44b160bcf6aabaa661a4e8b3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 10,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449576,
+      "file_offset_hex": "0x161e68",
+      "source_bytes_len": 64,
+      "source_name_sha256": "b247b0b3db5c5cfa40a42eabb4b288924a9b600e345bd20f24cae9057e4590d0",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出身「%s」。夜裡出海漁船的燈光很美喔。",
+      "text_cp950_bytes_len": 40,
+      "text_cp950_hex": "a7daa558a8ada1752573a176a143a95db8cca558aefcbaaeb2eeaababf4fa5faabdcacfcb3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 24,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449728,
+      "file_offset_hex": "0x161f00",
+      "source_bytes_len": 74,
+      "source_name_sha256": "e9fdc12b9f98c082998c3094fab4ab8deffba26f5b61ec8bde1ff66e51a7682b",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我的故鄉「%s」是很美的城鎮。聽說歷史很悠久。",
+      "text_cp950_bytes_len": 44,
+      "text_cp950_hex": "a7daaabaac47b66da1752573a176ac4fabdcacfcaabaabb0c2eda143c5a5bba1befaa576abdcb179a45ba143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 30,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449804,
+      "file_offset_hex": "0x161f4c",
+      "source_bytes_len": 42,
+      "source_name_sha256": "0f10d1cd02ce2733ede5c0130ddcf92215d4d96fad2675427399ae3374a91a5f",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出身地「%s」被河環繞喔。",
+      "text_cp950_bytes_len": 26,
+      "text_cp950_hex": "a7daa558a8ada661a1752573a176b351aa65c0f4c2b6b3e1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 16,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_f",
+      "file_offset": 1449920,
+      "file_offset_hex": "0x161fc0",
+      "source_bytes_len": 72,
+      "source_name_sha256": "c3fde135cdea041360f2c30390cd02c3f1e7c337507a0551816154c13abe7b00",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出生故鄉「%s」很冷喔。整年都能看到雪。",
+      "text_cp950_bytes_len": 40,
+      "text_cp950_hex": "a7daa558a5cdac47b66da1752573a176abdca74eb3e1a143bee3a67eb3a3afe0acdda8ecb3b7a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 32,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_f"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450164,
+      "file_offset_hex": "0x1620b4",
+      "source_bytes_len": 50,
+      "source_name_sha256": "2170e5e4d0cfc4837889a5fd0983a1b0d9adefcec7b9f90a1edb1489325b5666",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我的故鄉是「%s」。在深林裡的城鎮。",
+      "text_cp950_bytes_len": 34,
+      "text_cp950_hex": "a7daaabaac47b66dac4fa1752573a176a143a662b260aa4cb8ccaabaabb0c2eda143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 16,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450216,
+      "file_offset_hex": "0x1620e8",
+      "source_bytes_len": 72,
+      "source_name_sha256": "573b276d16a83dae9c321840f524079551e2f58a73a6c69754e11d869b6a1de5",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我出身「%s」。草原上的城鎮，有護城河環繞的城。",
+      "text_cp950_bytes_len": 46,
+      "text_cp950_hex": "a7daa558a8ada1752573a176a143aff3adeca457aabaabb0c2eda141a6b3c540abb0aa65c0f4c2b6aabaabb0a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 26,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450348,
+      "file_offset_hex": "0x16216c",
+      "source_bytes_len": 56,
+      "source_name_sha256": "cc9189809fd5385bf9d04deee412012d4c21aeb9f5554732c09e0c5b87717df2",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我的故鄉是「%s」。夾在山與海之間。",
+      "text_cp950_bytes_len": 34,
+      "text_cp950_hex": "a7daaabaac47b66dac4fa1752573a176a143a7a8a662a473bb50aefca4a7b6a1a143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 22,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450408,
+      "file_offset_hex": "0x1621a8",
+      "source_bytes_len": 46,
+      "source_name_sha256": "c74a902c2d1149bfba1d537019ce2fd6c420907c377b9d1d790a91fe86ed8d14",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我的出身地是「%s」。在山頂的城鎮。",
+      "text_cp950_bytes_len": 34,
+      "text_cp950_hex": "a7daaabaa558a8ada661ac4fa1752573a176a143a662a473b3bbaabaabb0c2eda143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 12,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "hometown_m",
+      "file_offset": 1450516,
+      "file_offset_hex": "0x162214",
+      "source_bytes_len": 50,
+      "source_name_sha256": "ce117351a3f01d6c958a89ae494379d90a25cc7a381ea3d552320600a916cf94",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "我的出生故鄉是「%s」。沙漠裡的城鎮。",
+      "text_cp950_bytes_len": 36,
+      "text_cp950_hex": "a7daaabaa558a5cdac47b66dac4fa1752573a176a143a846ba7ab8ccaabaabb0c2eda143",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 14,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "hometown_m"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1508192,
+      "file_offset_hex": "0x170360",
+      "source_bytes_len": 93,
+      "source_name_sha256": "8b1885f03fc3205bc599f52ecf969c733c0a0dd033594032f447a184660cafb5",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "終於只剩一點了！能打到這裡的人不多，真是了不起的挑戰者！",
+      "text_cp950_bytes_len": 56,
+      "text_cp950_hex": "b2d7a9f3a575b3d1a440c249a446a149afe0a5b4a8ecb36fb8ccaabaa448a4a3a668a141af75ac4fa446a4a3b05faabaac44bed4aacca149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 37,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1508352,
+      "file_offset_hex": "0x170400",
+      "source_bytes_len": 105,
+      "source_name_sha256": "ac79e2041e2ed0c8e332410291a5bee571ab80c3d786b6666817fa12526a7ef5",
+      "source_name_contract": {
+        "printf": [],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "終於，終於是最後挑戰！了不起，一路晉級到這裡的人歷來也極少！",
+      "text_cp950_bytes_len": 60,
+      "text_cp950_hex": "b2d7a9f3a141b2d7a9f3ac4fb3ccabe1ac44bed4a149a446a4a3b05fa141a440b8f4aecaafc5a8ecb36fb8ccaabaa448befaa8d3a45db7a5a4d6a149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 45,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    },
+    {
+      "category": "runtime_ansi",
+      "subcategory": "tournament_status",
+      "file_offset": 1509312,
+      "file_offset_hex": "0x1707c0",
+      "source_bytes_len": 97,
+      "source_name_sha256": "3f210e2c986d89a1c86b1569cadc431b1bc3f9333c972aa586166b6451fb551a",
+      "source_name_contract": {
+        "printf": [
+          "%s"
+        ],
+        "indexed": [],
+        "other_percent": 0,
+        "controls": [],
+        "mnemonics": [],
+        "literal_ampersands": 0,
+        "shortcuts": 0
+      },
+      "text_zh_tw": "太丟臉了，%s逃走了！真難看，場內不滿聲四起！",
+      "text_cp950_bytes_len": 44,
+      "text_cp950_hex": "a4d3a5e1c179a446a1412573b06ba8aba446a149af75c3f8acdda141b3f5a4baa4a3baa1c16ea57cb05fa149",
+      "name_cp950_encodable": true,
+      "fits_capacity": true,
+      "capacity_slack_bytes": 53,
+      "review_status": "mona_approved_candidate_pending_site",
+      "translation_method": "curated",
+      "site_binding": "unconfirmed_candidate_adjacent_rdata",
+      "note": "tournament_status"
+    }
+  ],
+  "stripped_fields": [
+    "source_name_ja",
+    "source_name_cp932_hex"
+  ],
+  "mona_approved_candidate": true,
+  "site_binding_confirmed": false,
+  "source_public_copy_sha256": "7f17eb08b341a3518fcf9445f22936f6b89450b18f05131f2fb14519843e4a7e"
+}

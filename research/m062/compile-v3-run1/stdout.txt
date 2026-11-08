@@ -1,0 +1,34 @@
+# list-mock-v3 (stdout)
+CASE 1 ascii-original
+CASE 2 mode2-hit-no-flip
+CASE 3 mode2-miss-flip
+CASE 4 mode2-already-unicode
+CASE 5 mode2-subclassed-no-flip
+CASE 6 mode2-proc-zero-no-flip
+CASE 7 mode2-no-child
+CASE 8 mode2-flip-ineffective-still-run1-path
+CASE 9 mode2-combo-no-flip
+CASE 10 mode2-mixed-flip
+CASE 11 mode2-decode-fail-original
+CASE 12 mode0-hit-w
+CASE 13 mode0-miss-original
+CASE 14 mode0-mixed-original
+CASE 15 mode1-miss-w-no-flip
+CASE 16 mode3-disabled
+CASE 17 mode-ffffffff-disabled
+CASE 18 null-binding-original
+CASE 19 ctrl-site-original
+CASE 20 wrong-message-original
+CASE 21 null-wnd-original
+CASE 22 v3-mode0-female-any-hit-w
+CASE 23 v3-mode0-male-join-hit-w
+CASE 24 v3-mode0-ambiguous-join-original
+CASE 25 v3-mode2-ambiguous-join-decoded
+CASE 26 v3-mode0-tab-row-all-hits-w
+CASE 27 v3-corrupt-blob-original
+CASE 28 v3-bad-row-text-original
+CASE 29 abi-loop
+cases=29 assertions=1164 failed=0 game_or_user32_called=false
+
+# name-mock-v3 (stdout last line)
+{"cases":38,"assertions":25815,"failed":0,"normal_abi_iterations":1000,"pointer_bytes":4,"wide_bytes":2,"four_parameter_helper":true,"game_or_gdi_called":false}

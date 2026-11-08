@@ -1,22 +1,35 @@
-# ld2-zhtw-patch
+# 俠客遊 前途道標 繁體中文化補丁（ld2-zhtw-patch）
 
-《Lunatic Dawn II》（`Ld95.exe`，Steam／本機版）的**繁體中文化補丁**與 Win11 執行調整之開發庫。
+[![release](https://img.shields.io/github/v/release/Lendicez/ld2-zhtw-patch)](https://github.com/Lendicez/ld2-zhtw-patch/releases/latest)
 
-> **目前不是可安裝發行版。** 所有成果仍在 lab（拋棄式遊戲副本）驗證階段；
-> `production_can_apply=false`、`release_approved=false`。本庫不含任何遊戲檔案（EXE、圖檔、存檔）。
+《俠客遊 前途道標》（Lunatic Dawn: Passage of the Book，`Ld95.exe`，Steam 版）的**繁體中文化補丁**開發庫。
 
-## 現況（2026-11）
+## 安裝（玩家）
 
-| 層 | 內容 | 狀態 |
-|---|---|---|
-| 資源文字（選單／對話框） | m020 已審核 239 處 | lab 建置中顯示繁中 |
-| 道具／冒險者名稱 | catalog v4＋NameTextOut／ListInsert／NamePair hook（m063d 啟用版） | 商店、清單、裝備下拉、屬性表分頁顯示繁中 |
-| 執行期 ANSI 字串（`.rdata`／`.data`） | m063 draft7–64＋地名表＋lab 補充：**1107 列原位 Big5**（m064） | 回歸全綠；畫面逐列確認中 |
-| 字型 | 3 處 SHIFTJIS 字型改 CHINESEBIG5（資訊視窗、移動對話框等） | lab |
-| 圖片內嵌文字 | 按鈕 23、狀態面板 8、移動地圖 17 重繪（m064） | lab |
-| 地名 | 49 筆詞彙表，地圖／遊戲文字一致 | 已定案 |
+**最新版 1.0.0**：到 [Releases](https://github.com/Lendicez/ld2-zhtw-patch/releases/latest) 下載 `LD2-zhTW-Patch-1.0.0.exe`，執行後按「安裝」。
 
-開發主線在 **PR #26**（branch `research/m062-catalog-capacity`，Draft）。
+- 對象：Steam 版《俠客遊 前途道標》（Lunatic Dawn: Passage of the Book，`Ld95.exe` 1.0.3.16，sha256 `6c817a09…d5d2`）。其他版本會被拒絕，不做任何修改。
+- 需求：Windows 10／11，「非 Unicode 程式語言」為**中文（繁體，台灣）**（代碼頁 950）。
+- 安裝程式自動尋找 Steam 遊戲資料夾（也可手動選擇），原檔備份到遊戲資料夾的 `_zhTW_backup`；可隨時「解除安裝」還原。**不修改存檔（Usr）與設定檔**。
+- 安裝程式只含差異資料（譯文、修補程式碼、重繪圖片區塊），不含完整遊戲檔，必須搭配合法持有的原版。
+- 安裝程式未簽章，Windows 可能顯示安全性提示；若被系統政策（如「智慧型應用程式控制」）封鎖則無法使用。
+- Steam「驗證遊戲檔案完整性」或遊戲更新會還原原版；重新執行安裝程式即可。
+
+已知限制見 [docs/RELEASE-1.0.0.zh-TW.md](docs/RELEASE-1.0.0.zh-TW.md)。
+
+## 1.0.0 涵蓋範圍
+
+| 層 | 內容 |
+|---|---|
+| 選單／對話框／字串表 | m020 239 處＋其餘 145 處（右鍵選單、彩票／名字輸入等對話框、狀態列與 MFC 訊息） |
+| 執行期文字（`.rdata`／`.data`） | 約 4,900 列原位 Big5：對話、事件、傳聞、委託、商店、戰鬥訊息、UI 標籤、迷宮名、怪物表 512 筆 |
+| 會寫進存檔的名稱 | 道具、角色、稱號、地名：顯示時查 v4 catalog 轉繁中（存檔仍為原格式，可與原版互通） |
+| 顯示後備 | TextOut／DrawText／清單插入／`%A` 展開／視窗標題：未翻到的日文以 Unicode 正確顯示；隨機人名假名音譯為漢字 |
+| 字型 | 遊戲字型改繁中字集＋微軟正黑體（找不到時由 Windows 改用預設繁中字型）；對話框 Microsoft JhengHei |
+| 圖片 | 按鈕 23、狀態面板 8、移動地圖 17、結局 3、國名標籤、啟動畫面 |
+| 說明書 | 遊戲資料夾 HTML 說明書 70 頁（`ld95.chm` 維持原版） |
+
+原始碼以 `main` 為主線；1.0.0 對應標籤 `v1.0.0`。實玩發現未翻譯或亂碼，請到 [Issues](https://github.com/Lendicez/ld2-zhtw-patch/issues) 附截圖與所在畫面回報。
 
 ## 技術路線
 
@@ -39,7 +52,8 @@
 | `src/ld2patch/` | 可攜核心：翻譯合約、catalog、PE 資源、Steam VDF |
 | `patches/` | m020 資源譯文、詞彙、版本 |
 | `research/m060`–`m063` | 觀察紀錄、catalog v3／v4、native helper、啟用交接 |
-| `research/m064/` | `.rdata` 原位配線、BMH 編解碼、地名表、逐列畫面確認（`SITE-LEDGER.json`） |
+| `research/m064/` | `.rdata` 原位配線、顯示後備 hook、BMH 編解碼、怪物表、建置（`build_lab.py`） |
+| `research/release/` | 發行：差分 payload（`make_delta.py`）、安裝程式原始碼（C#）、組裝與自我測試（`make_release.py`） |
 | `research/translations/` | 候選譯文 JSON（只含繁中＋來源雜湊／offset，不含原文全文） |
 | `docs/` | 交接、架構、安裝器規格、驗證缺口 |
 | `tests/`、`tools/check.py` | 單元測試入口 |
@@ -60,7 +74,7 @@ python -B tools/check.py
 - 只上傳原始碼、合成測試資料與文字紀錄；不上傳遊戲 EXE、圖檔、存檔或其衍生物。新檔需同時列入
   `.gitignore` 白名單與 `UPLOAD_ALLOWLIST.json`，並通過 `tools/audit_upload.py`。
 - 不修改使用者的 Steam 原安裝；所有寫入都在拋棄式 lab 副本。
-- 正式套用、安裝器與發行需專案擁有者明確批准。公開授權尚未選定，不主張擁有遊戲資產權利。
+- 1.0.0 發行經專案擁有者批准（2026-11-08）。公開授權尚未選定，不主張擁有遊戲資產權利。
 
 接續工作見 [HANDOFF](docs/HANDOFF.md)；其他文件：[架構](docs/ARCHITECTURE.md)、
 [安裝器規格](docs/INSTALLER-SPEC.md)、[驗證缺口](docs/VALIDATION-GAPS.md)。
