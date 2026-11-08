@@ -458,6 +458,7 @@
 !/research/m064/catalog-copied-names.zh-TW.json
 !/research/release/
 !/research/release/**
+!/docs/RELEASE-1.0.0.zh-TW.md
 !/research/m064/test_title_patch.py
 !/research/m064/title_patch.py
 !/research/m064/test_res_extra.py
