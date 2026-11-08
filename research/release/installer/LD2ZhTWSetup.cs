@@ -25,7 +25,7 @@ namespace LD2ZhTW
 
     class PFile
     {
-        public string Path, SrcSha, DstSha; public long SrcSize, DstSize; public int OpsOff, OpsLen;
+        public string Path, Kind, SrcSha, DstSha; public long SrcSize, DstSize; public int OpsOff, OpsLen;
     }
 
     class Payload
@@ -47,13 +47,20 @@ namespace LD2ZhTW
             p.Version = (string)root["version"];
             foreach (Dictionary<string, object> f in (List<object>)root["files"])
                 p.Files.Add(new PFile {
-                    Path = (string)f["path"], SrcSha = (string)f["src_sha256"], DstSha = (string)f["dst_sha256"],
+                    Path = (string)f["path"], Kind = f.ContainsKey("kind") ? (string)f["kind"] : "bytes", SrcSha = (string)f["src_sha256"], DstSha = (string)f["dst_sha256"],
                     SrcSize = Convert.ToInt64(f["src_size"]), DstSize = Convert.ToInt64(f["dst_size"]),
                     OpsOff = Convert.ToInt32(f["ops_off"]), OpsLen = Convert.ToInt32(f["ops_len"]) });
             return p;
         }
 
         public byte[] Build(PFile f, byte[] src)
+        {
+            if (f.Kind == "bmh") return Bmh.EncodeRaw(ApplyOps(f, Bmh.Decode(src)), src);
+            if (f.Kind != "bytes") throw new Exception("不支援的差分類型：" + f.Kind);
+            return ApplyOps(f, src);
+        }
+
+        byte[] ApplyOps(PFile f, byte[] src)
         {
             var o = new MemoryStream((int)f.DstSize);
             int p = f.OpsOff, end = f.OpsOff + f.OpsLen;
@@ -65,6 +72,72 @@ namespace LD2ZhTW
                 else throw new Exception("差分格式錯誤");
             }
             return o.ToArray();
+        }
+    }
+
+    // 遊戲 .BMH 圖檔（Huffman 區塊）：解碼與「原樣區塊」封裝（同 research/m064/bmh.py）
+    static class Bmh
+    {
+        public static byte[] Decode(byte[] b)
+        {
+            if (b.Length < 0x18 || b[8] != (byte)'H' || b[9] != (byte)'F') throw new Exception("不是 BMH 檔");
+            int outSize = BitConverter.ToInt32(b, 4);
+            var o = new MemoryStream(outSize);
+            int p = 0x18;
+            while (o.Length < outSize)
+            {
+                uint nbits = BitConverter.ToUInt32(b, p); int count = BitConverter.ToInt32(b, p + 4);
+                if (nbits == 0) { o.Write(b, p + 8, count); p += 8 + count; continue; }
+                var left = new int[512]; var right = new int[512];
+                for (int i = 0; i < 512; i++) { left[i] = 0x7fff; right[i] = 0x7fff; }
+                int nodes = 0, sumLen = 0;
+                long bitPos = (long)(p + 8 + 256) * 8;
+                for (int sym = 0; sym < 256; sym++)
+                {
+                    int len = b[p + 8 + sym]; sumLen += len; int node = 0;
+                    for (int i = 0; i < len; i++)
+                    {
+                        int bit = (b[bitPos >> 3] >> (7 - (int)(bitPos & 7))) & 1; bitPos++;
+                        var arr = bit == 1 ? right : left; int v = arr[node];
+                        if (v == 0x7fff)
+                        {
+                            if (i == len - 1) arr[node] = sym - 256;
+                            else { nodes++; if (nodes >= 512) throw new Exception("BMH 樹溢位"); arr[node] = nodes; node = nodes; }
+                        }
+                        else { if (i == len - 1 || v < 0) throw new Exception("BMH 碼衝突"); node = v; }
+                    }
+                }
+                int hdr = 0x108 + (sumLen + 7) / 8;
+                bitPos = (long)(p + hdr) * 8;
+                for (int k = 0; k < count; k++)
+                {
+                    int node = 0;
+                    while (true)
+                    {
+                        int bit = (b[bitPos >> 3] >> (7 - (int)(bitPos & 7))) & 1; bitPos++;
+                        node = (bit == 1 ? right : left)[node];
+                        if (node < 0) break;
+                        if (node == 0x7fff) throw new Exception("BMH 資料錯誤");
+                    }
+                    o.WriteByte((byte)(node & 0xff));
+                }
+                p += hdr + (int)((nbits + 7) / 8);
+            }
+            var r = o.ToArray();
+            if (r.Length > outSize) Array.Resize(ref r, outSize);
+            return r;
+        }
+
+        public static byte[] EncodeRaw(byte[] data, byte[] template)
+        {
+            var o = new byte[0x18 + 8 + data.Length];
+            Buffer.BlockCopy(template, 0, o, 0, 0x18);
+            BitConverter.GetBytes(0x18 + 8 + data.Length).CopyTo(o, 0);
+            BitConverter.GetBytes(data.Length).CopyTo(o, 4);
+            BitConverter.GetBytes(0).CopyTo(o, 0x18);
+            BitConverter.GetBytes(data.Length).CopyTo(o, 0x1c);
+            Buffer.BlockCopy(data, 0, o, 0x20, data.Length);
+            return o;
         }
     }
 

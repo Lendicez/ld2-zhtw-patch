@@ -112,6 +112,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument('--pristine', required=True); ap.add_argument('--lab', required=True)
     ap.add_argument('--manual-zh'); ap.add_argument('--version', required=True); ap.add_argument('--out', required=True)
+    ap.add_argument('--fulltest', action='store_true', help='另建完整原版副本並以安裝程式安裝（供回歸）')
     x = ap.parse_args(argv)
     pristine, lab, out = Path(x.pristine), Path(x.lab), Path(x.out)
     for p in (pristine, lab):
@@ -124,6 +125,12 @@ def main(argv=None):
     meta = make_delta.read_meta(payload)
     exe = compile_installer(x.version, pp, out)
     ok, log = selftest(exe, pristine, st, meta['files'], out)
+    if ok and x.fulltest:   # 完整原版副本 → 安裝程式安裝 → 供 harness 回歸（實際出貨內容的端對端驗證）
+        full = out / 'fulltest' / 'game'
+        shutil.copytree(pristine, full)
+        rc, text = run_cli(exe, '/install', full)
+        log.append({'verb': 'fulltest /install', 'rc': rc, 'out': text[-200:], 'game': str(full)})
+        ok = rc == 0 and all(sha(full / f['path']) == f['dst_sha256'] for f in meta['files'])
     rel = {'version': x.version, 'installer': exe.name, 'installer_sha256': sha(exe), 'installer_bytes': exe.stat().st_size,
            'payload_sha256': hashlib.sha256(payload).hexdigest(), 'payload_bytes': len(payload),
            'files': [{k: f[k] for k in ('path', 'src_sha256', 'src_size', 'dst_sha256', 'dst_size')} for f in meta['files']],

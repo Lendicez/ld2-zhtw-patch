@@ -5,7 +5,11 @@ payload 不含任何完整原檔：每個檔案以 COPY（取原檔區段）／L
 
 格式（little-endian）：
   b'LD2ZHTW\x01' | u32 json_len | json(UTF-8) | ops…
-  json = {"version", "files": [{"path", "src_sha256", "src_size", "dst_sha256", "dst_size", "ops_off", "ops_len"}]}
+  json = {"version", "files": [{"path", "kind", "src_sha256", "src_size", "dst_sha256", "dst_size", "ops_off", "ops_len"}]}
+  kind "bytes"：ops 作用於原檔位元組。
+  kind "bmh"  ：遊戲 .BMH（Huffman 壓縮圖）。重新壓縮後位元流全變，逐位元組差分等於整張圖；改為
+               ops 作用於「原檔解碼後的 DIB」，結果以原樣區塊（nbits=0，遊戲支援）封裝、檔頭沿用原檔。
+               payload 只含改到的像素。
   ops  = 重複 { u8 kind(1=COPY,2=LIT) | u32 a | u32 b | (LIT: b 個位元組) }，COPY: a=原檔位移, b=長度；LIT: a=0, b=長度
 
   python make_delta.py --src <原版遊戲根> --dst <lab 遊戲根> --version 1.0.0 --out payload.bin [--report r.json]
@@ -19,6 +23,9 @@ import os
 import struct
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'm064'))
+import bmh  # noqa: E402
 
 MAGIC = b'LD2ZHTW\x01'
 MIN_COPY = 12
@@ -101,6 +108,12 @@ def read_meta(payload: bytes) -> dict:
     return json.loads(payload[12:12 + n].decode('utf-8'))
 
 
+def apply_file(kind: str, src: bytes, blob: bytes) -> bytes:
+    if kind == 'bmh':
+        return bmh.encode_raw(apply_ops(bmh.decode(src), blob), src)
+    return apply_ops(src, blob)
+
+
 def changed_files(src_root: Path, dst_root: Path):
     for root, dirs, files in os.walk(dst_root):
         dirs[:] = [d for d in dirs if not (Path(root) == dst_root and d in SKIP_DIRS)]
@@ -119,10 +132,17 @@ def build(src_root: Path, dst_root: Path, version: str):
     files, blobs, off, report = [], [], 0, []
     for rel in sorted(changed_files(src_root, dst_root)):
         s = (src_root / rel).read_bytes(); d = (dst_root / rel).read_bytes()
-        ops = diff(s, d); blob = encode_ops(ops)
-        assert apply_ops(s, blob) == d, rel
+        kind = 'bmh' if rel.upper().endswith('.BMH') else 'bytes'
+        if kind == 'bmh':
+            base, new = bmh.decode(s), bmh.decode(d)
+            ops = diff(base, new); blob = encode_ops(ops)
+            d = bmh.encode_raw(new, s)
+            assert apply_file(kind, s, blob) == d, rel
+        else:
+            ops = diff(s, d); blob = encode_ops(ops)
+            assert apply_ops(s, blob) == d, rel
         lit = sum(len(o[1]) for o in ops if o[0] == 'L')
-        files.append({'path': rel, 'src_sha256': sha(s), 'src_size': len(s), 'dst_sha256': sha(d),
+        files.append({'path': rel, 'kind': kind, 'src_sha256': sha(s), 'src_size': len(s), 'dst_sha256': sha(d),
                       'dst_size': len(d), 'ops_off': off, 'ops_len': len(blob)})
         report.append({'path': rel, 'size': len(d), 'literal_bytes': lit, 'literal_ratio': round(lit / max(len(d), 1), 4)})
         blobs.append(blob); off += len(blob)

@@ -30,5 +30,23 @@ class DeltaTests(unittest.TestCase):
             self.assertEqual(M.read_meta(payload)['files'][0]['dst_size'], 100)
 
 
+    def test_bmh_pixel_delta(self):
+        r = random.Random(3); dib = bytes(r.randrange(4) for _ in range(4000))
+        hdr = bytearray(0x18); hdr[8:10] = b'HF'
+        src = M.bmh.encode_huffman(dib, bytes(hdr))
+        new = bytearray(dib); new[1000:1010] = b'\x07' * 10
+        dst_lab = M.bmh.encode_huffman(bytes(new), src)
+        with tempfile.TemporaryDirectory() as t:
+            a, b = Path(t, 'a'), Path(t, 'b'); a.mkdir(); b.mkdir()
+            (a / 'X.BMH').write_bytes(src); (b / 'X.BMH').write_bytes(dst_lab)
+            payload, rep = M.build(a, b, '0')
+            f = M.read_meta(payload)['files'][0]
+            self.assertEqual(f['kind'], 'bmh')
+            self.assertLess(rep[0]['literal_bytes'], 40)
+            ops = payload[12 + int.from_bytes(payload[8:12], 'little'):]
+            out = M.apply_file('bmh', src, ops[f['ops_off']:f['ops_off'] + f['ops_len']])
+            self.assertEqual(M.bmh.decode(out), bytes(new))
+
+
 if __name__ == '__main__':
     unittest.main()
