@@ -89,6 +89,11 @@
    "file_offset": 1516816,
    "file_offset_hex": "0x172510",
    "text_zh_tw": "貝希摩斯"
+  },
+  {
+   "file_offset": 4229468,
+   "file_offset_hex": "0x40895c",
+   "text_zh_tw": "未登錄道具"
   }
  ]
 }
