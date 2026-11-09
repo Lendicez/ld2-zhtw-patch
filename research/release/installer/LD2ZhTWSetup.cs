@@ -26,11 +26,15 @@ namespace LD2ZhTW
     class PFile
     {
         public string Path, Kind, SrcSha, DstSha; public long SrcSize, DstSize; public int OpsOff, OpsLen;
+        // 舊版本（升級來源）安裝後的雜湊 → 版本號；OldOnly＝舊版改過、本版不再改的檔（升級時還原原檔）
+        public Dictionary<string, string> OldDst = new Dictionary<string, string>(); public bool OldOnly;
     }
 
     class Payload
     {
         public string Version; public List<PFile> Files = new List<PFile>(); public byte[] Ops;
+        public IEnumerable<PFile> AllFiles { get { return Files.Concat(OldOnlyFiles); } }
+        public List<PFile> OldOnlyFiles = new List<PFile>();
 
         public static Payload Load()
         {
@@ -50,6 +54,23 @@ namespace LD2ZhTW
                     Path = (string)f["path"], Kind = f.ContainsKey("kind") ? (string)f["kind"] : "bytes", SrcSha = (string)f["src_sha256"], DstSha = (string)f["dst_sha256"],
                     SrcSize = Convert.ToInt64(f["src_size"]), DstSize = Convert.ToInt64(f["dst_size"]),
                     OpsOff = Convert.ToInt32(f["ops_off"]), OpsLen = Convert.ToInt32(f["ops_len"]) });
+            if (root.ContainsKey("previous"))
+                foreach (Dictionary<string, object> pv in (List<object>)root["previous"])
+                {
+                    string ver = (string)pv["version"];
+                    foreach (Dictionary<string, object> f in (List<object>)pv["files"])
+                    {
+                        string path = (string)f["path"], src = (string)f["src_sha256"], dst = (string)f["dst_sha256"];
+                        var cur = p.Files.FirstOrDefault(x => x.Path == path) ?? p.OldOnlyFiles.FirstOrDefault(x => x.Path == path);
+                        if (cur == null)
+                        {
+                            cur = new PFile { Path = path, Kind = "restore", SrcSha = src, DstSha = src, OldOnly = true };
+                            p.OldOnlyFiles.Add(cur);
+                        }
+                        if (cur.SrcSha != src) throw new Exception("舊版本資料不一致：" + path);
+                        if (dst != cur.DstSha && !cur.OldDst.ContainsKey(dst)) cur.OldDst[dst] = ver;
+                    }
+                }
             return p;
         }
 
@@ -141,7 +162,7 @@ namespace LD2ZhTW
         }
     }
 
-    enum FState { Original, Patched, Unknown, Missing }
+    enum FState { Original, Patched, Older, Unknown, Missing }
 
     class Engine
     {
@@ -158,15 +179,40 @@ namespace LD2ZhTW
             string p = Full(f);
             if (!File.Exists(p)) return FState.Missing;
             string h = Sha(File.ReadAllBytes(p));
-            return h == f.SrcSha ? FState.Original : h == f.DstSha ? FState.Patched : FState.Unknown;
+            if (h == f.DstSha) return f.OldOnly ? FState.Original : FState.Patched;
+            if (h == f.SrcSha) return FState.Original;
+            return f.OldDst.ContainsKey(h) ? FState.Older : FState.Unknown;
         }
 
         public Dictionary<FState, int> Summary()
         {
             var d = new Dictionary<FState, int>();
             foreach (FState s in Enum.GetValues(typeof(FState))) d[s] = 0;
-            foreach (var f in P.Files) d[State(f)]++;
+            foreach (var f in P.AllFiles) { var st = State(f); if (!(f.OldOnly && st == FState.Missing)) d[st]++; }
             return d;
+        }
+
+        /// <summary>目前安裝的舊版本號（以檔案雜湊判斷；可能不只一個）。</summary>
+        public List<string> OlderVersions()
+        {
+            var v = new List<string>();
+            foreach (var f in P.AllFiles)
+            {
+                string p = Full(f);
+                if (!File.Exists(p)) continue;
+                string ver;
+                if (f.OldDst.TryGetValue(Sha(File.ReadAllBytes(p)), out ver) && !v.Contains(ver)) v.Add(ver);
+            }
+            return v;
+        }
+
+        byte[] OriginalOf(PFile f)
+        {
+            string b = BackupOf(f);
+            if (!File.Exists(b)) throw new Exception("找不到舊版安裝時留下的原檔備份，無法更新：" + f.Path + "（可先用 Steam「驗證遊戲檔案完整性」還原原版再安裝）");
+            byte[] src = File.ReadAllBytes(b);
+            if (Sha(src) != f.SrcSha) throw new Exception("原檔備份內容不符，已停止：" + b);
+            return src;
         }
 
         public static bool GameRunning()
@@ -179,21 +225,23 @@ namespace LD2ZhTW
             if (GameRunning()) throw new Exception("遊戲正在執行，請先關閉 Ld95.exe。");
             // 1) 全部預檢：原檔或已安裝，不允許未知版本
             var todo = new List<KeyValuePair<PFile, byte[]>>();
-            foreach (var f in P.Files)
+            foreach (var f in P.AllFiles)
             {
                 var st = State(f);
-                if (st == FState.Patched) continue;
-                if (st != FState.Original)
-                    throw new Exception("檔案不是支援的原版，已停止（未做任何變更）：" + f.Path + "（" + st + "）");
-                byte[] src = File.ReadAllBytes(Full(f));
-                byte[] dst = P.Build(f, src);
+                if (st == FState.Patched || (f.OldOnly && (st == FState.Original || st == FState.Missing))) continue;
+                if (st != FState.Original && st != FState.Older)
+                    throw new Exception("檔案不是支援的原版或舊版補丁，已停止（未做任何變更）：" + f.Path + "（" + st + "）");
+                // 舊版補丁 → 由備份的原檔重建（升級）；原版 → 直接重建
+                byte[] src = st == FState.Older ? OriginalOf(f) : File.ReadAllBytes(Full(f));
+                byte[] dst = f.OldOnly ? src : P.Build(f, src);
                 if (Sha(dst) != f.DstSha) throw new Exception("重建結果雜湊不符：" + f.Path);
                 todo.Add(new KeyValuePair<PFile, byte[]>(f, dst));
             }
             if (todo.Count == 0) { Log("已是本版補丁，不需安裝。"); return; }
-            // 2) 備份原檔（已有同內容備份則沿用；不同內容不覆寫）
+            // 2) 備份原檔（已有同內容備份則沿用；不同內容不覆寫；升級的檔案備份已在上一步驗證）
             foreach (var kv in todo)
             {
+                if (State(kv.Key) == FState.Older) continue;
                 string b = BackupOf(kv.Key);
                 Directory.CreateDirectory(System.IO.Path.GetDirectoryName(b));
                 if (File.Exists(b))
@@ -230,18 +278,19 @@ namespace LD2ZhTW
                 foreach (var kv in todo) { try { File.Delete(Full(kv.Key) + ".zhtw-new"); } catch { } }
                 throw;
             }
-            Log("安裝完成：" + todo.Count + " 個檔案。");
+            File.WriteAllText(System.IO.Path.Combine(BackupDir, "installed.txt"), P.Version + "\r\n", new UTF8Encoding(false));
+            Log("安裝完成：" + todo.Count + " 個檔案（版本 " + P.Version + "）。");
         }
 
         public void Uninstall()
         {
             if (GameRunning()) throw new Exception("遊戲正在執行，請先關閉 Ld95.exe。");
             var todo = new List<PFile>();
-            foreach (var f in P.Files)
+            foreach (var f in P.AllFiles)
             {
                 var st = State(f);
-                if (st == FState.Original) continue;
-                if (st != FState.Patched) throw new Exception("檔案不是本補丁安裝的版本，已停止（未做任何變更）：" + f.Path);
+                if (st == FState.Original || (f.OldOnly && st == FState.Missing)) continue;
+                if (st != FState.Patched && st != FState.Older) throw new Exception("檔案不是本補丁安裝的版本，已停止（未做任何變更）：" + f.Path);
                 string b = BackupOf(f);
                 if (!File.Exists(b) || Sha(File.ReadAllBytes(b)) != f.SrcSha) throw new Exception("找不到正確的原檔備份：" + f.Path);
                 todo.Add(f);
@@ -254,6 +303,7 @@ namespace LD2ZhTW
                 File.Copy(tmp, t, true); File.Delete(tmp);
                 Log("已還原 " + f.Path);
             }
+            try { File.Delete(System.IO.Path.Combine(BackupDir, "installed.txt")); } catch { }
             Log("解除安裝完成：" + todo.Count + " 個檔案已還原為原版。（備份資料夾保留，可自行刪除 _zhTW_backup）");
         }
 
@@ -362,6 +412,7 @@ namespace LD2ZhTW
             Refresh2();
         }
 
+        string pendingUpgrade;
         void Log(string s) { logBox.AppendText(s + "\r\n"); }
 
         void Refresh2()
@@ -369,9 +420,18 @@ namespace LD2ZhTW
             installBtn.Enabled = uninstallBtn.Enabled = false;
             string d = dirBox.Text.Trim();
             if (d.Length == 0 || !File.Exists(Path.Combine(d, "Ld95.exe"))) { stateLbl.Text = "狀態：此資料夾沒有 Ld95.exe。"; return; }
-            var e = new Engine(P, d, null); var s = e.Summary(); int n = P.Files.Count;
-            if (s[FState.Patched] == n) { stateLbl.Text = "狀態：已安裝本版繁中補丁（" + P.Version + "）。"; uninstallBtn.Enabled = true; }
+            var e = new Engine(P, d, null); var s = e.Summary(); int n = s.Values.Sum();
+            installBtn.Text = "安裝"; pendingUpgrade = null;
+            if (P.Files.All(f => e.State(f) == FState.Patched) &&
+                P.OldOnlyFiles.All(f => { var st = e.State(f); return st == FState.Original || st == FState.Missing; }))
+            { stateLbl.Text = "狀態：已安裝本版繁中補丁（" + P.Version + "）。"; uninstallBtn.Enabled = true; }
             else if (s[FState.Original] == n) { stateLbl.Text = "狀態：原版（可安裝）。"; installBtn.Enabled = true; }
+            else if (s[FState.Older] > 0 && s[FState.Unknown] + s[FState.Missing] == 0)
+            {
+                pendingUpgrade = string.Join("、", e.OlderVersions());
+                stateLbl.Text = "狀態：已安裝舊版繁中補丁（" + pendingUpgrade + "），可直接更新為 " + P.Version + "。";
+                installBtn.Text = "更新"; installBtn.Enabled = uninstallBtn.Enabled = true;
+            }
             else if (s[FState.Unknown] + s[FState.Missing] == 0) { stateLbl.Text = "狀態：部分檔案已安裝（可再按安裝完成，或解除安裝）。"; installBtn.Enabled = uninstallBtn.Enabled = true; }
             else
             {
@@ -398,6 +458,9 @@ namespace LD2ZhTW
                 return;
             }
             if (Engine.GameRunning()) { MessageBox.Show(this, "請先關閉遊戲（Ld95.exe）再操作。", Text); return; }
+            if (install && pendingUpgrade != null &&
+                MessageBox.Show(this, "偵測到已安裝繁中補丁 " + pendingUpgrade + "。\r\n要直接更新為 " + P.Version + " 嗎？\r\n（存檔不受影響；原檔備份沿用，之後仍可解除安裝還原原版）",
+                    Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
             Cursor = Cursors.WaitCursor;
             try { var e = new Engine(P, d, Log); if (install) e.Install(); else e.Uninstall(); }
             catch (Exception ex) { Log("失敗：" + ex.Message); MessageBox.Show(this, ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -425,6 +488,7 @@ namespace LD2ZhTW
                     if (args[0] == "/uninstall") e.Uninstall();
                     var s2 = e.Summary();
                     log.AppendLine("version=" + p.Version + " original=" + s2[FState.Original] + " patched=" + s2[FState.Patched] +
+                                   " older=" + s2[FState.Older] +
                                    " unknown=" + s2[FState.Unknown] + " missing=" + s2[FState.Missing]);
                     Console.Out.Write(log.ToString()); return 0;
                 }

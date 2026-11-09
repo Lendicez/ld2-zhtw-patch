@@ -128,7 +128,7 @@ def changed_files(src_root: Path, dst_root: Path):
             yield rel.as_posix()
 
 
-def build(src_root: Path, dst_root: Path, version: str):
+def build(src_root: Path, dst_root: Path, version: str, previous=None):
     files, blobs, off, report = [], [], 0, []
     for rel in sorted(changed_files(src_root, dst_root)):
         s = (src_root / rel).read_bytes(); d = (dst_root / rel).read_bytes()
@@ -146,7 +146,12 @@ def build(src_root: Path, dst_root: Path, version: str):
                       'dst_size': len(d), 'ops_off': off, 'ops_len': len(blob)})
         report.append({'path': rel, 'size': len(d), 'literal_bytes': lit, 'literal_ratio': round(lit / max(len(d), 1), 4)})
         blobs.append(blob); off += len(blob)
-    meta = json.dumps({'version': version, 'files': files}, ensure_ascii=False).encode('utf-8')
+    doc = {'version': version, 'files': files}
+    if previous:   # 可升級的舊版本：[{version, files:[{path, src_sha256, dst_sha256}]}]
+        doc['previous'] = [{'version': pv['version'],
+                            'files': [{k: f[k] for k in ('path', 'src_sha256', 'dst_sha256')} for f in pv['files']]}
+                           for pv in previous]
+    meta = json.dumps(doc, ensure_ascii=False).encode('utf-8')
     return MAGIC + struct.pack('<I', len(meta)) + meta + b''.join(blobs), report
 
 

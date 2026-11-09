@@ -113,6 +113,8 @@ def main(argv=None):
     ap.add_argument('--pristine', required=True); ap.add_argument('--lab', required=True)
     ap.add_argument('--manual-zh'); ap.add_argument('--version', required=True); ap.add_argument('--out', required=True)
     ap.add_argument('--fulltest', action='store_true', help='另建完整原版副本並以安裝程式安裝（供回歸）')
+    ap.add_argument('--previous', nargs='*', default=[], help='可直接升級的舊版 release.json（含每檔 src／dst sha256）')
+    ap.add_argument('--upgrade-from', help='已安裝舊版的遊戲資料夾（含 _zhTW_backup），用來測試直接升級')
     x = ap.parse_args(argv)
     pristine, lab, out = Path(x.pristine), Path(x.lab), Path(x.out)
     for p in (pristine, lab):
@@ -120,11 +122,31 @@ def main(argv=None):
             raise SystemExit('輸出資料夾不可在原版或 lab 資料夾內')
     out.mkdir(parents=True, exist_ok=True)
     st = stage(pristine, lab, Path(x.manual_zh) if x.manual_zh else None, out)
-    payload, report = make_delta.build(pristine, st, x.version)
+    previous = [json.loads(Path(pv).read_text('utf-8')) for pv in x.previous]
+    payload, report = make_delta.build(pristine, st, x.version, previous)
     pp = out / 'payload.bin'; pp.write_bytes(payload)
     meta = make_delta.read_meta(payload)
     exe = compile_installer(x.version, pp, out)
     ok, log = selftest(exe, pristine, st, meta['files'], out)
+    if ok and x.upgrade_from:   # 舊版 → 本版直接升級 → 解除安裝
+        up = out / 'selftest' / 'upgrade'
+        src_dir = Path(x.upgrade_from)
+        paths = {f['path'] for f in meta['files']} | {f['path'] for pv in meta.get('previous', []) for f in pv['files']}
+        for rel in paths:
+            if (src_dir / rel).exists():
+                d = up / rel; d.parent.mkdir(parents=True, exist_ok=True); shutil.copyfile(src_dir / rel, d)
+        shutil.copytree(src_dir / '_zhTW_backup', up / '_zhTW_backup')
+        for verb in ('/status', '/install', '/install', '/uninstall'):
+            rc, text = run_cli(exe, verb, up)
+            log.append({'verb': 'upgrade ' + verb, 'rc': rc, 'out': text[-160:]})
+            if rc:
+                ok = False
+            if verb == '/status':
+                ok = ok and ' older=0 ' not in text
+            elif verb == '/install':
+                ok = ok and all(sha(up / f['path']) == f['dst_sha256'] for f in meta['files'])
+            else:
+                ok = ok and all(sha(up / f['path']) == f['src_sha256'] for f in meta['files'])
     if ok and x.fulltest:   # 完整原版副本 → 安裝程式安裝 → 供 harness 回歸（實際出貨內容的端對端驗證）
         full = out / 'fulltest' / 'game'
         shutil.copytree(pristine, full)
