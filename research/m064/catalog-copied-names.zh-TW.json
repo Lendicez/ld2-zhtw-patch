@@ -3,7 +3,7 @@
  "milestone": "m064-catalog-copied-names",
  "production_can_apply": false,
  "release_approved": false,
- "note": "會被複製進世界資料／存檔的名稱（精靈、召喚、怪物、地名）：不原位改，於建置時以原檔 CP932 位元組為鍵加入 v4 catalog（FULL_ANY），所有顯示後備查表即顯示繁中。譯名與 lab-monster-names 一致。",
+ "note": "會被複製進世界資料／存檔的名稱（精靈、召喚、怪物、地名）：不原位改，於建置時以原檔 CP932 位元組為鍵加入 v4 catalog（FULL_ANY），所有顯示後備查表即顯示繁中。譯名與 lab-monster-names 一致。 1.0.1：委託種類（.data 0x3824e0 起 17 筆×8 B；另兩份副本位元組相同）以 catalog 轉換。",
  "items": [
   {
    "file_offset": 1243180,
@@ -94,6 +94,91 @@
    "file_offset": 4229468,
    "file_offset_hex": "0x40895c",
    "text_zh_tw": "未登錄道具"
+  },
+  {
+   "file_offset": 3679456,
+   "file_offset_hex": "0x3824e0",
+   "text_zh_tw": "送貨"
+  },
+  {
+   "file_offset": 3679464,
+   "file_offset_hex": "0x3824e8",
+   "text_zh_tw": "採購"
+  },
+  {
+   "file_offset": 3679472,
+   "file_offset_hex": "0x3824f0",
+   "text_zh_tw": "搶劫"
+  },
+  {
+   "file_offset": 3679480,
+   "file_offset_hex": "0x3824f8",
+   "text_zh_tw": "護衛"
+  },
+  {
+   "file_offset": 3679488,
+   "file_offset_hex": "0x382500",
+   "text_zh_tw": "暗殺"
+  },
+  {
+   "file_offset": 3679496,
+   "file_offset_hex": "0x382508",
+   "text_zh_tw": "綁架"
+  },
+  {
+   "file_offset": 3679504,
+   "file_offset_hex": "0x382510",
+   "text_zh_tw": "救出"
+  },
+  {
+   "file_offset": 3679512,
+   "file_offset_hex": "0x382518",
+   "text_zh_tw": "驅除"
+  },
+  {
+   "file_offset": 3679520,
+   "file_offset_hex": "0x382520",
+   "text_zh_tw": "探索"
+  },
+  {
+   "file_offset": 3679528,
+   "file_offset_hex": "0x382528",
+   "text_zh_tw": "奪回"
+  },
+  {
+   "file_offset": 3679536,
+   "file_offset_hex": "0x382530",
+   "text_zh_tw": "復仇"
+  },
+  {
+   "file_offset": 3679544,
+   "file_offset_hex": "0x382538",
+   "text_zh_tw": "走私"
+  },
+  {
+   "file_offset": 3679552,
+   "file_offset_hex": "0x382540",
+   "text_zh_tw": "討伐"
+  },
+  {
+   "file_offset": 3679560,
+   "file_offset_hex": "0x382548",
+   "text_zh_tw": "逃亡"
+  },
+  {
+   "file_offset": 3679568,
+   "file_offset_hex": "0x382550",
+   "text_zh_tw": "逮捕"
+  },
+  {
+   "file_offset": 3679576,
+   "file_offset_hex": "0x382558",
+   "text_zh_tw": "通緝"
+  },
+  {
+   "file_offset": 3679584,
+   "file_offset_hex": "0x382560",
+   "text_zh_tw": "越獄"
   }
  ]
 }

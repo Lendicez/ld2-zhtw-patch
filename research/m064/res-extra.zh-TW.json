@@ -1196,6 +1196,381 @@
    "string_id": 62178,
    "source_utf16_sha256": "801797aac9d6253349ce13b7bd4375ce9e24c46800c6ef9e621c83ceaffc3b06",
    "translation": "開啟"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 171,
+   "language": 1041,
+   "item_index": 0,
+   "source_utf16_sha256": "e49556ebde4351a8dc22a1da1299b0f82e023ca2ffcb258c54cccd6142ccb5b2",
+   "translation": "冒險者："
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 180,
+   "language": 1041,
+   "item_index": 12,
+   "source_utf16_sha256": "3fd3a10bd091fb098859c58a8bb0fc834b42d6fde96cfde902db5641547d2ec4",
+   "translation": "龍江"
+  },
+  {
+   "kind": "dialog_control",
+   "resource": 450,
+   "language": 1041,
+   "item_index": 1,
+   "source_utf16_sha256": "583b2185ce71b374e06a9ef40fae2114cb5a3401f45ec2747a38fbff97c32f09",
+   "translation": "編號:"
+  },
+  {
+   "kind": "dialog_title",
+   "resource": 519,
+   "language": 1041,
+   "source_utf16_sha256": "ccf57cbbccf2cd62cab61fb05fd53484e63c47a190cc8786120349fb06171b09",
+   "translation": "選擇城鎮（除錯專用）"
+  },
+  {
+   "kind": "string",
+   "resource": 2070,
+   "language": 1041,
+   "string_id": 33113,
+   "source_utf16_sha256": "d9729a072ec711099ee53db2306ac9e17856e7e506afc89dced2d42f45cdf10f",
+   "translation": "廣場"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 0,
+   "source_utf16_sha256": "35a3da4bed0f37276b8bef238f4cdb21c827a06aa7a3319730e5132aecfaa12b",
+   "translation": "1月"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 1,
+   "source_utf16_sha256": "e556ff763733b903344bb42ee54610ef3aa22242cee8a548c32a85ad8208af64",
+   "translation": "2月"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 2,
+   "source_utf16_sha256": "eb20167a89cc0ea32b832b7e975165ee0a81ee9e2f352a3da50be418993921fb",
+   "translation": "3月"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 3,
+   "source_utf16_sha256": "44b02d22e8774280d94733115fe487660efb01a73c8f10c1ccec3f24dbeee071",
+   "translation": "4月"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 4,
+   "source_utf16_sha256": "01480b54d1561b960ed6763a8a9e38839cd57075d33fba465ca53cfbf44f15fb",
+   "translation": "5月"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 5,
+   "source_utf16_sha256": "25cca04ffa66174b7f617173e61a7f615148b36a712f055b1515dc7de9042ddd",
+   "translation": "6月"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 6,
+   "source_utf16_sha256": "6c44f34f32625c14b1c35d22d0c6685480b6d122cbbe7c254d0c772d75bdf10f",
+   "translation": "7月"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 7,
+   "source_utf16_sha256": "d95bba34b23cf563d0e38d7e8d1f35196915b1d9b31368c1b3daf023a77f4697",
+   "translation": "8月"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 8,
+   "source_utf16_sha256": "4cb830729db91222beeb1c2d82a13a764a3f0fb19343baf3648fdbb483b672e5",
+   "translation": "9月"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 9,
+   "source_utf16_sha256": "bb47d8c9fe0d49759d6f1de5c890d17fe12634c7b58257e02e1542b93c01f055",
+   "translation": "10月"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 10,
+   "source_utf16_sha256": "3e3ab496c838a1f55a2544b9ece3cb399a0043855184c059b250b197d0622f8b",
+   "translation": "11月"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 11,
+   "source_utf16_sha256": "9aeb16bf62d41230e7a049d3d49da090dda80ffa7a118051becfd1806e68df5c",
+   "translation": "12月"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 12,
+   "source_utf16_sha256": "63644ba07f36df5571494c240cfce53dd5ed9badb79232428148cd5a40dbfe89",
+   "translation": "1日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 13,
+   "source_utf16_sha256": "63ab6579e2a89bca1a4947abecaf95f76c47f1471567a55ab75915c922b5250d",
+   "translation": "2日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 14,
+   "source_utf16_sha256": "7e7c922593cc063d8dda2171c582bae17cad90601e85a185e3519eec1915a37f",
+   "translation": "3日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 15,
+   "source_utf16_sha256": "a43b6c2b9031ab9581f1ee2196b4b4451cbe1f5f8d7e215bb5051ef5e0594835",
+   "translation": "4日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 16,
+   "source_utf16_sha256": "2003043bb6d51fe2ad47cd05569dd3ae49d6d4338bb7cbc60515356583947898",
+   "translation": "5日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 17,
+   "source_utf16_sha256": "b2005b464105c4deafaaaa706134dba4ad9fe762ddcce2aa1eb8e96a5f2fed42",
+   "translation": "6日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 18,
+   "source_utf16_sha256": "52e98e1cacbc266f66791eba33af5b90bced4d269ae7bbd8aeb8877e0698be4b",
+   "translation": "8日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 19,
+   "source_utf16_sha256": "1b6d1f467b13b2b12e3d980dc3ca9bec15f81837faf15334c26f886f61b812b8",
+   "translation": "9日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 20,
+   "source_utf16_sha256": "5b766c132cecb52d48ba82a8d401c6e08179c4097465fc6c2d863c93ab238025",
+   "translation": "10日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 21,
+   "source_utf16_sha256": "0757f33e055a836a4a20e009665011e0a3665cc0d071c6890f5697b1196a5da7",
+   "translation": "11日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 22,
+   "source_utf16_sha256": "521b46e89006aa645d974651209e0bc266ef7c6f702f760cd097466ca5712d91",
+   "translation": "12日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 23,
+   "source_utf16_sha256": "9ed18a5011cdbbe7de0da91623e44aa54656a5404b95ade34b63ad3aa34dc43e",
+   "translation": "13日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 24,
+   "source_utf16_sha256": "80b829497d6cb256358a85f833522c104ec00733e97705d0ff7d70aa08c4c109",
+   "translation": "14日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 25,
+   "source_utf16_sha256": "9659ac429c6b8d1d492e1bec4702b771699d4518c1d4a5b6965a9046972ea621",
+   "translation": "15日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 26,
+   "source_utf16_sha256": "eea550b93a914be357d26b986c594cc8dd66c312ab81f867279e97fe1786ac30",
+   "translation": "16日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 27,
+   "source_utf16_sha256": "2e9c4fefd4f1c442b042f0b896f98f87a8b05dd2badd2e61e971445709479894",
+   "translation": "17日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 28,
+   "source_utf16_sha256": "9eb210840bbcc6b6f9a145bcb99f739f7348c744693a62674cd6d7d0d97073b1",
+   "translation": "18日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 29,
+   "source_utf16_sha256": "c40785c4810259f9637b6707c612245fcb494a4410a33a0b03e04ed8e2e8c8fa",
+   "translation": "19日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 30,
+   "source_utf16_sha256": "436cc0b7cbb99ade8a97fb1c0b4cec0af78064efb21ee4a3b938ea7b4824b5eb",
+   "translation": "20日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 31,
+   "source_utf16_sha256": "6e7af1383c7cc4838b1b48fdb7634c4b4c9a92c7615537694739b35a84f4e96a",
+   "translation": "21日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 32,
+   "source_utf16_sha256": "1e65feeaeebf5713c28e7786c2e618491f4a8bef793e79c221ff73d718329635",
+   "translation": "22日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 33,
+   "source_utf16_sha256": "e2a344123d84ff408fafaf89c4e2bff158ab952f327f4a16ac88617659bf15f5",
+   "translation": "23日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 34,
+   "source_utf16_sha256": "3132ee0d8d6594ab2e314e8b531b2f2953d63b18e62798e10b68373c90cec5bb",
+   "translation": "24日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 35,
+   "source_utf16_sha256": "eb4f3f48bbbdbc2dde953e3c9177697dfb58c49154da57c1b1f9d022c6b28623",
+   "translation": "25日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 36,
+   "source_utf16_sha256": "150053d4f7375aeed785194c0d1521b6cd49afd848ff17289842451060476102",
+   "translation": "26日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 37,
+   "source_utf16_sha256": "786883065d5e05d7eb9c9abacf899675c8066c331cbd544548eab36ec566f5a1",
+   "translation": "27日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 38,
+   "source_utf16_sha256": "438283b29a9efa3da96aadd2cca58836aa3b71683358b2708022ecc5c8063073",
+   "translation": "28日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 39,
+   "source_utf16_sha256": "faeb2e0e7d810a127dc10e09c8839a07973ea9fce965f81ac19d720c39ebb4ee",
+   "translation": "29日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 40,
+   "source_utf16_sha256": "41c46eb4094c0a6a3c5c0e6a8ff75843c3cfa35707efeb8e16ae9376f2442518",
+   "translation": "30日"
+  },
+  {
+   "kind": "dlginit",
+   "resource": 191,
+   "language": 1041,
+   "item_index": 41,
+   "source_utf16_sha256": "c60cabe2b05158fceee6c9981c8d7a058596e7a1bd063801f3b5ce53a109978a",
+   "translation": "31日"
   }
  ]
 }
