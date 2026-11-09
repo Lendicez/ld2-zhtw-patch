@@ -9,14 +9,15 @@ import savelist_patch as S  # noqa: E402
 
 
 class TitleTests(unittest.TestCase):
-    def test_front_style_arg(self):
-        f = T.build_front(0xb28490, 0xb28100, 0x525554, 'style_arg', 0x525538)
-        self.assertTrue(f.startswith(bytes.fromhex('f744241000000040')))
-        self.assertTrue(f.endswith(bytes.fromhex('ff2554555200')))
+    def test_sites_cover_children(self):
+        apis = [a for _, a, _ in T.SITES]
+        self.assertIn('SetDlgItemTextA', apis)
+        self.assertFalse(hasattr(T, 'build_front'))          # 1.0.1：子視窗不再略過
 
-    def test_front_hwnd(self):
-        f = T.build_front(0xb28600, 0xb28100, 0x525414, 'hwnd', 0x525538)
-        self.assertTrue(f.startswith(bytes.fromhex('6af0ff742408ff1538555200')))
+    def test_pairs_lookup_emitted(self):
+        c, _ = S.build_stub(0xb28100, 0xb28000, 0x52537c, 0x525378, arg_esp=0xc, target_ind=0x52541c,
+                            pairs_va=0xb26000)
+        self.assertIn(bytes.fromhex('51ba0060b200'), c)            # push ecx; mov edx,table
 
     def test_conv_tail_indirect(self):
         c, _ = S.build_stub(0xb28100, 0xb28000, 0x52537c, 0x525378, arg_esp=8, target_ind=0x525414)

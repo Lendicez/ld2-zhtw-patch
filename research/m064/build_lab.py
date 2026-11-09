@@ -53,10 +53,11 @@ def main(argv=None):
     exe, info = tab_title_patch.patch(exe, debug=x.tab_debug); log['tab_sites'] = info['sites']; log['norm'] = info.get('norm')
     if 'detail_name' not in skip: exe, log['detail_name'] = detail_name_patch.patch(exe, epi_pairs)
     if 'cdc_textout' not in skip: exe, log['cdc_textout'] = cdc_textout_patch.patch(exe)
-    if 'savelist' not in skip: exe, log['savelist'] = savelist_patch.patch(exe)
+    pairs_va = int(log['detail_name']['table_va'], 16) if 'detail_name' in log else None   # 稱號對照表（清單／標題轉換共用）
+    if 'savelist' not in skip: exe, log['savelist'] = savelist_patch.patch(exe, pairs_va)
     if 'fmt_expand' not in skip: exe, log['fmt_expand'] = fmt_expand_patch.patch(exe)
     if 'drawtext' not in skip: exe, log['drawtext'] = drawtext_patch.patch(exe)
-    if 'title' not in skip: exe, log['title'] = title_patch.patch(exe)
+    if 'title' not in skip: exe, log['title'] = title_patch.patch(exe, pairs_va)
     if (HERE / 'res-extra.zh-TW.json').exists() and 'res_extra' not in skip:
         exe, log['res_extra'] = res_extra.apply(exe, json.loads((HERE / 'res-extra.zh-TW.json').read_text('utf-8')))
     (lab / 'Ld95.exe').write_bytes(exe); log['pre_image_sha256'] = hashlib.sha256(exe).hexdigest()

@@ -29,6 +29,9 @@ SITES = (
     # 同型「◎／○／●＋單位名」清單（其他對話框：清單 0x415、0x408、0x3f0）
     (0x4a8d08, '556aff688101000068150400008bce'), (0x47c4b8, '556aff688101000068080400008bce'),
     (0x482108, '556aff688101000068f00300008bce'),
+    # 委託清單（旅館委託頁、黑暗公會，清單 0x3e8）：「◎／○」標記＋報酬＋期限＋委託人（NPC 名為 CP932）
+    (0x457985, '30526aff688101000068e8030000'), (0x4582f6, '6aff688101000068e80300008bcd'),
+    (0x459005, '6aff688101000068e80300008bcd'), (0x4595a5, '30526aff688101000068e8030000'),
 )
 # 片假名（U+30A1–U+30F6；平假名先 +0x60）→ 音譯用漢字；'' ＝略去（促音）。長音「ー」略去，「・」→「‧」。
 # 只在 catalog、FindCopyNorm 都查不到時使用（例：遊戲隨機產生的人名／首領名，CP950 無假名會變成「?」）。
@@ -53,6 +56,8 @@ def translit_model(text: str) -> str:
             continue
         if c == 0x30FB:
             out.append('\u2027'); continue
+        if c == 0x306E:
+            out.append('之'); continue
         if 0x3041 <= c <= 0x3096:
             c += 0x60
         if 0x30A1 <= c <= 0x30F6:
@@ -68,13 +73,15 @@ IMAGE_SCN_EXEC = 0x20000000 | 0x00000020
 
 
 def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, target_ind=None, norm=NORM,
-               translit=True, _table_va=None):
+               translit=True, _table_va=None, pairs_va=None):
     """arg_esp：入口時字串參數相對 esp 的位移；target＝相對跳轉目標，target_ind＝經 IAT 間接跳轉。
     translit：catalog／Norm 皆查不到時把假名音譯成漢字（表附在程式碼後）。"""
     if translit and _table_va is None:   # 兩遍：先量程式碼長度，再以表位址重建（長度不變）
-        n = len(build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp, target, target_ind, norm, True, -1)[0])
+        n = len(build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp, target, target_ind, norm, True, -1,
+                           pairs_va)[0])
         tva = origin + ((n + 1) & ~1)
-        code, dlen = build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp, target, target_ind, norm, True, tva)
+        code, dlen = build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp, target, target_ind, norm, True, tva,
+                                pairs_va)
         assert len(code) == n
         return code + b'\0' * (tva - origin - n) + kana_table(), dlen
     if target is None and target_ind is None:
@@ -111,6 +118,18 @@ def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, 
     a.emit([0x8A, 0x01, 0x41, 0x3C, 0x81]); a.jcc8(0x72, 'w3'); a.emit([0x3C, 0x9F]); a.jcc8(0x77, 'w3')
     a.emit([0x89, 0xE9, 0x29, 0xF1])                          # ecx = ebp-esi
     a.emit([0x83, 0xF9, 0x40]); a.jcc32(0x87, 'raw')
+    if pairs_va is not None:   # 稱號對照表（detail_name_patch 的 [n][CP932][m][Big5]… 0 結尾）整詞比對
+        a.emit([0x51, 0xBA], a.imm32(pairs_va))                       # push ecx; edx = table
+        a.label('p0'); a.emit([0x0F, 0xB6, 0x02, 0x85, 0xC0]); a.jcc32(0x84, 'p9')
+        a.emit([0x39, 0xC8]); a.jcc32(0x85, 'p8')                     # 長度不同 → 下一筆
+        a.emit([0x56, 0x57, 0x51, 0x8D, 0x7A, 0x01, 0xFC, 0xF3, 0xA6, 0x59, 0x5F, 0x5E]); a.jcc32(0x85, 'p8')
+        a.emit([0x8D, 0x54, 0x0A, 0x01, 0x0F, 0xB6, 0x02, 0x42])      # edx = Big5 值；eax = 長度
+        a.emit([0x8D, 0x0C, 0x07, 0x39, 0xD9]); a.jcc32(0x87, 'p9')   # 放不下 → 不用
+        a.emit([0x56, 0x89, 0xD6, 0x89, 0xC1, 0xF3, 0xA4, 0x5E])      # 複製到 edi
+        a.emit([0x59, 0x89, 0xEE]); a.emit([0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, 'tok'))
+        a.label('p8'); a.emit([0x8D, 0x54, 0x02, 0x01, 0x0F, 0xB6, 0x02, 0x8D, 0x54, 0x02, 0x01])
+        a.emit([0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, 'p0'))
+        a.label('p9'); a.emit([0x59])
     a.emit([0x83, 0x3D], a.imm32(catok), [0x00]); a.jcc8(0x74, 'dec')
     a.emit([0x51])                                            # push ecx（保存 len）
     a.emit([0x68], a.imm32(0x101), [0x68], a.imm32(wbuf), [0x6A, 0x03, 0x6A, 0xFF, 0x51, 0x56],
@@ -133,7 +152,9 @@ def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, 
         a.emit([0x3D], a.imm32(0x30FC)); a.jcc8(0x74, 'k0')                      # 長音 → 略
         a.emit([0x3D], a.imm32(0x30FB)); a.jcc8(0x75, 'k1')
         a.emit([0xB8], a.imm32(0x2027)); a.emit([0xEB, 0]); a.fix8.append((len(a.b) - 1, 'k8'))
-        a.label('k1'); a.emit([0x8D, 0x88], a.imm32((-0x3041) & 0xFFFFFFFF), [0x83, 0xF9, 0x55]); a.jcc8(0x77, 'k2')
+        a.label('k1'); a.emit([0x3D], a.imm32(0x306E)); a.jcc8(0x75, 'kn')        # 平假名「の」→「之」
+        a.emit([0xB8], a.imm32(0x4E4B)); a.emit([0xEB, 0]); a.fix8.append((len(a.b) - 1, 'k8'))
+        a.label('kn'); a.emit([0x8D, 0x88], a.imm32((-0x3041) & 0xFFFFFFFF), [0x83, 0xF9, 0x55]); a.jcc8(0x77, 'k2')
         a.emit([0x83, 0xC0, 0x60])                                               # 平假名 → 片假名
         a.label('k2'); a.emit([0x8D, 0x88], a.imm32((-0x30A1) & 0xFFFFFFFF), [0x83, 0xF9, 0x55]); a.jcc8(0x77, 'k8')
         a.emit([0x0F, 0xB7, 0x04, 0x4D], a.imm32(max(_table_va, 0)))                     # movzx eax,word[ecx*2+tbl]
@@ -192,7 +213,7 @@ def place_rows(pristine_exe: bytes, places_items):
     return rows
 
 
-def patch(exe: bytes):
+def patch(exe: bytes, pairs_va=None):
     secs, pe = sections(exe)
     i = secs['.ld2i']
     offs = []
@@ -210,9 +231,9 @@ def patch(exe: bytes):
     code_va = BASE + i['va'] + i['rsz']
     mbtwc = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'MultiByteToWideChar')
     wctmb = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'WideCharToMultiByte')
-    probe, _ = build_stub(code_va, code_va + 0x400, mbtwc, wctmb)
+    probe, _ = build_stub(code_va, code_va + 0x400, mbtwc, wctmb, pairs_va=pairs_va)
     data_va = code_va + ((len(probe) + 0xf) & ~0xf)
-    code, dlen = build_stub(code_va, data_va, mbtwc, wctmb)
+    code, dlen = build_stub(code_va, data_va, mbtwc, wctmb, pairs_va=pairs_va)
     blob = code + b'\0' * (data_va - code_va - len(code)) + b'\0' * dlen
     grow = (len(blob) + 0xfff) & ~0xfff
     out = bytearray(exe) + blob + b'\0' * (grow - len(blob))

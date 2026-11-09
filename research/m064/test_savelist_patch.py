@@ -33,6 +33,7 @@ class SaveListTests(unittest.TestCase):
         self.assertEqual(S.translit_model('ダジルタール'), '達吉爾塔爾')
         self.assertEqual(S.translit_model('ガーゴイル・ロード'), '加哥伊爾‧羅多')
         self.assertEqual(S.translit_model('ちびっこ'), '奇比科')
+        self.assertEqual(S.translit_model('神の傀儡'), '神之傀儡')
         for ch in S.translit_model(S.KANA):
             ch.encode('cp950')                                            # 全部可編成 Big5
 

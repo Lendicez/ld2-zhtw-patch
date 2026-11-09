@@ -35,6 +35,39 @@ def sha16(t: str) -> str:
     return hashlib.sha256(t.encode('utf-16le')).hexdigest()
 
 
+def _needs(t: str) -> bool:
+    """含假名，或含 CP950 無法編碼的字（例「竜」「険」「広」：純漢字也會在 ANSI 控制項變「?」）。"""
+    if JA.search(t):
+        return True
+    for c in t:
+        try:
+            c.encode('cp950')
+        except UnicodeError:
+            return True
+    return False
+
+
+def parse_dlginit(d: bytes):
+    """RT_DLGINIT：重複 {u16 控制項 ID, u16 訊息, u32 長度, 長度位元組（ANSI，含 NUL）}，u16 0 結尾。"""
+    out, p = [], 0
+    while p + 2 <= len(d):
+        cid = struct.unpack_from('<H', d, p)[0]
+        if cid == 0:
+            break
+        msg, n = struct.unpack_from('<HI', d, p + 2)
+        out.append({'id': cid, 'msg': msg, 'raw': d[p + 8:p + 8 + n]})
+        p += 8 + n
+    return out
+
+
+def encode_dlginit(recs) -> bytes:
+    return b''.join(struct.pack('<HHI', r['id'], r['msg'], len(r['raw'])) + r['raw'] for r in recs) + b'\0\0'
+
+
+def _dlginit_text(raw: bytes) -> str:
+    return raw.rstrip(b'\0').decode('cp932', 'replace')
+
+
 def _walk_menu(items, path=()):
     for i, it in enumerate(items):
         yield path + (i,), it
@@ -50,22 +83,27 @@ def extract(exe: bytes):
         d = pe.payload(r)
         if typ == 4:
             for loc, it in _walk_menu(menu.parse(d)['items']):
-                if JA.search(it['text']):
+                if _needs(it['text']):
                     out.append({'kind': 'menu', 'resource': rid, 'language': lang, 'locator': list(loc),
                                 'command_id': it.get('id'), 'ja': it['text']})
         elif typ == 5:
             o = parse_dialog(d)
-            if 'text' in o['title'] and JA.search(o['title']['text']):
+            if 'text' in o['title'] and _needs(o['title']['text']):
                 out.append({'kind': 'dialog_title', 'resource': rid, 'language': lang, 'ja': o['title']['text']})
             for k, it in enumerate(o['items']):
-                if 'text' in it['title'] and JA.search(it['title']['text']):
+                if 'text' in it['title'] and _needs(it['title']['text']):
                     out.append({'kind': 'dialog_control', 'resource': rid, 'language': lang, 'item_index': k,
                                 'ja': it['title']['text']})
         elif typ == 6:
             for k, s in enumerate(string_block(d)):
-                if s and JA.search(s):
+                if s and _needs(s):
                     out.append({'kind': 'string', 'resource': rid, 'language': lang, 'string_id': (rid - 1) * 16 + k,
                                 'ja': s})
+        elif typ == 240:
+            for k, r in enumerate(parse_dlginit(d)):
+                t = _dlginit_text(r['raw'])
+                if any(b >= 0x80 for b in r['raw']):            # ANSI 位元組為 CP932，非 ASCII 一律需轉
+                    out.append({'kind': 'dlginit', 'resource': rid, 'language': lang, 'item_index': k, 'ja': t})
     for e in out:
         e['source_utf16_sha256'] = sha16(e['ja'])
     return out
@@ -83,11 +121,11 @@ def apply(exe: bytes, cat: dict):
     def get(typ, rid, lang):
         key = (typ, rid, lang)
         if key not in objs:
-            objs[key] = {4: menu.parse, 5: parse_dialog, 6: string_block}[typ](pe.payload(raw[key]))
+            objs[key] = {4: menu.parse, 5: parse_dialog, 6: string_block, 240: parse_dlginit}[typ](pe.payload(raw[key]))
         return objs[key]
     applied, skipped = 0, []
     for e in cat['entries']:
-        typ = {'menu': 4, 'string': 6}.get(e['kind'], 5)
+        typ = {'menu': 4, 'string': 6, 'dlginit': 240}.get(e['kind'], 5)
         key = (typ, e['resource'], e['language'])
         if key not in raw:
             skipped.append((e.get('string_id') or e['resource'], 'no resource')); continue
@@ -99,6 +137,13 @@ def apply(exe: bytes, cat: dict):
             holder, k = node, 'text'
         elif e['kind'] == 'string':
             holder, k = o, e['string_id'] % 16
+        elif e['kind'] == 'dlginit':
+            rec = o[e['item_index']]
+            old = _dlginit_text(rec['raw'])
+            if sha16(old) != e['source_utf16_sha256']:
+                skipped.append((e['resource'], 'source sha mismatch')); continue
+            rec['raw'] = e['translation'].encode('cp950') + b'\0'; applied += 1
+            continue
         elif e['kind'] == 'dialog_title':
             holder, k = o['title'], 'text'
         else:
@@ -129,7 +174,7 @@ def apply(exe: bytes, cat: dict):
     moved = inplace = 0
     for key, o in objs.items():
         r = raw[key]
-        new = {4: menu.encode, 5: encode_dialog, 6: encode_string_block}[key[0]](o)
+        new = {4: menu.encode, 5: encode_dialog, 6: encode_string_block, 240: encode_dlginit}[key[0]](o)
         if new == pe.payload(r):
             continue
         if len(new) <= r['size']:

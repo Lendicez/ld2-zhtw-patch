@@ -7,38 +7,35 @@ r"""m064 lab：視窗標題（訊息框說話者名字等）CP932 → Big5。
     0x4ea7b5  call [SetWindowTextA]    （CWnd::SetWindowText；文字 = [esp+8]）
     0x4f65fe  call [SetWindowTextA]    （AfxSetWindowText）
 
-各改成 `call 前置; nop`。前置：子視窗（WS_CHILD，含編輯框、控制項）一律原樣（避免改到之後會被讀回
-寫入存檔的文字）；頂層／彈出視窗才交給 savelist 的轉換 stub（以空白切詞 → catalog 或照字形 → cp950），
-最後 `jmp [IAT]`。程式碼附加在 .ld2i 檔尾（EXECUTE）。只寫 lab 複本。
+各改成 `call 轉換; nop`，另加對話框 SetDlgItemTextA 唯一呼叫點（文字 = [esp+0xc]）。轉換＝savelist 的
+stub（含 0x81–0x9F 才動；以空白切詞 → 稱號對照 → catalog → 名字音節表 → 假名音譯 → cp950），最後 `jmp [IAT]`。
+1.0.1 起子視窗（編輯框、靜態文字）也轉換：委託人等 NPC 名、創角預設名／稱號原本是 CP932 → CP950 下空白或「?」
+（KNOWN-ISSUES #3 #4 #6）。代價：玩家沿用預設名／稱號時，存檔內為 Big5（與自行輸入中文名相同）。
+程式碼附加在 .ld2i 檔尾（EXECUTE）。只寫 lab 複本。
 """
 import struct
 from tab_title_patch import Asm, sections, va2off, iat_slot, BASE
 import savelist_patch as S
 
-WS_CHILD = 0x40000000
-GWL_STYLE = -16
-SITES = (  # (位址, API, 字串參數位移, 判斷子視窗的方式)
-    (0x4e3507, 'CreateWindowExA', 0x0C, 'style_arg'),
-    (0x4ea7b5, 'SetWindowTextA', 0x08, 'hwnd'),
-    (0x4f65fe, 'SetWindowTextA', 0x08, 'hwnd'),
+SITES = (  # (位址；None＝依 IAT 搜唯一呼叫點, API, 字串參數位移)
+    (0x4e3507, 'CreateWindowExA', 0x0C),
+    (0x4ea7b5, 'SetWindowTextA', 0x08),
+    (0x4f65fe, 'SetWindowTextA', 0x08),
+    (None, 'SetDlgItemTextA', 0x0C),
 )
 
 
-def build_front(origin, conv, iat, mode, getwl):
-    a = Asm(origin)
-    if mode == 'style_arg':
-        a.emit([0xF7, 0x44, 0x24, 0x10], a.imm32(WS_CHILD))       # test dword [esp+0x10],WS_CHILD
-    else:
-        a.emit([0x6A, 0xF0, 0xFF, 0x74, 0x24, 0x08])               # push -16; push [esp+8]（hwnd）
-        a.call_ind(getwl)
-        a.emit([0xA9], a.imm32(WS_CHILD))                          # test eax,WS_CHILD
-    a.jcc8(0x75, 'direct')
-    a.emit([0xE9]); a.emit(struct.pack('<i', conv - (a.here() + 4)))
-    a.label('direct'); a.emit([0xFF, 0x25], a.imm32(iat))
-    return a.finish()
+def _find_call(exe, secs, iat):
+    t = secs['.text']
+    code = exe[t['raw']:t['raw'] + t['rsz']]
+    pat = b'\xff\x15' + struct.pack('<I', iat)
+    i = code.find(pat)
+    if i < 0 or code.find(pat, i + 1) >= 0:
+        raise ValueError(f'call [{iat:#x}] not unique')
+    return BASE + t['va'] + i
 
 
-def patch(exe: bytes):
+def patch(exe: bytes, pairs_va=None):
     secs, pe = sections(exe)
     i = secs['.ld2i']
     last = max(secs.values(), key=lambda s: s['raw'])
@@ -46,29 +43,26 @@ def patch(exe: bytes):
         raise ValueError('.ld2i is not the file tail')
     mbtwc = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'MultiByteToWideChar')
     wctmb = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'WideCharToMultiByte')
-    getwl = iat_slot(exe, secs, pe, 'USER32.dll', 'GetWindowLongA')
     base = BASE + i['va'] + i['rsz']
     blob, cur, info = bytearray(), base, []
     # 共用資料區（ctx／wbuf／sbuf）放最前面
     data = cur; cur += 0x340
     sites = []
-    for site, api, arg, mode in SITES:
+    for site, api, arg in SITES:
         iat = iat_slot(exe, secs, pe, 'USER32.dll', api)
+        if site is None:
+            site = _find_call(exe, secs, iat)
         so = va2off(secs, site)
         if exe[so:so + 6] != b'\xff\x15' + struct.pack('<I', iat):
             raise ValueError(f'{site:#x} is not call [{api}]')
         conv_va = cur
-        conv, _ = S.build_stub(conv_va, data, mbtwc, wctmb, arg_esp=arg, target_ind=iat)
+        conv, _ = S.build_stub(conv_va, data, mbtwc, wctmb, arg_esp=arg, target_ind=iat, pairs_va=pairs_va)
         cur += (len(conv) + 0xf) & ~0xf
-        front_va = cur
-        front = build_front(front_va, conv_va, iat, mode, getwl)
-        cur += (len(front) + 0xf) & ~0xf
-        sites.append((so, site, front_va, conv_va, conv, front))
-        info.append({'site': hex(site), 'api': api, 'front': hex(front_va)})
+        sites.append((so, site, conv_va, conv_va, conv, b''))
+        info.append({'site': hex(site), 'api': api, 'conv': hex(conv_va)})
     blob = bytearray(cur - base)
     for so, site, fva, cva, conv, front in sites:
         blob[cva - base:cva - base + len(conv)] = conv
-        blob[fva - base:fva - base + len(front)] = front
     grow = (len(blob) + 0xfff) & ~0xfff
     out = bytearray(exe) + blob + b'\0' * (grow - len(blob))
     for so, site, fva, *_ in sites:
