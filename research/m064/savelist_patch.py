@@ -221,6 +221,28 @@ def place_rows(pristine_exe: bytes, places_items):
     return rows
 
 
+M063_ORIG_PTR = 0xae6008        # .ld2c 標頭：v4 helper 保存的原 SendDlgItemMessage 位址
+# 以 LB_GETTEXT 讀回清單文字的對話框（讀回值可能被當資料使用）→ 不自動轉換
+READBACK_SITES = {0x4612d3, 0x47f540, 0x4990ed, 0x499a19, 0x499b9f}
+LB_STRING_MSGS = (0x180, 0x181)
+
+
+def discover(exe: bytes, secs):
+    """所有 `push <LB 字串訊息>; push <id>; [mov ecx,reg]; call SendDlgItemMessage` 且仍指向原函式的呼叫點。"""
+    import re
+    t = secs['.text']
+    code = exe[t['raw']:t['raw'] + t['rsz']]
+    out = []
+    for m in re.finditer(rb'\x68(....)\x68....(?:\x8b[\xc8-\xcf])?\xe8(....)', code, re.S):
+        if struct.unpack('<I', m.group(1))[0] not in LB_STRING_MSGS:
+            continue
+        i = m.start(2) - 1
+        site = BASE + t['va'] + i
+        if site + 5 + struct.unpack('<i', m.group(2))[0] == SEND_DLG_ITEM_MSG:
+            out.append((t['raw'] + i, site))
+    return out
+
+
 def patch(exe: bytes, pairs_va=None):
     secs, pe = sections(exe)
     i = secs['.ld2i']
@@ -233,6 +255,14 @@ def patch(exe: bytes, pairs_va=None):
         if exe[so - len(sig):so] != sig:
             raise ValueError(f'list insert args mismatch at {site:#x}')
         offs.append((so, site))
+    # 1.0.2：其餘所有 LB_ADDSTRING／LB_INSERTSTRING 呼叫點一律導向轉換（不再逐點補）；讀回文字的清單除外
+    known = {site for _, site in offs}
+    auto = [(so, site) for so, site in discover(exe, secs) if site not in known and site not in READBACK_SITES]
+    offs += auto
+    # m063 整串查表 hook 查不到時經 [M063_ORIG_PTR] 呼叫原函式 → 改指向本 stub，查不到的列也逐詞轉換
+    po = va2off(secs, M063_ORIG_PTR)
+    if struct.unpack_from('<I', exe, po)[0] != SEND_DLG_ITEM_MSG:
+        raise ValueError('m063 original-call pointer mismatch')
     last = max(secs.values(), key=lambda s: s['raw'])
     if last is not i or len(exe) != i['raw'] + i['rsz']:
         raise ValueError('.ld2i is not the file tail')
@@ -247,6 +277,7 @@ def patch(exe: bytes, pairs_va=None):
     out = bytearray(exe) + blob + b'\0' * (grow - len(blob))
     for so, site in offs:
         struct.pack_into('<i', out, so + 1, code_va - (site + 5))
+    struct.pack_into('<I', out, po, code_va)
     struct.pack_into('<I', out, i['hdr'] + 8, i['rsz'] + grow)
     struct.pack_into('<I', out, i['hdr'] + 16, i['rsz'] + grow)
     ch = struct.unpack_from('<I', out, i['hdr'] + 36)[0]
@@ -254,4 +285,4 @@ def patch(exe: bytes, pairs_va=None):
     opt = pe + 24
     salign = struct.unpack_from('<I', out, opt + 32)[0]
     struct.pack_into('<I', out, opt + 56, (i['va'] + i['rsz'] + grow + salign - 1) // salign * salign)
-    return bytes(out), {'sites': [hex(x[0]) for x in SITES], 'code_va': hex(code_va), 'code_len': len(code), 'data_va': hex(data_va)}
+    return bytes(out), {'sites': [hex(x[0]) for x in SITES], 'auto_sites': [hex(v) for _, v in auto], 'm063_fallback': hex(M063_ORIG_PTR), 'code_va': hex(code_va), 'code_len': len(code), 'data_va': hex(data_va)}
