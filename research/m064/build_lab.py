@@ -52,11 +52,11 @@ def main(argv=None):
     exe, log['catalog'] = catalog_patch.patch(exe, catalog_patch.load_rows(HERE / 'hook-rows-equip.json') + place_rows)
     exe, info = tab_title_patch.patch(exe, debug=x.tab_debug); log['tab_sites'] = info['sites']; log['norm'] = info.get('norm')
     if 'detail_name' not in skip: exe, log['detail_name'] = detail_name_patch.patch(exe, epi_pairs)
+    pairs_va = int(log['detail_name']['table_va'], 16) if 'detail_name' in log else None   # 稱號對照表（各轉換共用）
     mix = None
     if 'mixdec' not in skip:
-        exe, log['mixdec'] = mixdec_patch.patch(exe); mix = (log['mixdec']['mixw'], log['mixdec']['wout'])
+        exe, log['mixdec'] = mixdec_patch.patch(exe, pairs_va); mix = (log['mixdec']['mixw'], log['mixdec']['wout'])
     if 'cdc_textout' not in skip: exe, log['cdc_textout'] = cdc_textout_patch.patch(exe, mix)
-    pairs_va = int(log['detail_name']['table_va'], 16) if 'detail_name' in log else None   # 稱號對照表（清單／標題轉換共用）
     if 'savelist' not in skip: exe, log['savelist'] = savelist_patch.patch(exe, pairs_va)
     if 'fmt_expand' not in skip: exe, log['fmt_expand'] = fmt_expand_patch.patch(exe)
     if 'drawtext' not in skip: exe, log['drawtext'] = drawtext_patch.patch(exe, mix)
