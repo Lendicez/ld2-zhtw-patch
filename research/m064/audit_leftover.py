@@ -42,12 +42,24 @@ def cp950_ok(t: str) -> bool:
     return not re.search('[０-９Ａ-ｚ]', t)   # 全形英數在 CP932 位元組下仍讀不出
 
 
+FULL = re.compile('[\u3041-\u30ff\u4e00-\u9fff\uff10-\uff5a]')
+HALF = re.compile('[\uff61-\uff9f]')
+
+
+def noise(t: str) -> bool:
+    """表格資料偶然成字的短雜訊：全形字不足 2 個，或半形片假名夾雜（非整串半形）。"""
+    full, half = len(FULL.findall(t)), len(HALF.findall(t))
+    if half and not (half == len(t) and half >= 4):
+        return True
+    return full < 2 and not half
+
+
 def scan_strings(p: bytes, lab: bytes):
     secs, _ = sections(p)
     _, off, ln = catalog_patch.find_blob(lab)
     keys = {r[2] for r in catalog_patch.decode(lab[off:off + ln])}
     out = collections.defaultdict(list)
-    placeholder = 0
+    placeholder = noise_n = 0
     for name in ('.rdata', '.data'):
         s = secs[name]
         for m in TEXT.finditer(p, s['raw'], s['raw'] + s['rsz']):
@@ -65,9 +77,11 @@ def scan_strings(p: bytes, lab: bytes):
                 continue
             if is_junk(t, o) or not re.search('[ぁ-ヿ一-鿿０-ｚｦ-ﾟ]', t):
                 continue
+            if noise(t):
+                noise_n += 1; continue
             kind = 'kana' if KANA.search(t) else ('kanji_ok' if cp950_ok(t) else 'kanji_bad')
             out[kind].append({'offset': hex(o), 'section': name, 'bytes': len(raw), 'prev': prev, 'ja': t})
-    return out, placeholder
+    return out, placeholder, noise_n
 
 
 def scan_sites(p: bytes, lab: bytes):
@@ -99,9 +113,9 @@ def main(argv=None):
     ap.add_argument('--pristine', required=True); ap.add_argument('--lab', required=True); ap.add_argument('--out', required=True)
     x = ap.parse_args(argv)
     p, lab = Path(x.pristine).read_bytes(), Path(x.lab).read_bytes()
-    strings, placeholder = scan_strings(p, lab)
+    strings, placeholder, noise_n = scan_strings(p, lab)
     sites = scan_sites(p, lab)
-    summary = {'strings': {k: len(v) for k, v in strings.items()}, 'placeholder_item_slots': placeholder,
+    summary = {'strings': {k: len(v) for k, v in strings.items()}, 'placeholder_item_slots': placeholder, 'noise_skipped': noise_n,
                'list_sites': dict(collections.Counter(r['route'] for r in sites))}
     Path(x.out).write_text(json.dumps({'summary': summary, 'strings': strings, 'list_sites': sites},
                                       ensure_ascii=False, indent=1), 'utf-8')
