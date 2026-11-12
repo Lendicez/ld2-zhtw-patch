@@ -15,7 +15,7 @@ DRAWTEXTA_IAT = 0x525634
 IMAGE_SCN_EXEC = 0x20000000 | 0x00000020
 
 
-def build_stub(origin, data, mbtwc, gmh, gpa):
+def build_stub(origin, data, mbtwc, gmh, gpa, mix=None):
     pfn, s_user, s_dtw, wbuf = data, data + 0x10, data + 0x20, data + 0x40
     a = Asm(origin)
     a.emit([0x55, 0x8B, 0xEC, 0x56, 0x57, 0x8B, 0x75, 0x08, 0x8B, 0x7D, 0x0C])   # esi=s; edi=n
@@ -38,9 +38,14 @@ def build_stub(origin, data, mbtwc, gmh, gpa):
     a.emit([0xA3], a.imm32(pfn))
     a.label('popfail'); a.emit([0x59, 0x85, 0xC0]); a.jcc32(0x84, 'orig')
     a.label('conv')
-    a.emit([0x51, 0x68], a.imm32(0x3FF), [0x68], a.imm32(wbuf), [0x57, 0x56, 0x6A, 0x00, 0x68], a.imm32(932))
-    a.call_ind(mbtwc)
-    a.emit([0x59, 0x85, 0xC0]); a.jcc32(0x84, 'orig')
+    if mix:   # 混合解碼（Big5 譯文＋CP932 名稱）；MIXW 保留暫存器
+        a.emit([0x57, 0x56]); a.call_rel(mix[0])
+        a.emit([0x85, 0xC0]); a.jcc32(0x84, 'orig')
+        wbuf = mix[1]
+    else:
+        a.emit([0x51, 0x68], a.imm32(0x3FF), [0x68], a.imm32(wbuf), [0x57, 0x56, 0x6A, 0x00, 0x68], a.imm32(932))
+        a.call_ind(mbtwc)
+        a.emit([0x59, 0x85, 0xC0]); a.jcc32(0x84, 'orig')
     a.emit([0xFF, 0x75, 0x14, 0xFF, 0x75, 0x10, 0x50, 0x68], a.imm32(wbuf), [0xFF, 0x71, 0x04])
     a.emit([0xFF, 0x15], a.imm32(pfn))                                          # DrawTextW(hdc, w, n, r, fmt)
     a.emit([0x5F, 0x5E, 0x5D, 0xC2, 0x10, 0x00])
@@ -62,7 +67,7 @@ def model(s: bytes, n: int) -> str:
     return 'w' if any(0x81 <= b <= 0x9F for b in s[:n]) else 'a'
 
 
-def patch(exe: bytes):
+def patch(exe: bytes, mix=None):
     secs, pe = sections(exe)
     i = secs['.ld2i']
     fo = va2off(secs, CDC_DRAWTEXT)
@@ -75,9 +80,9 @@ def patch(exe: bytes):
     gmh = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'GetModuleHandleA')
     gpa = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'GetProcAddress')
     code_va = BASE + i['va'] + i['rsz']
-    probe, _ = build_stub(code_va, code_va + 0x400, mbtwc, gmh, gpa)
+    probe, _ = build_stub(code_va, code_va + 0x400, mbtwc, gmh, gpa, mix)
     data_va = code_va + ((len(probe) + 0xf) & ~0xf)
-    code, data = build_stub(code_va, data_va, mbtwc, gmh, gpa)
+    code, data = build_stub(code_va, data_va, mbtwc, gmh, gpa, mix)
     blob = code + b'\0' * (data_va - code_va - len(code)) + data
     grow = (len(blob) + 0xfff) & ~0xfff
     out = bytearray(exe) + blob + b'\0' * (grow - len(blob))

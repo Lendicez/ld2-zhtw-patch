@@ -464,6 +464,8 @@
 !/docs/KNOWN-ISSUES.zh-TW.md
 !/research/m064/test_title_patch.py
 !/research/m064/title_patch.py
+!/research/m064/mixdec_patch.py
+!/research/m064/test_mixdec_patch.py
 !/research/m064/test_res_extra.py
 !/research/m064/res-extra.zh-TW.json
 !/research/m064/res_extra.py

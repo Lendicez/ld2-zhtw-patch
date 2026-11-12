@@ -28,12 +28,13 @@ FLAGS_ANY = 3                                 # ALLOW_ANY|ALLOW_JOIN（不含 NA
 WBUF = 0x210                                  # 0x101 UTF-16 units
 
 
-def build_stub(mbtwc_slot, origin=TO_HOOK, lookup=True):
+def build_stub(mbtwc_slot, origin=TO_HOOK, lookup=True, mix=None):
+    """mix=(MIXW 位址, WOUT)：整串查不到 catalog 時改用混合解碼（Big5 譯文＋CP932 名稱）；None＝舊行為（整串 CP932）。"""
     a = Asm(origin)
     a.emit([0x55, 0x8B, 0xEC, 0x56, 0x57])                    # push ebp; mov ebp,esp; push esi; push edi
     a.emit([0x8B, 0x75, 0x10, 0x8B, 0x7D, 0x14])              # esi=s; edi=n
     a.emit([0x85, 0xF6]); a.jcc32(0x84, 'orig')
-    a.emit([0x8D, 0x47, 0xFF, 0x83, 0xF8, 0x3F]); a.jcc32(0x87, 'orig')    # (n-1) > 63 → orig
+    a.emit([0x8D, 0x47, 0xFF, 0x3D], a.imm32(0xFE if mix else 0x3F)); a.jcc32(0x87, 'orig')   # n 上限 255（舊 64）
     a.emit([0x83, 0x3D], a.imm32(TEXTOUTW_PTR), [0x00]); a.jcc32(0x84, 'orig')
     a.emit([0x31, 0xD2])                                      # xor edx,edx
     a.label('scan')
@@ -55,10 +56,17 @@ def build_stub(mbtwc_slot, origin=TO_HOOK, lookup=True):
         a.emit([0x83, 0xC4, 0x1C])
         a.emit([0x8D, 0x48, 0xFF, 0x81, 0xF9], a.imm32(0xFF)); a.jcc8(0x76, 'draw')   # 1..0x100 → 命中
     a.label('dec')
-    a.emit([0x8D, 0x44, 0x24, 0x04])                          # lea eax,wbuf
-    a.emit([0x68], a.imm32(0x100), [0x50, 0x57, 0x56, 0x6A, 0x00], [0x68], a.imm32(CP932))
-    a.call_ind(mbtwc_slot)
-    a.emit([0x85, 0xC0]); a.jcc8(0x74, 'unwind')
+    if mix:
+        a.emit([0x57, 0x56]); a.call_rel(mix[0])                  # MIXW(s, n)（保留暫存器）
+        a.emit([0x85, 0xC0]); a.jcc8(0x74, 'unwind')
+        a.emit([0x59, 0x50, 0x68], a.imm32(mix[1]), [0xFF, 0x75, 0x0C, 0xFF, 0x75, 0x08, 0xFF, 0x71, 0x04])
+        a.emit([0xFF, 0x15], a.imm32(TEXTOUTW_PTR))
+        a.emit([0x81, 0xC4], a.imm32(WBUF + 0x10), [0x5F, 0x5E, 0x5D, 0xC2, 0x10, 0x00])
+    else:
+        a.emit([0x8D, 0x44, 0x24, 0x04])                          # lea eax,wbuf
+        a.emit([0x68], a.imm32(0x100), [0x50, 0x57, 0x56, 0x6A, 0x00], [0x68], a.imm32(CP932))
+        a.call_ind(mbtwc_slot)
+        a.emit([0x85, 0xC0]); a.jcc8(0x74, 'unwind')
     a.label('draw')
     a.emit([0x59])                                            # pop ecx；wbuf=[esp]
     a.emit([0x89, 0xE2])                                      # mov edx,esp
@@ -81,7 +89,7 @@ def model(s: bytes, n: int, have_w=True):
     return 'w' if any(0x81 <= b <= 0x9F for b in s[:n]) else 'a'
 
 
-def patch(exe: bytes):
+def patch(exe: bytes, mix=None):
     secs, pe = sections(exe)
     t = secs['.ld2t']
     fo = va2off(secs, CDC_TEXTOUT)
@@ -90,7 +98,7 @@ def patch(exe: bytes):
     mbtwc = iat_slot(exe, secs, pe, 'KERNEL32.dll', 'MultiByteToWideChar')
     if iat_slot(exe, secs, pe, 'GDI32.dll', 'TextOutA') != TEXTOUTA_IAT:
         raise ValueError('TextOutA IAT slot moved')
-    code = build_stub(mbtwc)
+    code = build_stub(mbtwc, mix=mix)
     so = va2off(secs, TO_HOOK)
     end_rva = TO_HOOK + len(code) - 0x400000
     if end_rva > t['va'] + t['rsz'] or any(exe[so:so + len(code)]):
