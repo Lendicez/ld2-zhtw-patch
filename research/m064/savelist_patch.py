@@ -32,6 +32,10 @@ SITES = (
     # 委託清單（旅館委託頁、黑暗公會，清單 0x3e8）：「◎／○」標記＋報酬＋期限＋委託人（NPC 名為 CP932）
     (0x457985, '30526aff688101000068e8030000'), (0x4582f6, '6aff688101000068e80300008bcd'),
     (0x459005, '6aff688101000068e80300008bcd'), (0x4595a5, '30526aff688101000068e8030000'),
+    # 1.0.1：旅館委託頁清單（'%s\t%6s\t%5s\t%-12s\t%2s'：種類、報酬、期限、委託人、未／引）與其他 0x3e8 清單
+    (0x4ac730, '526aff688101000068e80300008bcd'), (0x4abcab, '526aff688101000068e80300008bcd'),
+    (0x496611, '526aff688101000068e80300008bce'), (0x4ac010, '526aff688101000068e80300008bcf'),
+    (0x4b1ff3, '506aff688101000068e80300008bcf'),
 )
 # 片假名（U+30A1–U+30F6；平假名先 +0x60）→ 音譯用漢字；'' ＝略去（促音）。長音「ー」略去，「・」→「‧」。
 # 只在 catalog、FindCopyNorm 都查不到時使用（例：遊戲隨機產生的人名／首領名，CP950 無假名會變成「?」）。
@@ -101,7 +105,9 @@ def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, 
     a.emit([0x83, 0xC4, 0x0C, 0xA3], a.imm32(catok))          # add esp,0xc; mov [catok],eax
     a.label('tok')
     a.emit([0x8A, 0x06, 0x84, 0xC0]); a.jcc32(0x84, 'fin')    # al=[esi]; 0 → fin
-    a.emit([0x3C, 0x20]); a.jcc8(0x75, 'word')
+    a.emit([0x3C, 0x20]); a.jcc8(0x74, 'sep')                 # 分隔：空白或 TAB（清單欄位以 TAB 分欄）
+    a.emit([0x3C, 0x09]); a.jcc8(0x75, 'word')
+    a.label('sep')
     a.emit([0x39, 0xDF]); a.jcc32(0x83, 'fin')                # cmp edi,ebx; jae
     a.emit([0x88, 0x07, 0x47, 0x46]); a.emit([0xEB, 0]); a.fix8.append((len(a.b) - 1, 'tok'))
     a.label('word')
@@ -112,7 +118,7 @@ def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, 
     a.emit([0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, 'tok'))
     a.label('w0'); a.emit([0x89, 0xF5])                       # ebp = esi
     a.label('w1'); a.emit([0x8A, 0x45, 0x00, 0x84, 0xC0]); a.jcc8(0x74, 'w2')
-    a.emit([0x3C, 0x20]); a.jcc8(0x74, 'w2'); a.emit([0x45]); a.emit([0xEB, 0]); a.fix8.append((len(a.b) - 1, 'w1'))
+    a.emit([0x3C, 0x20]); a.jcc8(0x74, 'w2'); a.emit([0x3C, 0x09]); a.jcc8(0x74, 'w2'); a.emit([0x45]); a.emit([0xEB, 0]); a.fix8.append((len(a.b) - 1, 'w1'))
     a.label('w2'); a.emit([0x89, 0xF1])                       # ecx = esi
     a.label('w3'); a.emit([0x39, 0xE9]); a.jcc32(0x83, 'raw')
     a.emit([0x8A, 0x01, 0x41, 0x3C, 0x81]); a.jcc8(0x72, 'w3'); a.emit([0x3C, 0x9F]); a.jcc8(0x77, 'w3')
@@ -188,7 +194,7 @@ def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, 
 
 
 def model(header: str, lookup: dict) -> str:
-    """Python 模型：以空白切詞，CP932 日文詞查表或照字形轉 cp950（kana → ?）。"""
+    """Python 模型（僅空白分隔的情形；stub 另以 TAB 分隔）：以空白切詞，CP932 日文詞查表或照字形轉 cp950（kana → ?）。"""
     raw = header.encode('cp932')
     if not any(0x81 <= b <= 0x9F for b in raw):
         return raw.decode('cp950', 'replace')
