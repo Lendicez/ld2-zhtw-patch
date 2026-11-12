@@ -36,6 +36,8 @@ SITES = (
     (0x4ac730, '526aff688101000068e80300008bcd'), (0x4abcab, '526aff688101000068e80300008bcd'),
     (0x496611, '526aff688101000068e80300008bce'), (0x4ac010, '526aff688101000068e80300008bcf'),
     (0x4b1ff3, '506aff688101000068e80300008bcf'),
+    # 旅館委託頁（同格式第二份）：m063 已把此點導向 v4 清單 hook（整串查表，含 TAB 的列永遠查不到）→ 改導向本 stub
+    (0x4b3477, '50526aff688101000068e80300008bcb', 0xae4d40),
 )
 # 片假名（U+30A1–U+30F6；平假名先 +0x60）→ 音譯用漢字；'' ＝略去（促音）。長音「ー」略去，「・」→「‧」。
 # 只在 catalog、FindCopyNorm 都查不到時使用（例：遊戲隨機產生的人名／首領名，CP950 無假名會變成「?」）。
@@ -223,9 +225,9 @@ def patch(exe: bytes, pairs_va=None):
     secs, pe = sections(exe)
     i = secs['.ld2i']
     offs = []
-    for site, sig in SITES:
+    for site, sig, *frm in SITES:
         so = va2off(secs, site)
-        if exe[so] != 0xE8 or site + 5 + struct.unpack_from('<i', exe, so + 1)[0] != SEND_DLG_ITEM_MSG:
+        if exe[so] != 0xE8 or site + 5 + struct.unpack_from('<i', exe, so + 1)[0] != (frm[0] if frm else SEND_DLG_ITEM_MSG):
             raise ValueError(f'list insert site {site:#x} mismatch')
         sig = bytes.fromhex(sig)
         if exe[so - len(sig):so] != sig:
@@ -252,4 +254,4 @@ def patch(exe: bytes, pairs_va=None):
     opt = pe + 24
     salign = struct.unpack_from('<I', out, opt + 32)[0]
     struct.pack_into('<I', out, opt + 56, (i['va'] + i['rsz'] + grow + salign - 1) // salign * salign)
-    return bytes(out), {'sites': [hex(x) for x, _ in SITES], 'code_va': hex(code_va), 'code_len': len(code), 'data_va': hex(data_va)}
+    return bytes(out), {'sites': [hex(x[0]) for x in SITES], 'code_va': hex(code_va), 'code_len': len(code), 'data_va': hex(data_va)}
