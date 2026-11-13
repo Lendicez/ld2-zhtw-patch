@@ -140,9 +140,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "中毒了……誰來回復",
+      "text_zh_tw": "中毒了……幫我治療",
       "text_cp950_bytes_len": 18,
-      "text_cp950_hex": "a4a4ac72a446a14ba14bbdd6a8d3a65eb45f",
+      "text_cp950_hex": "a4a4ac72a446a14ba14bc0b0a7daaa76c0f8",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 1,

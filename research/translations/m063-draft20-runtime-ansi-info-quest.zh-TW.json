@@ -336,9 +336,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "你該不會是遊吟詩人歌頌的那位勇者吧！？",
+      "text_zh_tw": "你該不會是吟遊詩人歌頌的那位勇者吧！？",
       "text_cp950_bytes_len": 38,
-      "text_cp950_hex": "a741b8d3a4a3b77cac4fb943a775b8d6a448ba71b97caabaa8baa6ecab69aacca761a149a148",
+      "text_cp950_hex": "a741b8d3a4a3b77cac4fa775b943b8d6a448ba71b97caabaa8baa6ecab69aacca761a149a148",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 12,

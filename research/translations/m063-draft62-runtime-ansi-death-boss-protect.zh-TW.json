@@ -54,9 +54,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "人類這般愚昧生物，以我瓦沙戈之名抹殺之",
+      "text_zh_tw": "人類這般愚昧生物，以我瓦沙克之名抹殺之",
       "text_cp950_bytes_len": 38,
-      "text_cp950_hex": "a448c3feb36fafebb74dac4ea5cdaaaba141a548a7daa5cba846a4e0a4a7a657a9d9b1fea4a7",
+      "text_cp950_hex": "a448c3feb36fafebb74dac4ea5cdaaaba141a548a7daa5cba846a74aa4a7a657a9d9b1fea4a7",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 32,

@@ -270,9 +270,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "各位，今天是一年一度的大活動——天下第一武鬥會的開催日！",
+      "text_zh_tw": "各位，今天是一年一度的大活動——天下第一武鬥會的開幕日！",
       "text_cp950_bytes_len": 56,
-      "text_cp950_hex": "a655a6eca141a4b5a4d1ac4fa440a67ea440abd7aabaa46aaca1b0caa158a158a4d1a455b2c4a440aa5ab0abb77caabab67db6caa4e9a149",
+      "text_cp950_hex": "a655a6eca141a4b5a4d1ac4fa440a67ea440abd7aabaa46aaca1b0caa158a158a4d1a455b2c4a440aa5ab0abb77caabab67db9f5a4e9a149",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 13,

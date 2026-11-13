@@ -297,9 +297,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "本想引退時把這杖傳給兒子，可他怎麼也不成氣候。",
+      "text_zh_tw": "本想退休時把這杖傳給兒子，可他怎麼也不成氣候。",
       "text_cp950_bytes_len": 46,
-      "text_cp950_hex": "a5bbb751a4deb068aec9a7e2b36fa7fab6c7b5b9a8e0a46ca141a569a54cabe7bbf2a45da4a3a6a8aef0add4a143",
+      "text_cp950_hex": "a5bbb751b068a5f0aec9a7e2b36fa7fab6c7b5b9a8e0a46ca141a569a54cabe7bbf2a45da4a3a6a8aef0add4a143",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 46,
@@ -324,9 +324,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "上了年紀真不行。身體不如意。差不多該引退了吧。",
+      "text_zh_tw": "上了年紀真不行。身體不如意。差不多該退休了吧。",
       "text_cp950_bytes_len": 46,
-      "text_cp950_hex": "a457a446a67eacf6af75a4a3a6e6a143a8adc5e9a4a3a670b74ea143ae74a4a3a668b8d3a4deb068a446a761a143",
+      "text_cp950_hex": "a457a446a67eacf6af75a4a3a6e6a143a8adc5e9a4a3a670b74ea143ae74a4a3a668b8d3b068a5f0a446a761a143",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 24,

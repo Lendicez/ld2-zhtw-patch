@@ -203,9 +203,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "穆修弗修降臨%s之地。",
+      "text_zh_tw": "穆修胡修降臨%s之地。",
       "text_cp950_bytes_len": 20,
-      "text_cp950_hex": "bf70add7a5b1add7adb0c17b2573a4a7a661a143",
+      "text_cp950_hex": "bf70add7ad4aadd7adb0c17b2573a4a7a661a143",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 14,

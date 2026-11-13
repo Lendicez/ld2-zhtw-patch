@@ -1588,12 +1588,12 @@
     "literal_ampersands": 0,
     "shortcuts": 0
    },
-   "text_zh_tw": "阿茲尤之谷",
-   "text_cp950_bytes_len": 10,
-   "text_cp950_hex": "aafcaff7a4d7a4a7a8a6",
+   "text_zh_tw": "窫窳之谷",
+   "text_cp950_bytes_len": 8,
+   "text_cp950_hex": "e34be6d5a4a7a8a6",
    "name_cp950_encodable": true,
    "fits_capacity": true,
-   "capacity_slack_bytes": 0,
+   "capacity_slack_bytes": 2,
    "review_status": "claude_lab_candidate",
    "translation_method": "claude",
    "site_binding": "0x45f3e0 GetDungeonName (44 callers)"

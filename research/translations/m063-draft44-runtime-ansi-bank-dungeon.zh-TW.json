@@ -333,7 +333,8 @@
           "%B",
           "%B",
           "%C",
-          "%D"
+          "%D",
+          "%E"
         ],
         "indexed": [],
         "other_percent": 0,
@@ -342,12 +343,12 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "%A嗎？%A的話「%B」持有。喔，可惜「%B」現在好像在「%C」名叫「%D」的迷宮裡探索。要再等一會兒嗎？",
-      "text_cp950_bytes_len": 94,
-      "text_cp950_hex": "2541b6dca1482541aabab8dca1752542a176abf9a6b3a143b3e1a141a569b1a4a1752542a176b27ba662a66eb9b3a662a1752543a176a657a573a1752544a176aabab067ae63b8ccb1b4afc1a143ad6ea641b5a5a440b77ca8e0b6dca148",
+      "text_zh_tw": "%A嗎？%A的話「%B」持有。喔，可惜「%B」現在好像在「%C」的「%D」裡名叫「%E」的迷宮探索。要再等一會兒嗎？",
+      "text_cp950_bytes_len": 102,
+      "text_cp950_hex": "2541b6dca1482541aabab8dca1752542a176abf9a6b3a143b3e1a141a569b1a4a1752542a176b27ba662a66eb9b3a662a1752543a176aabaa1752544a176b8cca657a573a1752545a176aabab067ae63b1b4afc1a143ad6ea641b5a5a440b77ca8e0b6dca148",
       "name_cp950_encodable": true,
       "fits_capacity": true,
-      "capacity_slack_bytes": 59,
+      "capacity_slack_bytes": 51,
       "review_status": "mona_approved_candidate_pending_site",
       "translation_method": "curated",
       "site_binding": "unconfirmed_candidate_adjacent_rdata",

@@ -513,9 +513,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": " 哼，人類嗎……。我名為塞姆伊。在毀滅這世界前先賜你們死亡的快感。",
+      "text_zh_tw": " 哼，人類嗎……。我名為瑟姆伊。在毀滅這世界前先賜你們死亡的快感。",
       "text_cp950_bytes_len": 65,
-      "text_cp950_hex": "20adf3a141a448c3feb6dca14ba14ba143a7daa657acb0b6eba969a5eca143a662b7b4b7c0b36fa540acc9ab65a5fdbde7a741adcca6baa460aabaa7d6b750a143",
+      "text_cp950_hex": "20adf3a141a448c3feb6dca14ba14ba143a7daa657acb0b7e6a969a5eca143a662b7b4b7c0b36fa540acc9ab65a5fdbde7a741adcca6baa460aabaa7d6b750a143",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 17,

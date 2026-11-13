@@ -531,9 +531,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": " 旅館",
+      "text_zh_tw": " 旅店",
       "text_cp950_bytes_len": 5,
-      "text_cp950_hex": "20aec8c05d",
+      "text_cp950_hex": "20aec8a9b1",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 0,

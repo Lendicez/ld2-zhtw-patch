@@ -392,9 +392,9 @@
     "literal_ampersands": 0,
     "shortcuts": 0
    },
-   "text_zh_tw": "旅館",
+   "text_zh_tw": "旅店",
    "text_cp950_bytes_len": 4,
-   "text_cp950_hex": "aec8c05d",
+   "text_cp950_hex": "aec8a9b1",
    "name_cp950_encodable": true,
    "fits_capacity": true,
    "capacity_slack_bytes": 0,
@@ -1770,9 +1770,9 @@
     "literal_ampersands": 0,
     "shortcuts": 0
    },
-   "text_zh_tw": "退隱",
+   "text_zh_tw": "退休",
    "text_cp950_bytes_len": 4,
-   "text_cp950_hex": "b068c1f4",
+   "text_cp950_hex": "b068a5f0",
    "name_cp950_encodable": true,
    "fits_capacity": true,
    "capacity_slack_bytes": 0,

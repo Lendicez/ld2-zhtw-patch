@@ -486,9 +486,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "找不到要找的男人，最後去了情報屋。",
+      "text_zh_tw": "找不到要找的男人，最後去了情報所。",
       "text_cp950_bytes_len": 34,
-      "text_cp950_hex": "a7e4a4a3a8ecad6ea7e4aabaa86ba448a141b3ccabe1a568a446b1a1b3f8abcea143",
+      "text_cp950_hex": "a7e4a4a3a8ecad6ea7e4aabaa86ba448a141b3ccabe1a568a446b1a1b3f8a9d2a143",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 20,

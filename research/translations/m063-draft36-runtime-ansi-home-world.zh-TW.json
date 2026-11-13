@@ -378,9 +378,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "能做滿意的工作後，真想引退優雅度日。",
+      "text_zh_tw": "能做滿意的工作後，真想退休優雅度日。",
       "text_cp950_bytes_len": 36,
-      "text_cp950_hex": "afe0b0b5baa1b74eaabaa475a740abe1a141af75b751a4deb068c075b6aeabd7a4e9a143",
+      "text_cp950_hex": "afe0b0b5baa1b74eaabaa475a740abe1a141af75b751b068a5f0c075b6aeabd7a4e9a143",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 22,
@@ -459,9 +459,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "秩序的倫西亞、混沌的伊爾塔爾、善的龍江、惡的日紫，全都走遍了，沒有比這更奇妙的世界。",
+      "text_zh_tw": "秩序的蓮西亞、混沌的伊爾塔爾、善的龍江、惡的日紫，全都走遍了，沒有比這更奇妙的世界。",
       "text_cp950_bytes_len": 84,
-      "text_cp950_hex": "afb4a7c7aabaaddba6e8a8c8a142b256a850aabaa5ecbab8b6f0bab8a142b5bdaabac073a6bfa142b463aabaa4e9b5b5a141a5feb3a3a8abb94da446a141a853a6b3a4f1b36fa7f3a95fa7aeaabaa540acc9a143",
+      "text_cp950_hex": "afb4a7c7aababdaca6e8a8c8a142b256a850aabaa5ecbab8b6f0bab8a142b5bdaabac073a6bfa142b463aabaa4e9b5b5a141a5feb3a3a8abb94da446a141a853a6b3a4f1b36fa7f3a95fa7aeaabaa540acc9a143",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 28,

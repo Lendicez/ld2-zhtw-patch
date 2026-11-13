@@ -220,9 +220,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "真的要引退嗎？",
+      "text_zh_tw": "真的要退休嗎？",
       "text_cp950_bytes_len": 14,
-      "text_cp950_hex": "af75aabaad6ea4deb068b6dca148",
+      "text_cp950_hex": "af75aabaad6eb068a5f0b6dca148",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 6,
@@ -463,9 +463,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "沒有能使用的魔法道具．",
+      "text_zh_tw": "沒有可使用的魔法道具．",
       "text_cp950_bytes_len": 22,
-      "text_cp950_hex": "a853a6b3afe0a8cfa5ceaabac55daa6bb944a8e3a144",
+      "text_cp950_hex": "a853a6b3a569a8cfa5ceaabac55daa6bb944a8e3a144",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 14,

@@ -432,9 +432,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "聽說了嗎。死靈術士跟精靈使聯手，要搞出天大的事。",
+      "text_zh_tw": "聽說了嗎。死靈法師跟精靈使聯手，要搞出天大的事。",
       "text_cp950_bytes_len": 48,
-      "text_cp950_hex": "c5a5bba1a446b6dca143a6bac646b34ea468b8f2baebc646a8cfc170a4e2a141ad6eb764a558a4d1a46aaabaa8c6a143",
+      "text_cp950_hex": "c5a5bba1a446b6dca143a6bac646aa6bae76b8f2baebc646a8cfc170a4e2a141ad6eb764a558a4d1a46aaabaa8c6a143",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 56,

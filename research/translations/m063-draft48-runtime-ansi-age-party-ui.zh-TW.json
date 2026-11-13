@@ -29,9 +29,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "得到了%dGOLD。",
+      "text_zh_tw": "獲得了%dGOLD。",
       "text_cp950_bytes_len": 14,
-      "text_cp950_hex": "b16fa8eca4462564474f4c44a143",
+      "text_cp950_hex": "c0f2b16fa4462564474f4c44a143",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 11,
@@ -491,9 +491,9 @@
         "literal_ampersands": 0,
         "shortcuts": 0
       },
-      "text_zh_tw": "唔，區區……魅了魔法……",
+      "text_zh_tw": "唔，區區……魅惑魔法……",
       "text_cp950_bytes_len": 24,
-      "text_cp950_hex": "adf8a141b0cfb0cfa14ba14bbe79a446c55daa6ba14ba14b",
+      "text_cp950_hex": "adf8a141b0cfb0cfa14ba14bbe79b462c55daa6ba14ba14b",
       "name_cp950_encodable": true,
       "fits_capacity": true,
       "capacity_slack_bytes": 5,
