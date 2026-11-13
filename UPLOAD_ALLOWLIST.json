@@ -446,6 +446,7 @@
     "research/m064/catalog-copied-names.zh-TW.json",
     "docs/RELEASE-1.0.0.zh-TW.md",
     "docs/KNOWN-ISSUES.zh-TW.md",
+    "docs/RELEASE-1.0.1.zh-TW.md",
     "research/release/make_delta.py",
     "research/release/make_release.py",
     "research/release/test_make_delta.py",

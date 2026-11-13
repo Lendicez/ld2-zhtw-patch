@@ -27,6 +27,22 @@
       "files": 124,
       "release_approved": true,
       "approved_by": "project owner (2026-11-08)"
+    },
+    {
+      "version": "1.0.1",
+      "date": "2026-11-13",
+      "installer": "LD2-zhTW-Patch-1.0.1.exe",
+      "installer_sha256": "5112f3cc2e588d3516e1db98b6be6bf115230d3eb354c973c7e0c1bfca5372cf",
+      "payload_sha256": "d081e6e00a294bd89d365cce41a7337816ad3c2569ce6f739df9b5d1db8050a6",
+      "source_version": "ld95-1.0.3.16",
+      "files": 124,
+      "source_commit": "9bf0a90",
+      "branch": "release/1.0.1",
+      "upgrades_from": [
+        "1.0.0"
+      ],
+      "release_approved": true,
+      "approved_by": "project owner (2026-11-13, hardware-confirmed rc5)"
     }
   ]
 }

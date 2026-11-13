@@ -6,7 +6,7 @@
 
 ## 安裝（玩家）
 
-**最新版 1.0.0**：到 [Releases](https://github.com/Lendicez/ld2-zhtw-patch/releases/latest) 下載 `LD2-zhTW-Patch-1.0.0.exe`，執行後按「安裝」。
+**最新版 1.0.1**：到 [Releases](https://github.com/Lendicez/ld2-zhtw-patch/releases/latest) 下載 `LD2-zhTW-Patch-1.0.1.exe`，執行後按「安裝」。
 
 - 對象：Steam 版《俠客遊 前途道標》（Lunatic Dawn: Passage of the Book，`Ld95.exe` 1.0.3.16，sha256 `6c817a09…d5d2`）。其他版本會被拒絕，不做任何修改。
 - 需求：Windows 10／11，「非 Unicode 程式語言」為**中文（繁體，台灣）**（代碼頁 950）。
@@ -15,7 +15,9 @@
 - 安裝程式未簽章，Windows 可能顯示安全性提示；若被系統政策（如「智慧型應用程式控制」）封鎖則無法使用。
 - Steam「驗證遊戲檔案完整性」或遊戲更新會還原原版；重新執行安裝程式即可。
 
-已知限制見 [docs/RELEASE-1.0.0.zh-TW.md](docs/RELEASE-1.0.0.zh-TW.md)。
+- 已裝過 1.0.0：直接執行新版安裝程式，會偵測舊版並顯示「更新」，不必先解除安裝。
+
+各版說明：[1.0.1](docs/RELEASE-1.0.1.zh-TW.md)、[1.0.0](docs/RELEASE-1.0.0.zh-TW.md)；已知問題：[docs/KNOWN-ISSUES.zh-TW.md](docs/KNOWN-ISSUES.zh-TW.md)。
 
 ## 1.0.0 涵蓋範圍
 
