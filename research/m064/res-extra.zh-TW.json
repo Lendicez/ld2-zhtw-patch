@@ -39,7 +39,7 @@
    ],
    "command_id": 32825,
    "source_utf16_sha256": "7c13e956741a4bb56c62fcf3d767bc4de8e783d51dc1aaa793ba52d5711e3de7",
-   "translation": "開場動畫"
+   "translation": "片頭動畫"
   },
   {
    "kind": "menu",
@@ -231,7 +231,7 @@
    "resource": 192,
    "language": 1041,
    "source_utf16_sha256": "5b71cf3d44ff480d6bbeb40b0b9229381471d7c30f7a79b12e67223aac632782",
-   "translation": "DEBUG::選擇物品"
+   "translation": "DEBUG::選擇道具"
   },
   {
    "kind": "dialog_control",
@@ -247,7 +247,7 @@
    "language": 1041,
    "item_index": 3,
    "source_utf16_sha256": "0a22399351f5f5d1206ab45524462aeba98b84ef4631aef28693e975be373fc4",
-   "translation": "物品編號:"
+   "translation": "道具編號:"
   },
   {
    "kind": "dialog_title",
