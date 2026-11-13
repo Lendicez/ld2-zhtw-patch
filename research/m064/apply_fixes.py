@@ -29,7 +29,10 @@ def main(argv=None):
     applied, rejected = 0, []
     for rel, fixes in sorted(by_file.items()):
         p = Path(x.repo) / rel
-        doc = json.loads(p.read_text('utf-8-sig'))
+        raw = p.read_text('utf-8-sig')
+        doc = json.loads(raw)
+        second = raw.split('\n', 2)[1] if '\n' in raw else ''
+        indent = (len(second) - len(second.lstrip(' '))) or None      # 沿用原檔縮排，避免無關的格式差異
         items = {int(it['file_offset']): it for it in doc.get('items', []) if 'file_offset' in it}
         changed = False
         for f in fixes:
@@ -54,7 +57,7 @@ def main(argv=None):
                       capacity_slack_bytes=len(src) - len(enc), source_name_contract=c)
             applied += 1; changed = True
         if changed and not x.dry_run:
-            p.write_text(json.dumps(doc, ensure_ascii=False, indent=1), 'utf-8')
+            p.write_text(json.dumps(doc, ensure_ascii=False, indent=indent) + ('\n' if raw.endswith('\n') else ''), 'utf-8')
     print(json.dumps({'applied': applied, 'rejected': len(rejected)}, ensure_ascii=False))
     for r in rejected:
         print(' ', *r)
