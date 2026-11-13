@@ -455,6 +455,7 @@
     "research/m064/title_patch.py",
     "research/m064/mixdec_patch.py",
     "research/m064/audit_leftover.py",
+    "research/m064/apply_fixes.py",
     "research/m064/test_mixdec_patch.py",
     "research/m064/test_res_extra.py",
     "research/m064/res-extra.zh-TW.json",
