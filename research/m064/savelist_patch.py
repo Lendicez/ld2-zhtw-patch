@@ -223,7 +223,10 @@ def place_rows(pristine_exe: bytes, places_items):
 
 M063_ORIG_PTR = 0xae6008        # .ld2c 標頭：v4 helper 保存的原 SendDlgItemMessage 位址
 # 以 LB_GETTEXT 讀回清單文字的對話框（讀回值可能被當資料使用）→ 不自動轉換
-READBACK_SITES = {0x4612d3, 0x47f540, 0x4990ed, 0x499a19, 0x499b9f}
+# 1.0.2：存檔框檔案清單（0x499a19「-- 未登錄 --」、0x499b9f 存檔標頭）移出：讀回文字只用於
+# SetDlgItemTextA(0x3f8) 顯示選中列，存檔格以清單索引查表（[esi+edi*4+0xec]），對話框內不讀 0x3f8，
+# 與讀檔框（0x480150／0x480403，已轉換）同型。未轉換時存檔框清單為 CP932 亂碼。
+READBACK_SITES = {0x4612d3, 0x47f540, 0x4990ed}
 LB_STRING_MSGS = (0x180, 0x181)
 
 
