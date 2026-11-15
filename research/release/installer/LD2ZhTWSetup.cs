@@ -1,7 +1,9 @@
 // 《俠客遊 前途道標》（Lunatic Dawn: Passage of the Book / Ld95.exe）繁體中文化補丁安裝程式。
 // 以 Windows 內建 .NET Framework 4 csc.exe 編譯；payload（差分包，見 make_delta.py）以內嵌資源方式附帶。
 // 只改寫 payload 列出的檔案；原檔先備份到 <遊戲資料夾>\_zhTW_backup\ 並核對雜湊；可解除安裝還原。
-// 不處理 Usr（存檔）、ini 或任何其他檔案。命令列：/status <dir>、/install <dir>、/uninstall <dir>（自動測試用）。
+// 不處理 Usr（存檔）、ini 或任何其他檔案。命令列：/status <dir>、/install <dir> [/noadmin]、/uninstall <dir>、
+// /setmode <dir> admin|noadmin（自動測試用）。
+// 「免系統管理員權限啟動」：只把 Ld95.exe manifest 的 requireAdministrator 等長改為 asInvoker（位置由 make_release 依資源結構算出並核對）。
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,6 +13,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
+using System.Security.Principal;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Win32;
@@ -28,6 +31,8 @@ namespace LD2ZhTW
         public string Path, Kind, SrcSha, DstSha; public long SrcSize, DstSize; public int OpsOff, OpsLen;
         // 舊版本（升級來源）安裝後的雜湊 → 版本號；OldOnly＝舊版改過、本版不再改的檔（升級時還原原檔）
         public Dictionary<string, string> OldDst = new Dictionary<string, string>(); public bool OldOnly;
+        // 免系統管理員模式（manifest asInvoker）的本版雜湊；null＝此檔沒有該模式
+        public string AltDst; public HashSet<string> OldAlt = new HashSet<string>();
     }
 
     class Payload
@@ -35,6 +40,8 @@ namespace LD2ZhTW
         public string Version; public List<PFile> Files = new List<PFile>(); public byte[] Ops;
         public IEnumerable<PFile> AllFiles { get { return Files.Concat(OldOnlyFiles); } }
         public List<PFile> OldOnlyFiles = new List<PFile>();
+        // 免系統管理員模式：Ld95.exe manifest 內 level="requireAdministrator" 的位置與替換字串
+        public PFile ModeFile; public int ManOff = -1; public byte[] ManAdmin, ManInvoker;
 
         public static Payload Load()
         {
@@ -71,7 +78,39 @@ namespace LD2ZhTW
                         if (dst != cur.DstSha && !cur.OldDst.ContainsKey(dst)) cur.OldDst[dst] = ver;
                     }
                 }
+            LoadVariants(p);
             return p;
+        }
+
+        static void LoadVariants(Payload p)
+        {
+            var s = Assembly.GetExecutingAssembly().GetManifestResourceStream("variants.json");
+            if (s == null) return;
+            string json; using (var r = new StreamReader(s, Encoding.UTF8)) json = r.ReadToEnd();
+            var v = (Dictionary<string, object>)new MiniJson(json).Parse();
+            var f = p.Files.FirstOrDefault(x => x.Path == (string)v["path"]);
+            if (f == null) throw new Exception("variants 資料不一致");
+            p.ModeFile = f; f.AltDst = (string)v["noadmin_dst_sha256"];
+            p.ManOff = Convert.ToInt32(v["offset"]);
+            p.ManAdmin = Encoding.ASCII.GetBytes((string)v["admin"]); p.ManInvoker = Encoding.ASCII.GetBytes((string)v["invoker"]);
+            if (p.ManAdmin.Length != p.ManInvoker.Length) throw new Exception("variants 長度不符");
+            if (v.ContainsKey("old_noadmin"))
+                foreach (var kv in (Dictionary<string, object>)v["old_noadmin"])
+                {
+                    if (!f.OldDst.ContainsKey(kv.Key)) f.OldDst[kv.Key] = (string)kv.Value;
+                    f.OldAlt.Add(kv.Key);
+                }
+        }
+
+        /// <summary>把已安裝（標準模式）的 EXE 內容換成指定模式；核對替換位置的原字串與結果雜湊。</summary>
+        public byte[] WithMode(byte[] dst, bool noAdmin)
+        {
+            byte[] from = noAdmin ? ManAdmin : ManInvoker, to = noAdmin ? ManInvoker : ManAdmin;
+            if (ManOff < 0 || ManOff + from.Length > dst.Length) throw new Exception("此版本不支援切換啟動權限");
+            for (int i = 0; i < from.Length; i++) if (dst[ManOff + i] != from[i]) throw new Exception("manifest 內容與預期不符，已停止");
+            var o = (byte[])dst.Clone(); Buffer.BlockCopy(to, 0, o, ManOff, to.Length);
+            if (Engine.Sha(o) != (noAdmin ? ModeFile.AltDst : ModeFile.DstSha)) throw new Exception("切換後雜湊不符，已停止");
+            return o;
         }
 
         public byte[] Build(PFile f, byte[] src)
@@ -179,7 +218,7 @@ namespace LD2ZhTW
             string p = Full(f);
             if (!File.Exists(p)) return FState.Missing;
             string h = Sha(File.ReadAllBytes(p));
-            if (h == f.DstSha) return f.OldOnly ? FState.Original : FState.Patched;
+            if (h == f.DstSha || (f.AltDst != null && h == f.AltDst)) return f.OldOnly ? FState.Original : FState.Patched;
             if (h == f.SrcSha) return FState.Original;
             return f.OldDst.ContainsKey(h) ? FState.Older : FState.Unknown;
         }
@@ -215,13 +254,76 @@ namespace LD2ZhTW
             return src;
         }
 
+        /// <summary>Ld95.exe 目前的啟動權限模式："admin"、"noadmin"，未安裝本版則 null。</summary>
+        public string Mode()
+        {
+            var f = P.ModeFile; if (f == null) return null;
+            string p = Full(f); if (!File.Exists(p)) return null;
+            string h = Sha(File.ReadAllBytes(p));
+            return h == f.DstSha ? "admin" : (f.AltDst != null && h == f.AltDst) ? "noadmin" : null;
+        }
+
+        public void SetMode(bool noAdmin)
+        {
+            if (GameRunning()) throw new Exception("遊戲正在執行，請先關閉 Ld95.exe。");
+            var f = P.ModeFile; if (f == null) throw new Exception("此版本不支援切換啟動權限");
+            string cur = Mode(); if (cur == null) throw new Exception("尚未安裝本版補丁，無法切換啟動權限");
+            if (cur == (noAdmin ? "noadmin" : "admin")) { Log("啟動權限已是" + (noAdmin ? "免系統管理員" : "系統管理員") + "模式。"); return; }
+            string t = Full(f), tmp = t + ".zhtw-new";
+            byte[] o = P.WithMode(File.ReadAllBytes(t), noAdmin);
+            File.WriteAllBytes(tmp, o);
+            if (Sha(File.ReadAllBytes(tmp)) != (noAdmin ? f.AltDst : f.DstSha)) { File.Delete(tmp); throw new Exception("寫入驗證失敗：" + f.Path); }
+            File.Copy(tmp, t, true); File.Delete(tmp);
+            Log(noAdmin ? "已改為免系統管理員權限啟動（不再出現 UAC 提示）。" : "已改回以系統管理員權限啟動（原版設定）。");
+        }
+
+        /// <summary>目前程序是否以提升權限（系統管理員）執行。</summary>
+        public static bool Elevated()
+        {
+            try { return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator); }
+            catch { return false; }
+        }
+
+        /// <summary>一般權限能否保存遊戲資料：遊戲資料夾、Usr、ld95.ini、既有存檔。可以則回傳 null，否則回傳原因。
+        /// 必須在未提升的程序中呼叫才有意義。只建立／刪除自己的測試檔，不改既有檔案內容。</summary>
+        public string SaveWriteProblem()
+        {
+            if (!CanWrite(Dir)) return "遊戲資料夾無法寫入";
+            string usr = System.IO.Path.Combine(Dir, "Usr");
+            if (Directory.Exists(usr))
+            {
+                if (!CanWrite(usr)) return "存檔資料夾 Usr 無法寫入";
+                foreach (var fp in Directory.GetFiles(usr))
+                {
+                    if ((File.GetAttributes(fp) & FileAttributes.ReadOnly) != 0) return "存檔為唯讀：" + System.IO.Path.GetFileName(fp);
+                    try { using (new FileStream(fp, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)) { } }
+                    catch { return "存檔無法寫入：" + System.IO.Path.GetFileName(fp); }
+                }
+            }
+            string ini = System.IO.Path.Combine(Dir, "ld95.ini");
+            if (File.Exists(ini))
+            {
+                if ((File.GetAttributes(ini) & FileAttributes.ReadOnly) != 0) return "ld95.ini 為唯讀";
+                try { using (new FileStream(ini, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)) { } }
+                catch { return "ld95.ini 無法寫入"; }
+            }
+            return null;
+        }
+
         public static bool GameRunning()
         {
             return Process.GetProcessesByName("Ld95").Length > 0;
         }
 
-        public void Install()
+        public void Install() { Install(null); }
+
+        /// <summary>noAdmin：true＝免系統管理員模式、false＝原版（系統管理員）模式、null＝維持目前模式（未安裝時為原版模式）。</summary>
+        public void Install(bool? noAdmin)
         {
+            string modeBefore = Mode();
+            if (modeBefore == null && P.ModeFile != null && File.Exists(Full(P.ModeFile)) &&
+                P.ModeFile.OldAlt.Contains(Sha(File.ReadAllBytes(Full(P.ModeFile))))) modeBefore = "noadmin";   // 舊版的免系統管理員模式
+            bool wantNoAdmin = noAdmin ?? (modeBefore == "noadmin");
             if (GameRunning()) throw new Exception("遊戲正在執行，請先關閉 Ld95.exe。");
             // 1) 全部預檢：原檔或已安裝，不允許未知版本
             var todo = new List<KeyValuePair<PFile, byte[]>>();
@@ -237,7 +339,12 @@ namespace LD2ZhTW
                 if (Sha(dst) != f.DstSha) throw new Exception("重建結果雜湊不符：" + f.Path);
                 todo.Add(new KeyValuePair<PFile, byte[]>(f, dst));
             }
-            if (todo.Count == 0) { Log("已是本版補丁，不需安裝。"); return; }
+            if (todo.Count == 0)
+            {
+                Log("已是本版補丁，不需安裝。");
+                if (P.ModeFile != null && wantNoAdmin != (Mode() == "noadmin")) SetMode(wantNoAdmin);
+                return;
+            }
             // 2) 備份原檔（已有同內容備份則沿用；不同內容不覆寫；升級的檔案備份已在上一步驗證）
             foreach (var kv in todo)
             {
@@ -280,6 +387,7 @@ namespace LD2ZhTW
             }
             File.WriteAllText(System.IO.Path.Combine(BackupDir, "installed.txt"), P.Version + "\r\n", new UTF8Encoding(false));
             Log("安裝完成：" + todo.Count + " 個檔案（版本 " + P.Version + "）。");
+            if (P.ModeFile != null && wantNoAdmin) SetMode(true);
         }
 
         public void Uninstall()
@@ -369,15 +477,17 @@ namespace LD2ZhTW
     {
         readonly Payload P;
         readonly TextBox dirBox = new TextBox(), logBox = new TextBox();
-        readonly Label stateLbl = new Label();
-        readonly Button installBtn = new Button(), uninstallBtn = new Button(), browseBtn = new Button();
+        readonly Label stateLbl = new Label(), modeHint = new Label();
+        readonly Button installBtn = new Button(), uninstallBtn = new Button(), browseBtn = new Button(), manualBtn = new Button();
+        readonly CheckBox noAdminChk = new CheckBox();
+        bool allowNoAdmin; string curMode, installedText;
 
         public MainForm(Payload p, string initialDir)
         {
             P = p;
             Text = "俠客遊 前途道標 繁體中文化補丁 " + p.Version;
             Font = new Font("Microsoft JhengHei UI", 9.5f);
-            ClientSize = new Size(640, 420); FormBorderStyle = FormBorderStyle.FixedDialog; MaximizeBox = false;
+            ClientSize = new Size(640, 520); FormBorderStyle = FormBorderStyle.FixedDialog; MaximizeBox = false;
             StartPosition = FormStartPosition.CenterScreen;
             var intro = new Label { Left = 16, Top = 12, Width = 608, Height = 52,
                 Text = "本程式會把《俠客遊 前途道標》（Lunatic Dawn: Passage of the Book，Steam 版 Ld95.exe 1.0.3.16）改為繁體中文。\r\n" +
@@ -386,10 +496,19 @@ namespace LD2ZhTW
             dirBox.SetBounds(16, 94, 500, 26);
             browseBtn.SetBounds(524, 92, 100, 30); browseBtn.Text = "瀏覽…";
             stateLbl.SetBounds(16, 128, 608, 40);
-            installBtn.SetBounds(16, 172, 140, 34); installBtn.Text = "安裝";
-            uninstallBtn.SetBounds(166, 172, 140, 34); uninstallBtn.Text = "解除安裝";
-            logBox.SetBounds(16, 216, 608, 188); logBox.Multiline = true; logBox.ReadOnly = true; logBox.ScrollBars = ScrollBars.Vertical;
-            Controls.AddRange(new Control[] { intro, dl, dirBox, browseBtn, stateLbl, installBtn, uninstallBtn, logBox });
+            noAdminChk.SetBounds(16, 170, 608, 24); noAdminChk.Text = "免系統管理員權限啟動（遊戲啟動時不再跳出 UAC 提示）";
+            modeHint.SetBounds(34, 194, 590, 40); modeHint.ForeColor = SystemColors.GrayText;
+            installBtn.SetBounds(16, 240, 140, 34); installBtn.Text = "安裝";
+            uninstallBtn.SetBounds(166, 240, 140, 34); uninstallBtn.Text = "解除安裝";
+            manualBtn.SetBounds(464, 240, 160, 34); manualBtn.Text = "開啟繁中說明書";
+            logBox.SetBounds(16, 284, 608, 220); logBox.Multiline = true; logBox.ReadOnly = true; logBox.ScrollBars = ScrollBars.Vertical;
+            Controls.AddRange(new Control[] { intro, dl, dirBox, browseBtn, stateLbl, noAdminChk, modeHint, installBtn, uninstallBtn, manualBtn, logBox });
+            noAdminChk.CheckedChanged += (s, e) => UpdateApply();
+            manualBtn.Click += (s, e) =>
+            {
+                string m = Path.Combine(dirBox.Text.Trim(), "index.html");
+                try { Process.Start(new ProcessStartInfo(m) { UseShellExecute = true }); } catch (Exception ex) { Log("無法開啟說明書：" + ex.Message); }
+            };
             browseBtn.Click += (s, e) =>
             {
                 using (var fb = new FolderBrowserDialog { Description = "請選擇含有 Ld95.exe 的遊戲資料夾" })
@@ -398,8 +517,17 @@ namespace LD2ZhTW
             dirBox.Leave += (s, e) => Refresh2();
             installBtn.Click += (s, e) => Run(true);
             uninstallBtn.Click += (s, e) => Run(false);
-            if (Native.GetACP() != 950)
-                Log("注意：此電腦的「非 Unicode 程式語言」不是繁體中文（代碼頁 " + Native.GetACP() + "）。補丁需在繁體中文（950）環境下才能正確顯示。");
+            uint acp = Native.GetACP();
+            if (acp == 65001)
+                Log("注意：此電腦開啟了「Beta：使用 Unicode UTF-8 提供全球語言支援」（代碼頁 65001）。本遊戲與補丁在此設定下文字會亂碼，" +
+                    "請到「控制台 → 地區 → 系統管理 → 變更系統地區設定」取消勾選該項，並把「目前系統地區設定」設為「中文（繁體，台灣）」後重新開機。");
+            else if (acp != 950)
+                Log("注意：此電腦的「非 Unicode 程式語言」不是繁體中文（代碼頁 " + acp + "）。補丁需在繁體中文（950）環境下才能正確顯示；" +
+                    "請到「控制台 → 地區 → 系統管理 → 變更系統地區設定」設為「中文（繁體，台灣）」後重新開機。");
+            string sys86 = Environment.GetFolderPath(Environment.SpecialFolder.SystemX86);
+            if (!string.IsNullOrEmpty(sys86) && (!File.Exists(Path.Combine(sys86, "wmadmod.dll")) || !File.Exists(Path.Combine(sys86, "wmvcore.dll"))))
+                Log("注意：此電腦缺少 Windows Media 元件（常見於 Windows N／KN 版），遊戲的背景音樂可能無法播放。" +
+                    "請到「設定 → 系統 → 選用功能」新增「媒體功能套件」（Media Feature Pack）。");
             if (!string.IsNullOrEmpty(initialDir)) dirBox.Text = initialDir;
             else
             {
@@ -415,16 +543,52 @@ namespace LD2ZhTW
         string pendingUpgrade;
         void Log(string s) { logBox.AppendText(s + "\r\n"); }
 
+        const string Tips =
+            "── 第一次遊玩的建議 ──\r\n" +
+            "‧迷宮中移動太快：讀取存檔後，選單「設定 → 遊戲設定」可調慢遊戲速度。\r\n" +
+            "‧戰鬥來不及下指令：「設定 → 戰鬥設定」把［輸入時間］調到最慢，戰鬥就會一直等你下指令（其他設定會在一定時間後自動決定）。\r\n" +
+            "‧視窗太多重疊：選單「視窗 → 並排顯示／重疊排列」。\r\n" +
+            "‧完整的繁中說明：按右上「開啟繁中說明書」（或開啟遊戲資料夾的 index.html）。存檔只能在城鎮中進行。";
+
+        /// <summary>依目前狀態設定「免系統管理員權限啟動」選項。必須在 stateLbl 更新後呼叫。</summary>
+        void RefreshMode(Engine e)
+        {
+            bool hasMode = P.ModeFile != null; noAdminChk.Visible = modeHint.Visible = hasMode;
+            if (!hasMode) return;
+            curMode = e.Mode();
+            bool elevated = Engine.Elevated();
+            string problem = elevated ? null : e.SaveWriteProblem();
+            allowNoAdmin = !elevated && problem == null;
+            noAdminChk.Enabled = allowNoAdmin || curMode == "noadmin";
+            noAdminChk.Checked = curMode != null ? curMode == "noadmin" : allowNoAdmin;
+            if (elevated)
+                modeHint.Text = "本程式正以系統管理員身分執行，無法確認一般權限能否存檔。如要使用此選項，請直接開啟本程式（不要選「以系統管理員身分執行」）。";
+            else if (problem != null)
+                modeHint.Text = "一般權限無法保存遊戲資料（" + problem + "），維持原版的系統管理員模式。" +
+                                "可在 Steam「設定 → 儲存空間」對該遊戲庫使用「修復資料夾」後再試。";
+            else
+                modeHint.Text = "已確認目前帳號以一般權限就能寫入存檔與設定。之後若搬移遊戲或換帳號後無法存檔，再執行本程式取消此選項即可。";
+            manualBtn.Enabled = File.Exists(Path.Combine(dirBox.Text.Trim(), "index.html"));
+        }
+
+        void UpdateApply()
+        {
+            if (installedText == null) return;   // 只在「已安裝本版」時把安裝鈕當成「套用」
+            bool differs = noAdminChk.Enabled && noAdminChk.Checked != (curMode == "noadmin");
+            installBtn.Text = differs ? "套用" : "安裝"; installBtn.Enabled = differs;
+        }
+
         void Refresh2()
         {
             installBtn.Enabled = uninstallBtn.Enabled = false;
             string d = dirBox.Text.Trim();
-            if (d.Length == 0 || !File.Exists(Path.Combine(d, "Ld95.exe"))) { stateLbl.Text = "狀態：此資料夾沒有 Ld95.exe。"; return; }
+            if (d.Length == 0 || !File.Exists(Path.Combine(d, "Ld95.exe")))
+            { stateLbl.Text = "狀態：此資料夾沒有 Ld95.exe。"; noAdminChk.Enabled = false; manualBtn.Enabled = false; modeHint.Text = ""; installedText = null; return; }
             var e = new Engine(P, d, null); var s = e.Summary(); int n = s.Values.Sum();
-            installBtn.Text = "安裝"; pendingUpgrade = null;
+            installBtn.Text = "安裝"; pendingUpgrade = null; installedText = null;
             if (P.Files.All(f => e.State(f) == FState.Patched) &&
                 P.OldOnlyFiles.All(f => { var st = e.State(f); return st == FState.Original || st == FState.Missing; }))
-            { stateLbl.Text = "狀態：已安裝本版繁中補丁（" + P.Version + "）。"; uninstallBtn.Enabled = true; }
+            { stateLbl.Text = installedText = "狀態：已安裝本版繁中補丁（" + P.Version + "）。"; uninstallBtn.Enabled = true; }
             else if (s[FState.Original] == n) { stateLbl.Text = "狀態：原版（可安裝）。"; installBtn.Enabled = true; }
             else if (s[FState.Older] > 0 && s[FState.Unknown] + s[FState.Missing] == 0)
             {
@@ -438,6 +602,7 @@ namespace LD2ZhTW
                 var bad = P.Files.Where(f => { var st = e.State(f); return st == FState.Unknown || st == FState.Missing; }).Select(f => f.Path).Take(5);
                 stateLbl.Text = "狀態：有不支援的檔案版本（可能是其他版本、其他補丁或 Steam 更新），不會進行修改：" + string.Join(", ", bad);
             }
+            RefreshMode(e); UpdateApply();
         }
 
         void Run(bool install)
@@ -462,7 +627,17 @@ namespace LD2ZhTW
                 MessageBox.Show(this, "偵測到已安裝繁中補丁 " + pendingUpgrade + "。\r\n要直接更新為 " + P.Version + " 嗎？\r\n（存檔不受影響；原檔備份沿用，之後仍可解除安裝還原原版）",
                     Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
             Cursor = Cursors.WaitCursor;
-            try { var e = new Engine(P, d, Log); if (install) e.Install(); else e.Uninstall(); }
+            try
+            {
+                var e = new Engine(P, d, Log);
+                if (install)
+                {
+                    bool firstInstall = curMode == null;
+                    e.Install(noAdminChk.Visible && noAdminChk.Enabled ? noAdminChk.Checked : (bool?)null);
+                    if (firstInstall) Log(Tips);
+                }
+                else e.Uninstall();
+            }
             catch (Exception ex) { Log("失敗：" + ex.Message); MessageBox.Show(this, ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error); }
             finally { Cursor = Cursors.Default; Refresh2(); }
         }
@@ -478,18 +653,29 @@ namespace LD2ZhTW
             Payload p;
             try { p = Payload.Load(); }
             catch (Exception ex) { MessageBox.Show("安裝資料損毀：" + ex.Message); return 3; }
-            if (args.Length >= 2 && (args[0] == "/status" || args[0] == "/install" || args[0] == "/uninstall"))
+            if (args.Length >= 2 && (args[0] == "/status" || args[0] == "/install" || args[0] == "/uninstall" || args[0] == "/setmode"))
             {
                 var log = new StringBuilder();
                 try
                 {
                     var e = new Engine(p, args[1], s => log.AppendLine(s));
-                    if (args[0] == "/install") e.Install();
+                    if (args[0] == "/install") e.Install(args.Contains("/noadmin") ? true : args.Contains("/admin") ? false : (bool?)null);
+                    if (args[0] == "/setmode")
+                    {
+                        if (args.Length < 3 || (args[2] != "admin" && args[2] != "noadmin")) throw new Exception("用法：/setmode <dir> admin|noadmin");
+                        e.SetMode(args[2] == "noadmin");
+                    }
+                    if (args[0] == "/status")
+                    {
+                        string prob = e.SaveWriteProblem();
+                        log.AppendLine("elevated=" + Engine.Elevated() + " save_write=" + (prob == null ? "ok" : prob) + " acp=" + Native.GetACP());
+                    }
                     if (args[0] == "/uninstall") e.Uninstall();
                     var s2 = e.Summary();
                     log.AppendLine("version=" + p.Version + " original=" + s2[FState.Original] + " patched=" + s2[FState.Patched] +
                                    " older=" + s2[FState.Older] +
-                                   " unknown=" + s2[FState.Unknown] + " missing=" + s2[FState.Missing]);
+                                   " unknown=" + s2[FState.Unknown] + " missing=" + s2[FState.Missing] +
+                                   " mode=" + (e.Mode() ?? "-"));
                     Console.Out.Write(log.ToString()); return 0;
                 }
                 catch (Exception ex) { Console.Out.Write(log.ToString() + "ERROR " + ex.Message + "\n"); return 1; }

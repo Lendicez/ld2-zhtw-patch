@@ -14,7 +14,7 @@
 
 - EXE 完整 SHA/大小/版本白名單，不匹配拒絕；版本號相同不能取代 hash。
 - 偵測所有候選 Ld95 程序，核對 canonical path/file identity；資訊不可讀或狀態不明時拒絕寫入，不關閉程序。
-- 安裝器只使用最小權限；讀取/目錄可寫性不足時說明精確操作，再走正常 UAC。原遊戲 requireAdministrator manifest 保留。
+- 安裝器只使用最小權限；讀取/目錄可寫性不足時說明精確操作，再走正常 UAC。原遊戲 requireAdministrator manifest 預設保留；「免系統管理員權限啟動」選項（1.0.3 起）只在未提升的安裝程式確認一般權限可寫入遊戲資料夾、Usr、ld95.ini 與既有存檔時才可勾選，把 manifest 的 requireAdministrator 等長改為 asInvoker（位置由 make_release 依 RT_MANIFEST 資源結構求出，安裝時核對原字串與結果雜湊）；可隨時切回或解除安裝還原。
 - 再次核對開啟檔案的 identity/hash 防止 TOCTOU，排除 reparse race；同時安裝需互斥。
 - 在同磁碟私有暫存目錄產生目標並核對預期 hash，先建立不可覆蓋的原檔備份，flush 後重新讀回驗證可還原。
 - journal 記錄 transaction id、來源/目標 hash、備份與操作狀態；驗證備份及產物後才做 Windows 支援的 replace。
