@@ -14,13 +14,18 @@ HOOK_MBTWC, HOOK_WCTMB = 0x700000, 0x700010
 STACK, STR = 0x200000, 0x300000
 
 
-def run(src: bytes, catalog=None, names=None, pairs=None):
-    """src：送進 stub 的原始位元組（不含結尾 0）。catalog／names：{CP932 bytes: 中文 str}。pairs：稱號對照 {CP932 bytes: Big5 bytes}。"""
+def run(src: bytes, catalog=None, names=None, pairs=None, mixw=False):
+    """src：送進 stub 的原始位元組（不含結尾 0）。catalog／names：{CP932 bytes: 中文 str}。pairs：稱號對照 {CP932 bytes: Big5 bytes}。
+    mixw＝True：改執行混合解碼常式 MIXW（mixdec_patch），回傳 UTF-16 解碼後的 str。"""
     from unicorn import Uc, UC_ARCH_X86, UC_MODE_32, UC_HOOK_CODE
     from unicorn.x86_const import UC_X86_REG_ESP, UC_X86_REG_EAX, UC_X86_REG_EIP
     catalog, names, pairs = catalog or {}, names or {}, pairs or {}
     pairs_va = 0xB2C000 if pairs else None
-    code, dlen = S.build_stub(ORIGIN, DATA, MBTWC_SLOT, WCTMB_SLOT, pairs_va=pairs_va)
+    if mixw:
+        import mixdec_patch as M
+        code = M.build(ORIGIN, DATA, MBTWC_SLOT, pairs_va)
+    else:
+        code, dlen = S.build_stub(ORIGIN, DATA, MBTWC_SLOT, WCTMB_SLOT, pairs_va=pairs_va)
     uc = Uc(UC_ARCH_X86, UC_MODE_32)
     pages = set()
     for base, size in ((0xB28000, 0x8000), (0x525000, 0x1000), (0x700000, 0x1000), (0xAE4000, 0x3000),
@@ -35,7 +40,10 @@ def run(src: bytes, catalog=None, names=None, pairs=None):
         uc.mem_write(pairs_va, blob)
     uc.mem_write(STR, src + b'\0')
     esp = STACK + 0x8000
-    uc.mem_write(esp, struct.pack('<5I', 0xDEAD, 0, 0, 0, STR))   # [esp+0x10] = 字串參數
+    if mixw:   # MIXW(src, len) stdcall：返回位址設在 SendDlgItemMessage 頁（命中即停）
+        uc.mem_write(esp, struct.pack('<3I', S.SEND_DLG_ITEM_MSG, STR, len(src)))
+    else:
+        uc.mem_write(esp, struct.pack('<5I', 0xDEAD, 0, 0, 0, STR))   # [esp+0x10] = 字串參數
     uc.reg_write(UC_X86_REG_ESP, esp)
     state = {'done': False}
 
@@ -62,8 +70,8 @@ def run(src: bytes, catalog=None, names=None, pairs=None):
             key = rd(s, n)
             ret(put_w(wbuf, names[key]) if key in names else 0, 3)
         elif addr == HOOK_MBTWC:
-            s, n, wbuf = arg(2), arg(3), arg(4)
-            ret(put_w(wbuf, rd(s, n).decode('cp932', 'replace')), 6)
+            cp, s, n, wbuf = arg(0), arg(2), arg(3), arg(4)
+            ret(put_w(wbuf, rd(s, n).decode(f'cp{cp}', 'replace')), 6)
         elif addr == HOOK_WCTMB:
             wbuf, cch, dst, cb = arg(2), arg(3), arg(4), arg(5)
             b = rd(wbuf, cch * 2).decode('utf-16-le').encode('cp950', 'replace')[:cb]
@@ -71,6 +79,11 @@ def run(src: bytes, catalog=None, names=None, pairs=None):
     uc.hook_add(UC_HOOK_CODE, hook)
     uc.emu_start(ORIGIN, 0, count=200000)
     assert state['done'], 'stub 沒有跳到目標'
+    if mixw:
+        import mixdec_patch as M
+        n = uc.reg_read(UC_X86_REG_EAX)
+        assert n, 'MIXW 回傳 0（失敗）'
+        return rd(M.layout(DATA)[2], n * 2).decode('utf-16-le')
     p = struct.unpack('<I', rd(esp + 0x10, 4))[0]
     out = rd(p, 0x200)
     return out[:out.index(b'\0')]

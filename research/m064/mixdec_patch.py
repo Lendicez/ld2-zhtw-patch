@@ -13,6 +13,7 @@ CDC::TextOut／CDC::DrawText 的後備改呼叫本常式後以 TextOutW／DrawTe
 """
 import struct
 from tab_title_patch import Asm, sections, iat_slot, BASE, NORM
+import savelist_patch as S
 
 CAT_OPEN, CAT_FIND, CAT_BLOB, CAT_BYTES = 0xae5620, 0xae4f60, 0xae6010, 0xae6000
 IMAGE_SCN_EXEC = 0x20000000 | 0x00000020
@@ -24,7 +25,15 @@ def layout(data):
     return data, data + 0x10, data + 0x20   # ctx、catok、WOUT
 
 
-def build(origin, data, mbtwc, pairs_va=None):
+def build(origin, data, mbtwc, pairs_va=None, tva=None):
+    """tva：音譯表（kana_table＋digraph_table）位址；None＝附在程式碼後（兩遍建置，回傳值含表）。"""
+    if tva is None:
+        n = len(build(origin, data, mbtwc, pairs_va, -1))
+        t = origin + ((n + 1) & ~1)
+        code = build(origin, data, mbtwc, pairs_va, t)
+        assert len(code) == n
+        return code + b'\0' * (t - origin - n) + S.kana_table() + S.digraph_table()
+    tva = max(tva, 0)
     ctx, catok, wout = layout(data)
     a = Asm(origin)
 
@@ -76,6 +85,16 @@ def build(origin, data, mbtwc, pairs_va=None):
     a.label('dec')
     a.emit([0x68], a.imm32(0x100), [0x57, 0x51, 0x56, 0x6A, 0x00, 0x68], a.imm32(932)); a.call_ind(mbtwc)
     a.emit([0x85, 0xC0]); a.jcc32(0x84, 'fail')
+    # 1.0.2：解出的整段都是片假名（U+30A1–U+30FC：含小寫、ー、・）→ 視為人名，音譯（與 ANSI 控制項同規則）；
+    # 含漢字／平假名的句子維持原文。
+    a.emit([0x8D, 0x14, 0x47, 0x89, 0xF9])                         # edx = edi+eax*2；ecx = edi
+    a.label('kc'); a.emit([0x39, 0xD1]); a.jcc8(0x73, 'ky')        # cmp ecx,edx; jae → 全是片假名
+    a.emit([0x0F, 0xB7, 0x31, 0x81, 0xEE], a.imm32(0x30A1), [0x83, 0xFE, 0x5B]); a.jcc32(0x87, 'got')   # esi=ch-0x30A1；> 0x5B → 不是
+    a.emit([0x83, 0xC1, 0x02]); a.emit([0xEB, 0]); a.fix8.append((len(a.b) - 1, 'kc'))
+    a.label('ky')
+    a.emit([0x53, 0x55, 0x89, 0xFE])                               # push ebx; push ebp; esi = edi（就地）
+    S.emit_translit(a, tva, tva + len(S.kana_table()), p='m')
+    a.emit([0x5D, 0x5B, 0x89, 0xEE]); jmp('L')                     # pop ebp; pop ebx; esi = ebp（段尾）
     a.label('got'); a.emit([0x8D, 0x3C, 0x47, 0x89, 0xEE]); jmp('L')
     a.label('big')
     a.emit([0x3C, 0xA1]); a.jcc32(0x82, 'single')
@@ -108,7 +127,12 @@ def model(raw: bytes, lookup=None) -> str:
                 j += 2
             j = min(j, n)
             seg = raw[i:j]
-            out.append(lookup.get(seg) or seg.decode('cp932', 'replace')); i = j
+            txt = lookup.get(seg)
+            if txt is None:
+                txt = seg.decode('cp932', 'replace')
+                if txt and all(0x30A1 <= ord(c) <= 0x30FC for c in txt):   # 整段片假名 → 人名音譯
+                    txt = S.translit_model(txt)
+            out.append(txt); i = j
         elif 0xA1 <= b <= 0xF9 and i + 1 < n:
             out.append(raw[i:i + 2].decode('cp950', 'replace')[:1] or '?'); i += 2
         else:

@@ -113,6 +113,40 @@ CAT_OPEN, CAT_FIND, CAT_BLOB, CAT_BYTES = 0xae5620, 0xae4f60, 0xae6010, 0xae6000
 IMAGE_SCN_EXEC = 0x20000000 | 0x00000020
 
 
+def emit_translit(a, kana_va, dig_va, p='k'):
+    """假名音譯迴圈（savelist 與 MIXW 共用）。入：esi＝UTF-16 來源、edx＝來源尾、edi＝輸出（可與來源相同，就地壓縮）。
+    出：edi＝輸出尾。會用 eax／ecx／ebx／ebp（呼叫端自行保存）。長音ー、促音ッっ略去；・→‧；の→之；平假名→片假名；
+    「片假名＋小寫假名」先查拗音表（dig_va），再查單字表（kana_va）。"""
+    a.label(p + 'k0'); a.emit([0x39, 0xD6]); a.jcc32(0x83, p + 'k9')                  # cmp esi,edx; jae
+    a.emit([0x0F, 0xB7, 0x06, 0x83, 0xC6, 0x02])                             # movzx eax,word[esi]; add esi,2
+    a.emit([0x3D], a.imm32(0x30FC)); a.jcc32(0x84, p + 'k0')                      # 長音 → 略
+    a.emit([0x3D], a.imm32(0x30FB)); a.jcc32(0x85, p + 'k1')
+    a.emit([0xB8], a.imm32(0x2027)); a.emit([0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, p + 'k8'))
+    a.label(p + 'k1'); a.emit([0x3D], a.imm32(0x306E)); a.jcc32(0x85, p + 'kn')        # 平假名「の」→「之」
+    a.emit([0xB8], a.imm32(0x4E4B)); a.emit([0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, p + 'k8'))
+    a.label(p + 'kn'); a.emit([0x8D, 0x88], a.imm32((-0x3041) & 0xFFFFFFFF), [0x83, 0xF9, 0x55]); a.jcc32(0x87, p + 'k2')
+    a.emit([0x83, 0xC0, 0x60])                                               # 平假名 → 片假名
+    a.label(p + 'k2'); a.emit([0x8D, 0x88], a.imm32((-0x30A1) & 0xFFFFFFFF), [0x83, 0xF9, 0x55]); a.jcc32(0x87, p + 'k8')
+    # 拗音：下一個字（平假名先轉片假名）與本字在拗音表 → 輸出對照字、多吃一個字
+    a.emit([0x39, 0xD6]); a.jcc8(0x73, p + 'kt')                                  # cmp esi,edx; jae kt
+    a.emit([0x0F, 0xB7, 0x1E])                                               # movzx ebx,word[esi]
+    a.emit([0x8D, 0xAB], a.imm32((-0x3041) & 0xFFFFFFFF), [0x83, 0xFD, 0x55]); a.jcc8(0x77, p + 'd1')
+    a.emit([0x83, 0xC3, 0x60])
+    a.label(p + 'd1'); a.emit([0xBD], a.imm32(dig_va))   # ebp = 拗音表
+    a.label(p + 'd2'); a.emit([0x66, 0x83, 0x7D, 0x00, 0x00]); a.jcc8(0x74, p + 'kt')   # 表尾
+    a.emit([0x66, 0x39, 0x45, 0x00]); a.jcc8(0x75, p + 'd3')                      # cmp [ebp],ax
+    a.emit([0x66, 0x39, 0x5D, 0x02]); a.jcc8(0x75, p + 'd3')                      # cmp [ebp+2],bx
+    a.emit([0x83, 0xC6, 0x02, 0x66, 0x8B, 0x4D, 0x04, 0x66, 0x89, 0x0F, 0x83, 0xC7, 0x02])   # 吃下一字；寫字1
+    a.emit([0x66, 0x8B, 0x4D, 0x06, 0x66, 0x85, 0xC9]); a.jcc32(0x84, p + 'k0')    # 字2 = 0 → 下一輪
+    a.emit([0x66, 0x89, 0x0F, 0x83, 0xC7, 0x02]); a.emit([0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, p + 'k0'))
+    a.label(p + 'd3'); a.emit([0x83, 0xC5, 0x08, 0xEB, 0]); a.fix8.append((len(a.b) - 1, p + 'd2'))
+    a.label(p + 'kt'); a.emit([0x8D, 0x88], a.imm32((-0x30A1) & 0xFFFFFFFF))     # ecx = 本字索引
+    a.emit([0x0F, 0xB7, 0x04, 0x4D], a.imm32(kana_va))                     # movzx eax,word[ecx*2+tbl]
+    a.emit([0x85, 0xC0]); a.jcc32(0x84, p + 'k0')                                 # 0 → 略（促音）
+    a.label(p + 'k8'); a.emit([0x66, 0x89, 0x07, 0x83, 0xC7, 0x02, 0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, p + 'k0'))
+    a.label(p + 'k9')
+
+
 def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, target_ind=None, norm=NORM,
                translit=True, _table_va=None, pairs_va=None):
     """arg_esp：入口時字串參數相對 esp 的位移；target＝相對跳轉目標，target_ind＝經 IAT 間接跳轉。
@@ -229,34 +263,9 @@ def build_stub(origin, data, mbtwc_slot, wctmb_slot, arg_esp=0x10, target=None, 
     a.emit([0x85, 0xC0]); a.jcc32(0x84, 'raw')
     if translit:   # wbuf 內假名 → 漢字（就地壓縮；eax = 新長度）
         a.emit([0x53, 0x55, 0x56, 0x57, 0xBE], a.imm32(wbuf), [0xBF], a.imm32(wbuf), [0x8D, 0x14, 0x45], a.imm32(wbuf))   # push ebx,ebp,esi,edi
-        a.label('k0'); a.emit([0x39, 0xD6]); a.jcc32(0x83, 'k9')                  # cmp esi,edx; jae
-        a.emit([0x0F, 0xB7, 0x06, 0x83, 0xC6, 0x02])                             # movzx eax,word[esi]; add esi,2
-        a.emit([0x3D], a.imm32(0x30FC)); a.jcc32(0x84, 'k0')                      # 長音 → 略
-        a.emit([0x3D], a.imm32(0x30FB)); a.jcc32(0x85, 'k1')
-        a.emit([0xB8], a.imm32(0x2027)); a.emit([0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, 'k8'))
-        a.label('k1'); a.emit([0x3D], a.imm32(0x306E)); a.jcc32(0x85, 'kn')        # 平假名「の」→「之」
-        a.emit([0xB8], a.imm32(0x4E4B)); a.emit([0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, 'k8'))
-        a.label('kn'); a.emit([0x8D, 0x88], a.imm32((-0x3041) & 0xFFFFFFFF), [0x83, 0xF9, 0x55]); a.jcc32(0x87, 'k2')
-        a.emit([0x83, 0xC0, 0x60])                                               # 平假名 → 片假名
-        a.label('k2'); a.emit([0x8D, 0x88], a.imm32((-0x30A1) & 0xFFFFFFFF), [0x83, 0xF9, 0x55]); a.jcc32(0x87, 'k8')
-        # 拗音：下一個字（平假名先轉片假名）與本字在拗音表 → 輸出對照字、多吃一個字
-        a.emit([0x39, 0xD6]); a.jcc8(0x73, 'kt')                                  # cmp esi,edx; jae kt
-        a.emit([0x0F, 0xB7, 0x1E])                                               # movzx ebx,word[esi]
-        a.emit([0x8D, 0xAB], a.imm32((-0x3041) & 0xFFFFFFFF), [0x83, 0xFD, 0x55]); a.jcc8(0x77, 'd1')
-        a.emit([0x83, 0xC3, 0x60])
-        a.label('d1'); a.emit([0xBD], a.imm32(max(_table_va, 0) + len(kana_table())))   # ebp = 拗音表
-        a.label('d2'); a.emit([0x66, 0x83, 0x7D, 0x00, 0x00]); a.jcc8(0x74, 'kt')   # 表尾
-        a.emit([0x66, 0x39, 0x45, 0x00]); a.jcc8(0x75, 'd3')                      # cmp [ebp],ax
-        a.emit([0x66, 0x39, 0x5D, 0x02]); a.jcc8(0x75, 'd3')                      # cmp [ebp+2],bx
-        a.emit([0x83, 0xC6, 0x02, 0x66, 0x8B, 0x4D, 0x04, 0x66, 0x89, 0x0F, 0x83, 0xC7, 0x02])   # 吃下一字；寫字1
-        a.emit([0x66, 0x8B, 0x4D, 0x06, 0x66, 0x85, 0xC9]); a.jcc32(0x84, 'k0')    # 字2 = 0 → 下一輪
-        a.emit([0x66, 0x89, 0x0F, 0x83, 0xC7, 0x02]); a.emit([0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, 'k0'))
-        a.label('d3'); a.emit([0x83, 0xC5, 0x08, 0xEB, 0]); a.fix8.append((len(a.b) - 1, 'd2'))
-        a.label('kt'); a.emit([0x8D, 0x88], a.imm32((-0x30A1) & 0xFFFFFFFF))     # ecx = 本字索引
-        a.emit([0x0F, 0xB7, 0x04, 0x4D], a.imm32(max(_table_va, 0)))                     # movzx eax,word[ecx*2+tbl]
-        a.emit([0x85, 0xC0]); a.jcc32(0x84, 'k0')                                 # 0 → 略（促音）
-        a.label('k8'); a.emit([0x66, 0x89, 0x07, 0x83, 0xC7, 0x02, 0xE9, 0, 0, 0, 0]); a.fix32.append((len(a.b) - 4, 'k0'))
-        a.label('k9'); a.emit([0x89, 0xF8, 0x2D], a.imm32(wbuf), [0xD1, 0xE8, 0x5F, 0x5E, 0x5D, 0x5B])   # pop edi,esi,ebp,ebx
+        tva = max(_table_va, 0)
+        emit_translit(a, tva, tva + len(kana_table()))
+        a.emit([0x89, 0xF8, 0x2D], a.imm32(wbuf), [0xD1, 0xE8, 0x5F, 0x5E, 0x5D, 0x5B])   # eax=(edi-wbuf)/2; pop edi,esi,ebp,ebx
     a.label('conv')
     a.emit([0x89, 0xDA, 0x29, 0xFA])                          # edx = ebx-edi
     a.jcc32(0x8E, 'fin')                                      # 剩餘 <= 0 → 結束（cb=0 會回傳所需長度）
