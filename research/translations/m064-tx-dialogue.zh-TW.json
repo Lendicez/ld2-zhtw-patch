@@ -20672,9 +20672,9 @@
     "literal_ampersands": 0,
     "shortcuts": 0
    },
-   "text_zh_tw": "DEBUG::道具選擇",
+   "text_zh_tw": "DEBUG::選擇道具",
    "text_cp950_bytes_len": 15,
-   "text_cp950_hex": "44454255473a3ab944a8e3bfefbedc",
+   "text_cp950_hex": "44454255473a3abfefbedcb944a8e3",
    "name_cp950_encodable": true,
    "fits_capacity": true,
    "capacity_slack_bytes": 4,

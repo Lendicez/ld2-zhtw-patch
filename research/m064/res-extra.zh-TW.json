@@ -216,7 +216,7 @@
    "resource": 181,
    "language": 1041,
    "source_utf16_sha256": "233094a9fa588dbee50f114ca659fb81e6f73d0bb773e1835e9173c0e32369fa",
-   "translation": "請輸入姓名"
+   "translation": "請輸入名稱"
   },
   {
    "kind": "dialog_control",
