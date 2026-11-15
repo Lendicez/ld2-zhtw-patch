@@ -26,8 +26,9 @@ class SaveListTests(unittest.TestCase):
         self.assertIn(bytes.fromhex('68a4030000'), code)                 # 932
         self.assertIn(bytes.fromhex('68b6030000'), code)                 # 950
         self.assertEqual(dlen, 0x340)
-        self.assertLess(len(code), 0x400)   # 1.0.2 混合分段後約 0x35e；版面依實際長度排，無固定上限（probe 用 +0x400）
-        self.assertTrue(code.endswith(S.kana_table()))                   # 音譯表附在程式碼後
+        tables = len(S.kana_table()) + len(S.digraph_table())
+        self.assertLess(len(code) - tables, 0x400)   # 程式碼本身；附表另計。版面依實際長度排，無固定上限
+        self.assertTrue(code.endswith(S.kana_table() + S.digraph_table()))
 
     def test_translit_model(self):
         self.assertEqual(S.translit_model('ダジルタール'), '達吉爾塔爾')
@@ -85,6 +86,16 @@ class StubEmulationTests(unittest.TestCase):
 
     def test_mixed_epithet_pairs(self):
         self.check(_b('傳聞：') + _c('魔隼'), '傳聞：魔隼', pairs={_c('魔隼'): _b('魔隼')})
+
+    def test_digraph_stub_matches_model(self):   # 所有「片假名＋小寫假名」組合（合成資料），stub 與 Python 模型一致
+        bases = [k for k in S.KANA if k not in S.SMALL]
+        words = [b + sm + 'ル' for b in bases for sm in S.SMALL] + ['ャ', 'シャ', 'しゃ', 'ティー', 'ディッ']
+        for w in words:
+            src = w.encode('cp932', 'ignore')
+            if not src:
+                continue
+            want = S.translit_model(src.decode('cp932'))
+            self.assertEqual(EMU.run(src).decode('cp950'), want, w)
 
 
 if __name__ == '__main__':
