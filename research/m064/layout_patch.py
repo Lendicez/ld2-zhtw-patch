@@ -422,11 +422,26 @@ def patch(exe: bytes):
     stub_va = pe.base + last['va'] + last['rs']
     code, sym = load_stub(stub_va)
     out = bytearray(exe)
+    chained = []
     for va, (old, kind) in SITES.items():
         o = _va2off(exe, va)
-        if out[o:o + len(old)] != old:
-            raise ValueError(f'{hex(va)} 內容與預期不符')
         tgt = sym[ENTRIES[kind]]
+        cur = bytes(out[o:o + len(old)])
+        if kind == 'E' and cur != old and cur[0] == 0xE8 and cur[5:] == b'\x90' * (len(old) - 5):
+            # 已被 title_patch（標題轉碼）接管：改它的出口 `jmp [CreateWindowExA]` 接到本程式（轉碼後的標題才當鍵）
+            prev = va + 5 + struct.unpack_from('<i', cur, 1)[0]
+            jmp_iat = b'\xff\x25' + struct.pack('<I', IAT['CreateWindowExA'])
+            p0 = _va2off(exe, prev)
+            n = 0; k = out.find(jmp_iat, p0)
+            while 0 <= k < p0 + 0x800:
+                kva = prev + (k - p0)
+                out[k:k + 6] = b'\xe9' + struct.pack('<i', tgt - (kva + 5)) + b'\x90'
+                chained.append(hex(kva)); n += 1; k = out.find(jmp_iat, k + 6)
+            if not n:
+                raise ValueError(f'{hex(va)} 已被改寫，但找不到其 jmp [CreateWindowExA] 出口')
+            continue
+        if cur != old:
+            raise ValueError(f'{hex(va)} 內容與預期不符')
         new = b'\xe8' + struct.pack('<i', tgt - (va + 5))
         out[o:o + len(old)] = new + b'\x90' * (len(old) - 5)
     grow = 0x1000
@@ -437,7 +452,7 @@ def patch(exe: bytes):
     struct.pack_into('<I', out, hdr + 16, last['rs'] + grow)
     salign = struct.unpack_from('<I', out, pe.opt + 32)[0]
     struct.pack_into('<I', out, pe.opt + 56, (last['va'] + last['rs'] + grow + salign - 1) // salign * salign)
-    return bytes(out), {'stub_va': hex(stub_va), 'bytes': len(code), 'sites': [hex(v) for v in SITES]}
+    return bytes(out), {'stub_va': hex(stub_va), 'bytes': len(code), 'sites': [hex(v) for v in SITES], 'chained': chained}
 
 
 if __name__ == '__main__':
