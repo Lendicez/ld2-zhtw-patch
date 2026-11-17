@@ -14,9 +14,11 @@ r"""視窗狀態記憶（1.0.4）：主視窗最大化還原、子視窗位置�
 修法（小段程式附加在 .ld2i 尾）：
 - C（0x48b54e）：啟動要求最小化（2／6／7）才照辦；否則用存下的 showCmd，但存下的是最小化時改回一般／最大化
   （依 WPF_RESTORETOMAXIMIZED）。
-- A（0x4ec0dd，WM_MDICREATE 前）：以視窗標題為鍵讀 `[ChildWindows] 標題.x／標題.y`（CWinApp::GetProfileInt，
+- E（0x4e3507，CWnd::CreateEx 的 CreateWindowExA；遊戲的子視窗都是 MDI client 底下的 WS_CHILD 視窗，走這條）
+  與 A（0x4ec0dd，標準 WM_MDICREATE）：以視窗標題為鍵讀 `[ChildWindows] 標題.x／標題.y`（CWinApp::GetProfileInt，
   與 FrameWindowPos 同一個 ld95.ini），有就套用；再把位置限制在 MDI 工作區內（尺寸不變，太大則靠左上）。
-- D（0x4ebb80，WM_MDIDESTROY 前）：記下要關閉的子視窗位置（CWinApp::WriteProfileInt）。
+- F（0x4e4cd7，CWnd::DestroyWindow）與 D（0x4ebb80，WM_MDIDESTROY 前）：父視窗是 MDI client 的子視窗關閉時記下位置
+  （CWinApp::WriteProfileInt）。
 - B（0x48a2e0，結束時寫 FrameWindowPos 之前）：記下所有開著的子視窗位置。
 最小化／最大化中的子視窗不記。沒有標題的子視窗只做範圍限制。
 
@@ -36,7 +38,8 @@ sys.path.insert(0, str(ROOT / 'src'))
 
 # 本版 Ld95.exe（Steam 1.0.3.16）固定位址
 IAT = {'SendMessageA': 0x525620, 'GetClientRect': 0x525618, 'GetWindowRect': 0x52561c, 'MapWindowPoints': 0x525608,
-       'GetWindowTextA': 0x525484, 'GetWindow': 0x5254e0, 'IsIconic': 0x5254d8, 'IsZoomed': 0x525564, 'wsprintfA': 0x5255ac}
+       'GetWindowTextA': 0x525484, 'GetWindow': 0x5254e0, 'IsIconic': 0x5254d8, 'IsZoomed': 0x525564, 'wsprintfA': 0x5255ac,
+       'CreateWindowExA': 0x525554, 'DestroyWindow': 0x5254a0, 'GetParent': 0x5255a8}
 AFX_MODULE_STATE = 0x4e0fdb          # call → eax；[eax+4] = 目前的 CWinApp
 GET_PROFILE_INT = 0x4f2e8f           # CWinApp::GetProfileInt(section, entry, default)   thiscall
 WRITE_PROFILE_INT = 0x4f2ef8         # CWinApp::WriteProfileInt(section, entry, value)  thiscall
@@ -48,7 +51,9 @@ SITES = {   # va: (原位元組, 種類)
     0x4ec0dd: (bytes.fromhex('ffb6d4000000ffd3'), 'A'),       # push [esi+0xd4] ; call ebx(SendMessageA)  — WM_MDICREATE
     0x4ebb80: (bytes.fromhex('ff1520565200'), 'D'),           # call [SendMessageA]                      — WM_MDIDESTROY
     0x48a2e0: (bytes.fromhex('e89a8c0600'), 'B'),             # call 0x4f2f7f（WriteProfileString FrameWindowPos）
-    0x48b54e: (bytes.fromhex('83f801740489442424'), 'C'),  # cmp eax,1 ; je +4 ; mov [esp+0x24],eax
+    0x48b54e: (bytes.fromhex('83f801740489442424'), 'C'),
+    0x4e3507: (bytes.fromhex('ff1554555200'), 'E'),           # CWnd::CreateEx：call [CreateWindowExA]
+    0x4e4cd7: (bytes.fromhex('ff15a0545200'), 'F'),           # CWnd::DestroyWindow：call [DestroyWindow]  # cmp eax,1 ; je +4 ; mov [esp+0x24],eax
 }
 
 ASM = r"""
@@ -121,25 +126,28 @@ so_done:
     pop ebp
     ret 8
 
-; ===== A：WM_MDICREATE 前（由 call 進入；堆疊 [ret][0x220][0][&mcs]；esi=CMDIFrameWnd、ebx=SendMessageA） =====
-hook_create:
-    pushad
-    mov ebp, [esp+0x2c]                 ; &MDICREATESTRUCT
-    mov ebx, [esi+{MDICLIENT}]          ; MDI client
-    sub esp, 0x60                       ; [esp]=key(0x40) [esp+0x40]=client rect
-    mov eax, [ebp+4]                    ; szTitle
-    test eax, eax
-    jz hc_clamp
-    cmp byte ptr [eax], 0
-    jz hc_clamp
-    xor edi, edi                        ; 0=x 1=y；讀到的值暫存在 [esp+0x50+edi*4]
-hc_axis:
-    push dword ptr [ebp+4]
+; ===== 共用：adjust(title, client, pxywh)  stdcall：套用記下的位置（兩軸都有才套用），再限制在 client 內 =====
+adjust:
+    push ebp
+    push esi
+    push edi
+    push ebx
+    sub esp, 0x60                       ; [esp]=key(0x40) [esp+0x40]=client rect [esp+0x50]=讀到的 x,y
+    mov esi, [esp+0x74]                 ; title
+    mov ebx, [esp+0x78]                 ; client
+    mov ebp, [esp+0x7c]                 ; &x（之後依序 y、cx、cy）
+    test esi, esi
+    jz ad_clamp
+    cmp byte ptr [esi], 0
+    jz ad_clamp
+    xor edi, edi
+ad_axis:
+    push esi
     mov eax, fmt_x
     test edi, edi
-    jz hc_fx
+    jz ad_fx
     mov eax, fmt_y
-hc_fx:
+ad_fx:
     push eax
     lea eax, [esp+8]
     push eax
@@ -156,51 +164,115 @@ hc_fx:
     mov eax, {GPI}
     call eax
     cmp eax, 0x80000000
-    je hc_clamp
+    je ad_clamp
     mov [esp+0x50+edi*4], eax
     inc edi
     cmp edi, 2
-    jl hc_axis
+    jl ad_axis
     mov eax, [esp+0x50]
-    mov [ebp+0xc], eax
+    mov [ebp], eax
     mov eax, [esp+0x54]
-    mov [ebp+0x10], eax
-hc_clamp:
+    mov [ebp+4], eax
+ad_clamp:
     lea eax, [esp+0x40]
     push eax
     push ebx
     call dword ptr [{GetClientRect}]
     test eax, eax
-    jz hc_done
-    xor edi, edi                        ; 0=x 1=y
-hc_c:
-    mov eax, [ebp+0xc+edi*4]            ; x / y
+    jz ad_done
+    xor edi, edi
+ad_c:
+    mov eax, [ebp+edi*4]                ; x / y
     cmp eax, 0x80000000
-    je hc_done
-    mov ecx, [ebp+0x14+edi*4]           ; cx / cy
+    je ad_done
+    mov ecx, [ebp+8+edi*4]              ; cx / cy
     cmp ecx, 0x80000000
-    je hc_done
+    je ad_done
     mov edx, [esp+0x48+edi*4]           ; client right / bottom
-    sub edx, ecx                        ; 最大位置
+    sub edx, ecx
     cmp eax, edx
-    jle hc_c1
+    jle ad_c1
     mov eax, edx
-hc_c1:
+ad_c1:
     test eax, eax
-    jge hc_c2
+    jge ad_c2
     xor eax, eax
-hc_c2:
-    mov [ebp+0xc+edi*4], eax
+ad_c2:
+    mov [ebp+edi*4], eax
     inc edi
     cmp edi, 2
-    jl hc_c
-hc_done:
+    jl ad_c
+ad_done:
     add esp, 0x60
+    pop ebx
+    pop edi
+    pop esi
+    pop ebp
+    ret 0xc
+
+; ===== 共用：mdi_client() → eax（主視窗的 MDI client；沒有則 0），只動 eax/ecx/edx =====
+mdi_client:
+    mov eax, {AFX}
+    call eax
+    mov eax, [eax+4]
+    mov eax, [eax+{MAINWND}]
+    test eax, eax
+    jz mc_ret
+    mov eax, [eax+{MDICLIENT}]
+mc_ret:
+    ret
+
+; ===== A：WM_MDICREATE 前（由 call 進入；堆疊 [ret][0x220][0][&mcs]；esi=CMDIFrameWnd、ebx=SendMessageA） =====
+hook_create:
+    pushad
+    mov ebp, [esp+0x2c]                 ; &MDICREATESTRUCT
+    lea eax, [ebp+0xc]
+    push eax
+    push dword ptr [esi+{MDICLIENT}]
+    push dword ptr [ebp+4]
+    call adjust
     popad
     pop eax                             ; 回到呼叫點的位址
     push dword ptr [esi+{MDICLIENT}]
     push eax
     jmp ebx                             ; SendMessageA(client, WM_MDICREATE, 0, &mcs)
+
+; ===== E：CWnd::CreateEx 的 call [CreateWindowExA]（堆疊 [ret][exstyle][class][name][style][x][y][cx][cy][parent]…） =====
+hook_cwex:
+    pushad
+    lea ebp, [esp+0x24]                 ; 第一個參數
+    call mdi_client
+    test eax, eax
+    jz hw_done
+    cmp eax, [ebp+0x20]                 ; 父視窗是 MDI client 才處理
+    jne hw_done
+    lea ecx, [ebp+0x10]
+    push ecx
+    push eax
+    push dword ptr [ebp+8]
+    call adjust
+hw_done:
+    popad
+    jmp dword ptr [{CreateWindowExA}]
+
+; ===== F：CWnd::DestroyWindow 的 call [DestroyWindow]（堆疊 [ret][hwnd]） =====
+hook_dw:
+    pushad
+    mov esi, [esp+0x24]
+    call mdi_client
+    test eax, eax
+    jz hd_done
+    mov ebx, eax
+    push esi
+    call dword ptr [{GetParent}]
+    cmp eax, ebx
+    jne hd_done
+    push ebx
+    push esi
+    call save_one
+hd_done:
+    popad
+    jmp dword ptr [{DestroyWindow}]
 
 ; ===== D：WM_MDIDESTROY 前（取代 call [SendMessageA]；堆疊 [ret][client][0x221][child][0]） =====
 hook_destroy:
@@ -270,7 +342,7 @@ fmt_y: .ascii "%s.y"
     .byte 0
 """
 
-ENTRIES = {'A': 'hook_create', 'D': 'hook_destroy', 'B': 'hook_exit', 'C': 'hook_show'}
+ENTRIES = {'A': 'hook_create', 'D': 'hook_destroy', 'B': 'hook_exit', 'C': 'hook_show', 'E': 'hook_cwex', 'F': 'hook_dw'}
 BASE0, BASE1 = 0x10000000, 0x20000000
 STUB_JSON = HERE / 'layout_stub.json'
 
@@ -281,7 +353,8 @@ def _asm_text():
                       wsprintfA=hex(IAT['wsprintfA']), GetClientRect=hex(IAT['GetClientRect']), GetWindow=hex(IAT['GetWindow']),
                       SendMessageA=hex(IAT['SendMessageA']), AFX=hex(AFX_MODULE_STATE), WPI=hex(WRITE_PROFILE_INT),
                       GPI=hex(GET_PROFILE_INT), WPS=hex(WRITE_PROFILE_STRING), MDICLIENT=hex(FRAME_MDICLIENT),
-                      MAINWND=hex(APP_MAINWND))
+                      MAINWND=hex(APP_MAINWND), CreateWindowExA=hex(IAT['CreateWindowExA']),
+                      DestroyWindow=hex(IAT['DestroyWindow']), GetParent=hex(IAT['GetParent']))
 
 
 def regen():
@@ -311,7 +384,7 @@ def regen():
         i += 1
     # 符號位址：逐一組譯「到該標籤為止」取長度
     syms = {}
-    for name in list(ENTRIES.values()) + ['save_one', 'section', 'fmt_x', 'fmt_y']:
+    for name in list(ENTRIES.values()) + ['save_one', 'adjust', 'section', 'fmt_x', 'fmt_y']:
         enc, _ = ks.asm(src + f'\n__probe: mov eax, {name}\n', BASE0)
         syms[name] = struct.unpack_from('<I', bytes(enc), len(enc) - 4)[0] - BASE0
     doc = {'base0': BASE0, 'hex': a.hex(), 'relocs': relocs, 'symbols': syms}

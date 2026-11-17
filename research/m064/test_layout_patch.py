@@ -22,7 +22,7 @@ class Emu:
         mu.mem_map(BASE, 0x2000); mu.mem_write(BASE, self.code)
         mu.mem_map(0x525000, 0x1000); mu.mem_map(0x4e0000, 0x20000)
         mu.mem_map(MOCK, 0x1000); mu.mem_map(STACK, 0x10000); mu.mem_map(0x60000000, 0x10000)
-        self.ini = dict(ini or {}); self.children = children or {}; self.client = client
+        self.ini = dict(ini or {}); self.children = children or {}; self.client = client; self.parent = {}
         self.calls = []
         self.app, self.frame = 0x60000000, 0x60001000
         mu.mem_write(self.app + L.APP_MAINWND, struct.pack('<I', self.frame))
@@ -36,7 +36,8 @@ class Emu:
         k = 0
         for name, nargs, f in (('IsIconic', 1, lambda a: 0), ('IsZoomed', 1, lambda a: 0), ('GetWindowTextA', 3, self._gwt),
                                ('GetWindowRect', 2, self._gwr), ('MapWindowPoints', 4, self._mwp), ('GetClientRect', 2, self._gcr),
-                               ('GetWindow', 2, self._gw), ('SendMessageA', 4, self._sm), ('wsprintfA', 0, self._wsp)):
+                               ('GetWindow', 2, self._gw), ('SendMessageA', 4, self._sm), ('wsprintfA', 0, self._wsp),
+                               ('CreateWindowExA', 12, self._cw), ('DestroyWindow', 1, self._dw), ('GetParent', 1, lambda a: self.parent.get(a[0], 0))):
             addr = MOCK + 0x10 * k; k += 1
             mu.mem_write(L.IAT[name], struct.pack('<I', addr)); reg(name, addr, nargs, f)
         for name, va, nargs, f in (('afx', L.AFX_MODULE_STATE, 0, lambda a: self.mods), ('GPI', L.GET_PROFILE_INT, 3, self._gpi),
@@ -51,7 +52,7 @@ class Emu:
         if addr not in self.fn: return
         name, nargs, f = self.fn[addr]
         sp = mu.reg_read(X.UC_X86_REG_ESP)
-        args = [struct.unpack('<I', mu.mem_read(sp + 4 + 4 * i, 4))[0] for i in range(max(nargs, 4))]
+        args = [struct.unpack('<I', mu.mem_read(sp + 4 + 4 * i, 4))[0] for i in range(max(nargs, 12))]
         r = f(args); self.calls.append(name)
         ret = struct.unpack('<I', mu.mem_read(sp, 4))[0]
         mu.reg_write(X.UC_X86_REG_EAX, (r or 0) & 0xffffffff)
@@ -81,6 +82,10 @@ class Emu:
         keys = sorted(self.children)
         if a[1] == 5: return keys[0] if keys else 0
         i = keys.index(a[0]); return keys[i + 1] if i + 1 < len(keys) else 0
+    def _cw(self, a):
+        self.cw = a[:12]; return 0x9999
+    def _dw(self, a):
+        self.dw = a[0]; return 1
     def _sm(self, a):
         self.sent = a[:4]; return 0x1234
 
@@ -138,6 +143,26 @@ class T(unittest.TestCase):
         (x, y, _, _), _ = self.create(e, self.mcs(e, '', 10, 10, 100, 100))
         self.assertEqual((x, y), (10, 10))
         self.assertNotIn('GPI', e.calls)
+
+    def test_cwex(self):
+        e = Emu(ini={('ChildWindows', '地圖.x'): 40, ('ChildWindows', '地圖.y'): 900}, client=(0, 0, 944, 632))
+        t = 0x60003100; e.mu.mem_write(t, '地圖'.encode('cp950') + b'\0')
+        args = [0, 0x123, t, 0x50000000, 7, 548, 290, 337, 0x777, 65282, 0x400000, 0]
+        d = e.run_call('hook_cwex', args, {X.UC_X86_REG_ESI: 0x44})
+        self.assertEqual(e.cw[4:8], [40, 632 - 337, 290, 337]); self.assertEqual(e.cw[8], 0x777)
+        self.assertEqual(d, 4 + 48); self.assertEqual(e.mu.reg_read(X.UC_X86_REG_EAX), 0x9999)
+        e = Emu(client=(0, 0, 944, 632))                               # 父視窗不是 MDI client → 不動
+        d = e.run_call('hook_cwex', [0, 0x123, 0, 0x50000000, 900, 900, 290, 337, 0x555, 1, 0x400000, 0], {})
+        self.assertEqual(e.cw[4:6], [900, 900]); self.assertNotIn('GetClientRect', e.calls)
+
+    def test_dw(self):
+        e = Emu(children={0x501: ('道具店', (120, 80, 400, 300))}); e.parent[0x501] = 0x777
+        d = e.run_call('hook_dw', [0x501], {X.UC_X86_REG_EBX: 0x55})
+        self.assertEqual(e.ini[('ChildWindows', '道具店.x')], 120); self.assertEqual(e.dw, 0x501); self.assertEqual(d, 4 + 4)
+        self.assertEqual(e.mu.reg_read(X.UC_X86_REG_EBX), 0x55)
+        e = Emu(children={0x601: ('對話', (1, 2, 3, 4))}); e.parent[0x601] = 0x888                # 不是 MDI client 的子視窗 → 不記
+        e.run_call('hook_dw', [0x601], {})
+        self.assertNotIn('WPI', e.calls); self.assertEqual(e.dw, 0x601)
 
     def test_destroy_saves(self):
         e = Emu(children={0x501: ('資訊', (320, 40, 290, 137))})
