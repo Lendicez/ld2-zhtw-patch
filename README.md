@@ -6,7 +6,7 @@
 
 ## 安裝（玩家）
 
-**最新版 1.0.2**：到 [Releases](https://github.com/Lendicez/ld2-zhtw-patch/releases/latest) 下載 `LD2-zhTW-Patch-1.0.2.exe`，執行後按「安裝」。
+**最新版 1.0.3**：到 [Releases](https://github.com/Lendicez/ld2-zhtw-patch/releases/latest) 下載 `LD2-zhTW-Patch-1.0.3.exe`，執行後按「安裝」。
 
 - 對象：Steam 版《俠客遊 前途道標》（Lunatic Dawn: Passage of the Book，`Ld95.exe` 1.0.3.16，sha256 `6c817a09…d5d2`）。其他版本會被拒絕，不做任何修改。
 - 需求：Windows 10／11，「非 Unicode 程式語言」為**中文（繁體，台灣）**（代碼頁 950）。
@@ -15,9 +15,13 @@
 - 安裝程式未簽章，Windows 可能顯示安全性提示；若被系統政策（如「智慧型應用程式控制」）封鎖則無法使用。
 - Steam「驗證遊戲檔案完整性」或遊戲更新會還原原版；重新執行安裝程式即可。
 
-- 已裝過 1.0.0 或 1.0.1：直接執行新版安裝程式，會偵測舊版並顯示「更新」，不必先解除安裝。
+- 已裝過 1.0.0 或 1.0.1：直接執行新版安裝程式，會偵測舊版並顯示「更新」，不必先解除安裝。已裝 1.0.2 的遊戲檔與 1.0.3 相同，可直接使用下列選項。
+- **免系統管理員權限啟動**（1.0.3 起，選用）：原版每次啟動都會跳出 UAC 提示。直接開啟安裝程式（不要以系統管理員身分執行），
+  它會先確認一般權限能寫入存檔與設定，通過才可勾選；勾選後遊戲啟動不再出現 UAC。取消勾選按「套用」或解除安裝即還原。
+- 高解析度螢幕（縮放 150% 以上）畫面偏小時：`Ld95.exe` 右鍵 →「內容」→「相容性」→「變更高 DPI 設定」→「覆寫高 DPI 縮放行為」選「系統（增強）」（畫面會較模糊）。
+- 遊玩建議：迷宮移動太快可在「設定 → 遊戲設定」調慢；「設定 → 戰鬥設定」的［輸入時間］調到最慢，戰鬥會一直等你下指令。
 
-各版說明：[1.0.2](docs/RELEASE-1.0.2.zh-TW.md)、[1.0.1](docs/RELEASE-1.0.1.zh-TW.md)、[1.0.0](docs/RELEASE-1.0.0.zh-TW.md)；已知問題：[docs/KNOWN-ISSUES.zh-TW.md](docs/KNOWN-ISSUES.zh-TW.md)。
+各版說明：[1.0.3](docs/RELEASE-1.0.3.zh-TW.md)、[1.0.2](docs/RELEASE-1.0.2.zh-TW.md)、[1.0.1](docs/RELEASE-1.0.1.zh-TW.md)、[1.0.0](docs/RELEASE-1.0.0.zh-TW.md)；已知問題：[docs/KNOWN-ISSUES.zh-TW.md](docs/KNOWN-ISSUES.zh-TW.md)。
 
 ## 1.0.0 涵蓋範圍
 
