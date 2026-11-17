@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 import rdata_ansi, charset_patch, list_reroute, catalog_patch, tab_title_patch  # noqa: E402
-import mixdec_patch, detail_name_patch, gen_lab_detail, cdc_textout_patch, savelist_patch, fmt_expand_patch, drawtext_patch, res_extra, title_patch, accel_patch  # noqa: E402
+import mixdec_patch, detail_name_patch, gen_lab_detail, cdc_textout_patch, savelist_patch, fmt_expand_patch, drawtext_patch, res_extra, title_patch, accel_patch, walk_patch  # noqa: E402
 
 EQUIP_SITES = [0x46e73a, 0x47db6a, 0x46bacb, 0x46c46c]
 
@@ -26,7 +26,7 @@ def main(argv=None):
     ap.add_argument('--img-dirs', nargs='*', default=[]); ap.add_argument('--manifest')
     ap.add_argument('--tab-debug', action='store_true', help='tab_title_patch 偵錯版（.ld2i 紀錄）')
     ap.add_argument('--charset-only', help='只修補這些 LOGFONT 點（逗號分隔檔案偏移，如 0x31dbe）')
-    ap.add_argument('--skip', default='', help='略過的步驟（逗號分隔：face,detail_name,cdc_textout,savelist,fmt_expand,drawtext,res_extra,accel,tx）— 二分查錯用')
+    ap.add_argument('--skip', default='', help='略過的步驟（逗號分隔：face,detail_name,cdc_textout,savelist,fmt_expand,drawtext,res_extra,accel,walk,tx）— 二分查錯用')
     x = ap.parse_args(argv)
     skip = {v.strip() for v in x.skip.split(',') if v.strip()}
     lab = Path(x.lab)
@@ -65,6 +65,8 @@ def main(argv=None):
         exe, log['res_extra'] = res_extra.apply(exe, json.loads((HERE / 'res-extra.zh-TW.json').read_text('utf-8')))
     if 'accel' not in skip:   # 迷宮鍵盤操作：方向鍵／數字鍵 → 既有「迷宮」選單移動命令
         exe, log['accel'] = accel_patch.patch(exe)
+    if 'walk' not in skip:    # 選單／鍵盤移動指令結束滑鼠連續行走模式
+        exe, log['walk'] = walk_patch.patch(exe)
     (lab / 'Ld95.exe').write_bytes(exe); log['pre_image_sha256'] = hashlib.sha256(exe).hexdigest()
     if x.apply_images:
         r = subprocess.run([sys.executable, x.apply_images, x.pristine, str(lab)] + x.img_dirs,

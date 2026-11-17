@@ -478,7 +478,7 @@ namespace LD2ZhTW
         readonly Payload P;
         readonly TextBox dirBox = new TextBox(), logBox = new TextBox();
         readonly Label stateLbl = new Label(), modeHint = new Label();
-        readonly Button installBtn = new Button(), uninstallBtn = new Button(), browseBtn = new Button(), manualBtn = new Button();
+        readonly Button installBtn = new Button(), uninstallBtn = new Button(), browseBtn = new Button(), manualBtn = new Button(), closeBtn = new Button();
         readonly CheckBox noAdminChk = new CheckBox();
         bool allowNoAdmin; string curMode, installedText;
 
@@ -487,7 +487,7 @@ namespace LD2ZhTW
             P = p;
             Text = "俠客遊 前途道標 繁體中文化補丁 " + p.Version;
             Font = new Font("Microsoft JhengHei UI", 9.5f);
-            ClientSize = new Size(640, 520); FormBorderStyle = FormBorderStyle.FixedDialog; MaximizeBox = false;
+            ClientSize = new Size(640, 564); FormBorderStyle = FormBorderStyle.FixedDialog; MaximizeBox = false;
             StartPosition = FormStartPosition.CenterScreen;
             var intro = new Label { Left = 16, Top = 12, Width = 608, Height = 52,
                 Text = "本程式會把《俠客遊 前途道標》（Lunatic Dawn: Passage of the Book，Steam 版 Ld95.exe 1.0.3.16）改為繁體中文。\r\n" +
@@ -502,6 +502,8 @@ namespace LD2ZhTW
             uninstallBtn.SetBounds(166, 240, 140, 34); uninstallBtn.Text = "解除安裝";
             manualBtn.SetBounds(464, 240, 160, 34); manualBtn.Text = "開啟繁中說明書";
             logBox.SetBounds(16, 284, 608, 220); logBox.Multiline = true; logBox.ReadOnly = true; logBox.ScrollBars = ScrollBars.Vertical;
+            closeBtn.SetBounds(504, 516, 120, 34); closeBtn.Text = "關閉"; closeBtn.Click += (s, e) => Close(); CancelButton = closeBtn;
+            Controls.Add(closeBtn);
             Controls.AddRange(new Control[] { intro, dl, dirBox, browseBtn, stateLbl, noAdminChk, modeHint, installBtn, uninstallBtn, manualBtn, logBox });
             noAdminChk.CheckedChanged += (s, e) => UpdateApply();
             manualBtn.Click += (s, e) =>
@@ -626,7 +628,7 @@ namespace LD2ZhTW
             if (install && pendingUpgrade != null &&
                 MessageBox.Show(this, "偵測到已安裝繁中補丁 " + pendingUpgrade + "。\r\n要直接更新為 " + P.Version + " 嗎？\r\n（存檔不受影響；原檔備份沿用，之後仍可解除安裝還原原版）",
                     Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
-            Cursor = Cursors.WaitCursor;
+            Cursor = Cursors.WaitCursor; bool done = false;
             try
             {
                 var e = new Engine(P, d, Log);
@@ -635,11 +637,17 @@ namespace LD2ZhTW
                     bool firstInstall = curMode == null;
                     e.Install(noAdminChk.Visible && noAdminChk.Enabled ? noAdminChk.Checked : (bool?)null);
                     if (firstInstall) Log(Tips);
+                    Log("── 已完成，可按右下角「關閉」結束本程式。 ──");
                 }
-                else e.Uninstall();
+                else { e.Uninstall(); Log("── 已完成，可按右下角「關閉」結束本程式。 ──"); }
+                done = true;
             }
             catch (Exception ex) { Log("失敗：" + ex.Message); MessageBox.Show(this, ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            finally { Cursor = Cursors.Default; Refresh2(); }
+            finally
+            {
+                Cursor = Cursors.Default; Refresh2();
+                if (done) { closeBtn.Font = new Font(closeBtn.Font, FontStyle.Bold); AcceptButton = closeBtn; closeBtn.Focus(); }
+            }
         }
     }
 
