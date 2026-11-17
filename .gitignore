@@ -478,8 +478,8 @@
 !/research/m064/res_extra.py
 !/research/m064/accel_patch.py
 !/research/m064/test_accel_patch.py
-!/research/m064/walk_patch.py
-!/research/m064/test_walk_patch.py
+!/research/m064/kbcapture_patch.py
+!/research/m064/test_kbcapture_patch.py
 !/research/m064/test_drawtext_patch.py
 !/research/m064/drawtext_patch.py
 !/research/m064/lab-dungeon-names.zh-TW.json
