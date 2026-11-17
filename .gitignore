@@ -476,6 +476,8 @@
 !/research/m064/test_res_extra.py
 !/research/m064/res-extra.zh-TW.json
 !/research/m064/res_extra.py
+!/research/m064/accel_patch.py
+!/research/m064/test_accel_patch.py
 !/research/m064/test_drawtext_patch.py
 !/research/m064/drawtext_patch.py
 !/research/m064/lab-dungeon-names.zh-TW.json
