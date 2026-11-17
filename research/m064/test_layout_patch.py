@@ -31,8 +31,11 @@ class Emu:
         self.fn, self.calls = {}, []
         def reg(name, addr, nargs, f):
             self.fn[addr] = (name, nargs, f); mu.mem_write(addr, b'\xc3')
-        for k, (name, nargs, f) in enumerate((('GetParent', 1, lambda a: self.parent), ('GetClientRect', 2, self._gcr),
-                                              ('GetWindowRect', 2, self._gwr), ('SetWindowPos', 7, self._swp))):
+        self.kids = {}; self.moves = []; self.iconic = set()
+        for k, (name, nargs, f) in enumerate((('GetParent', 1, self._gp), ('GetClientRect', 2, self._gcr),
+                                              ('GetWindowRect', 2, self._gwr), ('SetWindowPos', 7, self._swp),
+                                              ('InvalidateRect', 3, lambda a: 1), ('IsIconic', 1, lambda a: int(a[0] in self.iconic)),
+                                              ('IsZoomed', 1, lambda a: 0), ('GetWindow', 2, self._gw), ('MapWindowPoints', 4, self._mwp))):
             addr = MOCK + 0x10 * k
             mu.mem_write(L.IAT[name], struct.pack('<I', addr)); reg(name, addr, nargs, f)
         reg('afx', L.AFX_MODULE_STATE, 0, lambda a: mods)
@@ -49,12 +52,24 @@ class Emu:
         mu.reg_write(X.UC_X86_REG_ESP, sp + 4 + 4 * nargs); mu.reg_write(X.UC_X86_REG_EIP, ret)
         for r_ in (X.UC_X86_REG_ECX, X.UC_X86_REG_EDX): mu.reg_write(r_, 0xbadbad)
 
+    def _gp(self, a):
+        return 0x100 if a[0] == CLIENT else self.parent
+    def _gw(self, a):
+        ks = sorted(self.kids)
+        if a[1] == 5: return ks[0] if ks else 0
+        i = ks.index(a[0]); return ks[i + 1] if i + 1 < len(ks) else 0
+    def _mwp(self, a):
+        l, t, r, b = struct.unpack('<iiii', self.mu.mem_read(a[2], 16))
+        self.mu.mem_write(a[2], struct.pack('<iiii', l - 100, t - 50, r - 100, b - 50)); return 1
     def _gcr(self, a):
         self.mu.mem_write(a[1], struct.pack('<iiii', *self.client)); return 1
     def _gwr(self, a):
+        if a[0] in self.kids:
+            x, y, w, h = self.kids[a[0]]
+            self.mu.mem_write(a[1], struct.pack('<iiii', x + 100, y + 50, x + 100 + w, y + 50 + h)); return 1
         self.mu.mem_write(a[1], struct.pack('<iiii', *self.wrect)); return 1
     def _swp(self, a):
-        self.swp = [v - (1 << 32) if v >= 1 << 31 else v for v in a[:7]]; return 1
+        self.swp = [v - (1 << 32) if v >= 1 << 31 else v for v in a[:7]]; self.moves.append(self.swp); return 1
 
     def swp_call(self, x, y, cx, cy, flags):
         mu = self.mu; sp = STACK + 0x8000; ret = MOCK + 0xf00; mu.mem_write(ret, b'\xf4')
@@ -99,6 +114,23 @@ class T(unittest.TestCase):
         e = Emu(mainwnd=False)                                 # 主視窗尚未建立
         (_, _, x, y, _, _, _), _ = e.swp_call(5000, 5000, 10, 10, 0x14)
         self.assertEqual((x, y), (5000, 5000))
+
+    def test_size(self):
+        e = Emu(client=(0, 0, 800, 500))
+        e.kids = {0x501: (895, 225, 290, 137), 0x502: (5, 508, 290, 337), 0x503: (0, 0, 634, 369), 0x504: (-20, 600, 100, 50)}
+        e.iconic = {0x504 + 1}
+        mu = e.mu; sp = STACK + 0x8000; ret = MOCK + 0xf00; mu.mem_write(ret, b'\xf4')
+        mu.mem_write(sp, struct.pack('<IIII', ret, CLIENT, 0, 1)); mu.reg_write(X.UC_X86_REG_ESP, sp)
+        mu.emu_start(e.sym['hook_size'], ret, count=20000)
+        mv = {m[0]: (m[2], m[3], m[6]) for m in e.moves}
+        self.assertEqual(mv[0x501], (800 - 290, 225, 0x15)); self.assertEqual(mv[0x502], (5, 500 - 337, 0x15))
+        self.assertNotIn(0x503, mv)                         # 已在範圍內 → 不動
+        self.assertEqual(mv[0x504], (0, 450, 0x15))
+        self.assertEqual(mu.reg_read(X.UC_X86_REG_ESP) - sp, 4 + 12)
+        e = Emu(client=(0, 0, 800, 500)); e.kids = {0x501: (895, 225, 290, 137)}; e.iconic = {0x100}   # 主視窗最小化
+        mu = e.mu; mu.mem_write(ret, b'\xf4'); mu.mem_write(sp, struct.pack('<IIII', ret, CLIENT, 0, 1)); mu.reg_write(X.UC_X86_REG_ESP, sp)
+        mu.emu_start(e.sym['hook_size'], ret, count=20000)
+        self.assertEqual(e.moves, [])
 
     def test_show(self):
         def run(ncmd, saved, flags):

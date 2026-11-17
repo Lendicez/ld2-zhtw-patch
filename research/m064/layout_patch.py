@@ -16,7 +16,9 @@ r"""視窗狀態（1.0.4）：主視窗最大化還原、子視窗限制在可�
   （依 WPF_RESTORETOMAXIMIZED）。
 - G（0x4ea888，CWnd::SetWindowPos 內的 call [SetWindowPos]）：視窗的父視窗是 MDI 工作區、且有移動（沒有
   SWP_NOMOVE）時，把 x、y 限制在工作區內（大小用 cx／cy；SWP_NOSIZE 時用目前大小；太大則靠左上）。
-  只改位置參數，不改大小、不改存檔；玩家用滑鼠拖曳的視窗不經這裡，不受影響。
+  只改位置參數，不改大小、不改存檔。
+- S（0x488b16，MDI 工作區處理 WM_SIZE 時的 call [InvalidateRect]）：主視窗縮小時，把跑出工作區的子視窗
+  （非最小化／最大化）移回範圍內；主視窗最小化時不動。
 
 小段程式以 keystone 組譯；倉庫內存 `layout_stub.json`（在 BASE0 組譯的位元組與絕對位址重定位表），
 建置時不需 keystone。`python layout_patch.py --regen` 重新產生。
@@ -33,7 +35,8 @@ ROOT = HERE.parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 
 # 本版 Ld95.exe（Steam 1.0.3.16）固定位址
-IAT = {'SetWindowPos': 0x525534, 'GetClientRect': 0x525618, 'GetWindowRect': 0x52561c, 'GetParent': 0x5255a8}
+IAT = {'SetWindowPos': 0x525534, 'GetClientRect': 0x525618, 'GetWindowRect': 0x52561c, 'GetParent': 0x5255a8,
+       'InvalidateRect': 0x525610, 'IsIconic': 0x5254d8, 'IsZoomed': 0x525564, 'GetWindow': 0x5254e0, 'MapWindowPoints': 0x525608}
 AFX_MODULE_STATE = 0x4e0fdb          # call → eax；[eax+4] = 目前的 CWinApp
 FRAME_MDICLIENT = 0xd4               # CMDIFrameWnd::m_hWndMDIClient
 APP_MAINWND = 0x20                   # CWinThread::m_pMainWnd
@@ -41,6 +44,7 @@ APP_MAINWND = 0x20                   # CWinThread::m_pMainWnd
 SITES = {   # va: (原位元組, 種類)
     0x48b54e: (bytes.fromhex('83f801740489442424'), 'C'),   # cmp eax,1 ; je +4 ; mov [esp+0x24],eax
     0x4ea888: (bytes.fromhex('ff1534555200'), 'G'),         # CWnd::SetWindowPos：call [SetWindowPos]
+    0x488b16: (bytes.fromhex('ff1510565200'), 'S'),         # MDI 工作區 WM_SIZE：call [InvalidateRect]
 }
 
 ASM = r"""
@@ -115,6 +119,103 @@ g_done:
     popad
     jmp dword ptr [{SetWindowPos}]
 
+; ===== S：MDI 工作區 WM_SIZE 時（取代 call [InvalidateRect]；堆疊 [ret][client][rect][erase]）把跑出範圍的子視窗拉回 =====
+hook_size:
+    pushad
+    mov ebx, [esp+0x24]                 ; MDI 工作區
+    sub esp, 0x20                       ; [esp]=工作區 rect  [esp+0x10]=子視窗 rect（工作區座標）
+    push ebx
+    call dword ptr [{GetParent}]
+    push eax
+    call dword ptr [{IsIconic}]         ; 主視窗最小化時不動
+    test eax, eax
+    jnz s_free
+    lea eax, [esp]
+    push eax
+    push ebx
+    call dword ptr [{GetClientRect}]
+    test eax, eax
+    jz s_free
+    cmp dword ptr [esp+8], 0
+    jle s_free
+    cmp dword ptr [esp+0xc], 0
+    jle s_free
+    push 5                              ; GW_CHILD
+    push ebx
+    call dword ptr [{GetWindow}]
+s_loop:
+    test eax, eax
+    jz s_free
+    mov esi, eax
+    push esi
+    call dword ptr [{IsIconic}]
+    test eax, eax
+    jnz s_next
+    push esi
+    call dword ptr [{IsZoomed}]
+    test eax, eax
+    jnz s_next
+    lea eax, [esp+0x10]
+    push eax
+    push esi
+    call dword ptr [{GetWindowRect}]
+    test eax, eax
+    jz s_next
+    push 2
+    lea eax, [esp+0x14]
+    push eax
+    push ebx
+    push 0
+    call dword ptr [{MapWindowPoints}]
+    mov edi, [esp+0x18]
+    sub edi, [esp+0x10]                 ; 寬
+    mov eax, [esp+8]
+    sub eax, edi
+    mov ecx, [esp+0x10]                 ; 左
+    cmp ecx, eax
+    jle s_a
+    mov ecx, eax
+s_a:
+    test ecx, ecx
+    jge s_b
+    xor ecx, ecx
+s_b:
+    mov edi, [esp+0x1c]
+    sub edi, [esp+0x14]                 ; 高
+    mov eax, [esp+0xc]
+    sub eax, edi
+    mov edx, [esp+0x14]                 ; 上
+    cmp edx, eax
+    jle s_c
+    mov edx, eax
+s_c:
+    test edx, edx
+    jge s_d
+    xor edx, edx
+s_d:
+    cmp ecx, [esp+0x10]
+    jne s_move
+    cmp edx, [esp+0x14]
+    je s_next
+s_move:
+    push 0x15                           ; SWP_NOSIZE|SWP_NOZORDER|SWP_NOACTIVATE
+    push 0
+    push 0
+    push edx
+    push ecx
+    push 0
+    push esi
+    call dword ptr [{SetWindowPos}]
+s_next:
+    push 2                              ; GW_HWNDNEXT
+    push esi
+    call dword ptr [{GetWindow}]
+    jmp s_loop
+s_free:
+    add esp, 0x20
+    popad
+    jmp dword ptr [{InvalidateRect}]
+
 ; ===== C：啟動時決定 showCmd（取代 cmp eax,1 / je / mov [esp+0x24],eax；eax=nCmdShow；wp 在呼叫端 esp+0x1c） =====
 hook_show:
     cmp eax, 2
@@ -141,7 +242,7 @@ hs_ret:
     ret
 """
 
-ENTRIES = {'C': 'hook_show', 'G': 'hook_swp'}
+ENTRIES = {'C': 'hook_show', 'G': 'hook_swp', 'S': 'hook_size'}
 BASE0, BASE1 = 0x10000000, 0x20000000
 STUB_JSON = HERE / 'layout_stub.json'
 
@@ -149,7 +250,9 @@ STUB_JSON = HERE / 'layout_stub.json'
 def _asm_text():
     return ASM.format(AFX=hex(AFX_MODULE_STATE), MAINWND=hex(APP_MAINWND), MDICLIENT=hex(FRAME_MDICLIENT),
                       GetParent=hex(IAT['GetParent']), GetClientRect=hex(IAT['GetClientRect']),
-                      GetWindowRect=hex(IAT['GetWindowRect']), SetWindowPos=hex(IAT['SetWindowPos']))
+                      GetWindowRect=hex(IAT['GetWindowRect']), SetWindowPos=hex(IAT['SetWindowPos']),
+                      InvalidateRect=hex(IAT['InvalidateRect']), IsIconic=hex(IAT['IsIconic']), IsZoomed=hex(IAT['IsZoomed']),
+                      GetWindow=hex(IAT['GetWindow']), MapWindowPoints=hex(IAT['MapWindowPoints']))
 
 
 def regen():
