@@ -84,6 +84,33 @@
       },
       "release_approved": true,
       "approved_by": "project owner (2026-11-17, hardware-confirmed rc2 incl. no-admin mode from Steam)"
+    },
+    {
+      "version": "1.0.4",
+      "date": "2026-11-19",
+      "installer": "LD2-zhTW-Patch-1.0.4.exe",
+      "installer_sha256": "2dbf1d5b3be5d6774ffda96bb1b099987acc5a82ca97b96eb6eb8a601de1ba32",
+      "payload_sha256": "d8fe35831ecd9294b546d79fee4d103db8e909988e1b8a692d988f255ef398be",
+      "source_version": "ld95-1.0.3.16",
+      "files": 124,
+      "source_commit": "1235124",
+      "branch": "release/1.0.4",
+      "upgrades_from": [
+        "1.0.0",
+        "1.0.1",
+        "1.0.2",
+        "1.0.3",
+        "1.0.4-rc1"
+      ],
+      "changed_files_vs_1.0.3": ["Ld95.exe"],
+      "options": {
+        "noadmin": {
+          "file": "Ld95.exe",
+          "dst_sha256": "42c9940738199d54fef8431ef0f8ae7ee5c327ec32b90a32db5ed8ca4284a0a9"
+        }
+      },
+      "release_approved": true,
+      "approved_by": "project owner (2026-11-19, hardware-confirmed rc3 incl. upgrade from rc1 on Steam)"
     }
   ]
 }
