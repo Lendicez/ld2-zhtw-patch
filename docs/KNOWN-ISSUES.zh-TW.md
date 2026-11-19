@@ -198,3 +198,10 @@
 - 安裝程式：「自動存檔」勾選（`ld95.ini [zhTW] AutoSave`，與現值不同才寫）、「開啟存檔備份資料夾」、提示文字；CLI `/install /autosave:on|off`。
 - 驗證：同格存兩次的備份、進迷宮前／旅行抵達的自動存檔與狀態列、015 保護、讀取 015、回歸與 1.0.4 相同、由 1.0.4（免系統管理員）直接更新；擁有者實機確認 rc1（含從迷宮回城鎮）。
 - harness 待補：`dialog_select` 索引超出範圍時仍判通過。
+
+## 2026-11-19：1.0.6 工作紀錄（十四）— 現代環境強化第二批：媒體診斷
+
+- 先確認遊戲的播放方式：背景音樂 `music\*.wma` 用 DirectShow（EXE 內有 FilterGraph／IGraphBuilder／IMediaControl／IMediaSeeking 等 GUID）；音效 `RES\*.WAV` 用 DirectSound；片頭 `avi\OPENING.avi`（Cinepak＋PCM）用 MCI（mciSendCommandA）；`avi\sroll.avi` 為 MS Video 1。Windows N 版沒有背景音樂即缺 WMA 解碼器。
+- 安裝程式「媒體診斷」（CLI `/mediatest <資料夾> [/audible]`）：在 32 位元行程（安裝程式改以 x86 編譯）以同樣元件逐項實際播放——音樂載入→播放確認位置前進→跳到曲末確認播完；音效開啟 DirectSound 裝置並播放；影片 MCI avivideo 播放確認位置。顯示 Windows 版本／組建／版本別，失敗時列可能原因（媒體功能套件、Steam 驗證檔案、播放裝置）。只讀遊戲檔。
+- 遊戲檔與 1.0.5 相同；make_release 的「由舊版升級」自我測試改用 1.0.4 安裝副本（從 1.0.5 升級時沒有舊檔可更新）。
+- 驗證：本機三項正常（含曲末）；缺檔與損毀檔的訊息；由 1.0.4／1.0.5 更新（設定沿用）；擁有者實機確認 rc1b。N 版實機未測。

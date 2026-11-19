@@ -144,6 +144,29 @@
       },
       "release_approved": true,
       "approved_by": "project owner (2026-11-19, hardware-confirmed rc1 incl. autosave on return from dungeon)"
+    },
+    {
+      "version": "1.0.6",
+      "date": "2026-11-19",
+      "installer": "LD2-zhTW-Patch-1.0.6.exe",
+      "installer_sha256": "1bc38bced58f9195703d52194dcdff00c7ad4d78a3dd7f72c5d8922b620310a3",
+      "payload_sha256": "ad0056329b8fae98d4a43b81f4b0fe1b2bf63ffa27c61899fda43eb0cd809d3f",
+      "source_version": "ld95-1.0.3.16",
+      "files": 124,
+      "source_commit": "5891e7d",
+      "branch": "release/1.0.6",
+      "upgrades_from": [
+        "1.0.0",
+        "1.0.1",
+        "1.0.2",
+        "1.0.3",
+        "1.0.4-rc1",
+        "1.0.4"
+      ],
+      "same_game_files_as": "1.0.5",
+      "installer_platform": "x86",
+      "release_approved": true,
+      "approved_by": "project owner (2026-11-19, hardware-confirmed rc1b incl. media diagnostics)"
     }
   ]
 }

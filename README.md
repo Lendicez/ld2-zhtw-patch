@@ -6,7 +6,7 @@
 
 ## 安裝（玩家）
 
-**最新版 1.0.5**：到 [Releases](https://github.com/Lendicez/ld2-zhtw-patch/releases/latest) 下載 `LD2-zhTW-Patch-1.0.5.exe`，執行後按「安裝」。
+**最新版 1.0.6**：到 [Releases](https://github.com/Lendicez/ld2-zhtw-patch/releases/latest) 下載 `LD2-zhTW-Patch-1.0.6.exe`，執行後按「安裝」。
 
 - 對象：Steam 版《俠客遊 前途道標》（Lunatic Dawn: Passage of the Book，`Ld95.exe` 1.0.3.16，sha256 `6c817a09…d5d2`）。其他版本會被拒絕，不做任何修改。
 - 需求：Windows 10／11，「非 Unicode 程式語言」為**中文（繁體，台灣）**（代碼頁 950）。
@@ -23,9 +23,10 @@
 - **視窗狀態**（1.0.4 起）：最大化會記住；主視窗比存檔時小或遊玩中縮小時，子視窗會被放回可見範圍。
 - **存檔前自動備份**（1.0.5 起）：存到已有檔案的格子時，舊檔先複製到 `USR\_backup`（例 `LUNAS003-1.LDP`，-1 最新，每格留 5 份）；要找回時複製回 `USR` 並改回原檔名。
 - **自動存檔**（1.0.5 起，可在安裝程式關閉）：回到城鎮時與進入迷宮前自動存到第 015 格（狀態列提示，不跳對話框）；第 015 格若是自己存的檔不會被覆蓋。
+- **媒體診斷**（1.0.6 起）：沒有背景音樂、音效或片頭動畫無法播放時，按安裝程式的「媒體診斷」，以遊戲相同的方式逐項實際播放並顯示原因（例：Windows N 版需新增「媒體功能套件」）。
 - 遊玩建議：迷宮移動太快可在「設定 → 遊戲設定」調慢，或改用鍵盤一次走一格；「設定 → 戰鬥設定」的［輸入時間］調到最慢，戰鬥會一直等你下指令。
 
-各版說明：[1.0.5](docs/RELEASE-1.0.5.zh-TW.md)、[1.0.4](docs/RELEASE-1.0.4.zh-TW.md)、[1.0.3](docs/RELEASE-1.0.3.zh-TW.md)、[1.0.2](docs/RELEASE-1.0.2.zh-TW.md)、[1.0.1](docs/RELEASE-1.0.1.zh-TW.md)、[1.0.0](docs/RELEASE-1.0.0.zh-TW.md)；已知問題：[docs/KNOWN-ISSUES.zh-TW.md](docs/KNOWN-ISSUES.zh-TW.md)。
+各版說明：[1.0.6](docs/RELEASE-1.0.6.zh-TW.md)、[1.0.5](docs/RELEASE-1.0.5.zh-TW.md)、[1.0.4](docs/RELEASE-1.0.4.zh-TW.md)、[1.0.3](docs/RELEASE-1.0.3.zh-TW.md)、[1.0.2](docs/RELEASE-1.0.2.zh-TW.md)、[1.0.1](docs/RELEASE-1.0.1.zh-TW.md)、[1.0.0](docs/RELEASE-1.0.0.zh-TW.md)；已知問題：[docs/KNOWN-ISSUES.zh-TW.md](docs/KNOWN-ISSUES.zh-TW.md)。
 
 ## 1.0.0 涵蓋範圍
 
