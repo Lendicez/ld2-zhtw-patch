@@ -111,6 +111,39 @@
       },
       "release_approved": true,
       "approved_by": "project owner (2026-11-19, hardware-confirmed rc3 incl. upgrade from rc1 on Steam)"
+    },
+    {
+      "version": "1.0.5",
+      "date": "2026-11-19",
+      "installer": "LD2-zhTW-Patch-1.0.5.exe",
+      "installer_sha256": "5f8e7fea1bfb7070aaef418c54e417a0b507906e0131a8ed9635abdf37193fcc",
+      "payload_sha256": "7b356970e8208fe3b4b476cc0d98f01159e82e381ee465836ae3c9ecff12e9f7",
+      "source_version": "ld95-1.0.3.16",
+      "files": 124,
+      "source_commit": "1e20d59",
+      "branch": "release/1.0.5",
+      "upgrades_from": [
+        "1.0.0",
+        "1.0.1",
+        "1.0.2",
+        "1.0.3",
+        "1.0.4-rc1",
+        "1.0.4"
+      ],
+      "changed_files_vs_1.0.4": ["Ld95.exe"],
+      "options": {
+        "noadmin": {
+          "file": "Ld95.exe",
+          "dst_sha256": "4bc7e4478aa724adaac8c2e9722537791d438cd3733c12962c5645426439ffa6"
+        },
+        "autosave": {
+          "ini": "ld95.ini",
+          "key": "[zhTW] AutoSave",
+          "default": 1
+        }
+      },
+      "release_approved": true,
+      "approved_by": "project owner (2026-11-19, hardware-confirmed rc1 incl. autosave on return from dungeon)"
     }
   ]
 }
