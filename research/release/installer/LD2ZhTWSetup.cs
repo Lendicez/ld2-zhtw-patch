@@ -478,9 +478,9 @@ namespace LD2ZhTW
         readonly Payload P;
         readonly TextBox dirBox = new TextBox(), logBox = new TextBox();
         readonly Label stateLbl = new Label(), modeHint = new Label();
-        readonly Button installBtn = new Button(), uninstallBtn = new Button(), browseBtn = new Button(), manualBtn = new Button(), closeBtn = new Button();
-        readonly CheckBox noAdminChk = new CheckBox();
-        bool allowNoAdmin; string curMode, installedText;
+        readonly Button installBtn = new Button(), uninstallBtn = new Button(), browseBtn = new Button(), manualBtn = new Button(), closeBtn = new Button(), backupBtn = new Button();
+        readonly CheckBox noAdminChk = new CheckBox(), autoSaveChk = new CheckBox();
+        bool allowNoAdmin, curAutoSave = true; string curMode, installedText;
 
         public MainForm(Payload p, string initialDir)
         {
@@ -498,14 +498,23 @@ namespace LD2ZhTW
             stateLbl.SetBounds(16, 128, 608, 40);
             noAdminChk.SetBounds(16, 170, 608, 24); noAdminChk.Text = "免系統管理員權限啟動（遊戲啟動時不再跳出 UAC 提示）";
             modeHint.SetBounds(34, 194, 590, 40); modeHint.ForeColor = SystemColors.GrayText;
-            installBtn.SetBounds(16, 240, 140, 34); installBtn.Text = "安裝";
-            uninstallBtn.SetBounds(166, 240, 140, 34); uninstallBtn.Text = "解除安裝";
-            manualBtn.SetBounds(464, 240, 160, 34); manualBtn.Text = "開啟繁中說明書";
-            logBox.SetBounds(16, 284, 608, 220); logBox.Multiline = true; logBox.ReadOnly = true; logBox.ScrollBars = ScrollBars.Vertical;
+            autoSaveChk.SetBounds(16, 238, 440, 24); autoSaveChk.Text = "自動存檔（回到城鎮時與進入迷宮前，存到第 015 格）";
+            backupBtn.SetBounds(464, 234, 160, 30); backupBtn.Text = "開啟存檔備份資料夾";
+            installBtn.SetBounds(16, 272, 140, 34); installBtn.Text = "安裝";
+            uninstallBtn.SetBounds(166, 272, 140, 34); uninstallBtn.Text = "解除安裝";
+            manualBtn.SetBounds(464, 272, 160, 34); manualBtn.Text = "開啟繁中說明書";
+            logBox.SetBounds(16, 316, 608, 188); logBox.Multiline = true; logBox.ReadOnly = true; logBox.ScrollBars = ScrollBars.Vertical;
             closeBtn.SetBounds(504, 516, 120, 34); closeBtn.Text = "關閉"; closeBtn.Click += (s, e) => Close(); CancelButton = closeBtn;
             Controls.Add(closeBtn);
-            Controls.AddRange(new Control[] { intro, dl, dirBox, browseBtn, stateLbl, noAdminChk, modeHint, installBtn, uninstallBtn, manualBtn, logBox });
+            Controls.AddRange(new Control[] { intro, dl, dirBox, browseBtn, stateLbl, noAdminChk, modeHint, autoSaveChk, backupBtn, installBtn, uninstallBtn, manualBtn, logBox });
             noAdminChk.CheckedChanged += (s, e) => UpdateApply();
+            autoSaveChk.CheckedChanged += (s, e) => UpdateApply();
+            backupBtn.Click += (s, e) =>
+            {
+                string b = Path.Combine(dirBox.Text.Trim(), "USR", "_backup");
+                if (!Directory.Exists(b)) { Log("還沒有存檔備份（第一次覆蓋存檔時才會建立 USR\\_backup）。"); return; }
+                try { Process.Start(new ProcessStartInfo(b) { UseShellExecute = true }); } catch (Exception ex) { Log("無法開啟資料夾：" + ex.Message); }
+            };
             manualBtn.Click += (s, e) =>
             {
                 string m = Path.Combine(dirBox.Text.Trim(), "index.html");
@@ -550,7 +559,9 @@ namespace LD2ZhTW
             "‧迷宮中移動太快：讀取存檔後，選單「設定 → 遊戲設定」可調慢遊戲速度。\r\n" +
             "‧戰鬥來不及下指令：「設定 → 戰鬥設定」把［輸入時間］調到最慢，戰鬥就會一直等你下指令（其他設定會在一定時間後自動決定）。\r\n" +
             "‧視窗太多重疊：選單「視窗 → 並排顯示／重疊排列」。\r\n" +
-            "‧完整的繁中說明：按右上「開啟繁中說明書」（或開啟遊戲資料夾的 index.html）。存檔只能在城鎮中進行。";
+            "‧完整的繁中說明：按右上「開啟繁中說明書」（或開啟遊戲資料夾的 index.html）。存檔只能在城鎮中進行。\r\n" +
+            "‧存檔保護：覆蓋存檔前，舊檔會自動備份到 USR\\_backup（每格留 5 份，-1 最新；要還原時複製回 USR 並改回原檔名）。\r\n" +
+            "‧自動存檔：回到城鎮時與進入迷宮前自動存到第 015 格；若第 015 格是您自己存的，不會覆蓋（狀態列會提示）。";
 
         /// <summary>依目前狀態設定「免系統管理員權限啟動」選項。必須在 stateLbl 更新後呼叫。</summary>
         void RefreshMode(Engine e)
@@ -576,7 +587,8 @@ namespace LD2ZhTW
         void UpdateApply()
         {
             if (installedText == null) return;   // 只在「已安裝本版」時把安裝鈕當成「套用」
-            bool differs = noAdminChk.Enabled && noAdminChk.Checked != (curMode == "noadmin");
+            bool differs = (noAdminChk.Enabled && noAdminChk.Checked != (curMode == "noadmin")) ||
+                           (autoSaveChk.Enabled && autoSaveChk.Checked != curAutoSave);
             installBtn.Text = differs ? "套用" : "安裝"; installBtn.Enabled = differs;
         }
 
@@ -585,7 +597,8 @@ namespace LD2ZhTW
             installBtn.Enabled = uninstallBtn.Enabled = false;
             string d = dirBox.Text.Trim();
             if (d.Length == 0 || !File.Exists(Path.Combine(d, "Ld95.exe")))
-            { stateLbl.Text = "狀態：此資料夾沒有 Ld95.exe。"; noAdminChk.Enabled = false; manualBtn.Enabled = false; modeHint.Text = ""; installedText = null; return; }
+            { stateLbl.Text = "狀態：此資料夾沒有 Ld95.exe。"; noAdminChk.Enabled = autoSaveChk.Enabled = backupBtn.Enabled = false; manualBtn.Enabled = false; modeHint.Text = ""; installedText = null; return; }
+            curAutoSave = AutoSave.Get(d); autoSaveChk.Checked = curAutoSave; autoSaveChk.Enabled = backupBtn.Enabled = true;
             var e = new Engine(P, d, null); var s = e.Summary(); int n = s.Values.Sum();
             installBtn.Text = "安裝"; pendingUpgrade = null; installedText = null;
             if (P.Files.All(f => e.State(f) == FState.Patched) &&
@@ -636,6 +649,7 @@ namespace LD2ZhTW
                 {
                     bool firstInstall = curMode == null;
                     e.Install(noAdminChk.Visible && noAdminChk.Enabled ? noAdminChk.Checked : (bool?)null);
+                    if (autoSaveChk.Checked != curAutoSave) { AutoSave.Set(d, autoSaveChk.Checked); Log(autoSaveChk.Checked ? "已開啟自動存檔。" : "已關閉自動存檔。"); }
                     if (firstInstall) Log(Tips);
                     Log("── 已完成，可按右下角「關閉」結束本程式。 ──");
                 }
@@ -651,7 +665,23 @@ namespace LD2ZhTW
         }
     }
 
-    static class Native { [DllImport("kernel32.dll")] public static extern uint GetACP(); }
+    static class Native
+    {
+        [DllImport("kernel32.dll")] public static extern uint GetACP();
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)] public static extern uint GetPrivateProfileInt(string sec, string key, int def, string file);
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)] public static extern bool WritePrivateProfileString(string sec, string key, string val, string file);
+    }
+
+    /// <summary>自動存檔開關：遊戲資料夾 ld95.ini [zhTW] AutoSave（沒有時視為開；遊戲本身以同一個鍵判斷）。</summary>
+    static class AutoSave
+    {
+        static string Ini(string dir) { return Path.Combine(dir, "ld95.ini"); }
+        public static bool Get(string dir) { return Native.GetPrivateProfileInt("zhTW", "AutoSave", 1, Ini(dir)) != 0; }
+        public static void Set(string dir, bool on)
+        {
+            if (!Native.WritePrivateProfileString("zhTW", "AutoSave", on ? "1" : "0", Ini(dir))) throw new Exception("無法寫入 ld95.ini");
+        }
+    }
 
     static class Program
     {
@@ -668,6 +698,8 @@ namespace LD2ZhTW
                 {
                     var e = new Engine(p, args[1], s => log.AppendLine(s));
                     if (args[0] == "/install") e.Install(args.Contains("/noadmin") ? true : args.Contains("/admin") ? false : (bool?)null);
+                    if (args[0] == "/install" && args.Contains("/autosave:off")) AutoSave.Set(args[1], false);
+                    if (args[0] == "/install" && args.Contains("/autosave:on")) AutoSave.Set(args[1], true);
                     if (args[0] == "/setmode")
                     {
                         if (args.Length < 3 || (args[2] != "admin" && args[2] != "noadmin")) throw new Exception("用法：/setmode <dir> admin|noadmin");
@@ -683,7 +715,7 @@ namespace LD2ZhTW
                     log.AppendLine("version=" + p.Version + " original=" + s2[FState.Original] + " patched=" + s2[FState.Patched] +
                                    " older=" + s2[FState.Older] +
                                    " unknown=" + s2[FState.Unknown] + " missing=" + s2[FState.Missing] +
-                                   " mode=" + (e.Mode() ?? "-"));
+                                   " mode=" + (e.Mode() ?? "-") + " autosave=" + (AutoSave.Get(args[1]) ? 1 : 0));
                     Console.Out.Write(log.ToString()); return 0;
                 }
                 catch (Exception ex) { Console.Out.Write(log.ToString() + "ERROR " + ex.Message + "\n"); return 1; }
