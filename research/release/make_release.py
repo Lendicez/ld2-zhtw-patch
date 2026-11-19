@@ -139,7 +139,7 @@ def compile_installer(version: str, payload: Path, out: Path, variants: Path | N
     ver_cs.write_text('namespace LD2ZhTW { static partial class Ver { public const string Assembly = "%s"; } }\n'
                       % '.'.join(parts), 'utf-8')
     exe = out / f'LD2-zhTW-Patch-{version}.exe'
-    cmd = [find_csc(), '/nologo', '/target:winexe', '/platform:anycpu', '/optimize+', '/codepage:65001',
+    cmd = [find_csc(), '/nologo', '/target:winexe', '/platform:x86', '/optimize+', '/codepage:65001',
            f'/out:{exe}', f'/resource:{payload},payload.bin'] + ([f'/resource:{variants},variants.json'] if variants else []) + [
            '/r:System.Windows.Forms.dll', '/r:System.Drawing.dll',
            str(HERE / 'installer' / 'LD2ZhTWSetup.cs'), str(ver_cs)]

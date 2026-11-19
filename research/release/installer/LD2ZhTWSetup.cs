@@ -478,7 +478,7 @@ namespace LD2ZhTW
         readonly Payload P;
         readonly TextBox dirBox = new TextBox(), logBox = new TextBox();
         readonly Label stateLbl = new Label(), modeHint = new Label();
-        readonly Button installBtn = new Button(), uninstallBtn = new Button(), browseBtn = new Button(), manualBtn = new Button(), closeBtn = new Button(), backupBtn = new Button();
+        readonly Button installBtn = new Button(), uninstallBtn = new Button(), browseBtn = new Button(), manualBtn = new Button(), closeBtn = new Button(), backupBtn = new Button(), mediaBtn = new Button();
         readonly CheckBox noAdminChk = new CheckBox(), autoSaveChk = new CheckBox();
         bool allowNoAdmin, curAutoSave = true; string curMode, installedText;
 
@@ -503,10 +503,21 @@ namespace LD2ZhTW
             installBtn.SetBounds(16, 272, 140, 34); installBtn.Text = "安裝";
             uninstallBtn.SetBounds(166, 272, 140, 34); uninstallBtn.Text = "解除安裝";
             manualBtn.SetBounds(464, 272, 160, 34); manualBtn.Text = "開啟繁中說明書";
+            mediaBtn.SetBounds(316, 272, 140, 34); mediaBtn.Text = "媒體診斷";
             logBox.SetBounds(16, 316, 608, 188); logBox.Multiline = true; logBox.ReadOnly = true; logBox.ScrollBars = ScrollBars.Vertical;
             closeBtn.SetBounds(504, 516, 120, 34); closeBtn.Text = "關閉"; closeBtn.Click += (s, e) => Close(); CancelButton = closeBtn;
             Controls.Add(closeBtn);
-            Controls.AddRange(new Control[] { intro, dl, dirBox, browseBtn, stateLbl, noAdminChk, modeHint, autoSaveChk, backupBtn, installBtn, uninstallBtn, manualBtn, logBox });
+            Controls.AddRange(new Control[] { intro, dl, dirBox, browseBtn, stateLbl, noAdminChk, modeHint, autoSaveChk, backupBtn, installBtn, uninstallBtn, mediaBtn, manualBtn, logBox });
+            mediaBtn.Click += (s, e) =>
+            {
+                string g = dirBox.Text.Trim();
+                if (!File.Exists(Path.Combine(g, "Ld95.exe"))) { Log("請先選擇遊戲資料夾。"); return; }
+                Log("── 媒體診斷（以遊戲相同的 32 位元播放方式測試；會播放幾秒音樂、音效與片頭動畫） ──");
+                Cursor = Cursors.WaitCursor; mediaBtn.Enabled = false;
+                try { foreach (var line in MediaDiag.Run(g, true)) Log(line); }
+                catch (Exception ex) { Log("診斷中斷：" + ex.Message); }
+                finally { Cursor = Cursors.Default; mediaBtn.Enabled = true; }
+            };
             noAdminChk.CheckedChanged += (s, e) => UpdateApply();
             autoSaveChk.CheckedChanged += (s, e) => UpdateApply();
             backupBtn.Click += (s, e) =>
@@ -538,7 +549,7 @@ namespace LD2ZhTW
             string sys86 = Environment.GetFolderPath(Environment.SpecialFolder.SystemX86);
             if (!string.IsNullOrEmpty(sys86) && (!File.Exists(Path.Combine(sys86, "wmadmod.dll")) || !File.Exists(Path.Combine(sys86, "wmvcore.dll"))))
                 Log("注意：此電腦缺少 Windows Media 元件（常見於 Windows N／KN 版），遊戲的背景音樂可能無法播放。" +
-                    "請到「設定 → 系統 → 選用功能」新增「媒體功能套件」（Media Feature Pack）。");
+                    "請到「設定 → 系統 → 選用功能」新增「媒體功能套件」（Media Feature Pack）。可按「媒體診斷」實際測試。");
             if (!string.IsNullOrEmpty(initialDir)) dirBox.Text = initialDir;
             else
             {
@@ -561,7 +572,8 @@ namespace LD2ZhTW
             "‧視窗太多重疊：選單「視窗 → 並排顯示／重疊排列」。\r\n" +
             "‧完整的繁中說明：按右上「開啟繁中說明書」（或開啟遊戲資料夾的 index.html）。存檔只能在城鎮中進行。\r\n" +
             "‧存檔保護：覆蓋存檔前，舊檔會自動備份到 USR\\_backup（每格留 5 份，-1 最新；要還原時複製回 USR 並改回原檔名）。\r\n" +
-            "‧自動存檔：回到城鎮時與進入迷宮前自動存到第 015 格；若第 015 格是您自己存的，不會覆蓋（狀態列會提示）。";
+            "‧自動存檔：回到城鎮時與進入迷宮前自動存到第 015 格；若第 015 格是您自己存的，不會覆蓋（狀態列會提示）。\r\n" +
+            "‧沒有聲音或片頭動畫無法播放：按「媒體診斷」，會以遊戲相同的方式測背景音樂、音效與片頭動畫並顯示原因。";
 
         /// <summary>依目前狀態設定「免系統管理員權限啟動」選項。必須在 stateLbl 更新後呼叫。</summary>
         void RefreshMode(Engine e)
@@ -597,8 +609,8 @@ namespace LD2ZhTW
             installBtn.Enabled = uninstallBtn.Enabled = false;
             string d = dirBox.Text.Trim();
             if (d.Length == 0 || !File.Exists(Path.Combine(d, "Ld95.exe")))
-            { stateLbl.Text = "狀態：此資料夾沒有 Ld95.exe。"; noAdminChk.Enabled = autoSaveChk.Enabled = backupBtn.Enabled = false; manualBtn.Enabled = false; modeHint.Text = ""; installedText = null; return; }
-            curAutoSave = AutoSave.Get(d); autoSaveChk.Checked = curAutoSave; autoSaveChk.Enabled = backupBtn.Enabled = true;
+            { stateLbl.Text = "狀態：此資料夾沒有 Ld95.exe。"; noAdminChk.Enabled = autoSaveChk.Enabled = backupBtn.Enabled = mediaBtn.Enabled = false; manualBtn.Enabled = false; modeHint.Text = ""; installedText = null; return; }
+            curAutoSave = AutoSave.Get(d); autoSaveChk.Checked = curAutoSave; autoSaveChk.Enabled = backupBtn.Enabled = mediaBtn.Enabled = true;
             var e = new Engine(P, d, null); var s = e.Summary(); int n = s.Values.Sum();
             installBtn.Text = "安裝"; pendingUpgrade = null; installedText = null;
             if (P.Files.All(f => e.State(f) == FState.Patched) &&
@@ -672,6 +684,157 @@ namespace LD2ZhTW
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode)] public static extern bool WritePrivateProfileString(string sec, string key, string val, string file);
     }
 
+    /// <summary>
+    /// 媒體診斷：以遊戲同樣的方式（32 位元行程）分別測背景音樂（music\*.wma，DirectShow）、音效（DirectSound／RES\*.WAV）、
+    /// 片頭動畫（avi\OPENING.avi，MCI avivideo）。只讀遊戲檔，不改系統設定。audible=false 時靜音、不顯示影片視窗（自動測試用）。
+    /// </summary>
+    static class MediaDiag
+    {
+        [ComImport, Guid("56a868a9-0ad4-11ce-b03a-0020af0ba770"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+        interface IGraphBuilder
+        {
+            [PreserveSig] int AddFilter(IntPtr f, [MarshalAs(UnmanagedType.LPWStr)] string n);
+            [PreserveSig] int RemoveFilter(IntPtr f);
+            [PreserveSig] int EnumFilters(out IntPtr e);
+            [PreserveSig] int FindFilterByName([MarshalAs(UnmanagedType.LPWStr)] string n, out IntPtr f);
+            [PreserveSig] int ConnectDirect(IntPtr a, IntPtr b, IntPtr mt);
+            [PreserveSig] int Reconnect(IntPtr p);
+            [PreserveSig] int Disconnect(IntPtr p);
+            [PreserveSig] int SetDefaultSyncSource();
+            [PreserveSig] int Connect(IntPtr a, IntPtr b);
+            [PreserveSig] int Render(IntPtr p);
+            [PreserveSig] int RenderFile([MarshalAs(UnmanagedType.LPWStr)] string file, [MarshalAs(UnmanagedType.LPWStr)] string playlist);
+        }
+        [ComImport, Guid("56a868b1-0ad4-11ce-b03a-0020af0ba770"), InterfaceType(ComInterfaceType.InterfaceIsDual)]
+        interface IMediaControl
+        {
+            [PreserveSig] int Run();
+            [PreserveSig] int Pause();
+            [PreserveSig] int Stop();
+            [PreserveSig] int GetState(int timeout, out int state);
+        }
+        [ComImport, Guid("56a868b6-0ad4-11ce-b03a-0020af0ba770"), InterfaceType(ComInterfaceType.InterfaceIsDual)]
+        interface IMediaEvent
+        {
+            [PreserveSig] int GetEventHandle(out IntPtr h);
+            [PreserveSig] int GetEvent(out int code, out IntPtr p1, out IntPtr p2, int timeout);
+            [PreserveSig] int WaitForCompletion(int timeout, out int code);
+        }
+        [ComImport, Guid("56a868b3-0ad4-11ce-b03a-0020af0ba770"), InterfaceType(ComInterfaceType.InterfaceIsDual)]
+        interface IBasicAudio
+        {
+            [PreserveSig] int put_Volume(int v);
+            [PreserveSig] int get_Volume(out int v);
+        }
+        [ComImport, Guid("36b73880-c2c8-11cf-8b46-00805f6cef60"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+        interface IMediaSeeking
+        {
+            [PreserveSig] int GetCapabilities(out int c);
+            [PreserveSig] int CheckCapabilities(ref int c);
+            [PreserveSig] int IsFormatSupported(ref Guid f);
+            [PreserveSig] int QueryPreferredFormat(out Guid f);
+            [PreserveSig] int GetTimeFormat(out Guid f);
+            [PreserveSig] int IsUsingTimeFormat(ref Guid f);
+            [PreserveSig] int SetTimeFormat(ref Guid f);
+            [PreserveSig] int GetDuration(out long d);
+            [PreserveSig] int GetStopPosition(out long s);
+            [PreserveSig] int GetCurrentPosition(out long c);
+            [PreserveSig] int ConvertTimeFormat(out long t, ref Guid tf, long s, ref Guid sf);
+            [PreserveSig] int SetPositions(ref long cur, int curFlags, ref long stop, int stopFlags);
+        }
+        [DllImport("winmm.dll", CharSet = CharSet.Unicode, EntryPoint = "mciSendStringW")] static extern int mciSendString(string cmd, StringBuilder ret, int len, IntPtr cb);
+        [DllImport("winmm.dll", CharSet = CharSet.Unicode, EntryPoint = "mciGetErrorStringW")] static extern bool mciGetErrorString(int err, StringBuilder buf, int len);
+        [DllImport("winmm.dll", CharSet = CharSet.Unicode, EntryPoint = "PlaySoundW")] static extern bool PlaySound(string f, IntPtr mod, uint flags);
+        [DllImport("dsound.dll")] static extern int DirectSoundCreate(IntPtr guid, out IntPtr ds, IntPtr outer);
+
+        const string NHint = "。可能原因：Windows N／KN 版缺少媒體元件（到「設定 → 系統 → 選用功能」新增「媒體功能套件」），或遊戲檔損毀（Steam「驗證遊戲檔案完整性」）";
+
+        public static List<string> Run(string game, bool audible)
+        {
+            var o = new List<string>();
+            o.Add("執行環境：" + OsText() + "；測試行程 " + (IntPtr.Size == 4 ? "32 位元（與遊戲相同）" : "64 位元"));
+            o.Add(Bgm(game, audible));
+            o.Add(Se(game, audible));
+            o.Add(Video(game, audible));
+            return o;
+        }
+
+        static string OsText()
+        {
+            try
+            {
+                using (var k = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
+                {
+                    int build; int.TryParse(k.GetValue("CurrentBuild") as string, out build);
+                    string ed = k.GetValue("EditionID") as string ?? "?", dv = k.GetValue("DisplayVersion") as string ?? "";
+                    return "Windows " + (build >= 22000 ? "11" : "10") + (dv.Length > 0 ? " " + dv : "") + "（組建 " + build + "，" + ed + "）";
+                }
+            }
+            catch { return "Windows " + Environment.OSVersion.Version; }
+        }
+
+        static string Bgm(string game, bool audible)
+        {
+            string f = Path.Combine(game, @"music\01.wma");
+            if (!File.Exists(f)) return "背景音樂：找不到 music\\01.wma（遊戲檔不完整？可用 Steam「驗證遊戲檔案完整性」）";
+            object g = null;
+            try
+            {
+                g = Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("e436ebb3-524f-11ce-9f53-0020af0ba770")));
+                int hr = ((IGraphBuilder)g).RenderFile(f, null);
+                if (hr < 0) return "背景音樂：異常，無法解碼 WMA（0x" + hr.ToString("X8") + "）" + NHint;
+                if (!audible) ((IBasicAudio)g).put_Volume(-10000);
+                var mc = (IMediaControl)g; var ms = (IMediaSeeking)g; var me = (IMediaEvent)g;
+                long dur; ms.GetDuration(out dur);
+                mc.Run(); System.Threading.Thread.Sleep(audible ? 3000 : 1500);
+                long pos; ms.GetCurrentPosition(out pos);
+                if (pos <= 0) { mc.Stop(); return "背景音樂：異常，已載入但沒有開始播放（音訊裝置或解碼器問題）" + NHint; }
+                // 曲末：跳到結尾前 2 秒，確認能正常播完
+                long cur = Math.Max(0, dur - 20000000L), stop = 0;
+                ms.SetPositions(ref cur, 1, ref stop, 0);
+                int code; int r = me.WaitForCompletion(8000, out code);
+                mc.Stop();
+                string end = (r >= 0 && code == 1) ? "曲末正常" : "曲末未在預期時間結束（code=" + code + "，0x" + r.ToString("X8") + "）";
+                return "背景音樂（WMA，DirectShow）：正常，可播放（長度 " + (dur / 10000000) + " 秒，" + end + "）";
+            }
+            catch (Exception ex) { return "背景音樂：異常，" + ex.Message + NHint; }
+            finally { if (g != null) Marshal.ReleaseComObject(g); }
+        }
+
+        static string Se(string game, bool audible)
+        {
+            IntPtr ds;
+            int hr = DirectSoundCreate(IntPtr.Zero, out ds, IntPtr.Zero);
+            if (hr < 0) return "音效（DirectSound）：異常，無法開啟音訊裝置（0x" + hr.ToString("X8") + "）。請確認有可用的播放裝置。";
+            Marshal.Release(ds);
+            string w = Path.Combine(game, @"RES\ATTACK0.WAV");
+            if (!File.Exists(w)) return "音效：找不到 RES\\ATTACK0.WAV（遊戲檔不完整？）";
+            if (audible && !PlaySound(w, IntPtr.Zero, 0x20000 /*SND_FILENAME*/ | 0x2 /*SND_NODEFAULT*/))
+                return "音效（DirectSound）：裝置可用，但播放測試音效失敗。";
+            return "音效（DirectSound）：正常，音訊裝置可用" + (audible ? "（已播放 RES\\ATTACK0.WAV）" : "");
+        }
+
+        static string Video(string game, bool audible)
+        {
+            string f = Path.Combine(game, @"avi\OPENING.avi");
+            if (!File.Exists(f)) return "片頭動畫：找不到 avi\\OPENING.avi（遊戲檔不完整？）";
+            var sb = new StringBuilder(256);
+            int e = mciSendString("open \"" + f + "\" type avivideo alias ld2diag", null, 0, IntPtr.Zero);
+            if (e != 0) { mciGetErrorString(e, sb, sb.Capacity); return "片頭動畫（AVI，MCI）：異常，無法開啟：" + sb + "（可用 Steam「驗證遊戲檔案完整性」）"; }
+            try
+            {
+                if (!audible) { mciSendString("window ld2diag state hide", null, 0, IntPtr.Zero); mciSendString("setaudio ld2diag off", null, 0, IntPtr.Zero); }
+                e = mciSendString("play ld2diag", null, 0, IntPtr.Zero);
+                if (e != 0) { mciGetErrorString(e, sb, sb.Capacity); return "片頭動畫（AVI，MCI）：異常，無法播放：" + sb; }
+                System.Threading.Thread.Sleep(audible ? 5000 : 1500);
+                mciSendString("status ld2diag position", sb, sb.Capacity, IntPtr.Zero);
+                long p; long.TryParse(sb.ToString(), out p);
+                return p > 0 ? "片頭動畫（AVI，MCI）：正常，可播放" : "片頭動畫（AVI，MCI）：異常，沒有開始播放（Cinepak 解碼器？）";
+            }
+            finally { mciSendString("close ld2diag", null, 0, IntPtr.Zero); }
+        }
+    }
+
     /// <summary>自動存檔開關：遊戲資料夾 ld95.ini [zhTW] AutoSave（沒有時視為開；遊戲本身以同一個鍵判斷）。</summary>
     static class AutoSave
     {
@@ -688,6 +851,11 @@ namespace LD2ZhTW
         [STAThread]
         static int Main(string[] args)
         {
+            if (args.Length >= 2 && args[0] == "/mediatest")
+            {
+                try { foreach (var line in MediaDiag.Run(args[1], args.Contains("/audible"))) Console.Out.WriteLine(line); return 0; }
+                catch (Exception ex) { Console.Out.WriteLine("ERROR " + ex.Message); return 1; }
+            }
             Payload p;
             try { p = Payload.Load(); }
             catch (Exception ex) { MessageBox.Show("安裝資料損毀：" + ex.Message); return 3; }
