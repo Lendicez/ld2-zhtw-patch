@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 import rdata_ansi, charset_patch, list_reroute, catalog_patch, tab_title_patch  # noqa: E402
-import mixdec_patch, detail_name_patch, gen_lab_detail, cdc_textout_patch, savelist_patch, fmt_expand_patch, drawtext_patch, res_extra, title_patch, accel_patch, kbcapture_patch, layout_patch, savecare_patch  # noqa: E402
+import mixdec_patch, detail_name_patch, gen_lab_detail, cdc_textout_patch, savelist_patch, fmt_expand_patch, drawtext_patch, res_extra, title_patch, accel_patch, kbcapture_patch, layout_patch, savecare_patch, cpfix_patch  # noqa: E402
 
 EQUIP_SITES = [0x46e73a, 0x47db6a, 0x46bacb, 0x46c46c]
 
@@ -26,7 +26,7 @@ def main(argv=None):
     ap.add_argument('--img-dirs', nargs='*', default=[]); ap.add_argument('--manifest')
     ap.add_argument('--tab-debug', action='store_true', help='tab_title_patch 偵錯版（.ld2i 紀錄）')
     ap.add_argument('--charset-only', help='只修補這些 LOGFONT 點（逗號分隔檔案偏移，如 0x31dbe）')
-    ap.add_argument('--skip', default='', help='略過的步驟（逗號分隔：face,detail_name,cdc_textout,savelist,fmt_expand,drawtext,res_extra,accel,kbcapture,layout,savecare,tx）— 二分查錯用')
+    ap.add_argument('--skip', default='', help='略過的步驟（逗號分隔：face,detail_name,cdc_textout,savelist,fmt_expand,drawtext,res_extra,accel,kbcapture,layout,savecare,cpfix,tx）— 二分查錯用')
     x = ap.parse_args(argv)
     skip = {v.strip() for v in x.skip.split(',') if v.strip()}
     lab = Path(x.lab)
@@ -71,6 +71,8 @@ def main(argv=None):
         exe, log['layout'] = layout_patch.patch(exe)
     if 'savecare' not in skip:    # 存檔前備份舊檔（_backup，每格 5 份）＋自動存檔（第 015 格）
         exe, log['savecare'] = savecare_patch.patch(exe)
+    if 'cpfix' not in skip:       # 最後：補丁程式的編碼轉換改經包裝（Big5 缺字對應、Big5／CP932 混合解碼）
+        exe, log['cpfix'] = cpfix_patch.patch(exe)
     (lab / 'Ld95.exe').write_bytes(exe); log['pre_image_sha256'] = hashlib.sha256(exe).hexdigest()
     if x.apply_images:
         r = subprocess.run([sys.executable, x.apply_images, x.pristine, str(lab)] + x.img_dirs,
