@@ -167,6 +167,37 @@
       "installer_platform": "x86",
       "release_approved": true,
       "approved_by": "project owner (2026-11-19, hardware-confirmed rc1b incl. media diagnostics)"
+    },
+    {
+      "version": "1.0.7",
+      "date": "2026-11-25",
+      "installer": "LD2-zhTW-Patch-1.0.7.exe",
+      "installer_sha256": "bba9aea0e9571f8da04c367e19ffa505c0ca9281d038b5d4466c7db1ff1c718b",
+      "payload_sha256": "1edc0fb9fc3809bd9fb6f7892a8d9bbfbe6b2a7260aa74c417472b33a1f48685",
+      "source_version": "ld95-1.0.3.16",
+      "files": 124,
+      "source_commit": "48210ee",
+      "branch": "release/1.0.7",
+      "upgrades_from": [
+        "1.0.0",
+        "1.0.1",
+        "1.0.2",
+        "1.0.3",
+        "1.0.4-rc1",
+        "1.0.4",
+        "1.0.5",
+        "1.0.6"
+      ],
+      "changed_files_vs_1.0.6": ["Ld95.exe"],
+      "options": {
+        "noadmin": {
+          "file": "Ld95.exe",
+          "dst_sha256": "d89140bf5d9affb328e32c04ac501153b167a75d34d04f612dfaa0a5b97b60a8"
+        }
+      },
+      "installer_platform": "x86",
+      "release_approved": true,
+      "approved_by": "project owner (2026-11-25, hardware-confirmed rc1; release published by Claude on owner's instruction)"
     }
   ]
 }
